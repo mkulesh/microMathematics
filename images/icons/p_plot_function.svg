@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="48"
+   height="48"
+   id="svg11300">
+  <metadata
+     id="metadata14">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="com.mkulesh.micromath" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3" />
+  <rect
+     width="46.014156"
+     height="45.816196"
+     rx="6.2652392"
+     ry="5.4422288"
+     x="1.074217"
+     y="1.0784065"
+     id="rect11518"
+     style="color:#000000;fill:#353535;fill-opacity:0.8;fill-rule:evenodd;stroke:#353535;stroke-width:1.14610016;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
+  <rect
+     width="42.613228"
+     height="42.429905"
+     rx="4.4872475"
+     ry="3.8977964"
+     x="2.7749097"
+     y="2.7717824"
+     id="rect11528"
+     style="color:#000000;fill:none;stroke:#ffffff;stroke-width:2.29220033;stroke-linejoin:bevel;stroke-miterlimit:10" />
+  <g
+     transform="matrix(1.1620377,0,0,1.2033157,-0.58942321,-0.87273364)"
+     id="g3916">
+    <path
+       d="M 9.1120465,32.131978 C 12.046679,24.828228 17.089348,20.28073 19.383248,20.263384 c 3.356238,-0.02557 4.891049,5.477812 8.803886,5.477812 3.527423,0 6.847467,-10.042655 7.825676,-17.3464032"
+       id="path9990"
+       style="fill:none;stroke:#ffffff;stroke-width:0.94502628px;stroke-opacity:1" />
+    <path
+       d="m 8.066889,8.8359286 0,24.1918184 26.831513,0"
+       id="path9988"
+       style="fill:none;stroke:#ffffff;stroke-width:1.95980752" />
+    <path
+       d="m 7.9749147,4.9144233 -3.4457195,6.8617917 6.8914468,0 -3.4457273,-6.8617917"
+       id="path9992"
+       style="fill:#ffffff;fill-rule:evenodd" />
+    <path
+       d="m 37.792019,32.995008 -6.891442,-3.430897 0,6.861795 6.891442,-3.430898"
+       id="path9994"
+       style="fill:#ffffff;fill-rule:evenodd" />
+  </g>
+</svg>

@@ -1,0 +1,24 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="MicroMathActionBarTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="android:selectableItemBackground">@drawable/clickable_background</item>
+        <item name="android:selectableItemBackgroundBorderless">@drawable/clickable_background</item>
+        <item name="android:actionBarItemBackground">@drawable/clickable_background</item>
+        <item name="android:listChoiceBackgroundIndicator">@drawable/clickable_background_no_padding</item>
+        <item name="actionModeBackground">@null</item>
+    </style>
+    
+    <style name="CustomProgressBarTheme" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/material_grey_600</item>
+        <item name="android:progressBackgroundTint">@color/material_grey_50</item>
+    </style>    
+        
+    <style name="CustomProgressBar" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:theme">@style/CustomProgressBarTheme</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">4dp</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:scaleY">3</item>
+    </style>
+    
+</resources>

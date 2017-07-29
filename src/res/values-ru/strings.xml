@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- General settings -->
+    <string name="app_name">Микро-математика плюс</string>
+    <string name="app_description">Расширенный визуальный калькулятор: редактирование и вычисление формул</string>
+    
+    <!-- Drawer -->
+    <string name="drawer_open">Открыть навигатор</string>
+    <string name="drawer_close">Закрыть навигатор</string>
+    
+    <string-array name="activity_titles">
+        <item>Рабочий лист</item>
+        <item>Справка</item>
+        <item>Пример</item>
+        <item>Пример</item>
+        <item>Пример</item>
+        <item>Пример</item>
+        <item>О программе</item>
+    </string-array>
+    <string-array name="activity_subtitles">
+        <item>Мой документ</item>
+        <item>Описание программы</item>
+        <item>График функции</item>
+        <item>Полярный график</item>
+        <item>3D график</item>
+        <item>Ряды и интегралы</item>
+        <item>Микро-математика плюс</item>
+    </string-array>
+    <string-array name="activity_logos">
+        <item>drawer_worksheet</item>
+        <item>drawer_how_to_use</item>
+        <item>drawer_function_plot</item>
+        <item>drawer_polar_plot</item>
+        <item>drawer_three_d_plot</item>
+        <item>drawer_series_and_integrals</item>
+        <item>drawer_about</item>
+    </string-array>
+    <string-array name="activity_resources">
+        <item></item>
+        <item>asset:/doc_ru/how_to_use_ru.xml</item>
+        <item>asset:/doc_ru/function_plot_ru.xml</item>
+        <item>asset:/doc_ru/polar_plot_ru.xml</item>
+        <item>asset:/doc_ru/three_d_plot_ru.xml</item>
+        <item>asset:/doc_ru/series_and_integrals_ru.xml</item>
+        <item>asset:/doc_ru/about_micromath_ru.xml</item>
+    </string-array>
+    <string name="activity_welcome">asset:/doc_ru/welcome_ru.xml</string>
+    
+    <!-- Permissions -->
+    <string name="allow_storage_access_title">Разрешить обращаться к файлам документов</string>
+    <string name="allow_storage_access_description">Микро-математике требуется разрешение, чтобы обращаться к файлам документов на вашем устройстве</string>
+    <string name="allow_storage_access_grant">Дать разрешение</string>
+    
+    <!-- Main menu -->
+    <string name="action_exit">Выйти</string>
+    <string name="action_play">Вычислить</string>
+    <string name="action_stop">Прервать вычисления</string>
+    <string name="action_object_properties">Настройки объекта</string>
+    <string name="action_undo">Отменить ввод</string>
+    <string name="action_discard">Удалить выделенное</string>
+    <string name="action_settings">Свойства документа</string>
+    <string name="action_new_document">Новый документ</string>
+    <string name="action_open">Открыть</string>
+    <string name="action_save">Сохранить</string>
+    <string name="action_save_as">Сохранить как</string>
+    <string name="action_export">Экспортировать</string>
+    <string name="action_licenses">Информация о лицензиях</string>
+    <string name="action_details">Подробности</string>
+        
+    <!-- Context menu -->
+    <string name="context_expand">Выбрать больше</string>
+    <string name="context_copy">Копировать</string>
+    <string name="context_cut">Вырезать</string>
+    <string name="context_paste">Вставить</string>
+    
+    <!-- Dialogs -->
+    <string name="dialog_navigation_accept">Согласен</string>
+    <string name="dialog_navigation_cancel">Отмена</string>
+    <string name="dialog_button_decrease">Увеличить</string>
+    <string name="dialog_button_increase">Уменьшить</string>
+    <string name="dialog_new_formula_insert_before">Вставить перед выделенным</string>
+    <string name="dialog_new_formula_insert_after">Вставить после выделенного</string>
+    <string name="dialog_new_formula_insert_left">Вставить слева от выделенного</string>
+    <string name="dialog_new_formula_insert_right">Вставить справа от выделенного</string>
+    <string name="dialog_line_settings_title">Настройка линии</string>
+    <string name="dialog_line_settings_widthlabel">Толщина и стиль линии</string>
+    <string name="dialog_axis_settings_title">Настройка сетки</string>
+    <string name="dialog_axis_settings_xlabels">Количество по X</string>
+    <string name="dialog_axis_settings_ylabels">Количество по Y</string>
+    <string name="dialog_plot_settings_title">Настройка графика</string>
+    <string name="dialog_plot_settings_width">Ширина</string>
+    <string name="dialog_plot_settings_height">Высота</string>
+    <string name="dialog_plot_settings_axes_boxed">Рамка</string>
+    <string name="dialog_plot_settings_axes_crossed">Оси</string>
+    <string name="dialog_plot_settings_axes_none">Без рамки и осей</string>
+    <string name="dialog_plot_point_shapes">Символы</string>
+    <string name="dialog_plot_point_shape_size">Размер символа (% от линии)</string>
+    <string name="dialog_plot_point_square">Квадрат</string>
+    <string name="dialog_plot_point_circle">Круг</string>
+    <string name="dialog_plot_point_diamond">Ромб</string>
+    <string name="dialog_plot_point_cross">Крест</string>
+    <string name="dialog_surface_settings_contour">Контурный график</string>
+    <string name="dialog_surface_settings_surface">Поверхность</string>
+    <string name="dialog_surface_settings_mesh_lines">Показывать линии сетки</string>
+    <string name="dialog_surface_settings_mesh_fill">Заливка цветом</string>
+    <string name="dialog_surface_settings_mesh_opacity">Прозрачность</string>
+    <string name="dialog_surface_settings_rotation">Угол поворота</string>
+    <string name="dialog_surface_settings_elevation">Угол наклона</string>
+    <string name="dialog_colormap_settings_title">Цветовая схема</string>
+    <string name="dialog_colormap_settings_zlabels">Количество по Z</string>
+    <string name="dialog_document_settings_reformat">Форматировать текст</string>
+    <string name="dialog_document_settings_width_size">Длина строки</string>
+    <string name="dialog_document_settings_significant_digits">Значимые цифры в результате</string>
+    <string name="dialog_document_settings_redefine_allowed">Разрешить переопределение формул</string>
+    <string name="dialog_result_details_argument">Аргумент</string>
+    <string name="dialog_result_details_value">Значение</string>
+    <string name="dialog_image_settings_title">Изображение</string>
+    <string name="dialog_image_settings_file">Файл (png, bmp, gif, jpeg, svg)</string>
+    <string name="dialog_image_settings_select_file">Выбрать файл</string>
+    <string name="dialog_image_settings_embedded">Внедрить в документ</string>
+    <string name="dialog_image_settings_original_size">Оригинальный размер</string>
+    <string name="dialog_image_settings_custom_size">Задать размер</string>
+    <string name="dialog_image_settings_width">Ширина</string>
+    <string name="dialog_image_settings_height">Высота</string>
+    <string name="dialog_result_title">Текстовый результат</string>
+    <string name="dialog_result_disable_calculation">Не вычислять</string>
+    <string name="dialog_result_hide_result_field">Скрыть поле с результатом</string>
+    <string name="dialog_result_array_length">Количество значений</string>
+    <string name="dialog_text_settings_title">Свойства текста</string>
+    <string name="dialog_text_style_chapter">Часть</string>
+    <string name="dialog_text_style_section">Раздел</string>
+    <string name="dialog_text_style_subsection">Глава</string>
+    <string name="dialog_text_style_subsubsection">Параграф</string>
+    <string name="dialog_text_style_text_body">Основной текст</string>
+    <string name="dialog_text_style_numbering">Нумеровать</string>
+    <string name="dialog_list_items">элемент (ов)</string>
+    <string name="dialog_function_selection">Функция</string>
+    
+    <!-- Mathematical elements -->
+    <string name="math_new_element">Вставить</string>
+    <string name="math_new_equation">Вставить формулу</string>
+    <string name="math_new_result">Вставить текстовый результат</string>
+    <string name="math_new_function_plot">Вставить график функции</string>
+    <string name="math_new_contour_plot">Вставить 3D график</string>
+    <string name="math_new_text_fragment">Вставить текстовое поле</string>
+    <string name="math_new_image_fragment">Вставить изображение из файла</string>
+    <string name="image_fragment_text">Долгое нажатие для настройки изображения</string>
+    <string name="math_new_term">Вставить аргумент (\',\')</string>
+    <string name="math_equidistant_interval">Интервал (\':\')</string>
+    <string name="math_operator_plus">Сложение (\'+ +\')</string>
+    <string name="math_operator_minus">Вычитание (\'- -\')</string>
+    <string name="math_operator_mult">Умножение (\'*\')</string>
+    <string name="math_operator_divide">Деление (\'÷\')</string>
+    <string name="math_operator_divide_slash">Деление (\'/\')</string>
+    <string name="math_operator_power">Возведение в степень (\'^\')</string>
+    <string name="math_comparator_equal">Проверка, что операнды равны (\'= =\')</string>
+    <string name="math_comparator_not_equal">Проверка, что операнды не равны (\'=|\')</string>
+    <string name="math_comparator_less">Проверка, что левый операнд меньше правого (\'&#60;&#60;\')</string>
+    <string name="math_comparator_less_eq">Проверка, что левый операнд меньше или равен правому (\'&#60;=\')</string>
+    <string name="math_comparator_greater">Проверка, что левый операнд больше правого (\'&#62;&#62;\')</string>
+    <string name="math_comparator_greater_eq">Проверка, что левый операнд больше или равен правому (\'&#62;=\')</string>
+    <string name="math_comparator_and">Проверка, что оба операнда имеют значение \'истина\' (\'&#38;&#38;\')</string>
+    <string name="math_comparator_and_text"> and </string>
+    <string name="math_comparator_or">Проверка, что один из операндов имеет значение \'истина\' (\'&#38;|\')</string>
+    <string name="math_comparator_or_text"> or </string>
+    <string name="math_loop_summation">Вычисление суммы ряда (\'SUMM\')</string>
+    <string name="math_loop_product">Вычисление произведения ряда (\'PROD\')</string>
+    <string name="math_loop_integral">Вычисление определенного интеграла (\'INTEG\')</string>
+    <string name="math_loop_derivative">Вычисление производной (\'DERIV\')</string>
+    <string name="math_function_identity">Круглые скобки (\'(\')</string>
+    <string name="math_function_index">Нижний индекс (\'[\')</string>
+    <string name="math_function_abs">Модуль вещественного или комплексного числа (\'|\')</string>
+    <string name="math_function_conjugate">Комплексно-сопряжённое значение аргумента (\'~\')</string>
+    <string name="math_function_re">Вещественная часть комплексного аргумента</string>
+    <string name="math_function_im">Мнимая часть комплексного аргумента</string>
+    <string name="math_function_sqrt">Квадратный корень аргумента (\'#\')</string>
+    <string name="math_function_nthrt">Корень произвольной степени от аргумента (\'$\')</string>
+    <string name="math_function_if">Выбор одного или другого операнда в зависимости от условия</string>
+    <string name="math_function_sin">Синус аргумента</string>
+    <string name="math_function_asin">Обратный синус аргумента в интервале [-pi/2..pi/2]</string>
+    <string name="math_function_sinh">Гиперболический синус аргумента</string>
+    <string name="math_function_cos">Косинус аргумента</string>
+    <string name="math_function_acos">Обратный косинус аргумента в интервале [0..pi]</string>
+    <string name="math_function_cosh">Гиперболический косинус аргумента</string>
+    <string name="math_function_tan">Тангенс аргумента</string>
+    <string name="math_function_atan">Обратный тангенс аргумента в интервале [-pi/2..pi/2]</string>
+    <string name="math_function_atan2">Обратный тангенс y/x в интервале [-pi..pi]</string>
+    <string name="math_function_tanh">Гиперболический тангенс аргумента</string>
+    <string name="math_function_exp">Возведение \'e\' в степень аргумента</string>
+    <string name="math_function_log">Натуральный логарифм аргумента</string>
+    <string name="math_function_log10">Десятичный логарифм аргумента</string>
+    <string name="math_function_ceil">Ближайшее (справа) целое значение, которое больше или равно значению аргумента</string>
+    <string name="math_function_floor">Ближайшее (слева) целое значение, которое меньше или равно значению аргумента</string>
+    <string name="math_function_rnd">Псевдослучайное число между нулём и значением аргумента</string>
+    <string name="math_function_factorial">Факториал: произведение всех позитивных целых чисел меньше или равных аргументу (\'!\')</string>
+    <string name="math_function_max">Наибольшее значение из двух аргументов</string>
+    <string name="math_function_min">Наименьшее значение из двух аргументов</string>
+    <string name="math_function_hypot">Длина гипотенузы прямоугольного треугольника: sqrt(x^2+ y^2)</string>
+    
+    <!-- Errors -->
+    <string name="error_max_layout_depth">К сожалению, достигнут предел глубины формулы для данной версии Андроида</string>
+    <string name="error_brackets_not_completed">Скобки не закрыты</string>
+    <string name="error_invalid_variable_name">Недопустимое имя</string>
+    <string name="error_unknown_variable">Символ не является известной переменной или аргументом</string>
+    <string name="error_unknown_function">Функция %s не является встроенной и не определена ранее</string>
+    <string name="error_unknown_array">Массив %s не определён</string>
+    <string name="error_not_an_array">Недопустимое использование индекса, так как %s не является массивом</string>
+    <string name="error_not_a_function">Недопустимое использование аргумента, так как %s не является функцией</string>
+    <string name="error_invalid_array_dimension">Массивы размерностью %s пока не поддерживаются</string>
+    <string name="error_invalid_array_interval">Интервал %s используется, однако не указан как индекс</string>
+    <string name="error_invalid_array_index">Индекс %s не является известным интервалом</string>
+    <string name="error_recursive_call">Выражение вызывается рекурсивно из своего определения</string>
+    <string name="error_not_differentiable">Функция не является дифференциируемой по %s</string>
+    <string name="error_invalid_brackets_order">Неверный порядок скобок</string>
+    <string name="error_empty_argument_list">Необходимо указать аргументы функции</string>
+    <string name="error_invalid_comma_position">Недопустимая позиция запятой</string>
+    <string name="error_empty_argument">Необходимо указать имя аргумента</string>
+    <string name="error_invalid_argument">Имя аргумента должно содержать только цифры и буквы</string>
+    <string name="error_ensure_single_interval">Функция должна зависеть только от одного интервала</string>
+    <string name="error_ensure_double_interval">Функция должна зависеть только от двух интервалов</string>
+    <string name="error_ensure_single_argument">Функция должна зависеть только от одного аргумента</string>
+    <string name="error_indirect_intervals">Недопустимо использовать интервал(ы) %s неявно</string>
+    <string name="error_duplicated_identifier">Такой идентификатор уже используется</string>
+    <string name="error_forbidden_arguments">Данный идентификатор не может содержать аргументы</string>
+    <string name="error_forbidden_complex">Это поле не может содержать комплексное число</string>
+    <string name="error_forbidden_imaginary_unit">Символ \'i\' зарезервирован для обозначения комплексных чисел</string>
+    <string name="error_nan_value">Поле содержит значение, которое не является числом</string>
+    <string name="error_unknown_file_format">Неизвестный формат файла %s</string>
+    <string name="error_file_read">Ошибка чтения файла %s</string>
+    <string name="error_file_write">Ошибка сохранения файла %s</string>
+    <string name="error_calculation_aborted">Вычисление прервано</string>
+    <string name="error_paste_root_into_term">Невозможно вставить корневой объект во внутреннее поле</string>
+    <string name="error_paste_term_into_text">Невозможно вставить формулу: в данном контексте она не разрешена</string>
+    <string name="error_out_of_memory">Недостаточно памяти для отображения графика</string>
+
+    <!-- File manager -->
+    <string name="fman_local">Локальные файлы</string>
+    <string name="fman_local_descr">Работа с файлами на основном устройстве</string>
+	<string name="fman_external">Внешняя карта памяти</string>
+    <string name="fman_external_descr">Доступ к файлам на внешней карте памяти. Может быть только для чтения на некоторых устройствах</string>
+	<string name="fman_saf">Документы</string>
+	<string name="fman_saf_descr">Доступ к файлам в хранилище документов</string>
+	<string name="fman_assets">Ресурсы \"Микро-математики\"</string>
+    <string name="fman_assets_descr">Документация и примеры, идущие вместе с приложением</string>
+    <string name="fman_home">Стартовая страница</string>
+    <string name="fman_sort_by_name">Сорт. по имени</string>
+    <string name="fman_sort_by_ext">Сорт. по расширению</string>
+    <string name="fman_sort_by_size">Сорт. по размеру</string>
+    <string name="fman_sort_by_date">Сорт. по дате</string>
+    <string name="fman_refresh_title">Обновить</string>
+    <string name="fman_open_saf">Открыть хранилище</string>
+    <string name="fman_operation">Операция</string>
+	<string name="fman_create_folder_title">Создать папку</string>
+	<string name="fman_create_folder_dialog_prompt">Имя новой папки:</string>
+	<string name="fman_create_folder_error">Не могу создать папку \"%s\"</string>
+	<string name="fman_rename_title">Переименовать</string>
+	<string name="fman_rename_dialog_prompt">Новое имя для \"%s\":</string>
+	<string name="fman_rename_error">Не могу переименовать \"%s\"</string>
+	<string name="fman_delete_title">Удалить</string>
+	<string name="fman_delete_dialog_prompt">Удалить \"%s\"?</string>
+	<string name="fman_delete_confirm">Выбранный файл удалён</string>
+    <string name="fman_delete_error">Не могу удалить \"%s\"</string>
+    <string name="fman_warning_dialog_title">Предупреждение</string>
+    <string name="fman_error_not_supported">Операция не поддерживается</string>
+	<string name="fman_error_no_items">Не выбрано ни одного элемента</string>
+    <string name="fman_error_sec_err">Доступ запрещен: %s</string>
+    <string name="fman_error_no_such_folder">Папка \"%s\" не существует</string>
+    <string name="fman_new_file">Имя файла</string>
+    <string name="fman_overwrite_file">Файл \"%s\" уже существует, переписать его?</string>
+    <string name="fman_file_type">Тип файла</string>
+    <string name="fman_file_type_selection">Выбор типа файла</string>
+    <string name="fman_file_type_png_image">Изображение PNG</string>
+    <string name="fman_file_type_jpeg_image">Изображение JPEG</string>
+    <string name="fman_file_type_latex">Документ LaTeX</string>
+    <string name="fman_file_type_mathjax">Документ HTML</string>
+        
+    <!-- Messages -->
+    <string name="message_file_written">Файл %s успешно записан</string>
+    
+    <!-- Developer options -->
+    <string name="action_dev_mode">Режим разработчика</string>
+    <string name="action_dev_autotest">Автоматический тест</string>
+    <string name="action_dev_export_doc">Экспорт документации</string>
+    <string name="message_developer_mode">Режим разработчика активирован</string>
+    
+    <!-- Library licenses -->
+    <string name="dialog_licenses_support_v7">Библиотека поддержки Андроид v7</string>
+    <string name="dialog_licenses_support_v7_path">http://developer.android.com</string>
+    <string name="dialog_licenses_support_v7_text">Copyright © 2013 The Android Open Source Project\n\nЛицензировано согласно Лицензии Apache, Версия 2.0 (\"Лицензия\"); вы можете использовать этот файл только в соответствии с Лицензией. Вы можете найти копию Лицензии по адресу\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nЗа исключением случаев, когда это регламентировано существующим законодательством или если это не оговорено в письменном соглашении, программное обеспечение распространяемое на условиях данной Лицензии, предоставляется \"КАК ЕСТЬ\" и любые явные или неявные ГАРАНТИИ ОТВЕРГАЮТСЯ. Информацию об основных правах и ограничениях, применяемых к определенному языку согласно Лицензии, вы можете найти в данной Лицензии.</string>
+        
+    <string name="dialog_licenses_math3">Математическая библиотека Apache</string>
+    <string name="dialog_licenses_math3_path">http://commons.apache.org</string>
+    <string name="dialog_licenses_math3_text">Copyright © Apache Software Foundation (ASF)\n\nЛицензировано согласно Лицензии Apache, Версия 2.0 (\"Лицензия\"); вы можете использовать этот файл только в соответствии с Лицензией. Вы можете найти копию Лицензии по адресу\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nЗа исключением случаев, когда это регламентировано существующим законодательством или если это не оговорено в письменном соглашении, программное обеспечение распространяемое на условиях данной Лицензии, предоставляется \"КАК ЕСТЬ\" и любые явные или неявные ГАРАНТИИ ОТВЕРГАЮТСЯ. Информацию об основных правах и ограничениях, применяемых к определенному языку согласно Лицензии, вы можете найти в данной Лицензии.</string> 
+
+    <string name="dialog_licenses_colorpicker">Библиотека HoloColorPicker</string>
+    <string name="dialog_licenses_colorpicker_path">https://github.com/LarsWerkman/HoloColorPicker</string>
+    <string name="dialog_licenses_colorpicker_text">Copyright © 2012 Lars Werkman\n\nЛицензировано согласно Лицензии Apache, Версия 2.0 (\"Лицензия\"); вы можете использовать этот файл только в соответствии с Лицензией. Вы можете найти копию Лицензии по адресу\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nЗа исключением случаев, когда это регламентировано существующим законодательством или если это не оговорено в письменном соглашении, программное обеспечение распространяемое на условиях данной Лицензии, предоставляется \"КАК ЕСТЬ\" и любые явные или неявные ГАРАНТИИ ОТВЕРГАЮТСЯ. Информацию об основных правах и ограничениях, применяемых к определенному языку согласно Лицензии, вы можете найти в данной Лицензии.</string>
+    
+    <string name="dialog_licenses_androidsvg">Библиотека AndroidSVG</string>
+    <string name="dialog_licenses_androidsvg_path">https://github.com/BigBadaboom/androidsvg</string>
+    <string name="dialog_licenses_androidsvg_text">Copyright © 2013 Paul LeBeau, Cave Rock Software Ltd\n\nЛицензировано согласно Лицензии Apache, Версия 2.0 (\"Лицензия\"); вы можете использовать этот файл только в соответствии с Лицензией. Вы можете найти копию Лицензии по адресу\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nЗа исключением случаев, когда это регламентировано существующим законодательством или если это не оговорено в письменном соглашении, программное обеспечение распространяемое на условиях данной Лицензии, предоставляется \"КАК ЕСТЬ\" и любые явные или неявные ГАРАНТИИ ОТВЕРГАЮТСЯ. Информацию об основных правах и ограничениях, применяемых к определенному языку согласно Лицензии, вы можете найти в данной Лицензии.</string>
+
+    <string name="dialog_licenses_ghostcommander">Движок Ghost Commander</string>
+    <string name="dialog_licenses_ghostcommander_path">https://sourceforge.net/projects/ghostcommander</string>
+    <string name="dialog_licenses_ghostcommander_text">Copyright © 2017 Ghost Commander\n\nНастоящая программа является свободным программным обеспечением: вы можете распространять программу и/или модифицировать ее по условиям Всеобщей публичной лицензии GNU, опубликованной Фондом свободного программного обеспечения, либо версии 3 Лицензии, либо (по вашему выбору) любой более поздней версии.\n\nНастоящая программа распространяется в надежде, что она будет полезной, но БЕЗ КАКОЙ-ЛИБО ГАРАНТИИ (ОБЯЗАТЕЛЬСТВ ПО ОТСУТСТВИЮ НЕДОСТАТКОВ); даже без подразумеваемой гарантии ПРИГОДНОСТИ ДЛЯ ОБЫЧНОГО ИСПОЛЬЗОВАНИЯ или ГОДНОСТИ ДЛЯ ОПРЕДЕЛЕННОЙ ЦЕЛИ. Подробнее см. Всеобщую публичную лицензию GNU.\n\nВы должны были получить копию Всеобщей публичной лицензии GNU вместе с настоящей программой. Если копия не предоставлена, см. http://www.gnu.org/licenses/.</string>
+</resources>

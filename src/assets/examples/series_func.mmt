@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="60" significantDigits="6" scale="0.40672" redefineAllowed="false">
+    <equation>
+      <term key="leftTerm" text="t" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="1" />
+        <term key="nextValue" text="2" />
+        <term key="maxValue" text="30" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="f(x)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" code="sin">
+            <term key="argTerm" text="x" />
+          </term>
+          <term key="rightTerm" code="cos">
+            <term key="argTerm" text="x" />
+          </term>
+        </term>
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Approximating the sum of two series" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="S1(t)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="summation">
+          <term key="maxValue" text="t" />
+          <term key="index" text="n" />
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+            <term key="argTerm" code="mult">
+              <term key="leftTerm" text="2" />
+              <term key="rightTerm" text="n" />
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="summation">
+          <term key="maxValue" text="t" />
+          <term key="index" text="n" />
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+            <term key="argTerm" code="plus">
+              <term key="leftTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" text="n" />
+              </term>
+              <term key="rightTerm" text="1" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="S2(t)" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" code="plus">
+          <term key="leftTerm" code="mult">
+            <term key="leftTerm" text="2" />
+            <term key="rightTerm" text="t" />
+          </term>
+          <term key="rightTerm" text="1" />
+        </term>
+        <term key="index" text="n" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+          <term key="argTerm" text="n" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="Δ1(t)" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.link.S1">
+            <term key="argTerm" text="t" />
+          </term>
+          <term key="rightTerm" code="content:com.mkulesh.micromath.link.S2">
+            <term key="argTerm" text="t" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <plot_function width="800" height="500" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FF0000FF" width="4" lineStyle="solid" shapeType="diamond" shapeSize="500" code="content:com.mkulesh.micromath.link.Δ1">
+        <term key="argTerm" text="t" />
+      </term>
+      <term key="yMinValue" text="0" />
+      <term key="xMinValue" text="1" />
+      <term key="xFunction" text="t" />
+      <term key="xMaxValue" text="30" />
+    </plot_function>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Approximating logarithmic series" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="Δ2(t)" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" code="summation">
+          <term key="maxValue" text="t" />
+          <term key="index" text="n" />
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="log">
+            <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+              <term key="argTerm" text="n" />
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="log">
+          <term key="argTerm" code="product">
+            <term key="maxValue" text="t" />
+            <term key="index" text="n" />
+            <term key="minValue" text="0" />
+            <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+              <term key="argTerm" text="n" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <plot_function width="800" height="500" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FF0000FF" width="4" lineStyle="solid" shapeType="diamond" shapeSize="500" code="content:com.mkulesh.micromath.link.Δ2">
+        <term key="argTerm" text="t" />
+      </term>
+      <term key="yMinValue" text="0" />
+      <term key="xMinValue" text="1" />
+      <term key="xFunction" text="t" />
+      <term key="xMaxValue" text="30" />
+    </plot_function>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Approximating the double sum of series" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="z" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="1" />
+        <term key="nextValue" text="2" />
+        <term key="maxValue" text="30" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="Δ3(t,z)" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" code="summation">
+          <term key="maxValue" text="t" />
+          <term key="index" text="n" />
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="summation">
+            <term key="maxValue" code="minus">
+              <term key="leftTerm" text="z" />
+              <term key="rightTerm" text="1" />
+            </term>
+            <term key="index" text="j" />
+            <term key="minValue" text="0" />
+            <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+              <term key="argTerm" code="plus">
+                <term key="leftTerm" code="mult">
+                  <term key="leftTerm" text="z" />
+                  <term key="rightTerm" text="n" />
+                </term>
+                <term key="rightTerm" text="j" />
+              </term>
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="summation">
+          <term key="maxValue" code="plus">
+            <term key="leftTerm" code="mult">
+              <term key="leftTerm" text="z" />
+              <term key="rightTerm" text="t" />
+            </term>
+            <term key="rightTerm" code="minus">
+              <term key="leftTerm" text="z" />
+              <term key="rightTerm" text="1" />
+            </term>
+          </term>
+          <term key="index" text="n" />
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+            <term key="argTerm" text="n" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <plot_contour plotStyle="surface" width="800" height="500" axes_style="boxed" meshLines="true" meshFill="true" meshOpacity="255" rotation="125" elevation="20" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" zLabelsNumber="10" colorMap="rainbow">
+      <term key="yMaxValue" text="" />
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="zFunction" code="content:com.mkulesh.micromath.link.Δ3:2">
+        <term key="argTerm1" text="t" />
+        <term key="argTerm2" text="z" />
+      </term>
+      <term key="xMaxValue" text="" />
+    </plot_contour>
+  </formulaList>
+</micromath>

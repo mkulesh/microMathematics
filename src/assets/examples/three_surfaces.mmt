@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="60" significantDigits="6" scale="0.47084" redefineAllowed="true">
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="100" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x1" />
+      <term key="rightTerm" text="-15" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x2" />
+      <term key="rightTerm" text="15" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="x1" />
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" text="x1" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" code="abs_layout">
+              <term key="argTerm" code="minus">
+                <term key="leftTerm" text="x2" />
+                <term key="rightTerm" text="x1" />
+              </term>
+            </term>
+            <term key="rightTerm" text="N" />
+          </term>
+        </term>
+        <term key="maxValue" text="x2" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="M" />
+      <term key="rightTerm" text="100" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="y1" />
+      <term key="rightTerm" text="-15" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="y2" />
+      <term key="rightTerm" text="15" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="y" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="y1" />
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" text="y1" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" code="abs_layout">
+              <term key="argTerm" code="minus">
+                <term key="leftTerm" text="y2" />
+                <term key="rightTerm" text="y1" />
+              </term>
+            </term>
+            <term key="rightTerm" text="M" />
+          </term>
+        </term>
+        <term key="maxValue" text="y2" />
+      </term>
+    </equation>
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Surface 1" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="a" />
+      <term key="rightTerm" text="1.5" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="b" />
+      <term key="rightTerm" text="0.1" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="F(x,y)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="power">
+          <term key="leftTerm" text="e" />
+          <term key="rightTerm" code="mult">
+            <term key="leftTerm" code="sin">
+              <term key="argTerm" code="mult">
+                <term key="leftTerm" text="a" />
+                <term key="rightTerm" text="x" />
+              </term>
+            </term>
+            <term key="rightTerm" code="sin">
+              <term key="argTerm" code="mult">
+                <term key="leftTerm" text="b" />
+                <term key="rightTerm" text="y" />
+              </term>
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="power">
+          <term key="leftTerm" text="e" />
+          <term key="rightTerm" code="mult">
+            <term key="leftTerm" code="sin">
+              <term key="argTerm" code="mult">
+                <term key="leftTerm" text="b" />
+                <term key="rightTerm" text="x" />
+              </term>
+            </term>
+            <term key="rightTerm" code="sin">
+              <term key="argTerm" code="mult">
+                <term key="leftTerm" text="a" />
+                <term key="rightTerm" text="y" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <plot_contour plotStyle="surface" width="733" height="600" axes_style="boxed" meshLines="false" meshFill="true" meshOpacity="167" rotation="35" elevation="60" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#85242400" zLabelsNumber="7" colorMap="rainbow">
+      <term key="yMaxValue" text="y2" />
+      <term key="yMinValue" text="y1" />
+      <term key="xMinValue" text="x1" />
+      <term key="zFunction" code="content:com.mkulesh.micromath.link.F:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="y" />
+      </term>
+      <term key="xMaxValue" text="x2" />
+    </plot_contour>
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Surface 2" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="r(x,y)" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" code="plus">
+          <term key="leftTerm" code="mult">
+            <term key="leftTerm" text="0.04" />
+            <term key="rightTerm" code="power">
+              <term key="leftTerm" text="x" />
+              <term key="rightTerm" text="2" />
+            </term>
+          </term>
+          <term key="rightTerm" code="mult">
+            <term key="leftTerm" text="0.03" />
+            <term key="rightTerm" code="power">
+              <term key="leftTerm" text="y" />
+              <term key="rightTerm" text="2" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="F(x,y)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="divide">
+          <term key="leftTerm" code="sin">
+            <term key="argTerm" code="plus">
+              <term key="leftTerm" code="power">
+                <term key="leftTerm" text="x" />
+                <term key="rightTerm" text="2" />
+              </term>
+              <term key="rightTerm" code="mult">
+                <term key="leftTerm" text="0.1" />
+                <term key="rightTerm" code="power">
+                  <term key="leftTerm" text="y" />
+                  <term key="rightTerm" text="2" />
+                </term>
+              </term>
+            </term>
+          </term>
+          <term key="rightTerm" code="plus">
+            <term key="leftTerm" text="0.1" />
+            <term key="rightTerm" code="power">
+              <term key="leftTerm" code="content:com.mkulesh.micromath.link.r:2">
+                <term key="argTerm1" text="x" />
+                <term key="argTerm2" text="y" />
+              </term>
+              <term key="rightTerm" text="2" />
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="divide">
+          <term key="leftTerm" code="mult">
+            <term key="leftTerm" code="plus">
+              <term key="leftTerm" code="power">
+                <term key="leftTerm" text="x" />
+                <term key="rightTerm" text="2" />
+              </term>
+              <term key="rightTerm" code="mult">
+                <term key="leftTerm" text="0.1" />
+                <term key="rightTerm" code="power">
+                  <term key="leftTerm" text="y" />
+                  <term key="rightTerm" text="2" />
+                </term>
+              </term>
+            </term>
+            <term key="rightTerm" code="exp">
+              <term key="argTerm" code="minus">
+                <term key="leftTerm" text="1" />
+                <term key="rightTerm" code="power">
+                  <term key="leftTerm" code="content:com.mkulesh.micromath.link.r:2">
+                    <term key="argTerm1" text="x" />
+                    <term key="argTerm2" text="y" />
+                  </term>
+                  <term key="rightTerm" text="2" />
+                </term>
+              </term>
+            </term>
+          </term>
+          <term key="rightTerm" text="10" />
+        </term>
+      </term>
+    </equation>
+    <plot_contour plotStyle="surface" width="733" height="600" axes_style="none" meshLines="false" meshFill="true" meshOpacity="168" rotation="35" elevation="20" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#85242400" zLabelsNumber="7" colorMap="coldhot">
+      <term key="yMaxValue" text="y2" />
+      <term key="yMinValue" text="y1" />
+      <term key="xMinValue" text="x1" />
+      <term key="zFunction" code="content:com.mkulesh.micromath.link.F:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="y" />
+      </term>
+      <term key="xMaxValue" text="x2" />
+    </plot_contour>
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Surface 3" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="s" />
+      <term key="rightTerm" text="0.5" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="F(x,y)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="cos">
+          <term key="argTerm" code="plus">
+            <term key="leftTerm" code="mult">
+              <term key="leftTerm" text="s" />
+              <term key="rightTerm" code="abs_layout">
+                <term key="argTerm" text="x" />
+              </term>
+            </term>
+            <term key="rightTerm" code="mult">
+              <term key="leftTerm" text="s" />
+              <term key="rightTerm" code="abs_layout">
+                <term key="argTerm" text="y" />
+              </term>
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="plus">
+          <term key="leftTerm" code="mult">
+            <term key="leftTerm" text="s" />
+            <term key="rightTerm" code="abs_layout">
+              <term key="argTerm" text="x" />
+            </term>
+          </term>
+          <term key="rightTerm" code="mult">
+            <term key="leftTerm" text="s" />
+            <term key="rightTerm" code="abs_layout">
+              <term key="argTerm" text="y" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <plot_contour plotStyle="surface" width="733" height="600" axes_style="none" meshLines="false" meshFill="true" meshOpacity="185" rotation="100" elevation="40" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#85242400" zLabelsNumber="7" colorMap="fire">
+      <term key="yMaxValue" text="y2" />
+      <term key="yMinValue" text="y1" />
+      <term key="xMinValue" text="x1" />
+      <term key="zFunction" code="content:com.mkulesh.micromath.link.F:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="y" />
+      </term>
+      <term key="xMaxValue" text="x2" />
+    </plot_contour>
+  </formulaList>
+</micromath>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:micromath="http://schemas.android.com/apk/res/com.mkulesh.micromath.plus" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dialog_content_padding"
+            android:paddingTop="@dimen/dialog_content_padding"
+            android:gravity="left"
+            android:orientation="vertical" >
+
+            <CheckBox 
+                style="@style/CheckBoxStyle"
+                android:id="@+id/dialog_checkbox_reformat"
+                android:text="@string/dialog_document_settings_reformat"
+                android:checked="false" />
+            
+            <com.mkulesh.micromath.widgets.HorizontalNumberPicker
+                android:id="@+id/dialog_text_width_picker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="5dp"
+                micromath:label="@string/dialog_document_settings_width_size" />
+
+            <View
+                style="@style/HorizontalDividerStyle"
+                android:layout_marginBottom="@dimen/dialog_content_padding"
+                android:layout_marginTop="@dimen/dialog_content_padding" />
+               
+            <com.mkulesh.micromath.widgets.HorizontalNumberPicker
+                android:id="@+id/dialog_text_significant_digits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="5dp"
+                micromath:label="@string/dialog_document_settings_significant_digits" />
+            
+            <View
+                style="@style/HorizontalDividerStyle"
+                android:layout_marginBottom="@dimen/dialog_content_padding"
+                android:layout_marginTop="@dimen/dialog_content_padding" />
+            
+            <CheckBox
+                style="@style/CheckBoxStyle"
+                android:id="@+id/dialog_checkbox_redefine_allowed"
+                android:text="@string/dialog_document_settings_redefine_allowed"
+                android:checked="false" />
+            
+        </LinearLayout>
+    </ScrollView>
+
+</merge>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <TextView
+        android:id="@+id/label_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:gravity="left"
+        android:textColor="@color/dialog_content_color"
+        android:textSize="@dimen/dialog_content_text_size"
+        android:singleLine="false" />
+
+    <ImageButton
+        android:id="@+id/button_decrease"
+        android:layout_width="@dimen/number_picker_height"
+        android:layout_height="@dimen/number_picker_height"
+        android:layout_gravity="center"
+        android:background="@drawable/clickable_background"
+        android:contentDescription="@string/dialog_button_decrease"
+        android:src="@drawable/ic_action_minus" />
+
+    <EditText
+        style="@style/DialogTextEditStyle"
+        android:id="@+id/edit_text_value"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/number_picker_height"
+        android:layout_margin="3dp"
+        android:layout_gravity="center"
+        android:digits="0123456789"
+        android:gravity="center"
+        android:inputType="number"
+        android:minWidth="48dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:background="@drawable/edit_text_border"
+        android:textColor="@color/dialog_content_color"
+        android:textSize="@dimen/number_picker_number_size" />
+
+    <ImageButton
+        android:id="@+id/button_increase"
+        android:layout_width="@dimen/number_picker_height"
+        android:layout_height="@dimen/number_picker_height"
+        android:layout_gravity="center"
+        android:background="@drawable/clickable_background"
+        android:contentDescription="@string/dialog_button_increase"
+        android:src="@drawable/ic_action_plus" />
+
+</merge>

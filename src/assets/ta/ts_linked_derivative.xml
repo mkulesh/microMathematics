@@ -1,0 +1,512 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="60" significantDigits="5" scale="0.5" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="Derivative for incapsulated linked functions" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="1000" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" text="pi" />
+            <term key="rightTerm" text="N" />
+          </term>
+        </term>
+        <term key="maxValue" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" text="pi" />
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;TC: derivative for function of function" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="f(x)" />
+      <term key="rightTerm" code="sin">
+        <term key="argTerm" text="x" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="g(u)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="power">
+          <term key="leftTerm" text="u" />
+          <term key="rightTerm" text="2" />
+        </term>
+        <term key="rightTerm" code="power">
+          <term key="leftTerm" text="e" />
+          <term key="rightTerm" text="u" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="f1(x)" />
+      <term key="rightTerm" code="derivative">
+        <term key="index" text="x" />
+        <term key="argTerm" code="content:com.mkulesh.micromath.link.g">
+          <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+            <term key="argTerm" text="x" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="f2(x)" />
+      <term key="rightTerm" code="derivative">
+        <term key="index" text="x" />
+        <term key="argTerm" code="identity">
+          <term key="argTerm" code="plus">
+            <term key="leftTerm" code="power">
+              <term key="leftTerm" code="sin">
+                <term key="argTerm" text="x" />
+              </term>
+              <term key="rightTerm" text="2" />
+            </term>
+            <term key="rightTerm" code="power">
+              <term key="leftTerm" text="e" />
+              <term key="rightTerm" code="sin">
+                <term key="argTerm" text="x" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <plot_function width="600" height="300" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="2">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction1" color="#FF0000FF" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.f1">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction2" color="#FFFF4300" width="3" lineStyle="dashed" code="content:com.mkulesh.micromath.link.f2">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <equation>
+      <term key="leftTerm" text="S" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="N" />
+        <term key="index" text="k" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="abs_layout">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.link.f1">
+              <term key="argTerm" text="k" />
+            </term>
+            <term key="rightTerm" code="content:com.mkulesh.micromath.link.f2">
+              <term key="argTerm" text="k" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="S" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="less">
+          <term key="leftTerm" text="S" />
+          <term key="rightTerm" text="8e-14" />
+        </term>
+        <term key="argTerm2" text="0" />
+        <term key="argTerm3" text="S" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: derivative for function of two functions" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="u1(x)" />
+      <term key="rightTerm" code="sin">
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" text="x" />
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="u2(x)" />
+      <term key="rightTerm" code="cos">
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" text="3" />
+          <term key="rightTerm" text="x" />
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="g(u,v)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="u" />
+        <term key="rightTerm" text="v" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="f1(x)" />
+      <term key="rightTerm" code="derivative">
+        <term key="index" text="x" />
+        <term key="argTerm" code="content:com.mkulesh.micromath.link.g:2">
+          <term key="argTerm1" code="content:com.mkulesh.micromath.link.u1">
+            <term key="argTerm" text="x" />
+          </term>
+          <term key="argTerm2" code="content:com.mkulesh.micromath.link.u2">
+            <term key="argTerm" text="x" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="f2(x)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="minus">
+          <term key="leftTerm" code="mult">
+            <term key="leftTerm" text="40" />
+            <term key="rightTerm" code="power">
+              <term key="leftTerm" code="cos">
+                <term key="argTerm" text="x" />
+              </term>
+              <term key="rightTerm" text="5" />
+            </term>
+          </term>
+          <term key="rightTerm" code="mult">
+            <term key="leftTerm" text="50" />
+            <term key="rightTerm" code="power">
+              <term key="leftTerm" code="cos">
+                <term key="argTerm" text="x" />
+              </term>
+              <term key="rightTerm" text="3" />
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="12" />
+          <term key="rightTerm" code="cos">
+            <term key="argTerm" text="x" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <plot_function width="600" height="300" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="2">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction1" color="#FF0000FF" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.f1">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction2" color="#FFFF4300" width="3" lineStyle="dashed" code="content:com.mkulesh.micromath.link.f2">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <equation>
+      <term key="leftTerm" text="S" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="N" />
+        <term key="index" text="k" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="abs_layout">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.link.f1">
+              <term key="argTerm" text="k" />
+            </term>
+            <term key="rightTerm" code="content:com.mkulesh.micromath.link.f2">
+              <term key="argTerm" text="k" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="S" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="less">
+          <term key="leftTerm" text="S" />
+          <term key="rightTerm" text="2e-12" />
+        </term>
+        <term key="argTerm2" text="0" />
+        <term key="argTerm3" text="S" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: derivative for argument itself" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="y" />
+      <term key="rightTerm" text="10" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="f1(y)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="y" />
+        <term key="rightTerm" code="derivative">
+          <term key="index" text="y" />
+          <term key="argTerm" code="identity">
+            <term key="argTerm" code="mult">
+              <term key="leftTerm" text="1" />
+              <term key="rightTerm" text="y" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="f2(y)" />
+      <term key="rightTerm" text="y" />
+    </equation>
+    <plot_function width="600" height="300" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FF0000FF" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.f1">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="N" />
+        <term key="index" text="k" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="abs_layout">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.link.f1">
+              <term key="argTerm" text="k" />
+            </term>
+            <term key="rightTerm" code="content:com.mkulesh.micromath.link.f2">
+              <term key="argTerm" text="k" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: derivative for a function with index argument" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="g(u,v)" />
+      <term key="rightTerm" code="sin">
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" code="power">
+            <term key="leftTerm" text="e" />
+            <term key="rightTerm" text="u" />
+          </term>
+          <term key="rightTerm" text="v" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="f1(x)" />
+      <term key="rightTerm" code="derivative">
+        <term key="index" text="x" />
+        <term key="argTerm" code="content:com.mkulesh.micromath.link.g:2">
+          <term key="argTerm1" text="2" />
+          <term key="argTerm2" text="x" />
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="f2(x)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="power">
+          <term key="leftTerm" text="e" />
+          <term key="rightTerm" text="2" />
+        </term>
+        <term key="rightTerm" code="cos">
+          <term key="argTerm" code="mult">
+            <term key="leftTerm" code="power">
+              <term key="leftTerm" text="e" />
+              <term key="rightTerm" text="2" />
+            </term>
+            <term key="rightTerm" text="x" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <plot_function width="600" height="300" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="2">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction1" color="#FF0000FF" width="3" lineStyle="solid" code="abs_layout">
+        <term key="argTerm" code="content:com.mkulesh.micromath.link.f1">
+          <term key="argTerm" text="x" />
+        </term>
+      </term>
+      <term key="yFunction2" color="#FFFF4300" width="3" lineStyle="dashed" code="abs_layout">
+        <term key="argTerm" code="content:com.mkulesh.micromath.link.f2">
+          <term key="argTerm" text="x" />
+        </term>
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="N" />
+        <term key="index" text="k" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="abs_layout">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.link.f1">
+              <term key="argTerm" text="k" />
+            </term>
+            <term key="rightTerm" code="content:com.mkulesh.micromath.link.f2">
+              <term key="argTerm" text="k" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+  </formulaList>
+</micromath>
