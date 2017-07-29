@@ -1,12 +1,12 @@
 # ![The micro Mathematics](https://github.com/mkulesh/microMathematics/blob/master/images/icon.png) "The micro Mathematics - Extended visual calculator"
 
-<a href='https://play.google.com/store/apps/details?id=com.mkulesh.micromath.plus&hl=en'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width=232 height=125/></a>
-
 With micro Mathematics, you can not only perform mathematical calculations in naturally readable form, but can also create and manage your own collection of interactive formulas!
 
 Micro Mathematics is a revolutionary new kind of mobile calculator. It is the world’s first scientific graphing calculator and function plotter on Android oriented around a worksheet. It allows live editing of mathematical identities combined with highly accurate computations.
 
 Not only students, but also everybody who likes mathematics or needs more than just a basic calculator will benefit from this amazing technique of mathematical calculations and plotting.
+
+<a href='https://play.google.com/store/apps/details?id=com.mkulesh.micromath.plus&hl=en'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width=323 height=125/></a>
 
 ## Benefits and features:
 
@@ -21,6 +21,8 @@ Not only students, but also everybody who likes mathematics or needs more than j
 * You can store your document on SD card and export it into LaTeX format or an image (SD writing permission is needed)
 * SD card on Android 6+ is also supported
 * The app contains detailed "How to use" page and several examples
+
+![Example of a function plot](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/lenovo_vertical3.png)
 
 ## Languages
 * English
