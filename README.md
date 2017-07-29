@@ -24,6 +24,13 @@ Not only students, but also everybody who likes mathematics or needs more than j
 
 ![Example of a function plot](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/lenovo_vertical3.png)
 
+## Reviews and publications:
+* [Press Release: Introducing micro Mathematics: the First Spreadsheet Oriented Mathematical Calculator for Android](http://www.androidappsreview.com/2014/09/29/micro-mathematics-press-release/)
+* [Математический пакет для Android своими руками (in Russian)](https://habrahabr.ru/post/250727/)
+* [«Микро-математика»: формулы — это просто (in Russian)](http://4pda.ru/2015/09/01/241701/)
+* [Micro Mathematics — отличный научный калькулятор и графопостроитель на Android (in Russian)](https://lifehacker.ru/2015/10/21/micro-mathematics/)
+* [micro Mathematics Plus: Umfangreiche Rechner-App für Studenten & Schüler (in German)](http://beste-apps.chip.de/android/app/micro-mathematics-plus-umfangreiche-rechner-app-fuer-studenten-schueler,com.mkulesh.micromath.plus/)
+
 ## Languages
 * English
 * Russian
