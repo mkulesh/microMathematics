@@ -6,6 +6,6 @@ This directory contains the latest build of the micro Mathematics. The file *mic
 ## Release Notes
 
 
-# Version 2.15.2 (*microMathematics_2_15_2a.apk*)
+### Version 2.15.2 (*microMathematics_2_15_2a.apk*)
 
 * Initial version distributed with gitHub. All previous versions are only presented in Google Play.
