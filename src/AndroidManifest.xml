@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mkulesh.micromath.plus"
     android:versionCode="300"
-    android:versionName="3.0"
+    android:versionName="2.15.2.a"
     android:installLocation="auto" >
 
     <uses-sdk

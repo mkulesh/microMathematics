@@ -1,0 +1,46 @@
+#!/usr/bin/expect
+
+##############################################################
+#
+# KILL-EMULATOR
+#
+# Kills an Android emulator which requires authentication.
+# It works by opening a telnet session and authenticates, before issuing the
+# kill command.
+#
+# Usage: `expect -f kill-emulator.exp <port>`
+# where <port> is optional (defaults to 5554)
+#
+# Since SDK Tools 25.1.6, the Android emulator has required authentication
+# before any commands can be run on it. This breaks commands such as
+# `adb emu kill`.
+#
+# References:
+# - https://developer.android.com/studio/run/emulator-commandline.html#console-session
+# - https://code.google.com/p/android/issues/detail?id=21021#
+#
+##############################################################
+
+set timeout 10
+
+# Parse params.
+# Port is optional, and defaults to 5554
+proc parseArgv {{port "5554"}} {
+    variable ::PORT $port
+}
+parseArgv {*}$argv
+
+# Read auth token from file
+set TOKEN [read [open "$::env(HOME)/.emulator_console_auth_token" r]]
+
+send_user "Killing emulator on port $PORT with auth token $TOKEN\n"
+
+# Start telnet session, and issue the commands.
+spawn telnet localhost $PORT
+expect "OK"
+send "auth $TOKEN\r"
+expect "OK"
+send "kill\r"
+expect "OK"
+
+
