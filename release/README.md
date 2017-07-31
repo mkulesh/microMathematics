@@ -1,6 +1,7 @@
 ## Directory microMathematics/release
 
-This directory contains the latest build of the micro Mathematics. The file *microMathematics_<version>_test.zip* contains the results of automatic tests performed for the corresponding build.
+This directory contains the latest build of the micro Mathematics. Please be free to download, install, and try this application.
+The file *microMathematics_version_test.zip* contains the results of automatic tests performed for the corresponding build.
 
 ----------------------------------------
 ## Release Notes
