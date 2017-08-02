@@ -275,7 +275,7 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
                 }
                 if (nuberStr.length() != 0)
                 {
-                    nuberStr += "";
+                    nuberStr += ".";
                 }
                 nuberStr += Integer.toString(number[i]);
             }

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mkulesh.micromath.plus"
-    android:installLocation="auto">
+    android:versionCode="300"
+    android:versionName="2.15.2.a"
+    android:installLocation="auto" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -9,31 +11,31 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    
     <application
         android:allowBackup="true"
         android:allowClearUserData="true"
-        android:description="@string/app_description"
         android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/MicroMathActionBarTheme">
+        android:theme="@style/MicroMathActionBarTheme" 
+        android:description="@string/app_description">
         <activity
             android:name="com.mkulesh.micromath.plus.MainActivityPlus"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:theme="@style/MicroMathActionBarTheme"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-
+           
             <!-- This filter captures protocols with type info -->
             <intent-filter
                 android:icon="@drawable/ic_launcher"
-                android:label="@string/app_name">
+                android:label="@string/app_name" >
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -41,13 +43,13 @@
 
                 <data android:scheme="file" />
                 <data android:scheme="content" />
-
+                
                 <data android:mimeType="text/plain" />
                 <data android:mimeType="text/xml" />
-
+                
                 <data android:pathPattern=".*\\.xml" />
                 <data android:pathPattern=".*\\.mmt" />
-            </intent-filter>
+            </intent-filter>            
         </activity>
     </application>
 

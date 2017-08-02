@@ -128,7 +128,7 @@ public class ExportToLatex
         {
             throw new Exception("file name is empty");
         }
-        final int dotPos = fileName.indexOf("");
+        final int dotPos = fileName.indexOf(".");
         if (dotPos >= 0 && dotPos < fileName.length())
         {
             fileName = fileName.substring(0, dotPos);

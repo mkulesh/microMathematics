@@ -47,7 +47,7 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
 
     public static final String SLS = File.separator;
     public static final char SLC = File.separatorChar;
-    public static final String PLS = "";
+    public static final String PLS = "..";
 
     protected final Context ctx;
     private final LayoutInflater mInflater;
