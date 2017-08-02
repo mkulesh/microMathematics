@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="false">
+    <text_fragment>
+      <term key="text" text="Der micro Mathematics Plus ist der&#10;erste mathematische Taschenrechner für&#10;Android weltweit, der auf einer&#10;Kalkulationstabelle basiert, welche es&#10;erlaubt, mathematische Elemente live&#10;einzugeben und zudem hochgenaue&#10;Berechnungen liefert." />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Diese App basiert auf einem&#10;leistungsstarken Touchscreen Editor,&#10;der alle grundlegenden mathematischen&#10;Bezeichnungen beinhaltet und Nutzern&#10;erlaubt, ganz selbstverständlich&#10;lesbare Arbeitsblätter zu erstellen&#10;und zu bearbeiten." />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Der micro Mathematics Plus unterstützt&#10;nur mathematische Berechnungen auf&#10;Sekundarstufenniveau. Diese Version&#10;hat folgende Einschränkungen: sie&#10;unterstützt weder Sonderfunktionen,&#10;Vektoren, Matrizen noch viele andere&#10;Dinge auf mathematisch höherem Niveau." />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="&#10;Author: Mikhail Kulesh&#10;Email: mikhail.kulesh@gmail.com&#10;April 2017, Bremen, Deutschland&#10;" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Vielen Dank für Ihr Vertrauen und viel&#10;Erfolg!" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="&#10;P.S. Das App Icon ist generiert mit&#10;Hilfe folgender Funktion, die im&#10;Polarkoordinatensystem gegeben ist:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0.01" />
+        <term key="nextValue" text="0.03" />
+        <term key="maxValue" text="150" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="s(f)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="plus">
+          <term key="leftTerm" text="4" />
+          <term key="rightTerm" code="sin">
+            <term key="argTerm" code="mult">
+              <term key="leftTerm" text="5" />
+              <term key="rightTerm" text="f" />
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="plus">
+          <term key="leftTerm" code="divide">
+            <term key="leftTerm" code="sin">
+              <term key="argTerm" code="mult">
+                <term key="leftTerm" text="10" />
+                <term key="rightTerm" text="f" />
+              </term>
+            </term>
+            <term key="rightTerm" text="2" />
+          </term>
+          <term key="rightTerm" code="divide">
+            <term key="leftTerm" code="sin">
+              <term key="argTerm" code="mult">
+                <term key="leftTerm" text="60" />
+                <term key="rightTerm" text="f" />
+              </term>
+            </term>
+            <term key="rightTerm" text="6" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="r(f)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="0.9" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" code="plus">
+            <term key="leftTerm" text="1" />
+            <term key="rightTerm" code="divide_slash">
+              <term key="leftTerm" text="f" />
+              <term key="rightTerm" text="50" />
+            </term>
+          </term>
+          <term key="rightTerm" code="content:com.mkulesh.micromath.link.s">
+            <term key="argTerm" text="f" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x(f)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="content:com.mkulesh.micromath.link.r">
+          <term key="argTerm" text="f" />
+        </term>
+        <term key="rightTerm" code="cos">
+          <term key="argTerm" text="f" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="y(f)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="content:com.mkulesh.micromath.link.r">
+          <term key="argTerm" text="f" />
+        </term>
+        <term key="rightTerm" code="sin">
+          <term key="argTerm" text="f" />
+        </term>
+      </term>
+    </equation>
+    <plot_function width="680" height="650" axes_style="crossed" xLabelsNumber="7" yLabelsNumber="7" gridLineColor="#48000000" functionsNumber="1">
+      <term key="yMaxValue" text="20" />
+      <term key="yFunction" color="#FF003DBB" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.y">
+        <term key="argTerm" text="f" />
+      </term>
+      <term key="yMinValue" text="-20" />
+      <term key="xMinValue" text="-20" />
+      <term key="xFunction" code="content:com.mkulesh.micromath.link.x">
+        <term key="argTerm" text="f" />
+      </term>
+      <term key="xMaxValue" text="20" />
+    </plot_function>
+  </formulaList>
+</micromath>

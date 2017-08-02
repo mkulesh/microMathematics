@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:micromath="http://schemas.android.com/apk/res/com.mkulesh.micromath.plus" >
+
+    <LinearLayout
+        android:id="@+id/plot_y_data_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="right"
+        android:orientation="vertical" >
+
+        <com.mkulesh.micromath.widgets.CustomLayout
+            android:id="@+id/plot_y_max_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <com.mkulesh.micromath.widgets.CustomEditText
+                android:id="@+id/plot_y_max_value"
+                style="@style/FormulaTextEditStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/formula_y_max_value_key"
+                micromath:complexEnabled="false"
+                micromath:emptyEnabled="true" />
+        </com.mkulesh.micromath.widgets.CustomLayout>
+
+        <com.mkulesh.micromath.widgets.CustomTextView
+            android:id="@+id/plot_y_axis1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            micromath:contextMenuCopy="false"
+            micromath:contextMenuCut="false"
+            micromath:contextMenuExpand="false"
+            micromath:contextMenuPaste="false" />
+
+        <com.mkulesh.micromath.widgets.CustomLayout
+            android:tag="Y_FUNCTION_TAG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <com.mkulesh.micromath.widgets.CustomEditText
+                style="@style/FormulaTextEditStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                micromath:newTermEnabled="true"
+                android:text="@string/formula_y_function_key" />
+        </com.mkulesh.micromath.widgets.CustomLayout>
+
+        <com.mkulesh.micromath.widgets.CustomTextView
+            android:tag="Y_SETTINGS_TAG"
+            style="@style/FormulaTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            micromath:contextMenuCopy="false"
+            micromath:contextMenuCut="false"
+            micromath:contextMenuExpand="false"
+            micromath:contextMenuPaste="false"
+            micromath:symbol="HOR_LINE" />
+
+        <com.mkulesh.micromath.widgets.CustomTextView
+            android:id="@+id/plot_y_axis2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            micromath:contextMenuCopy="false"
+            micromath:contextMenuCut="false"
+            micromath:contextMenuExpand="false"
+            micromath:contextMenuPaste="false" />
+
+        <com.mkulesh.micromath.widgets.CustomLayout
+            android:id="@+id/plot_y_min_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <com.mkulesh.micromath.widgets.CustomEditText
+                android:id="@+id/plot_y_min_value"
+                style="@style/FormulaTextEditStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/formula_y_min_value_key"
+                micromath:complexEnabled="false"
+                micromath:emptyEnabled="true" />
+        </com.mkulesh.micromath.widgets.CustomLayout>
+
+        <com.mkulesh.micromath.widgets.CustomTextView
+            android:id="@+id/plot_corner_view_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:baselineAlignedChildIndex="0"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:baselineAlignedChildIndex="0"
+            android:orientation="horizontal" >
+
+            <com.mkulesh.micromath.plots.views.FunctionPlotView
+                android:id="@+id/plot_function_view"
+                style="@style/FormulaTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/plot_label_line_size"
+                micromath:contextMenuCopy="true"
+                micromath:contextMenuCut="true"
+                micromath:contextMenuPaste="true"
+                micromath:contextMenuExpand="true"
+                micromath:gridLineColor="@color/plot_grid_line_color"
+                micromath:gridLineWidth="@dimen/plot_grid_line_width"
+                micromath:labelLineSize="@dimen/plot_label_line_size"
+                micromath:labelTextSize="@dimen/plot_label_text_size"
+                micromath:xLabelsNumber="4"
+                micromath:yLabelsNumber="4" />
+        </LinearLayout>
+
+        <com.mkulesh.micromath.widgets.SizeChangingLayout
+            android:id="@+id/plot_x_data_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:gravity="top"
+            android:orientation="horizontal" >
+
+            <com.mkulesh.micromath.widgets.CustomLayout
+                android:id="@+id/plot_x_min_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <com.mkulesh.micromath.widgets.CustomEditText
+                    android:id="@+id/plot_x_min_value"
+                    style="@style/FormulaTextEditStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/formula_x_min_value_key"
+                    micromath:complexEnabled="false"
+                    micromath:emptyEnabled="true" />
+            </com.mkulesh.micromath.widgets.CustomLayout>
+
+            <com.mkulesh.micromath.widgets.CustomTextView
+                android:id="@+id/plot_x_axis1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                micromath:contextMenuCopy="false"
+                micromath:contextMenuCut="false"
+                micromath:contextMenuExpand="false"
+                micromath:contextMenuPaste="false" />
+
+            <com.mkulesh.micromath.widgets.CustomLayout
+                android:tag="X_FUNCTION_TAG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <com.mkulesh.micromath.widgets.CustomEditText
+                    style="@style/FormulaTextEditStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/formula_x_function_key" />
+            </com.mkulesh.micromath.widgets.CustomLayout>
+
+            <com.mkulesh.micromath.widgets.CustomTextView
+                android:id="@+id/plot_x_axis2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                micromath:contextMenuCopy="false"
+                micromath:contextMenuCut="false"
+                micromath:contextMenuExpand="false"
+                micromath:contextMenuPaste="false" />
+
+            <com.mkulesh.micromath.widgets.CustomLayout
+                android:id="@+id/plot_x_max_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <com.mkulesh.micromath.widgets.CustomEditText
+                    android:id="@+id/plot_x_max_value"
+                    style="@style/FormulaTextEditStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/formula_x_max_value_key"
+                    micromath:complexEnabled="false"
+                    micromath:emptyEnabled="true" />
+            </com.mkulesh.micromath.widgets.CustomLayout>
+        </com.mkulesh.micromath.widgets.SizeChangingLayout>
+    </LinearLayout>
+
+</merge>

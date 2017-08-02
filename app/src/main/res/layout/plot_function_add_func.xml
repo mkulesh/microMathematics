@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:micromath="http://schemas.android.com/apk/res/com.mkulesh.micromath.plus" >
+
+    <com.mkulesh.micromath.widgets.CustomLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:tag="Y_FUNCTION_TAG" >
+
+        <com.mkulesh.micromath.widgets.CustomEditText
+            style="@style/FormulaTextEditStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/formula_y_function_key"
+            micromath:newTermEnabled="true" />
+    </com.mkulesh.micromath.widgets.CustomLayout>
+
+    <com.mkulesh.micromath.widgets.CustomTextView
+        style="@style/FormulaTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:tag="Y_SETTINGS_TAG"
+        micromath:contextMenuCopy="false"
+        micromath:contextMenuCut="false"
+        micromath:contextMenuExpand="false"
+        micromath:contextMenuPaste="false"
+        micromath:symbol="HOR_LINE" />
+
+    <com.mkulesh.micromath.widgets.CustomTextView
+        style="@style/FormulaTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="X_SEPARATOR_TAG" />
+
+    <com.mkulesh.micromath.widgets.CustomLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:tag="X_FUNCTION_TAG" >
+
+        <com.mkulesh.micromath.widgets.CustomEditText
+            style="@style/FormulaTextEditStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/formula_x_function_key" />
+    </com.mkulesh.micromath.widgets.CustomLayout>
+
+</merge>

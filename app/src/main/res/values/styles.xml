@@ -1,0 +1,187 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Application theme. -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <!-- Action Bar and standard navigation theme. -->
+    <style name="MicroMathActionBarTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="selectableItemBackground">@drawable/clickable_background</item>
+        <item name="selectableItemBackgroundBorderless">@drawable/clickable_background</item>
+        <item name="actionBarItemBackground">@drawable/clickable_background</item>
+        <!-- "listChoiceBackgroundIndicator" is not working on Android 2.x-->
+        <item name="actionModeBackground">@null</item>
+    </style>
+
+    <!-- Custom styles -->
+    <style name="DrawerTitleStyle" parent="@android:style/TextAppearance.Small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">none</item>
+        <item name="android:focusable">false</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:text">text</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/activity_drawer_title_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/drawer_title_color</item>
+    </style>
+
+    <style name="DrawerSubtitleStyle" parent="@android:style/TextAppearance.Small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">none</item>
+        <item name="android:focusable">false</item>
+        <item name="android:paddingBottom">3sp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:text">text</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/activity_drawer_subtitle_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/drawer_subtitle_color</item>
+    </style>
+
+    <style name="FormulaTextViewStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/formula_text_color</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">none</item>
+        <item name="android:focusable">false</item>
+        <item name="android:text"></item>
+        <item name="android:background">@drawable/formula_filled_border</item>
+    </style>
+
+    <style name="FormulaTextEditStyle" parent="@style/Widget.AppCompat.EditText">
+        <!-- This style is re-declared in values-v12 in order to define cursor properties. -->
+        <item name="android:inputType">textNoSuggestions</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:autoText">false</item>
+        <item name="android:cursorVisible">true</item>
+        <item name="android:scrollHorizontally">false</item>
+        <item name="android:imeOptions">flagNoExtractUi</item>
+        <item name="android:privateImeOptions">nm</item>
+        <item name="android:textColor">@color/formula_text_color</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/formula_filled_border</item>
+        <item name="android:textColorHighlight">@color/formula_selected_term_color</item>
+    </style>
+
+    <!-- Dialog styles -->
+    
+    <style name="DialogPanelStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:paddingLeft">@dimen/dialog_content_padding</item>
+        <item name="android:paddingRight">@dimen/dialog_content_padding</item>
+        <item name="android:background">@drawable/dialog_panel</item>
+    </style>
+
+    <style name="RadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/radio_button_holo_light</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/dialog_content_color</item>
+        <item name="android:textSize">@dimen/dialog_content_text_size</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="CheckBoxStyle" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_holo_light</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/dialog_content_color</item>
+        <item name="android:textSize">@dimen/dialog_content_text_size</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+    
+    <style name="DialogButtonStyle" parent="@android:style/Widget.ImageButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:background">@drawable/clickable_background</item>
+    </style>
+    
+    <style name="HorizontalDividerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">@drawable/divider_horizontal_light</item>
+    </style>
+
+    <style name="VerticalDividerStyle">
+        <item name="android:layout_width">2dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/divider_vertical_light</item>
+    </style>
+    
+    <style name="DialogTextViewStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/dialog_content_color</item>
+        <item name="android:textSize">@dimen/dialog_content_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:gravity">left</item>
+        <item name="android:inputType">none</item>
+        <item name="android:focusable">false</item>
+    </style>
+
+    <style name="DialogTextEditStyle" parent="@style/Widget.AppCompat.EditText">
+        <!-- This style is re-declared in values-v12 in order to define cursor properties. -->
+        <item name="android:inputType">textNoSuggestions</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:autoText">false</item>
+        <item name="android:cursorVisible">true</item>
+        <item name="android:scrollHorizontally">false</item>
+        <item name="android:imeOptions">flagNoExtractUi</item>        
+        <item name="android:privateImeOptions">nm</item>
+        <item name="android:background">@drawable/edit_text_border</item>
+        <item name="android:textColor">@color/dialog_content_color</item>
+        <item name="android:textSize">@dimen/dialog_content_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:gravity">left</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+    </style>
+        
+    <style name="ColorMapBarStyle" parent="@style/FormulaTextViewStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">15dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingLeft">@dimen/dialog_content_padding</item>
+        <item name="com.mkulesh.micromath.plus:isHorizontal">true</item>
+    </style>
+
+    <!-- Other styles -->
+    
+    <style name="CustomProgressBar" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">4dp</item>
+        <item name="android:indeterminateOnly">true</item>
+    </style>
+    
+</resources>

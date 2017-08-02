@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="specialAlignment">
+        <enum name="none" value="0" />
+        <enum name="top_of_previous" value="1" />
+        <enum name="top_of_next" value="2" />
+        <enum name="below_the_next" value="3" />
+        <enum name="below_the_previous" value="4" />
+    </attr>
+
+    <declare-styleable name="CustomViewExtension">
+        <attr name="contextMenuExpand" format="boolean" />
+        <attr name="contextMenuCut" format="boolean" />
+        <attr name="contextMenuCopy" format="boolean" />
+        <attr name="contextMenuPaste" format="boolean" />
+        <attr name="symbol" format="string" />
+        <attr name="verticalTermPadding" format="boolean" />
+        <attr name="specialAlignment"/>
+        <attr name="symbolViewIndex" format="integer" />
+        <attr name="emptyEnabled" format="boolean" />
+        <attr name="intervalEnabled" format="boolean" />
+        <attr name="complexEnabled" format="boolean" />
+        <attr name="comparatorEnabled" format="boolean" />
+        <attr name="textFragment" format="boolean" />
+        <attr name="equationName" format="boolean" />
+        <attr name="indexName" format="boolean" />
+        <attr name="intermediateArgument" format="boolean" />
+        <attr name="calculatedValue" format="boolean" />
+        <attr name="newTermEnabled" format="boolean" />
+        <attr name="autoScrollMargins" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="PlotViewExtension">
+        <attr name="gridLineColor" format="color" />
+        <attr name="gridLineWidth" format="dimension" />
+        <attr name="labelLineSize" format="dimension" />
+        <attr name="labelTextSize" format="dimension" />
+        <attr name="xLabelsNumber" format="integer" />
+        <attr name="yLabelsNumber" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="HorizontalNumberPicker">
+        <attr name="label" format="string" />
+        <attr name="minWidth" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="ColorMapViewExtension">
+        <attr name="isHorizontal" format="boolean" />
+        <attr name="paletteName" format="string" />
+    </declare-styleable>
+</resources>

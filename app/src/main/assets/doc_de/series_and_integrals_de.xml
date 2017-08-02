@@ -1,0 +1,296 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="Dieses Beispiel zeigt, wie Sie Reihen&#10;und Integrale berechnen können." />
+    </text_fragment>
+    <text_fragment textStyle="subsection" numbering="true">
+      <term key="text" text="Taylor Reihe" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="In der Mathematik ist die Taylor Reihe&#10;eine Repräsentation einer Funktion als&#10;unendliche Summe von Termen, die von&#10;den Werten der Ableitung dieser&#10;Funktion an einem bestimmten Punk&#10;berechnet werden.&#10;&#10;Beispielsweise ist Ts(x,N) die&#10;Taylorentwicklung als Funktion des&#10;Arguments x und der Anzahl von N&#10;Termen:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="Ts(x,N)" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="N" />
+        <term key="index" text="n" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" code="divide">
+            <term key="leftTerm" code="power">
+              <term key="leftTerm" code="identity">
+                <term key="argTerm" text="-1" />
+              </term>
+              <term key="rightTerm" text="n" />
+            </term>
+            <term key="rightTerm" code="factorial">
+              <term key="argTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" text="n" />
+              </term>
+            </term>
+          </term>
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="x" />
+            <term key="rightTerm" code="mult">
+              <term key="leftTerm" text="2" />
+              <term key="rightTerm" text="n" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Diese Entwicklung nähert sich der&#10;Kosinus-Funktion an:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="s(x)" />
+      <term key="rightTerm" code="cos">
+        <term key="argTerm" text="x" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Wenn wir beide Funktionen für das selbe&#10;Intervall auftragen, so sehen beide&#10;gleich aus: " />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="0.1" />
+        <term key="maxValue" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" text="π" />
+        </term>
+      </term>
+    </equation>
+    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="6" gridLineColor="#87000000" functionsNumber="2">
+      <term key="yMaxValue" text="1.1" />
+      <term key="yFunction1" color="#FFFFA900" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.s">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction2" color="#FF0012FF" width="3" lineStyle="dashed" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.Ts:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="10" />
+      </term>
+      <term key="yMinValue" text="-1.1" />
+      <term key="xMinValue" text="0" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" text="x" />
+      <term key="xMaxValue" code="mult">
+        <term key="leftTerm" text="2" />
+        <term key="rightTerm" text="π" />
+      </term>
+    </plot_function>
+    <text_fragment>
+      <term key="text" text="Jedoch ist dies ein numerischer Fehler,&#10;der aus der eingeschränkten Anzahl von&#10;Annäherungstermen N resultiert. Die&#10;folgende Funktion Δ(x,N) beschreibt&#10;diesen Fehler:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="Δ(x,N)" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.link.s">
+            <term key="argTerm" text="x" />
+          </term>
+          <term key="rightTerm" code="content:com.mkulesh.micromath.link.Ts:2">
+            <term key="argTerm1" text="x" />
+            <term key="argTerm2" text="N" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Wir können diese Funktion in&#10;logarithmischen Koordinaten ausdrücken&#10;und werden sehen, dass der numerische&#10;Fehler sich verringert hat, wenn wir&#10;mehr Terme in die Taylorreihe&#10;integrieren:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="E(N)" />
+      <term key="rightTerm" code="log10">
+        <term key="argTerm" code="content:com.mkulesh.micromath.link.Δ:2">
+          <term key="argTerm1" text="π" />
+          <term key="argTerm2" text="N" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="3" />
+        <term key="nextValue" text="4" />
+        <term key="maxValue" text="13" />
+      </term>
+    </equation>
+    <plot_function width="680" height="450" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#83000000" functionsNumber="1">
+      <term key="yMaxValue" text="-1" />
+      <term key="yFunction" color="#FF0EC300" width="5" lineStyle="solid" shapeType="diamond" shapeSize="500" code="content:com.mkulesh.micromath.link.E">
+        <term key="argTerm" text="N" />
+      </term>
+      <term key="yMinValue" text="-16" />
+      <term key="xMinValue" text="3" />
+      <term key="xFunction" text="N" />
+      <term key="xMaxValue" text="13" />
+    </plot_function>
+    <text_fragment textStyle="subsection" numbering="true">
+      <term key="text" text="Binomische Reihen" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Betrachten wir diese Potenzfunktion:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f(x,α)" />
+      <term key="rightTerm" code="power">
+        <term key="leftTerm" code="plus">
+          <term key="leftTerm" text="1" />
+          <term key="rightTerm" text="x" />
+        </term>
+        <term key="rightTerm" text="α" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Dieser Funktion kann sich durch eine&#10;Binomische Reihe angenähert werden:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="Tf(x,α,N)" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="N" />
+        <term key="index" text="n" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" code="identity">
+            <term key="argTerm" code="product">
+              <term key="maxValue" text="n" />
+              <term key="index" text="k" />
+              <term key="minValue" text="1" />
+              <term key="argTerm" code="divide">
+                <term key="leftTerm" code="plus">
+                  <term key="leftTerm" code="minus">
+                    <term key="leftTerm" text="α" />
+                    <term key="rightTerm" text="k" />
+                  </term>
+                  <term key="rightTerm" text="1" />
+                </term>
+                <term key="rightTerm" text="k" />
+              </term>
+            </term>
+          </term>
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="x" />
+            <term key="rightTerm" text="n" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Zudem können wir beide Funktionen (die&#10;gegebene Potenzfunktion und ihre&#10;Annäherung) im gleichen Plot&#10;auftragen:" />
+    </text_fragment>
+    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#7D000000" functionsNumber="2">
+      <term key="yMaxValue" text="3000" />
+      <term key="yFunction1" color="#FFFF9400" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="4" />
+      </term>
+      <term key="yFunction2" color="#FF002CFF" width="3" lineStyle="dashed" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.Tf:3">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="4" />
+        <term key="argTerm3" text="20" />
+      </term>
+      <term key="yMinValue" text="0" />
+      <term key="xMinValue" text="0" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" text="x" />
+      <term key="xMaxValue" text="6" />
+    </plot_function>
+    <text_fragment textStyle="subsection" numbering="true">
+      <term key="text" text="Integrale" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text='Außerdem ist es möglich, ein&#10;bestimmtes Integral mittels der&#10;Simpson Methode numerisch zu&#10;berechnen. Beispielsweise können wir&#10;das Integral durch das Element&#10;"Ergebnisansicht" berechnen:' />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="integral">
+        <term key="maxValue" code="mult">
+          <term key="leftTerm" text="3" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" text="pi" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="power">
+          <term key="leftTerm" code="cos">
+            <term key="argTerm" code="divide">
+              <term key="leftTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" text="x" />
+              </term>
+              <term key="rightTerm" text="9" />
+            </term>
+          </term>
+          <term key="rightTerm" text="-2" />
+        </term>
+        <term key="index" text="x" />
+      </term>
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Das analytische Ergebnis ist" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="I" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" text="9" />
+          <term key="rightTerm" code="sqrt_layout">
+            <term key="argTerm" text="3" />
+          </term>
+        </term>
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text=",   " />
+    </text_fragment>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="I" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Der numerische Fehler kann wie folgt&#10;berechnet werden:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="minus">
+        <term key="leftTerm" code="integral">
+          <term key="maxValue" code="mult">
+            <term key="leftTerm" text="3" />
+            <term key="rightTerm" code="divide_slash">
+              <term key="leftTerm" text="pi" />
+              <term key="rightTerm" text="2" />
+            </term>
+          </term>
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="power">
+            <term key="leftTerm" code="cos">
+              <term key="argTerm" code="divide">
+                <term key="leftTerm" code="mult">
+                  <term key="leftTerm" text="2" />
+                  <term key="rightTerm" text="x" />
+                </term>
+                <term key="rightTerm" text="9" />
+              </term>
+            </term>
+            <term key="rightTerm" text="-2" />
+          </term>
+          <term key="index" text="x" />
+        </term>
+        <term key="rightTerm" text="I" />
+      </term>
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text='Dieser Fehler hängt von dem Wert&#10;"Signifikante Ziffern im Ergebnis" ab,&#10;was in den "Dokumenteinstellungen"&#10;Dialog verändert werden kann:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/menu_settings.svg" embedded="false" originalSize="false" width="330" height="90" />
+    <text_fragment>
+      <term key="text" text="Wird dieser Wert erhöht, so erhöht sich&#10;auch die Grenze, welche die&#10;Genauigkeit der Simpson Methode&#10;kontrolliert." />
+    </text_fragment>
+  </formulaList>
+</micromath>
