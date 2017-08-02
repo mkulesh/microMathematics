@@ -1,0 +1,142 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:micromath="http://schemas.android.com/apk/res/com.mkulesh.micromath.plus"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_panel_bg_color"
+    android:orientation="vertical" >
+
+    <com.mkulesh.micromath.widgets.TwoDScrollView
+        android:id="@+id/main_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/main_tool_bar"
+        android:layout_alignParentTop="true"
+        android:fadingEdge="horizontal|vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:scrollbars="horizontal|vertical"
+        micromath:autoScrollMargins="20dp" >
+
+        <LinearLayout
+            android:id="@+id/main_list_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="left"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_main_list_padding_bottom" >
+
+            <requestFocus />
+        </LinearLayout>
+    </com.mkulesh.micromath.widgets.TwoDScrollView>
+
+    <RelativeLayout
+        android:id="@+id/main_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_toolbar_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" >
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_toolbar_height"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/action_bar_background"
+            android:paddingBottom="@dimen/activity_palette_vertical_padding"
+            android:paddingTop="@dimen/activity_palette_vertical_padding" >
+
+            <LinearLayout
+                android:id="@+id/main_palette_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <com.mkulesh.micromath.widgets.CustomEditText
+                    android:id="@+id/hidden_edit_text"
+                    style="@style/DialogTextEditStyle"
+                    android:layout_width="@dimen/activity_toolbar_height"
+                    android:layout_height="@dimen/activity_hidden_text_height"
+                    android:layout_marginLeft="@dimen/activity_palette_button_padding"
+                    android:layout_marginRight="@dimen/activity_palette_button_padding"
+                    android:paddingTop="3dp" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <View
+            style="@style/HorizontalDividerStyle"
+            android:layout_alignParentTop="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_toolbar_height" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="top|center_horizontal"
+            android:orientation="vertical" >
+
+            <ProgressBar
+                android:id="@+id/main_progress_bar"
+                style="@style/CustomProgressBar"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <com.mkulesh.micromath.widgets.FloatingButtonsSet
+            android:id="@+id/main_flb_set_secondary"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_flb_size"
+            android:layout_marginLeft="@dimen/activity_flb_margin"
+            android:layout_marginRight="@dimen/activity_flb_margin" >
+
+            <ImageButton
+                android:id="@+id/main_flb_object_properties"
+                android:layout_width="@dimen/activity_flb_size"
+                android:layout_height="@dimen/activity_flb_size"
+                android:background="@drawable/flb_object_properties"
+                android:contentDescription="@string/action_object_properties"
+                android:visibility="gone" />
+        </com.mkulesh.micromath.widgets.FloatingButtonsSet>
+
+        <com.mkulesh.micromath.widgets.FloatingButtonsSet
+            android:id="@+id/main_flb_set_primary"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_flb_size"
+            android:layout_margin="@dimen/activity_flb_margin" >
+
+            <ImageButton
+                android:id="@+id/main_flb_action_play"
+                android:layout_width="@dimen/activity_flb_size"
+                android:layout_height="@dimen/activity_flb_size"
+                android:background="@drawable/flb_action_play"
+                android:contentDescription="@string/action_play"
+                android:visibility="gone" />
+
+            <ImageButton
+                android:id="@+id/main_flb_action_stop"
+                android:layout_width="@dimen/activity_flb_size"
+                android:layout_height="@dimen/activity_flb_size"
+                android:background="@drawable/flb_action_stop"
+                android:contentDescription="@string/action_stop"
+                android:visibility="gone" />
+            <ImageButton
+                android:id="@+id/main_flb_action_details"
+                android:layout_width="@dimen/activity_flb_size"
+                android:layout_height="@dimen/activity_flb_size"
+                android:background="@drawable/flb_action_details"
+                android:contentDescription="@string/action_details"
+                android:visibility="gone" />
+        </com.mkulesh.micromath.widgets.FloatingButtonsSet>
+    </LinearLayout>
+
+</RelativeLayout>

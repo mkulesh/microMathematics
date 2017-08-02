@@ -1,0 +1,957 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="60" significantDigits="7" scale="0.5" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="The use of IF-function and logical operators" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="true" />
+      <term key="rightTerm" text="1" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="false" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <text_fragment>
+      <term key="text" text='&#10;1. Operator "greater"&#10;&#10;TC: operator greater, positive' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="greater">
+          <term key="leftTerm" text="10" />
+          <term key="rightTerm" text="5" />
+        </term>
+        <term key="argTerm2" text="true" />
+        <term key="argTerm3" text="false" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="true" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: operator greater, negative" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="greater">
+          <term key="leftTerm" text="-5" />
+          <term key="rightTerm" text="10" />
+        </term>
+        <term key="argTerm2" text="true" />
+        <term key="argTerm3" text="false" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="false" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: operator greater or equal, positive" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="greater_equal">
+          <term key="leftTerm" text="10" />
+          <term key="rightTerm" text="10" />
+        </term>
+        <term key="argTerm2" text="true" />
+        <term key="argTerm3" text="false" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="true" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: operator greater or equal, negative" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="greater_equal">
+          <term key="leftTerm" text="5" />
+          <term key="rightTerm" text="10" />
+        </term>
+        <term key="argTerm2" text="true" />
+        <term key="argTerm3" text="false" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="false" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text='&#10;2. Operator "less"&#10;&#10;TC: operator less, positive' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="less">
+          <term key="leftTerm" text="5" />
+          <term key="rightTerm" text="10" />
+        </term>
+        <term key="argTerm2" text="true" />
+        <term key="argTerm3" text="false" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="true" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: operator less, negative" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="less">
+          <term key="leftTerm" text="10" />
+          <term key="rightTerm" text="-6" />
+        </term>
+        <term key="argTerm2" text="true" />
+        <term key="argTerm3" text="false" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="false" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: operator less or equal, positive" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="less_equal">
+          <term key="leftTerm" text="-5" />
+          <term key="rightTerm" text="-5" />
+        </term>
+        <term key="argTerm2" text="true" />
+        <term key="argTerm3" text="false" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="true" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: operator less or equal, negative" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="less_equal">
+          <term key="leftTerm" text="20" />
+          <term key="rightTerm" text="10" />
+        </term>
+        <term key="argTerm2" text="true" />
+        <term key="argTerm3" text="false" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="false" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: operator equal, positive" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="equal">
+          <term key="leftTerm" text="-5" />
+          <term key="rightTerm" text="-5" />
+        </term>
+        <term key="argTerm2" text="true" />
+        <term key="argTerm3" text="false" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="true" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: operator equal, negative" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="equal">
+          <term key="leftTerm" text="20" />
+          <term key="rightTerm" text="10" />
+        </term>
+        <term key="argTerm2" text="true" />
+        <term key="argTerm3" text="false" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="false" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: operator not equal, positive" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="not_equal">
+          <term key="leftTerm" text="-5" />
+          <term key="rightTerm" text="-6" />
+        </term>
+        <term key="argTerm2" text="true" />
+        <term key="argTerm3" text="false" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="true" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: operator not equal, negative" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="not_equal">
+          <term key="leftTerm" text="20" />
+          <term key="rightTerm" text="20" />
+        </term>
+        <term key="argTerm2" text="true" />
+        <term key="argTerm3" text="false" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="false" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text='&#10;TC: "and" and "or" operstors' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="a" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="greater">
+          <term key="leftTerm" text="1" />
+          <term key="rightTerm" text="2" />
+        </term>
+        <term key="argTerm2" text="1" />
+        <term key="argTerm3" text="2" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="a" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="(Desired: 2)" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="b" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="comparator_and">
+          <term key="leftTerm" code="equal">
+            <term key="leftTerm" text="a" />
+            <term key="rightTerm" text="2" />
+          </term>
+          <term key="rightTerm" code="less">
+            <term key="leftTerm" text="1" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+        <term key="argTerm2" text="π" />
+        <term key="argTerm3" text="4" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="b" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="(Desired: π)" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="c" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="comparator_or">
+          <term key="leftTerm" code="greater_equal">
+            <term key="leftTerm" text="b" />
+            <term key="rightTerm" code="mult">
+              <term key="leftTerm" text="2" />
+              <term key="rightTerm" text="pi" />
+            </term>
+          </term>
+          <term key="rightTerm" code="less_equal">
+            <term key="leftTerm" text="a" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+        <term key="argTerm2" text="5" />
+        <term key="argTerm3" text="6" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="c" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="(Desired: 5)" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="comparator_and">
+          <term key="leftTerm" code="comparator_and">
+            <term key="leftTerm" code="less">
+              <term key="leftTerm" text="a" />
+              <term key="rightTerm" text="3" />
+            </term>
+            <term key="rightTerm" code="greater_equal">
+              <term key="leftTerm" text="b" />
+              <term key="rightTerm" text="pi" />
+            </term>
+          </term>
+          <term key="rightTerm" code="not_equal">
+            <term key="leftTerm" text="c" />
+            <term key="rightTerm" text="10" />
+          </term>
+        </term>
+        <term key="argTerm2" text="true" />
+        <term key="argTerm3" text="false" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="true" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;Overall error" />
+    </text_fragment>
+    <result>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" />
+    </result>
+  </formulaList>
+</micromath>

@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="false">
+    <text_fragment>
+      <term key="text" text='Vielen Dank für den Kauf von "micro&#10;Mathematics Plus"! Diese App ist der&#10;erste mathematische Taschenrechner für&#10;Android weltweit, der mit einem&#10;interaktiven Dokument arbeitet.&#10;&#10;Ein Dokument kann nicht nur Formeln&#10;oder graphische Darstellungen, sondern&#10;auch Textfragmente und Bilder&#10;enthalten.&#10;&#10;Dieses Dokument ist ein Beispiel und&#10;gleichzeitig eine Vorlage, die einen&#10;Funktionsgraphen demonstriert.&#10;&#10;Erstens, müssen wir ein Intervall&#10;definieren, dass ein Funktionsargument&#10;darstellt. Wir nutzen dafür den "Neu"&#10;Button in der Menüleiste' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/menu_new.svg" embedded="false" originalSize="false" width="330" height="90" />
+    <text_fragment>
+      <term key="text" text='oder den "Gleichung hinzufügen" Button&#10;in der Werkzeugleiste und fügen&#10;folgende Gleichungen hinzu:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_equation.svg" embedded="false" originalSize="false" width="450" height="90" />
+    <text_fragment>
+      <term key="text" text="Anfangspunkt:" />
+    </text_fragment>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x1" />
+      <term key="rightTerm" text="-10" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="Endpunkt:" />
+    </text_fragment>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x2" />
+      <term key="rightTerm" text="10" />
+    </equation>
+    <text_fragment>
+      <term key="text" text='Der Abstand zwischen zwei Werten des&#10;Funktionsarguments und die&#10;"intervallähnliche" Variable für das&#10;Funktionsargument sehen so aus:' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="dx" />
+      <term key="rightTerm" text="0.1" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="x1" />
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" text="x1" />
+          <term key="rightTerm" text="dx" />
+        </term>
+        <term key="maxValue" text="x2" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text='Zweitens, muss die Funktion selbst&#10;definiert werden. Dafür benutzten wir&#10;nochmal den "Gleichung hinzufügen"&#10;Button in der Werkzeugleiste. Sei f(x)&#10;der Funktionsname. Der Name ist links&#10;von der Gleichung einzugeben. Rechts&#10;befindet sich eine mathematische&#10;Formel, um die Funktion zu berechnen.&#10;Im Gegensatz zu vielen anderen&#10;Taschenrechnern, geben wir hier diese&#10;Formel in mathematischer&#10;Standardnotation ein:' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f(x)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="power">
+          <term key="leftTerm" text="e" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" text="-x" />
+            <term key="rightTerm" text="10" />
+          </term>
+        </term>
+        <term key="rightTerm" code="summation">
+          <term key="maxValue" text="20" />
+          <term key="index" text="n" />
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="mult">
+            <term key="leftTerm" code="divide">
+              <term key="leftTerm" code="power">
+                <term key="leftTerm" code="identity">
+                  <term key="argTerm" text="-1" />
+                </term>
+                <term key="rightTerm" text="n" />
+              </term>
+              <term key="rightTerm" code="factorial">
+                <term key="argTerm" code="mult">
+                  <term key="leftTerm" text="2" />
+                  <term key="rightTerm" text="n" />
+                </term>
+              </term>
+            </term>
+            <term key="rightTerm" code="power">
+              <term key="leftTerm" text="x" />
+              <term key="rightTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" text="n" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text='Als Letztes nutzen wir den&#10;"Funktionsgraph hinzufügen" Button in&#10;der Werkzeugleiste und erstellen einen&#10;Graphen:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_plot_function.svg" embedded="false" originalSize="false" width="450" height="90" />
+    <text_fragment>
+      <term key="text" text="Die darzustellende Funktion soll im&#10;linken mittleren Feld sein und das&#10;Funktionsargument im mittleren unteren&#10;Feld. Die vier anderen Felder&#10;definieren die Plot-Grenzen. Falls&#10;diese Elemente leer bleiben, wird das&#10;Programm die entsprechenden Werte&#10;automatisch berechnen:" />
+    </text_fragment>
+    <plot_function width="680" height="500" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FF0000FF" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text='&#10;Sie können dieses Dokument mittels des&#10;"Speichern unter" Menü-Eintrags der&#10;Menüleiste speichern, unnötigen Text&#10;löschen und weiter verwenden.&#10;&#10;Sie können auch ein leeres Dokument&#10;erzeugen, wenn Sie den Menü-Eintrag&#10;"Dokument erstellen" wählen.&#10;&#10;Für mehr Details siehe "Benutzung" und&#10;verschiedene Beispiele im Hauptmenü.&#10;Das Hauptmenü enthält auch eine&#10;Verknüpfung zu einem druckbaren&#10;Dokument im PDF Format.' />
+    </text_fragment>
+  </formulaList>
+</micromath>

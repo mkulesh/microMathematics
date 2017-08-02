@@ -1,0 +1,61 @@
+<resources>
+
+    <!-- Main view -->
+    <dimen name="activity_horizontal_margin">8dp</dimen>
+    <dimen name="activity_vertical_margin">1dp</dimen>
+    <dimen name="activity_toolbar_height">@dimen/abc_action_bar_default_height_material</dimen>
+    <dimen name="activity_flb_margin">16dp</dimen>
+    <dimen name="activity_flb_size">56dp</dimen>
+    <dimen name="activity_main_list_padding_bottom">72dp</dimen> <!-- flb top offset related to tool bar -->
+    <dimen name="activity_hidden_text_height">32dp</dimen>
+    <dimen name="activity_palette_button_padding">@dimen/abc_action_bar_default_padding_start_material</dimen>
+    <dimen name="activity_palette_vertical_padding">@dimen/abc_action_bar_default_padding_start_material</dimen>
+    <dimen name="activity_drawer_title_size">@dimen/abc_text_size_menu_material</dimen>
+    <dimen name="activity_drawer_subtitle_size">@dimen/abc_text_size_caption_material</dimen>
+    
+    <!-- Dialogs -->
+    <dimen name="dialog_title_text_size">@dimen/abc_text_size_subhead_material</dimen>
+    <dimen name="dialog_content_text_size">@dimen/abc_text_size_medium_material</dimen>
+    <dimen name="dialog_licenses_path_size">@dimen/abc_text_size_small_material</dimen>
+    <dimen name="dialog_licenses_text_size">@dimen/abc_text_size_small_material</dimen>
+    <dimen name="dialog_panel_vertical_padding">6dp</dimen>
+    <dimen name="dialog_panel_horizontal_padding">3dp</dimen>
+    <dimen name="dialog_title_height">56dp</dimen>
+    <dimen name="dialog_buttons_bar_height">56dp</dimen>
+    <dimen name="dialog_buttons_margin">5dp</dimen>
+    <dimen name="dialog_corner_radius">8dp</dimen>
+    <dimen name="dialog_content_padding">15dp</dimen>
+    <dimen name="dialog_table_cell_padding">8dp</dimen>
+    
+    <!-- Formula -->
+    <dimen name="formula_hor_root_padding">10dp</dimen>
+    <dimen name="formula_vert_root_padding">5dp</dimen>
+    <dimen name="formula_header_padding">20dp</dimen>
+    <dimen name="formula_depth_step">3dp</dimen>
+    <dimen name="formula_stroke_width">2dp</dimen>
+    <dimen name="formula_text_size">@dimen/abc_text_size_display_1_material</dimen>
+    <dimen name="formula_text_minwidth">25dp</dimen>
+    <dimen name="formula_hor_text_padding">0dp</dimen>
+    <dimen name="formula_big_symbol_size">48dp</dimen>
+    <dimen name="formula_small_symbol_size">18dp</dimen>
+    <dimen name="formula_hor_symbol_padding">4dp</dimen>
+    <dimen name="formula_hor_bracket_padding">0dp</dimen>
+    <dimen name="formula_vert_term_padding">4dp</dimen>
+
+    <!-- Function plot -->
+    <dimen name="plot_grid_line_width">0.5dp</dimen>
+    <dimen name="plot_function_line_width">3dp</dimen>
+    <dimen name="plot_label_line_size">3dp</dimen>
+    <dimen name="plot_label_text_size">@dimen/abc_text_size_medium_material</dimen>
+
+    <!-- Number picker: Standart dimens for the buttons -->
+    <dimen name="number_picker_height">40dp</dimen>
+    <dimen name="number_picker_number_size">@dimen/abc_text_size_large_material</dimen>
+
+	<!-- Fman dimensions -->
+    <dimen name="fman_path_size">@dimen/abc_text_size_small_material</dimen>
+    <dimen name="fman_item_attrs_size">10sp</dimen>
+    <dimen name="fman_item_icon_size">36px</dimen>
+    <dimen name="fman_item_hor_padding">3dp</dimen>
+        
+</resources>

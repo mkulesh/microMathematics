@@ -1,0 +1,990 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="60" significantDigits="6" scale="0.5" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="The use of summation operator" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="m" />
+      <term key="rightTerm" text="4" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="n" />
+      <term key="rightTerm" text="200" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;TC: series 1" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="n" />
+        <term key="index" text="k" />
+        <term key="minValue" text="m" />
+        <term key="argTerm" text="1" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="n" />
+        <term key="rightTerm" code="minus">
+          <term key="leftTerm" text="1" />
+          <term key="rightTerm" text="m" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: series 2" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="n" />
+        <term key="index" text="k" />
+        <term key="minValue" text="m" />
+        <term key="argTerm" text="k" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" code="plus">
+            <term key="leftTerm" text="n" />
+            <term key="rightTerm" code="minus">
+              <term key="leftTerm" text="1" />
+              <term key="rightTerm" text="m" />
+            </term>
+          </term>
+          <term key="rightTerm" code="plus">
+            <term key="leftTerm" text="n" />
+            <term key="rightTerm" text="m" />
+          </term>
+        </term>
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: series 3" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="n" />
+        <term key="index" text="k" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="power">
+          <term key="leftTerm" text="k" />
+          <term key="rightTerm" text="2" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="divide">
+          <term key="leftTerm" code="power">
+            <term key="leftTerm" text="n" />
+            <term key="rightTerm" text="3" />
+          </term>
+          <term key="rightTerm" text="3" />
+        </term>
+        <term key="rightTerm" code="plus">
+          <term key="leftTerm" code="divide">
+            <term key="leftTerm" code="power">
+              <term key="leftTerm" text="n" />
+              <term key="rightTerm" text="2" />
+            </term>
+            <term key="rightTerm" text="2" />
+          </term>
+          <term key="rightTerm" code="divide">
+            <term key="leftTerm" text="n" />
+            <term key="rightTerm" text="6" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: series 4" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="n" />
+        <term key="index" text="k" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="power">
+          <term key="leftTerm" text="k" />
+          <term key="rightTerm" text="3" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="power">
+        <term key="leftTerm" code="identity">
+          <term key="argTerm" code="divide">
+            <term key="leftTerm" code="mult">
+              <term key="leftTerm" text="n" />
+              <term key="rightTerm" code="plus">
+                <term key="leftTerm" text="n" />
+                <term key="rightTerm" text="1" />
+              </term>
+            </term>
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: series 5" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="n" />
+        <term key="index" text="k" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="power">
+          <term key="leftTerm" text="k" />
+          <term key="rightTerm" text="3" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="power">
+        <term key="leftTerm" code="summation">
+          <term key="maxValue" text="n" />
+          <term key="index" text="k" />
+          <term key="minValue" text="0" />
+          <term key="argTerm" text="k" />
+        </term>
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: series 6" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="power">
+        <term key="leftTerm" code="summation">
+          <term key="maxValue" text="n" />
+          <term key="index" text="k" />
+          <term key="minValue" text="m" />
+          <term key="argTerm" text="k" />
+        </term>
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="n" />
+        <term key="index" text="k" />
+        <term key="minValue" text="m" />
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" code="power">
+            <term key="leftTerm" text="k" />
+            <term key="rightTerm" text="3" />
+          </term>
+          <term key="rightTerm" code="mult">
+            <term key="leftTerm" text="k" />
+            <term key="rightTerm" code="mult">
+              <term key="leftTerm" text="m" />
+              <term key="rightTerm" code="minus">
+                <term key="leftTerm" text="m" />
+                <term key="rightTerm" text="1" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: series 7 with exponential term" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="a" />
+      <term key="rightTerm" text="3" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" code="minus">
+          <term key="leftTerm" text="n" />
+          <term key="rightTerm" text="1" />
+        </term>
+        <term key="index" text="k" />
+        <term key="minValue" text="m" />
+        <term key="argTerm" code="power">
+          <term key="leftTerm" text="a" />
+          <term key="rightTerm" text="k" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" code="minus">
+          <term key="leftTerm" code="power">
+            <term key="leftTerm" text="a" />
+            <term key="rightTerm" text="m" />
+          </term>
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="a" />
+            <term key="rightTerm" text="n" />
+          </term>
+        </term>
+        <term key="rightTerm" code="minus">
+          <term key="leftTerm" text="1" />
+          <term key="rightTerm" text="a" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: series 8 with exponential term" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" code="minus">
+          <term key="leftTerm" text="n" />
+          <term key="rightTerm" text="1" />
+        </term>
+        <term key="index" text="k" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" text="k" />
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="2" />
+            <term key="rightTerm" text="k" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="2" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" code="minus">
+            <term key="leftTerm" text="n" />
+            <term key="rightTerm" text="2" />
+          </term>
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="2" />
+            <term key="rightTerm" text="n" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: series 9 with factorial term" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="p" />
+      <term key="rightTerm" text="15" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="p" />
+        <term key="index" text="k" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" text="k" />
+          <term key="rightTerm" code="factorial">
+            <term key="argTerm" text="k" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" code="factorial">
+          <term key="argTerm" code="plus">
+            <term key="leftTerm" text="p" />
+            <term key="rightTerm" text="1" />
+          </term>
+        </term>
+        <term key="rightTerm" text="1" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: series 10 that uses a function" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="f(x)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" code="sin">
+            <term key="argTerm" text="x" />
+          </term>
+          <term key="rightTerm" code="cos">
+            <term key="argTerm" text="x" />
+          </term>
+        </term>
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="S1(t)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="summation">
+          <term key="maxValue" text="t" />
+          <term key="index" text="n" />
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+            <term key="argTerm" code="mult">
+              <term key="leftTerm" text="2" />
+              <term key="rightTerm" text="n" />
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="summation">
+          <term key="maxValue" text="t" />
+          <term key="index" text="n" />
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+            <term key="argTerm" code="plus">
+              <term key="leftTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" text="n" />
+              </term>
+              <term key="rightTerm" text="1" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="S2(t)" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" code="plus">
+          <term key="leftTerm" code="mult">
+            <term key="leftTerm" text="2" />
+            <term key="rightTerm" text="t" />
+          </term>
+          <term key="rightTerm" text="1" />
+        </term>
+        <term key="index" text="n" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+          <term key="argTerm" text="n" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="S3" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="30" />
+        <term key="index" text="k" />
+        <term key="minValue" text="1" />
+        <term key="argTerm" code="abs_layout">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.link.S1">
+              <term key="argTerm" text="k" />
+            </term>
+            <term key="rightTerm" code="content:com.mkulesh.micromath.link.S2">
+              <term key="argTerm" text="k" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="S3" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="less">
+          <term key="leftTerm" text="S3" />
+          <term key="rightTerm" text="1E-12" />
+        </term>
+        <term key="argTerm2" text="0" />
+        <term key="argTerm3" text="S3" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: series 11 that uses a function" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="S1(t)" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="t" />
+        <term key="index" text="n" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="log">
+          <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+            <term key="argTerm" text="n" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="S2(t)" />
+      <term key="rightTerm" code="log">
+        <term key="argTerm" code="product">
+          <term key="maxValue" text="t" />
+          <term key="index" text="n" />
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+            <term key="argTerm" text="n" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="S3" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="30" />
+        <term key="index" text="k" />
+        <term key="minValue" text="1" />
+        <term key="argTerm" code="abs_layout">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.link.S1">
+              <term key="argTerm" text="k" />
+            </term>
+            <term key="rightTerm" code="content:com.mkulesh.micromath.link.S2">
+              <term key="argTerm" text="k" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="S3" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="less">
+          <term key="leftTerm" text="S3" />
+          <term key="rightTerm" text="1E-13" />
+        </term>
+        <term key="argTerm2" text="0" />
+        <term key="argTerm3" text="S3" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: series 12 that uses a function" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="S1(t,z)" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="t" />
+        <term key="index" text="n" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="summation">
+          <term key="maxValue" code="minus">
+            <term key="leftTerm" text="z" />
+            <term key="rightTerm" text="1" />
+          </term>
+          <term key="index" text="j" />
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+            <term key="argTerm" code="plus">
+              <term key="leftTerm" code="mult">
+                <term key="leftTerm" text="z" />
+                <term key="rightTerm" text="n" />
+              </term>
+              <term key="rightTerm" text="j" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="S2(t,z)" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" code="plus">
+          <term key="leftTerm" code="mult">
+            <term key="leftTerm" text="z" />
+            <term key="rightTerm" text="t" />
+          </term>
+          <term key="rightTerm" code="minus">
+            <term key="leftTerm" text="z" />
+            <term key="rightTerm" text="1" />
+          </term>
+        </term>
+        <term key="index" text="n" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+          <term key="argTerm" text="n" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="S3" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="20" />
+        <term key="index" text="n" />
+        <term key="minValue" text="1" />
+        <term key="argTerm" code="summation">
+          <term key="maxValue" text="20" />
+          <term key="index" text="k" />
+          <term key="minValue" text="1" />
+          <term key="argTerm" code="abs_layout">
+            <term key="argTerm" code="minus">
+              <term key="leftTerm" code="content:com.mkulesh.micromath.link.S1:2">
+                <term key="argTerm1" text="n" />
+                <term key="argTerm2" text="k" />
+              </term>
+              <term key="rightTerm" code="content:com.mkulesh.micromath.link.S2:2">
+                <term key="argTerm1" text="n" />
+                <term key="argTerm2" text="k" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="z" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="1" />
+        <term key="nextValue" text="2" />
+        <term key="maxValue" text="20" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="t" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="1" />
+        <term key="nextValue" text="2" />
+        <term key="maxValue" text="20" />
+      </term>
+    </equation>
+    <plot_contour plotStyle="surface" width="800" height="500" axes_style="boxed" meshLines="true" meshFill="true" meshOpacity="255" rotation="125" elevation="20" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" zLabelsNumber="10" colorMap="rainbow">
+      <term key="yMaxValue" text="" />
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="zFunction" code="minus">
+        <term key="leftTerm" code="content:com.mkulesh.micromath.link.S1:2">
+          <term key="argTerm1" text="t" />
+          <term key="argTerm2" text="z" />
+        </term>
+        <term key="rightTerm" code="content:com.mkulesh.micromath.link.S2:2">
+          <term key="argTerm1" text="t" />
+          <term key="argTerm2" text="z" />
+        </term>
+      </term>
+      <term key="xMaxValue" text="" />
+    </plot_contour>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="less">
+          <term key="leftTerm" text="S3" />
+          <term key="rightTerm" text="1E-10" />
+        </term>
+        <term key="argTerm2" text="0" />
+        <term key="argTerm3" text="S3" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: series with complex values in limits" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="p" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" text="-1" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="p" />
+        <term key="index" text="k" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" text="k" />
+          <term key="rightTerm" code="factorial">
+            <term key="argTerm" text="k" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="factorial">
+        <term key="argTerm" text="-1" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+  </formulaList>
+</micromath>

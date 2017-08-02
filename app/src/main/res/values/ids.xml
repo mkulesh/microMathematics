@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<item type="id" name="fman_action_refresh" />
+	<item type="id" name="fman_action_rename" />
+	<item type="id" name="fman_action_create_folder" />
+	<item type="id" name="fman_action_delete" />
+	<item type="id" name="fman_action_sort_by_name" />
+	<item type="id" name="fman_action_sort_by_ext"  />
+	<item type="id" name="fman_action_sort_by_size" />
+	<item type="id" name="fman_action_sort_by_date" />
+	<item type="id" name="fman_action_open_saf" />
+</resources>
+
+
+
+
+
+
+
+
+
+
+
