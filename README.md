@@ -55,3 +55,11 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 If not, see [www.gnu.org/licenses](http://www.gnu.org/licenses).
 
+## Dependencies
+
+This App depends or includes the following third-party libraries or code fragments:
+* [The Android Support v7 Library](https://developer.android.com/topic/libraries/support-library/packages.html)
+* [The Apache Commons Mathematics Library](http://commons.apache.org/proper/commons-math)
+* [HoloColorPicker Library](https://github.com/LarsWerkman/HoloColorPicker)
+* [AndroidSVG Library](https://github.com/BigBadaboom/androidsvg)
+* [Ghost Commander Engine](https://sourceforge.net/projects/ghostcommander)

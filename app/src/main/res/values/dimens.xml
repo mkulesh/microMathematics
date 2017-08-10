@@ -57,5 +57,17 @@
     <dimen name="fman_item_attrs_size">10sp</dimen>
     <dimen name="fman_item_icon_size">36px</dimen>
     <dimen name="fman_item_hor_padding">3dp</dimen>
+    
+    <!-- HoloColorPicker library -->
+    <dimen name="color_wheel_radius">100dp</dimen>
+    <dimen name="color_wheel_thickness">8dp</dimen>
+    <dimen name="color_center_halo_radius">60dp</dimen>
+    <dimen name="color_center_radius">54dp</dimen>
+    <dimen name="color_pointer_halo_radius">18dp</dimen>
+    <dimen name="color_pointer_radius">14dp</dimen>
+    <dimen name="bar_thickness">4dp</dimen>
+    <dimen name="bar_length">240dp</dimen>
+    <dimen name="bar_pointer_radius">6dp</dimen>
+    <dimen name="bar_pointer_halo_radius">14dp</dimen>
         
 </resources>

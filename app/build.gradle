@@ -26,6 +26,5 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'org.apache.commons:commons-math3:3.6.1'
-    compile 'com.larswerkman:HoloColorPicker:1.5'
     testCompile 'junit:junit:4.12'
 }
