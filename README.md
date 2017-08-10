@@ -36,11 +36,11 @@ Not only students, but also everybody who likes mathematics or needs more than j
 * Russian
 * German
 
-## How to build (Eclipse ADT)
+## How to build in Eclipse ADT
 * Ensure that you have Eclipse, Android SDK, and [Android Development Tools for Eclipse](https://marketplace.eclipse.org/content/android-development-tools-eclipse)  installed.
 * Unzip and import into Eclipse all libraries stored in thirdParty directory.
-* In the app/src/main/ directory, create a symbolic link src -> java
-* Import app/src/main/ directory into Eclipce.
+* Import app/src/main/ directory into Eclipse.
+* Right click on the newly imported project, select "Properties" and than select "Java Build Path". Add "java" directory to the source directories list instead of "src". Select "Android" and ensure that third party libraries are listed in the "Libraries" list.
 * Build all imported components.
 
 ## License

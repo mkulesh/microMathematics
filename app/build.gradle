@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "26.0.0"
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.mkulesh.micromath.plus"
         minSdkVersion 8
@@ -24,7 +24,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'org.apache.commons:commons-math3:3.6.1'
     testCompile 'junit:junit:4.12'
 }
