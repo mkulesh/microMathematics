@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -530,6 +531,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     /**
      * Parcelable interface: procedure writes the formula state
      */
+    @SuppressLint("MissingSuperCall")
     public Parcelable onSaveInstanceState()
     {
         Bundle bundle = new Bundle();
@@ -545,6 +547,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     /**
      * Parcelable interface: procedure reads the formula state
      */
+    @SuppressLint("MissingSuperCall")
     public void onRestoreInstanceState(Parcelable state)
     {
         if (state == null)

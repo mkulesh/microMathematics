@@ -206,6 +206,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
      * Parcelable interface: procedure writes the formula state
      */
     @Override
+    @SuppressLint("MissingSuperCall")
     public Parcelable onSaveInstanceState()
     {
         Bundle bundle = new Bundle();
@@ -235,6 +236,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
      * Parcelable interface: procedure reads the formula state
      */
     @Override
+    @SuppressLint("MissingSuperCall")
     public void onRestoreInstanceState(Parcelable state)
     {
         if (state == null)

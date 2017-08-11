@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
                 supportInvalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        CompatUtils.setDrawerListener(mDrawerLayout, mDrawerToggle);
 
         // context menu
         activeActionModes = new ArrayList<android.support.v7.view.ActionMode>();
@@ -291,6 +291,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     @Override
     public void onSupportActionModeStarted(android.support.v7.view.ActionMode mode)
     {
+        super.onSupportActionModeStarted(mode);
         activeActionModes.add(mode);
         final BaseFragment f = getVisibleFragment();
         if (f != null)
@@ -302,6 +303,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     @Override
     public void onSupportActionModeFinished(android.support.v7.view.ActionMode mode)
     {
+        super.onSupportActionModeFinished(mode);
         activeActionModes.remove(mode);
         final BaseFragment f = getVisibleFragment();
         if (f != null)

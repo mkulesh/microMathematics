@@ -29,7 +29,9 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -80,6 +82,21 @@ public class CompatUtils
         else
         {
             return context.getResources().getColor(id);
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    public static void setDrawerListener(DrawerLayout mDrawerLayout, ActionBarDrawerToggle mDrawerToggle)
+    {
+
+        if (isMarshMallowOrLater())
+        {
+            mDrawerLayout.removeDrawerListener(mDrawerToggle);
+            mDrawerLayout.addDrawerListener(mDrawerToggle);
+        }
+        else
+        {
+            mDrawerLayout.setDrawerListener(mDrawerToggle);
         }
     }
 

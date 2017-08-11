@@ -20,6 +20,7 @@ package com.mkulesh.micromath.plots.views;
 
 import java.util.ArrayList;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -120,6 +121,7 @@ public abstract class PlotView extends CustomTextView
     /**
      * Parcelable interface: procedure writes the formula state
      */
+    @SuppressLint("MissingSuperCall")
     public Parcelable onSaveInstanceState()
     {
         Bundle bundle = new Bundle();
@@ -148,6 +150,7 @@ public abstract class PlotView extends CustomTextView
     /**
      * Parcelable interface: procedure reads the formula state
      */
+    @SuppressLint("MissingSuperCall")
     public void onRestoreInstanceState(Parcelable state)
     {
         if (state == null)
