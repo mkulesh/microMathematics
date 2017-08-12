@@ -27,6 +27,7 @@ Not only students, but also everybody who likes mathematics or needs more than j
 ## Reviews and publications:
 * [Press Release: Introducing micro Mathematics: the First Spreadsheet Oriented Mathematical Calculator for Android](http://www.androidappsreview.com/2014/09/29/micro-mathematics-press-release/)
 * [Математический пакет для Android своими руками (in Russian)](https://habrahabr.ru/post/250727/)
+* [Математический пакет для Android — «Микро-Математика» — теперь с открытым исходным кодом (in Russian)](https://habrahabr.ru/post/334670/)
 * [«Микро-математика»: формулы — это просто (in Russian)](http://4pda.ru/2015/09/01/241701/)
 * [Micro Mathematics — отличный научный калькулятор и графопостроитель на Android (in Russian)](https://lifehacker.ru/2015/10/21/micro-mathematics/)
 * [micro Mathematics Plus: Umfangreiche Rechner-App für Studenten & Schüler (in German)](http://beste-apps.chip.de/android/app/micro-mathematics-plus-umfangreiche-rechner-app-fuer-studenten-schueler,com.mkulesh.micromath.plus/)
@@ -35,13 +36,6 @@ Not only students, but also everybody who likes mathematics or needs more than j
 * English
 * Russian
 * German
-
-## How to build in Eclipse ADT
-* Ensure that you have Eclipse, Android SDK, and [Android Development Tools for Eclipse](https://marketplace.eclipse.org/content/android-development-tools-eclipse)  installed.
-* Unzip and import into Eclipse all libraries stored in thirdParty directory.
-* Import app/src/main/ directory into Eclipse.
-* Right click on the newly imported project, select "Properties" and than select "Java Build Path". Add "java" directory to the source directories list instead of "src". Select "Android" and ensure that third party libraries are listed in the "Libraries" list.
-* Build all imported components.
 
 ## License
 
