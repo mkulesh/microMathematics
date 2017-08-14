@@ -44,7 +44,6 @@
 
     <!-- Function plot -->
     <dimen name="plot_grid_line_width">0.5dp</dimen>
-    <dimen name="plot_function_line_width">3dp</dimen>
     <dimen name="plot_label_line_size">3dp</dimen>
     <dimen name="plot_label_text_size">@dimen/abc_text_size_medium_material</dimen>
 

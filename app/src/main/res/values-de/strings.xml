@@ -7,8 +7,7 @@
     
     <!-- Drawer -->
     <string name="drawer_open">Öffnen App-Navigation</string>
-    <string name="drawer_close">Schließen App-Navigation</string>
-    
+
     <string-array name="activity_titles">
         <item>Arbeitsblatt</item>
         <item>Benutzung</item>
@@ -169,7 +168,6 @@
     <string name="math_loop_integral">Bestimmtes Integral (\'INTEG\')</string>
     <string name="math_loop_derivative">Erste Ableitung (\'DERIV\')</string>
     <string name="math_function_identity">Runde Klammern (\'(\')</string>
-    <string name="math_function_index">Index (\'[\')</string>
     <string name="math_function_abs">Betrag des Arguments (\'|\')</string>
     <string name="math_function_conjugate">Konjugiert komplexe Zahl des Arguments (\'~\')</string>
     <string name="math_function_re">Realteil der komplexen Zahl</string>
@@ -219,7 +217,6 @@
     <string name="error_invalid_argument">Das Argument der Funktion darf nur Buchstaben und Zahlen enthalten</string>
     <string name="error_ensure_single_interval">Verwendung von zwei oder mehr Intervalle ist nicht erlaubt</string>
     <string name="error_ensure_double_interval">Die Funktion muss zwei intervallähnliche Argumente haben</string>
-    <string name="error_ensure_single_argument">Verwendung von zwei oder mehr Argumente ist nicht erlaubt</string>
     <string name="error_indirect_intervals">Die Intervalle %s sind indirekt ausgewiesenen</string>
     <string name="error_duplicated_identifier">Diese Bezeichnung ist bereits verwendet</string>
     <string name="error_forbidden_arguments">Argumente sind hier nicht erlaubt</string>
@@ -262,7 +259,6 @@
 	<string name="fman_delete_confirm">Die ausgewählte Datei wird gelöscht</string>
     <string name="fman_delete_error">\"%s\" kann nicht gelöscht werden</string>
     <string name="fman_warning_dialog_title">Warnung</string>
-    <string name="fman_error_not_supported">diese Operation wird nicht unterstützt</string>
 	<string name="fman_error_no_items">Keine Elemente sind ausgewählt</string>
     <string name="fman_error_sec_err">Sicherheitsfehler: %s</string>
     <string name="fman_error_no_such_folder">Verzeichnis \"%s\" existiert nicht</string>

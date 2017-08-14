@@ -7,8 +7,7 @@
     
     <!-- Drawer -->
     <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
-    
+
     <string-array name="activity_titles">
         <item>Worksheet</item>
         <item>How To Use</item>
@@ -169,7 +168,6 @@
     <string name="math_loop_integral">The definite integral (\'INTEG\')</string>
     <string name="math_loop_derivative">The first derivative (\'DERIV\')</string>
     <string name="math_function_identity">Parenthesis (\'(\')</string>
-    <string name="math_function_index">Index (\'[\')</string>
     <string name="math_function_abs">The absolute value of the real or complex argument (\'|\')</string>
     <string name="math_function_conjugate">The complex conjugate of the complex argument (\'~\')</string>
     <string name="math_function_re">The real part of the complex argument</string>
@@ -219,7 +217,6 @@
     <string name="error_invalid_argument">Function argument shall contain letters or digits only</string>
     <string name="error_ensure_single_interval">Function shall depend on one interval only</string>
     <string name="error_ensure_double_interval">Function shall depend on two intervals</string>
-    <string name="error_ensure_single_argument">Function shall have one argument only</string>
     <string name="error_indirect_intervals">There are indirectly referenced intervals: %s</string>
     <string name="error_duplicated_identifier">This identifier is already used</string>
     <string name="error_forbidden_arguments">Arguments are not allowed for this identifier</string>
@@ -262,7 +259,6 @@
 	<string name="fman_delete_confirm">Selected file deleted</string>
     <string name="fman_delete_error">Unable to delete \"%s\"</string>
     <string name="fman_warning_dialog_title">Warning</string>
-    <string name="fman_error_not_supported">This operation is not supported</string>
 	<string name="fman_error_no_items">No items selected to complete the operation</string>
     <string name="fman_error_sec_err">Security issue: %s</string>
     <string name="fman_error_no_such_folder">\"%s\" is not a valid folder</string>

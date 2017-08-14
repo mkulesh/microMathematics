@@ -30,7 +30,6 @@
 
     <!-- Function plot -->
     <color name="plot_grid_line_color">#ff787878</color>
-    <color name="plot_function_line_color">#ffff0500</color>
 
     <!-- Fman colors -->
     <color name="fman_path_color">@color/secondary_text_default_material_light</color>

@@ -7,8 +7,7 @@
     
     <!-- Drawer -->
     <string name="drawer_open">Открыть навигатор</string>
-    <string name="drawer_close">Закрыть навигатор</string>
-    
+
     <string-array name="activity_titles">
         <item>Рабочий лист</item>
         <item>Справка</item>
@@ -169,7 +168,6 @@
     <string name="math_loop_integral">Вычисление определенного интеграла (\'INTEG\')</string>
     <string name="math_loop_derivative">Вычисление производной (\'DERIV\')</string>
     <string name="math_function_identity">Круглые скобки (\'(\')</string>
-    <string name="math_function_index">Нижний индекс (\'[\')</string>
     <string name="math_function_abs">Модуль вещественного или комплексного числа (\'|\')</string>
     <string name="math_function_conjugate">Комплексно-сопряжённое значение аргумента (\'~\')</string>
     <string name="math_function_re">Вещественная часть комплексного аргумента</string>
@@ -219,7 +217,6 @@
     <string name="error_invalid_argument">Имя аргумента должно содержать только цифры и буквы</string>
     <string name="error_ensure_single_interval">Функция должна зависеть только от одного интервала</string>
     <string name="error_ensure_double_interval">Функция должна зависеть только от двух интервалов</string>
-    <string name="error_ensure_single_argument">Функция должна зависеть только от одного аргумента</string>
     <string name="error_indirect_intervals">Недопустимо использовать интервал(ы) %s неявно</string>
     <string name="error_duplicated_identifier">Такой идентификатор уже используется</string>
     <string name="error_forbidden_arguments">Данный идентификатор не может содержать аргументы</string>
@@ -262,7 +259,6 @@
 	<string name="fman_delete_confirm">Выбранный файл удалён</string>
     <string name="fman_delete_error">Не могу удалить \"%s\"</string>
     <string name="fman_warning_dialog_title">Предупреждение</string>
-    <string name="fman_error_not_supported">Операция не поддерживается</string>
 	<string name="fman_error_no_items">Не выбрано ни одного элемента</string>
     <string name="fman_error_sec_err">Доступ запрещен: %s</string>
     <string name="fman_error_no_such_folder">Папка \"%s\" не существует</string>
