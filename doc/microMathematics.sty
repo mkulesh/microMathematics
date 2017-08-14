@@ -1,0 +1,84 @@
+\usepackage{lipsum} % Package to create dummy text
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage[pdftex]{graphicx} % Enable pdflatex
+\usepackage[svgnames]{xcolor} % Enabling colors by their 'svgnames'
+
+\def\bf{\normalfont\bfseries} % Fix an issue with depricated font bf in the include below
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats
+
+\usepackage{booktabs} % Nicer tables
+\usepackage{fix-cm} % Custom fontsizes
+
+% Custom sectioning (sectsty package)
+\usepackage{sectsty} % Custom sectioning (see below)
+\allsectionsfont{ % Change font of al section commands
+  \usefont{OT1}{phv}{b}{n} % bch-b-n: CharterBT-Bold font
+}
+\sectionfont{ % Change font of \section command
+  \usefont{OT1}{phv}{b}{n} % bch-b-n: CharterBT-Bold font
+}
+
+% Headers and footers
+\usepackage{fancyhdr} % Needed to define custom headers/footers
+\pagestyle{fancy} % Enabling the custom headers/footers
+\usepackage{lastpage} 
+
+% Header (empty)
+\lhead{}
+\chead{}
+\rhead{}
+
+% Footer (you may change this to your own needs)
+\lfoot{\footnotesize \texttt{Mikhail Kulesh} \textbullet ~ \texttt{micro Mathematics Plus}}
+\cfoot{}
+\rfoot{\footnotesize page \thepage\ of \pageref{LastPage}} % "Page 1 of 2"
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Creating an initial of the very first character of the content
+\usepackage{lettrine}
+\newcommand{\initial}[1]{%
+  \lettrine[lines=3,lhang=0.3,nindent=0em]{\color{DarkGoldenrod}{\textsf{#1}}}{}
+}
+
+% Title, author and date metadata
+\usepackage{titling} % For custom titles
+\newcommand{\HorRule}{ % Creating a horizontal rule
+  \color{DarkGoldenrod}\rule{\linewidth}{1pt}%
+}
+
+\pretitle{%
+  %\vspace{-60pt} 
+  \begin{flushleft} 
+  \HorRule 
+  \usefont{OT1}{phv}{b}{n} \fontsize{43}{43} \color{DarkRed} \selectfont 
+}
+\title{micro Mathematics Plus} % Title of your article goes here
+\posttitle{%
+  \par
+  \fontsize{26}{26} \selectfont 
+  version 2.15 
+  \end{flushleft}
+  \vskip 0.5em
+}
+
+\preauthor{%
+  \begin{flushleft}
+  \large \lineskip 0.5em 
+  \usefont{OT1}{phv}{b}{sl} \color{DarkRed} \selectfont
+}
+\author{Mikhail Kulesh} % Author name goes here
+\postauthor{%
+  \par
+  \usefont{OT1}{phv}{m}{sl} \color{Black} \selectfont
+  Email:~mikhail.kulesh@gmail.com % Institution of author
+  \par
+  April~2017,~Bremen,~Germany
+  \par
+  \end{flushleft}
+  \HorRule
+}
+
+\date{} % No date
+          

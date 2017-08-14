@@ -1,0 +1,171 @@
+\usepackage{lipsum} % Package to create dummy text
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage[pdftex]{graphicx} % Enable pdflatex
+\usepackage[svgnames]{xcolor} % Enabling colors by their 'svgnames'
+
+\def\bf{\normalfont\bfseries} % Fix an issue with depricated font bf in the include below
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats
+
+\usepackage{booktabs} % Nicer tables
+\usepackage{fix-cm} % Custom fontsizes
+
+% Custom sectioning (sectsty package)
+\usepackage{sectsty} % Custom sectioning (see below)
+\allsectionsfont{ % Change font of al section commands
+  \usefont{T2A}{cmr}{b}{n} % bch-b-n: CharterBT-Bold font
+}
+\sectionfont{ % Change font of \section command
+  \usefont{T2A}{cmr}{b}{n} % bch-b-n: CharterBT-Bold font
+}
+
+% Headers and footers
+\usepackage{fancyhdr} % Needed to define custom headers/footers
+\pagestyle{fancy} % Enabling the custom headers/footers
+\usepackage{lastpage} 
+
+% Header (empty)
+\lhead{}
+\chead{}
+\rhead{}
+
+% Footer (you may change this to your own needs)
+\lfoot{\footnotesize \texttt{Михаил Кулеш} \textbullet ~ \texttt{Микро-математика плюс}}
+\cfoot{}
+\rfoot{\footnotesize Стр. \thepage~из~\pageref{LastPage}} % "Page 1 of 2"
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Creating an initial of the very first character of the content
+\usepackage{lettrine}
+\newcommand{\initial}[1]{%
+  \lettrine[lines=2,lhang=0.0,nindent=0.6em]{\color{DarkGoldenrod}{\textbf{#1}}}{}
+}
+
+% Title, author and date metadata
+\usepackage{titling} % For custom titles
+\newcommand{\HorRule}{ % Creating a horizontal rule
+  \color{DarkGoldenrod}\rule{\linewidth}{1pt}%
+}
+
+\pretitle{%
+  %\vspace{-60pt} 
+  \begin{flushleft} 
+  \HorRule 
+  \usefont{T2A}{cmr}{b}{n} \fontsize{43}{43} \color{DarkRed} \selectfont 
+}
+\title{Микро-математика плюс} % Title of your article goes here
+\posttitle{%
+  \par
+  \fontsize{26}{26} \selectfont 
+  Версия 2.15 
+  \end{flushleft}
+  \vskip 0.5em
+}
+
+\preauthor{%
+  \begin{flushleft}
+  \large \lineskip 0.5em 
+  \usefont{T2A}{cmr}{b}{sl} \color{DarkRed} \selectfont
+}
+\author{Михаил Кулеш} % Author name goes here
+\postauthor{%
+  \par
+  \usefont{T2A}{cmr}{m}{sl} \color{Black} \selectfont
+  Электронная почта:~mikhail.kulesh@gmail.com % Institution of author
+  \par
+  Апрель~2017,~Бремен,~Германия
+  \par
+  \end{flushleft}
+  \HorRule
+}
+
+\date{} % No date
+ 
+%
+% Теперь займемся секциями и главами. Пусть первый абзац после начала главы будет с отступом.
+%
+\def\section{\@startsection {section}{1}{\z@}{3.5ex plus1ex minus
+    .2ex}{2.3ex plus.2ex}{\reset@font\Large\normalfont \bfseries}}
+\def\subsection{\@startsection{subsection}{2}{\z@}{3.25ex plus1ex
+    minus.2ex}{1.5ex plus.2ex}{\reset@font\large\normalfont \bfseries}}
+\def\subsubsection{\@startsection{subsubsection}{3}{\z@}{3.25ex plus
+    1ex minus.2ex}{1.5ex plus.2ex}{\reset@font\normalsize\normalfont \bfseries}}
+
+%
+%  Приступим к постановке точек после номеров...
+%
+\def\@aftersepkern{\kern-.5em}
+\def\postsection{.\@aftersepkern}
+\def\postsubsection{.\@aftersepkern}
+\def\postsubsubsection{.\@aftersepkern}
+\def\presection{}
+\def\presubsection{}
+\def\presubsubsection{}
+\def\@sect#1#2#3#4#5#6[#7]#8{\ifnum #2>\c@secnumdepth
+     \let\@svsec\@empty\else
+     \refstepcounter{#1}\edef\@svsec{%
+     \csname pre#1\endcsname % Добавил строку
+     \csname the#1\endcsname
+     \csname post#1\endcsname % Добавил строку
+\hskip 1em}\fi
+     \@tempskipa #5\relax
+      \ifdim \@tempskipa>\z@
+        \begingroup #6\relax
+          \@hangfrom{\hskip #3\relax\@svsec
+                   }{\interlinepenalty \@M \ignorespaces#8\par}%
+% Вставил в предыдущей строке \ignorespaces
+% Здесь и далее такие добавки - против лишних пробелов, появляющихся,
+% если аргумент sectioning-команды начинается с пробела.
+        \endgroup
+       \csname #1mark\endcsname{\protect\ignorespaces #7}\addcontentsline
+% Добавил два token'а перед #7
+         {toc}{#1}{\ifnum #2>\c@secnumdepth \else
+                      \protect\numberline{\csname the#1\endcsname
+                     \csname post#1\endcsname % Добавил строку
+}\fi
+\protect\ignorespaces #7}\else
+% Добавил два token'а перед #7
+        \def\@svsechd{#6\hskip #3\relax  %% \relax added 2 May 90
+                   \@svsec #8\csname #1mark\endcsname
+                      {\protect\ignorespaces #7}\addcontentsline
+% Добавил два token'а перед #7
+                           {toc}{#1}{\ifnum #2>\c@secnumdepth \else
+                             \protect\numberline{\csname the#1\endcsname
+                          \csname post#1\endcsname % Добавил строку
+}\fi
+\protect\ignorespaces #7}}\fi
+% Добавил два token'а перед #7
+     \@xsect{#5}}
+\def\@ssect#1#2#3#4#5{\@tempskipa #3\relax
+   \ifdim \@tempskipa>\z@
+     \begingroup #4\@hangfrom{\hskip #1}{\interlinepenalty \@M
+\ignorespaces #5\par}\endgroup % добавил \ignorespaces перед #5
+   \else \def\@svsechd{#4\hskip #1\relax
+\ignorespaces #5}\fi % добавил \ignorespaces перед #5
+    \@xsect{#3}}
+% После номеров глав тоже пусть стоят точки:
+%
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@\raggedright
+    \ifnum \c@secnumdepth >\m@ne
+     \huge \normalfont \bfseries \@chapapp{} \thechapter\postchapter % добавлено \postchapter
+    \par
+    \vskip 20\p@ \fi
+    \Huge \normalfont \bfseries
+    \ignorespaces #1\par % добавил \ignorespaces
+    \nobreak
+    \vskip 40\p@
+  }}
+\def\@makeschapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright
+    \Huge \normalfont \bfseries
+    \ignorespaces #1\par % добавил \ignorespaces
+    \nobreak
+    \vskip 40\p@
+  }}
+          
