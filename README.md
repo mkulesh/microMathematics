@@ -26,11 +26,13 @@ Not only students, but also everybody who likes mathematics or needs more than j
 
 ## Reviews and publications:
 * [Press Release: Introducing micro Mathematics: the First Spreadsheet Oriented Mathematical Calculator for Android](http://www.androidappsreview.com/2014/09/29/micro-mathematics-press-release/)
+* [Advanced calculator to solve the most complex mathematical equations smart phone](http://mn1professional.blogspot.de/2015/12/advanced-calculator-to-solve-most.html)
+* [Micro Mathematics Plus: Umfangreiche Rechner-App für Studenten & Schüler (in German)](http://beste-apps.chip.de/android/app/micro-mathematics-plus-umfangreiche-rechner-app-fuer-studenten-schueler,com.mkulesh.micromath.plus/)
 * [Математический пакет для Android своими руками (in Russian)](https://habrahabr.ru/post/250727/)
 * [Математический пакет для Android — «Микро-Математика» — теперь с открытым исходным кодом (in Russian)](https://habrahabr.ru/post/334670/)
 * [«Микро-математика»: формулы — это просто (in Russian)](http://4pda.ru/2015/09/01/241701/)
 * [Micro Mathematics — отличный научный калькулятор и графопостроитель на Android (in Russian)](https://lifehacker.ru/2015/10/21/micro-mathematics/)
-* [micro Mathematics Plus: Umfangreiche Rechner-App für Studenten & Schüler (in German)](http://beste-apps.chip.de/android/app/micro-mathematics-plus-umfangreiche-rechner-app-fuer-studenten-schueler,com.mkulesh.micromath.plus/)
+* [MathCAD для Android..? (In Russian)](http://svchushki.blogspot.de/2017/04/mathcad-android.html)
 
 ## Languages
 * English
