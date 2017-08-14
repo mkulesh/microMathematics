@@ -25,16 +25,16 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
-import android.widget.TextView;
 
 import com.mkulesh.micromath.plus.R;
 
-public class CustomTextView extends TextView implements OnLongClickListener, OnClickListener
+public class CustomTextView extends AppCompatTextView implements OnLongClickListener, OnClickListener
 {
 
     public enum SymbolType
@@ -143,7 +143,7 @@ public class CustomTextView extends TextView implements OnLongClickListener, OnC
         // http://stackoverflow.com/questions/9541196
         // TextView height doesn't change after shrinking the font size
         // Trick: reset text buffer
-        setText(getText(), TextView.BufferType.SPANNABLE);
+        setText(getText(), AppCompatTextView.BufferType.SPANNABLE);
 
         if (symbolType != null)
         {

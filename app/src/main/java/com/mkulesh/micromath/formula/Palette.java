@@ -24,13 +24,13 @@ import java.util.Locale;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.support.v7.widget.AppCompatImageButton;
 import android.text.InputType;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.plus.R;
@@ -55,7 +55,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         COMPARATORS
     }
 
-    private class PaletteImageButton extends ImageButton
+    private class PaletteImageButton extends AppCompatImageButton
     {
         private String code = null;
         private final boolean[] enabled = new boolean[PaletteType.values().length];

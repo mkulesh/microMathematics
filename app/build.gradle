@@ -20,7 +20,7 @@ android {
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
-        disable "RtlHardcoded", "RtlSymmetry", "RtlEnabled"
+        disable "RtlHardcoded", "RtlSymmetry", "RtlEnabled", "ApplySharedPref", "PrivateResource", "SetTextI18n"
     }
 }
 

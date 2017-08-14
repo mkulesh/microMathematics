@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -34,13 +35,12 @@ import android.view.View.OnLongClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputConnectionWrapper;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ClipboardManager;
 
-public class CustomEditText extends EditText implements OnLongClickListener, OnFocusChangeListener
+public class CustomEditText extends AppCompatEditText implements OnLongClickListener, OnFocusChangeListener
 {
     private AppCompatActivity activity = null;
     private TextChangeIf textChangeIf = null;

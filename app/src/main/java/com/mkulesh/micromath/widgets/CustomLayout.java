@@ -317,7 +317,7 @@ public class CustomLayout extends LinearLayout
 
         // Report our final dimensions.
         setMeasuredDimension(ViewCompat.resolveSizeAndState(maxWidth, widthMeasureSpec, childState),
-                ViewCompat.resolveSizeAndState(maxHeight, heightMeasureSpec, childState << MEASURED_HEIGHT_STATE_SHIFT));
+                ViewCompat.resolveSizeAndState(maxHeight, heightMeasureSpec, childState << ViewCompat.MEASURED_HEIGHT_STATE_SHIFT));
 
         // The third pass: resize element if necessary
         if (isAllignBelowTheNext)

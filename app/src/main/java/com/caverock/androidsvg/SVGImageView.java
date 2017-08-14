@@ -30,10 +30,10 @@ import android.graphics.Picture;
 import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 
 /**
  * SVGImageView is a View widget that allows users to include SVG images in
@@ -47,7 +47,7 @@ import android.widget.ImageView;
  * 
  * @attr ref R.styleable#SVGImageView_svg
  */
-public class SVGImageView extends ImageView {
+public class SVGImageView extends AppCompatImageView {
 	private static Method setLayerTypeMethod = null;
 
 	{
