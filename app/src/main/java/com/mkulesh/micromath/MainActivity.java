@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     private DrawerListAdapter drawerListAdapter = null;
     private Uri externalUri = null;
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -383,6 +384,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         actionBar.setSubtitle(name);
     }
 
+    @SuppressLint("RestrictedApi")
     public BaseFragment getVisibleFragment()
     {
         FragmentManager fragmentManager = MainActivity.this.getSupportFragmentManager();
