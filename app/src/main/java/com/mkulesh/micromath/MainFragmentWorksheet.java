@@ -218,7 +218,7 @@ public class MainFragmentWorksheet extends BaseFragment
 
     public void openFile()
     {
-        Commander commander = new Commander(activity, R.string.action_open, Commander.SelectionMode.OPEN,
+        Commander commander = new Commander(activity, R.string.action_open, Commander.SelectionMode.OPEN, assetFilter,
                 new Commander.OnFileSelectedListener()
                 {
                     public void onSelectFile(Uri uri, FileType fileType, final AdapterIf adapter)
@@ -235,7 +235,6 @@ public class MainFragmentWorksheet extends BaseFragment
                         }
                     }
                 });
-        commander.setAssetFilter(assetFilter);
         commander.show();
     }
 

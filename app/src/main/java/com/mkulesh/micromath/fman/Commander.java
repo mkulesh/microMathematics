@@ -57,12 +57,8 @@ public class Commander extends DialogBase implements CommanderIf
     {
         /**
          * Called when a file has been selected.
-         * 
-         * @param file
-         *            The file selected.
          */
         void onSelectFile(Uri uri, FileType fileType, final AdapterIf adapter);
-
     }
 
     public static final String PREF_LAST_SELECTED_PATH = "fman_last_selected_path";
@@ -79,6 +75,7 @@ public class Commander extends DialogBase implements CommanderIf
     private final FileListView fileListView;
     private final ImageButton homeButton;
     private final SelectionMode selectionMode;
+    private final CharSequence[] assetFilter;
 
     private final Button okButton;
     private final EditText fileName;
@@ -87,9 +84,7 @@ public class Commander extends DialogBase implements CommanderIf
 
     private AdapterIf destAdapter = null;
 
-    private CharSequence[] assetFilter;
-
-    public Commander(AppCompatActivity context, int nameId, SelectionMode selectionMode, OnFileSelectedListener listener)
+    public Commander(AppCompatActivity context, int nameId, SelectionMode selectionMode, CharSequence[] assetFilter, OnFileSelectedListener listener)
     {
         // Call superclass constructor.
         super(context, R.layout.fman_commander_layout, nameId);
@@ -114,6 +109,7 @@ public class Commander extends DialogBase implements CommanderIf
         });
 
         this.selectionMode = selectionMode;
+        this.assetFilter = assetFilter;
         okButton = ((Button) findViewById(R.id.dialog_button_ok));
 
         // prepare file name field
@@ -729,11 +725,6 @@ public class Commander extends DialogBase implements CommanderIf
     public SelectionMode getSelectionMode()
     {
         return selectionMode;
-    }
-
-    public void setAssetFilter(CharSequence[] assetFilter)
-    {
-        this.assetFilter = assetFilter;
     }
 
     public void setFileName(CharSequence name)

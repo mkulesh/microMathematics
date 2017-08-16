@@ -59,6 +59,7 @@
         <item>doc_de</item>
         <item>examples</item>
         <item>images</item>
+        <item>release_notes.xml</item>
     </string-array>
         
     <!-- Minimal and maximal number of significant digits -->

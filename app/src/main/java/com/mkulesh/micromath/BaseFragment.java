@@ -203,7 +203,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
 
     protected void saveFileAs(final boolean storeOpenedFileInfo)
     {
-        Commander commander = new Commander(activity, R.string.action_save_as, Commander.SelectionMode.SAVE_AS,
+        Commander commander = new Commander(activity, R.string.action_save_as, Commander.SelectionMode.SAVE_AS, null,
                 new Commander.OnFileSelectedListener()
                 {
                     public void onSelectFile(Uri uri, FileType fileType, final AdapterIf adapter)
@@ -225,7 +225,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
 
     protected void export()
     {
-        Commander commander = new Commander(activity, R.string.action_export, Commander.SelectionMode.EXPORT,
+        Commander commander = new Commander(activity, R.string.action_export, Commander.SelectionMode.EXPORT, null,
                 new Commander.OnFileSelectedListener()
                 {
                     public void onSelectFile(Uri uri, FileType fileType, final AdapterIf adapter)

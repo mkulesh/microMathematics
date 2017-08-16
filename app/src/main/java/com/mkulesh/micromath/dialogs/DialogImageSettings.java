@@ -130,6 +130,7 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
     {
 
         Commander commander = new Commander(activity, R.string.action_open, Commander.SelectionMode.OPEN,
+                activity.getResources().getStringArray(R.array.asset_filter),
                 new Commander.OnFileSelectedListener()
                 {
                     public void onSelectFile(Uri uri, FileType fileType, final AdapterIf adapter)
@@ -158,7 +159,6 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
                 commander.Navigate(imageFolder, null);
             }
         }
-        commander.setAssetFilter(activity.getResources().getStringArray(R.array.asset_filter));
         commander.show();
     }
 
