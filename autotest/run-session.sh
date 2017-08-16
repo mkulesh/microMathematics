@@ -15,6 +15,7 @@ echo APK to be tested: ${1}
 ./run-emulator.sh android_5.1.1 ${1}
 ./run-emulator.sh android_6.0.0 ${1} -g
 ./run-emulator.sh android_7.0.0 ${1} -g
+./run-emulator.sh android_7.1.1 ${1} -g
 
 firefox *.html
 
