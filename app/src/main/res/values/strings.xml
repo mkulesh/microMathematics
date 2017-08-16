@@ -16,6 +16,7 @@
         <item>Example</item>
         <item>Example</item>
         <item>About</item>
+        <item>Documentation</item>
     </string-array>
     <string-array name="activity_subtitles">
         <item>My Document</item>
@@ -25,6 +26,7 @@
         <item>3D Plot</item>
         <item>Series and Integrals</item>
         <item>micro Mathematics Plus</item>
+        <item>Download PDF</item>
     </string-array>
     <string-array name="activity_logos">
         <item>drawer_worksheet</item>
@@ -34,6 +36,7 @@
         <item>drawer_three_d_plot</item>
         <item>drawer_series_and_integrals</item>
         <item>drawer_about</item>
+        <item>drawer_documentation</item>
     </string-array>
     <string-array name="activity_resources">
         <item></item>
@@ -43,6 +46,7 @@
         <item>asset:/doc_en/three_d_plot.xml</item>
         <item>asset:/doc_en/series_and_integrals.xml</item>
         <item>asset:/doc_en/about_micromath.xml</item>
+        <item>https://github.com/mkulesh/microMathematics/blob/master/doc/microMathematics.pdf</item>
     </string-array>
     <string name="activity_welcome">asset:/doc_en/welcome.xml</string>
 

@@ -431,7 +431,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
             args.putInt(MainFragmentAsset.FRAGMENT_NUMBER, position);
             fragment.setArguments(args);
         }
-        else if (res != null && res.toString().contains("http:"))
+        else if (res != null && res.toString().contains("https:"))
         {
             try
             {
