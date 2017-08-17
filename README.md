@@ -1,8 +1,8 @@
-# ![The micro Mathematics Plus](https://github.com/mkulesh/microMathematics/blob/master/images/icon.png) "The micro Mathematics Plus - Extended visual calculator"
+# ![microMathematics Plus](https://github.com/mkulesh/microMathematics/blob/master/images/icon.png) "microMathematics Plus - Extended visual calculator"
 
-With micro Mathematics Plus, you can not only perform mathematical calculations in naturally readable form, but can also create and manage your own collection of interactive formulas!
+With microMathematics Plus, you can not only perform mathematical calculations in naturally readable form, but can also create and manage your own collection of interactive formulas!
 
-Micro Mathematics Plus is a revolutionary new kind of mobile calculator. It is the world’s first scientific graphing calculator and function plotter on Android oriented around a worksheet. It allows live editing of mathematical identities combined with highly accurate computations.
+microMathematics Plus is a revolutionary new kind of mobile calculator. It is the world’s first scientific graphing calculator and function plotter on Android oriented around a worksheet. It allows live editing of mathematical identities combined with highly accurate computations.
 
 Not only students, but also everybody who likes mathematics or needs more than just a basic calculator will benefit from this amazing technique of mathematical calculations and plotting.
 
@@ -25,13 +25,13 @@ Not only students, but also everybody who likes mathematics or needs more than j
 ![Example of a function plot](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/lenovo_vertical3.png)
 
 ## Reviews and publications:
-* [Press Release: Introducing micro Mathematics: the First Spreadsheet Oriented Mathematical Calculator for Android](http://www.androidappsreview.com/2014/09/29/micro-mathematics-press-release/)
+* [Press Release: Introducing microMathematics: the First Spreadsheet Oriented Mathematical Calculator for Android](http://www.androidappsreview.com/2014/09/29/micro-mathematics-press-release/)
 * [Advanced calculator to solve the most complex mathematical equations smart phone](http://mn1professional.blogspot.de/2015/12/advanced-calculator-to-solve-most.html)
-* [Micro Mathematics Plus: Umfangreiche Rechner-App für Studenten & Schüler (in German)](http://beste-apps.chip.de/android/app/micro-mathematics-plus-umfangreiche-rechner-app-fuer-studenten-schueler,com.mkulesh.micromath.plus/)
+* [microMathematics Plus: Umfangreiche Rechner-App für Studenten & Schüler (in German)](http://beste-apps.chip.de/android/app/micro-mathematics-plus-umfangreiche-rechner-app-fuer-studenten-schueler,com.mkulesh.micromath.plus/)
 * [Математический пакет для Android своими руками (in Russian)](https://habrahabr.ru/post/250727/)
 * [Математический пакет для Android — «Микро-Математика» — теперь с открытым исходным кодом (in Russian)](https://habrahabr.ru/post/334670/)
 * [«Микро-математика»: формулы — это просто (in Russian)](http://4pda.ru/2015/09/01/241701/)
-* [Micro Mathematics — отличный научный калькулятор и графопостроитель на Android (in Russian)](https://lifehacker.ru/2015/10/21/micro-mathematics/)
+* [microMathematics — отличный научный калькулятор и графопостроитель на Android (in Russian)](https://lifehacker.ru/2015/10/21/micro-mathematics/)
 * [MathCAD для Android..? (In Russian)](http://svchushki.blogspot.de/2017/04/mathcad-android.html)
 
 ## Languages

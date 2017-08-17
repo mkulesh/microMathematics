@@ -1,5 +1,5 @@
 #!/bin/csh
-# C-shell script used to run micro Mathematics in a given emulator
+# C-shell script used to run microMathematics Plus in a given emulator
 
 setenv EMU_NAME ${1}
 setenv APK_DATA /sdcard/Android/data

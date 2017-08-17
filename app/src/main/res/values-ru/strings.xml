@@ -24,7 +24,7 @@
         <item>Полярный график</item>
         <item>3D график</item>
         <item>Ряды и интегралы</item>
-        <item>micro Mathematics Plus</item>
+        <item>microMathematics Plus</item>
         <item>Загрузить PDF</item>
     </string-array>
     <string-array name="activity_logos">
@@ -51,7 +51,7 @@
     
     <!-- Permissions -->
     <string name="allow_storage_access_title">Разрешить обращаться к файлам документов</string>
-    <string name="allow_storage_access_description">micro Mathematics Plus запрашивает разрешение, чтобы обращаться к файлам документов на вашем устройстве</string>
+    <string name="allow_storage_access_description">microMathematics Plus запрашивает разрешение, чтобы обращаться к файлам документов на вашем устройстве</string>
     <string name="allow_storage_access_grant">Дать разрешение</string>
     
     <!-- Main menu -->
@@ -241,7 +241,7 @@
     <string name="fman_external_descr">Доступ к файлам на внешней карте памяти. Может быть только для чтения на некоторых устройствах</string>
 	<string name="fman_saf">Документы</string>
 	<string name="fman_saf_descr">Доступ к файлам в хранилище документов</string>
-	<string name="fman_assets">Ресурсы \"micro Mathematics Plus\"</string>
+	<string name="fman_assets">Ресурсы \"microMathematics Plus\"</string>
     <string name="fman_assets_descr">Документация и примеры, идущие вместе с приложением</string>
     <string name="fman_home">Стартовая страница</string>
     <string name="fman_sort_by_name">Сорт. по имени</string>

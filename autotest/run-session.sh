@@ -1,5 +1,5 @@
 #!/bin/csh
-# C-shell script used to run micro Mathematics in all configured emulators
+# C-shell script used to run microMathematics Plus in all configured emulators
 
 echo Configured emulators:
 /work/adt-eclipse/sdk/tools/emulator -list-avds
