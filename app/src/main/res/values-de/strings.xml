@@ -2,6 +2,8 @@
 <resources>
 
     <!-- General settings -->
+    <string name="app_name">microMathematics Plus</string>
+    <string name="app_short_name">μMath+</string>
     <string name="app_description">Umfangreicher Taschenrechner: Live-Editing und hochgenaue Berechnungen</string>
     
     <!-- Drawer -->

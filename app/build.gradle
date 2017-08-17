@@ -5,7 +5,6 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.mkulesh.micromath.plus"
-        manifestPlaceholders = [appName: "microMathematics Plus", appShortName: "μMath+"]
         minSdkVersion 9
         targetSdkVersion 25
         versionCode 301
