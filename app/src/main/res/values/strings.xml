@@ -52,7 +52,7 @@
 
     <!-- Permissions -->
     <string name="allow_storage_access_title">Allow to access worksheet files</string>
-    <string name="allow_storage_access_description">micro Mathematics needs you to grant permission to access the worksheet files on this device</string>
+    <string name="allow_storage_access_description">micro Mathematics Plus needs you to grant permission to access the worksheet files on this device</string>
     <string name="allow_storage_access_grant">Grant permission</string>
     
     <!-- Main menu -->
@@ -242,7 +242,7 @@
     <string name="fman_external_descr">Access files on the physically inserted SD card. It may be read-only on some devices</string>
 	<string name="fman_saf">Documents</string>
 	<string name="fman_saf_descr">Access files in the document storage</string>
-    <string name="fman_assets">Resources of \"micro Mathematics\"</string>
+    <string name="fman_assets">Resources of \"micro Mathematics Plus\"</string>
     <string name="fman_assets_descr">Documentation and examples delivered with this app</string>
     <string name="fman_home">Home</string>
     <string name="fman_sort_by_name">Sort by name</string>

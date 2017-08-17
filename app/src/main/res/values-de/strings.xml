@@ -52,7 +52,7 @@
     
     <!-- Permissions -->
     <string name="allow_storage_access_title">Zugriff auf Arbeitsblatt-Dateien erlauben</string>
-    <string name="allow_storage_access_description">micro Mathematics benötigt von Ihnen die Genehmigung zum Zugriff auf die Arbeitsblatt-Dateien auf diesem Gerät</string>
+    <string name="allow_storage_access_description">micro Mathematics Plus benötigt von Ihnen die Genehmigung zum Zugriff auf die Arbeitsblatt-Dateien auf diesem Gerät</string>
     <string name="allow_storage_access_grant">Genehmigung erteilen</string>
     
     <!-- Main menu -->
@@ -242,8 +242,8 @@
     <string name="fman_external_descr">Öffnen und Speichern der Dateien auf eine externe SD-Karte</string>
 	<string name="fman_saf">Dokumente</string>
 	<string name="fman_saf_descr">Zugang zu den Dokumenten aus der Dokumentablage</string>
-	<string name="fman_assets">Hilfsmittel der \"micro Mathematics\"</string>
-    <string name="fman_assets_descr">Dokumentation und Anwendungsbeispiele, die mit der \"micro Mathematics\" ausgeliefert sind</string>
+	<string name="fman_assets">Hilfsmittel der \"micro Mathematics Plus\"</string>
+    <string name="fman_assets_descr">Dokumentation und Anwendungsbeispiele, die mit der \"micro Mathematics Plus\" ausgeliefert sind</string>
     <string name="fman_home">Startbildschirm</string>
     <string name="fman_sort_by_name">Nach Namen sortieren</string>
     <string name="fman_sort_by_ext">Nach Dateityp sortieren</string>

@@ -1,8 +1,8 @@
-# ![The micro Mathematics](https://github.com/mkulesh/microMathematics/blob/master/images/icon.png) "The micro Mathematics - Extended visual calculator"
+# ![The micro Mathematics Plus](https://github.com/mkulesh/microMathematics/blob/master/images/icon.png) "The micro Mathematics Plus - Extended visual calculator"
 
-With micro Mathematics, you can not only perform mathematical calculations in naturally readable form, but can also create and manage your own collection of interactive formulas!
+With micro Mathematics Plus, you can not only perform mathematical calculations in naturally readable form, but can also create and manage your own collection of interactive formulas!
 
-Micro Mathematics is a revolutionary new kind of mobile calculator. It is the world’s first scientific graphing calculator and function plotter on Android oriented around a worksheet. It allows live editing of mathematical identities combined with highly accurate computations.
+Micro Mathematics Plus is a revolutionary new kind of mobile calculator. It is the world’s first scientific graphing calculator and function plotter on Android oriented around a worksheet. It allows live editing of mathematical identities combined with highly accurate computations.
 
 Not only students, but also everybody who likes mathematics or needs more than just a basic calculator will benefit from this amazing technique of mathematical calculations and plotting.
 

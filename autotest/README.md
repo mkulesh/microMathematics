@@ -1,6 +1,6 @@
 ## Directory microMathematics/autotest
 
-This directory contains some useful scripts used to automatically test micro Mathematics.
+This directory contains some useful scripts used to automatically test the micro Mathematics Plus.
 
 *create-avd.sh* - can be used in order to create necessary Android Virtual Devices (AVDs) 
 
