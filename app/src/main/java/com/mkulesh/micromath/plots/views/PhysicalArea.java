@@ -1,5 +1,5 @@
 /*******************************************************************************
- * micro Mathematics - Extended visual calculator
+ * microMathematics Plus - Extended visual calculator
  * *****************************************************************************
  * Copyright (C) 2014-2017 Mikhail Kulesh
  * 
