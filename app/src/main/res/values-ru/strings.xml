@@ -202,7 +202,7 @@
     <string name="math_function_hypot">Длина гипотенузы прямоугольного треугольника: sqrt(x^2+ y^2)</string>
     
     <!-- Errors -->
-    <string name="error_max_layout_depth">К сожалению, достигнут предел глубины формулы для данной версии Андроида</string>
+    <string name="error_max_layout_depth">К сожалению, достигнут предел глубины формулы для данной версии Android</string>
     <string name="error_brackets_not_completed">Скобки не закрыты</string>
     <string name="error_invalid_variable_name">Недопустимое имя</string>
     <string name="error_unknown_variable">Символ не является известной переменной или аргументом</string>
@@ -286,7 +286,7 @@
     <string name="message_developer_mode">Режим разработчика активирован</string>
     
     <!-- Library licenses -->
-    <string name="dialog_licenses_support_v7">Библиотека поддержки Андроид v7</string>
+    <string name="dialog_licenses_support_v7">Библиотека поддержки Android v7</string>
     <string name="dialog_licenses_support_v7_path">http://developer.android.com</string>
     <string name="dialog_licenses_support_v7_text">Copyright © 2013 The Android Open Source Project\n\nЛицензировано согласно Лицензии Apache, Версия 2.0 (\"Лицензия\"); вы можете использовать этот файл только в соответствии с Лицензией. Вы можете найти копию Лицензии по адресу\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nЗа исключением случаев, когда это регламентировано существующим законодательством или если это не оговорено в письменном соглашении, программное обеспечение распространяемое на условиях данной Лицензии, предоставляется \"КАК ЕСТЬ\" и любые явные или неявные ГАРАНТИИ ОТВЕРГАЮТСЯ. Информацию об основных правах и ограничениях, применяемых к определенному языку согласно Лицензии, вы можете найти в данной Лицензии.</string>
         
