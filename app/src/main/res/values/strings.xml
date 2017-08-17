@@ -2,7 +2,6 @@
 <resources>
 
     <!-- General settings -->
-    <string name="app_name">micro Mathematics Plus</string>
     <string name="app_description">Extended visual calculator: live editing and computations of formulas</string>
     
     <!-- Drawer -->
