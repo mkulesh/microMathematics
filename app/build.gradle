@@ -15,6 +15,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def file = output.outputFile
+                    output.outputFile = new File(file.parent, "microMathematics-" + defaultConfig.versionName + ".apk")
+                }
+            }
         }
     }
     lintOptions {

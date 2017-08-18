@@ -317,9 +317,16 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         {
             primaryButtonsSet.activate(R.id.main_flb_action_play, this);
         }
-        else if (inOperation && stopHandler != null)
+        else if (inOperation)
         {
-            primaryButtonsSet.activate(R.id.main_flb_action_stop, stopHandler);
+            if (stopHandler != null)
+            {
+                primaryButtonsSet.activate(R.id.main_flb_action_stop, stopHandler);
+            }
+            else
+            {
+                primaryButtonsSet.activate(-1, null);
+            }
         }
 
         // update progress bar 

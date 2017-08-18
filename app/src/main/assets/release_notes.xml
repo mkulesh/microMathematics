@@ -1,8 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="40" significantDigits="6" scale="0.48551" redefineAllowed="false">
+  <formulaList textWidth="41" significantDigits="6" scale="0.50000" redefineAllowed="false">
     <text_fragment textStyle="subsection">
       <term key="text" text="Current release:" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text='Fixed a bug: the floating button&#10;"Calculate" shall disappear if file open&#10;operation is in progress' />
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text="The App is adapted for the Android 7.1" />
@@ -17,7 +20,7 @@
       <term key="text" text="Version 2.15.2" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text="microMathematics Plus is now Open&#10;Source Software, see&#10;https://github.com/mkulesh/microMathematics" />
+      <term key="text" text="microMathematics Plus is now Open Source&#10;Software, see&#10;https://github.com/mkulesh/microMathematics" />
     </text_fragment>
     <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Version 2.15.1" />
@@ -38,13 +41,13 @@
       <term key="text" text="Added text styles (chapter, section,&#10;subsection, ...)" />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text="Fixed a bug: Ctrl+V is not work if a&#10;term is selected and a term is in the&#10;buffer" />
+      <term key="text" text="Fixed a bug: Ctrl+V is not work if a term&#10;is selected and a term is in the buffer" />
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text="Saved sorting mode of file manager" />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text="Improved performance of result details&#10;dialog. Details dialog is now opened&#10;using floating button instead of&#10;context menu" />
+      <term key="text" text="Improved performance of result details&#10;dialog. Details dialog is now opened&#10;using floating button instead of context&#10;menu" />
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text="Added Details dialog for function plot&#10;and 1D array" />
@@ -60,10 +63,10 @@
       <term key="text" text="Improved dialogs layout" />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text="Fixed a bug: tap on color picker does&#10;not work in Android 6" />
+      <term key="text" text="Fixed a bug: tap on color picker does not&#10;work in Android 6" />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text="Integrated new file manager that&#10;supports Storage Access Framework on&#10;Android 6" />
+      <term key="text" text="Integrated new file manager that supports&#10;Storage Access Framework on Android 6" />
     </text_fragment>
     <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Version 2.14.3" />
@@ -123,7 +126,7 @@
       <term key="text" text="Improved calculation performance for&#10;derivation of product operator" />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text='Fixed a bug: "Expand" button disappers&#10;after all elements are selected and&#10;than one is de-selected' />
+      <term key="text" text='Fixed a bug: "Expand" button disappers&#10;after all elements are selected and than&#10;one is de-selected' />
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text="Editor improvement: a function will not&#10;be deleted after the last remaining&#10;argument of this function is erased" />
