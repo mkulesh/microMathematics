@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="41" significantDigits="6" scale="0.50000" redefineAllowed="false">
+  <formulaList textWidth="40" significantDigits="6" scale="0.50000" redefineAllowed="false">
     <text_fragment textStyle="subsection">
       <term key="text" text="Current release:" />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text='Fixed a bug: the floating button&#10;"Calculate" shall disappear if file open&#10;operation is in progress' />
+      <term key="text" text='Fixed a bug: the floating button&#10;"Calculate" shall disappear if file&#10;open operation is in progress' />
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text="The App is adapted for the Android 7.1" />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text="Android 2.2 is not longer supported. The&#10;required Android version is now 2.3" />
+      <term key="text" text="Android 2.2 is no longer supported. The&#10;required Android version is now 2.3" />
     </text_fragment>
     <text_fragment textStyle="subsection">
       <term key="text" text="Previous releases:" />
@@ -41,13 +41,13 @@
       <term key="text" text="Added text styles (chapter, section,&#10;subsection, ...)" />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text="Fixed a bug: Ctrl+V is not work if a term&#10;is selected and a term is in the buffer" />
+      <term key="text" text="Fixed a bug: Ctrl+V is not work if a&#10;term is selected and a term is in the&#10;buffer" />
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text="Saved sorting mode of file manager" />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text="Improved performance of result details&#10;dialog. Details dialog is now opened&#10;using floating button instead of context&#10;menu" />
+      <term key="text" text="Improved performance of result details&#10;dialog. Details dialog is now opened&#10;using floating button instead of&#10;context menu" />
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text="Added Details dialog for function plot&#10;and 1D array" />
@@ -63,10 +63,10 @@
       <term key="text" text="Improved dialogs layout" />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text="Fixed a bug: tap on color picker does not&#10;work in Android 6" />
+      <term key="text" text="Fixed a bug: tap on color picker does&#10;not work in Android 6" />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text="Integrated new file manager that supports&#10;Storage Access Framework on Android 6" />
+      <term key="text" text="Integrated new file manager that&#10;supports Storage Access Framework on&#10;Android 6" />
     </text_fragment>
     <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Version 2.14.3" />
@@ -90,7 +90,7 @@
       <term key="text" text="Fixed a bug: if any document can not be&#10;loaded, the default directory path is&#10;lost" />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text="Plot improvenent: Added symbols that&#10;label the samples of the function plot" />
+      <term key="text" text="Plot improvement: Added symbols that&#10;label the samples of the function plot" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="x" />
@@ -126,7 +126,7 @@
       <term key="text" text="Improved calculation performance for&#10;derivation of product operator" />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text='Fixed a bug: "Expand" button disappers&#10;after all elements are selected and than&#10;one is de-selected' />
+      <term key="text" text='Fixed a bug: "Expand" button disappears&#10;after all elements are selected and&#10;than one is de-selected' />
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text="Editor improvement: a function will not&#10;be deleted after the last remaining&#10;argument of this function is erased" />
@@ -135,7 +135,7 @@
       <term key="text" text="Plot improvement: If a new line is added&#10;to the function plot, set the default&#10;line color and line style that differs&#10;from the previous line" />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text="Implemented 1D-3D arrays that can be&#10;accesed by an index:" />
+      <term key="text" text="Implemented 1D-3D arrays that can be&#10;accessed by an index:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="k" />

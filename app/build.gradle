@@ -18,7 +18,7 @@ android {
             applicationVariants.all { variant ->
                 variant.outputs.each { output ->
                     def file = output.outputFile
-                    output.outputFile = new File(file.parent, "microMathematics-" + defaultConfig.versionName + ".apk")
+                    output.outputFile = new File(file.parent, "microMathematics-v" + defaultConfig.versionName + ".apk")
                 }
             }
         }
