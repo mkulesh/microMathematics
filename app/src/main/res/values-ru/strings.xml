@@ -9,6 +9,11 @@
     <!-- Drawer -->
     <string name="drawer_open">Открыть навигатор</string>
 
+    <string-array name="language_names">
+        <item>Английский</item>
+        <item>Русский</item>
+        <item>Немецкий</item>
+    </string-array>
     <string-array name="activity_titles">
         <item>Рабочий лист</item>
         <item>Справка</item>
@@ -71,7 +76,8 @@
     <string name="action_export">Экспортировать</string>
     <string name="action_licenses">Информация о лицензиях</string>
     <string name="action_details">Подробности</string>
-        
+    <string name="action_app_language">Язык приложения</string>
+
     <!-- Context menu -->
     <string name="context_expand">Выбрать больше</string>
     <string name="context_copy">Копировать</string>

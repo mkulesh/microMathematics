@@ -20,6 +20,7 @@ package com.mkulesh.micromath;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -221,6 +222,9 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
                 baseFragment.performAction(menuItem.getItemId());
             }
             return true;
+        case R.id.action_app_language:
+            AppLocale.ContextWrapper.setPreferredLanguage(this);
+            return true;
         case R.id.action_licenses:
             (new DialogLicenses(this, BaseFragment.DEVELOPER_MODE)).show();
             return true;
@@ -231,6 +235,21 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         default:
             return super.onOptionsItemSelected(menuItem);
         }
+    }
+
+    public void restartActivity()
+    {
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase)
+    {
+        final String prefLocale = AppLocale.ContextWrapper.getPreferredLanguage(newBase);
+        ViewUtils.Debug(this, "Application locale: " + prefLocale);
+        super.attachBaseContext(AppLocale.ContextWrapper.wrap(newBase, new Locale(prefLocale)));
     }
 
     /*********************************************************

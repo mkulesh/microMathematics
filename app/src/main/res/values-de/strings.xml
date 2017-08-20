@@ -9,6 +9,11 @@
     <!-- Drawer -->
     <string name="drawer_open">Öffnen App-Navigation</string>
 
+    <string-array name="language_names">
+        <item>Englisch</item>
+        <item>Russisch</item>
+        <item>Deutsch</item>
+    </string-array>
     <string-array name="activity_titles">
         <item>Arbeitsblatt</item>
         <item>Benutzung</item>
@@ -71,7 +76,8 @@
     <string name="action_export">Exportieren</string>
     <string name="action_licenses">Open-Source-Lizenzen</string>
     <string name="action_details">Details</string>
-        
+    <string name="action_app_language">App Sprache</string>
+
     <!-- Context menu -->
     <string name="context_expand">Auswahl ausdehnen</string>
     <string name="context_copy">Kopieren</string>

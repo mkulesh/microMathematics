@@ -9,6 +9,16 @@
     <!-- Drawer -->
     <string name="drawer_open">Open navigation drawer</string>
 
+    <string-array name="language_codes" translatable="false">
+        <item>en</item>
+        <item>ru</item>
+        <item>de</item>
+    </string-array>
+    <string-array name="language_names">
+        <item>English</item>
+        <item>Russian</item>
+        <item>German</item>
+    </string-array>
     <string-array name="activity_titles">
         <item>Worksheet</item>
         <item>How To Use</item>
@@ -71,6 +81,7 @@
     <string name="action_export">Export</string>
     <string name="action_licenses">Open source licenses</string>
     <string name="action_details">Details</string>
+    <string name="action_app_language">App language</string>
         
     <!-- Context menu -->
     <string name="context_expand">Expand selection</string>
@@ -140,7 +151,7 @@
     <string name="dialog_text_style_numbering">Numbering</string>
     <string name="dialog_list_items">item (s)</string>
     <string name="dialog_function_selection">Function</string>
-    
+
     <!-- Mathematical elements -->
     <string name="math_new_element">New element</string>
     <string name="math_new_equation">Add equation</string>
