@@ -1,4 +1,4 @@
-# ![microMathematics Plus](https://github.com/mkulesh/microMathematics/blob/master/images/icon.png) "microMathematics Plus - Extended visual calculator"
+# <img src="https://github.com/mkulesh/microMathematics/blob/master/images/icon.png" align="center" height="48" width="48"> "microMathematics Plus - Extended visual calculator"
 
 With microMathematics Plus, you can not only perform mathematical calculations in naturally readable form, but can also create and manage your own collection of interactive formulas!
 
