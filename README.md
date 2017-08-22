@@ -11,7 +11,6 @@ Not only students, but also everybody who likes mathematics or needs more than j
 [<img src="https://f-droid.org/badge/get-it-on.png"
       alt="Get it on F-Droid" height="110">](https://f-droid.org/packages/com.mkulesh.micromath.plus)
 
-
 ## Benefits and features:
 
 * Verification, validation, documentation and re-use of mathematical calculations
@@ -21,8 +20,8 @@ Not only students, but also everybody who likes mathematics or needs more than j
 * Powerful mathematical touch-screen editor with undo function makes editing easier
 * You can do multiple calculations and subsequently correct or change all used formulas
 * It is possible to store intermediate results into 1D, 2D, or 3D array that can improve calculation performance
-* Mathematical expressions are collected in a document, that includes not only formulas and plots, but also additional text and images (SVG format is also supported)
-* You can store your document on SD card and export it into LaTeX format or an image (SD writing permission is needed)
+* Mathematical expressions are collected in a document, that includes not only formulas and plots, but also additional text and images ([SVG format](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) is also supported)
+* You can store your document on SD card and export it into [LaTeX format](https://www.latex-project.org/) or an image (SD writing permission is needed)
 * SD card on Android 6+ is also supported
 * The app contains detailed "How to use" page and several examples
 
@@ -53,7 +52,7 @@ This program is free software: you can redistribute it and/or modify it under th
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program.
 
-If not, see [www.gnu.org/licenses](http://www.gnu.org/licenses).
+If not, see [www.gnu.org/licenses](https://www.gnu.org/licenses).
 
 ## Dependencies
 
