@@ -2,12 +2,14 @@
 
 With microMathematics Plus, you can not only perform mathematical calculations in naturally readable form, but can also create and manage your own collection of interactive formulas!
 
-microMathematics Plus is a revolutionary new kind of mobile calculator. It is the world’s first scientific graphing calculator and function plotter on Android oriented around a worksheet. It allows live editing of mathematical identities combined with highly accurate computations.
+microMathematics Plus is a revolutionary new kind of mobile calculator. It is the scientific graphing calculator and function plotter on Android oriented around a worksheet. It allows live editing of mathematical identities combined with highly accurate computations.
 
 Not only students, but also everybody who likes mathematics or needs more than just a basic calculator will benefit from this amazing technique of mathematical calculations and plotting.
 
-<a href='https://play.google.com/store/apps/details?id=com.mkulesh.micromath.plus&hl=en'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width='323' height='125'/></a>
-<a href='https://f-droid.org/packages/com.mkulesh.micromath.plus/'><img alt='Get it on F-Droid' src='https://f-droid.org/wiki/images/c/c4/F-Droid-button_available-on.png' width='323' height='125'/></a>
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
+      alt="Get it on Google Play" height="110">](https://play.google.com/store/apps/details?id=com.mkulesh.micromath.plus)
+[<img src="https://f-droid.org/badge/get-it-on.png"
+      alt="Get it on F-Droid" height="110">](https://f-droid.org/packages/com.mkulesh.micromath.plus)
 
 ## Benefits and features:
 
