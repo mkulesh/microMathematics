@@ -149,7 +149,7 @@
     <string name="dialog_image_settings_embedded">Embedded image</string>-->
     <string name="dialog_image_settings_original_size">Taille original</string>
     <string name="dialog_image_settings_custom_size">Taille personnalisée</string>
-    <string name="dialog_image_settings_width">Largeur de l'\image</string>
+    <string name="dialog_image_settings_width">Largeur de l\'image</string>
     <!--<string name="dialog_image_settings_height">Hauter de l\image</string>
     <string name="dialog_result_title">Result properties</string>-->
     <string name="dialog_result_disable_calculation">Ne pas calculler</string>
@@ -229,8 +229,8 @@
     <!--<string name="error_max_layout_depth">Reached layout depth limit for this Android version</string>
     <string name="error_brackets_not_completed">Brackets are not completed</string>-->
     <string name="error_invalid_variable_name">Nom de variable invalide</string>
-    <string name="error_unknown_variable">Le symbole n'est pas une variable ou argument connu</string>
-    <string name="error_unknown_function">La fonction %s n\'est pas définie et n'est pas une fonction intégrée</string>
+    <string name="error_unknown_variable">Le symbole n\'est pas une variable ou argument connu</string>
+    <string name="error_unknown_function">La fonction %s n\'est pas définie et n\'est pas une fonction intégrée</string>
     <!--<string name="error_unknown_array">Array %s is not defined</string>
     <string name="error_not_an_array">%s can not be accessed by index since it is not an array</string>
     <string name="error_not_a_function">%s can not be accessed by value since it is not a function</string>
@@ -250,7 +250,7 @@
     <string name="error_duplicated_identifier">Cet identifiant est déjà utilisé</string>
     <string name="error_forbidden_arguments">Les arguments ne sont pas autorisés pour cet identifiant</string>
     <string name="error_forbidden_complex">Un nombre complexe n\'est pas autorisé pour ce champ</string>
-    <string name="error_forbidden_imaginary_unit">Le symbole \'i\' est réservé pour l'unité imaginaire qui n'est pas autorisée dans ce contexte</string>
+    <string name="error_forbidden_imaginary_unit">Le symbole \'i\' est réservé pour l\'unité imaginaire qui n\'est pas autorisée dans ce contexte</string>
     <string name="error_nan_value">Le champ contient une valeur qui n\'est pas un nombre</string>
     <string name="error_unknown_file_format">Le format du fichier %s est inconnu</string>
     <string name="error_file_read">Impossible d\'ouvrir le fichier %s</string>
