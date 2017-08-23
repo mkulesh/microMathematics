@@ -36,6 +36,7 @@ Not only students, but also everybody who likes mathematics or needs more than j
 * [«Микро-математика»: формулы — это просто (in Russian)](http://4pda.ru/2015/09/01/241701/)
 * [microMathematics — отличный научный калькулятор и графопостроитель на Android (in Russian)](https://lifehacker.ru/2015/10/21/micro-mathematics/)
 * [MathCAD для Android..? (In Russian)](http://svchushki.blogspot.de/2017/04/mathcad-android.html)
+* [Micro Mathematics : Android Math Book Demo (Video)](https://www.youtube.com/watch?v=eUzF1gXd6rc&feature=player_embedded)
 
 ## Languages
 * English
