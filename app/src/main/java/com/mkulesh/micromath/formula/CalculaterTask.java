@@ -69,6 +69,12 @@ public class CalculaterTask extends AsyncTask<Void, CalculationResult, Void> imp
                 {
                     break;
                 }
+                catch (OutOfMemoryError ex)
+                {
+                    String error = list.getActivity().getResources().getString(R.string.error_out_of_memory);
+                    Toast.makeText(list.getActivity(), error, Toast.LENGTH_LONG).show();
+                    break;
+                }
                 publishProgress(f);
             }
         }
