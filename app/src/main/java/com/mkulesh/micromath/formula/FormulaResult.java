@@ -50,9 +50,12 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     private static final String STATE_RESULT_PROPERTIES = "result_properties";
 
     private TermField leftTerm = null;
+    private CustomTextView resultAssign = null;
+    private CustomTextView leftBracket = null;
     private TermField rightTerm = null;
+    private CustomTextView rightBracket = null;
     private String result = null;
-    private ArrayList<ArgumentValueItem> calculatedItems = null;
+    private ArrayList<ArgumentValueItem> arrayResult = null;
 
     private final ResultProperties properties = new ResultProperties();
 
@@ -148,7 +151,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     public void invalidateResult()
     {
         result = null;
-        calculatedItems = null;
+        arrayResult = null;
         showResult();
     }
 
@@ -175,7 +178,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
             if (values != null && values.size() > 0)
             {
                 // calculate values
-                calculatedItems = new ArrayList<ArgumentValueItem>(values.size());
+                arrayResult = new ArrayList<ArgumentValueItem>(values.size());
                 for (Double v : values)
                 {
                     argValues[0].setValue(v);
@@ -185,7 +188,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                     linkedInterval.setArgumentValues(argValues);
                     // y value
                     leftTerm.getValue(thread, item.value);
-                    calculatedItems.add(item);
+                    arrayResult.add(item);
                 }
                 // make string representation
                 result = makeResultArray();
@@ -208,6 +211,19 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     @Override
     public void showResult()
     {
+        final int visibility = isResultVisible() ? View.VISIBLE : View.GONE;
+        rightTerm.getEditText().setVisibility(visibility);
+        resultAssign.setVisibility(visibility);
+        if (isArrayResult())
+        {
+            leftBracket.setVisibility(visibility);
+            rightBracket.setVisibility(visibility);
+        }
+        else
+        {
+            leftBracket.setVisibility(View.GONE);
+            rightBracket.setVisibility(View.GONE);
+        }
         if (result != null)
         {
             rightTerm.setText(result);
@@ -231,9 +247,9 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     @Override
     public void onDetails(View owner)
     {
-        if (calculatedItems != null)
+        if (isArrayResult())
         {
-            DialogResultDetails d = new DialogResultDetails(getFormulaList().getActivity(), calculatedItems,
+            DialogResultDetails d = new DialogResultDetails(getFormulaList().getActivity(), arrayResult,
                     getFormulaList().getDocumentSettings());
             d.show();
         }
@@ -244,7 +260,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     {
         if (owner == this)
         {
-            properties.showArrayLenght = calculatedItems != null;
+            properties.showArrayLenght = isArrayResult();
             DialogResultSettings d = new DialogResultSettings(getFormulaList().getActivity(), this, properties);
             formulaState = getState();
             d.show();
@@ -277,7 +293,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     @Override
     public boolean enableDetails()
     {
-        return calculatedItems != null;
+        return isArrayResult();
     }
 
     /*********************************************************
@@ -347,6 +363,16 @@ public class FormulaResult extends CalculationResult implements ResultProperties
      * FormulaResult-specific methods
      *********************************************************/
 
+    public boolean isResultVisible ()
+    {
+        return !properties.hideResultField;
+    }
+
+    public boolean isArrayResult ()
+    {
+        return arrayResult != null;
+    }
+
     /**
      * Procedure creates the formula layout
      */
@@ -361,9 +387,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         }
         // create assign character
         {
-            CustomTextView v = (CustomTextView) layout.findViewById(R.id.formula_result_assign);
-            v.prepare(CustomTextView.SymbolType.TEXT, getFormulaList().getActivity(), this);
-            v.setText(getContext().getResources().getString(R.string.formula_result_definition));
+            resultAssign = (CustomTextView) layout.findViewById(R.id.formula_result_assign);
+            resultAssign.prepare(CustomTextView.SymbolType.TEXT, getFormulaList().getActivity(), this);
         }
         // create result term
         {
@@ -372,21 +397,21 @@ public class FormulaResult extends CalculationResult implements ResultProperties
             rightTerm.bracketsType = TermField.BracketsType.NEVER;
             rightTerm.isWritable = false;
         }
+        // brackets
+        {
+            leftBracket = (CustomTextView) layout.findViewById(R.id.formula_result_left_bracket);
+            leftBracket.prepare(CustomTextView.SymbolType.LEFT_SQR_BRACKET, getFormulaList().getActivity(), this);
+            leftBracket.setText("."); // this text defines view width/height
+
+            rightBracket = (CustomTextView) layout.findViewById(R.id.formula_result_right_bracket);
+            rightBracket.prepare(CustomTextView.SymbolType.RIGHT_SQR_BRACKET, getFormulaList().getActivity(), this);
+            rightBracket.setText("."); // this text defines view width/height
+        }
         updateResultView(false);
     }
 
     private void updateResultView(boolean checkContent)
     {
-        int visibility = properties.hideResultField ? View.GONE : View.VISIBLE;
-        if (rightTerm != null)
-        {
-            rightTerm.getEditText().setVisibility(visibility);
-        }
-        CustomTextView v = (CustomTextView) layout.findViewById(R.id.formula_result_assign);
-        if (v != null)
-        {
-            v.setVisibility(visibility);
-        }
         if (checkContent)
         {
             if (isContentValid(ValidationPassType.VALIDATE_SINGLE_FORMULA))
@@ -394,23 +419,23 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                 isContentValid(ValidationPassType.VALIDATE_LINKS);
             }
         }
-        if (calculatedItems != null && !disableCalculation())
+        if (isArrayResult() && !disableCalculation())
         {
             result = makeResultArray();
-            showResult();
         }
+        showResult();
     }
 
     private String makeResultArray()
     {
-        String r = "[";
+        String r = "";
         final int nrLogged = properties.arrayLength - 1;
-        final int length = calculatedItems.size();
+        final int length = arrayResult.size();
         for (int i = 0; i < length; i++)
         {
             if (i < nrLogged && i < length - 1)
             {
-                r += calculatedItems.get(i).value.getResultDescription(getFormulaList().getDocumentSettings());
+                r += arrayResult.get(i).value.getResultDescription(getFormulaList().getDocumentSettings());
                 r += ", ";
             }
             else if (i == nrLogged && i < length - 1)
@@ -419,10 +444,9 @@ public class FormulaResult extends CalculationResult implements ResultProperties
             }
             else if (i == length - 1)
             {
-                r += calculatedItems.get(i).value.getResultDescription(getFormulaList().getDocumentSettings());
+                r += arrayResult.get(i).value.getResultDescription(getFormulaList().getDocumentSettings());
             }
         }
-        r += "]";
         return r;
     }
 

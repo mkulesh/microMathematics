@@ -257,12 +257,28 @@ public class ExportToLatex
         writer.append(inLine ? "$" : "$\n\\end{tabular}\\end{center}");
     }
 
+    protected void appendFormulaResult(FormulaResult f)
+    {
+        writeTermField(f.findTermWithKey(R.string.formula_left_term_key));
+        if (f.isResultVisible())
+        {
+            writer.append(" = ");
+            if (f.isArrayResult())
+            {
+                writer.append("\\left[ ");
+            }
+            writeTermField(f.findTermWithKey(R.string.formula_right_term_key));
+            if (f.isArrayResult())
+            {
+                writer.append(" \\right]");
+            }
+        }
+    }
+
     protected void writeFormulaResult(FormulaResult f, boolean inLine)
     {
         writer.append(inLine ? "$" : "\n\\begin{center}\\begin{tabular}{c}\n  $");
-        writeTermField(f.findTermWithKey(R.string.formula_left_term_key));
-        writer.append(" = ");
-        writeTermField(f.findTermWithKey(R.string.formula_right_term_key));
+        appendFormulaResult(f);
         writer.append(inLine ? "$" : "$\n\\end{tabular}\\end{center}");
     }
 

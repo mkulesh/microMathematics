@@ -119,9 +119,7 @@ public class ExportToMathJax extends ExportToLatex
     protected void writeFormulaResult(FormulaResult f, boolean inLine)
     {
         writer.append(inLine ? "$$" : "\n\n$$");
-        writeTermField(f.findTermWithKey(R.string.formula_left_term_key));
-        writer.append(" = ");
-        writeTermField(f.findTermWithKey(R.string.formula_right_term_key));
+        appendFormulaResult(f);
         writer.append(inLine ? "$$" : "$$");
     }
 
