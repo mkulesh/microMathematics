@@ -36,6 +36,7 @@ import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.TermField.ErrorNotification;
 import com.mkulesh.micromath.math.ArgumentValueItem;
 import com.mkulesh.micromath.math.CalculatedValue;
+import com.mkulesh.micromath.math.EquationArrayResult;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.ResultProperties;
 import com.mkulesh.micromath.properties.ResultPropertiesChangeIf;
@@ -44,18 +45,34 @@ import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
+import com.mkulesh.micromath.widgets.ResultMatrixLayout;
 
 public class FormulaResult extends CalculationResult implements ResultPropertiesChangeIf
 {
     private static final String STATE_RESULT_PROPERTIES = "result_properties";
+    public static final String CELL_DOTS = "...";
+
+    public enum ResultType
+    {
+        NONE,
+        NAN,
+        CONSTANT,
+        ARRAY_1D,
+        ARRAY_2D
+    };
 
     private TermField leftTerm = null;
     private CustomTextView resultAssign = null;
-    private CustomTextView leftBracket = null;
-    private TermField rightTerm = null;
-    private CustomTextView rightBracket = null;
-    private String result = null;
-    private ArrayList<ArgumentValueItem> arrayResult = null;
+    private ResultType resultType = ResultType.NONE;
+
+    // Cobstant or invalid result
+    private CalculatedValue constantResult = null;
+    private TermField constantResultField = null;
+
+    // Array and matrix results
+    private EquationArrayResult arrayArgument = null, arrayResult = null;
+    private ResultMatrixLayout arrayResultMatrix = null;
+    private CustomTextView leftBracket = null, rightBracket = null;
 
     private final ResultProperties properties = new ResultProperties();
 
@@ -118,10 +135,10 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                     errorMsg = String.format(getContext().getResources().getString(R.string.error_indirect_intervals),
                             indirectIntervals.toString());
                 }
-                else if (getAllIntervals().size() > 1)
+                else if (getAllIntervals().size() > 2)
                 {
                     isValid = false;
-                    errorMsg = getContext().getResources().getString(R.string.error_ensure_single_interval);
+                    errorMsg = getContext().getResources().getString(R.string.error_ensure_double_interval);
                 }
                 leftTerm.setError(errorMsg, ErrorNotification.LAYOUT_BORDER, null);
             }
@@ -132,7 +149,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         {
             invalidateResult();
         }
-        return disableCalculation() ? true : isValid;
+        return disableCalculation() || isValid;
     }
 
     @Override
@@ -143,6 +160,26 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         ViewUtils.invalidateLayout(layout, layout);
     }
 
+    @Override
+    public void updateTextSize()
+    {
+        super.updateTextSize();
+        if (isArrayResult())
+        {
+            arrayResultMatrix.updateTextSize(getFormulaList().getDimen());
+        }
+    }
+
+    @Override
+    public void updateTextColor()
+    {
+        super.updateTextColor();
+        if (isArrayResult())
+        {
+            arrayResultMatrix.updateTextColor(R.drawable.formula_filled_border, R.drawable.formula_selected_term);
+        }
+    }
+
     /*********************************************************
      * Re-implementation for methods for CalculationResult superclass
      *********************************************************/
@@ -150,8 +187,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     @Override
     public void invalidateResult()
     {
-        result = null;
-        arrayResult = null;
+        clearResult();
         showResult();
     }
 
@@ -163,39 +199,61 @@ public class FormulaResult extends CalculationResult implements ResultProperties
             return;
         }
         ArrayList<Equation> linkedIntervals = getAllIntervals();
-        final CalculatedValue calcVal = new CalculatedValue();
         if (linkedIntervals.isEmpty())
         {
-            leftTerm.getValue(thread, calcVal);
-            result = calcVal.getResultDescription(getFormulaList().getDocumentSettings());
+            resultType = ResultType.CONSTANT;
+            constantResult = new CalculatedValue();
+            leftTerm.getValue(thread, constantResult);
         }
         else if (linkedIntervals.size() == 1)
         {
-            final CalculatedValue[] argValues = new CalculatedValue[linkedIntervals.size()];
+            final CalculatedValue[] argValues = new CalculatedValue[1];
             argValues[0] = new CalculatedValue();
-            Equation linkedInterval = linkedIntervals.get(0);
-            ArrayList<Double> values = linkedInterval.getInterval(thread);
-            if (values != null && values.size() > 0)
+            final ArrayList<Double> xValues = linkedIntervals.get(0).getInterval(thread);
+            if (xValues != null && xValues.size() > 0)
             {
-                // calculate values
-                arrayResult = new ArrayList<ArgumentValueItem>(values.size());
-                for (Double v : values)
+                final int xLength = xValues.size();
+                resultType = ResultType.ARRAY_1D;
+                arrayArgument = new EquationArrayResult(xLength);
+                arrayResult = new EquationArrayResult(xLength, 1);
+                for (int xIndex = 0; xIndex < xLength; xIndex++)
                 {
-                    argValues[0].setValue(v);
-                    final ArgumentValueItem item = new ArgumentValueItem();
-                    // x value
-                    item.argument.assign(argValues[0]);
-                    linkedInterval.setArgumentValues(argValues);
-                    // y value
-                    leftTerm.getValue(thread, item.value);
-                    arrayResult.add(item);
+                    final Double x = xValues.get(xIndex);
+                    argValues[0].setValue(x);
+                    arrayArgument.getValue1D(xIndex).setValue(x);
+                    linkedIntervals.get(0).setArgumentValues(argValues);
+                    leftTerm.getValue(thread, arrayResult.getValue2D(xIndex, 0));
                 }
-                // make string representation
-                result = makeResultArray();
             }
             else
             {
-                result = TermParser.CONST_NAN;
+                resultType = ResultType.NAN;
+            }
+        }
+        else if (linkedIntervals.size() == 2)
+        {
+            final CalculatedValue[][] argValues = new CalculatedValue[2][1];
+            argValues[0][0] = new CalculatedValue();
+            final ArrayList<Double> xValues = linkedIntervals.get(0).getInterval(thread);
+            argValues[1][0] = new CalculatedValue();
+            final ArrayList<Double> yValues = linkedIntervals.get(1).getInterval(thread);
+            if (xValues != null && xValues.size() > 0 && yValues != null && yValues.size() > 0)
+            {
+                final int xLength = xValues.size();
+                final int yLength = yValues.size();
+                resultType = ResultType.ARRAY_2D;
+                arrayResult = new EquationArrayResult(xLength, yLength);
+                for (int xIndex = 0; xIndex < xLength; xIndex++)
+                {
+                    argValues[0][0].setValue(xValues.get(xIndex));
+                    linkedIntervals.get(0).setArgumentValues(argValues[0]);
+                    for (int yIndex = 0; yIndex < yLength; yIndex++)
+                    {
+                        argValues[1][0].setValue(yValues.get(yIndex));
+                        linkedIntervals.get(1).setArgumentValues(argValues[1]);
+                        leftTerm.getValue(thread, arrayResult.getValue2D(xIndex, yIndex));
+                    }
+                }
             }
         }
         if (!leftTerm.isTerm())
@@ -203,7 +261,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
             final TestSession ta = getFormulaList().getTaSession();
             if (ta != null)
             {
-                ta.setResult(leftTerm.getText(), result);
+                ta.setResult(leftTerm.getText(), fillResultString());
             }
         }
     }
@@ -212,25 +270,33 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     public void showResult()
     {
         final int visibility = isResultVisible() ? View.VISIBLE : View.GONE;
-        rightTerm.getEditText().setVisibility(visibility);
         resultAssign.setVisibility(visibility);
-        if (isArrayResult())
+
+        switch (resultType)
         {
-            leftBracket.setVisibility(visibility);
-            rightBracket.setVisibility(visibility);
-        }
-        else
-        {
-            leftBracket.setVisibility(View.GONE);
-            rightBracket.setVisibility(View.GONE);
-        }
-        if (result != null)
-        {
-            rightTerm.setText(result);
-        }
-        else
-        {
-            rightTerm.setText("");
+            case NONE:
+            case NAN:
+            case CONSTANT:
+            {
+                leftBracket.setVisibility(View.GONE);
+                constantResultField.getEditText().setVisibility(visibility);
+                arrayResultMatrix.setVisibility(View.GONE);
+                rightBracket.setVisibility(View.GONE);
+                constantResultField.setText(fillResultString());
+                break;
+            }
+            case ARRAY_1D:
+            case ARRAY_2D:
+            {
+                leftBracket.setVisibility(visibility);
+                constantResultField.getEditText().setVisibility(View.GONE);
+                arrayResultMatrix.setVisibility(visibility);
+                rightBracket.setVisibility(visibility);
+                fillResultMatrix();
+                arrayResultMatrix.prepare(getFormulaList().getActivity(), this);
+                arrayResultMatrix.updateTextSize(getFormulaList().getDimen());
+                break;
+            }
         }
     }
 
@@ -247,9 +313,18 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     @Override
     public void onDetails(View owner)
     {
-        if (isArrayResult())
+        if (enableDetails())
         {
-            DialogResultDetails d = new DialogResultDetails(getFormulaList().getActivity(), arrayResult,
+            final CalculatedValue[] arguments = arrayArgument.getRawValues();
+            final CalculatedValue[] values = arrayResult.getRawValues();
+            final int n = Math.min(arguments.length, values.length);
+            ArrayList<ArgumentValueItem> calculatedItems = new ArrayList<ArgumentValueItem>(n);
+            for (int i = 0; i < n; i++)
+            {
+                final ArgumentValueItem item = new ArgumentValueItem(arguments[i], values[i]);
+                calculatedItems.add(item);
+            }
+            DialogResultDetails d = new DialogResultDetails(getFormulaList().getActivity(), calculatedItems,
                     getFormulaList().getDocumentSettings());
             d.show();
         }
@@ -293,7 +368,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     @Override
     public boolean enableDetails()
     {
-        return isArrayResult();
+        return resultType == ResultType.ARRAY_1D;
     }
 
     /*********************************************************
@@ -368,9 +443,9 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         return !properties.hideResultField;
     }
 
-    public boolean isArrayResult ()
+    public boolean isArrayResult()
     {
-        return arrayResult != null;
+        return resultType == ResultType.ARRAY_1D || resultType == ResultType.ARRAY_2D;
     }
 
     /**
@@ -393,9 +468,10 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         // create result term
         {
             CustomEditText v = (CustomEditText) layout.findViewById(R.id.formula_result_value);
-            rightTerm = addTerm(this, layout, v, this, true);
-            rightTerm.bracketsType = TermField.BracketsType.NEVER;
-            rightTerm.isWritable = false;
+            constantResultField = addTerm(this, layout, v, this, true);
+            constantResultField.bracketsType = TermField.BracketsType.NEVER;
+            constantResultField.isWritable = false;
+            arrayResultMatrix = (ResultMatrixLayout) layout.findViewById(R.id.formula_result_table);
         }
         // brackets
         {
@@ -419,35 +495,151 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                 isContentValid(ValidationPassType.VALIDATE_LINKS);
             }
         }
-        if (isArrayResult() && !disableCalculation())
-        {
-            result = makeResultArray();
-        }
         showResult();
     }
 
-    private String makeResultArray()
+    public void clearResult()
     {
-        String r = "";
-        final int nrLogged = properties.arrayLength - 1;
-        final int length = arrayResult.size();
-        for (int i = 0; i < length; i++)
-        {
-            if (i < nrLogged && i < length - 1)
-            {
-                r += arrayResult.get(i).value.getResultDescription(getFormulaList().getDocumentSettings());
-                r += ", ";
-            }
-            else if (i == nrLogged && i < length - 1)
-            {
-                r += "..., ";
-            }
-            else if (i == length - 1)
-            {
-                r += arrayResult.get(i).value.getResultDescription(getFormulaList().getDocumentSettings());
-            }
-        }
-        return r;
+        resultType = ResultType.NONE;
+        constantResult = null;
+        arrayArgument = null;
+        arrayResult = null;
     }
 
+    private void fillResultMatrix()
+    {
+        if (!isArrayResult())
+        {
+            return;
+        }
+        final int xValuesNumber = arrayResult.getDimensions()[0];
+        final int rowsNumber = Math.min(xValuesNumber, properties.arrayLength + 1);
+        final int yValuesNumber = arrayResult.getDimensions()[1];
+        final int colsNumber = Math.min(yValuesNumber, properties.arrayLength + 1);
+
+        arrayResultMatrix.resize(rowsNumber, colsNumber, R.layout.formula_result_cell);
+        for (int r = 0; r < rowsNumber; r++)
+        {
+            int dataRowIdx = r;
+            if (xValuesNumber > properties.arrayLength)
+            {
+                // before the last line
+                if (r + 2 == rowsNumber)
+                {
+                    for (int c = 0; c < colsNumber; c++)
+                    {
+                        arrayResultMatrix.setText(r, c, CELL_DOTS);
+                    }
+                    continue;
+                }
+                // the last line
+                if (r + 1 == rowsNumber)
+                {
+                    dataRowIdx = xValuesNumber - 1;
+                }
+            }
+            for (int c = 0; c < colsNumber; c++)
+            {
+                int dataColIdx = c;
+                if (yValuesNumber > properties.arrayLength)
+                {
+                    // before the last column
+                    if (c + 2 == colsNumber)
+                    {
+                        arrayResultMatrix.setText(r, c, CELL_DOTS);
+                        continue;
+                    }
+                    // the last line
+                    if (c + 1 == colsNumber)
+                    {
+                        dataColIdx = yValuesNumber - 1;
+                    }
+                }
+                String resultStr = arrayResult.getValue2D(dataRowIdx,dataColIdx).getResultDescription(
+                        getFormulaList().getDocumentSettings());
+                arrayResultMatrix.setText(r, c, resultStr);
+            }
+        }
+    }
+
+    public ArrayList<ArrayList<String>> fillResultMatrixArray()
+    {
+        if (!isArrayResult())
+        {
+            return null;
+        }
+        final int xValuesNumber = arrayResult.getDimensions()[0];
+        final int rowsNumber = Math.min(xValuesNumber, properties.arrayLength + 1);
+        final int yValuesNumber = arrayResult.getDimensions()[1];
+        final int colsNumber = Math.min(yValuesNumber, properties.arrayLength + 1);
+
+        ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>(rowsNumber);
+        for (int r = 0; r < rowsNumber; r++)
+        {
+            int dataRowIdx = r;
+            res.add(new ArrayList<String>(colsNumber));
+            if (xValuesNumber > properties.arrayLength)
+            {
+                // before the last line
+                if (r + 2 == rowsNumber)
+                {
+                    for (int c = 0; c < colsNumber; c++)
+                    {
+                        res.get(r).add(CELL_DOTS);
+                    }
+                    continue;
+                }
+                // the last line
+                if (r + 1 == rowsNumber)
+                {
+                    dataRowIdx = xValuesNumber - 1;
+                }
+            }
+            for (int c = 0; c < colsNumber; c++)
+            {
+                int dataColIdx = c;
+                if (yValuesNumber > properties.arrayLength)
+                {
+                    // before the last column
+                    if (c + 2 == colsNumber)
+                    {
+                        res.get(r).add(CELL_DOTS);
+                        continue;
+                    }
+                    // the last line
+                    if (c + 1 == colsNumber)
+                    {
+                        dataColIdx = yValuesNumber - 1;
+                    }
+                }
+                res.get(r).add(arrayResult.getValue2D(dataRowIdx,dataColIdx).getResultDescription(
+                        getFormulaList().getDocumentSettings()));
+            }
+        }
+        return res;
+    }
+
+    private String fillResultString()
+    {
+        if (resultType == ResultType.NAN)
+        {
+            return TermParser.CONST_NAN;
+        }
+
+        if (resultType == ResultType.CONSTANT)
+        {
+            return constantResult.getResultDescription(getFormulaList().getDocumentSettings());
+        }
+
+        if (isArrayResult())
+        {
+            final ArrayList<ArrayList<String>> res = fillResultMatrixArray();
+            if (res != null)
+            {
+                return res.toString();
+            }
+        }
+        return "";
+    }
 }
+

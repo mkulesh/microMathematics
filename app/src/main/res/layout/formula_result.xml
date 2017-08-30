@@ -36,7 +36,14 @@
         android:layout_height="wrap_content"
         android:text="@string/formula_right_term_key"
         micromath:calculatedValue="true"
-        micromath:emptyEnabled="true" />
+        micromath:emptyEnabled="true"
+        micromath:contextMenuCut="false"
+        micromath:contextMenuPaste="false" />
+
+    <com.mkulesh.micromath.widgets.ResultMatrixLayout
+        android:id="@+id/formula_result_table"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <com.mkulesh.micromath.widgets.CustomTextView
         android:id="@+id/formula_result_right_bracket"

@@ -158,10 +158,7 @@
         <term key="nextValue" text="dy" />
         <term key="maxValue" code="mult">
           <term key="leftTerm" text="dy" />
-          <term key="rightTerm" code="minus">
-            <term key="leftTerm" text="N" />
-            <term key="rightTerm" text="1" />
-          </term>
+          <term key="rightTerm" text="N" />
         </term>
       </term>
     </equation>
@@ -289,6 +286,18 @@
       </term>
       <term key="rightTerm" />
     </result>
+    <equation>
+      <term key="leftTerm" text="N[k,m]" />
+      <term key="rightTerm" code="floor">
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" text="-10" />
+          <term key="rightTerm" code="content:com.mkulesh.micromath.index.M:2">
+            <term key="argTerm1" text="k" />
+            <term key="argTerm2" text="m" />
+          </term>
+        </term>
+      </term>
+    </equation>
     <text_fragment>
       <term key="text" text="e) if any array index is complex or&#10;negative or greater than the upper&#10;bound of the corresponding interval,&#10;the invalid number will be returned:" />
     </text_fragment>
@@ -391,10 +400,21 @@
       <term key="leftTerm" text="x" />
       <term key="rightTerm" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="y" />
+      <term key="rightTerm" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="mult">
         <term key="leftTerm" text="2" />
         <term key="rightTerm" text="y" />
+      </term>
+      <term key="rightTerm" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="5">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.N:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
       </term>
       <term key="rightTerm" />
     </result>
@@ -403,7 +423,7 @@
     </text_fragment>
     <image_fragment fileName="asset:/images/menu_details.svg" embedded="false" originalSize="false" width="550" height="200" />
     <text_fragment>
-      <term key="text" text='The second floating button, "Details",&#10;will also appear. If you click on this&#10;button, the "Details" dialog will be&#10;displayed, where you can observe all&#10;elements of the array.&#10;&#10;Note that the use of two or more&#10;"interval-like" variables on the left&#10;part of a result view is not allowed&#10;in this app version.' />
+      <term key="text" text='The second floating button, "Details",&#10;will also appear. If you click on this&#10;button, the "Details" dialog will be&#10;displayed, where you can observe all&#10;elements of the array.&#10;&#10;Note that the use of three or more&#10;"interval-like" variables on the left&#10;part of a result view is not allowed&#10;in this app version.' />
     </text_fragment>
     <text_fragment textStyle="subsection" numbering="true">
       <term key="text" text="Function Plot" />

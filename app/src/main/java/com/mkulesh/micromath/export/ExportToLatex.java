@@ -265,12 +265,28 @@ public class ExportToLatex
             writer.append(" = ");
             if (f.isArrayResult())
             {
-                writer.append("\\left[ ");
+                final ArrayList<ArrayList<String>> res = f.fillResultMatrixArray();
+                if (res != null)
+                {
+                    writer.append("\\begin{bmatrix}");
+                    for (ArrayList<String> row : res)
+                    {
+                        for (int i = 0; i < row.size(); i++)
+                        {
+                            writer.append(FormulaResult.CELL_DOTS.equals(row.get(i))? "\\dots" : row.get(i));
+                            writer.append(i + 1 < row.size()? "&" : "\\\\");
+                        }
+                    }
+                    writer.append("\\end{bmatrix}");
+                }
+                else
+                {
+                    writeTermField(f.findTermWithKey(R.string.formula_right_term_key));
+                }
             }
-            writeTermField(f.findTermWithKey(R.string.formula_right_term_key));
-            if (f.isArrayResult())
+            else
             {
-                writer.append(" \\right]");
+                writeTermField(f.findTermWithKey(R.string.formula_right_term_key));
             }
         }
     }

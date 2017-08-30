@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:micromath="http://schemas.android.com/apk/res-auto" >
+
+    <com.mkulesh.micromath.widgets.CustomEditText
+        style="@style/FormulaTextEditStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/formula_calculated_value_color"
+        micromath:calculatedValue="true"
+        micromath:emptyEnabled="true"
+        micromath:contextMenuCut="false"
+        micromath:contextMenuPaste="false"/>
+
+</merge>

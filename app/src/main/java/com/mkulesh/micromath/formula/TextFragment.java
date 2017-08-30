@@ -241,7 +241,7 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         final int vert = dimen.get(parameters.isHeader() ? ScaledDimensions.Type.HEADER_PADDING
                 : ScaledDimensions.Type.VERT_ROOT_PADDING);
         layout.setPadding(hor, vert, hor, vert);
-        textField.updateTextSize(dimen, parameters.getDepth());
+        textField.updateTextSize(dimen, parameters.getDepth(), ScaledDimensions.Type.HOR_TEXT_PADDING);
         textField.setTypeface(null, parameters.isHeader() ? Typeface.BOLD : Typeface.NORMAL);
         if (isNumbering())
         {

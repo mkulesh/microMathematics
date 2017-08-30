@@ -158,10 +158,7 @@
         <term key="nextValue" text="dy" />
         <term key="maxValue" code="mult">
           <term key="leftTerm" text="dy" />
-          <term key="rightTerm" code="minus">
-            <term key="leftTerm" text="N" />
-            <term key="rightTerm" text="1" />
-          </term>
+          <term key="rightTerm" text="N" />
         </term>
       </term>
     </equation>
@@ -289,6 +286,18 @@
       </term>
       <term key="rightTerm" />
     </result>
+    <equation>
+      <term key="leftTerm" text="N[k,m]" />
+      <term key="rightTerm" code="floor">
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" text="-10" />
+          <term key="rightTerm" code="content:com.mkulesh.micromath.index.M:2">
+            <term key="argTerm1" text="k" />
+            <term key="argTerm2" text="m" />
+          </term>
+        </term>
+      </term>
+    </equation>
     <text_fragment>
       <term key="text" text="д) если значение индекса&#10;комплексное, меньше нуля или&#10;больше верхней границы&#10;соответствующего интервала, то&#10;результатом будет не-число:" />
     </text_fragment>
@@ -385,16 +394,27 @@
       <term key="rightTerm" />
     </result>
     <text_fragment>
-      <term key="text" text="Если же слева используется&#10;интервал, то результат будет&#10;массивом чисел, соответствующих&#10;интервалу. Ввиду ограниченности&#10;дисплея, будут показаны только&#10;шесть первых и последнее число из&#10;этого массива:" />
+      <term key="text" text="Если же слева используется&#10;интервал, то результат будет&#10;массивом чисел, соответствующих&#10;интервалу. Ввиду ограниченности&#10;дисплея, будут показаны только&#10;несколько первых и последнее&#10;число из этого массива:" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="x" />
       <term key="rightTerm" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="y" />
+      <term key="rightTerm" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="mult">
         <term key="leftTerm" text="2" />
         <term key="rightTerm" text="y" />
+      </term>
+      <term key="rightTerm" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="5">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.N:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
       </term>
       <term key="rightTerm" />
     </result>
@@ -403,7 +423,7 @@
     </text_fragment>
     <image_fragment fileName="asset:/images/menu_details.svg" embedded="false" originalSize="false" width="550" height="200" />
     <text_fragment>
-      <term key="text" text='Также появится вторая плавающая&#10;кнопка - "Подробности". При&#10;нажатии на неё откроется окно, где&#10;будут показаны все элементы&#10;массива.&#10;&#10;Обратите внимание, что данная&#10;версия программы не поддерживает&#10;использование двух и более&#10;переменных интервального типа в&#10;объекте текстового результата.' />
+      <term key="text" text='Также появится вторая плавающая&#10;кнопка - "Подробности". При&#10;нажатии на неё откроется окно, где&#10;будут показаны все элементы&#10;массива.&#10;&#10;Обратите внимание, что данная&#10;версия программы не поддерживает&#10;использование трёх и более&#10;переменных интервального типа в&#10;объекте текстового результата.' />
     </text_fragment>
     <text_fragment textStyle="subsection" numbering="true">
       <term key="text" text="График функции" />

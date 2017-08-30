@@ -40,7 +40,8 @@ public class ScaledDimensions
         HOR_SYMBOL_PADDING,
         HOR_BRAKET_PADDING,
         VERT_TERM_PADDING,
-        HEADER_PADDING
+        HEADER_PADDING,
+        MATRIX_COLUMN_PADDING
     }
 
     private float scaleFactor = 1.0f;
@@ -67,6 +68,7 @@ public class ScaledDimensions
         dimen[Type.HOR_BRAKET_PADDING.ordinal()] = r.getDimension(R.dimen.formula_hor_bracket_padding);
         dimen[Type.VERT_TERM_PADDING.ordinal()] = r.getDimension(R.dimen.formula_vert_term_padding);
         dimen[Type.HEADER_PADDING.ordinal()] = r.getDimension(R.dimen.formula_header_padding);
+        dimen[Type.MATRIX_COLUMN_PADDING.ordinal()] = r.getDimension(R.dimen.formula_matrix_column_padding);
     }
 
     /**

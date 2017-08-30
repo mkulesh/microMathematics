@@ -158,10 +158,7 @@
         <term key="nextValue" text="dy" />
         <term key="maxValue" code="mult">
           <term key="leftTerm" text="dy" />
-          <term key="rightTerm" code="minus">
-            <term key="leftTerm" text="N" />
-            <term key="rightTerm" text="1" />
-          </term>
+          <term key="rightTerm" text="N" />
         </term>
       </term>
     </equation>
@@ -289,6 +286,18 @@
       </term>
       <term key="rightTerm" />
     </result>
+    <equation>
+      <term key="leftTerm" text="N[k,m]" />
+      <term key="rightTerm" code="floor">
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" text="-10" />
+          <term key="rightTerm" code="content:com.mkulesh.micromath.index.M:2">
+            <term key="argTerm1" text="k" />
+            <term key="argTerm2" text="m" />
+          </term>
+        </term>
+      </term>
+    </equation>
     <text_fragment>
       <term key="text" text="e) wenn ein Index ist komplex, negativ &#10;oder größer als die Obergrenze des&#10;dazugehörigen Intervalls, dann wird&#10;ein ungültigen Wert zurückgegeben:" />
     </text_fragment>
@@ -391,10 +400,21 @@
       <term key="leftTerm" text="x" />
       <term key="rightTerm" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="y" />
+      <term key="rightTerm" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="mult">
         <term key="leftTerm" text="2" />
         <term key="rightTerm" text="y" />
+      </term>
+      <term key="rightTerm" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="5">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.N:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
       </term>
       <term key="rightTerm" />
     </result>
@@ -403,7 +423,7 @@
     </text_fragment>
     <image_fragment fileName="asset:/images/menu_details.svg" embedded="false" originalSize="false" width="550" height="200" />
     <text_fragment>
-      <term key="text" text='Auch wird ein weiters Action Button&#10;"Details" angezeigt. Ein Tap auf&#10;diesen Button öffnet das Dialogfenster&#10;"Details", wo Sie alle Vektorelemente&#10;sehen können.&#10;&#10;Bitte beachten Sie, dass die&#10;Verwendung von zwei oder mehr&#10;intervallähnlichen Variablen im linken&#10;Teil einer Ergebnisansicht in dieser&#10;Version des Apps nicht gestattet ist.' />
+      <term key="text" text='Auch wird ein weiters Action Button&#10;"Details" angezeigt. Ein Tap auf&#10;diesen Button öffnet das Dialogfenster&#10;"Details", wo Sie alle Vektorelemente&#10;sehen können.&#10;&#10;Bitte beachten Sie, dass die&#10;Verwendung von drei oder mehr&#10;intervallähnlichen Variablen im linken&#10;Teil einer Ergebnisansicht in dieser&#10;Version des Apps nicht gestattet ist.' />
     </text_fragment>
     <text_fragment textStyle="subsection" numbering="true">
       <term key="text" text="Funktionsgraph" />

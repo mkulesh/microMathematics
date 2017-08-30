@@ -44,6 +44,27 @@ public class EquationArrayResult
     private final Equation equation;
     private final TermField equationTerm;
 
+    public EquationArrayResult(int size)
+    {
+        this.equation = null;
+        this.equationTerm = null;
+        final int dimNumber = 1;
+        final int[] dimValues = new int[dimNumber];
+        dimValues[D0] = size;
+        resize(dimValues);
+    }
+
+    public EquationArrayResult(int size1, int size2)
+    {
+        this.equation = null;
+        this.equationTerm = null;
+        final int dimNumber = 2;
+        final int[] dimValues = new int[dimNumber];
+        dimValues[D0] = size1;
+        dimValues[D1] = size2;
+        resize(dimValues);
+    }
+
     public EquationArrayResult(Equation equation, TermField rightTerm)
     {
         this.equation = equation;
@@ -53,6 +74,11 @@ public class EquationArrayResult
     public int getDimNumber()
     {
         return dimensions == null ? ViewUtils.INVALID_INDEX : dimensions.length;
+    }
+
+    public int[] getDimensions()
+    {
+        return dimensions;
     }
 
     public CalculatedValue[] getRawValues()
@@ -154,6 +180,26 @@ public class EquationArrayResult
             values[i] = new CalculatedValue(CalculatedValue.ValueType.REAL, 0.0, 0.0);
         }
         idxValues = new int[dimensions.length];
+    }
+
+    public CalculatedValue getValue1D(int idx)
+    {
+        final int dimNumber = getDimNumber();
+        if (values == null || dimNumber != 1 || idx < 0 || idx >= dimensions[D0])
+        {
+            return CalculatedValue.NaN;
+        }
+        return values[idx];
+    }
+
+    public CalculatedValue getValue2D(int idx1, int idx2)
+    {
+        final int dimNumber = getDimNumber();
+        if (values == null || dimNumber != 2 || idx1 < 0 || idx1 >= dimensions[D0] || idx2 < 0 || idx2 >= dimensions[D1])
+        {
+            return CalculatedValue.NaN;
+        }
+        return values[getIndex(idx1, idx2)];
     }
 
     public CalculatedValue getValue(CalculatedValue[] argValues)

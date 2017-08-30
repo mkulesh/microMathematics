@@ -43,6 +43,7 @@ import com.mkulesh.micromath.utils.IdGenerator;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomLayout;
+import com.mkulesh.micromath.widgets.ScaledDimensions;
 import com.mkulesh.micromath.widgets.TextChangeIf;
 
 public class TermField implements TextChangeIf, CalculatableIf
@@ -349,7 +350,8 @@ public class TermField implements TextChangeIf, CalculatableIf
         }
         else
         {
-            text.updateTextSize(formulaRoot.getFormulaList().getDimen(), termDepth);
+            text.updateTextSize(formulaRoot.getFormulaList().getDimen(), termDepth,
+                    ScaledDimensions.Type.HOR_TEXT_PADDING);
         }
     }
 

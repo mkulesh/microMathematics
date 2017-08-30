@@ -183,10 +183,10 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
                 && !isCalculatedValue();
     }
 
-    public void updateTextSize(ScaledDimensions dimen, int termDepth)
+    public void updateTextSize(ScaledDimensions dimen, int termDepth, ScaledDimensions.Type paddingType)
     {
         setTextSize(TypedValue.COMPLEX_UNIT_PX, dimen.getTextSize(termDepth));
-        final int p = dimen.get(ScaledDimensions.Type.HOR_TEXT_PADDING);
+        final int p = dimen.get(paddingType);
         setPadding(p, 0, p, 0);
         updateMinimumWidth(dimen);
     }
