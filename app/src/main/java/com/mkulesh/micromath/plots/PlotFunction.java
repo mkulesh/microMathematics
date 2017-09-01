@@ -49,7 +49,6 @@ import com.mkulesh.micromath.formula.LinkHolder;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TermField.BracketsType;
 import com.mkulesh.micromath.formula.TermField.ErrorNotification;
-import com.mkulesh.micromath.math.ArgumentValueItem;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plots.views.FunctionPlotView;
 import com.mkulesh.micromath.plus.R;
@@ -425,16 +424,8 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         final FunctionIf f = functionView.getFunctions().get(targetIdx);
         if (f.getXValues() != null && f.getYValues() != null)
         {
-            final int n = Math.min(f.getXValues().length, f.getYValues().length);
-            ArrayList<ArgumentValueItem> calculatedItems = new ArrayList<ArgumentValueItem>(n);
-            for (int i = 0; i < n; i++)
-            {
-                final ArgumentValueItem item = new ArgumentValueItem();
-                item.argument.setValue(f.getXValues()[i]);
-                item.value.setValue(f.getYValues()[i]);
-                calculatedItems.add(item);
-            }
-            DialogResultDetails d = new DialogResultDetails(getFormulaList().getActivity(), calculatedItems,
+            DialogResultDetails d = new DialogResultDetails(getFormulaList().getActivity(),
+                    f.getXValues(), f.getYValues(),
                     getFormulaList().getDocumentSettings());
             d.show();
         }

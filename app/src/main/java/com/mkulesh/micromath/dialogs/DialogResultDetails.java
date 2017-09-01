@@ -29,34 +29,103 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.mkulesh.micromath.math.ArgumentValueItem;
+import com.mkulesh.micromath.math.CalculatedValue;
+import com.mkulesh.micromath.math.EquationArrayResult;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.utils.CompatUtils;
 
-/**
- * A file chooser implemented in a Dialog.
- */
 public class DialogResultDetails extends DialogBase
 {
-    private final ArgumentValueAdapter argumentValueAdapter;
+    // Internal Data Container used in the adapter
+    private static class ArgumentValueItem
+    {
+        public final CalculatedValue argument;
+        public final CalculatedValue value;
 
-    public DialogResultDetails(Context context, ArrayList<ArgumentValueItem> calculatedItems, DocumentProperties doc)
+        private ArgumentValueItem(CalculatedValue argument, CalculatedValue value)
+        {
+            this.argument = argument;
+            this.value = value;
+        }
+
+        private ArgumentValueItem(int idx, CalculatedValue value)
+        {
+            this.argument = new CalculatedValue(CalculatedValue.ValueType.REAL, idx, 0.0);
+            this.value = value;
+        }
+
+        private ArgumentValueItem(double argument, double value)
+        {
+            this.argument = new CalculatedValue(CalculatedValue.ValueType.REAL, argument, 0.0);
+            this.value = new CalculatedValue(CalculatedValue.ValueType.REAL, value, 0.0);
+        }
+    }
+
+    private ArgumentValueAdapter argumentValueAdapter;
+
+    public DialogResultDetails(Context context, EquationArrayResult args, EquationArrayResult vals, DocumentProperties doc)
     {
         super(context, R.layout.dialog_result_details, R.string.action_details);
 
+        // Create data container
+        final CalculatedValue[] arguments = args.getRawValues();
+        final CalculatedValue[] values = vals.getRawValues();
+        final int n = Math.min(arguments.length, values.length);
+        final ArrayList<ArgumentValueItem> calculatedItems = new ArrayList<>(n);
+        for (int i = 0; i < n; i++)
+        {
+            calculatedItems.add(new ArgumentValueItem(arguments[i], values[i]));
+        }
+
+        initialize(calculatedItems, doc);
+    }
+
+    public DialogResultDetails(Context context, EquationArrayResult vals, DocumentProperties doc)
+    {
+        super(context, R.layout.dialog_result_details, R.string.action_details);
+
+        // Create data container
+        final CalculatedValue[] values = vals.getRawValues();
+        final int n = values.length;
+        final ArrayList<ArgumentValueItem> calculatedItems = new ArrayList<>(n);
+        for (int i = 0; i < n; i++)
+        {
+            calculatedItems.add(new ArgumentValueItem(i, values[i]));
+        }
+
+        initialize(calculatedItems, doc);
+    }
+
+    public DialogResultDetails(Context context, double[] args, double[] vals, DocumentProperties doc)
+    {
+        super(context, R.layout.dialog_result_details, R.string.action_details);
+
+        // Create data container
+        final int n = Math.min(args.length, vals.length);
+        final ArrayList<ArgumentValueItem> calculatedItems = new ArrayList<>(n);
+        for (int i = 0; i < n; i++)
+        {
+            calculatedItems.add(new ArgumentValueItem(args[i], vals[i]));
+        }
+
+        initialize(calculatedItems, doc);
+    }
+
+    private void initialize(ArrayList<ArgumentValueItem> calculatedItems, DocumentProperties doc)
+    {
         // Maximize the dialog.
         maximize();
         ((LinearLayout) findViewById(R.id.dialog_button_panel)).setVisibility(View.GONE);
 
-        argumentValueAdapter = new ArgumentValueAdapter(context, calculatedItems, doc);
+        argumentValueAdapter = new ArgumentValueAdapter(getContext(), calculatedItems, doc);
         ListView listView = (ListView) findViewById(R.id.result_details_listview);
         listView.setAdapter(argumentValueAdapter);
 
         // Show number of items
         final TextView itemsNumber = (TextView) findViewById(R.id.result_details_items_number);
         itemsNumber.setText(Integer.toString(calculatedItems.size()) + " "
-                + context.getString(R.string.dialog_list_items));
+                + getContext().getString(R.string.dialog_list_items));
     }
 
     private final class ArgumentValueAdapter extends ArrayAdapter<ArgumentValueItem>

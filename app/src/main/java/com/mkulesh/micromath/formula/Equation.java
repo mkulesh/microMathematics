@@ -28,7 +28,6 @@ import android.view.View;
 import com.mkulesh.micromath.dialogs.DialogResultDetails;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.TermField.ErrorNotification;
-import com.mkulesh.micromath.math.ArgumentValueItem;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.math.EquationArrayResult;
 import com.mkulesh.micromath.plus.R;
@@ -319,27 +318,13 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     @Override
     public void onDetails(View owner)
     {
-        if (!enableDetails())
+        if (enableDetails())
         {
-            return;
+            DialogResultDetails d = new DialogResultDetails(getFormulaList().getActivity(),
+                    arrayResult,
+                    getFormulaList().getDocumentSettings());
+            d.show();
         }
-
-        final CalculatedValue[] values = arrayResult.getRawValues();
-        final int n = values.length;
-        ArrayList<ArgumentValueItem> calculatedItems = new ArrayList<ArgumentValueItem>(n);
-        for (int i = 0; i < n; i++)
-        {
-            if (values[i] != null)
-            {
-                final ArgumentValueItem item = new ArgumentValueItem();
-                item.argument.setValue(i);
-                item.value.assign(values[i]);
-                calculatedItems.add(item);
-            }
-        }
-        DialogResultDetails d = new DialogResultDetails(getFormulaList().getActivity(), calculatedItems,
-                getFormulaList().getDocumentSettings());
-        d.show();
     }
 
     /*********************************************************

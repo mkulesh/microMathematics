@@ -34,7 +34,6 @@ import com.mkulesh.micromath.dialogs.DialogResultDetails;
 import com.mkulesh.micromath.dialogs.DialogResultSettings;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.TermField.ErrorNotification;
-import com.mkulesh.micromath.math.ArgumentValueItem;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.math.EquationArrayResult;
 import com.mkulesh.micromath.plus.R;
@@ -315,16 +314,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     {
         if (enableDetails())
         {
-            final CalculatedValue[] arguments = arrayArgument.getRawValues();
-            final CalculatedValue[] values = arrayResult.getRawValues();
-            final int n = Math.min(arguments.length, values.length);
-            ArrayList<ArgumentValueItem> calculatedItems = new ArrayList<ArgumentValueItem>(n);
-            for (int i = 0; i < n; i++)
-            {
-                final ArgumentValueItem item = new ArgumentValueItem(arguments[i], values[i]);
-                calculatedItems.add(item);
-            }
-            DialogResultDetails d = new DialogResultDetails(getFormulaList().getActivity(), calculatedItems,
+            DialogResultDetails d = new DialogResultDetails(getFormulaList().getActivity(),
+                    arrayArgument, arrayResult,
                     getFormulaList().getDocumentSettings());
             d.show();
         }

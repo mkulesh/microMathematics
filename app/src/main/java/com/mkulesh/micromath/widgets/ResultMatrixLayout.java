@@ -28,6 +28,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 
 import com.mkulesh.micromath.utils.CompatUtils;
+import com.mkulesh.micromath.utils.IdGenerator;
 
 import java.util.ArrayList;
 
@@ -49,16 +50,6 @@ public class ResultMatrixLayout extends TableLayout
     public ResultMatrixLayout(Context context)
     {
         super(context);
-    }
-
-    public int getRowsNumber()
-    {
-        return rowsNumber;
-    }
-
-    public int getColsNumber()
-    {
-        return colsNumber;
     }
 
     @Override
@@ -89,9 +80,6 @@ public class ResultMatrixLayout extends TableLayout
         final TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(
                 TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT);
 
-        final TableRow.LayoutParams rowParams = new TableRow.LayoutParams(
-                TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
-
         final LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
@@ -114,10 +102,44 @@ public class ResultMatrixLayout extends TableLayout
 
             for (int col = 0; col < tableRow.getChildCount(); col++)
             {
-                final CustomEditText cell = (CustomEditText)tableRow.getChildAt(col);
-                if (cell != null)
+                final CustomEditText c = (CustomEditText)tableRow.getChildAt(col);
+                if (c != null)
                 {
-                    fields.add(cell);
+                    c.setId(IdGenerator.generateId());
+                    c.setNextFocusDownId(-1);
+                    fields.add(c);
+                    // Up/Down focus
+                    if (row != 0)
+                    {
+                        final CustomEditText cUp = getCell(row - 1, col);
+                        if (cUp != null)
+                        {
+                            c.setNextFocusUpId(cUp.getId());
+                            cUp.setNextFocusDownId(c.getId());
+                        }
+                    }
+                    // Left/Right focus
+                    if (col == 0)
+                    {
+                        if (row != 0)
+                        {
+                            final CustomEditText cLeft = getCell(row - 1, colsNumber - 1);
+                            if (cLeft != null)
+                            {
+                                c.setNextFocusLeftId(cLeft.getId());
+                                cLeft.setNextFocusRightId(c.getId());
+                            }
+                        }
+                    }
+                    else
+                    {
+                        final CustomEditText cLeft = getCell(row, col - 1);
+                        if (cLeft != null)
+                        {
+                            c.setNextFocusLeftId(cLeft.getId());
+                            cLeft.setNextFocusRightId(c.getId());
+                        }
+                    }
                 }
             }
         }
