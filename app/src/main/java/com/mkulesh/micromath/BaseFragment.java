@@ -23,6 +23,7 @@ import java.io.File;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -412,4 +413,15 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         formulas.showSoftKeyboard(false);
     }
 
+    public boolean isDeveloperMode()
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+        {
+            if (preferences.getBoolean(DEVELOPER_MODE, false))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

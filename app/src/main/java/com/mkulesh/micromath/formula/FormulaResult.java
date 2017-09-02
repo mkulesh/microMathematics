@@ -193,8 +193,14 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     @Override
     public void calculate(CalculaterTask thread) throws CancelException
     {
+        final TestSession ta = getFormulaList().getTaSession();
+
         if (disableCalculation())
         {
+            if (!leftTerm.isTerm() && ta != null)
+            {
+                ta.setResult(leftTerm.getText(), fillResultString());
+            }
             return;
         }
         ArrayList<Equation> linkedIntervals = getAllIntervals();
@@ -255,13 +261,9 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                 }
             }
         }
-        if (!leftTerm.isTerm())
+        if (!leftTerm.isTerm() && ta != null)
         {
-            final TestSession ta = getFormulaList().getTaSession();
-            if (ta != null)
-            {
-                ta.setResult(leftTerm.getText(), fillResultString());
-            }
+            ta.setResult(leftTerm.getText(), fillResultString());
         }
     }
 

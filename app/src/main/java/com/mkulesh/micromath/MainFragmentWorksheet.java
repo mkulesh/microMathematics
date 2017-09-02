@@ -64,7 +64,7 @@ public class MainFragmentWorksheet extends BaseFragment
         postActionId = getArguments().getInt(POST_ACTION_ID, INVALID_ACTION_ID);
         initializeFragment(WORKSHEET_FRAGMENT_ID);
         initializeFormula(savedInstanceState);
-        assetFilter = activity.getResources().getStringArray(R.array.asset_filter);
+        initializeAssets(activity.getResources().getStringArray(R.array.asset_filter));
         return rootView;
     }
 
@@ -74,13 +74,7 @@ public class MainFragmentWorksheet extends BaseFragment
         super.onCreateOptionsMenu(menu, inflater);
         menu.findItem(R.id.action_open).setVisible(true);
         menu.findItem(R.id.action_save).setVisible(true);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-        {
-            if (preferences.getBoolean(DEVELOPER_MODE, false))
-            {
-                menu.findItem(R.id.action_dev_mode).setVisible(true);
-            }
-        }
+        menu.findItem(R.id.action_dev_mode).setVisible(isDeveloperMode());
     }
 
     @Override
@@ -112,6 +106,19 @@ public class MainFragmentWorksheet extends BaseFragment
     /*********************************************************
      * File handling
      *********************************************************/
+
+    private void initializeAssets(String[] stringArray)
+    {
+        assetFilter = new CharSequence[isDeveloperMode()? stringArray.length + 1 : stringArray.length];
+        for (int i = 0; i < stringArray.length; i++)
+        {
+            assetFilter[i] = stringArray[i];
+        }
+        if (isDeveloperMode())
+        {
+            assetFilter[stringArray.length] = getResources().getString(R.string.autotest_directory);
+        }
+    }
 
     private void initializeFormula(Bundle savedInstanceState)
     {
