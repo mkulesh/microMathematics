@@ -44,10 +44,10 @@ import com.mkulesh.micromath.widgets.ContextMenuHandler;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomLayout;
 import com.mkulesh.micromath.widgets.CustomTextView;
+import com.mkulesh.micromath.widgets.FocusChangeIf;
 import com.mkulesh.micromath.widgets.FormulaChangeIf;
 import com.mkulesh.micromath.widgets.ListChangeIf;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
-import com.mkulesh.micromath.widgets.TextChangeIf;
 
 public abstract class FormulaBase extends CustomLayout implements FormulaChangeIf
 {
@@ -1044,17 +1044,17 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     /**
      * Procedure returns the ID of the next focused EditText relative to the given owner
      */
-    public int getNextFocusId(CustomEditText owner, TextChangeIf.NextFocusType focusType)
+    public int getNextFocusId(CustomEditText owner, FocusChangeIf.NextFocusType focusType)
     {
         FormulaBase f = null;
         // Process UP/DOWN
         if (isRootFormula() && owner != null)
         {
-            if (focusType == TextChangeIf.NextFocusType.FOCUS_UP)
+            if (focusType == FocusChangeIf.NextFocusType.FOCUS_UP)
             {
                 f = getFormulaList().getFormulaListView().getFormula(getId(), ListChangeIf.Position.BEFORE);
             }
-            else if (focusType == TextChangeIf.NextFocusType.FOCUS_DOWN)
+            else if (focusType == FocusChangeIf.NextFocusType.FOCUS_DOWN)
             {
                 f = getFormulaList().getFormulaListView().getFormula(getId(), ListChangeIf.Position.AFTER);
             }
@@ -1077,23 +1077,23 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         TermField t = null;
         if (i < n)
         {
-            if (focusType == TextChangeIf.NextFocusType.FOCUS_LEFT && i > 0)
+            if (focusType == FocusChangeIf.NextFocusType.FOCUS_LEFT && i > 0)
             {
                 t = terms.get(i - 1);
             }
-            else if (focusType == TextChangeIf.NextFocusType.FOCUS_RIGHT && i < n - 1)
+            else if (focusType == FocusChangeIf.NextFocusType.FOCUS_RIGHT && i < n - 1)
             {
                 t = terms.get(i + 1);
             }
         }
         else if (owner == null && terms.size() > 0)
         {
-            if (focusType == TextChangeIf.NextFocusType.FOCUS_LEFT)
+            if (focusType == FocusChangeIf.NextFocusType.FOCUS_LEFT)
             {
                 t = terms.get(n - 1);
             }
-            if (focusType == TextChangeIf.NextFocusType.FOCUS_RIGHT || focusType == TextChangeIf.NextFocusType.FOCUS_UP
-                    || focusType == TextChangeIf.NextFocusType.FOCUS_DOWN)
+            if (focusType == FocusChangeIf.NextFocusType.FOCUS_RIGHT || focusType == FocusChangeIf.NextFocusType.FOCUS_UP
+                    || focusType == FocusChangeIf.NextFocusType.FOCUS_DOWN)
             {
                 t = terms.get(0);
             }
@@ -1108,11 +1108,11 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         }
         else if (isRootFormula())
         {
-            if (focusType == TextChangeIf.NextFocusType.FOCUS_LEFT)
+            if (focusType == FocusChangeIf.NextFocusType.FOCUS_LEFT)
             {
                 f = getFormulaList().getFormulaListView().getFormula(getId(), ListChangeIf.Position.LEFT);
             }
-            else if (focusType == TextChangeIf.NextFocusType.FOCUS_RIGHT)
+            else if (focusType == FocusChangeIf.NextFocusType.FOCUS_RIGHT)
             {
                 f = getFormulaList().getFormulaListView().getFormula(getId(), ListChangeIf.Position.RIGHT);
             }

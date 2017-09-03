@@ -43,10 +43,11 @@ import com.mkulesh.micromath.utils.IdGenerator;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomLayout;
+import com.mkulesh.micromath.widgets.FocusChangeIf;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
 import com.mkulesh.micromath.widgets.TextChangeIf;
 
-public class TermField implements TextChangeIf, CalculatableIf
+public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
 {
     /*
      * Constants used to save/restore the instance state.
@@ -141,7 +142,7 @@ public class TermField implements TextChangeIf, CalculatableIf
         termKey = text.getText().toString();
         this.text = text;
         this.text.setText("");
-        this.text.setTextChangeIf(this);
+        this.text.setChangeIf(this, this);
         this.text.setId(IdGenerator.generateId());
         updateViewColor();
     }
@@ -433,7 +434,7 @@ public class TermField implements TextChangeIf, CalculatableIf
     }
 
     @Override
-    public int onGetNextFocusId(CustomEditText owner, TextChangeIf.NextFocusType focusType)
+    public int onGetNextFocusId(CustomEditText owner, FocusChangeIf.NextFocusType focusType)
     {
         return parentFormula.getNextFocusId(text, focusType);
     };

@@ -30,7 +30,7 @@ import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
-import com.mkulesh.micromath.widgets.TextChangeIf;
+import com.mkulesh.micromath.widgets.FocusChangeIf;
 
 public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
 {
@@ -120,11 +120,11 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     }
 
     @Override
-    public int getNextFocusId(CustomEditText owner, TextChangeIf.NextFocusType focusType)
+    public int getNextFocusId(CustomEditText owner, FocusChangeIf.NextFocusType focusType)
     {
         if (formulaRoot != null
                 && owner != null
-                && (focusType == TextChangeIf.NextFocusType.FOCUS_UP || focusType == TextChangeIf.NextFocusType.FOCUS_DOWN))
+                && (focusType == FocusChangeIf.NextFocusType.FOCUS_UP || focusType == FocusChangeIf.NextFocusType.FOCUS_DOWN))
         {
             return formulaRoot.getNextFocusId(owner, focusType);
         }

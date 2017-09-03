@@ -44,6 +44,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
 {
     private AppCompatActivity activity = null;
     private TextChangeIf textChangeIf = null;
+    private FocusChangeIf focusChangeIf = null;
     private TextWatcher textWatcher = new EditTextWatcher();
     private boolean textWatcherActive = true;
 
@@ -223,9 +224,10 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     /**
      * Set the text watcher interface
      */
-    public void setTextChangeIf(TextChangeIf textChangeIf)
+    public void setChangeIf(TextChangeIf textChangeIf, FocusChangeIf focusChangeIf)
     {
         this.textChangeIf = textChangeIf;
+        this.focusChangeIf = focusChangeIf;
         setTextWatcher(true);
     }
 
@@ -419,15 +421,15 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         {
             return;
         }
-        if (hasFocus && textChangeIf != null)
+        if (hasFocus && focusChangeIf != null)
         {
-            setNextFocusDownId(textChangeIf.onGetNextFocusId(this, TextChangeIf.NextFocusType.FOCUS_DOWN));
-            setNextFocusLeftId(textChangeIf.onGetNextFocusId(this, TextChangeIf.NextFocusType.FOCUS_LEFT));
-            setNextFocusRightId(textChangeIf.onGetNextFocusId(this, TextChangeIf.NextFocusType.FOCUS_RIGHT));
-            setNextFocusUpId(textChangeIf.onGetNextFocusId(this, TextChangeIf.NextFocusType.FOCUS_UP));
+            setNextFocusDownId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_DOWN));
+            setNextFocusLeftId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_LEFT));
+            setNextFocusRightId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_RIGHT));
+            setNextFocusUpId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_UP));
             if (Build.VERSION.SDK_INT >= 11)
             {
-                setNextFocusForwardId(textChangeIf.onGetNextFocusId(this, TextChangeIf.NextFocusType.FOCUS_RIGHT));
+                setNextFocusForwardId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_RIGHT));
             }
         }
         if (formulaChangeIf != null)

@@ -37,13 +37,14 @@ import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
+import com.mkulesh.micromath.widgets.FocusChangeIf;
 import com.mkulesh.micromath.widgets.ListChangeIf;
 import com.mkulesh.micromath.widgets.TextChangeIf;
 
 /*********************************************************
  * This class implements symbol palette
  *********************************************************/
-public class Palette implements OnClickListener, OnLongClickListener, TextChangeIf
+public class Palette implements OnClickListener, OnLongClickListener, TextChangeIf, FocusChangeIf
 {
     static final int NO_BUTTON = -1;
 
@@ -131,7 +132,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         this.paletteLayout = paletteLayout;
 
         hiddenInput = (CustomEditText) paletteLayout.findViewById(R.id.hidden_edit_text);
-        hiddenInput.setTextChangeIf(this);
+        hiddenInput.setChangeIf(this, this);
         hiddenInput.setVisibility(View.GONE);
         hiddenInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
@@ -373,7 +374,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
     }
 
     @Override
-    public int onGetNextFocusId(CustomEditText owner, NextFocusType focusType)
+    public int onGetNextFocusId(CustomEditText owner, FocusChangeIf.NextFocusType focusType)
     {
         return R.id.main_list_view;
     }
