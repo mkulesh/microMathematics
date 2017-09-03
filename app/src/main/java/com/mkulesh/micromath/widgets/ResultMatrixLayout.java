@@ -29,11 +29,25 @@ import android.widget.TableRow;
 
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.IdGenerator;
+import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.ArrayList;
 
 public class ResultMatrixLayout extends TableLayout
 {
+    public final class ElementTag
+    {
+        public final int row;
+        public final int col;
+        public final int idx;
+        public ElementTag (int r, int c, int i)
+        {
+            row = r;
+            col = c;
+            idx = i;
+        }
+    }
+
     private int rowsNumber = 0;
     private int colsNumber = 0;
     private final ArrayList<CustomEditText> fields = new ArrayList<>();
@@ -106,40 +120,8 @@ public class ResultMatrixLayout extends TableLayout
                 if (c != null)
                 {
                     c.setId(IdGenerator.generateId());
-                    c.setNextFocusDownId(-1);
+                    c.setTag(new ElementTag(row, col, fields.size()));
                     fields.add(c);
-                    // Up/Down focus
-                    if (row != 0)
-                    {
-                        final CustomEditText cUp = getCell(row - 1, col);
-                        if (cUp != null)
-                        {
-                            c.setNextFocusUpId(cUp.getId());
-                            cUp.setNextFocusDownId(c.getId());
-                        }
-                    }
-                    // Left/Right focus
-                    if (col == 0)
-                    {
-                        if (row != 0)
-                        {
-                            final CustomEditText cLeft = getCell(row - 1, colsNumber - 1);
-                            if (cLeft != null)
-                            {
-                                c.setNextFocusLeftId(cLeft.getId());
-                                cLeft.setNextFocusRightId(c.getId());
-                            }
-                        }
-                    }
-                    else
-                    {
-                        final CustomEditText cLeft = getCell(row, col - 1);
-                        if (cLeft != null)
-                        {
-                            c.setNextFocusLeftId(cLeft.getId());
-                            cLeft.setNextFocusRightId(c.getId());
-                        }
-                    }
                 }
             }
         }
@@ -179,11 +161,12 @@ public class ResultMatrixLayout extends TableLayout
         }
     }
 
-    public void prepare(AppCompatActivity activity, FormulaChangeIf termChangeIf)
+    public void prepare(AppCompatActivity activity, FormulaChangeIf termChangeIf, FocusChangeIf focusChangeIf)
     {
         for (CustomEditText field : fields)
         {
             field.prepare(activity, termChangeIf);
+            field.setChangeIf(null, focusChangeIf);
         }
     }
 
@@ -198,5 +181,46 @@ public class ResultMatrixLayout extends TableLayout
             }
             CompatUtils.updateBackground(getContext(), field, resId);
         }
+    }
+
+    public boolean isCell(CustomEditText c)
+    {
+        return c != null && c.getTag() != null && c.getTag() instanceof ElementTag;
+    }
+
+    public int getFirstFocusId()
+    {
+        return fields.isEmpty()? ViewUtils.INVALID_INDEX : fields.get(0).getId();
+    }
+
+    public int getLastFocusId()
+    {
+        return fields.isEmpty()? ViewUtils.INVALID_INDEX : fields.get(fields.size() - 1).getId();
+    }
+
+    public int getNextFocusId(CustomEditText c, FocusChangeIf.NextFocusType focusType)
+    {
+        if (!isCell(c))
+        {
+            return ViewUtils.INVALID_INDEX;
+        }
+        ElementTag tag = (ElementTag)c.getTag();
+        CustomEditText nextC = null;
+        switch (focusType)
+        {
+            case FOCUS_DOWN:
+                nextC = tag.row + 1 < rowsNumber? getCell(tag.row + 1, tag.col) : null;
+                break;
+            case FOCUS_LEFT:
+                nextC = tag.idx >= 1? fields.get(tag.idx - 1) : null;
+                break;
+            case FOCUS_RIGHT:
+                nextC = tag.idx + 1 < fields.size()? fields.get(tag.idx + 1) : null;
+                break;
+            case FOCUS_UP:
+                nextC = tag.row >= 1? getCell(tag.row - 1, tag.col) : null;
+                break;
+        }
+        return nextC == null? ViewUtils.INVALID_INDEX : nextC.getId();
     }
 }

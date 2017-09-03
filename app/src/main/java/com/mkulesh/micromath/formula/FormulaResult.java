@@ -44,9 +44,10 @@ import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
+import com.mkulesh.micromath.widgets.FocusChangeIf;
 import com.mkulesh.micromath.widgets.ResultMatrixLayout;
 
-public class FormulaResult extends CalculationResult implements ResultPropertiesChangeIf
+public class FormulaResult extends CalculationResult implements ResultPropertiesChangeIf, FocusChangeIf
 {
     private static final String STATE_RESULT_PROPERTIES = "result_properties";
     public static final String CELL_DOTS = "...";
@@ -179,6 +180,46 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         }
     }
 
+    @Override
+    public int getNextFocusId(CustomEditText owner, FocusChangeIf.NextFocusType focusType)
+    {
+        if (isArrayResult())
+        {
+            if (owner == leftTerm.getEditText() && focusType == FocusChangeIf.NextFocusType.FOCUS_RIGHT)
+            {
+                return arrayResultMatrix.getFirstFocusId();
+            }
+            if (owner == null && focusType == FocusChangeIf.NextFocusType.FOCUS_LEFT)
+            {
+                return arrayResultMatrix.getLastFocusId();
+            }
+        }
+        return super.getNextFocusId(owner, focusType);
+    }
+
+    /*********************************************************
+     * Implementation for methods for FocusChangeIf interface
+     *********************************************************/
+
+    @Override
+    public int onGetNextFocusId(CustomEditText owner, NextFocusType focusType)
+    {
+        if (owner == null)
+        {
+            return R.id.main_list_view;
+        }
+        if (arrayResultMatrix != null)
+        {
+            int id = arrayResultMatrix.getNextFocusId(owner, focusType);
+            if (id == ViewUtils.INVALID_INDEX)
+            {
+                id = getNextFocusId(constantResultField.getEditText(), focusType);
+            }
+            return id;
+        }
+        return getNextFocusId(owner, focusType);
+    }
+
     /*********************************************************
      * Re-implementation for methods for CalculationResult superclass
      *********************************************************/
@@ -294,7 +335,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                 arrayResultMatrix.setVisibility(visibility);
                 rightBracket.setVisibility(visibility);
                 fillResultMatrix();
-                arrayResultMatrix.prepare(getFormulaList().getActivity(), this);
+                arrayResultMatrix.prepare(getFormulaList().getActivity(), this, this);
                 arrayResultMatrix.updateTextSize(getFormulaList().getDimen());
                 break;
             }
