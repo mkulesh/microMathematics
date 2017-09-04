@@ -223,4 +223,13 @@ public class ResultMatrixLayout extends TableLayout
         }
         return nextC == null? ViewUtils.INVALID_INDEX : nextC.getId();
     }
+
+    public void setText(String s, ScaledDimensions dimen)
+    {
+        for (CustomEditText field : fields)
+        {
+            field.setText(s);
+            field.updateTextSize(dimen, 0, ScaledDimensions.Type.MATRIX_COLUMN_PADDING);
+        }
+    }
 }

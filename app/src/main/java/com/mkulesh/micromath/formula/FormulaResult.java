@@ -65,7 +65,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     private CustomTextView resultAssign = null;
     private ResultType resultType = ResultType.NONE;
 
-    // Cobstant or invalid result
+    // Constant or invalid result
     private CalculatedValue constantResult = null;
     private TermField constantResultField = null;
 
@@ -147,7 +147,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
 
         if (!isValid)
         {
-            invalidateResult();
+            clearResult();
+            showResult();
         }
         return disableCalculation() || isValid;
     }
@@ -227,13 +228,14 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     @Override
     public void invalidateResult()
     {
-        clearResult();
-        showResult();
+        constantResultField.getEditText().setText("");
+        arrayResultMatrix.setText("", getFormulaList().getDimen());
     }
 
     @Override
     public void calculate(CalculaterTask thread) throws CancelException
     {
+        clearResult();
         final TestSession ta = getFormulaList().getTaSession();
 
         if (disableCalculation())
@@ -300,6 +302,10 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                         leftTerm.getValue(thread, arrayResult.getValue2D(xIndex, yIndex));
                     }
                 }
+            }
+            else
+            {
+                resultType = ResultType.NAN;
             }
         }
         if (!leftTerm.isTerm() && ta != null)
@@ -393,7 +399,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         }
         if (properties.disableCalculation)
         {
-            invalidateResult();
+            clearResult();
         }
         updateResultView(true);
         ViewUtils.invalidateLayout(layout, layout);
