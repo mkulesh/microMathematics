@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="60" significantDigits="8" scale="0.5" redefineAllowed="true">
-    <text_fragment>
+  <formulaList textWidth="60" significantDigits="8" scale="0.50000" redefineAllowed="true">
+    <text_fragment textStyle="subsection">
       <term key="text" text="The use of 1D arrays" />
     </text_fragment>
     <equation>
@@ -47,7 +47,7 @@
       </term>
       <term key="rightTerm" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M1">
         <term key="argTerm" text="n" />
       </term>
@@ -66,7 +66,7 @@
       </term>
       <term key="rightTerm" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M2">
         <term key="argTerm" text="n" />
       </term>
@@ -74,10 +74,10 @@
     </result>
     <plot_function width="600" height="300" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="2">
       <term key="yMaxValue" text="" />
-      <term key="yFunction1" color="#FF0000FF" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.index.M1">
+      <term key="yFunction1" color="#FF0000FF" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.index.M1">
         <term key="argTerm" text="k" />
       </term>
-      <term key="yFunction2" color="#FFFF0080" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.index.M2">
+      <term key="yFunction2" color="#FFFF0080" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.index.M2">
         <term key="argTerm" text="k" />
       </term>
       <term key="yMinValue" text="" />
@@ -111,8 +111,8 @@
       </term>
       <term key="rightTerm" />
     </result>
-    <text_fragment>
-      <term key="text" text="&#10;TC: access by a valid index 1 " />
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="TC: access by a valid index 1 " />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -154,8 +154,8 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
-    <text_fragment>
-      <term key="text" text="&#10;TC: access by negative index " />
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="TC: access by negative index " />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -197,8 +197,8 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
-    <text_fragment>
-      <term key="text" text="&#10;TC: out of range " />
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="TC: out of range " />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -240,8 +240,8 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
-    <text_fragment>
-      <term key="text" text="&#10;TC: access by a valid index 2 " />
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="TC: access by a valid index 2 " />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -280,8 +280,8 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
-    <text_fragment>
-      <term key="text" text="&#10;TC: access by a valid index 3 " />
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="TC: access by a valid index 3 " />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -320,8 +320,8 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
-    <text_fragment>
-      <term key="text" text="&#10;TC: summ over both arrays " />
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="TC: summ over both arrays " />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -395,8 +395,8 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
-    <text_fragment>
-      <term key="text" text="&#10;TC: check of the index array " />
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="TC: check of the index array " />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -440,8 +440,8 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
-    <text_fragment>
-      <term key="text" text="&#10;TC: access using index array " />
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="TC: access using index array " />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />

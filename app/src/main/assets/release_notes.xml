@@ -1,8 +1,71 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="40" significantDigits="6" scale="0.50000" redefineAllowed="false">
+  <formulaList textWidth="40" significantDigits="3" scale="0.50000" redefineAllowed="true">
     <text_fragment textStyle="subsection">
       <term key="text" text="Current release:" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text='Now it is possible to change app locale&#10;independently from the current system&#10;locale. To do it, see "App language" in&#10;the main menu.' />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text='Fixed a bug in the LaTeX and HTML&#10;export: the result field disappers now&#10;if "Hide result field" setting is&#10;active.' />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Now it is possible to show 2D array in&#10;the result field:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="k" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="50" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="m" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="50" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="M[k,m]" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" code="power">
+          <term key="leftTerm" code="sin">
+            <term key="argTerm" code="divide_slash">
+              <term key="leftTerm" text="k" />
+              <term key="rightTerm" text="10" />
+            </term>
+          </term>
+          <term key="rightTerm" text="2" />
+        </term>
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="3" />
+          <term key="rightTerm" code="abs_layout">
+            <term key="argTerm" code="cos">
+              <term key="argTerm" code="divide_slash">
+                <term key="leftTerm" text="m" />
+                <term key="rightTerm" text="10" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result disableCalculation="false" hideResultField="false" arrayLength="5">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
+      <term key="rightTerm" />
+    </result>
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Previous releases:" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Version 2.15.3" />
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text='Fixed a bug: the floating button&#10;"Calculate" shall disappear if file&#10;open operation is in progress' />
@@ -12,9 +75,6 @@
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text="Android 2.2 is no longer supported. The&#10;required Android version is now 2.3" />
-    </text_fragment>
-    <text_fragment textStyle="subsection">
-      <term key="text" text="Previous releases:" />
     </text_fragment>
     <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Version 2.15.2" />

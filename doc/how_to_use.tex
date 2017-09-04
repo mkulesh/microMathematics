@@ -1,5 +1,5 @@
 % This is auto-generated file: do not edit!
-% Exported from microMathematics Plus, version 2.15.3
+% Exported from microMathematics Plus, version 2.15.4a
 
 
 This app is a powerful calculation
@@ -175,7 +175,7 @@ where the interval start is zero as
 follows:
 \begin{center}\begin{tabular}{cc}
   $dy := 0.05$ &
-  $y := \left[ 0,\, dy \,..\, dy \cdot \left( N - 1 \right) \right]$ \cr
+  $y := \left[ 0,\, dy \,..\, dy \cdot N \right]$ \cr
 \end{tabular}\end{center}
 
 \subsubsection{Function}
@@ -250,6 +250,9 @@ name:
   $M_{5,\, 10}  = -1.39106$ &
   $M_{10,\, 5}  = -1.92467$ \cr
 \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+  $N[k,m] := floor \left( -10 \cdot M_{k,\, m} \right) $
+\end{tabular}\end{center}
 
 e) if any array index is complex or
 negative or greater than the upper
@@ -313,11 +316,13 @@ interval. Due to free space limit on
 the display, only the first six and
 the last elements of the vector will
 be displayed:
-\begin{center}\begin{tabular}{c}
-  $x = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, ..., 10.0]$
+\begin{center}\begin{tabular}{ccc}
+  $x = \begin{bmatrix}0.0\\0.1\\0.2\\0.3\\0.4\\0.5\\\dots\\10.0\\\end{bmatrix}$ &
+  $y = \begin{bmatrix}0.0\\0.05\\0.1\\0.15\\0.2\\0.25\\\dots\\10.0\\\end{bmatrix}$ &
+  $2 \cdot y = \begin{bmatrix}0.0\\0.1\\0.2\\0.3\\0.4\\0.5\\\dots\\20.0\\\end{bmatrix}$ \cr
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $2 \cdot y = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, ..., 19.9]$
+  $N_{k,\, m}  = \begin{bmatrix}30.0&29.0&29.0&28.0&\dots&12.0\\29.0&29.0&29.0&28.0&\dots&12.0\\29.0&29.0&29.0&28.0&\dots&11.0\\29.0&28.0&28.0&27.0&\dots&11.0\\\dots&\dots&\dots&\dots&\dots&\dots\\27.0&26.0&26.0&25.0&\dots&9.0\\\end{bmatrix}$
 \end{tabular}\end{center}
 
 Number of displayed elements and the
@@ -337,7 +342,7 @@ button, the ''Details'' dialog will be
 displayed, where you can observe all
 elements of the array.
 
-Note that the use of two or more
+Note that the use of three or more
 ''interval-like'' variables on the left
 part of a result view is not allowed
 in this app version.
