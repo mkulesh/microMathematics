@@ -228,7 +228,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     @Override
     public void invalidateResult()
     {
-        constantResultField.getEditText().setText("");
+        constantResultField.setText("");
         arrayResultMatrix.setText("", getFormulaList().getDimen());
     }
 
