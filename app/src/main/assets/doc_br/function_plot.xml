@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="false">
+    <text_fragment>
+      <term key="text" text="Este exemplo demonstra como &#10;preparar e ajustar uma representação&#10;gráfica de uma função. Por&#10;exemplo, queremos desenhar tês&#10;funções diferentes:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f(x)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="25" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="10" />
+          <term key="rightTerm" code="sin">
+            <term key="argTerm" code="sqrt_layout">
+              <term key="argTerm" code="abs_layout">
+                <term key="argTerm" text="x" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="g(x)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="divide">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="e" />
+            <term key="rightTerm" code="divide_slash">
+              <term key="leftTerm" code="abs_layout">
+                <term key="argTerm" text="x" />
+              </term>
+              <term key="rightTerm" text="15" />
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="content:com.mkulesh.micromath.link.f">
+          <term key="argTerm" code="mult">
+            <term key="leftTerm" text="x" />
+            <term key="rightTerm" text="50" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="h(x)" />
+      <term key="rightTerm" code="min">
+        <term key="argTerm1" code="content:com.mkulesh.micromath.link.f">
+          <term key="argTerm" text="x" />
+        </term>
+        <term key="argTerm2" code="content:com.mkulesh.micromath.link.g">
+          <term key="argTerm" text="x" />
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="O argumento da função que representa&#10;os valores-x serão tomados para N&#10;pontos no intervalo [x1, x2]:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="300" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x1" />
+      <term key="rightTerm" text="-30" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x2" />
+      <term key="rightTerm" text="30" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="x1" />
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" text="x1" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" code="minus">
+              <term key="leftTerm" text="x2" />
+              <term key="rightTerm" text="x1" />
+            </term>
+            <term key="rightTerm" text="N" />
+          </term>
+        </term>
+        <term key="maxValue" text="x2" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text='Após as funções e seus argumentos&#10;forem definidos, você pode adicionar a caixa para desenhar&#10;usando o botão "Novo elemento" na &#10;barra de ações ou o botão "Adicionar desenho de função"&#10;a partir da barra de ferramentas:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_plot_function.svg" embedded="false" originalSize="false" width="450" height="90" />
+    <plot_function width="680" height="600" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#7F000000" functionsNumber="1">
+      <term key="yMaxValue" text="40" />
+      <term key="yFunction" color="#FF00B821" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="10" />
+      <term key="xMinValue" text="-30" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="30" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text='A função a ser desenhada será posta&#10;no campo central-esquerdo. Também pode ser&#10;uma função embutida ou declarada previamente&#10;como uma expressão matemática&#10;que contém qualquer outros&#10;operadores e funções.&#10;&#10;A função esntrada, que representa&#10;os valores-x que serão postos no&#10;campo central-esquerdo. Pode ser uma&#10;variável do tipo intervalo ou uma&#10;expressão matemática que contém&#10;uma variável de intervalo.&#10;&#10;Os outros quatro campos descrevem os&#10;limites do desenho. Se estes elementos&#10;premanecerem vazios, o programa&#10;calculará valores correspondentes&#10;automaticamente. Entretanto, você pode editar&#10;estes campos a qualquer momento e colocar lá&#10;os valores que sedejar.&#10;&#10;Você pode desenhar diversas funções na mesma&#10;visualização. Para adicionar uma outra&#10;função, selecione a função (segurando&#10;no campo central-esquerdo) depois&#10;qual outra função deve ser adicionada&#10;e toque no botão "Adicionar novo argumento"&#10;a partir da barra de tarefas:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_new_term.svg" embedded="false" originalSize="false" width="450" height="90" />
+    <plot_function width="680" height="600" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#7F000000" functionsNumber="3">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction1" color="#FF00B821" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction2" color="#FF0000FF" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.g">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction3" color="#FFFF0044" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.h">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="1" />
+      <term key="xMinValue" text="-30" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" text="x" />
+      <term key="xFunction3" text="x" />
+      <term key="xMaxValue" text="30" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text='Segurando no centro da área de&#10;desenho, o menu de contexto e o&#10;botão flutuante "Propriedades do objeto"&#10;aparecerá.' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/plot_parameters.svg" embedded="false" originalSize="false" width="600" height="500" />
+    <text_fragment>
+      <term key="text" text='Se você tocar no botão flutuante, a&#10;janela de "Configurações de traço" será&#10;exibida. Aqui, você pode alterar o tamanho&#10;e aparência da área de desenho. Por&#10;exemplo, o gráfico cruzado parece&#10;assim:' />
+    </text_fragment>
+    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#7F000000" functionsNumber="1">
+      <term key="yMaxValue" text="40" />
+      <term key="yFunction" color="#FF00B821" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="10" />
+      <term key="xMinValue" text="-30" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="30" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text='Você também pode alterar a cor da linha de&#10;desenho, largura e aparência na janela&#10;"Configurações da linha". Ela aparece ao segurar&#10;no marcador de linha abaixo&#10;do nome da função na área esquerda&#10;do desenho:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/line_parameters.svg" embedded="false" originalSize="false" width="600" height="500" />
+    <text_fragment>
+      <term key="text" text="For example, we can use dotted lines:" />
+    </text_fragment>
+    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#7F000000" functionsNumber="1">
+      <term key="yMaxValue" text="65" />
+      <term key="yFunction" color="#FFE2000A" width="5" lineStyle="dotted" code="content:com.mkulesh.micromath.link.g">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="10" />
+      <term key="xMinValue" text="-30" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="30" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text='O número de eixos e rótulos e cor das linahs de grade&#10;podem ser alteradas na janela&#10;"Configurações de grade". Ela aparece segurando&#10;na área livre entre o valor mínimo&#10;de x (-30) e o símbolo de argumento&#10;(x) ou entre o símbolo x e&#10;o valor máximo de x (30) abaixo da área de&#10;desenho:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/grid_parameters.svg" embedded="false" originalSize="false" width="600" height="500" />
+    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="10" yLabelsNumber="7" gridLineColor="#89005EFF" functionsNumber="1">
+      <term key="yMaxValue" text="40" />
+      <term key="yFunction" color="#FFE2000A" width="5" lineStyle="dotted" code="content:com.mkulesh.micromath.link.h">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="10" />
+      <term key="xMinValue" text="-30" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="30" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text="Para esconder a grade completamente apenas defina&#10;o número de linhas da grade para zero nos eixos&#10;vertical e horizontal." />
+    </text_fragment>
+  </formulaList>
+</micromath>
