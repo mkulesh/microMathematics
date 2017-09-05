@@ -8,7 +8,7 @@
       <term key="text" text='Now it is possible to change app locale&#10;independently from the current system&#10;locale. To do it, see "App language" in&#10;the main menu.' />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text='Fixed a bug in the LaTeX and HTML&#10;export: the result field disappers now&#10;if "Hide result field" setting is&#10;active.' />
+      <term key="text" text='Fixed a bug in the LaTeX and HTML&#10;export: the result field disappears now&#10;if "Hide result field" setting is&#10;active.' />
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text="Now it is possible to show 2D array in&#10;the result field:" />
