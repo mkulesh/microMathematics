@@ -27,7 +27,12 @@ Not only students, but also everybody who likes mathematics or needs more than j
 * SD card on Android 6+ is also supported
 * The app contains detailed "How to use" page and several examples
 
-![Example of a function plot](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/lenovo_vertical3.png)
+## Screenshots:
+![Example of a function plot](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/rayleigh_wave.png)
+![Example of a 3D plot](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/valentine.png)
+![Example of calculation with complex numbers](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/fourie_transform.png)
+
+For more screenshots, see directory images/screenshots.
 
 ## Reviews and publications:
 * [Press Release: Introducing microMathematics: the First Spreadsheet Oriented Mathematical Calculator for Android](http://www.androidappsreview.com/2014/09/29/micro-mathematics-press-release/)
