@@ -39,6 +39,7 @@ import java.util.Locale;
 public final class AppLocale
 {
     public static final String PREF_APP_LANGUAGE = "app_language";
+    public static final String PREF_APP_LANGUAGE_REGION = "app_language_region";
 
     public static class ContextWrapper extends android.content.ContextWrapper
     {
@@ -47,22 +48,34 @@ public final class AppLocale
             super(base);
         }
 
-        public static String getPreferredLanguage(Context context)
+        public static Locale getPreferredLocale(Context context)
         {
             final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-            final String res = pref.getString(PREF_APP_LANGUAGE, "");
-            return res.equals("")? Locale.getDefault().getLanguage() : res;
+            final String languageCode = pref.getString(PREF_APP_LANGUAGE, "");
+            final String languageRegion = pref.getString(PREF_APP_LANGUAGE_REGION, "");
+
+            if (languageCode.equals(""))
+            {
+                return new Locale(Locale.getDefault().getLanguage());
+            }
+            if (languageRegion.equals(""))
+            {
+                return new Locale(languageCode);
+            }
+            return new Locale(languageCode, languageRegion);
         }
 
         public static void setPreferredLanguage(final MainActivity activity)
         {
-            final String prefLanguage = getPreferredLanguage(activity);
+            final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(activity);
+            final String prefCode = pref.getString(PREF_APP_LANGUAGE, "");
+            final String prefRegion = pref.getString(PREF_APP_LANGUAGE_REGION, "");
 
             final String[] languageCodes = activity.getResources().getStringArray(R.array.language_codes);
+            final String[] languageRegions = activity.getResources().getStringArray(R.array.language_regions);
             final String[] languageNames = activity.getResources().getStringArray(R.array.language_names);
-            final int languageNumber = Math.min(languageNames.length, languageCodes.length);
-
-            final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(activity);
+            final int languageNumber = Math.min(Math.min(
+                    languageCodes.length, languageRegions.length), languageNames.length);
 
             final DialogRadioGroup d = new DialogRadioGroup(activity, R.string.action_app_language,
                     languageNumber, new DialogRadioGroup.EventHandler()
@@ -72,7 +85,7 @@ public final class AppLocale
                     for (int i = 0; i < rb.length; i++)
                     {
                         rb[i].setText(languageNames[i]);
-                        rb[i].setChecked(languageCodes[i].equals(prefLanguage));
+                        rb[i].setChecked(languageCodes[i].equals(prefCode) && languageRegions[i].equals(prefRegion));
                     }
                 }
 
@@ -82,6 +95,7 @@ public final class AppLocale
                     {
                         SharedPreferences.Editor editor = pref.edit();
                         editor.putString(PREF_APP_LANGUAGE, languageCodes[whichButton]);
+                        editor.putString(PREF_APP_LANGUAGE_REGION, languageRegions[whichButton]);
                         editor.commit();
                         activity.restartActivity();
                     }

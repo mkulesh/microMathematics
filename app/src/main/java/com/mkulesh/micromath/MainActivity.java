@@ -248,9 +248,9 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     @Override
     protected void attachBaseContext(Context newBase)
     {
-        final String prefLocale = AppLocale.ContextWrapper.getPreferredLanguage(newBase);
-        ViewUtils.Debug(this, "Application locale: " + prefLocale);
-        super.attachBaseContext(AppLocale.ContextWrapper.wrap(newBase, new Locale(prefLocale)));
+        final Locale prefLocale = AppLocale.ContextWrapper.getPreferredLocale(newBase);
+        ViewUtils.Debug(this, "Application locale: " + prefLocale.toString());
+        super.attachBaseContext(AppLocale.ContextWrapper.wrap(newBase, prefLocale));
     }
 
     /*********************************************************
