@@ -289,6 +289,7 @@
     <string name="action_dev_mode">Entwicklermodus</string>
     <string name="action_dev_autotest">Automatischer Test</string>
     <string name="action_dev_export_doc">Handbuch exportieren</string>
+    <string name="action_dev_take_screenshot">Screenshot exportieren</string>
     <string name="message_developer_mode">Entwicklermodus ist aktiviert</string>
     
     <!-- Library licenses -->

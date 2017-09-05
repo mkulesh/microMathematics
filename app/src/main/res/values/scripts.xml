@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- TA scenarios -->
+    <string name="autotest_directory" translatable="false">ta</string>
+
+    <string-array name="autotest_scripts" translatable="false">
+        <item>asset:/ta/ts_intervals.xml</item>
+        <item>asset:/ta/ts_redefinition.xml</item>
+        <item>asset:/ta/ts_calculations.xml</item>
+        <item>asset:/ta/ts_linked_derivative.xml</item>
+        <item>asset:/ta/ts_operator_summation.xml</item>
+        <item>asset:/ta/ts_operator_substraction.xml</item>
+        <item>asset:/ta/ts_operator_multiplication.xml</item>
+        <item>asset:/ta/ts_operator_division.xml</item>
+        <item>asset:/ta/ts_operator_power.xml</item>
+        <item>asset:/ta/ts_functions_if.xml</item>
+        <item>asset:/ta/ts_functions_nthroot.xml</item>
+        <item>asset:/ta/ts_functions_exp.xml</item>
+        <item>asset:/ta/ts_functions_sqrt.xml</item>
+        <item>asset:/ta/ts_functions_log.xml</item>
+        <item>asset:/ta/ts_functions_trigonometric.xml</item>
+        <item>asset:/ta/ts_functions_hyperbolic.xml</item>
+        <item>asset:/ta/ts_functions_hypot.xml</item>
+        <item>asset:/ta/ts_functions_round.xml</item>
+        <item>asset:/ta/ts_functions_utils.xml</item>
+        <item>asset:/ta/ts_summation.xml</item>
+        <item>asset:/ta/ts_summation_derivative.xml</item>
+        <item>asset:/ta/ts_product.xml</item>
+        <item>asset:/ta/ts_integrals.xml</item>
+        <item>asset:/ta/ts_integrals_cmpl.xml</item>
+        <item>asset:/ta/ts_integrals_multiple.xml</item>
+        <item>asset:/ta/ts_infinity.xml</item>
+        <item>asset:/ta/ts_array_1d.xml</item>
+        <item>asset:/ta/ts_fourier_transform.xml</item>
+        <item>asset:/ta/ts_array_2d.xml</item>
+        <item>asset:/ta/ts_random_const.xml</item>
+        <item>asset:/ta/ts_result_view.xml</item>
+    </string-array>
+    
+    <string-array name="doc_export_scripts" translatable="false">
+        <item>asset:/doc_en/how_to_use.xml</item>
+        <item>asset:/doc_en/function_plot.xml</item>
+        <item>asset:/doc_en/polar_plot.xml</item>
+        <item>asset:/doc_en/three_d_plot.xml</item>
+        <item>asset:/doc_en/series_and_integrals.xml</item>
+        <item>asset:/doc_de/how_to_use_de.xml</item>
+        <item>asset:/doc_de/function_plot_de.xml</item>
+        <item>asset:/doc_de/polar_plot_de.xml</item>
+        <item>asset:/doc_de/three_d_plot_de.xml</item>
+        <item>asset:/doc_de/series_and_integrals_de.xml</item>
+        <item>asset:/doc_ru/how_to_use_ru.xml</item>
+        <item>asset:/doc_ru/function_plot_ru.xml</item>
+        <item>asset:/doc_ru/polar_plot_ru.xml</item>
+        <item>asset:/doc_ru/three_d_plot_ru.xml</item>
+        <item>asset:/doc_ru/series_and_integrals_ru.xml</item>
+    </string-array>
+
+    <string-array name="take_screenshots_scripts" translatable="false">
+        <item>asset:/examples/area_between_curves.mmt</item>
+        <item>asset:/examples/cosine_transform.mmt</item>
+        <item>asset:/examples/double_integral.mmt</item>
+        <item>asset:/examples/function_plot.mmt</item>
+        <item>asset:/examples/polar_plot_2.mmt</item>
+        <item>asset:/examples/simple_calculation.mmt</item>
+    </string-array>
+
+    <string-array name="asset_filter" translatable="false">
+        <item>doc_en</item>
+        <item>doc_ru</item>
+        <item>doc_de</item>
+        <item>examples</item>
+        <item>images</item>
+        <item>release_notes.xml</item>
+    </string-array>
+        
+</resources>

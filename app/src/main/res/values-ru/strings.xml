@@ -289,6 +289,7 @@
     <string name="action_dev_mode">Режим разработчика</string>
     <string name="action_dev_autotest">Автоматический тест</string>
     <string name="action_dev_export_doc">Экспорт документации</string>
+    <string name="action_dev_take_screenshot">Экспорт снимков</string>
     <string name="message_developer_mode">Режим разработчика активирован</string>
     
     <!-- Library licenses -->

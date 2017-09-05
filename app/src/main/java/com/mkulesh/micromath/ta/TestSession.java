@@ -20,12 +20,15 @@ package com.mkulesh.micromath.ta;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.View;
@@ -49,14 +52,21 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
     public enum Mode
     {
         TEST_SCRIPS,
-        EXPORT_DOC
+        EXPORT_DOC,
+        TAKE_SCREENSHOTS
     }
 
     public final static String REPORT_HTML_FILE = "autotest.html";
     public final static String TEST_CONFIGURATION = "autotest.cfg";
+    public final static String EXPORT_DOC_DIR = "doc";
+    public final static String TAKE_SCREENSHOTS_DIR = "screenshots";
+
+    private final static int STEP_READ = 0;
+    private final static int STEP_CALC = 1;
+    private final static int STEP_EXPORT = 2;
 
     private final FormulaList formulas;
-    private final Context context;
+    private final Activity context;
     private final CharSequence[] scripts;
     private final SynchronizedBoolean isPublishRuns = new SynchronizedBoolean();
     private final ArrayList<TestScript> testScripts = new ArrayList<TestScript>();
@@ -66,15 +76,22 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
     public TestSession(FormulaList formulas, Mode mode)
     {
         this.formulas = formulas;
-        context = formulas.getContext();
+        context = formulas.getActivity();
         this.mode = mode;
-        if (this.mode == Mode.TEST_SCRIPS)
+        switch (mode)
         {
-            scripts = context.getResources().getStringArray(R.array.autotest_scripts);
-        }
-        else
-        {
-            scripts = context.getResources().getStringArray(R.array.doc_export_scripts);
+            case TEST_SCRIPS:
+                scripts = context.getResources().getStringArray(R.array.autotest_scripts);
+                break;
+            case EXPORT_DOC:
+                scripts = context.getResources().getStringArray(R.array.doc_export_scripts);
+                break;
+            case TAKE_SCREENSHOTS:
+                scripts = context.getResources().getStringArray(R.array.take_screenshots_scripts);
+                break;
+            default:
+                scripts = null;
+                break;
         }
         formulas.setTaSession(this);
     }
@@ -100,7 +117,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
                     continue;
                 }
                 testScript = new TestScript(scriptUri.toString());
-                for (int step = 0; step < 2; step++)
+                for (int step = 0; step < STEP_EXPORT; step++)
                 {
                     testScript.setState(TestScript.State.values()[step]);
                     TestScript.State currState = testScript.getState();
@@ -108,9 +125,9 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
                     currState = testScript.waitStateChange(currState);
                     if (currState == TestScript.State.CALCULATE_FINISHED)
                     {
-                        if (mode == Mode.EXPORT_DOC)
+                        if (mode == Mode.EXPORT_DOC || mode == Mode.TAKE_SCREENSHOTS)
                         {
-                            callPublish(2, script);
+                            callPublish(STEP_EXPORT, script);
                         }
                         break;
                     }
@@ -153,53 +170,124 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         }
         final int step = t[0];
         final int script = t[1];
-        if (step == 0 && script < scripts.length)
+        if (script < scripts.length) switch (step)
         {
-            final String scriptName = (String) scripts[script];
-            formulas.clear();
-            formulas.readFromResource(Uri.parse(scriptName), XmlLoaderTask.PostAction.NONE);
-        }
-        else if (step == 1 && script < scripts.length)
-        {
-            final String scriptName = (String) scripts[script];
-            testScript.setScriptContent(scriptName);
-            if (mode == Mode.TEST_SCRIPS && formulas.getFormulaListView().getList().getChildCount() > 0)
+            case STEP_READ:
             {
-                final View v = formulas.getFormulaListView().getList().getChildAt(0);
-                if (v instanceof TextFragment)
-                {
-                    testScript.setScriptContent(((TextFragment) v).getTerms().get(0).getText());
-                }
+                final String scriptName = (String) scripts[script];
+                formulas.clear();
+                formulas.readFromResource(Uri.parse(scriptName), XmlLoaderTask.PostAction.NONE);
+                break;
             }
-            ViewUtils.Debug(this, "Calculating test script: " + scriptName);
-            formulas.calculate();
-        }
-        else if (step == 2 && script < scripts.length)
-        {
-            final String scriptName = Uri.parse((String) scripts[script]).getLastPathSegment().replace(".xml", "");
-            final File parent = context.getExternalFilesDir(null);
-            final File file = new File(parent, scriptName + ".tex");
-            if (file != null)
+            case STEP_CALC:
             {
-                final Uri docUri = FileUtils.ensureScheme(Uri.fromFile(file));
-                final Uri parentUri = FileUtils.ensureScheme(Uri.fromFile(parent));
-                ViewUtils.Debug(this, "Exporting document " + scriptName + ", parent uri: " + parentUri.toString());
-                final AdapterFileSystem adapter = new AdapterFileSystem(context);
-                adapter.setUri(parentUri);
-                final Exporter.Parameters exportParameters = new Exporter.Parameters();
-                exportParameters.skipDocumentHeader = true;
-                exportParameters.skipImageLocale = true;
-                Exporter.write(formulas, docUri, FileType.LATEX, adapter, exportParameters);
+                final String scriptName = (String) scripts[script];
+                testScript.setScriptContent(scriptName);
+                if (mode == Mode.TEST_SCRIPS && formulas.getFormulaListView().getList().getChildCount() > 0)
+                {
+                    final View v = formulas.getFormulaListView().getList().getChildAt(0);
+                    if (v instanceof TextFragment)
+                    {
+                        testScript.setScriptContent(((TextFragment) v).getTerms().get(0).getText());
+                    }
+                }
+                ViewUtils.Debug(this, "Calculating test script: " + scriptName);
+                formulas.calculate();
+                break;
+            }
+            case STEP_EXPORT:
+            {
+                final String lastPath = Uri.parse((String) scripts[script]).getLastPathSegment();
+                final String scriptName = lastPath.contains(".xml")?
+                        lastPath.replace(".xml", "") : lastPath.replace(".mmt", "");
+                if (mode == Mode.EXPORT_DOC)
+                {
+                    exportLatex(EXPORT_DOC_DIR, scriptName);
+                }
+                else if (mode == Mode.TAKE_SCREENSHOTS)
+                {
+                    takeScreenshot(TAKE_SCREENSHOTS_DIR, scriptName);
+                }
+                break;
             }
         }
         isPublishRuns.set(false);
+    }
+
+    private void exportLatex(String directory, String scriptName)
+    {
+        final File parent = new File(context.getExternalFilesDir(null) + "/" + directory);
+        parent.mkdir();
+        final File file = new File(parent, scriptName + ".tex");
+        if (file == null)
+        {
+            return;
+        }
+
+        final Uri docUri = FileUtils.ensureScheme(Uri.fromFile(file));
+        final Uri parentUri = FileUtils.ensureScheme(Uri.fromFile(parent));
+        ViewUtils.Debug(this, "Exporting document " + scriptName + ", parent uri: " + parentUri.toString());
+        final AdapterFileSystem adapter = new AdapterFileSystem(context);
+        adapter.setUri(parentUri);
+        final Exporter.Parameters exportParameters = new Exporter.Parameters();
+        exportParameters.skipDocumentHeader = true;
+        exportParameters.skipImageLocale = true;
+        Exporter.write(formulas, docUri, FileType.LATEX, adapter, exportParameters);
+    }
+
+    public boolean takeScreenshot(String directory, String scriptName)
+    {
+        final File parent = new File(context.getExternalFilesDir(null) + "/" + directory);
+        parent.mkdir();
+        final File file = new File(parent, scriptName + ".png");
+        if (file == null)
+        {
+            return false;
+        }
+
+        final Uri uri = FileUtils.ensureScheme(Uri.fromFile(file));
+        OutputStream stream = FileUtils.getOutputStream(context, uri);
+        if (stream == null)
+        {
+            return false;
+        }
+
+        try
+        {
+            /* grab whole window */
+            final View v1 = context.getWindow().getDecorView().getRootView();
+            v1.setDrawingCacheEnabled(true);
+            final Bitmap bitmap1 = Bitmap.createBitmap(v1.getDrawingCache());
+            v1.setDrawingCacheEnabled(false);
+
+            /* skip status bar in screenshot */
+            final int contentViewTop = ViewUtils.getStatusBarHeight(context);
+            final Bitmap bitmap2 = Bitmap.createBitmap(
+                    bitmap1, 0, contentViewTop, bitmap1.getWidth(), bitmap1.getHeight() - contentViewTop, null, true);
+
+            /* write into file */
+            bitmap2.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            stream.flush();
+            stream.close();
+
+            final String message = String.format(context.getResources().getString(R.string.message_file_written),
+                    file.getName());
+            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+        }
+        catch (Exception e)
+        {
+            final String error = String.format(context.getResources().getString(R.string.error_file_write), scriptName);
+            ViewUtils.Debug(context, error + ", " + e.getLocalizedMessage());
+            Toast.makeText(context, error, Toast.LENGTH_LONG).show();
+        }
+        return true;
     }
 
     @Override
     protected void onPostExecute(Void result)
     {
         super.onPostExecute(result);
-        if (mode == Mode.EXPORT_DOC)
+        if (mode == Mode.EXPORT_DOC || mode == Mode.TAKE_SCREENSHOTS)
         {
             return;
         }

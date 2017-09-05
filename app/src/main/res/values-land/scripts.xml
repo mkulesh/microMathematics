@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="take_screenshots_scripts" translatable="false">
+        <item>asset:/examples/rayleigh_wave.mmt</item>
+        <item>asset:/examples/valentine.mmt</item>
+        <item>asset:/examples/wavelet_plot_2.mmt</item>
+        <item>asset:/examples/polar_plot_1.mmt</item>
+    </string-array>
+
+</resources>

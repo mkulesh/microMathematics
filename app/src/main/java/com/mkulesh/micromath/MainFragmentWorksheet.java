@@ -299,6 +299,12 @@ public class MainFragmentWorksheet extends BaseFragment
             CompatUtils.executeAsyncTask(at);
             break;
         }
+        case R.id.action_dev_take_screenshot:
+        {
+            TestSession at = new TestSession(formulas, TestSession.Mode.TAKE_SCREENSHOTS);
+            CompatUtils.executeAsyncTask(at);
+            break;
+        }
         }
     }
 

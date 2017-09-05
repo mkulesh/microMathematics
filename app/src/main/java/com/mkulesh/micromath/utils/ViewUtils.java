@@ -29,6 +29,7 @@ import java.util.Set;
 import org.apache.commons.math3.util.FastMath;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -333,4 +334,14 @@ public final class ViewUtils
         return context.getResources().getConfiguration().keyboard != Configuration.KEYBOARD_NOKEYS;
     }
 
+    public static int getStatusBarHeight(final Activity activity)
+    {
+        int result = 0;
+        int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0)
+        {
+            result = activity.getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
 }

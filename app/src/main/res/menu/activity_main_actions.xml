@@ -82,7 +82,12 @@
                 android:orderInCategory="20"
                 android:title="@string/action_dev_export_doc"
                 micromath:showAsAction="never"/>
-	    </menu>
+            <item
+                android:id="@+id/action_dev_take_screenshot"
+                android:orderInCategory="30"
+                android:title="@string/action_dev_take_screenshot"
+                micromath:showAsAction="never"/>
+        </menu>
 	</item>
     <item
         android:id="@+id/action_exit"

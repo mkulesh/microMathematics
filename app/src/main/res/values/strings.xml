@@ -296,6 +296,7 @@
     <string name="action_dev_mode">Developer options</string>
     <string name="action_dev_autotest">Automatic test</string>
     <string name="action_dev_export_doc">Export documentation</string>
+    <string name="action_dev_take_screenshot">Export screenshots</string>
     <string name="message_developer_mode">Developer mode is activated</string>
     
     <!-- Library licenses -->

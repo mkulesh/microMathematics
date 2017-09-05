@@ -217,6 +217,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         case R.id.action_export:
         case R.id.action_dev_autotest:
         case R.id.action_dev_export_doc:
+        case R.id.action_dev_take_screenshot:
             if (checkStoragePermission(menuItem.getItemId()))
             {
                 baseFragment.performAction(menuItem.getItemId());
