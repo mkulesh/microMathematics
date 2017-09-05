@@ -2,11 +2,11 @@
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
   <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
     <text_fragment>
-      <term key="text" text="Agora desenharemos várias funções dadas no&#10;sistema de coordenadas polares. Cada&#10;ponto neste sistema é determinado por&#10;uma distância r da origem e o&#10;ângulo f do eixo x." />
+      <term key="text" text="Agora desenharemos várias funções dadas&#10;no sistema de coordenadas polares.&#10;Cada ponto neste sistema é determinado&#10;por uma distância r da origem e o&#10;ângulo f do eixo x." />
     </text_fragment>
     <image_fragment fileName="asset:/images/polar_coordinates.svg" embedded="false" originalSize="false" width="680" height="400" />
     <text_fragment>
-      <term key="text" text="O ângulo f é nossa variável independente&#10;que muda como está a seguir:" />
+      <term key="text" text="O ângulo f é nossa variável&#10;independente que muda como está a&#10;seguir:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="f" />
@@ -41,7 +41,7 @@
       <term key="text" text="Um caracol" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text='Definiremos nossa funcção polar em&#10;três passos. A primeira expressão&#10;define uma "roda":' />
+      <term key="text" text='Definiremos nossa funcção polar em três&#10;passos. A primeira expressão define&#10;uma "roda":' />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="A" />
@@ -74,11 +74,11 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text='Para desenhar esta função, adicionamos e caixa de&#10;desenho usando o boão "Novo elemento"&#10;na barra de ações ou o botão&#10;"Adicionar desenho de função" a partir da barra de ferramentas:' />
+      <term key="text" text='Para desenhar esta função, adicionamos&#10;e caixa de desenho usando o boão "Novo&#10;elemento" na barra de ações ou o botão&#10;"Adicionar desenho de função" a partir&#10;da barra de ferramentas:' />
     </text_fragment>
     <image_fragment fileName="asset:/images/toolbar_plot_function.svg" embedded="false" originalSize="false" width="450" height="90" />
     <text_fragment>
-      <term key="text" text="Ao invés de f e r, usamos aqui&#10;regras previamente definidas para transformação&#10;x e y, onde r1(f) é usado como&#10;um argumento simbólicopara estas regras:" />
+      <term key="text" text="Ao invés de f e r, usamos aqui regras&#10;previamente definidas para&#10;transformação x e y, onde r1(f) é&#10;usado como um argumento simbólicopara&#10;estas regras:" />
     </text_fragment>
     <plot_function width="680" height="650" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#7C000000" functionsNumber="1">
       <term key="yMaxValue" text="3.2" />
@@ -142,7 +142,7 @@
       <term key="xMaxValue" text="3.2" />
     </plot_function>
     <text_fragment>
-      <term key="text" text="Finalmente, fazemos a escala da última função&#10;r2(f) usando uma conversão de inteiro&#10;para flutuante que parece uma função em&#10;escada. Como resultado, obtemos um&#10;belo caracol:" />
+      <term key="text" text="Finalmente, fazemos a escala da última&#10;função r2(f) usando uma conversão de&#10;inteiro para flutuante que parece uma&#10;função em escada. Como resultado,&#10;obtemos um belo caracol:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="r(f)" />
@@ -178,7 +178,7 @@
       <term key="text" text="Japanese Maple" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text="O Maple japonês é muito conhecido pela&#10;forma e cores atraentes de suas folhas.&#10;Estas folhas podem ser descritas&#10;matematicamente e desenhadas como uma curva&#10;no sistema de coordenadas polares:" />
+      <term key="text" text="O Maple japonês é muito conhecido pela&#10;forma e cores atraentes de suas&#10;folhas. Estas folhas podem ser&#10;descritas matematicamente e desenhadas&#10;como uma curva no sistema de&#10;coordenadas polares:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="f" />

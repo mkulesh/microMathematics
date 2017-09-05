@@ -9,18 +9,10 @@
     <!-- Drawer -->
     <string name="drawer_open">Abrir gaveta de aplicativos</string>
 
-    <string-array name="language_codes" translatable="false">
-        <item>en</item>
-        <item>ru</item>
-        <item>de</item>
-        <item>fr</item>
-        <item>br</item>
-    </string-array>
     <string-array name="language_names">
         <item>English</item>
         <item>Russian</item>
         <item>German</item>
-        <item>French</item>
         <item>Brazilian Portuguese</item>
     </string-array>
     <string-array name="activity_titles">
@@ -55,12 +47,12 @@
     </string-array>
     <string-array name="activity_resources">
         <item></item>
-        <item>asset:/doc_br/how_to_use.xml</item>
-        <item>asset:/doc_br/function_plot.xml</item>
-        <item>asset:/doc_br/polar_plot.xml</item>
-        <item>asset:/doc_br/three_d_plot.xml</item>
-        <item>asset:/doc_br/series_and_integrals.xml</item>
-        <item>asset:/doc_br/about_micromath.xml</item>
+        <item>asset:/doc_en/how_to_use.xml</item>
+        <item>asset:/doc_br/function_plot_br.xml</item>
+        <item>asset:/doc_br/polar_plot_br.xml</item>
+        <item>asset:/doc_br/three_d_plot_br.xml</item>
+        <item>asset:/doc_br/series_and_integrals_br.xml</item>
+        <item>asset:/doc_br/about_micromath_br.xml</item>
         <item>https://github.com/mkulesh/microMathematics/releases/download/v2.15.3/microMathematics-v2.15.3.pdf</item>
     </string-array>
     <string name="activity_welcome">asset:/doc_br/welcome.xml</string>
@@ -254,10 +246,10 @@
     <!-- File manager -->
     <string name="fman_local">Armazenamento interno</string>
     <string name="fman_local_descr">Acessar arquivos a partir do sistema de arquivos primário</string>
-	<string name="fman_external">Cartão externo</string>
+    <string name="fman_external">Cartão externo</string>
     <string name="fman_external_descr">Acessar arquivos no cartão SD inserido fisicamente. Talvez seja apenas leitura em alguns dispositivos</string>
-	<string name="fman_saf">Documentos</string>
-	<string name="fman_saf_descr">Acessar arquivos no armazenamento de documentos</string>
+    <string name="fman_saf">Documentos</string>
+    <string name="fman_saf_descr">Acessar arquivos no armazenamento de documentos</string>
     <string name="fman_assets">Recursos do \"microMathematics Plus\"</string>
     <string name="fman_assets_descr">Documentação e exemplos disponíveis neste app</string>
     <string name="fman_home">Início</string>
@@ -268,18 +260,18 @@
     <string name="fman_refresh_title">Atualizar</string>
     <string name="fman_open_saf">Abrir armazenamento</string>
     <string name="fman_operation">Operações</string>
-	<string name="fman_create_folder_title">Criar pasta</string>
-	<string name="fman_create_folder_dialog_prompt">Nome da nova pasta:</string>
-	<string name="fman_create_folder_error">Incapaz de criar diretório \"%s\"</string>
-	<string name="fman_rename_title">Renomear</string>
-	<string name="fman_rename_dialog_prompt">Renomear \"%s\" para:</string>
-	<string name="fman_rename_error">Impossível de renomear \"%s\"</string>
-	<string name="fman_delete_title">Excluir</string>
-	<string name="fman_delete_dialog_prompt">Excluir \"%s\"?</string>
-	<string name="fman_delete_confirm">Arquivo selecionado excluído</string>
+    <string name="fman_create_folder_title">Criar pasta</string>
+    <string name="fman_create_folder_dialog_prompt">Nome da nova pasta:</string>
+    <string name="fman_create_folder_error">Incapaz de criar diretório \"%s\"</string>
+    <string name="fman_rename_title">Renomear</string>
+    <string name="fman_rename_dialog_prompt">Renomear \"%s\" para:</string>
+    <string name="fman_rename_error">Impossível de renomear \"%s\"</string>
+    <string name="fman_delete_title">Excluir</string>
+    <string name="fman_delete_dialog_prompt">Excluir \"%s\"?</string>
+    <string name="fman_delete_confirm">Arquivo selecionado excluído</string>
     <string name="fman_delete_error">Incapaz de excluir \"%s\"</string>
     <string name="fman_warning_dialog_title">Aviso</string>
-	<string name="fman_error_no_items">Nenhum item selecionado para completar a operação</string>
+    <string name="fman_error_no_items">Nenhum item selecionado para completar a operação</string>
     <string name="fman_error_sec_err">Problema de segurança: %s</string>
     <string name="fman_error_no_such_folder">\"%s\" não é uma pasta válida</string>
     <string name="fman_new_file">Nome do novo arquivo</string>

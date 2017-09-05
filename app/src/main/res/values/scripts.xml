@@ -66,6 +66,7 @@
     </string-array>
 
     <string-array name="asset_filter" translatable="false">
+        <item>doc_br</item>
         <item>doc_en</item>
         <item>doc_ru</item>
         <item>doc_de</item>

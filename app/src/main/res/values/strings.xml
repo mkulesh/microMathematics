@@ -9,17 +9,25 @@
     <!-- Drawer -->
     <string name="drawer_open">Open navigation drawer</string>
 
+    <!-- Language codes and regions -->
     <string-array name="language_codes" translatable="false">
         <item>en</item>
         <item>ru</item>
         <item>de</item>
-        <item>fr</item>
+        <item>pt</item>
     </string-array>
+    <string-array name="language_regions" translatable="false">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item>BR</item>
+    </string-array>
+
     <string-array name="language_names">
         <item>English</item>
         <item>Russian</item>
         <item>German</item>
-        <item>French</item>
+        <item>Brazilian Portuguese</item>
     </string-array>
     <string-array name="activity_titles">
         <item>Worksheet</item>
@@ -252,10 +260,10 @@
     <!-- File manager -->
     <string name="fman_local">Internal storage</string>
     <string name="fman_local_descr">Access files from the primary file system</string>
-	<string name="fman_external">External card</string>
+    <string name="fman_external">External card</string>
     <string name="fman_external_descr">Access files on the physically inserted SD card. It may be read-only on some devices</string>
-	<string name="fman_saf">Documents</string>
-	<string name="fman_saf_descr">Access files in the document storage</string>
+    <string name="fman_saf">Documents</string>
+    <string name="fman_saf_descr">Access files in the document storage</string>
     <string name="fman_assets">Resources of \"microMathematics Plus\"</string>
     <string name="fman_assets_descr">Documentation and examples delivered with this app</string>
     <string name="fman_home">Home</string>
@@ -266,18 +274,18 @@
     <string name="fman_refresh_title">Refresh</string>
     <string name="fman_open_saf">Open storage</string>
     <string name="fman_operation">Operations</string>
-	<string name="fman_create_folder_title">Create folder</string>
-	<string name="fman_create_folder_dialog_prompt">Name of new folder:</string>
-	<string name="fman_create_folder_error">Unable to create directory \"%s\"</string>
-	<string name="fman_rename_title">Rename</string>
-	<string name="fman_rename_dialog_prompt">Rename \"%s\" to:</string>
-	<string name="fman_rename_error">Unable to rename \"%s\"</string>
-	<string name="fman_delete_title">Delete</string>
-	<string name="fman_delete_dialog_prompt">Delete \"%s\"?</string>
-	<string name="fman_delete_confirm">Selected file deleted</string>
+    <string name="fman_create_folder_title">Create folder</string>
+    <string name="fman_create_folder_dialog_prompt">Name of new folder:</string>
+    <string name="fman_create_folder_error">Unable to create directory \"%s\"</string>
+    <string name="fman_rename_title">Rename</string>
+    <string name="fman_rename_dialog_prompt">Rename \"%s\" to:</string>
+    <string name="fman_rename_error">Unable to rename \"%s\"</string>
+    <string name="fman_delete_title">Delete</string>
+    <string name="fman_delete_dialog_prompt">Delete \"%s\"?</string>
+    <string name="fman_delete_confirm">Selected file deleted</string>
     <string name="fman_delete_error">Unable to delete \"%s\"</string>
     <string name="fman_warning_dialog_title">Warning</string>
-	<string name="fman_error_no_items">No items selected to complete the operation</string>
+    <string name="fman_error_no_items">No items selected to complete the operation</string>
     <string name="fman_error_sec_err">Security issue: %s</string>
     <string name="fman_error_no_such_folder">\"%s\" is not a valid folder</string>
     <string name="fman_new_file">New file name</string>

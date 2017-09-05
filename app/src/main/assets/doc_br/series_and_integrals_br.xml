@@ -8,7 +8,7 @@
       <term key="text" text="Taylor series" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text="Na matemática, séries de Taylor são uma&#10;representação de uma função como uma&#10;soma infinita de termos que são&#10;calculados a partir da derivada&#10;dos valores da função num único&#10;ponto.&#10;&#10;Por exemplo, Ts(x,N) é a expansão de&#10;Taylor de uma função com argumento x&#10;e N número de termos:" />
+      <term key="text" text="Na matemática, séries de Taylor são uma&#10;representação de uma função como uma&#10;soma infinita de termos que são&#10;calculados a partir da derivada dos&#10;valores da função num único ponto.&#10;&#10;Por exemplo, Ts(x,N) é a expansão de&#10;Taylor de uma função com argumento x e&#10;N número de termos:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="Ts(x,N)" />
@@ -51,7 +51,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text="Se desenharmos as duas funções juntas para&#10;o mesmo intervalo, elas parecem&#10;iguais:" />
+      <term key="text" text="Se desenharmos as duas funções juntas&#10;para o mesmo intervalo, elas parecem&#10;iguais:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="x" />
@@ -83,7 +83,7 @@
       </term>
     </plot_function>
     <text_fragment>
-      <term key="text" text="Entretando, há um erro numérico devido&#10;ao número limitado de termos&#10;de aproximação N. A função a seguir Δ(x,N)&#10;descreve este erro:" />
+      <term key="text" text="Entretando, há um erro numérico devido&#10;ao número limitado de termos de&#10;aproximação N. A função a seguir&#10;Δ(x,N) descreve este erro:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="Δ(x,N)" />
@@ -100,7 +100,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text="Podemos desenhar esta função em&#10;coordenadas logarítmicas e ver que&#10;o erro numérico diminuirá&#10;se tivermos mais termos na soma de&#10;Taylor:" />
+      <term key="text" text="Podemos desenhar esta função em&#10;coordenadas logarítmicas e ver que o&#10;erro numérico diminuirá se tivermos&#10;mais termos na soma de Taylor:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="E(N)" />
@@ -180,7 +180,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text="Podemos também desenhar as duas funções (a&#10;função de potência dada e sua&#10;aproximação) juntas no mesmo&#10;gráfico:" />
+      <term key="text" text="Podemos também desenhar as duas funções&#10;(a função de potência dada e sua&#10;aproximação) juntas no mesmo gráfico:" />
     </text_fragment>
     <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#7D000000" functionsNumber="2">
       <term key="yMaxValue" text="3000" />
@@ -203,7 +203,7 @@
       <term key="text" text="Integrais" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text='Também é possível calcular uma&#10;integral definida numericamente usando&#10;o método de Simpson. Por exemplo, podemos&#10;calcular a integral usando o elemento&#10;"Visualização de resultado":' />
+      <term key="text" text='Também é possível calcular uma integral&#10;definida numericamente usando o método&#10;de Simpson. Por exemplo, podemos&#10;calcular a integral usando o elemento&#10;"Visualização de resultado":' />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="integral">
@@ -254,7 +254,7 @@
       <term key="rightTerm" />
     </result>
     <text_fragment>
-      <term key="text" text="O erro numérico pode ser calculado como:" />
+      <term key="text" text="O erro numérico pode ser calculado&#10;como:" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="minus">
@@ -286,11 +286,11 @@
       <term key="rightTerm" />
     </result>
     <text_fragment>
-      <term key="text" text='Este erro depende do valor de&#10;"Número de dígitos significativos no resultado" que&#10;pode ser alterado na janela&#10;"Configurações do Documento" disponível a partir da&#10;barra de ações:' />
+      <term key="text" text='Este erro depende do valor de "Número&#10;de dígitos significativos no&#10;resultado" que pode ser alterado na&#10;janela "Configurações do Documento"&#10;disponível a partir da barra de ações:' />
     </text_fragment>
     <image_fragment fileName="asset:/images/menu_settings.svg" embedded="false" originalSize="false" width="330" height="90" />
     <text_fragment>
-      <term key="text" text="Se este valor aumentou, o limiar&#10;que controla a precisão do método de Simpson&#10;também aumentará." />
+      <term key="text" text="Se este valor aumentou, o limiar que&#10;controla a precisão do método de&#10;Simpson também aumentará." />
     </text_fragment>
   </formulaList>
 </micromath>

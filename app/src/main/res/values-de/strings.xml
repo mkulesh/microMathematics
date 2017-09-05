@@ -13,6 +13,7 @@
         <item>Englisch</item>
         <item>Russisch</item>
         <item>Deutsch</item>
+        <item>Brasilianisches Portugiesisch</item>
     </string-array>
     <string-array name="activity_titles">
         <item>Arbeitsblatt</item>
@@ -245,11 +246,11 @@
     <!-- File manager -->
     <string name="fman_local">Interner Speicher</string>
     <string name="fman_local_descr">Öffnen und Speichern der Dateien auf einem internen Speicher</string>
-	<string name="fman_external">Externe SD-Karte</string>
+    <string name="fman_external">Externe SD-Karte</string>
     <string name="fman_external_descr">Öffnen und Speichern der Dateien auf eine externe SD-Karte</string>
-	<string name="fman_saf">Dokumente</string>
-	<string name="fman_saf_descr">Zugang zu den Dokumenten aus der Dokumentablage</string>
-	<string name="fman_assets">Hilfsmittel der \"microMathematics Plus\"</string>
+    <string name="fman_saf">Dokumente</string>
+    <string name="fman_saf_descr">Zugang zu den Dokumenten aus der Dokumentablage</string>
+    <string name="fman_assets">Hilfsmittel der \"microMathematics Plus\"</string>
     <string name="fman_assets_descr">Dokumentation und Anwendungsbeispiele, die mit der \"microMathematics Plus\" ausgeliefert sind</string>
     <string name="fman_home">Startbildschirm</string>
     <string name="fman_sort_by_name">Nach Namen sortieren</string>
@@ -259,18 +260,18 @@
     <string name="fman_refresh_title">Aktualisieren</string>
     <string name="fman_open_saf">Dokumentablage öffnen</string>
     <string name="fman_operation">Vorgänge</string>
-	<string name="fman_create_folder_title">Verzeichnis erstellten</string>
-	<string name="fman_create_folder_dialog_prompt">Der Name des neuen Ordners:</string>
-	<string name="fman_create_folder_error">Verzeichnis \"%s\" kann nicht erzeugt werden</string>
-	<string name="fman_rename_title">Umbenennen</string>
-	<string name="fman_rename_dialog_prompt">Umbenennen \"%s\" nach:</string>
-	<string name="fman_rename_error">\"%s\" kann nicht umbenannt werden</string>
-	<string name="fman_delete_title">Löschen</string>
-	<string name="fman_delete_dialog_prompt">Löschen \"%s\"?</string>
-	<string name="fman_delete_confirm">Die ausgewählte Datei wird gelöscht</string>
+    <string name="fman_create_folder_title">Verzeichnis erstellten</string>
+    <string name="fman_create_folder_dialog_prompt">Der Name des neuen Ordners:</string>
+    <string name="fman_create_folder_error">Verzeichnis \"%s\" kann nicht erzeugt werden</string>
+    <string name="fman_rename_title">Umbenennen</string>
+    <string name="fman_rename_dialog_prompt">Umbenennen \"%s\" nach:</string>
+    <string name="fman_rename_error">\"%s\" kann nicht umbenannt werden</string>
+    <string name="fman_delete_title">Löschen</string>
+    <string name="fman_delete_dialog_prompt">Löschen \"%s\"?</string>
+    <string name="fman_delete_confirm">Die ausgewählte Datei wird gelöscht</string>
     <string name="fman_delete_error">\"%s\" kann nicht gelöscht werden</string>
     <string name="fman_warning_dialog_title">Warnung</string>
-	<string name="fman_error_no_items">Keine Elemente sind ausgewählt</string>
+    <string name="fman_error_no_items">Keine Elemente sind ausgewählt</string>
     <string name="fman_error_sec_err">Sicherheitsfehler: %s</string>
     <string name="fman_error_no_such_folder">Verzeichnis \"%s\" existiert nicht</string>
     <string name="fman_new_file">Datei Name</string>

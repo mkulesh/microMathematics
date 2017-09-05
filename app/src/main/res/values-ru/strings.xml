@@ -13,6 +13,7 @@
         <item>Английский</item>
         <item>Русский</item>
         <item>Немецкий</item>
+        <item>Португальский (Бразилия)</item>
     </string-array>
     <string-array name="activity_titles">
         <item>Рабочий лист</item>
@@ -245,11 +246,11 @@
     <!-- File manager -->
     <string name="fman_local">Локальные файлы</string>
     <string name="fman_local_descr">Работа с файлами на основном устройстве</string>
-	<string name="fman_external">Внешняя карта памяти</string>
+    <string name="fman_external">Внешняя карта памяти</string>
     <string name="fman_external_descr">Доступ к файлам на внешней карте памяти. Может быть только для чтения на некоторых устройствах</string>
-	<string name="fman_saf">Документы</string>
-	<string name="fman_saf_descr">Доступ к файлам в хранилище документов</string>
-	<string name="fman_assets">Ресурсы \"microMathematics Plus\"</string>
+    <string name="fman_saf">Документы</string>
+    <string name="fman_saf_descr">Доступ к файлам в хранилище документов</string>
+    <string name="fman_assets">Ресурсы \"microMathematics Plus\"</string>
     <string name="fman_assets_descr">Документация и примеры, идущие вместе с приложением</string>
     <string name="fman_home">Стартовая страница</string>
     <string name="fman_sort_by_name">Сорт. по имени</string>
@@ -259,18 +260,18 @@
     <string name="fman_refresh_title">Обновить</string>
     <string name="fman_open_saf">Открыть хранилище</string>
     <string name="fman_operation">Операция</string>
-	<string name="fman_create_folder_title">Создать папку</string>
-	<string name="fman_create_folder_dialog_prompt">Имя новой папки:</string>
-	<string name="fman_create_folder_error">Не могу создать папку \"%s\"</string>
-	<string name="fman_rename_title">Переименовать</string>
-	<string name="fman_rename_dialog_prompt">Новое имя для \"%s\":</string>
-	<string name="fman_rename_error">Не могу переименовать \"%s\"</string>
-	<string name="fman_delete_title">Удалить</string>
-	<string name="fman_delete_dialog_prompt">Удалить \"%s\"?</string>
-	<string name="fman_delete_confirm">Выбранный файл удалён</string>
+    <string name="fman_create_folder_title">Создать папку</string>
+    <string name="fman_create_folder_dialog_prompt">Имя новой папки:</string>
+    <string name="fman_create_folder_error">Не могу создать папку \"%s\"</string>
+    <string name="fman_rename_title">Переименовать</string>
+    <string name="fman_rename_dialog_prompt">Новое имя для \"%s\":</string>
+    <string name="fman_rename_error">Не могу переименовать \"%s\"</string>
+    <string name="fman_delete_title">Удалить</string>
+    <string name="fman_delete_dialog_prompt">Удалить \"%s\"?</string>
+    <string name="fman_delete_confirm">Выбранный файл удалён</string>
     <string name="fman_delete_error">Не могу удалить \"%s\"</string>
     <string name="fman_warning_dialog_title">Предупреждение</string>
-	<string name="fman_error_no_items">Не выбрано ни одного элемента</string>
+    <string name="fman_error_no_items">Не выбрано ни одного элемента</string>
     <string name="fman_error_sec_err">Доступ запрещен: %s</string>
     <string name="fman_error_no_such_folder">Папка \"%s\" не существует</string>
     <string name="fman_new_file">Имя файла</string>
