@@ -107,11 +107,11 @@
     <string name="dialog_axis_settings_title">Configurações de grade</string>
     <string name="dialog_axis_settings_xlabels">Número de rótulos-X</string>
     <string name="dialog_axis_settings_ylabels">Número de rótulos-Y</string>
-    <string name="dialog_plot_settings_title">Configurações de traço</string>
+    <string name="dialog_plot_settings_title">Configurar traçado</string>
     <string name="dialog_plot_settings_width">Largura do traço</string>
     <string name="dialog_plot_settings_height">Altura do traço</string>
-    <string name="dialog_plot_settings_axes_boxed">Boxed</string>
-    <string name="dialog_plot_settings_axes_crossed">Crossed</string>
+    <string name="dialog_plot_settings_axes_boxed">Inserido na caixa</string>
+    <string name="dialog_plot_settings_axes_crossed">Cruzado</string>
     <string name="dialog_plot_settings_axes_none">Sem quadrados e eixos</string>
     <string name="dialog_plot_point_shapes">Mostrar símbolos</string>
     <string name="dialog_plot_point_shape_size">Tamanho do símbolo (% da largura da linha)</string>
@@ -119,7 +119,7 @@
     <string name="dialog_plot_point_circle">Pontos em forma de círculo</string>
     <string name="dialog_plot_point_diamond">Pontos em forma de diamante</string>
     <string name="dialog_plot_point_cross">Pontos em forma de X</string>
-    <string name="dialog_surface_settings_contour">Traçar controno</string>
+    <string name="dialog_surface_settings_contour">Traçar contorno</string>
     <string name="dialog_surface_settings_surface">Traçar superfície</string>
     <string name="dialog_surface_settings_mesh_lines">Mostrar linhas da grade</string>
     <string name="dialog_surface_settings_mesh_fill">Preencher a grade com cor</string>
@@ -144,7 +144,7 @@
     <string name="dialog_image_settings_height">Altura da imagem</string>
     <string name="dialog_result_title">Propriedades resultantes</string>
     <string name="dialog_result_disable_calculation">Não calcular</string>
-    <string name="dialog_result_hide_result_field">Esconder campo de resultado</string>
+    <string name="dialog_result_hide_result_field">Ocultar campo de resultado</string>
     <string name="dialog_result_array_length">Número de valores</string>
     <string name="dialog_text_settings_title">Propriedades do texto</string>
     <string name="dialog_text_style_chapter">Capítulo</string>
@@ -163,8 +163,8 @@
     <string name="math_new_function_plot">Adicionar traço de função</string>
     <string name="math_new_contour_plot">Adicionar traço 3D</string>
     <string name="math_new_text_fragment">Adicionar fragmento de texto</string>
-    <string name="math_new_image_fragment">Adicionar imagem de arquivo</string>
-    <string name="image_fragment_text">Segure para importar imagem</string>
+    <string name="math_new_image_fragment">Adicionar arquivo de imagem</string>
+    <string name="image_fragment_text">Toque longo para importar imagem</string>
     <string name="math_new_term">Adicionar novo argumento (\',\')</string>
     <string name="math_equidistant_interval">Intervalo equidistante (\':\')</string>
     <string name="math_operator_plus">Adição (\'+ +\')</string>
@@ -175,9 +175,9 @@
     <string name="math_operator_power">Elevar à potência (\'^\')</string>
     <string name="math_comparator_equal">Testar dois termos para igualdade (\'= =\')</string>
     <string name="math_comparator_not_equal">Testar dois termos para desigualdade (\'=|\')</string>
-    <string name="math_comparator_less">Testar se o termo à esquerda é menor que o da direita (\'&#60;&#60;\')</string>
-    <string name="math_comparator_less_eq">Testar se o termo à esquerda é menor ou igual ao da direita (\'&#60;=\')</string>
-    <string name="math_comparator_greater">Testar se  termo à esquerda é maior que o da direita (\'&#62;&#62;\')</string>
+    <string name="math_comparator_less">Testar se o termo à esquerda é menor do que o da direita (\'&#60;&#60;\')</string>
+    <string name="math_comparator_less_eq">Testar se o termo à esquerda é menor ou igual do que o da direita (\'&#60;=\')</string>
+    <string name="math_comparator_greater">Testar se termo à esquerda é maior que o da direita (\'&#62;&#62;\')</string>
     <string name="math_comparator_greater_eq">Testar se o termo à esquerda é maior ou igual ao da direita (\'&#62;=\')</string>
     <string name="math_comparator_and">Testar se os dois termos são verdadeiros (\'&#38;&#38;\')</string>
     <string name="math_comparator_and_text"> e </string>
@@ -249,22 +249,22 @@
     <string name="error_calculation_aborted">Cálculo abortado</string>
     <string name="error_paste_root_into_term">Não pode colar uma equação raiz em um termo</string>
     <string name="error_paste_term_into_text">Não pode colar um termo pois o conteúdo não é permitido para este campo</string>
-    <string name="error_out_of_memory">Sem memória suficiente para visualizar traço</string>
+    <string name="error_out_of_memory">Sem memória suficiente para exibir traçado</string>
 
     <!-- File manager -->
     <string name="fman_local">Armazenamento interno</string>
-    <string name="fman_local_descr">Acessar arquivos a partir do sitema de arquivos primário</string>
+    <string name="fman_local_descr">Acessar arquivos a partir do sistema de arquivos primário</string>
 	<string name="fman_external">Cartão externo</string>
     <string name="fman_external_descr">Acessar arquivos no cartão SD inserido fisicamente. Talvez seja apenas leitura em alguns dispositivos</string>
 	<string name="fman_saf">Documentos</string>
 	<string name="fman_saf_descr">Acessar arquivos no armazenamento de documentos</string>
     <string name="fman_assets">Recursos do \"microMathematics Plus\"</string>
-    <string name="fman_assets_descr">Documentação e exemplos embutidos neste app</string>
-    <string name="fman_home">Home</string>
-    <string name="fman_sort_by_name">Listar por nome</string>
-    <string name="fman_sort_by_ext">Listar por extensão</string>
-    <string name="fman_sort_by_size">Listar por tamanho</string>
-    <string name="fman_sort_by_date">Listar por data</string>
+    <string name="fman_assets_descr">Documentação e exemplos disponíveis neste app</string>
+    <string name="fman_home">Início</string>
+    <string name="fman_sort_by_name">Classificar por nome</string>
+    <string name="fman_sort_by_ext">Classificar por extensão</string>
+    <string name="fman_sort_by_size">Classificar por tamanho</string>
+    <string name="fman_sort_by_date">Classificar por data</string>
     <string name="fman_refresh_title">Atualizar</string>
     <string name="fman_open_saf">Abrir armazenamento</string>
     <string name="fman_operation">Operações</string>
@@ -272,8 +272,8 @@
 	<string name="fman_create_folder_dialog_prompt">Nome da nova pasta:</string>
 	<string name="fman_create_folder_error">Incapaz de criar diretório \"%s\"</string>
 	<string name="fman_rename_title">Renomear</string>
-	<string name="fman_rename_dialog_prompt">Renomear \"%s\" to:</string>
-	<string name="fman_rename_error">Incapaz de renomear \"%s\"</string>
+	<string name="fman_rename_dialog_prompt">Renomear \"%s\" para:</string>
+	<string name="fman_rename_error">Impossível de renomear \"%s\"</string>
 	<string name="fman_delete_title">Excluir</string>
 	<string name="fman_delete_dialog_prompt">Excluir \"%s\"?</string>
 	<string name="fman_delete_confirm">Arquivo selecionado excluído</string>
@@ -298,6 +298,7 @@
     <string name="action_dev_mode">Opções do desenvolvedor</string>
     <string name="action_dev_autotest">Teste automático</string>
     <string name="action_dev_export_doc">Exportar documentação</string>
+    <string name="action_dev_take_screenshot">Exportar capturas de tela</string>
     <string name="message_developer_mode">O modo desenvolvedor está ativado</string>
     
     <!-- Library licenses -->
