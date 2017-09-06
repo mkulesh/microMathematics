@@ -52,7 +52,7 @@
         <item>microMathematics Plus</item>
         <item>Télécharger en PDF</item>
     </string-array>
-    <!--<string-array name="activity_logos">
+    <string-array name="activity_logos">
         <item>drawer_worksheet</item>
         <item>drawer_how_to_use</item>
         <item>drawer_function_plot</item>
@@ -62,7 +62,7 @@
         <item>drawer_about</item>
         <item>drawer_documentation</item>
     </string-array>
-    <string-array name="activity_resources">
+    <!--<string-array name="activity_resources">
         <item></item>
         <item>asset:/doc_en/how_to_use.xml</item>
         <item>asset:/doc_en/function_plot.xml</item>
@@ -190,14 +190,14 @@
     <string name="math_comparator_greater_eq">Tester que le terme de gauche est plus grand que celui de droite (\'&#62;=\')</string>
     <string name="math_comparator_and">Tester que les deux termes sont vrais (\'&#38;&#38;\')</string>
     <string name="math_comparator_and_text"> et </string>
-    <string name="math_comparator_or">Tester qu'au moins un terme est vrai (\'&#38;|\')</string>
+    <string name="math_comparator_or">Tester qu\'au moins un terme est vrai (\'&#38;|\')</string>
     <string name="math_comparator_or_text"> ou </string>
     <string name="math_loop_summation">La somme de la séquence (\'SUMM\')</string>
     <string name="math_loop_product">Le produit de la séquence (\'PROD\')</string>
     <!--<string name="math_loop_integral">The definite integral (\'INTEG\')</string>
     <string name="math_loop_derivative">The first derivative (\'DERIV\')</string>-->
     <string name="math_function_identity">Parenthèse (\'(\')</string>
-    <string name="math_function_abs">La valeur absolue d'un argument réel ou complexe (\'|\')</string>
+    <string name="math_function_abs">La valeur absolue d\'un argument réel ou complexe (\'|\')</string>
     <!--<string name="math_function_conjugate">The complex conjugate of the complex argument (\'~\')</string>-->
     <string name="math_function_re">La partie réelle de cet argument complexe</string>
     <string name="math_function_im">La partie imaginaire de cet argument complexe</string>
@@ -223,7 +223,7 @@
     <string name="math_function_factorial">The product of all positive integers less than or equal to the argument (\'!\')</string>-->
     <string name="math_function_max">Le plus positif (le plus proche de l\'infini positif) des 2 arguments</string>
     <string name="math_function_min">Le plus négatif (le plus proche de l\'infini négatif) des deux arguments</string>
-    <string name="math_function_hypot">La longueur de l\'hypoténuse d'\un angle droit d\'un triangle : sqrt(x^2 + y^2)</string>
+    <string name="math_function_hypot">La longueur de l\'hypoténuse d\'un angle droit d\'un triangle : sqrt(x^2 + y^2)</string>
     
     <!-- Errors -->
     <!--<string name="error_max_layout_depth">Reached layout depth limit for this Android version</string>
@@ -236,7 +236,7 @@
     <string name="error_not_a_function">%s can not be accessed by value since it is not a function</string>
     <string name="error_invalid_array_dimension">Arrays of dimension %s is not yet supported</string>-->
     <string name="error_invalid_array_interval">L\'intervalle %s est référencé mais pas déclaré comme un index</string>
-    <string name="error_invalid_array_index">L\'index %s n'est pas un intervalle connu</string>
+    <string name="error_invalid_array_index">L\'index %s n\'est pas un intervalle connu</string>
     <string name="error_recursive_call">L\'équation est appelée récursivement depuis sa définition</string>
     <!--<string name="error_not_differentiable">La fonction n\'est pas a differentiable function de %s</string>
     <string name="error_invalid_brackets_order">Ordre invalide des brackets</string>
@@ -244,7 +244,7 @@
     <string name="error_invalid_comma_position">Position invalide du comma</string>-->
     <string name="error_empty_argument">Un argument ne peut pas être vide</string>
     <!--<string name="error_invalid_argument">Function argument shall contain letters or digits only</string>-->
-    <string name="error_ensure_single_interval">La fonction doit dépendre d'un seul intervalle</string>
+    <string name="error_ensure_single_interval">La fonction doit dépendre d\'un seul intervalle</string>
     <string name="error_ensure_double_interval">La fonction doit dépendre de deux intervalles</string>
     <string name="error_indirect_intervals">Il y a des intervalles référencés indirectement : %s</string>-->
     <string name="error_duplicated_identifier">Cet identifiant est déjà utilisé</string>
@@ -307,6 +307,7 @@
     <string name="action_dev_mode">Options pour développeur/développeuse</string>
     <string name="action_dev_autotest">Test automatique</string>
     <string name="action_dev_export_doc">Exporter la documentation</string>
+    <!-- <string name="action_dev_take_screenshot">Export screenshots</string> -->
     <string name="message_developer_mode">Le mode développeur/développeuse est activé</string>
     
     <!-- Library licenses -->
