@@ -216,22 +216,25 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
 
     private void exportLatex(String directory, String scriptName)
     {
-        final File parent = new File(context.getExternalFilesDir(null) + "/" + directory);
-        parent.mkdir();
-        final File file = new File(parent, scriptName + ".tex");
-        if (file == null)
-        {
-            return;
-        }
+        // Document directory and file
+        final File docDir = new File(context.getExternalFilesDir(null) + "/" + directory);
+        docDir.mkdir();
+        final File docFile = new File(docDir, scriptName + ".tex");
+        final Uri docUri = FileUtils.ensureScheme(Uri.fromFile(docFile));
 
-        final Uri docUri = FileUtils.ensureScheme(Uri.fromFile(file));
-        final Uri parentUri = FileUtils.ensureScheme(Uri.fromFile(parent));
-        ViewUtils.Debug(this, "Exporting document " + scriptName + ", parent uri: " + parentUri.toString());
+        // Graphics directory
+        final String GRAPHICS_DIRECTORY = "graphics";
+        final File graphicsDir = new File(context.getExternalFilesDir(null) + "/" + directory + "/" + GRAPHICS_DIRECTORY);
+        graphicsDir.mkdir();
+        final Uri graphicsUri = FileUtils.ensureScheme(Uri.fromFile(graphicsDir));
         final AdapterFileSystem adapter = new AdapterFileSystem(context);
-        adapter.setUri(parentUri);
+        adapter.setUri(graphicsUri);
+
+        ViewUtils.Debug(this, "Exporting document " + scriptName + ", graphics uri: " + adapter.getDir());
         final Exporter.Parameters exportParameters = new Exporter.Parameters();
         exportParameters.skipDocumentHeader = true;
         exportParameters.skipImageLocale = true;
+        exportParameters.imageDirectory = GRAPHICS_DIRECTORY;
         Exporter.write(formulas, docUri, FileType.LATEX, adapter, exportParameters);
     }
 

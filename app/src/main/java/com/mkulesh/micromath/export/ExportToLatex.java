@@ -152,6 +152,11 @@ public class ExportToLatex
         return exportParameters != null && exportParameters.skipImageLocale;
     }
 
+    private String getImageDirectory()
+    {
+        return exportParameters != null? exportParameters.imageDirectory : "";
+    }
+
     public void write(FormulaListView formulaListView) throws Exception
     {
         writer.append("% This is auto-generated file: do not edit!\n");
@@ -338,8 +343,12 @@ public class ExportToLatex
         {
             writer.append("\n\\begin{center}");
         }
-        writer.append("\\begin{tabular}{c} \\includegraphics[resolution=" + String.valueOf(densityDpi) + "]{" + figName
-                + "} \\end{tabular}");
+        writer.append("\\begin{tabular}{c} \\includegraphics[resolution=" + String.valueOf(densityDpi) + "]{");
+        if (!getImageDirectory().isEmpty())
+        {
+            writer.append(getImageDirectory() + "/");
+        }
+        writer.append(figName + "} \\end{tabular}");
         if (!inLine)
         {
             writer.append("\\end{center}");

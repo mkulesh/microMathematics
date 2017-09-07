@@ -38,6 +38,7 @@ public class Exporter
     {
         public boolean skipDocumentHeader = false;
         public boolean skipImageLocale = false;
+        public String imageDirectory = "";
     }
 
     public static boolean write(FormulaList formulas, Uri uri, FileType fileType, final AdapterIf adapter,
