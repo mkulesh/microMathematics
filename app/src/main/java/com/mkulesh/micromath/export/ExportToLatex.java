@@ -51,6 +51,7 @@ import com.mkulesh.micromath.plots.ImageFragment;
 import com.mkulesh.micromath.plots.PlotContour;
 import com.mkulesh.micromath.plots.PlotFunction;
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.properties.TextProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 /**
@@ -65,6 +66,7 @@ public class ExportToLatex
     protected final Exporter.Parameters exportParameters;
     protected String fileName = null;
     protected int figNumber = 1;
+    protected boolean currTextNumber = false;
 
     protected final String[][] greekTable = new String[][] {
 
@@ -360,6 +362,14 @@ public class ExportToLatex
         final ArrayList<TermField> terms = f.getTerms();
         if (!terms.isEmpty())
         {
+            if (currTextNumber)
+            {
+                if (f.getTextStyle() != TextProperties.TextStyle.TEXT_BODY || !f.isNumbering())
+                {
+                    writer.append("\n\\end{enumerate}");
+                    currTextNumber = false;
+                }
+            }
             if (!inLine)
             {
                 writer.append("\n\n");
@@ -384,7 +394,15 @@ public class ExportToLatex
                 endTag = "}";
                 break;
             case TEXT_BODY:
-                // nothing to do
+                if (f.isNumbering() && f.getNumber() != null)
+                {
+                    if (!currTextNumber)
+                    {
+                        writer.append("\\begin{enumerate}\n");
+                    }
+                    writer.append("\\item ");
+                    currTextNumber = true;
+                }
                 break;
             }
             writeText(terms.get(0).getText(), false);

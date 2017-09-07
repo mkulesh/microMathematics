@@ -2,7 +2,7 @@
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
   <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="false">
     <text_fragment>
-      <term key="text" text="The microMathematics Plus is the&#10;world's first mathematical calculator&#10;on Android oriented around a&#10;spreadsheet that allows live editing&#10;of mathematical identities combined&#10;with highly accurate computations. " />
+      <term key="text" text="The microMathematics Plus is the&#10;mathematical calculator on Android&#10;oriented around a spreadsheet that&#10;allows live editing of mathematical&#10;identities combined with highly&#10;accurate computations. " />
     </text_fragment>
     <text_fragment>
       <term key="text" text="It is based on a powerful touch-screen&#10;editor that allows users to create and&#10;manipulate naturally readable&#10;worksheets containing all basic&#10;mathematical notations." />
@@ -10,14 +10,20 @@
     <text_fragment>
       <term key="text" text="The microMathematics Plus supports&#10;high school-level of mathematical&#10;calculations. This version has&#10;following mathematical limitations: it&#10;does not support special functions,&#10;vectors, matrices and many other&#10;things from high-level mathematics." />
     </text_fragment>
-    <text_fragment>
-      <term key="text" text="&#10;Author: Mikhail Kulesh&#10;Email: mikhail.kulesh@gmail.com&#10;2014-2017, Bremen, Germany&#10;" />
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Authors" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Mikhail Kulesh,&#10;mikhail.kulesh@gmail.com" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Caio Roberto Ramos da Silva&#10;(Brazilian Portuguese translation),&#10;caiorrs@gmail.com" />
+    </text_fragment>
+    <text_fragment textStyle="subsection">
+      <term key="text" text="The app icon" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text="Enjoy!" />
-    </text_fragment>
-    <text_fragment>
-      <term key="text" text="&#10;P.S. The app icon is generated from the&#10;following function defined in the&#10;polar coordinate system:" />
+      <term key="text" text="The app icon is generated from the&#10;following function defined in the&#10;polar coordinate system:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="f" />
@@ -103,7 +109,7 @@
     </equation>
     <plot_function width="680" height="650" axes_style="crossed" xLabelsNumber="7" yLabelsNumber="7" gridLineColor="#48000000" functionsNumber="1">
       <term key="yMaxValue" text="20" />
-      <term key="yFunction" color="#FF003DBB" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.y">
+      <term key="yFunction" color="#FF003DBB" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.y">
         <term key="argTerm" text="f" />
       </term>
       <term key="yMinValue" text="-20" />
@@ -113,5 +119,8 @@
       </term>
       <term key="xMaxValue" text="20" />
     </plot_function>
+    <text_fragment>
+      <term key="text" text="2014-2017, Bremen, Germany" />
+    </text_fragment>
   </formulaList>
 </micromath>
