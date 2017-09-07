@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:inputType="text|textMultiLine|textAutoCorrect"
-            android:singleLine="false"
+            android:maxLines="9999"
             android:text="@string/text_fragment"
             android:textColor="@color/formula_text_fragment_color"
             micromath:emptyEnabled="true"

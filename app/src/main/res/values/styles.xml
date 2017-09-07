@@ -35,7 +35,7 @@
         <item name="android:paddingRight">0dp</item>
         <item name="android:paddingTop">0dp</item>
         <item name="android:text">text</item>
-        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
         <item name="android:textSize">@dimen/activity_drawer_title_size</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/drawer_title_color</item>
@@ -52,7 +52,7 @@
         <item name="android:paddingRight">0dp</item>
         <item name="android:paddingTop">0dp</item>
         <item name="android:text">text</item>
-        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
         <item name="android:textSize">@dimen/activity_drawer_subtitle_size</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/drawer_subtitle_color</item>
@@ -72,7 +72,7 @@
     <style name="FormulaTextEditStyle" parent="@style/Widget.AppCompat.EditText">
         <!-- This style is re-declared in values-v12 in order to define cursor properties. -->
         <item name="android:inputType">textNoSuggestions</item>
-        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
         <item name="android:autoText">false</item>
         <item name="android:cursorVisible">true</item>
         <item name="android:scrollHorizontally">false</item>
@@ -153,7 +153,7 @@
     <style name="DialogTextEditStyle" parent="@style/Widget.AppCompat.EditText">
         <!-- This style is re-declared in values-v12 in order to define cursor properties. -->
         <item name="android:inputType">textNoSuggestions</item>
-        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
         <item name="android:autoText">false</item>
         <item name="android:cursorVisible">true</item>
         <item name="android:scrollHorizontally">false</item>

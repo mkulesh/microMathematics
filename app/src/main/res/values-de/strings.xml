@@ -106,7 +106,7 @@
     <string name="dialog_plot_settings_axes_crossed">Verschränkt</string>
     <string name="dialog_plot_settings_axes_none">Ohne Kasten und Achsen</string>
     <string name="dialog_plot_point_shapes">Symbole anzeigen</string>
-    <string name="dialog_plot_point_shape_size">Symbolgröße (% der Linienbreite)</string>
+    <string name="dialog_plot_point_shape_size" formatted="false">Symbolgröße (% der Linienbreite)</string>
     <string name="dialog_plot_point_square">Quadratische Punkte</string>
     <string name="dialog_plot_point_circle">Kreisförmige Punkte</string>
     <string name="dialog_plot_point_diamond">Rautenförmige Punkte</string>

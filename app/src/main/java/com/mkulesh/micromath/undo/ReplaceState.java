@@ -52,7 +52,7 @@ public final class ReplaceState implements Parcelable
             super();
             formulaId = in.readInt();
             type = FormulaBase.BaseType.values()[in.readInt()];
-            data = in.readParcelable(null);
+            data = in.readParcelable(getClass().getClassLoader());
         }
 
         @Override

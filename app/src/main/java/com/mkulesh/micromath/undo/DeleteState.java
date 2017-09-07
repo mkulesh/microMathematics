@@ -52,7 +52,7 @@ public final class DeleteState implements Parcelable
             super();
             type = FormulaBase.BaseType.values()[in.readInt()];
             coordinate = in.readParcelable(Coordinate.class.getClassLoader());
-            data = in.readParcelable(null);
+            data = in.readParcelable(getClass().getClassLoader());
         }
 
         @Override

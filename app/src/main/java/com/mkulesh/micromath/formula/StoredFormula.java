@@ -75,7 +75,7 @@ public class StoredFormula
         {
             baseType = FormulaBase.BaseType.valueOf(in.readString());
             termCode = in.readString();
-            data = in.readParcelable(null);
+            data = in.readParcelable(getClass().getClassLoader());
         }
 
         public static final Parcelable.Creator<StoredTerm> CREATOR = new Parcelable.Creator<StoredTerm>()

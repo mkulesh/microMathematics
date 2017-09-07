@@ -32,7 +32,7 @@
         android:ellipsize="none"
         android:gravity="right"
         android:paddingLeft="@dimen/fman_item_hor_padding"
-        android:singleLine="true"
+        android:maxLines="1"
         android:textColor="@color/dialog_content_color"
         android:textSize="@dimen/fman_item_attrs_size" />
 
@@ -47,7 +47,7 @@
         android:gravity="right"
         android:paddingLeft="@dimen/fman_item_hor_padding"
         android:paddingRight="@dimen/fman_item_hor_padding"
-        android:singleLine="true"
+        android:maxLines="1"
         android:textColor="@color/dialog_content_color"
         android:textSize="@dimen/fman_item_attrs_size" />
 

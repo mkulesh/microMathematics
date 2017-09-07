@@ -34,7 +34,7 @@
                     style="@style/DialogTextEditStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:singleLine="false"
+                    android:maxLines="9999"
                     android:inputType="textMultiLine"
                     android:layout_weight="1" />
 

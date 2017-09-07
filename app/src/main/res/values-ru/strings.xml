@@ -106,7 +106,7 @@
     <string name="dialog_plot_settings_axes_crossed">Оси</string>
     <string name="dialog_plot_settings_axes_none">Без рамки и осей</string>
     <string name="dialog_plot_point_shapes">Символы</string>
-    <string name="dialog_plot_point_shape_size">Размер символа (% от линии)</string>
+    <string name="dialog_plot_point_shape_size" formatted="false">Размер символа (% от линии)</string>
     <string name="dialog_plot_point_square">Квадрат</string>
     <string name="dialog_plot_point_circle">Круг</string>
     <string name="dialog_plot_point_diamond">Ромб</string>

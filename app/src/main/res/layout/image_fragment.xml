@@ -7,7 +7,7 @@
         style="@style/FormulaTextViewStyle"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:singleLine="false"
+        android:maxLines="9999"
         android:text="@string/image_fragment_text"
         micromath:contextMenuCopy="true"
         micromath:contextMenuCut="true"

@@ -45,7 +45,7 @@ public final class FormulaState implements Parcelable
         super();
         formulaId = in.readInt();
         termId = in.readInt();
-        data = in.readParcelable(null);
+        data = in.readParcelable(getClass().getClassLoader());
     }
 
     @Override

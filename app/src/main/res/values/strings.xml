@@ -120,7 +120,7 @@
     <string name="dialog_plot_settings_axes_crossed">Crossed</string>
     <string name="dialog_plot_settings_axes_none">Without box and axes</string>
     <string name="dialog_plot_point_shapes">Show symbols</string>
-    <string name="dialog_plot_point_shape_size">Symbol size (% of line width)</string>
+    <string name="dialog_plot_point_shape_size" formatted="false">Symbol size (% of line width)</string>
     <string name="dialog_plot_point_square">Square-shaped points</string>
     <string name="dialog_plot_point_circle">Circle-shaped points</string>
     <string name="dialog_plot_point_diamond">Diamond-shaped points</string>

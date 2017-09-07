@@ -106,7 +106,7 @@
     <string name="dialog_plot_settings_axes_crossed">Cruzado</string>
     <string name="dialog_plot_settings_axes_none">Sem quadrados e eixos</string>
     <string name="dialog_plot_point_shapes">Mostrar símbolos</string>
-    <string name="dialog_plot_point_shape_size">Tamanho do símbolo (% da largura da linha)</string>
+    <string name="dialog_plot_point_shape_size" formatted="false">Tamanho do símbolo (% da largura da linha)</string>
     <string name="dialog_plot_point_square">Pontos em forma de quadrado</string>
     <string name="dialog_plot_point_circle">Pontos em forma de círculo</string>
     <string name="dialog_plot_point_diamond">Pontos em forma de diamante</string>

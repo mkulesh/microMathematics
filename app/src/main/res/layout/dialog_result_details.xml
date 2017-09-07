@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:paddingRight="@dimen/dialog_table_cell_padding"
-            android:singleLine="true"
+            android:maxLines="1"
             android:text="@string/dialog_result_details_argument" />
 
         <View style="@style/VerticalDividerStyle" />
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:paddingLeft="@dimen/dialog_table_cell_padding"
-            android:singleLine="true"
+            android:maxLines="1"
             android:text="@string/dialog_result_details_value" />
     </LinearLayout>
 
@@ -51,6 +51,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/dialog_content_padding"
-        android:singleLine="true" />
+        android:maxLines="1" />
 
 </merge>

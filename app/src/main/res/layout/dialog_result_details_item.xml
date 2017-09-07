@@ -13,7 +13,7 @@
         android:background="@color/dialog_panel_color"
         android:ellipsize="end"
         android:paddingRight="@dimen/dialog_table_cell_padding"
-        android:singleLine="true" />
+        android:maxLines="1" />
 
     <View style="@style/VerticalDividerStyle" />
 
@@ -26,6 +26,6 @@
         android:background="@color/dialog_panel_color"
         android:ellipsize="end"
         android:paddingLeft="@dimen/dialog_table_cell_padding"
-        android:singleLine="true" />
+        android:maxLines="1" />
 
 </LinearLayout>

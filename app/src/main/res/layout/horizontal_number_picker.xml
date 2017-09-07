@@ -10,7 +10,7 @@
         android:gravity="left"
         android:textColor="@color/dialog_content_color"
         android:textSize="@dimen/dialog_content_text_size"
-        android:singleLine="false" />
+        android:maxLines="9999" />
 
     <ImageButton
         android:id="@+id/button_decrease"

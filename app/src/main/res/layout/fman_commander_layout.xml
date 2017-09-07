@@ -21,7 +21,7 @@
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
             android:paddingTop="2dp"
-            android:singleLine="false"
+            android:maxLines="9999"
             android:textColor="@color/fman_path_color"
             android:textSize="@dimen/fman_path_size" />
 
