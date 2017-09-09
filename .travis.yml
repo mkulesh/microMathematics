@@ -1,12 +1,7 @@
+# CI script for https://travis-ci.org/mkulesh/microMathematics
 language: android
 
 jdk: oraclejdk8
-
-branches:
-  only:
-    - master
-
-script: "./gradlew clean assembleDebug"
 
 android:
   components:
@@ -15,3 +10,19 @@ android:
       - build-tools-25.0.2
       - android-25
       - extra-android-m2repository
+      
+branches:
+  only:
+    - master
+
+install:
+    # Ensure Gradle wrapper is executable
+    - chmod +x ./gradlew; ls -l gradlew
+    
+script: "./gradlew clean assembleDebug"
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
+    
