@@ -21,6 +21,10 @@ install:
     
 script: "./gradlew clean assembleDebug"
 
+after_success:
+    # Show apk
+    - ls -l app/build/outputs/apk
+
 notifications:
   email:
     on_success: change
