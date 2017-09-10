@@ -103,7 +103,7 @@ public class MainFragmentAsset extends BaseFragment
         case R.id.action_discard:
             formulas.onDiscardFormula(formulas.getSelectedFormulaId());
             break;
-        case R.id.action_settings:
+        case R.id.action_document_settings:
             DialogDocumentSettings d2 = new DialogDocumentSettings(getActivity(), formulas,
                     formulas.getDocumentSettings());
             d2.show();

@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         case R.id.action_undo:
         case R.id.action_new:
         case R.id.action_discard:
-        case R.id.action_settings:
+        case R.id.action_document_settings:
         case R.id.action_new_document:
             baseFragment.performAction(menuItem.getItemId());
             return true;

@@ -86,7 +86,7 @@
     <string name="action_object_properties">Propriétés de l\'objet</string>
     <string name="action_undo">Annuler</string>
     <string name="action_discard">Supprimer ce qui est sélectionné</string>
-    <string name="action_settings">Paramètres du document</string>
+    <string name="action_document_settings">Paramètres du document</string>
     <string name="action_new_document">Nouveau document</string>
     <string name="action_open">Ouvrir le fichier</string>
     <string name="action_save">Enregistrer le fichier</string>

@@ -21,9 +21,9 @@
         android:title="@string/action_discard"
         micromath:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_document_settings"
         android:icon="@drawable/ic_action_settings"
-        android:title="@string/action_settings"
+        android:title="@string/action_document_settings"
         android:orderInCategory="500"
         micromath:showAsAction="ifRoom"/>
     <item

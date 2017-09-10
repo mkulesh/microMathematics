@@ -69,7 +69,7 @@
     <string name="action_object_properties">Propriedades do objeto</string>
     <string name="action_undo">Desfazer</string>
     <string name="action_discard">Excluir seleção</string>
-    <string name="action_settings">Configurações do documento</string>
+    <string name="action_document_settings">Configurações do documento</string>
     <string name="action_new_document">Novo documento</string>
     <string name="action_open">Abrir arquivo</string>
     <string name="action_save">Salvar arquivo</string>

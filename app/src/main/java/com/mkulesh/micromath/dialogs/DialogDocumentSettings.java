@@ -37,7 +37,7 @@ public class DialogDocumentSettings extends DialogBase
     public DialogDocumentSettings(Activity context, DocumentPropertiesChangeIf changeIf,
             DocumentProperties documentSettings)
     {
-        super(context, R.layout.dialog_document_settings, R.string.action_settings);
+        super(context, R.layout.dialog_document_settings, R.string.action_document_settings);
 
         this.changeIf = changeIf;
         this.documentSettings = documentSettings;

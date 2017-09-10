@@ -83,7 +83,7 @@
     <string name="action_object_properties">Object properties</string>
     <string name="action_undo">Undo</string>
     <string name="action_discard">Delete selected</string>
-    <string name="action_settings">Document settings</string>
+    <string name="action_document_settings">Document settings</string>
     <string name="action_new_document">New document</string>
     <string name="action_open">Open file</string>
     <string name="action_save">Save file</string>

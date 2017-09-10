@@ -69,7 +69,7 @@
     <string name="action_object_properties">Objekteinstellungen</string>
     <string name="action_undo">Rückgängig</string>
     <string name="action_discard">Löschen</string>
-    <string name="action_settings">Dokumenteinstellungen</string>
+    <string name="action_document_settings">Dokumenteinstellungen</string>
     <string name="action_new_document">Dokument erstellen</string>
     <string name="action_open">Datei öffnen</string>
     <string name="action_save">Datei speichern</string>

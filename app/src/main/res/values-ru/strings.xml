@@ -69,7 +69,7 @@
     <string name="action_object_properties">Настройки объекта</string>
     <string name="action_undo">Отменить ввод</string>
     <string name="action_discard">Удалить выделенное</string>
-    <string name="action_settings">Свойства документа</string>
+    <string name="action_document_settings">Свойства документа</string>
     <string name="action_new_document">Новый документ</string>
     <string name="action_open">Открыть</string>
     <string name="action_save">Сохранить</string>

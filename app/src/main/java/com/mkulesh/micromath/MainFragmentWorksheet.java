@@ -21,7 +21,6 @@ package com.mkulesh.micromath;
 import java.io.File;
 
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -260,7 +259,7 @@ public class MainFragmentWorksheet extends BaseFragment
         case R.id.action_discard:
             formulas.onDiscardFormula(formulas.getSelectedFormulaId());
             break;
-        case R.id.action_settings:
+        case R.id.action_document_settings:
             DialogDocumentSettings d2 = new DialogDocumentSettings(getActivity(), formulas,
                     formulas.getDocumentSettings());
             d2.show();
