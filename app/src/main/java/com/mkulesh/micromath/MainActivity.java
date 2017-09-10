@@ -62,6 +62,7 @@ import com.mkulesh.micromath.dialogs.DialogLicenses;
 import com.mkulesh.micromath.fman.AdapterDocuments;
 import com.mkulesh.micromath.formula.StoredFormula;
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.utils.AppLocale;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
@@ -74,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     private static final String STATE_STORED_FORMULA = "stored_formula";
 
     private static final int STORAGE_PERMISSION_REQID = 255;
+    private static final int SETTINGS_ACTIVITY_REQID = 256;
+
     private Dialog storagePermissionDialog = null;
     private int storagePermissionAction = ViewUtils.INVALID_INDEX;
 
@@ -223,8 +226,11 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
                 baseFragment.performAction(menuItem.getItemId());
             }
             return true;
-        case R.id.action_app_language:
-            AppLocale.ContextWrapper.setPreferredLanguage(this);
+        case R.id.action_app_settings:
+            {
+                Intent settings = new Intent(this, SettingsActivity.class);
+                startActivityForResult(settings, SETTINGS_ACTIVITY_REQID);
+            }
             return true;
         case R.id.action_licenses:
             (new DialogLicenses(this, BaseFragment.DEVELOPER_MODE)).show();
@@ -678,6 +684,10 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         {
             Uri uri = data.getData();
             AdapterDocuments.saveURI(this, uri);
+        }
+        else if (requestCode == SETTINGS_ACTIVITY_REQID)
+        {
+            restartActivity();
         }
     }
 

@@ -61,14 +61,14 @@
         android:title="@string/action_licenses"
         micromath:showAsAction="never"/>
     <item
-        android:id="@+id/action_app_language"
+        android:id="@+id/action_app_settings"
         android:orderInCategory="905"
-        android:title="@string/action_app_language"
+        android:title="@string/action_app_settings"
         micromath:showAsAction="never"/>
     <item
         android:id="@+id/action_dev_mode"
         android:orderInCategory="910"
-        android:title="@string/action_dev_mode"
+        android:title="@string/pref_developer_mode"
         android:visible="false"
         micromath:showAsAction="never" >
         <menu>

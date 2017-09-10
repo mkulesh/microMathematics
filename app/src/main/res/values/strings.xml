@@ -8,27 +8,6 @@
     
     <!-- Drawer -->
     <string name="drawer_open">Open navigation drawer</string>
-
-    <!-- Language codes and regions -->
-    <string-array name="language_codes" translatable="false">
-        <item>en</item>
-        <item>ru</item>
-        <item>de</item>
-        <item>pt</item>
-    </string-array>
-    <string-array name="language_regions" translatable="false">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item>BR</item>
-    </string-array>
-
-    <string-array name="language_names">
-        <item>English</item>
-        <item>Russian</item>
-        <item>German</item>
-        <item>Brazilian Portuguese</item>
-    </string-array>
     <string-array name="activity_titles">
         <item>Worksheet</item>
         <item>How To Use</item>
@@ -91,14 +70,31 @@
     <string name="action_export">Export</string>
     <string name="action_licenses">Open source licenses</string>
     <string name="action_details">Details</string>
-    <string name="action_app_language">App language</string>
-        
+    <string name="action_app_settings">App settings</string>
+
     <!-- Context menu -->
     <string name="context_expand">Expand selection</string>
     <string name="context_copy">Copy</string>
     <string name="context_cut">Cut</string>
     <string name="context_paste">Paste</string>
-    
+
+    <!-- Application settings -->
+    <string name="pref_app_language">App language</string>
+    <string name="pref_developer_mode">Developer options</string>
+    <string name="pref_default_language_code" translatable="false">en</string>
+    <string-array name="pref_language_codes" translatable="false">
+        <item>en</item>
+        <item>ru</item>
+        <item>de</item>
+        <item>pt-rBR</item>
+    </string-array>
+    <string-array name="pref_language_names">
+        <item>English</item>
+        <item>Russian</item>
+        <item>German</item>
+        <item>Brazilian Portuguese</item>
+    </string-array>
+
     <!-- Dialogs -->
     <string name="dialog_navigation_accept">OK</string>
     <string name="dialog_navigation_cancel">Cancel</string>
@@ -301,7 +297,6 @@
     <string name="message_file_written">File %s is written</string>
     
     <!-- Developer options -->
-    <string name="action_dev_mode">Developer options</string>
     <string name="action_dev_autotest">Automatic test</string>
     <string name="action_dev_export_doc">Export documentation</string>
     <string name="action_dev_take_screenshot">Export screenshots</string>

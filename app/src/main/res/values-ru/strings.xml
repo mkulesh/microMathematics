@@ -8,13 +8,6 @@
     
     <!-- Drawer -->
     <string name="drawer_open">Открыть навигатор</string>
-
-    <string-array name="language_names">
-        <item>Английский</item>
-        <item>Русский</item>
-        <item>Немецкий</item>
-        <item>Португальский (Бразилия)</item>
-    </string-array>
     <string-array name="activity_titles">
         <item>Рабочий лист</item>
         <item>Справка</item>
@@ -77,14 +70,24 @@
     <string name="action_export">Экспортировать</string>
     <string name="action_licenses">Информация о лицензиях</string>
     <string name="action_details">Подробности</string>
-    <string name="action_app_language">Язык приложения</string>
+    <string name="action_app_settings">Настройки</string>
 
     <!-- Context menu -->
     <string name="context_expand">Выбрать больше</string>
     <string name="context_copy">Копировать</string>
     <string name="context_cut">Вырезать</string>
     <string name="context_paste">Вставить</string>
-    
+
+    <!-- Application settings -->
+    <string name="pref_app_language">Язык приложения</string>
+    <string name="pref_developer_mode">Режим разработчика</string>
+    <string-array name="pref_language_names">
+        <item>Английский</item>
+        <item>Русский</item>
+        <item>Немецкий</item>
+        <item>Португальский (Бразилия)</item>
+    </string-array>
+
     <!-- Dialogs -->
     <string name="dialog_navigation_accept">Согласен</string>
     <string name="dialog_navigation_cancel">Отмена</string>
@@ -287,7 +290,6 @@
     <string name="message_file_written">Файл %s успешно записан</string>
     
     <!-- Developer options -->
-    <string name="action_dev_mode">Режим разработчика</string>
     <string name="action_dev_autotest">Автоматический тест</string>
     <string name="action_dev_export_doc">Экспорт документации</string>
     <string name="action_dev_take_screenshot">Экспорт снимков</string>

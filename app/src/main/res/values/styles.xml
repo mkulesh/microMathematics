@@ -23,6 +23,10 @@
         <item name="actionModeBackground">@null</item>
     </style>
 
+    <style name="PreferenceScreen" parent="MicroMathActionBarTheme">
+        <item name="android:textColor">@color/dialog_content_color</item>
+    </style>
+
     <!-- Custom styles -->
     <style name="DrawerTitleStyle" parent="@android:style/TextAppearance.Small">
         <item name="android:layout_width">wrap_content</item>

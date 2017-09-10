@@ -8,13 +8,6 @@
     
     <!-- Drawer -->
     <string name="drawer_open">Abrir gaveta de aplicativos</string>
-
-    <string-array name="language_names">
-        <item>English</item>
-        <item>Russian</item>
-        <item>German</item>
-        <item>Brazilian Portuguese</item>
-    </string-array>
     <string-array name="activity_titles">
         <item>Folha de Cálculos</item>
         <item>Como Utilizar</item>
@@ -77,14 +70,24 @@
     <string name="action_export">Exportar</string>
     <string name="action_licenses">Licenças de código aberto</string>
     <string name="action_details">Detalhes</string>
-    <string name="action_app_language">Idioma do app</string>
-        
+    <string name="action_app_settings">Configurações do app</string>
+
     <!-- Context menu -->
     <string name="context_expand">Expandir seleção</string>
     <string name="context_copy">Copiar</string>
     <string name="context_cut">Recortar</string>
     <string name="context_paste">Colar</string>
-    
+
+    <!-- Application settings -->
+    <string name="pref_app_language">Idioma do app</string>
+    <string name="pref_developer_mode">Opções do desenvolvedor</string>
+    <string-array name="pref_language_names">
+        <item>English</item>
+        <item>Russian</item>
+        <item>German</item>
+        <item>Brazilian Portuguese</item>
+    </string-array>
+
     <!-- Dialogs -->
     <string name="dialog_navigation_accept">OK</string>
     <string name="dialog_navigation_cancel">Cancelar</string>
@@ -287,7 +290,6 @@
     <string name="message_file_written">Arquivo %s foi salvo</string>
     
     <!-- Developer options -->
-    <string name="action_dev_mode">Opções do desenvolvedor</string>
     <string name="action_dev_autotest">Teste automático</string>
     <string name="action_dev_export_doc">Exportar documentação</string>
     <string name="action_dev_take_screenshot">Exportar capturas de tela</string>

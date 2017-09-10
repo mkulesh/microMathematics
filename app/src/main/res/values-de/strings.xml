@@ -8,13 +8,6 @@
     
     <!-- Drawer -->
     <string name="drawer_open">Öffnen App-Navigation</string>
-
-    <string-array name="language_names">
-        <item>Englisch</item>
-        <item>Russisch</item>
-        <item>Deutsch</item>
-        <item>Brasilianisches Portugiesisch</item>
-    </string-array>
     <string-array name="activity_titles">
         <item>Arbeitsblatt</item>
         <item>Benutzung</item>
@@ -77,14 +70,24 @@
     <string name="action_export">Exportieren</string>
     <string name="action_licenses">Open-Source-Lizenzen</string>
     <string name="action_details">Details</string>
-    <string name="action_app_language">App Sprache</string>
+    <string name="action_app_settings">App Einstellungen</string>
 
     <!-- Context menu -->
     <string name="context_expand">Auswahl ausdehnen</string>
     <string name="context_copy">Kopieren</string>
     <string name="context_cut">Ausschneiden</string>
     <string name="context_paste">Einfügen</string>
-    
+
+    <!-- Application settings -->
+    <string name="pref_app_language">Sprache</string>
+    <string name="pref_developer_mode">Entwicklermodus</string>
+    <string-array name="pref_language_names">
+        <item>Englisch</item>
+        <item>Russisch</item>
+        <item>Deutsch</item>
+        <item>Brasilianisches Portugiesisch</item>
+    </string-array>
+
     <!-- Dialogs -->
     <string name="dialog_navigation_accept">OK</string>
     <string name="dialog_navigation_cancel">Abbrechen</string>
@@ -287,7 +290,6 @@
     <string name="message_file_written">Die Datei %s ist gespeichert</string>
     
     <!-- Developer options -->
-    <string name="action_dev_mode">Entwicklermodus</string>
     <string name="action_dev_autotest">Automatischer Test</string>
     <string name="action_dev_export_doc">Handbuch exportieren</string>
     <string name="action_dev_take_screenshot">Screenshot exportieren</string>

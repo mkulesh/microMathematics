@@ -25,13 +25,6 @@
     
     <!-- Drawer -->
     <string name="drawer_open">Ouvrir le panneau de navigation</string>
-
-    <string-array name="language_names">
-        <item>Anglais</item>
-        <item>Russe</item>
-        <item>Allemand</item>
-        <item>Français</item>
-    </string-array>
     <string-array name="activity_titles">
         <item>Feuille de calcul</item>
         <item>Comment utiliser</item>
@@ -94,14 +87,24 @@
     <string name="action_export">Exporter</string>
     <string name="action_licenses">Licences open-source</string>
     <string name="action_details">Détails</string>
-    <string name="action_app_language">Langue de l\'app</string>
-        
+    <string name="action_app_settings">Paramètres de l\'app</string>
+
     <!-- Context menu -->
     <!--<string name="context_expand">Expand selection</string>-->
     <string name="context_copy">Copier</string>
     <string name="context_cut">Couper</string>
     <string name="context_paste">Coller</string>
-    
+
+    <!-- Application settings -->
+    <string name="pref_app_language">Langue de l\'app</string>
+    <string name="pref_developer_mode">Options pour développeur/développeuse</string>
+    <string-array name="pref_language_names">
+        <item>Anglais</item>
+        <item>Russe</item>
+        <item>Allemand</item>
+        <item>Français</item>
+    </string-array>
+
     <!-- Dialogs -->
     <string name="dialog_navigation_accept">Ok</string>
     <string name="dialog_navigation_cancel">Annuler</string>
@@ -304,7 +307,6 @@
     <string name="message_file_written">Le fichier %s est écrit</string>
     
     <!-- Developer options -->
-    <string name="action_dev_mode">Options pour développeur/développeuse</string>
     <string name="action_dev_autotest">Test automatique</string>
     <string name="action_dev_export_doc">Exporter la documentation</string>
     <!-- <string name="action_dev_take_screenshot">Export screenshots</string> -->
