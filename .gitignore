@@ -1,8 +1,0 @@
-build/
-.externalNativeBuild/
-.gradle/
-proguard/
-.idea/
-*.iml
-*.jks
-local.properties
