@@ -15,6 +15,6 @@ git add ./autobuild/microMathematics-v2.15.4a.apk
 
 # We don’t want to run a build for a this commit in urder to avoid circular builds: 
 # add [ci skip] to the git commit message
-git commit --message "Snapshot $TRAVIS_BUILD_NUMBER autobuild [ci skip]"
+git commit --message "Snapshot autobuild N.$TRAVIS_BUILD_NUMBER [ci skip]"
 git push origin-master
 
