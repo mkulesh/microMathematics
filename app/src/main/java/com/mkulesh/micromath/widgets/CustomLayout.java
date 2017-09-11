@@ -2,17 +2,17 @@
  * microMathematics Plus - Extended visual calculator
  * *****************************************************************************
  * Copyright (C) 2014-2017 Mikhail Kulesh
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
@@ -270,7 +270,7 @@ public class CustomLayout extends LinearLayout
             final LayoutParams lp = (LayoutParams) child.getLayoutParams();
             maxWidth += (child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin);
 
-            // calculate height depending on the layout parameters 
+            // calculate height depending on the layout parameters
             if (lp.height == ViewGroup.LayoutParams.MATCH_PARENT)
             {
                 continue;
@@ -381,7 +381,7 @@ public class CustomLayout extends LinearLayout
             mTmpContainerRect.left = prevLeftPos + lp.leftMargin;
             mTmpContainerRect.right = prevLeftPos + width + lp.rightMargin;
 
-            // calculate height depending on the layout parameters 
+            // calculate height depending on the layout parameters
             final int currHeight = child.getMeasuredHeight();
             if (lp.height != LayoutParams.MATCH_PARENT)
             {
@@ -437,7 +437,7 @@ public class CustomLayout extends LinearLayout
             }
         }
 
-        // the second pass if there is a child aligned to top of next 
+        // the second pass if there is a child aligned to top of next
         if (isAllignToTopOfNext)
         {
             for (int i = 0; (i < count) && (i + 1 < count); i++)
@@ -463,7 +463,7 @@ public class CustomLayout extends LinearLayout
             }
         }
 
-        // the third pass if there is a child aligned below the next 
+        // the third pass if there is a child aligned below the next
         if (isAllignBelowTheNext)
         {
             for (int i = 0; (i < count) && (i + 1 < count); i++)

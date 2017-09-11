@@ -2,17 +2,17 @@
  * microMathematics Plus - Extended visual calculator
  * *****************************************************************************
  * Copyright (C) 2014-2017 Mikhail Kulesh
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
@@ -103,8 +103,8 @@ public final class FileUtils
             { ".ods", "application/vnd.oasis.opendocument.spreadsheet", C_OFFICE },
             { ".odt", "application/vnd.oasis.opendocument.text", C_OFFICE },
             { ".oga", "audio/ogg", C_AUDIO },
-            { ".ogg", "audio/ogg", C_AUDIO }, // RFC 5334 
-            { ".ogv", "video/ogg", C_VIDEO }, // RFC 5334 
+            { ".ogg", "audio/ogg", C_AUDIO }, // RFC 5334
+            { ".ogv", "video/ogg", C_VIDEO }, // RFC 5334
             { ".opml", "text/xml", C_MARKUP },
             { ".pdf", "application/pdf", C_PDF },
             { ".php", "text/php", C_MARKUP },

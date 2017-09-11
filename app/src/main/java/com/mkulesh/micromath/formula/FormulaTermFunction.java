@@ -2,17 +2,17 @@
  * microMathematics Plus - Extended visual calculator
  * *****************************************************************************
  * Copyright (C) 2014-2017 Mikhail Kulesh
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
@@ -234,7 +234,7 @@ public class FormulaTermFunction extends FormulaTerm
             }
             else
             {
-                // index only valid if fName not empty 
+                // index only valid if fName not empty
                 return null;
             }
         }
@@ -1078,7 +1078,7 @@ public class FormulaTermFunction extends FormulaTerm
             throw new Exception("argument list is empty");
         }
 
-        // store the main layout in order to show errors 
+        // store the main layout in order to show errors
         final String functionMainTag = getContext().getResources().getString(R.string.function_main_layout);
         final View functionMainView = layout.findViewWithTag(functionMainTag);
         if (functionMainView != null)

@@ -2,17 +2,17 @@
  * microMathematics Plus - Extended visual calculator
  * *****************************************************************************
  * Copyright (C) 2014-2017 Mikhail Kulesh
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
@@ -54,11 +54,11 @@ import com.mkulesh.micromath.plus.R;
  * contents to scroll; this child may itself be a layout manager with a complex hierarchy of objects. A child that is
  * often used is a {@link LinearLayout} in a vertical orientation, presenting a vertical array of top-level items that
  * the user can scroll through.
- * 
+ *
  * <p>
  * The {@link TextView} class also takes care of its own scrolling, so does not require a TwoDScrollView, but using the
  * two together is possible to achieve the effect of a text view within a larger container.
- * 
+ *
  * Source: http://web.archive.org/web/20131020193237/http://blog.gorges.us/2010/06/android-two-dimensional-scrollview
  */
 public class TwoDScrollView extends FrameLayout
@@ -551,7 +551,7 @@ public class TwoDScrollView extends FrameLayout
     /**
      * You can call this function yourself to have the scroll view perform scrolling from a key event, just as if the
      * event had been dispatched to it by the view hierarchy.
-     * 
+     *
      * @param event
      *            The key event to execute.
      * @return Return true if the event was handled, else false.
@@ -612,7 +612,7 @@ public class TwoDScrollView extends FrameLayout
     /**
      * Finds the next focusable component that fits in this View's bounds (excluding fading edges) pretending that this
      * View's top is located at the parameter top.
-     * 
+     *
      * @param topFocus
      *            look for a candidate is the one at the top of the bounds if topFocus is true, or at the bottom of the
      *            bounds if topFocus is false
@@ -650,7 +650,7 @@ public class TwoDScrollView extends FrameLayout
 
     /**
      * Finds the next focusable component that fits in the specified bounds. </p>
-     * 
+     *
      * @param topFocus
      *            look for a candidate is the one at the top of the bounds if topFocus is true, or at the bottom of the
      *            bounds if topFocus is false
@@ -740,7 +740,7 @@ public class TwoDScrollView extends FrameLayout
      * bottom and give the focus to the topmost/bottommost component in the new visible area. If no component is a good
      * candidate for focus, this scrollview reclaims the focus.
      * </p>
-     * 
+     *
      * @param direction
      *            the scroll direction: {@link android.view.View#FOCUS_UP} to go the top of the view or
      *            {@link android.view.View#FOCUS_DOWN} to go the bottom
@@ -792,7 +792,7 @@ public class TwoDScrollView extends FrameLayout
      * attempts to give the focus to a component visible in this area. If no component can be focused in the new visible
      * area, the focus is reclaimed by this scrollview.
      * </p>
-     * 
+     *
      * @param direction
      *            the scroll direction: {@link android.view.View#FOCUS_UP} to go upward
      *            {@link android.view.View#FOCUS_DOWN} to downward
@@ -833,7 +833,7 @@ public class TwoDScrollView extends FrameLayout
 
     /**
      * Handle scrolling in response to an up or down arrow click.
-     * 
+     *
      * @param direction
      *            The direction corresponding to the arrow key that was pressed
      * @return True if we consumed the event, false otherwise
@@ -925,7 +925,7 @@ public class TwoDScrollView extends FrameLayout
 
     /**
      * Smooth scroll by a Y delta
-     * 
+     *
      * @param delta
      *            the number of pixels to scroll by on the Y axis
      */
@@ -939,7 +939,7 @@ public class TwoDScrollView extends FrameLayout
 
     /**
      * Like {@link View#scrollBy}, but scroll smoothly instead of immediately.
-     * 
+     *
      * @param dx
      *            the number of pixels to scroll by on the X axis
      * @param dy
@@ -967,7 +967,7 @@ public class TwoDScrollView extends FrameLayout
 
     /**
      * Like {@link #scrollTo}, but scroll smoothly instead of immediately.
-     * 
+     *
      * @param x
      *            the position where to scroll on the X axis
      * @param y
@@ -1137,7 +1137,7 @@ public class TwoDScrollView extends FrameLayout
 
     /**
      * Scrolls the view to the given child.
-     * 
+     *
      * @param child
      *            the View to scroll to
      */
@@ -1160,7 +1160,7 @@ public class TwoDScrollView extends FrameLayout
 
     /**
      * If rect is off screen, scroll just enough to get it (or at least the first screen size chunk of it) on screen.
-     * 
+     *
      * @param rect
      *            The rectangle.
      * @param immediate
@@ -1189,7 +1189,7 @@ public class TwoDScrollView extends FrameLayout
     /**
      * Compute the amount to scroll in the X direction in order to get a rectangle completely on the screen (or, if
      * taller than the screen, at least the first screen size chunk of it).
-     * 
+     *
      * @param rect
      *            The rect.
      * @return The scroll delta.
@@ -1257,7 +1257,7 @@ public class TwoDScrollView extends FrameLayout
     /**
      * Compute the amount to scroll in the Y direction in order to get a rectangle completely on the screen (or, if
      * taller than the screen, at least the first screen size chunk of it).
-     * 
+     *
      * @param rect
      *            The rect.
      * @return The scroll delta.
@@ -1401,7 +1401,7 @@ public class TwoDScrollView extends FrameLayout
 
     /**
      * Fling the scroll view
-     * 
+     *
      * @param velocityY
      *            The initial velocity in the Y direction. Positive numbers mean that the finger/curor is moving down
      *            the screen, which means we want to scroll towards the top.
@@ -1434,7 +1434,7 @@ public class TwoDScrollView extends FrameLayout
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * <p>
      * This version also clamps the scrolling to the bounds of our child.
      */
@@ -1460,7 +1460,7 @@ public class TwoDScrollView extends FrameLayout
             /*
              * my >= child is this case: |--------------- me ---------------| |------ child ------| or |---------------
              * me ---------------| |------ child ------| or |--------------- me ---------------| |------ child ------|
-             * 
+             *
              * n < 0 is this case: |------ me ------| |-------- child --------| |-- mScrollX --|
              */
             return 0;

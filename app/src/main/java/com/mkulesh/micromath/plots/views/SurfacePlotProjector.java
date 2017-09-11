@@ -2,17 +2,17 @@
  * microMathematics Plus - Extended visual calculator
  * *****************************************************************************
  * Copyright (C) 2014-2017 Mikhail Kulesh
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
@@ -31,8 +31,8 @@ public final class SurfacePlotProjector
     private double sin_rotation, cos_rotation; // sin and cos of rotation angle
     private double sin_elevation, cos_elevation; // sin and cos of elevation angle
     private int _2D_trans_x, _2D_trans_y; // 2D translation
-    private int x1, x2, y1, y2; // projection area 
-    private int center_x, center_y; // center of projection area           
+    private int x1, x2, y1, y2; // projection area
+    private int center_x, center_y; // center of projection area
     private double tmpValue;
     private int trans_x, trans_y;
     private double factor;

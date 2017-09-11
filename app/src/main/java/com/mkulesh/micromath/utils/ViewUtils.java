@@ -2,17 +2,17 @@
  * microMathematics Plus - Extended visual calculator
  * *****************************************************************************
  * Copyright (C) 2014-2017 Mikhail Kulesh
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
@@ -185,11 +185,11 @@ public final class ViewUtils
     /**
      * Procedure rounds the given value to the given number of significant digits see
      * http://stackoverflow.com/questions/202302
-     * 
+     *
      * Note: The maximum double value in Java is on the order of 10^308, while the minimum value is on the order of
      * 10^-324. Therefore, you can run into trouble when applying the function roundToSignificantFigures to something
      * that's within a few powers of ten of Double.MIN_VALUE.
-     * 
+     *
      * Consequently, the variable magnitude may become Infinity, and it's all garbage from then on out. Fortunately,
      * this is not an insurmountable problem: it is only the factor magnitude that's overflowing. What really matters is
      * the product num * magnitude, and that does not overflow. One way of resolving this is by breaking up the
