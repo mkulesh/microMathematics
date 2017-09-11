@@ -1,32 +1,33 @@
-# CI script for https://travis-ci.org/mkulesh/microMathematics
 language: android
 
 jdk: oraclejdk8
 
 android:
   components:
-      - platform-tools
-      - tools
-      - build-tools-25.0.2
-      - android-25
-      - extra-android-m2repository
-      
+  - platform-tools
+  - tools
+  - build-tools-25.0.2
+  - android-25
+  - extra-android-m2repository
+
 branches:
   only:
-    - master
+  - master
 
 install:
-    # Ensure Gradle wrapper is executable
-    - chmod +x ./gradlew; ls -l gradlew
-    
-script: "./gradlew clean assembleDebug"
+  - chmod +x ./gradlew
+  - chmod +x ./autobuild/push-apk.sh
+
+script: ./gradlew clean assembleDebug
 
 after_success:
-    # Show apk
-    - ls -l app/build/outputs/apk
+  - ./autobuild/push-apk.sh
 
 notifications:
   email:
     on_success: change
     on_failure: always
-    
+
+env:
+  global:
+    secure: ERsltm1IX7AJokpkqiWSWMAJFE0Mo7r4OnNGyM7M9Prpy/U5wnS7kfjmxwb8tZa1Wf+lcAvnngcV23aY/zFCx0J1E+tbK61kTExHoqafHjixBZZG78Nl0VFgDMnpR4jYC/DZRgFSEVzdCH82qKIFs70djI+emHgk7sXpM02NPR8RUETdu6gYwRPup8x/UIVFgwof9Z+qnUCHp9/PjF2XOYt3KYEvTKSHRD+Au+CVflx5ewwiiFPToYD+gxu0uIg/LoxyXp1Ey4SM0GSwbq2hwz1r4OWIom2AyEefEJl/vZSSO75nAR4ydN/MN2+ggz0q1gYCO/Zh0UFY0tpSZd8mFFyEdJHO0XiaAKiMuFqbsDlAMSwzkvDSKTED0qRECCjWBVozmwd/gtuQc+GhcQe6qoCn+uU8i0F6ankoMegScUt4o31TTeS+obDmLKAdT3mnLb0fr4zFQlKArmGtorYR7ZVEEfzFDIBUJVThp/aYmrmjUf8vR5JLzFyztP11+H+wRNv+cCYB6zTcpDYdsrnVbTRcsXTvfGuVXvvkAQSxG5NT+Zm7zhgTFNephzxKEqZyNtPa07TvcdayG3+gKxvag72zebpPKerlbXq7pZ5E1OGyDAN/3OtFCg0egHJt5eJ2qeKpFGEHhLLGLamRj2qyzscFiHdvPDO/tDghxRYsxBE=
