@@ -15,6 +15,7 @@ branches:
   - master
 
 install:
+  git checkout master
   - chmod +x ./gradlew
   - chmod +x ./autobuild/push-apk.sh
 
