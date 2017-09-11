@@ -5,12 +5,12 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   width="90"
-   height="20"
+   id="svg108"
    version="1.1"
-   id="svg102">
+   height="20"
+   width="154">
   <metadata
-     id="metadata108">
+     id="metadata114">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -22,69 +22,82 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs106" />
+     id="defs112" />
   <linearGradient
-     id="a"
+     gradientUnits="userSpaceOnUse"
+     y1="0"
+     x1="0"
+     gradientTransform="scale(2.7748874,0.36037499)"
+     y2="55.497748"
      x2="0"
-     y2="100%">
+     id="b">
     <stop
-       offset="0"
+       id="stop82"
+       stop-opacity=".1"
        stop-color="#bbb"
-       stop-opacity=".1"
-       id="stop79" />
+       offset="0" />
     <stop
-       offset="1"
+       id="stop84"
        stop-opacity=".1"
-       id="stop81" />
+       offset="1" />
   </linearGradient>
-  <rect
-     rx="3"
-     width="90"
-     height="20"
-     fill="#555"
-     id="rect84" />
-  <rect
-     rx="3"
-     x="37"
-     width="53"
-     height="20"
-     fill="#4c1"
-     id="rect86" />
-  <path
-     fill="#4c1"
-     d="M37 0h4v20h-4z"
-     id="path88" />
-  <rect
-     rx="3"
-     width="90"
-     height="20"
-     fill="url(#a)"
-     id="rect90" />
+  <clipPath
+     id="a">
+    <rect
+       id="rect87"
+       fill="#fff"
+       rx="3"
+       height="20"
+       width="154" />
+  </clipPath>
   <g
-     fill="#fff"
-     text-anchor="middle"
-     font-family="DejaVu Sans,Verdana,Geneva,sans-serif"
-     font-size="11"
-     id="g100">
+     transform="matrix(0.72621798,0,0,1,42.162432,0)"
+     id="g96"
+     clip-path="url(#a)">
+    <path
+       id="path90"
+       d="M 0,0 H 49 V 20 H 0 Z"
+       fill="#555" />
+    <path
+       id="path92"
+       d="M 49,0 H 154 V 20 H 49 Z"
+       fill="#007ec6" />
+    <path
+       style="fill:url(#b)"
+       id="path94"
+       d="M 0,0 H 154 V 20 H 0 Z"
+       fill="url(#b)" />
+  </g>
+  <g
+     transform="translate(6)"
+     id="g126">
     <text
-       x="19.5"
-       y="15"
-       fill="#010101"
+       style="font-size:medium;font-family:'DejaVu Sans', Verdana, Geneva, sans-serif;text-anchor:middle"
+       id="text98"
        fill-opacity=".3"
-       id="text92">APK</text>
-    <text
-       x="19.5"
-       y="14"
-       id="text94">APK</text>
-    <text
-       x="62.5"
-       y="15"
        fill="#010101"
-       fill-opacity=".3"
-       id="text96">unsigned</text>
+       y="15"
+       x="54.5">APK</text>
     <text
-       x="62.5"
+       style="font-size:medium;font-family:'DejaVu Sans', Verdana, Geneva, sans-serif;text-anchor:middle;fill:#ffffff"
+       id="text100"
        y="14"
-       id="text98">unsigned</text>
+       x="54.5">APK</text>
+  </g>
+  <g
+     transform="translate(-14)"
+     id="g122">
+    <text
+       style="font-size:medium;font-family:'DejaVu Sans', Verdana, Geneva, sans-serif;text-anchor:middle"
+       id="text102"
+       fill-opacity=".3"
+       fill="#010101"
+       y="15"
+       x="130.5">snapshot</text>
+    <text
+       style="font-size:medium;font-family:'DejaVu Sans', Verdana, Geneva, sans-serif;text-anchor:middle;fill:#ffffff"
+       id="text104"
+       y="14"
+       x="130.5">snapshot</text>
   </g>
 </svg>
