@@ -1,4 +1,4 @@
-#!/bin/csh
+#!/bin/sh
 
 # Copy newly created APK to target directory
 echo "Generated APK"
