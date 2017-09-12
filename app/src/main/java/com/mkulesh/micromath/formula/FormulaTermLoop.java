@@ -543,13 +543,19 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         private static final int RIDDER_MAX_ITERATIONS_COUNT = 10;
         private static final double RIDDER_INITIAL_STEP = 0.05;
 
-        /** Intermediate result. */
+        /**
+         * Intermediate result.
+         */
         private double qtrapResult;
 
-        /** Owner calculation thread. */
+        /**
+         * Owner calculation thread.
+         */
         private CalculaterTask calculaterTask = null;
 
-        /** Class holding intermediate calculation value that can have a complex part */
+        /**
+         * Class holding intermediate calculation value that can have a complex part
+         */
         private class IntermediateValue
         {
             public double value;

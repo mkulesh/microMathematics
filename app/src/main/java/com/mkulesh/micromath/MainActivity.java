@@ -227,11 +227,11 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
             }
             return true;
         case R.id.action_app_settings:
-            {
-                Intent settings = new Intent(this, SettingsActivity.class);
-                startActivityForResult(settings, SETTINGS_ACTIVITY_REQID);
-            }
+        {
+            Intent settings = new Intent(this, SettingsActivity.class);
+            startActivityForResult(settings, SETTINGS_ACTIVITY_REQID);
             return true;
+        }
         case R.id.action_licenses:
             (new DialogLicenses(this, BaseFragment.DEVELOPER_MODE)).show();
             return true;
