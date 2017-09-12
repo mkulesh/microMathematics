@@ -47,3 +47,5 @@ env:
 git commit --message "Snapshot autobuild N.$TRAVIS_BUILD_NUMBER [ci skip]"
 git push origin-master
 ```
+
+See also [How to set up TravisCI for projects that push back to github](https://gist.github.com/willprice/e07efd73fb7f13f917ea).
