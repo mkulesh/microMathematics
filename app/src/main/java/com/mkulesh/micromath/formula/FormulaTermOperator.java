@@ -73,7 +73,7 @@ public class FormulaTermOperator extends FormulaTerm
         {
             return descriptionId;
         }
-    };
+    }
 
     public static OperatorType getOperatorType(Context context, String s)
     {

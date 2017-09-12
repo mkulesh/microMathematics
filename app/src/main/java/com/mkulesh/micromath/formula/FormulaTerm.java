@@ -43,7 +43,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         FUNCTION,
         INTERVAL,
         LOOP
-    };
+    }
 
     /*********************************************************
      * Constructors

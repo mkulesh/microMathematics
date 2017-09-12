@@ -119,7 +119,7 @@ public class FormulaTermFunction extends FormulaTerm
         {
             return linkObject != null;
         }
-    };
+    }
 
     /**
      * Some functions can be triggered from keyboard. This enumeration defines these triggers

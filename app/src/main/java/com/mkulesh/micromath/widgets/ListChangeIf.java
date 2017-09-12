@@ -28,7 +28,7 @@ public interface ListChangeIf
         PLOT_CONTOUR,
         TEXT_FRAGMENT,
         IMAGE_FRAGMENT
-    };
+    }
 
     enum Position
     {
@@ -36,7 +36,7 @@ public interface ListChangeIf
         AFTER,
         LEFT,
         RIGHT
-    };
+    }
 
     /**
      * Procedure creates a formula with given type and position

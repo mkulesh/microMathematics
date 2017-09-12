@@ -398,7 +398,7 @@ public class TwoDScrollView extends FrameLayout
             fling((int) -velocityX, (int) -velocityY);
             return true;
         }
-    };
+    }
 
     /**
      * The scale listener, used for handling multi-finger scale gestures.
@@ -418,7 +418,7 @@ public class TwoDScrollView extends FrameLayout
             mEdgeGlowTop.onRelease();
             mEdgeGlowBottom.onRelease();
             return true;
-        };
+        }
 
         @Override
         public boolean onScale(ScaleGestureDetector detector)
@@ -452,8 +452,8 @@ public class TwoDScrollView extends FrameLayout
                 }
             }
             isScaled = false;
-        };
-    };
+        }
+    }
 
     /*********************************************************
      * Realization

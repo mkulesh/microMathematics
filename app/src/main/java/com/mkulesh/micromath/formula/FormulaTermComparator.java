@@ -81,7 +81,7 @@ public class FormulaTermComparator extends FormulaTerm
         {
             return descriptionId;
         }
-    };
+    }
 
     public static ComparatorType getComparatorType(Context context, String s)
     {

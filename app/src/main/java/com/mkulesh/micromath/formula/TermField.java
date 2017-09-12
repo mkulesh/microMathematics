@@ -80,14 +80,14 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         NUMBER,
         ARGUMENT,
         VARIABLE_LINK
-    };
+    }
 
     public enum BracketsType
     {
         NEVER,
         IFNECESSARY,
         ALWAYS
-    };
+    }
 
     private ContentType contentType = ContentType.INVALID;
     private final TermParser parser = new TermParser();
@@ -437,7 +437,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     public int onGetNextFocusId(CustomEditText owner, FocusChangeIf.NextFocusType focusType)
     {
         return parentFormula.getNextFocusId(text, focusType);
-    };
+    }
 
     /*********************************************************
      * Read/write interface

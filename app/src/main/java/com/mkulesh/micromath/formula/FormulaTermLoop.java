@@ -75,7 +75,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         {
             return descriptionId;
         }
-    };
+    }
 
     public static LoopType getLoopType(Context context, String s)
     {

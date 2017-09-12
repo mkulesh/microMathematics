@@ -26,7 +26,7 @@ public interface FunctionIf
     {
         FUNCTION_2D,
         FUNCTION_3D
-    };
+    }
 
     public final static int X = 0;
     public final static int Y = 1;

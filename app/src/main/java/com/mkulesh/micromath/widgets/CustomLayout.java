@@ -43,7 +43,7 @@ public class CustomLayout extends LinearLayout
     {
         NONE,
         SQRT
-    };
+    }
 
     public enum SpecialAllignment
     {
@@ -52,7 +52,7 @@ public class CustomLayout extends LinearLayout
         TOP_OF_NEXT,
         BELOW_THE_NEXT,
         BELOW_THE_PREVIOUS
-    };
+    }
 
     private SpecialAllignment specialAllignment = SpecialAllignment.NONE;
 
@@ -218,7 +218,7 @@ public class CustomLayout extends LinearLayout
             prevBaseLine = currBaseLine;
         }
         return baseLine;
-    };
+    }
 
     /**
      * Ask all children to measure themselves and compute the measurement of this layout based on the children.

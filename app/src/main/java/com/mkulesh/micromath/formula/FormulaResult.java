@@ -59,7 +59,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         CONSTANT,
         ARRAY_1D,
         ARRAY_2D
-    };
+    }
 
     private TermField leftTerm = null;
     private CustomTextView resultAssign = null;

@@ -38,7 +38,7 @@ public class Palette
     {
         RGB,
         HSV
-    };
+    }
 
     // data and parameters
     private final ColorType colorType;

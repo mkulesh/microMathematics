@@ -70,7 +70,7 @@ public class FormulaTermInterval extends FormulaTerm
         {
             return descriptionId;
         }
-    };
+    }
 
     public static IntervalType getIntervalType(Context context, String s)
     {

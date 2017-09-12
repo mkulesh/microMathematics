@@ -649,7 +649,7 @@ public class Commander extends DialogBase implements CommanderIf
         {
             okButton.setEnabled(s.length() > 0 && getCurrentPath() != null);
         }
-    };
+    }
 
     private String getCurrentPath()
     {

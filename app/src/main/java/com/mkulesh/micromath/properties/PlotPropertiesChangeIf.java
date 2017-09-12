@@ -24,7 +24,7 @@ public interface PlotPropertiesChangeIf
     {
         ONE_D,
         TWO_D
-    };
+    }
 
     /**
      * Procedure returns supported dimension of this interface

@@ -54,7 +54,7 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
         SUMMATION,
         PRODUCT,
         INTEGRAL
-    };
+    }
 
     private SymbolType symbolType = SymbolType.TEXT;
     protected AppCompatActivity activity = null;
@@ -207,7 +207,7 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
     public int getBaseline()
     {
         return (int) ((this.getMeasuredHeight() - getPaddingBottom() + getPaddingTop()) / 2);
-    };
+    }
 
     @Override
     protected void onDraw(Canvas c)

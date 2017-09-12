@@ -43,7 +43,7 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
         NONE,
         CALCULATE,
         INTERRUPT
-    };
+    }
 
     private final FormulaList list;
     private final InputStream stream;

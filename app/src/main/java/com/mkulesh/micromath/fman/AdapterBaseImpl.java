@@ -85,7 +85,7 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
                 e.printStackTrace();
             }
         }
-    };
+    }
 
     protected SimpleHandler simpleHandler = null;
 

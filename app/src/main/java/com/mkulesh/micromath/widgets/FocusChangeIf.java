@@ -30,7 +30,7 @@ public interface FocusChangeIf
         FOCUS_LEFT,
         FOCUS_RIGHT,
         FOCUS_UP
-    };
+    }
 
     /**
      * Procedure is called ID of next focused term is required

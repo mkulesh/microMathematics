@@ -325,7 +325,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         {
             f.updateModeTitle();
         }
-    };
+    }
 
     @Override
     public void onSupportActionModeFinished(android.support.v7.view.ActionMode mode)
@@ -338,7 +338,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
             f.enableObjectPropertiesButton(false);
             f.enableObjectDetailsButton(false);
         }
-    };
+    }
 
     /**
      * Procedure enforces the currently active action mode to be finished

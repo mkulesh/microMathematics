@@ -215,7 +215,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     public int getBaseline()
     {
         return (int) ((this.getMeasuredHeight() - getPaddingBottom() + getPaddingTop()) / 2);
-    };
+    }
 
     /*********************************************************
      * Editing
@@ -294,7 +294,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         public void afterTextChanged(Editable s)
         {
         }
-    };
+    }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh)

@@ -39,20 +39,20 @@ public class CalculatedValue
         NOT_A_NUMBER,
         NOT_A_REAL,
         PASSED_COMPLEX
-    };
+    }
 
     public enum ValueType
     {
         INVALID,
         REAL,
         COMPLEX
-    };
+    }
 
     public enum PartType
     {
         RE,
         IM
-    };
+    }
 
     public final static CalculatedValue NaN = new CalculatedValue(ValueType.INVALID, Double.NaN, 0.0);
     public final static CalculatedValue ONE = new CalculatedValue(ValueType.REAL, 1.0, 0.0);

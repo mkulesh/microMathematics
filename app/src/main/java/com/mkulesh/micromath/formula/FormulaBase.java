@@ -86,19 +86,19 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         {
             return descriptionId;
         }
-    };
+    }
 
     public enum FocusType
     {
         FIRST_EDITABLE,
         FIRST_EMPTY
-    };
+    }
 
     public enum ValidationPassType
     {
         VALIDATE_SINGLE_FORMULA,
         VALIDATE_LINKS
-    };
+    }
 
     private final FormulaList formulaList;
     protected TermField parentField = null;
