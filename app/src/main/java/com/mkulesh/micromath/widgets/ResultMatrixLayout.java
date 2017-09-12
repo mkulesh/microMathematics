@@ -208,18 +208,18 @@ public class ResultMatrixLayout extends TableLayout
         CustomEditText nextC = null;
         switch (focusType)
         {
-            case FOCUS_DOWN:
-                nextC = tag.row + 1 < rowsNumber? getCell(tag.row + 1, tag.col) : null;
-                break;
-            case FOCUS_LEFT:
-                nextC = tag.idx >= 1? fields.get(tag.idx - 1) : null;
-                break;
-            case FOCUS_RIGHT:
-                nextC = tag.idx + 1 < fields.size()? fields.get(tag.idx + 1) : null;
-                break;
-            case FOCUS_UP:
-                nextC = tag.row >= 1? getCell(tag.row - 1, tag.col) : null;
-                break;
+        case FOCUS_DOWN:
+            nextC = tag.row + 1 < rowsNumber ? getCell(tag.row + 1, tag.col) : null;
+            break;
+        case FOCUS_LEFT:
+            nextC = tag.idx >= 1 ? fields.get(tag.idx - 1) : null;
+            break;
+        case FOCUS_RIGHT:
+            nextC = tag.idx + 1 < fields.size() ? fields.get(tag.idx + 1) : null;
+            break;
+        case FOCUS_UP:
+            nextC = tag.row >= 1 ? getCell(tag.row - 1, tag.col) : null;
+            break;
         }
         return nextC == null? ViewUtils.INVALID_INDEX : nextC.getId();
     }

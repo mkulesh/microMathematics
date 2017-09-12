@@ -114,7 +114,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
      *********************************************************/
 
     public TermField(FormulaBase formulaRoot, FormulaBase parentFormula, LinearLayout layout, int termDepth,
-            CustomEditText text)
+                     CustomEditText text)
     {
         super();
 

@@ -166,7 +166,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     }
 
     public static FormulaTerm createTerm(TermType type, TermField termField, LinearLayout layout, String s,
-            int textIndex) throws Exception
+                                         int textIndex) throws Exception
     {
         switch (type)
         {

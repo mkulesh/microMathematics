@@ -591,7 +591,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
          * Calculate derivative of summation operator
          */
         public CalculatedValue.ValueType summationDerivative(String var, long minValue, long maxValue,
-                CalculatedValue outValue) throws CancelException
+                                                             CalculatedValue outValue) throws CancelException
         {
             outValue.setValue(0.0);
             for (long idx = minValue; idx <= maxValue; idx++)
@@ -631,7 +631,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
          * Calculate derivative of product operator
          */
         public CalculatedValue.ValueType productDerivative(String var, long minValue, long maxValue,
-                CalculatedValue outValue) throws CancelException
+                                                           CalculatedValue outValue) throws CancelException
         {
             outValue.setValue(0.0);
             final CalculatedValue tmp1 = new CalculatedValue();
@@ -672,7 +672,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
          * Calculate derivative
          */
         public CalculatedValue.ValueType derivative(DifferentiableType differentiableType, String indexName,
-                CalculatedValue outValue) throws CancelException
+                                                    CalculatedValue outValue) throws CancelException
         {
             indexTerm.getValue(calculaterTask, calcVal);
             if (!calcVal.isNaN())
@@ -782,7 +782,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
          * implementation employs the basic trapezoid rule to calculate Simpson's rule.
          */
         private IntermediateValue integrateSimpsons(CalculatedValue.PartType partType, final double min,
-                final double max, final double absoluteAccuracy) throws CancelException
+                                                    final double max, final double absoluteAccuracy) throws CancelException
         {
             final IntermediateValue ans = new IntermediateValue();
             // Simpson's rule requires at least two trapezoid stages.

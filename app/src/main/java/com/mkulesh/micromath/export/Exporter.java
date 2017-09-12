@@ -42,7 +42,7 @@ public class Exporter
     }
 
     public static boolean write(FormulaList formulas, Uri uri, FileType fileType, final AdapterIf adapter,
-            final Exporter.Parameters exportParameters)
+                                final Exporter.Parameters exportParameters)
     {
         final String fName = FileUtils.getFileName(formulas.getActivity(), uri);
         if (formulas != null && fileType != null)

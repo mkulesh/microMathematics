@@ -1120,7 +1120,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
      * The given formula will be replaced by given stored term object
      */
     private FormulaBase replace(FormulaBase oldFormula, FormulaBase afterThis, FormulaBase.BaseType type,
-            Parcelable data)
+                                Parcelable data)
     {
         if (data == null)
         {

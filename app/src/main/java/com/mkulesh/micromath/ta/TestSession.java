@@ -80,18 +80,18 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         this.mode = mode;
         switch (mode)
         {
-            case TEST_SCRIPS:
-                scripts = context.getResources().getStringArray(R.array.autotest_scripts);
-                break;
-            case EXPORT_DOC:
-                scripts = context.getResources().getStringArray(R.array.doc_export_scripts);
-                break;
-            case TAKE_SCREENSHOTS:
-                scripts = context.getResources().getStringArray(R.array.take_screenshots_scripts);
-                break;
-            default:
-                scripts = null;
-                break;
+        case TEST_SCRIPS:
+            scripts = context.getResources().getStringArray(R.array.autotest_scripts);
+            break;
+        case EXPORT_DOC:
+            scripts = context.getResources().getStringArray(R.array.doc_export_scripts);
+            break;
+        case TAKE_SCREENSHOTS:
+            scripts = context.getResources().getStringArray(R.array.take_screenshots_scripts);
+            break;
+        default:
+            scripts = null;
+            break;
         }
         formulas.setTaSession(this);
     }
@@ -172,44 +172,44 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         final int script = t[1];
         if (script < scripts.length) switch (step)
         {
-            case STEP_READ:
+        case STEP_READ:
+        {
+            final String scriptName = (String) scripts[script];
+            formulas.clear();
+            formulas.readFromResource(Uri.parse(scriptName), XmlLoaderTask.PostAction.NONE);
+            break;
+        }
+        case STEP_CALC:
+        {
+            final String scriptName = (String) scripts[script];
+            testScript.setScriptContent(scriptName);
+            if (mode == Mode.TEST_SCRIPS && formulas.getFormulaListView().getList().getChildCount() > 0)
             {
-                final String scriptName = (String) scripts[script];
-                formulas.clear();
-                formulas.readFromResource(Uri.parse(scriptName), XmlLoaderTask.PostAction.NONE);
-                break;
+                final View v = formulas.getFormulaListView().getList().getChildAt(0);
+                if (v instanceof TextFragment)
+                {
+                    testScript.setScriptContent(((TextFragment) v).getTerms().get(0).getText());
+                }
             }
-            case STEP_CALC:
+            ViewUtils.Debug(this, "Calculating test script: " + scriptName);
+            formulas.calculate();
+            break;
+        }
+        case STEP_EXPORT:
+        {
+            final String lastPath = Uri.parse((String) scripts[script]).getLastPathSegment();
+            final String scriptName = lastPath.contains(".xml") ?
+                    lastPath.replace(".xml", "") : lastPath.replace(".mmt", "");
+            if (mode == Mode.EXPORT_DOC)
             {
-                final String scriptName = (String) scripts[script];
-                testScript.setScriptContent(scriptName);
-                if (mode == Mode.TEST_SCRIPS && formulas.getFormulaListView().getList().getChildCount() > 0)
-                {
-                    final View v = formulas.getFormulaListView().getList().getChildAt(0);
-                    if (v instanceof TextFragment)
-                    {
-                        testScript.setScriptContent(((TextFragment) v).getTerms().get(0).getText());
-                    }
-                }
-                ViewUtils.Debug(this, "Calculating test script: " + scriptName);
-                formulas.calculate();
-                break;
+                exportLatex(EXPORT_DOC_DIR, scriptName);
             }
-            case STEP_EXPORT:
+            else if (mode == Mode.TAKE_SCREENSHOTS)
             {
-                final String lastPath = Uri.parse((String) scripts[script]).getLastPathSegment();
-                final String scriptName = lastPath.contains(".xml")?
-                        lastPath.replace(".xml", "") : lastPath.replace(".mmt", "");
-                if (mode == Mode.EXPORT_DOC)
-                {
-                    exportLatex(EXPORT_DOC_DIR, scriptName);
-                }
-                else if (mode == Mode.TAKE_SCREENSHOTS)
-                {
-                    takeScreenshot(TAKE_SCREENSHOTS_DIR, scriptName);
-                }
-                break;
+                takeScreenshot(TAKE_SCREENSHOTS_DIR, scriptName);
             }
+            break;
+        }
         }
         isPublishRuns.set(false);
     }

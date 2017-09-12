@@ -70,56 +70,56 @@ public class ExportToLatex
 
     protected final String[][] greekTable = new String[][] {
 
-    { "Α", "A" }, { "α", "\\alpha" },
+            { "Α", "A" }, { "α", "\\alpha" },
 
-    { "Β", "B" }, { "β", "\\beta" },
+            { "Β", "B" }, { "β", "\\beta" },
 
-    { "Γ", "\\Gamma" }, { "γ", "\\gamma" },
+            { "Γ", "\\Gamma" }, { "γ", "\\gamma" },
 
-    { "Δ", "\\Delta" }, { "δ", "\\delta" },
+            { "Δ", "\\Delta" }, { "δ", "\\delta" },
 
-    { "Ε", "E" }, { "ε", "\\varepsilon" },
+            { "Ε", "E" }, { "ε", "\\varepsilon" },
 
-    { "Ζ", "Z" }, { "ζ", "\\zeta" },
+            { "Ζ", "Z" }, { "ζ", "\\zeta" },
 
-    { "Η", "H" }, { "η", "\\eta" },
+            { "Η", "H" }, { "η", "\\eta" },
 
-    { "Θ", "\\Theta" }, { "θ", "\\theta" },
+            { "Θ", "\\Theta" }, { "θ", "\\theta" },
 
-    { "Ι", "I" }, { "ι", "\\iota" },
+            { "Ι", "I" }, { "ι", "\\iota" },
 
-    { "Κ", "K" }, { "κ", "\\kappa" },
+            { "Κ", "K" }, { "κ", "\\kappa" },
 
-    { "Λ", "\\Lambda" }, { "λ", "\\lambda" },
+            { "Λ", "\\Lambda" }, { "λ", "\\lambda" },
 
-    { "Μ", "M" }, { "μ", "\\mu" },
+            { "Μ", "M" }, { "μ", "\\mu" },
 
-    { "Ν", "N" }, { "ν", "\\nu" },
+            { "Ν", "N" }, { "ν", "\\nu" },
 
-    { "Ξ", "\\Xi" }, { "ξ", "\\xi" },
+            { "Ξ", "\\Xi" }, { "ξ", "\\xi" },
 
-    { "Ο", "O" }, { "ο", "\\omicron" },
+            { "Ο", "O" }, { "ο", "\\omicron" },
 
-    { "Π", "\\Pi" }, { "π", "\\pi" },
+            { "Π", "\\Pi" }, { "π", "\\pi" },
 
-    { "Ρ", "P" }, { "ρ", "\\rho" },
+            { "Ρ", "P" }, { "ρ", "\\rho" },
 
-    { "Σ", "\\Sigma" }, { "σ", "\\sigma" }, { "ς", "\\varsigma" },
+            { "Σ", "\\Sigma" }, { "σ", "\\sigma" }, { "ς", "\\varsigma" },
 
-    { "Τ", "T" }, { "τ", "\\tau" },
+            { "Τ", "T" }, { "τ", "\\tau" },
 
-    { "Υ", "\\Upsilon" }, { "υ", "\\upsilon" },
+            { "Υ", "\\Upsilon" }, { "υ", "\\upsilon" },
 
-    { "Φ", "\\Phi" }, { "φ", "\\varphi" },
+            { "Φ", "\\Phi" }, { "φ", "\\varphi" },
 
-    { "Χ", "X" }, { "χ", "\\chi" },
+            { "Χ", "X" }, { "χ", "\\chi" },
 
-    { "Ψ", "\\Psi" }, { "ψ", "\\psi" },
+            { "Ψ", "\\Psi" }, { "ψ", "\\psi" },
 
-    { "Ω", "\\Omega" }, { "ω", "\\omega" } };
+            { "Ω", "\\Omega" }, { "ω", "\\omega" } };
 
     public ExportToLatex(Context context, OutputStream stream, final Uri uri, final AdapterIf adapter,
-            final Exporter.Parameters exportParameters) throws Exception
+                         final Exporter.Parameters exportParameters) throws Exception
     {
         this.context = context;
         this.stream = stream;

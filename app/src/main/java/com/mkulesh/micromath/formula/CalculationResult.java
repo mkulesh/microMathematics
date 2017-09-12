@@ -188,7 +188,7 @@ public abstract class CalculationResult extends LinkHolder
     }
 
     protected void updatePlotBoundaries(PlotView view, TermField xMinTerm, TermField xMaxTerm, TermField yMinTerm,
-            TermField yMaxTerm)
+                                        TermField yMaxTerm)
     {
         try
         {

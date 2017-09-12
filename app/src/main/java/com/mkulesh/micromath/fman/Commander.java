@@ -199,25 +199,25 @@ public class Commander extends DialogBase implements CommanderIf
         {
             final DialogRadioGroup d = new DialogRadioGroup(context, R.string.fman_file_type_selection,
                     FileType.values().length, new DialogRadioGroup.EventHandler()
+            {
+                public void onCreate(RadioButton[] rb)
+                {
+                    for (int i = 0; i < rb.length; i++)
                     {
-                        public void onCreate(RadioButton[] rb)
-                        {
-                            for (int i = 0; i < rb.length; i++)
-                            {
-                                rb[i].setText(FileType.values()[i].getDescriptionId());
-                                rb[i].setChecked(i == fileType.ordinal());
-                            }
-                        }
+                        rb[i].setText(FileType.values()[i].getDescriptionId());
+                        rb[i].setChecked(i == fileType.ordinal());
+                    }
+                }
 
-                        public void onClick(int whichButton)
-                        {
-                            fileType = FileType.values()[whichButton];
-                            if (fileTypeButton != null)
-                            {
-                                fileTypeButton.setText(fileType.getDescriptionId());
-                            }
-                        }
-                    });
+                public void onClick(int whichButton)
+                {
+                    fileType = FileType.values()[whichButton];
+                    if (fileTypeButton != null)
+                    {
+                        fileTypeButton.setText(fileType.getDescriptionId());
+                    }
+                }
+            });
             d.show();
             return;
         }
@@ -310,30 +310,30 @@ public class Commander extends DialogBase implements CommanderIf
                 }
                 final SimpleDialog d = new SimpleDialog(context, R.layout.fman_input_dialog,
                         R.string.fman_rename_title, new SimpleDialog.EventHandler()
-                        {
-                            public void onCreate(SimpleDialog d, LinearLayout dLayout)
-                            {
-                                final TextView prompt = (TextView) dLayout.findViewById(R.id.fman_input_dialog_prompt);
-                                prompt.setText(context.getString(R.string.fman_rename_dialog_prompt, selectedItem));
-                                final EditText edit = (EditText) dLayout
-                                        .findViewById(R.id.fman_input_dialog_edit_field);
-                                edit.setText(selectedItem);
-                                edit.requestFocus();
-                            }
+                {
+                    public void onCreate(SimpleDialog d, LinearLayout dLayout)
+                    {
+                        final TextView prompt = (TextView) dLayout.findViewById(R.id.fman_input_dialog_prompt);
+                        prompt.setText(context.getString(R.string.fman_rename_dialog_prompt, selectedItem));
+                        final EditText edit = (EditText) dLayout
+                                .findViewById(R.id.fman_input_dialog_edit_field);
+                        edit.setText(selectedItem);
+                        edit.requestFocus();
+                    }
 
-                            public void onClick(LinearLayout dLayout, int whichButton)
-                            {
-                                if (whichButton == R.id.dialog_button_ok)
-                                {
-                                    ViewUtils.Debug(Commander.this, "Renaming item " + selectedItem);
-                                    final EditText edit = (EditText) dLayout
-                                            .findViewById(R.id.fman_input_dialog_edit_field);
-                                    final String new_name = edit.getText().toString();
-                                    getListAdapter().renameItem(selectedPos, new_name);
-                                    fileListView.setSelection(new_name);
-                                }
-                            }
-                        });
+                    public void onClick(LinearLayout dLayout, int whichButton)
+                    {
+                        if (whichButton == R.id.dialog_button_ok)
+                        {
+                            ViewUtils.Debug(Commander.this, "Renaming item " + selectedItem);
+                            final EditText edit = (EditText) dLayout
+                                    .findViewById(R.id.fman_input_dialog_edit_field);
+                            final String new_name = edit.getText().toString();
+                            getListAdapter().renameItem(selectedPos, new_name);
+                            fileListView.setSelection(new_name);
+                        }
+                    }
+                });
                 d.show();
                 break;
             }
@@ -346,58 +346,58 @@ public class Commander extends DialogBase implements CommanderIf
                 }
                 final SimpleDialog d = new SimpleDialog(context, R.layout.fman_message_dialog,
                         R.string.fman_delete_title, new SimpleDialog.EventHandler()
-                        {
-                            public void onCreate(SimpleDialog d, LinearLayout dLayout)
-                            {
-                                final ImageView image = (ImageView) dLayout.findViewById(R.id.fman_message_dialog_icon);
-                                image.setVisibility(View.VISIBLE);
-                                image.setImageResource(R.drawable.ic_action_content_discard);
-                                final TextView prompt = (TextView) dLayout
-                                        .findViewById(R.id.fman_message_dialog_prompt);
-                                prompt.setText(context.getString(R.string.fman_delete_dialog_prompt, selectedItem));
-                            }
+                {
+                    public void onCreate(SimpleDialog d, LinearLayout dLayout)
+                    {
+                        final ImageView image = (ImageView) dLayout.findViewById(R.id.fman_message_dialog_icon);
+                        image.setVisibility(View.VISIBLE);
+                        image.setImageResource(R.drawable.ic_action_content_discard);
+                        final TextView prompt = (TextView) dLayout
+                                .findViewById(R.id.fman_message_dialog_prompt);
+                        prompt.setText(context.getString(R.string.fman_delete_dialog_prompt, selectedItem));
+                    }
 
-                            public void onClick(LinearLayout dLayout, int whichButton)
+                    public void onClick(LinearLayout dLayout, int whichButton)
+                    {
+                        if (whichButton == R.id.dialog_button_ok)
+                        {
+                            ViewUtils.Debug(Commander.this, "Deleting item " + selectedItem);
+                            if (getListAdapter().deleteItem(selectedPos))
                             {
-                                if (whichButton == R.id.dialog_button_ok)
-                                {
-                                    ViewUtils.Debug(Commander.this, "Deleting item " + selectedItem);
-                                    if (getListAdapter().deleteItem(selectedPos))
-                                    {
-                                        fileListView.listView.clearChoices();
-                                    }
-                                }
+                                fileListView.listView.clearChoices();
                             }
-                        });
+                        }
+                    }
+                });
                 d.show();
                 break;
             }
             case R.id.fman_action_create_folder:
                 final SimpleDialog d = new SimpleDialog(context, R.layout.fman_input_dialog,
                         R.string.fman_create_folder_title, new SimpleDialog.EventHandler()
-                        {
-                            public void onCreate(SimpleDialog d, LinearLayout dLayout)
-                            {
-                                final TextView prompt = (TextView) dLayout.findViewById(R.id.fman_input_dialog_prompt);
-                                prompt.setText(context.getString(R.string.fman_create_folder_dialog_prompt));
-                                final EditText edit = (EditText) dLayout
-                                        .findViewById(R.id.fman_input_dialog_edit_field);
-                                edit.setText("");
-                                edit.requestFocus();
-                            }
+                {
+                    public void onCreate(SimpleDialog d, LinearLayout dLayout)
+                    {
+                        final TextView prompt = (TextView) dLayout.findViewById(R.id.fman_input_dialog_prompt);
+                        prompt.setText(context.getString(R.string.fman_create_folder_dialog_prompt));
+                        final EditText edit = (EditText) dLayout
+                                .findViewById(R.id.fman_input_dialog_edit_field);
+                        edit.setText("");
+                        edit.requestFocus();
+                    }
 
-                            public void onClick(LinearLayout dLayout, int whichButton)
-                            {
-                                if (whichButton == R.id.dialog_button_ok)
-                                {
-                                    final EditText edit = (EditText) dLayout
-                                            .findViewById(R.id.fman_input_dialog_edit_field);
-                                    final String new_name = edit.getText().toString();
-                                    getListAdapter().createFolder(new_name);
-                                    fileListView.setSelection(new_name);
-                                }
-                            }
-                        });
+                    public void onClick(LinearLayout dLayout, int whichButton)
+                    {
+                        if (whichButton == R.id.dialog_button_ok)
+                        {
+                            final EditText edit = (EditText) dLayout
+                                    .findViewById(R.id.fman_input_dialog_edit_field);
+                            final String new_name = edit.getText().toString();
+                            getListAdapter().createFolder(new_name);
+                            fileListView.setSelection(new_name);
+                        }
+                    }
+                });
                 d.show();
                 break;
             case R.id.fman_action_home:
@@ -504,19 +504,19 @@ public class Commander extends DialogBase implements CommanderIf
         {
             final SimpleDialog d = new SimpleDialog(context, R.layout.fman_message_dialog,
                     R.string.fman_warning_dialog_title, new SimpleDialog.EventHandler()
-                    {
-                        public void onCreate(SimpleDialog d, LinearLayout dLayout)
-                        {
-                            d.disableButton(R.id.dialog_button_ok);
-                            final TextView prompt = (TextView) dLayout.findViewById(R.id.fman_message_dialog_prompt);
-                            prompt.setText(errMsg);
-                        }
+            {
+                public void onCreate(SimpleDialog d, LinearLayout dLayout)
+                {
+                    d.disableButton(R.id.dialog_button_ok);
+                    final TextView prompt = (TextView) dLayout.findViewById(R.id.fman_message_dialog_prompt);
+                    prompt.setText(errMsg);
+                }
 
-                        public void onClick(LinearLayout dLayout, int whichButton)
-                        {
-                            // nothing to do
-                        }
-                    });
+                public void onClick(LinearLayout dLayout, int whichButton)
+                {
+                    // nothing to do
+                }
+            });
             d.show();
             return;
         }
@@ -675,27 +675,27 @@ public class Commander extends DialogBase implements CommanderIf
             {
                 final SimpleDialog d = new SimpleDialog(context, R.layout.fman_message_dialog,
                         R.string.fman_warning_dialog_title, new SimpleDialog.EventHandler()
-                        {
-                            public void onCreate(SimpleDialog d, LinearLayout dLayout)
-                            {
-                                final ImageView image = (ImageView) dLayout.findViewById(R.id.fman_message_dialog_icon);
-                                image.setVisibility(View.VISIBLE);
-                                image.setImageResource(R.drawable.ic_action_content_save);
-                                final TextView prompt = (TextView) dLayout
-                                        .findViewById(R.id.fman_message_dialog_prompt);
-                                prompt.setText(context.getString(R.string.fman_overwrite_file, fileName));
-                            }
+                {
+                    public void onCreate(SimpleDialog d, LinearLayout dLayout)
+                    {
+                        final ImageView image = (ImageView) dLayout.findViewById(R.id.fman_message_dialog_icon);
+                        image.setVisibility(View.VISIBLE);
+                        image.setImageResource(R.drawable.ic_action_content_save);
+                        final TextView prompt = (TextView) dLayout
+                                .findViewById(R.id.fman_message_dialog_prompt);
+                        prompt.setText(context.getString(R.string.fman_overwrite_file, fileName));
+                    }
 
-                            public void onClick(LinearLayout dLayout, int whichButton)
-                            {
-                                if (whichButton == R.id.dialog_button_ok)
-                                {
-                                    storePreferences();
-                                    closeDialog();
-                                    listener.onSelectFile(uri, fileType, ca);
-                                }
-                            }
-                        });
+                    public void onClick(LinearLayout dLayout, int whichButton)
+                    {
+                        if (whichButton == R.id.dialog_button_ok)
+                        {
+                            storePreferences();
+                            closeDialog();
+                            listener.onSelectFile(uri, fileType, ca);
+                        }
+                    }
+                });
                 d.show();
             }
             else

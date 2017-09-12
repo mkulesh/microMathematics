@@ -127,9 +127,9 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
         mDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
-        mDrawerLayout, /* DrawerLayout object */
-        R.drawable.ic_drawer, /* nav drawer image to replace 'Up' caret */
-        R.string.drawer_open)
+                mDrawerLayout, /* DrawerLayout object */
+                R.drawable.ic_drawer, /* nav drawer image to replace 'Up' caret */
+                R.string.drawer_open)
         {
             public void onDrawerClosed(View view)
             {

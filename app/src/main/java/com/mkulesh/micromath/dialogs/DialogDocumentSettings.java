@@ -35,7 +35,7 @@ public class DialogDocumentSettings extends DialogBase
     private final CheckBox reformatBox, redefineAllowed;
 
     public DialogDocumentSettings(Activity context, DocumentPropertiesChangeIf changeIf,
-            DocumentProperties documentSettings)
+                                  DocumentProperties documentSettings)
     {
         super(context, R.layout.dialog_document_settings, R.string.action_document_settings);
 

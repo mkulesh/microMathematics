@@ -800,7 +800,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
      * Procedure adds a term to the term list
      */
     protected TermField addTerm(FormulaBase formulaBase, LinearLayout l, CustomEditText editText,
-            FormulaChangeIf termChangeIf, boolean addDepth)
+                                FormulaChangeIf termChangeIf, boolean addDepth)
     {
         return addTerm(formulaBase, l, -1, editText, termChangeIf, ((addDepth) ? 1 : 0));
     }
@@ -809,7 +809,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
      * Procedure adds a term to the term list with given index
      */
     protected TermField addTerm(FormulaBase formulaBase, LinearLayout l, int idx, CustomEditText editText,
-            FormulaChangeIf termChangeIf, int addDepth)
+                                FormulaChangeIf termChangeIf, int addDepth)
     {
         editText.prepare(formulaBase.getFormulaList().getActivity(), termChangeIf);
         TermField termField = new TermField(formulaBase, this, l, termDepth + addDepth, editText);

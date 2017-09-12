@@ -322,29 +322,29 @@ public class FormulaResult extends CalculationResult implements ResultProperties
 
         switch (resultType)
         {
-            case NONE:
-            case NAN:
-            case CONSTANT:
-            {
-                leftBracket.setVisibility(View.GONE);
-                constantResultField.getEditText().setVisibility(visibility);
-                arrayResultMatrix.setVisibility(View.GONE);
-                rightBracket.setVisibility(View.GONE);
-                constantResultField.setText(fillResultString());
-                break;
-            }
-            case ARRAY_1D:
-            case ARRAY_2D:
-            {
-                leftBracket.setVisibility(visibility);
-                constantResultField.getEditText().setVisibility(View.GONE);
-                arrayResultMatrix.setVisibility(visibility);
-                rightBracket.setVisibility(visibility);
-                fillResultMatrix();
-                arrayResultMatrix.prepare(getFormulaList().getActivity(), this, this);
-                arrayResultMatrix.updateTextSize(getFormulaList().getDimen());
-                break;
-            }
+        case NONE:
+        case NAN:
+        case CONSTANT:
+        {
+            leftBracket.setVisibility(View.GONE);
+            constantResultField.getEditText().setVisibility(visibility);
+            arrayResultMatrix.setVisibility(View.GONE);
+            rightBracket.setVisibility(View.GONE);
+            constantResultField.setText(fillResultString());
+            break;
+        }
+        case ARRAY_1D:
+        case ARRAY_2D:
+        {
+            leftBracket.setVisibility(visibility);
+            constantResultField.getEditText().setVisibility(View.GONE);
+            arrayResultMatrix.setVisibility(visibility);
+            rightBracket.setVisibility(visibility);
+            fillResultMatrix();
+            arrayResultMatrix.prepare(getFormulaList().getActivity(), this, this);
+            arrayResultMatrix.updateTextSize(getFormulaList().getDimen());
+            break;
+        }
         }
     }
 
