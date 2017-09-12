@@ -18,14 +18,14 @@
  ******************************************************************************/
 package com.mkulesh.micromath.math;
 
-import java.util.ArrayList;
-
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.Equation;
 import com.mkulesh.micromath.formula.FormulaBase;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.utils.ViewUtils;
+
+import java.util.ArrayList;
 
 /*********************************************************
  * Array result for equation

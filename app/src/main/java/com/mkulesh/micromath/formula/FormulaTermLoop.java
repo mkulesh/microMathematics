@@ -18,12 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import java.util.ArrayList;
-import java.util.Locale;
-
-import org.apache.commons.math3.complex.Complex;
-import org.apache.commons.math3.util.FastMath;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
@@ -37,6 +31,12 @@ import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
+
+import org.apache.commons.math3.complex.Complex;
+import org.apache.commons.math3.util.FastMath;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
 {

@@ -18,8 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -33,6 +31,8 @@ import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomLayout;
 import com.mkulesh.micromath.widgets.ListChangeIf;
 import com.mkulesh.micromath.widgets.ListChangeIf.Position;
+
+import java.util.ArrayList;
 
 public class FormulaListView
 {

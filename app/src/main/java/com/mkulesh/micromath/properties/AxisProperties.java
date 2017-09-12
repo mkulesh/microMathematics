@@ -18,9 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.properties;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlSerializer;
-
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Parcel;
@@ -28,6 +25,9 @@ import android.os.Parcelable;
 
 import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.plus.R;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlSerializer;
 
 public class AxisProperties implements Parcelable
 {

@@ -18,11 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.plots;
 
-import java.util.ArrayList;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlSerializer;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -44,6 +39,11 @@ import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomImageView;
 import com.mkulesh.micromath.widgets.CustomLayout;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlSerializer;
+
+import java.util.ArrayList;
 
 public class ImageFragment extends FormulaBase implements ImagePropertiesChangeIf
 {

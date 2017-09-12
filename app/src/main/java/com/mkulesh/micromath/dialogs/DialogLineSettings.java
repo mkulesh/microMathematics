@@ -18,9 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.dialogs;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -40,6 +37,9 @@ import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.HorizontalNumberPicker;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DialogLineSettings extends DialogBase implements OnLongClickListener
 {

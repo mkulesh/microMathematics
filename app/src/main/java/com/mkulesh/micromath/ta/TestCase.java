@@ -18,10 +18,10 @@
  ******************************************************************************/
 package com.mkulesh.micromath.ta;
 
+import com.mkulesh.micromath.utils.ViewUtils;
+
 import java.io.StringWriter;
 import java.util.Calendar;
-
-import com.mkulesh.micromath.utils.ViewUtils;
 
 public class TestCase
 {

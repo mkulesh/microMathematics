@@ -18,16 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-
-import org.xmlpull.v1.XmlSerializer;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
@@ -67,6 +57,16 @@ import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.ListChangeIf;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
 import com.mkulesh.micromath.widgets.TwoDScrollView;
+
+import org.xmlpull.v1.XmlSerializer;
+
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public class FormulaList implements OnClickListener, ListChangeIf, DocumentPropertiesChangeIf
 {

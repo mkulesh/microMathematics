@@ -18,14 +18,14 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import java.util.ArrayList;
-
-import org.apache.commons.math3.complex.Complex;
-
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
+
+import org.apache.commons.math3.complex.Complex;
+
+import java.util.ArrayList;
 
 public class TermParser
 {

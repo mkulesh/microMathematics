@@ -18,8 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath;
 
-import java.io.File;
-
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -39,6 +37,8 @@ import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.ta.TestSession;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
+
+import java.io.File;
 
 public class MainFragmentWorksheet extends BaseFragment
 {

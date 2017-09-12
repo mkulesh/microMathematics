@@ -18,9 +18,9 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import java.util.ArrayList;
-
 import com.mkulesh.micromath.math.CalculatedValue;
+
+import java.util.ArrayList;
 
 public interface ArgumentHolderIf
 {

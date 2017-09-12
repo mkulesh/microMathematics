@@ -18,9 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.fman;
 
-import java.io.File;
-import java.util.Date;
-
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -40,6 +37,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mkulesh.micromath.plus.R;
+
+import java.io.File;
+import java.util.Date;
 
 public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
 {

@@ -18,11 +18,11 @@
  ******************************************************************************/
 package com.mkulesh.micromath.widgets;
 
-import java.util.ArrayList;
-
 import android.view.View;
 
 import com.mkulesh.micromath.formula.TermField;
+
+import java.util.ArrayList;
 
 public interface FormulaChangeIf
 {

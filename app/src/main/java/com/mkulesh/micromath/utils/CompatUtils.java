@@ -18,10 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.utils;
 
-import java.io.File;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -34,6 +30,10 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.View;
 import android.widget.TextView;
+
+import java.io.File;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 
 /**
  * Class collecting version compatibility helper methods

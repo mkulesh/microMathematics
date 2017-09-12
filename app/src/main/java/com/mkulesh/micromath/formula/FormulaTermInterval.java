@@ -18,11 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import java.util.ArrayList;
-import java.util.Locale;
-
-import org.apache.commons.math3.util.FastMath;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
@@ -32,6 +27,11 @@ import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
+
+import org.apache.commons.math3.util.FastMath;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class FormulaTermInterval extends FormulaTerm
 {

@@ -18,8 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.export;
 
-import java.io.OutputStream;
-
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -31,6 +29,8 @@ import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
+
+import java.io.OutputStream;
 
 public class Exporter
 {

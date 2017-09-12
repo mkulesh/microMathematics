@@ -18,12 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import java.util.ArrayList;
-import java.util.Locale;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlSerializer;
-
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
@@ -46,6 +40,12 @@ import com.mkulesh.micromath.widgets.CustomLayout;
 import com.mkulesh.micromath.widgets.FocusChangeIf;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
 import com.mkulesh.micromath.widgets.TextChangeIf;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlSerializer;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
 {

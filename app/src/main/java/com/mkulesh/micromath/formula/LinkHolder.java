@@ -18,10 +18,10 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.widget.LinearLayout;
+
+import java.util.ArrayList;
 
 public abstract class LinkHolder extends FormulaBase
 {

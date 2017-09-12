@@ -18,16 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.utils;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-
-import org.apache.commons.math3.util.FastMath;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -46,6 +36,16 @@ import android.widget.Toast;
 import com.mkulesh.micromath.formula.FormulaBase;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.widgets.TwoDScrollView;
+
+import org.apache.commons.math3.util.FastMath;
+
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class ViewUtils
 {

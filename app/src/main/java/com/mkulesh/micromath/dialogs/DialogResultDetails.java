@@ -18,8 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.dialogs;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +32,8 @@ import com.mkulesh.micromath.math.EquationArrayResult;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.utils.CompatUtils;
+
+import java.util.ArrayList;
 
 public class DialogResultDetails extends DialogBase
 {

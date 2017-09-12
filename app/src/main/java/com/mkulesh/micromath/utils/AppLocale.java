@@ -26,11 +26,6 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.LocaleList;
 import android.preference.PreferenceManager;
-import android.widget.RadioButton;
-
-import com.mkulesh.micromath.dialogs.DialogRadioGroup;
-import com.mkulesh.micromath.plus.R;
-import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.Locale;
 

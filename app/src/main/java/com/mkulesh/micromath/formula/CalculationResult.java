@@ -18,8 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import org.apache.commons.math3.util.FastMath;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
@@ -30,6 +28,8 @@ import com.mkulesh.micromath.plots.FunctionIf;
 import com.mkulesh.micromath.plots.views.PlotView;
 import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.ViewUtils;
+
+import org.apache.commons.math3.util.FastMath;
 
 public abstract class CalculationResult extends LinkHolder
 {

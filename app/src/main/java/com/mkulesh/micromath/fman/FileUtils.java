@@ -18,15 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.fman;
 
-import java.io.Closeable;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -40,6 +31,15 @@ import android.widget.Toast;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
+
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public final class FileUtils
 {

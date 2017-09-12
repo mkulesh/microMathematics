@@ -18,12 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.plots;
 
-import java.util.ArrayList;
-import java.util.Locale;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlSerializer;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -42,8 +36,8 @@ import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TermField.ErrorNotification;
 import com.mkulesh.micromath.math.CalculatedValue;
-import com.mkulesh.micromath.plots.views.PlotView;
 import com.mkulesh.micromath.plots.views.ColorMapView;
+import com.mkulesh.micromath.plots.views.PlotView;
 import com.mkulesh.micromath.plots.views.SurfacePlotView;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.AxisProperties;
@@ -59,6 +53,12 @@ import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomLayout;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.SizeChangingLayout;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlSerializer;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class PlotContour extends CalculationResult implements SizeChangingLayout.SizeChangedIf, PlotPropertiesChangeIf,
         AxisPropertiesChangeIf, ColorMapPropertiesChangeIf

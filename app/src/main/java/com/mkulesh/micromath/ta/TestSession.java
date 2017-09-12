@@ -18,12 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.ta;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.io.StringWriter;
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -46,6 +40,12 @@ import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.ta.TestScript.NumberType;
 import com.mkulesh.micromath.utils.SynchronizedBoolean;
 import com.mkulesh.micromath.utils.ViewUtils;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.StringWriter;
+import java.util.ArrayList;
 
 public class TestSession extends AsyncTask<Void, Integer, Void>
 {

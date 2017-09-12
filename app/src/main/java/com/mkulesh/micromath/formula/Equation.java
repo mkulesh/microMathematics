@@ -18,8 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -34,6 +32,8 @@ import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
+
+import java.util.ArrayList;
 
 public class Equation extends CalculationResult implements ArgumentHolderIf, CalculatableIf
 {

@@ -18,12 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.fman;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -38,6 +32,12 @@ import android.provider.DocumentsContract.Document;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.CompatUtils;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 @SuppressLint("NewApi")
 public class AdapterDocuments extends AdapterBaseImpl

@@ -18,10 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -65,6 +61,10 @@ import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.AppLocale;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuVisibilityListener
 {

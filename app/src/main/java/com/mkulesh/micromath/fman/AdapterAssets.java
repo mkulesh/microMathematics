@@ -18,17 +18,17 @@
  ******************************************************************************/
 package com.mkulesh.micromath.fman;
 
-import java.io.File;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.net.Uri;
 
 import com.mkulesh.micromath.plus.R;
+
+import java.io.File;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 
 public class AdapterAssets extends AdapterBaseImpl
 {

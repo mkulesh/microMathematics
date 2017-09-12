@@ -18,14 +18,14 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import java.util.ArrayList;
-
 import android.os.AsyncTask;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import com.mkulesh.micromath.plus.R;
+
+import java.util.ArrayList;
 
 public class CalculaterTask extends AsyncTask<Void, CalculationResult, Void> implements OnClickListener
 {

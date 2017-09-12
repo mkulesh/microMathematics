@@ -18,17 +18,15 @@
  ******************************************************************************/
 package com.mkulesh.micromath.dialogs;
 
-import java.util.Locale;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -36,6 +34,8 @@ import android.widget.TextView;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
+
+import java.util.Locale;
 
 public class DialogBase extends Dialog implements OnClickListener
 {

@@ -18,17 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.widgets;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Locale;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlSerializer;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -55,6 +44,17 @@ import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.ImageProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlSerializer;
+
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Locale;
 
 public class CustomImageView extends CustomTextView implements OnLongClickListener, OnClickListener
 {

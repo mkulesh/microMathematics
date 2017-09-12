@@ -18,14 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.plots.views;
 
-import java.util.ArrayList;
-
-import com.mkulesh.micromath.math.Vector2D;
-import com.mkulesh.micromath.plots.FunctionIf;
-import com.mkulesh.micromath.plots.FunctionIf.Type;
-import com.mkulesh.micromath.plus.R;
-import com.mkulesh.micromath.utils.ViewUtils;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -35,6 +27,14 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.Toast;
+
+import com.mkulesh.micromath.math.Vector2D;
+import com.mkulesh.micromath.plots.FunctionIf;
+import com.mkulesh.micromath.plots.FunctionIf.Type;
+import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.utils.ViewUtils;
+
+import java.util.ArrayList;
 
 public abstract class PlanePlotView extends PlotView
 {

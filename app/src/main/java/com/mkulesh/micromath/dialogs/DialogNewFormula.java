@@ -18,9 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.dialogs;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.view.View;
@@ -30,6 +27,9 @@ import android.widget.ImageButton;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.ListChangeIf;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DialogNewFormula extends DialogBase implements OnLongClickListener
 {

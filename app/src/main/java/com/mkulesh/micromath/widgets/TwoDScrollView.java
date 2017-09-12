@@ -18,8 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.widgets;
 
-import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -47,6 +45,8 @@ import android.widget.Scroller;
 import android.widget.TextView;
 
 import com.mkulesh.micromath.plus.R;
+
+import java.util.List;
 
 /**
  * Layout container for a view hierarchy that can be scrolled by the user, allowing it to be larger than the physical

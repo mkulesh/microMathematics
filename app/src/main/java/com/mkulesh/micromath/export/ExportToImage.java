@@ -18,8 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.export;
 
-import java.io.OutputStream;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -28,6 +26,8 @@ import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.formula.FormulaListView;
 import com.mkulesh.micromath.plus.R;
+
+import java.io.OutputStream;
 
 public class ExportToImage
 {

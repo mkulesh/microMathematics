@@ -18,17 +18,17 @@
  ******************************************************************************/
 package com.mkulesh.micromath.math;
 
-import java.util.List;
+import com.mkulesh.micromath.formula.CalculaterTask;
+import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
+import com.mkulesh.micromath.formula.TermField;
+import com.mkulesh.micromath.formula.TermParser;
+import com.mkulesh.micromath.properties.DocumentProperties;
+import com.mkulesh.micromath.utils.ViewUtils;
 
 import org.apache.commons.math3.complex.Complex;
 import org.apache.commons.math3.util.FastMath;
 
-import com.mkulesh.micromath.formula.CalculaterTask;
-import com.mkulesh.micromath.formula.TermField;
-import com.mkulesh.micromath.formula.TermParser;
-import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
-import com.mkulesh.micromath.properties.DocumentProperties;
-import com.mkulesh.micromath.utils.ViewUtils;
+import java.util.List;
 
 public class CalculatedValue
 {

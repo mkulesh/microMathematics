@@ -18,9 +18,9 @@
  ******************************************************************************/
 package com.mkulesh.micromath.fman;
 
-import java.util.Comparator;
-
 import com.mkulesh.micromath.fman.AdapterIf.Item;
+
+import java.util.Comparator;
 
 public class ItemComparator implements Comparator<Item>
 {

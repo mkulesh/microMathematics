@@ -18,9 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.properties;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlSerializer;
-
 import android.content.Context;
 import android.net.Uri;
 import android.os.Parcel;
@@ -30,6 +27,9 @@ import android.util.DisplayMetrics;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.utils.ViewUtils;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlSerializer;
 
 public class ImageProperties implements Parcelable
 {

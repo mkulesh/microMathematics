@@ -18,10 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.export;
 
-import java.io.OutputStream;
-import java.io.StringWriter;
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -53,6 +49,10 @@ import com.mkulesh.micromath.plots.PlotFunction;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.TextProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
+
+import java.io.OutputStream;
+import java.io.StringWriter;
+import java.util.ArrayList;
 
 /**
  * Export interface: export to LaTeX

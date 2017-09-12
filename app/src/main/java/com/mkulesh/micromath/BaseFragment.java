@@ -18,8 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath;
 
-import java.io.File;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -45,6 +43,8 @@ import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.FloatingButtonsSet;
+
+import java.io.File;
 
 abstract public class BaseFragment extends Fragment implements OnClickListener
 {

@@ -18,12 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import java.util.ArrayList;
-import java.util.Locale;
-
-import org.apache.commons.math3.util.CombinatoricsUtils;
-import org.apache.commons.math3.util.FastMath;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -40,6 +34,12 @@ import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomLayout;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
+
+import org.apache.commons.math3.util.CombinatoricsUtils;
+import org.apache.commons.math3.util.FastMath;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class FormulaTermFunction extends FormulaTerm
 {

@@ -18,9 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import java.util.ArrayList;
-import java.util.Locale;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -40,6 +37,9 @@ import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.FocusChangeIf;
 import com.mkulesh.micromath.widgets.ListChangeIf;
 import com.mkulesh.micromath.widgets.TextChangeIf;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 /*********************************************************
  * This class implements symbol palette

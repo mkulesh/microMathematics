@@ -18,11 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.properties;
 
-import java.util.Locale;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlSerializer;
-
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -31,6 +26,11 @@ import android.util.DisplayMetrics;
 import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlSerializer;
+
+import java.util.Locale;
 
 public class PlotProperties implements Parcelable
 {

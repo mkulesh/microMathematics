@@ -18,13 +18,13 @@
  ******************************************************************************/
 package com.mkulesh.micromath.undo;
 
-import java.util.ArrayList;
-
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MenuItem;
 
 import com.mkulesh.micromath.utils.ViewUtils;
+
+import java.util.ArrayList;
 
 public class UndoState
 {

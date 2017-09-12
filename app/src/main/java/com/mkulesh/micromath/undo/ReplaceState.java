@@ -18,12 +18,12 @@
  ******************************************************************************/
 package com.mkulesh.micromath.undo;
 
-import java.util.ArrayList;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.mkulesh.micromath.formula.FormulaBase;
+
+import java.util.ArrayList;
 
 /*
  * Class that holds the undo state of replace operation.

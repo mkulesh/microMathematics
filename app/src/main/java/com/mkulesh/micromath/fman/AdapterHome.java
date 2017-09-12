@@ -18,8 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.fman;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -33,6 +31,8 @@ import android.widget.AdapterView;
 import com.mkulesh.micromath.fman.CommanderIf.SelectionMode;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.CompatUtils;
+
+import java.util.ArrayList;
 
 public class AdapterHome extends AdapterBaseImpl
 {

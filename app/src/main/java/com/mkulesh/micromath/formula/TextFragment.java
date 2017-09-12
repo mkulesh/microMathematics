@@ -18,9 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlSerializer;
-
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -38,6 +35,9 @@ import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlSerializer;
 
 public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
 {

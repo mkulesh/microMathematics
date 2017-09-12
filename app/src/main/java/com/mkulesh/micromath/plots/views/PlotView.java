@@ -18,8 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.plots.views;
 
-import java.util.ArrayList;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -37,6 +35,8 @@ import com.mkulesh.micromath.properties.ColorMapProperties;
 import com.mkulesh.micromath.properties.PlotProperties;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.FormulaChangeIf;
+
+import java.util.ArrayList;
 
 public abstract class PlotView extends CustomTextView
 {

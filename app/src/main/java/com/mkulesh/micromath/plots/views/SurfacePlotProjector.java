@@ -18,9 +18,9 @@
  ******************************************************************************/
 package com.mkulesh.micromath.plots.views;
 
-import org.apache.commons.math3.util.FastMath;
-
 import android.graphics.Point;
+
+import org.apache.commons.math3.util.FastMath;
 
 public final class SurfacePlotProjector
 {

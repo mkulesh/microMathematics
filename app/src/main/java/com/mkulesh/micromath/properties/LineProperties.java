@@ -18,11 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.properties;
 
-import java.util.Locale;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlSerializer;
-
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
@@ -30,6 +25,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.mkulesh.micromath.formula.FormulaList;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlSerializer;
+
+import java.util.Locale;
 
 public class LineProperties implements Parcelable
 {

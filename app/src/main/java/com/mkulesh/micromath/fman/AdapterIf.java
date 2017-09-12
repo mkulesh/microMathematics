@@ -18,11 +18,11 @@
  ******************************************************************************/
 package com.mkulesh.micromath.fman;
 
-import java.util.Date;
-
 import android.net.Uri;
 import android.view.ContextMenu;
 import android.widget.AdapterView;
+
+import java.util.Date;
 
 public interface AdapterIf
 {

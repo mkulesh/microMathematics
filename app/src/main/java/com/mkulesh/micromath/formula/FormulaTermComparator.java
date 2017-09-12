@@ -18,8 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import java.util.Locale;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
@@ -30,6 +28,8 @@ import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
+
+import java.util.Locale;
 
 public class FormulaTermComparator extends FormulaTerm
 {

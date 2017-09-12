@@ -18,8 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.widgets;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +29,8 @@ import android.view.View;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ClipboardManager;
+
+import java.util.ArrayList;
 
 public class ContextMenuHandler
 {

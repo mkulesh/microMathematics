@@ -18,9 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import java.util.ArrayList;
-import java.util.Locale;
-
 import android.content.Context;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -31,6 +28,9 @@ import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.FocusChangeIf;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
 {

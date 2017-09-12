@@ -18,9 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.fman;
 
-import java.io.File;
-import java.util.Arrays;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
@@ -30,6 +27,9 @@ import android.system.Os;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.CompatUtils;
+
+import java.io.File;
+import java.util.Arrays;
 
 public class AdapterFileSystem extends AdapterBaseImpl
 {

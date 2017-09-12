@@ -18,13 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.plots;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlSerializer;
-
 import android.content.Context;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -64,6 +57,13 @@ import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.LineDrawable;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
 import com.mkulesh.micromath.widgets.SizeChangingLayout;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlSerializer;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class PlotFunction extends CalculationResult implements SizeChangingLayout.SizeChangedIf,
         PlotPropertiesChangeIf, AxisPropertiesChangeIf, LinePropertiesChangeIf

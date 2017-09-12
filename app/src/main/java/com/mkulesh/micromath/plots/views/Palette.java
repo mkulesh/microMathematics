@@ -18,11 +18,11 @@
  ******************************************************************************/
 package com.mkulesh.micromath.plots.views;
 
-import java.util.ArrayList;
-
 import android.graphics.Color;
 
 import com.mkulesh.micromath.math.CalculatedValue;
+
+import java.util.ArrayList;
 
 /**
  * Represents a palette, that is a sequence of colors. A palette assigns a color to each real number in the range 0

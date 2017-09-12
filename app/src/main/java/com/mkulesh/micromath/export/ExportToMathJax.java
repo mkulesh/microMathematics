@@ -18,9 +18,6 @@
  ******************************************************************************/
 package com.mkulesh.micromath.export;
 
-import java.io.OutputStream;
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -37,6 +34,9 @@ import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TextFragment;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
+
+import java.io.OutputStream;
+import java.util.ArrayList;
 
 /**
  * Export interface: export to LaTeX

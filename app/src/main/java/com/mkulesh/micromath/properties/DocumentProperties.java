@@ -18,18 +18,18 @@
  ******************************************************************************/
 package com.mkulesh.micromath.properties;
 
-import java.text.DecimalFormat;
-import java.text.ParseException;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlSerializer;
-
 import android.content.Context;
 import android.os.Bundle;
 
 import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlSerializer;
+
+import java.text.DecimalFormat;
+import java.text.ParseException;
 
 public class DocumentProperties
 {
