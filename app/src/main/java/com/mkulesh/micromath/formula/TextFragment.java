@@ -347,7 +347,7 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
                 }
                 else
                 {
-                    for (; i < chars.length && Character.isWhitespace(chars[i]); i++);
+                    for (; i < chars.length && Character.isWhitespace(chars[i]); i++) ;
                 }
             }
         }

@@ -191,7 +191,7 @@ public final class FileUtils
             if (tmp.compareTo(ext) == 0)
                 return mimes[idx];
             int cp;
-            for (cp = 1;; cp++)
+            for (cp = 1; ; cp++)
             {
                 if (cp >= ext.length())
                 {

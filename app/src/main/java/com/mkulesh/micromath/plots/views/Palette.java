@@ -60,12 +60,12 @@ public class Palette
         switch (colorType)
         {
         case HSV:
-            divisionPointColors.add(new float[] { 0, 1, 1 });
-            divisionPointColors.add(new float[] { 1, 1, 1 });
+            divisionPointColors.add(new float[]{ 0, 1, 1 });
+            divisionPointColors.add(new float[]{ 1, 1, 1 });
             break;
         case RGB:
-            divisionPointColors.add(new float[] { 1, 1, 1 });
-            divisionPointColors.add(new float[] { 0, 0, 0 });
+            divisionPointColors.add(new float[]{ 1, 1, 1 });
+            divisionPointColors.add(new float[]{ 0, 0, 0 });
             break;
         }
     }
@@ -109,7 +109,7 @@ public class Palette
         final float a = c1[0] + ratio * (c2[0] - c1[0]);
         final float b = c1[1] + ratio * (c2[1] - c1[1]);
         final float c = c1[2] + ratio * (c2[2] - c1[2]);
-        float[] color = new float[] { a, b, c };
+        float[] color = new float[]{ a, b, c };
         divisionPoints.add(index, divisionPoint);
         divisionPointColors.add(index, color);
         return index;

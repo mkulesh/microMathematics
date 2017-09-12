@@ -65,7 +65,7 @@ public class SurfacePlotView extends PlotView
     private final Point3D cop = new Point3D(0, 0, 0); // center of projection
     private final float vertsValues[] = new float[12];
     private final int vertsColors[] = new int[12];
-    private final double cubeBounds[][] = new double[][] { { -10, -10, -10 }, { -10, 10, -10 }, { 10, 10, -10 },
+    private final double cubeBounds[][] = new double[][]{ { -10, -10, -10 }, { -10, 10, -10 }, { 10, 10, -10 },
             { 10, -10, -10 }, { -10, -10, 10 }, { -10, 10, 10 }, { 10, 10, 10 }, { 10, -10, 10 } };
     private final Vector2D labelCenter = new Vector2D(-10, -10);
     private Label[] xLabels = null;

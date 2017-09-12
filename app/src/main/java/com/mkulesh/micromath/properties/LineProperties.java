@@ -203,13 +203,13 @@ public class LineProperties implements Parcelable
             paint.setPathEffect(null);
             break;
         case DOTTED:
-            paint.setPathEffect(new DashPathEffect(new float[] { 1.5f * w, 1.5f * w }, 0));
+            paint.setPathEffect(new DashPathEffect(new float[]{ 1.5f * w, 1.5f * w }, 0));
             break;
         case DASHED:
-            paint.setPathEffect(new DashPathEffect(new float[] { 6 * w, 6 * w }, 0));
+            paint.setPathEffect(new DashPathEffect(new float[]{ 6 * w, 6 * w }, 0));
             break;
         case DASH_DOT:
-            paint.setPathEffect(new DashPathEffect(new float[] { 6 * w, 2f * w, 1.5f * w, 2f * w }, 0));
+            paint.setPathEffect(new DashPathEffect(new float[]{ 6 * w, 2f * w, 1.5f * w, 2f * w }, 0));
             break;
         }
     }

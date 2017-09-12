@@ -80,7 +80,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     /**
      * Dummy array used to avoid Lint warning "Unused resources"
      */
-    public final static int [] framentIcons = {
+    public final static int[] framentIcons = {
             R.drawable.drawer_about, R.drawable.drawer_documentation, R.drawable.drawer_function_plot,
             R.drawable.drawer_how_to_use, R.drawable.drawer_polar_plot, R.drawable.drawer_series_and_integrals,
             R.drawable.drawer_three_d_plot, R.drawable.drawer_worksheet

@@ -68,7 +68,7 @@ public class ExportToLatex
     protected int figNumber = 1;
     protected boolean currTextNumber = false;
 
-    protected final String[][] greekTable = new String[][] {
+    protected final String[][] greekTable = new String[][]{
 
             { "Α", "A" }, { "α", "\\alpha" },
 
@@ -156,7 +156,7 @@ public class ExportToLatex
 
     private String getImageDirectory()
     {
-        return exportParameters != null? exportParameters.imageDirectory : "";
+        return exportParameters != null ? exportParameters.imageDirectory : "";
     }
 
     public void write(FormulaListView formulaListView) throws Exception
@@ -280,8 +280,8 @@ public class ExportToLatex
                     {
                         for (int i = 0; i < row.size(); i++)
                         {
-                            writer.append(FormulaResult.CELL_DOTS.equals(row.get(i))? "\\dots" : row.get(i));
-                            writer.append(i + 1 < row.size()? "&" : "\\\\");
+                            writer.append(FormulaResult.CELL_DOTS.equals(row.get(i)) ? "\\dots" : row.get(i));
+                            writer.append(i + 1 < row.size() ? "&" : "\\\\");
                         }
                     }
                     writer.append("\\end{bmatrix}");

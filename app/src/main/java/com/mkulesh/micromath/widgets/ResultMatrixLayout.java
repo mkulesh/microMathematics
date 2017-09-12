@@ -40,7 +40,8 @@ public class ResultMatrixLayout extends TableLayout
         public final int row;
         public final int col;
         public final int idx;
-        public ElementTag (int r, int c, int i)
+
+        public ElementTag(int r, int c, int i)
         {
             row = r;
             col = c;
@@ -76,10 +77,10 @@ public class ResultMatrixLayout extends TableLayout
             height += child.getMeasuredHeight();
         }
         height += getPaddingBottom();
-        return height/2;
+        return height / 2;
     }
 
-    public void resize (int rows, int cols, int cellLayoutId)
+    public void resize(int rows, int cols, int cellLayoutId)
     {
         if (rowsNumber == rows && colsNumber == cols)
         {
@@ -116,7 +117,7 @@ public class ResultMatrixLayout extends TableLayout
 
             for (int col = 0; col < tableRow.getChildCount(); col++)
             {
-                final CustomEditText c = (CustomEditText)tableRow.getChildAt(col);
+                final CustomEditText c = (CustomEditText) tableRow.getChildAt(col);
                 if (c != null)
                 {
                     c.setId(IdGenerator.generateId());
@@ -126,19 +127,19 @@ public class ResultMatrixLayout extends TableLayout
             }
         }
 
-        setPadding(0,0,0,0);
+        setPadding(0, 0, 0, 0);
         setBaselineAligned(true);
-        setBaselineAlignedChildIndex(rowsNumber > 1? rowsNumber/2 : 0);
+        setBaselineAlignedChildIndex(rowsNumber > 1 ? rowsNumber / 2 : 0);
     }
 
     private CustomEditText getCell(int row, int col)
     {
         if (row < getChildCount())
         {
-            final TableRow tr = (TableRow)getChildAt(row);
+            final TableRow tr = (TableRow) getChildAt(row);
             if (tr != null && col < tr.getChildCount())
             {
-                return (CustomEditText)tr.getChildAt(col);
+                return (CustomEditText) tr.getChildAt(col);
             }
         }
         return null;
@@ -190,12 +191,12 @@ public class ResultMatrixLayout extends TableLayout
 
     public int getFirstFocusId()
     {
-        return fields.isEmpty()? ViewUtils.INVALID_INDEX : fields.get(0).getId();
+        return fields.isEmpty() ? ViewUtils.INVALID_INDEX : fields.get(0).getId();
     }
 
     public int getLastFocusId()
     {
-        return fields.isEmpty()? ViewUtils.INVALID_INDEX : fields.get(fields.size() - 1).getId();
+        return fields.isEmpty() ? ViewUtils.INVALID_INDEX : fields.get(fields.size() - 1).getId();
     }
 
     public int getNextFocusId(CustomEditText c, FocusChangeIf.NextFocusType focusType)
@@ -204,7 +205,7 @@ public class ResultMatrixLayout extends TableLayout
         {
             return ViewUtils.INVALID_INDEX;
         }
-        ElementTag tag = (ElementTag)c.getTag();
+        ElementTag tag = (ElementTag) c.getTag();
         CustomEditText nextC = null;
         switch (focusType)
         {
@@ -221,7 +222,7 @@ public class ResultMatrixLayout extends TableLayout
             nextC = tag.row >= 1 ? getCell(tag.row - 1, tag.col) : null;
             break;
         }
-        return nextC == null? ViewUtils.INVALID_INDEX : nextC.getId();
+        return nextC == null ? ViewUtils.INVALID_INDEX : nextC.getId();
     }
 
     public void setText(String s, ScaledDimensions dimen)

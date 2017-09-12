@@ -509,7 +509,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         }
         if (finishTag)
         {
-            while (parser.next() != XmlPullParser.END_TAG);
+            while (parser.next() != XmlPullParser.END_TAG) ;
         }
     }
 

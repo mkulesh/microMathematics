@@ -642,7 +642,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     private void requestStoragePermission()
     {
         ViewUtils.Debug(this, "requesting storage permissions");
-        requestPermissions(new String[] { Manifest.permission.READ_EXTERNAL_STORAGE,
+        requestPermissions(new String[]{ Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE }, STORAGE_PERMISSION_REQID);
     }
 

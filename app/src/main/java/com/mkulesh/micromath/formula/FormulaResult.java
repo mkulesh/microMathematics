@@ -478,7 +478,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
      * FormulaResult-specific methods
      *********************************************************/
 
-    public boolean isResultVisible ()
+    public boolean isResultVisible()
     {
         return !properties.hideResultField;
     }
@@ -595,7 +595,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                         dataColIdx = yValuesNumber - 1;
                     }
                 }
-                String resultStr = arrayResult.getValue2D(dataRowIdx,dataColIdx).getResultDescription(
+                String resultStr = arrayResult.getValue2D(dataRowIdx, dataColIdx).getResultDescription(
                         getFormulaList().getDocumentSettings());
                 arrayResultMatrix.setText(r, c, resultStr);
             }
@@ -652,7 +652,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                         dataColIdx = yValuesNumber - 1;
                     }
                 }
-                res.get(r).add(arrayResult.getValue2D(dataRowIdx,dataColIdx).getResultDescription(
+                res.get(r).add(arrayResult.getValue2D(dataRowIdx, dataColIdx).getResultDescription(
                         getFormulaList().getDocumentSettings()));
             }
         }
