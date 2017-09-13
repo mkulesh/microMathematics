@@ -1,0 +1,7 @@
+.gradle/
+.idea/
+app/build/
+app/app.iml
+build/
+microMathematics.iml
+local.properties
