@@ -1,11 +1,17 @@
 #!/bin/sh
 
-# Copy newly created APK into the target directory
 echo "Generated APK"
-ls -l ./app/build/outputs/apk
-mv ./app/build/outputs/apk/microMathematics-v2.15.4a.apk ./autobuild/
+pwd; ls -l ./app/build/outputs/apk
+
+# Checkout autobuild branch
+cd ..
+git clone https://github.com/mkulesh/microMathematics.git --branch autobuild --single-branch microMathematics_autobuild
+cd microMathematics_autobuild
+
+# Copy newly created APK into the target directory
+mv ../microMathematics/app/build/outputs/apk/microMathematics-v2.15.4a.apk ./autobuild
 echo "Target APK"
-ls -l ./autobuild
+pwd; ls -l ./autobuild
 
 # Setup git for commit and push
 git config --global user.email "travis@travis-ci.org"
