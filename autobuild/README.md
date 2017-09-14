@@ -2,7 +2,7 @@
 
 ![Page logo](https://github.com/mkulesh/microMathematics/blob/master/autobuild/shema.svg)
 
-This directory contains a script that allows us to collect 'unstable' and unsigned APK file that is build axiomatically by [Travis CI](https://travis-ci.org/mkulesh/microMathematics) after each commit.
+This directory contains a script that allows us to collect 'unstable' and unsigned APK file that is build automatically by [Travis CI](https://travis-ci.org/mkulesh/microMathematics) after each commit.
 
 ## How does it work?
 
