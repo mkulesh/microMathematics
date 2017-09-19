@@ -2,7 +2,7 @@
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
   <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
     <text_fragment>
-      <term key="text" text="This example demonstrates how to&#10;calculate series and integrals." />
+      <term key="text" text="Esse exemplo demonstra como&#10;calcular séries e integrais." />
     </text_fragment>
     <text_fragment textStyle="subsection" numbering="true">
       <term key="text" text="Taylor series" />
