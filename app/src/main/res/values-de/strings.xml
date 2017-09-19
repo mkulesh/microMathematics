@@ -46,7 +46,7 @@
         <item>asset:/doc_de/three_d_plot_de.xml</item>
         <item>asset:/doc_de/series_and_integrals_de.xml</item>
         <item>asset:/doc_de/about_micromath_de.xml</item>
-        <item>https://github.com/mkulesh/microMathematics/releases/download/v2.15.3/microMathematics-v2.15.3-de.pdf</item>
+        <item>https://github.com/mkulesh/microMathematics/blob/master/doc/microMathematics-v2.15.4a-de.pdf</item>
     </string-array>
     <string name="activity_welcome">asset:/doc_de/welcome_de.xml</string>
     
