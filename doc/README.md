@@ -1,6 +1,6 @@
 ## Directory microMathematics/doc
 
-This directory contains LaTeX source files for printable documentation (English, German, Russian).
+This directory contains LaTeX source files for printable documentation (English, German, Russian, Brazilian Portuguese).
 
 **Note:**
 In order to build the documentation, the LaTeX (texlive) and following latex packages shall be installed on the host machine. For example, to install texlive on Fedora Workstation, perform following commands:
@@ -11,6 +11,7 @@ In order to build the documentation, the LaTeX (texlive) and following latex pac
 # yum install texlive-lipsum texlive-sectsty texlive-t2 texlive-lastpage texlive-lettrine texlive-titling texlive-fonts-tlwg babel
 # yum install texlive-cyrillic texlive-babel-russian texlive-hyphen-russian texlive-lh 
 # yum install texlive-babel-german texlive-hyphen-german
+# yum install texlive-babel-portuges texlive-hyphen-portuguese
 # fmtutil --all
 ```
 - as a local user (not root):

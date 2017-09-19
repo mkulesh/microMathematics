@@ -8,16 +8,22 @@
       <term key="text" text="Ele é baseado num poderoso editor de&#10;tela sensível ao toque que permite aos&#10;usuários criar e manipular folhas de&#10;cálculo naturalmente legíveis contendo&#10;toda a notação matemática básica." />
     </text_fragment>
     <text_fragment>
-      <term key="text" text="O microMathematics Plus suporta&#10;cálculos matemáticos de nível de&#10;Ensino Médio. Esta versão tem as&#10;seguintes limitações matemáticas: &#10;não suporta funções especiais,&#10;arranjos, matrizes e várias outras&#10;operações da matemática de alto&#10;nível." />
+      <term key="text" text="O microMathematics Plus suporta&#10;cálculos matemáticos de nível de&#10;Ensino Médio. Esta versão tem as&#10;seguintes limitações matemáticas:  não&#10;suporta funções especiais, arranjos,&#10;matrizes e várias outras operações da&#10;matemática de alto nível." />
+    </text_fragment>
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Autores" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Mikhail Kulesh,&#10;mikhail.kulesh@gmail.com" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Caio Roberto Ramos da Silva&#10;(Brazilian Portuguese translation),&#10;caiorrs@gmail.com" />
+    </text_fragment>
+    <text_fragment textStyle="subsection">
+      <term key="text" text="O ícone do app" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text="&#10;Autor: Mikhail Kulesh Email:&#10;mikhail.kulesh@gmail.com 2014-2017,&#10;Bremen, Alemanha&#10;" />
-    </text_fragment>
-    <text_fragment>
-      <term key="text" text="Aproveite!" />
-    </text_fragment>
-    <text_fragment>
-      <term key="text" text="&#10;P.S. O ícone do app é gerado a partir&#10;das seguintes funções definidas no&#10;sistema de coordenadas polares:" />
+      <term key="text" text="O ícone do app é gerado a partir das&#10;seguintes funções definidas no sistema&#10;de coordenadas polares:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="f" />
@@ -113,5 +119,8 @@
       </term>
       <term key="xMaxValue" text="20" />
     </plot_function>
+    <text_fragment>
+      <term key="text" text="2014-2017, Bremen, Alemanha" />
+    </text_fragment>
   </formulaList>
 </micromath>

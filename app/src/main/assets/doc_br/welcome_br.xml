@@ -2,7 +2,7 @@
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
   <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="false">
     <text_fragment>
-      <term key="text" text='Obrigado por escolher o "micro&#10;Mathematics Plus", a primeira&#10;calculadora matemática para Android,&#10;orientada à um documento interativo.&#10;&#10;O documento pode contar não apenas&#10;fórmulas e gráficos, mas também algum&#10;texto e imagens.&#10;&#10;Este documento é apenas um exemplo e&#10;ao mesmo tempo é um modelo&#10;demonstrando o desenho de uma função.&#10;&#10;Primeiro, devemos definir o intervalo&#10;para a função entrada x.&#10;Realizamos isso adicionando as&#10;seguintes equações usando o botão&#10;"Novo elemento" da barra de ações' />
+      <term key="text" text='Obrigado por escolher o "micro&#10;Mathematics Plus", a primeira&#10;calculadora matemática para Android,&#10;orientada à um documento interativo.&#10;&#10;O documento pode contar não apenas&#10;fórmulas e gráficos, mas também algum&#10;texto e imagens.&#10;&#10;Este documento é apenas um exemplo e&#10;ao mesmo tempo é um modelo&#10;demonstrando o desenho de uma função.&#10;&#10;Primeiro, devemos definir o intervalo&#10;para a função entrada x. Realizamos&#10;isso adicionando as seguintes equações&#10;usando o botão "Novo elemento" da&#10;barra de ações' />
     </text_fragment>
     <image_fragment fileName="asset:/images/menu_new.svg" embedded="false" originalSize="false" width="330" height="90" />
     <text_fragment>
@@ -42,7 +42,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text='Segundo, adicionamos novos campos&#10;de equação usando o botão "Adicionar&#10;equação" a partir da barra de tarefas.&#10;Deixe que f(x) seja o nome da função&#10;que colocamos no campo esquerdo. O campo&#10;direito contém a função que&#10;desenharemos. Em comparação à maioria&#10;das outras calculadoras, colocamos a&#10;fórmula da função na forma lida&#10;naturalmente:' />
+      <term key="text" text='Segundo, adicionamos novos campos de&#10;equação usando o botão "Adicionar&#10;equação" a partir da barra de tarefas.&#10;Deixe que f(x) seja o nome da função&#10;que colocamos no campo esquerdo. O&#10;campo direito contém a função que&#10;desenharemos. Em comparação à maioria&#10;das outras calculadoras, colocamos a&#10;fórmula da função na forma lida&#10;naturalmente:' />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="f(x)" />
@@ -89,7 +89,7 @@
     </text_fragment>
     <image_fragment fileName="asset:/images/toolbar_plot_function.svg" embedded="false" originalSize="false" width="450" height="90" />
     <text_fragment>
-      <term key="text" text="Colocamos a entrada x da função no&#10;campo central-inferior e o nome da&#10;função no campo central-esquerdo.&#10;Quatro outros campos correspondem aos&#10;limites dos eixos, que podem ser deixados&#10;em branco, e serão calculados&#10;automaticamente:" />
+      <term key="text" text="Colocamos a entrada x da função no&#10;campo central-inferior e o nome da&#10;função no campo central-esquerdo.&#10;Quatro outros campos correspondem aos&#10;limites dos eixos, que podem ser&#10;deixados em branco, e serão calculados&#10;automaticamente:" />
     </text_fragment>
     <plot_function width="680" height="500" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="1">
       <term key="yMaxValue" text="" />
@@ -102,7 +102,7 @@
       <term key="xMaxValue" text="" />
     </plot_function>
     <text_fragment>
-      <term key="text" text='&#10;Você pode salvar este documento usando&#10;o comando "Salvar como" a partir do&#10;menu principal. Exclua todo o texto e&#10;use-o como um modelo para desenhar&#10;funções.&#10;&#10;Para criar qualquer documento vazio,&#10;escolha "Novo documento" no menu&#10;principal.&#10;&#10;Para mais detalhes veja a página "Como&#10;utilizar" e exemplos diferentes pelo&#10;menu de navegação do app. Este menu&#10;também contém o endereço web da a&#10;documentação em formato&#10;PDF.' />
+      <term key="text" text='&#10;Você pode salvar este documento usando&#10;o comando "Salvar como" a partir do&#10;menu principal. Exclua todo o texto e&#10;use-o como um modelo para desenhar&#10;funções.&#10;&#10;Para criar qualquer documento vazio,&#10;escolha "Novo documento" no menu&#10;principal.&#10;&#10;Para mais detalhes veja a página "Como&#10;utilizar" e exemplos diferentes pelo&#10;menu de navegação do app. Este menu&#10;também contém o endereço web da a&#10;documentação em formato PDF.' />
     </text_fragment>
   </formulaList>
 </micromath>

@@ -2,7 +2,7 @@
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
   <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
     <text_fragment>
-      <term key="text" text="Este exemplo demonstra desenhos 3D&#10;para três funções diferentes de duas&#10;variáveis.&#10;&#10;Primeiro, definimos intervalos para os&#10;argumentos x e y. O intervalo para o&#10;eixo x depende do número de pontos&#10;juntamente com os valores mínimo e&#10;máximo do eixo x, x1 e x2:" />
+      <term key="text" text="Este exemplo demonstra desenhos 3D para&#10;três funções diferentes de duas&#10;variáveis.&#10;&#10;Primeiro, definimos intervalos para os&#10;argumentos x e y. O intervalo para o&#10;eixo x depende do número de pontos&#10;juntamente com os valores mínimo e&#10;máximo do eixo x, x1 e x2:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="N" />
@@ -97,7 +97,7 @@
     </text_fragment>
     <image_fragment fileName="asset:/images/toolbar_plot_contour.svg" embedded="false" originalSize="false" width="450" height="90" />
     <text_fragment>
-      <term key="text" text="Coloque o nome da função F(x,y) no campo&#10;central-inferior:" />
+      <term key="text" text="Coloque o nome da função F(x,y) no&#10;campo central-inferior:" />
     </text_fragment>
     <plot_contour plotStyle="contour" width="680" height="680" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#85242400" zLabelsNumber="19" colorMap="earthsky">
       <term key="yMaxValue" text="3" />
@@ -110,7 +110,7 @@
       <term key="xMaxValue" text="2" />
     </plot_contour>
     <text_fragment>
-      <term key="text" text='Os limites do desenho, tamanho do&#10;traçado e aparência, rótulos e grade&#10;podem ser ajustados por analogia com a&#10;função de desenho usando a janela de&#10;configurações do desenho (veja o&#10;exemplo "Desenhar Função" da gaveta de&#10;aplicações do app para mais detalhes).&#10;Para abrir esta janela, toque na área&#10;de desenho até que o botão flutuante&#10;"Propriedades do objeto" apareça, e&#10;então toque neste botão.&#10;&#10;Adicionalmente, você pode alterar o&#10;número de rótulos no eixo z e escolher&#10;a paleta de cores na janela&#10;"Configurações do Mapa de Cores". Esta&#10;janela aparece tocando demoradamente na barra do&#10;eixo z à direita da área principal do&#10;gráfico.' />
+      <term key="text" text='Os limites do desenho, tamanho do&#10;traçado e aparência, rótulos e grade&#10;podem ser ajustados por analogia com a&#10;função de desenho usando a janela de&#10;configurações do desenho (veja o&#10;exemplo "Desenhar Função" da gaveta de&#10;aplicações do app para mais detalhes).&#10;Para abrir esta janela, toque na área&#10;de desenho até que o botão flutuante&#10;"Propriedades do objeto" apareça, e&#10;então toque neste botão.&#10;&#10;Adicionalmente, você pode alterar o&#10;número de rótulos no eixo z e escolher&#10;a paleta de cores na janela&#10;"Configurações do Mapa de Cores". Esta&#10;janela aparece tocando demoradamente&#10;na barra do eixo z à direita da área&#10;principal do gráfico.' />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="R(x,y)" />
@@ -141,7 +141,7 @@
       <term key="xMaxValue" text="2" />
     </plot_contour>
     <text_fragment>
-      <term key="text" text='Uma função de dois argumentos também&#10;pode ser desenhada como uma superfície&#10;no espaço 3D. Este modo pode ser&#10;ativado na janela de "Configurações de&#10;Desenho" que aparece se você tocar no&#10;botão flutuante "Propridades do&#10;objeto" após tocar demoradamente na área de&#10;desenho. Deixe-nos desenhar a seguinte&#10;função, usando conjuntos para poder&#10;diminuir o tempo de cálculo:' />
+      <term key="text" text='Uma função de dois argumentos também&#10;pode ser desenhada como uma superfície&#10;no espaço 3D. Este modo pode ser&#10;ativado na janela de "Configurações de&#10;Desenho" que aparece se você tocar no&#10;botão flutuante "Propridades do&#10;objeto" após tocar demoradamente na&#10;área de desenho. Deixe-nos desenhar a&#10;seguinte função, usando conjuntos para&#10;poder diminuir o tempo de cálculo:' />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="N" />
@@ -312,7 +312,7 @@
       <term key="xMaxValue" text="N" />
     </plot_contour>
     <text_fragment>
-      <term key="text" text='Para o desenho de superfícies, existem&#10;configurações adicionais mostradas na&#10;janela de "Configurações de Desenho".&#10;Você pode escolher se deseja que as&#10;linhas da malha devem ser mostradas.&#10;Selecione a opacidade para a cor da&#10;malha, defina os ângulo de rotação e&#10;a elevação da caixa de desenho. Por&#10;exemplo, a superfície desenhada&#10;anteriormente com outros ângulos de&#10;rotação e elevação se parece com: ' />
+      <term key="text" text='Para o desenho de superfícies, existem&#10;configurações adicionais mostradas na&#10;janela de "Configurações de Desenho".&#10;Você pode escolher se deseja que as&#10;linhas da malha devem ser mostradas.&#10;Selecione a opacidade para a cor da&#10;malha, defina os ângulo de rotação e a&#10;elevação da caixa de desenho. Por&#10;exemplo, a superfície desenhada&#10;anteriormente com outros ângulos de&#10;rotação e elevação se parece com: ' />
     </text_fragment>
     <plot_contour plotStyle="surface" width="680" height="680" axes_style="boxed" meshLines="false" meshFill="true" meshOpacity="155" rotation="55" elevation="45" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#85242400" zLabelsNumber="7" colorMap="coldhot">
       <term key="yMaxValue" text="M" />

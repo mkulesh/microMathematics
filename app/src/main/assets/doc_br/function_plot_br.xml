@@ -87,7 +87,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text='Após as funções e seus argumentos forem&#10;definidos, você pode adicionar a caixa&#10;para desenhar usando o botão "Novo&#10;elemento" na barra de ações ou o&#10;botão "Adicionar desenho de função" a&#10;partir da barra de ferramentas:' />
+      <term key="text" text='Após as funções e seus argumentos forem&#10;definidos, você pode adicionar a caixa&#10;para desenhar usando o botão "Novo&#10;elemento" na barra de ações ou o botão&#10;"Adicionar desenho de função" a partir&#10;da barra de ferramentas:' />
     </text_fragment>
     <image_fragment fileName="asset:/images/toolbar_plot_function.svg" embedded="false" originalSize="false" width="450" height="90" />
     <plot_function width="680" height="600" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#7F000000" functionsNumber="1">

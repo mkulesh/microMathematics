@@ -12,6 +12,7 @@ rm -f *.pdf *.log *.aux
 buildPdf $1
 buildPdf $1 -ru
 buildPdf $1 -de
+buildPdf $1 -br
 
 rm -f *.log *.aux
 ls -l *.pdf

@@ -57,6 +57,12 @@
         <item>asset:/doc_ru/three_d_plot_ru.xml</item>
         <item>asset:/doc_ru/series_and_integrals_ru.xml</item>
         <item>asset:/doc_ru/about_micromath_ru.xml</item>
+        <item>asset:/doc_br/how_to_use_br.xml</item>
+        <item>asset:/doc_br/function_plot_br.xml</item>
+        <item>asset:/doc_br/polar_plot_br.xml</item>
+        <item>asset:/doc_br/three_d_plot_br.xml</item>
+        <item>asset:/doc_br/series_and_integrals_br.xml</item>
+        <item>asset:/doc_br/about_micromath_br.xml</item>
     </string-array>
 
     <string-array name="take_screenshots_scripts" translatable="false">

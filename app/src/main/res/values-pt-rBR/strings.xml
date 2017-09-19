@@ -40,7 +40,7 @@
     </string-array>
     <string-array name="activity_resources">
         <item></item>
-        <item>asset:/doc_en/how_to_use.xml</item>
+        <item>asset:/doc_br/how_to_use_br.xml</item>
         <item>asset:/doc_br/function_plot_br.xml</item>
         <item>asset:/doc_br/polar_plot_br.xml</item>
         <item>asset:/doc_br/three_d_plot_br.xml</item>

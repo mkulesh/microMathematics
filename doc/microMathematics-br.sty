@@ -1,4 +1,6 @@
 \usepackage{lipsum} % Package to create dummy text
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[protrusion=true,expansion=true]{microtype} % Better typography
 \usepackage{amsmath,amsfonts,amsthm} % Math packages
 \usepackage[pdftex]{graphicx} % Enable pdflatex
@@ -13,10 +15,10 @@
 % Custom sectioning (sectsty package)
 \usepackage{sectsty} % Custom sectioning (see below)
 \allsectionsfont{ % Change font of al section commands
-  \usefont{OT1}{phv}{b}{n} % bch-b-n: CharterBT-Bold font
+  \usefont{T1}{phv}{b}{n} % bch-b-n: CharterBT-Bold font
 }
 \sectionfont{ % Change font of \section command
-  \usefont{OT1}{phv}{b}{n} % bch-b-n: CharterBT-Bold font
+  \usefont{T1}{phv}{b}{n} % bch-b-n: CharterBT-Bold font
 }
 
 % Headers and footers
@@ -59,7 +61,7 @@
 \usepackage{versionCode}
 \posttitle{%
   \par
-  \fontsize{26}{26} \selectfont 
+  \fontsize{26}{26} \selectfont
   version \versionCode
   \end{flushleft}
   \par
@@ -67,4 +69,3 @@
 }
 
 \date{} % No date
-          

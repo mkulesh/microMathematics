@@ -28,6 +28,7 @@ Not only students, but also everybody who likes mathematics or needs more than j
 * The app contains detailed "How to use" page and several examples
 
 ## Screenshots:
+
 ![Example of a function plot](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/rayleigh_wave.png)
 ![Example of a 3D plot](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/valentine.png)
 ![Example of calculation with complex numbers](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/fourie_transform.png)
@@ -35,6 +36,7 @@ Not only students, but also everybody who likes mathematics or needs more than j
 For more screenshots, see directory images/screenshots.
 
 ## Reviews and publications:
+
 * [Press Release: Introducing microMathematics: the First Spreadsheet Oriented Mathematical Calculator for Android](http://www.androidappsreview.com/2014/09/29/micro-mathematics-press-release/)
 * [Advanced calculator to solve the most complex mathematical equations smart phone](http://mn1professional.blogspot.de/2015/12/advanced-calculator-to-solve-most.html)
 * [microMathematics Plus: Umfangreiche Rechner-App für Studenten & Schüler (in German)](http://beste-apps.chip.de/android/app/micro-mathematics-plus-umfangreiche-rechner-app-fuer-studenten-schueler,com.mkulesh.micromath.plus/)
@@ -46,9 +48,16 @@ For more screenshots, see directory images/screenshots.
 * [Micro Mathematics : Android Math Book Demo (Video)](https://www.youtube.com/watch?v=eUzF1gXd6rc&feature=player_embedded)
 
 ## Languages
+
 * English
 * Russian
 * German
+* Brazilian Portuguese
+
+## Authors
+
+* Mikhail Kulesh (core development, German/Russian translation), mikhail.kulesh@gmail.com
+* Caio Roberto Ramos da Silva (Brazilian Portuguese translation), caiorrs@gmail.com
 
 ## License
 
