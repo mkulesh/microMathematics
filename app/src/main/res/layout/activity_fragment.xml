@@ -70,7 +70,8 @@
 
         <View
             style="@style/HorizontalDividerStyle"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="true"
+            android:saveEnabled="false" />
     </RelativeLayout>
 
     <LinearLayout
@@ -89,7 +90,8 @@
             <ProgressBar
                 android:id="@+id/main_progress_bar"
                 style="@style/CustomProgressBar"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:saveEnabled="false" />
         </LinearLayout>
 
         <com.mkulesh.micromath.widgets.FloatingButtonsSet
@@ -105,7 +107,8 @@
                 android:layout_height="@dimen/activity_flb_size"
                 android:background="@drawable/flb_object_properties"
                 android:contentDescription="@string/action_object_properties"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:saveEnabled="false" />
         </com.mkulesh.micromath.widgets.FloatingButtonsSet>
 
         <com.mkulesh.micromath.widgets.FloatingButtonsSet
@@ -120,7 +123,8 @@
                 android:layout_height="@dimen/activity_flb_size"
                 android:background="@drawable/flb_action_play"
                 android:contentDescription="@string/action_play"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:saveEnabled="false" />
 
             <ImageButton
                 android:id="@+id/main_flb_action_stop"
@@ -128,14 +132,16 @@
                 android:layout_height="@dimen/activity_flb_size"
                 android:background="@drawable/flb_action_stop"
                 android:contentDescription="@string/action_stop"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:saveEnabled="false" />
             <ImageButton
                 android:id="@+id/main_flb_action_details"
                 android:layout_width="@dimen/activity_flb_size"
                 android:layout_height="@dimen/activity_flb_size"
                 android:background="@drawable/flb_action_details"
                 android:contentDescription="@string/action_details"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:saveEnabled="false" />
         </com.mkulesh.micromath.widgets.FloatingButtonsSet>
     </LinearLayout>
 

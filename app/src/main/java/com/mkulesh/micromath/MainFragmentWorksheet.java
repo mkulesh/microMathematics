@@ -61,6 +61,9 @@ public class MainFragmentWorksheet extends BaseFragment
         rootView = inflater.inflate(R.layout.activity_fragment, container, false);
         externalUri = getArguments().getParcelable(EXTERNAL_URI);
         postActionId = getArguments().getInt(POST_ACTION_ID, INVALID_ACTION_ID);
+        // remove POST_ACTION_ID from bundle since it will be kept
+        // until the next fragment activation event, see issue #33
+        getArguments().putInt(POST_ACTION_ID, INVALID_ACTION_ID);
         initializeFragment(WORKSHEET_FRAGMENT_ID);
         initializeFormula(savedInstanceState);
         initializeAssets(activity.getResources().getStringArray(R.array.asset_filter));
