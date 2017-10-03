@@ -8,7 +8,7 @@ setenv APK_PACK com.mkulesh.micromath.plus
 setenv APK_ACT MainActivityPlus
 setenv APK_FILE ${2}
 
-setenv TOOLS_PATH /work/adt-eclipse/sdk/tools
+setenv TOOLS_PATH ${ANDROID_HOME}/tools
 setenv EMU_PORT 5558
 setenv DEVICE_NAME emulator-${EMU_PORT}
 setenv ADB_CMD "adb -s ${DEVICE_NAME}"

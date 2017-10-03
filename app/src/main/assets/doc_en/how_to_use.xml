@@ -516,7 +516,7 @@
     </text_fragment>
     <image_fragment fileName="asset:/images/toolbar_text_fragment.svg" embedded="false" originalSize="false" width="450" height="90" />
     <text_fragment>
-      <term key="text" text='If the whole text within a fregment is &#10;selected using the context menu&#10;"Select all", a floating button&#10;"Object properties" appears in the&#10;bottom-right of the screen.&#10;&#10;If you click on this button, the "Text&#10;properties" dialog will be displayed,&#10;where you can select the text style&#10;and activate the numbering. For&#10;example, the titles in this document&#10;have the style "Subsection" with&#10;activated  numbering.' />
+      <term key="text" text='If the whole text within a fragment is &#10;selected using the context menu&#10;"Select all", a floating button&#10;"Object properties" appears in the&#10;bottom-right of the screen.&#10;&#10;If you click on this button, the "Text&#10;properties" dialog will be displayed,&#10;where you can select the text style&#10;and activate the numbering. For&#10;example, the titles in this document&#10;have the style "Subsection" with&#10;activated  numbering.' />
     </text_fragment>
     <text_fragment textStyle="subsection" numbering="true">
       <term key="text" text="Image" />

@@ -2,7 +2,7 @@
 # C-shell script used to run microMathematics Plus in all configured emulators
 
 echo Configured emulators:
-/work/adt-eclipse/sdk/tools/emulator -list-avds
+${ANDROID_HOME}/tools/emulator -list-avds
 
 echo APK to be tested: ${1}
 

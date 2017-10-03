@@ -2,7 +2,6 @@
 
 TOOLS_PATH=/work/adt-eclipse/sdk/tools
 AVDS_PATH=/work/android/avds
-EMU_PORT=5558
 
 createAVD()
 {

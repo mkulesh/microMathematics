@@ -1,5 +1,7 @@
 #!/bin/sh
 
+APK_VERSION=2.15.4
+
 echo "Generated APK"
 pwd; ls -l ./app/build/outputs/apk
 
@@ -9,7 +11,7 @@ git clone https://github.com/mkulesh/microMathematics.git --branch autobuild --s
 cd microMathematics_autobuild
 
 # Copy newly created APK into the target directory
-mv ../microMathematics/app/build/outputs/apk/microMathematics-v2.15.4a.apk ./autobuild
+mv ../microMathematics/app/build/outputs/apk/microMathematics-v${APK_VERSION}.apk ./autobuild
 echo "Target APK"
 pwd; ls -l ./autobuild
 
@@ -17,7 +19,7 @@ pwd; ls -l ./autobuild
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 git remote add origin-master https://${AUTOBUILD_TOKEN}@github.com/mkulesh/microMathematics > /dev/null 2>&1
-git add ./autobuild/microMathematics-v2.15.4a.apk
+git add ./autobuild/microMathematics-v${APK_VERSION}.apk
 
 # We don’t want to run a build for a this commit in order to avoid circular builds: 
 # add [ci skip] to the git commit message
