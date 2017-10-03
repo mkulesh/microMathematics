@@ -22,4 +22,4 @@ The microMathematics Plus has exactly the same user interface as the microMathem
 
 The app is 100% open source. Please feel free to download, explore, fork or contribute to it on https://github.com/mkulesh/microMathematics
 
-Languages: English, Russian, German.
+Languages: English, Russian, German, Brazilian Portuguese.

@@ -24,4 +24,4 @@ Die microMathematics Plus sieht genau so aus wie die kostenfreie Version, hat ab
 Der Code ist komplett quell-offen. Du kannst ihn herunterladen, kennen lernen, weiterentwickeln unter https://github.com/mkulesh/microMathematics
 Dort kannst Du auch Bugs melden oder mit entwickeln.
 
-Sprachen: Englisch, Russisch, Deutsch.
+Sprachen: Englisch, Russisch, Deutsch, Brasilianisches Portugiesisch.
