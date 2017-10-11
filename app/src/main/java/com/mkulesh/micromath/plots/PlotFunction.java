@@ -346,6 +346,12 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
     }
 
     @Override
+    public Dimension getDimension()
+    {
+        return Dimension.ONE_D;
+    }
+
+    @Override
     public void onPlotPropertiesChange(boolean isChanged)
     {
         getFormulaList().finishActiveActionMode();

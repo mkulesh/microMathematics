@@ -173,14 +173,6 @@
         <item name="android:paddingRight">5dp</item>
     </style>
         
-    <style name="ColorMapBarStyle" parent="@style/FormulaTextViewStyle">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">15dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:paddingLeft">@dimen/dialog_content_padding</item>
-        <item name="com.mkulesh.micromath.plus:isHorizontal">true</item>
-    </style>
-
     <!-- Other styles -->
     
     <style name="CustomProgressBar" parent="@android:style/Widget.ProgressBar.Horizontal">
