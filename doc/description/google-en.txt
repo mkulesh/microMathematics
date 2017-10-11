@@ -1,6 +1,6 @@
-With microMathematics Plus, you can not only perform mathematical calculations in naturally readable form, but can also create and manage your own collection of interactive formulas!
+﻿With microMathematics, you can not only perform mathematical calculations in naturally readable form, but can also create and manage your own collection of interactive formulas! It is free of any charges and does not contain any adds.
 
-The microMathematics Plus is a revolutionary new kind of mobile calculator. It is the world’s first scientific graphing calculator and function plotter on Android oriented around a worksheet. It allows live editing of mathematical identities combined with highly accurate computations.
+microMathematics is a revolutionary new kind of mobile calculator. It is the world’s first scientific graphing calculator and function plotter on Android oriented around a worksheet. It allows live editing of mathematical identities combined with highly accurate computations.
 
 Not only students, but also everybody who likes mathematics or needs more than just a basic calculator will benefit from this amazing technique of mathematical calculations and plotting.
 
@@ -12,14 +12,13 @@ Benefits and features:
 - Mathematical expressions are written in an intuitive and naturally readable form
 - Powerful mathematical touch-screen editor with undo function makes editing easier
 - You can do multiple calculations and subsequently correct or change all used formulas
-- It is possible to store intermediate results into 1D, 2D, or 3D array that can improve calculation performance
 - Mathematical expressions are collected in a document, that includes not only formulas and plots, but also additional text and images (SVG format is also supported)
 - You can store your document on SD card and export it into LaTeX format or an image (SD writing permission is needed)
 - SD card on Android 6+ is also supported
 - The app contains detailed "How to use" page and several examples
 
-The microMathematics Plus has exactly the same user interface as the microMathematics free version, but implements more mathematical functionality: arrays, complex numbers, functions of many arguments, plots for several functions, contour and 3D plots, summation and product operations, derivative and definite integrals, if-function and logical operators. This version has following mathematical limitations: it does not support special functions, vectors, matrices and many other things from high-level mathematics.
+microMathematics supports basic level of mathematical calculations. If you find microMathematics useful or need more mathematics (like support of complex numbers, functions with many arguments, plots for several functions, 3D plots, summation and product operations, derivative and definite integrals, logical operators, n-th root), please consider purchasing microMathematics Plus to support further development. Thank you.
 
-The app is 100% open source. Please feel free to download, explore, fork or contribute to it on https://github.com/mkulesh/microMathematics
+The app is 100% open source. Please feel free to download, explore, fork or contribute to it on https://github.com/mkulesh/microMathematics/tree/light
 
-Languages: English, Russian, German, Brazilian Portuguese.
+Languages: English, Russian, German.

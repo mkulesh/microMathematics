@@ -28,11 +28,11 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.mkulesh.micromath.BaseFragment;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.dialogs.DialogImageSettings;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.FormulaBase;
 import com.mkulesh.micromath.formula.FormulaList;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.ImageProperties;
 import com.mkulesh.micromath.properties.ImagePropertiesChangeIf;
 import com.mkulesh.micromath.undo.FormulaState;

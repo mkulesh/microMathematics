@@ -25,8 +25,8 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.dialogs.DialogTextSettings;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.TextProperties;
 import com.mkulesh.micromath.properties.TextProperties.TextStyle;
 import com.mkulesh.micromath.properties.TextPropertiesChangeIf;
@@ -241,7 +241,7 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         final int vert = dimen.get(parameters.isHeader() ? ScaledDimensions.Type.HEADER_PADDING
                 : ScaledDimensions.Type.VERT_ROOT_PADDING);
         layout.setPadding(hor, vert, hor, vert);
-        textField.updateTextSize(dimen, parameters.getDepth(), ScaledDimensions.Type.HOR_TEXT_PADDING);
+        textField.updateTextSize(dimen, parameters.getDepth());
         textField.setTypeface(null, parameters.isHeader() ? Typeface.BOLD : Typeface.NORMAL);
         if (isNumbering())
         {

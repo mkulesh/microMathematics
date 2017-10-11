@@ -22,7 +22,7 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.CheckBox;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.properties.ResultProperties;
 import com.mkulesh.micromath.properties.ResultPropertiesChangeIf;
 import com.mkulesh.micromath.widgets.HorizontalNumberPicker;

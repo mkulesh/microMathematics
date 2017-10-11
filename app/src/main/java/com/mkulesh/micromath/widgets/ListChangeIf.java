@@ -25,7 +25,6 @@ public interface ListChangeIf
         EQUATION,
         RESULT,
         PLOT_FUNCTION,
-        PLOT_CONTOUR,
         TEXT_FRAGMENT,
         IMAGE_FRAGMENT
     }

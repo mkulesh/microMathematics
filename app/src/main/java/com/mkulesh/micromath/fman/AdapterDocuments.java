@@ -30,7 +30,7 @@ import android.preference.PreferenceManager;
 import android.provider.DocumentsContract;
 import android.provider.DocumentsContract.Document;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.CompatUtils;
 
 import java.io.File;

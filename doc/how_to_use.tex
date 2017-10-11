@@ -1,5 +1,5 @@
 % This is auto-generated file: do not edit!
-% Exported from microMathematics Plus, version 2.15.4
+% Exported from microMathematics, version 1.18
 
 
 This app is a powerful calculation
@@ -121,13 +121,6 @@ be used:
   $NPi2 := N \cdot Pi2$
 \end{tabular}\end{center}
 
-You can also use the symbol ''i'' as
-imaginary unit in order to define a
-complex number:
-\begin{center}\begin{tabular}{c}
-  $z := 5+3i$
-\end{tabular}\end{center}
-
 \subsubsection{Interval}
 
 An interval type equation defines a
@@ -175,17 +168,17 @@ where the interval start is zero as
 follows:
 \begin{center}\begin{tabular}{cc}
   $dy := 0.05$ &
-  $y := \left[ 0,\, dy \,..\, dy \cdot N \right]$ \cr
+  $y := \left[ 0,\, dy \,..\, dy \cdot \left( N - 1 \right) \right]$ \cr
 \end{tabular}\end{center}
 
 \subsubsection{Function}
 
-A function is a relation between one
-or more arguments and a set of
-permissible outputs with the property,
-that each argument value (real or
-complex) or arguments combination is
-related to exactly one output.
+A function is a relation between given
+argument and a set of permissible
+outputs with the property, that each
+argument value is related to exactly
+one output. Currently, only functions
+of single argument are supported.
 
 The function name and the function
 argument in brackets are given on the
@@ -196,12 +189,6 @@ define it as you want, but using
 letters or digits only:
 \begin{center}\begin{tabular}{c}
   $f(t) := sin \left( t\right)  \cdot cos \left( t\right)  / 2$
-\end{tabular}\end{center}
-\begin{center}\begin{tabular}{c}
-  $w(z) := {e}^{2i \cdot {\pi} \cdot z}$
-\end{tabular}\end{center}
-\begin{center}\begin{tabular}{c}
-  $g(x,y) := \frac{sin \left( hypot \left( x,\, y\right) \right) }{hypot \left( x,\, y / 2\right)  + 1}$
 \end{tabular}\end{center}
 
 The right side of the function contains
@@ -219,49 +206,6 @@ symbol ''('' and than enter its
 argument. This argument can also be a
 formula, which contains any other
 operations and functions.
-
-\subsubsection{Array}
-
-Arrays are special functions with
-following properties:
-
-a) only a previously defined interval
-can be used as array argument:
-\begin{center}\begin{tabular}{cc}
-  $k := \left[ 0,\, 1 \,..\, 100 \right]$ &
-  $m := \left[ 0,\, 1 \,..\, 200 \right]$ \cr
-\end{tabular}\end{center}
-
-a) array arguments are given in [ ]
-instead of ( ):
-\begin{center}\begin{tabular}{c}
-  $M[k,m] := {sin \left( k / 10\right) }^{2} - 3 \cdot  \left| cos \left( m / 10\right)  \right| $
-\end{tabular}\end{center}
-
-c) array elements are calculated and
-stored in memory that reduces the
-access time to these values
-
-d) array elements can be only accessed
-by using a lower index. To create
-lower index, put ''['' after the array
-name:
-\begin{center}\begin{tabular}{cc}
-  $M_{5,\, 10}  = -1.39106$ &
-  $M_{10,\, 5}  = -1.92467$ \cr
-\end{tabular}\end{center}
-\begin{center}\begin{tabular}{c}
-  $N[k,m] := floor \left( -10 \cdot M_{k,\, m} \right) $
-\end{tabular}\end{center}
-
-e) if any array index is complex or
-negative or greater than the upper
-bound of the corresponding interval,
-the invalid number will be returned:
-\begin{center}\begin{tabular}{cc}
-  $M_{10i,\, 100}  = NaN$ &
-  $M_{90,\, 210}  = NaN$ \cr
-\end{tabular}\end{center}
 
 \subsection{Result View}
 
@@ -295,18 +239,9 @@ functions:
 
 If the left part does not contain any
 ''interval-like'' variables, the
-calculation result is just a real or
-complex number:
+calculation result is just a number:
 \begin{center}\begin{tabular}{c}
   $y \left( N - 1\right)  - y \left( 0\right)  = 9.95$
-\end{tabular}\end{center}
-\begin{center}\begin{tabular}{ccc}
-  $\Re\left( z \right)  = 5.0$ &
-  $\Im\left( z \right)  = 3.0$ &
-  $ \left| z \right|  = 5.83095$ \cr
-\end{tabular}\end{center}
-\begin{center}\begin{tabular}{c}
-  $\sqrt{sin \left( \frac{3}{2} \cdot {\pi}\right) }  = 0.0+1.0i$
 \end{tabular}\end{center}
 
 If the left part contains an interval
@@ -316,13 +251,11 @@ interval. Due to free space limit on
 the display, only the first six and
 the last elements of the vector will
 be displayed:
-\begin{center}\begin{tabular}{ccc}
-  $x = \begin{bmatrix}0.0\\0.1\\0.2\\0.3\\0.4\\0.5\\\dots\\10.0\\\end{bmatrix}$ &
-  $y = \begin{bmatrix}0.0\\0.05\\0.1\\0.15\\0.2\\0.25\\\dots\\10.0\\\end{bmatrix}$ &
-  $2 \cdot y = \begin{bmatrix}0.0\\0.1\\0.2\\0.3\\0.4\\0.5\\\dots\\20.0\\\end{bmatrix}$ \cr
+\begin{center}\begin{tabular}{c}
+  $x = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, ..., 10.0]$
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $N_{k,\, m}  = \begin{bmatrix}30.0&29.0&29.0&28.0&\dots&12.0\\29.0&29.0&29.0&28.0&\dots&12.0\\29.0&29.0&29.0&28.0&\dots&11.0\\29.0&28.0&28.0&27.0&\dots&11.0\\\dots&\dots&\dots&\dots&\dots&\dots\\27.0&26.0&26.0&25.0&\dots&9.0\\\end{bmatrix}$
+  $2 \cdot y = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, ..., 19.9]$
 \end{tabular}\end{center}
 
 Number of displayed elements and the
@@ -342,7 +275,7 @@ button, the ''Details'' dialog will be
 displayed, where you can observe all
 elements of the array.
 
-Note that the use of three or more
+Note that the use of two or more
 ''interval-like'' variables on the left
 part of a result view is not allowed
 in this app version.
@@ -368,31 +301,6 @@ For more details see ''Function Plot''
 and ''Polar Function Plot'' examples
 from the app navigation drawer.
 
-\subsection{Three-dimensional Plot}
-
-The 3D plot element displays a graph
-of a single function that depends on
-two arguments. To create such a plot,
-use the ''New element'' button in the
-action bar or the ''Add 3D plot'' button
-from the tool bar:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig10.png} \end{tabular}\end{center}
-\begin{center}\begin{tabular}{cc}
-  $x := \left[ -10,\, -9.5 \,..\, 10 \right]$ &
-  $y := \left[ -10,\, -9.5 \,..\, 10 \right]$ \cr
-\end{tabular}\end{center}
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig11.png} \end{tabular}\end{center}
-
-In the center-bottom field, put the
-function name or an equation that
-contains exactly two previously
-defined intervals. The use of an array
-is also possible:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig12.png} \end{tabular}\end{center}
-
-For more details see ''3D Plot'' example
-from the app navigation drawer.
-
 \subsection{Text Fragment}
 
 The text fragment element displays
@@ -400,9 +308,9 @@ simple text like this one. To add a
 text fragment, use the ''New element''
 button in the action bar or ''Add text
 fragment'' button from the tool bar:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig13.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig10.png} \end{tabular}\end{center}
 
-If the whole text within a fragment is 
+If the whole text within a fregment is 
 selected using the context menu
 ''Select all'', a floating button
 ''Object properties'' appears in the
@@ -423,7 +331,7 @@ image file. To do it, use the ''New
 element'' button from the action bar or
 the ''Add image from file'' button from
 the tool bar:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig14.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig11.png} \end{tabular}\end{center}
 
 The ''Image settings'' dialog will
 appear. There you can select a file

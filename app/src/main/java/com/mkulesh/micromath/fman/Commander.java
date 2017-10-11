@@ -42,10 +42,10 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.dialogs.DialogBase;
 import com.mkulesh.micromath.dialogs.DialogRadioGroup;
 import com.mkulesh.micromath.dialogs.SimpleDialog;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 public class Commander extends DialogBase implements CommanderIf

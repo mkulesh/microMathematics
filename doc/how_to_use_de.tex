@@ -1,5 +1,5 @@
 % This is auto-generated file: do not edit!
-% Exported from microMathematics Plus, version 2.15.4
+% Exported from microMathematics, version 1.18
 
 
 Diese App ist eine leistungsstarke
@@ -130,13 +130,6 @@ Konstante verwendet werden:
   $NPi2 := N \cdot Pi2$
 \end{tabular}\end{center}
 
-Eine komplexe Zahl als eine Konstante
-wird durch zwei reele Zahlen und
-imaginäre Einheit ''i'' definiert:
-\begin{center}\begin{tabular}{c}
-  $z := 5+3i$
-\end{tabular}\end{center}
-
 \subsubsection{Intervalle}
 
 Eine Intervall-Gleichung definiert
@@ -188,7 +181,7 @@ das bei Null beginnt und N Punkte mit
 einem Abstand von ''dy'' hat:
 \begin{center}\begin{tabular}{cc}
   $dy := 0.05$ &
-  $y := \left[ 0,\, dy \,..\, dy \cdot N \right]$ \cr
+  $y := \left[ 0,\, dy \,..\, dy \cdot \left( N - 1 \right) \right]$ \cr
 \end{tabular}\end{center}
 
 \subsubsection{Funktionen}
@@ -210,12 +203,6 @@ definieren:
 \begin{center}\begin{tabular}{c}
   $f(t) := sin \left( t\right)  \cdot cos \left( t\right)  / 2$
 \end{tabular}\end{center}
-\begin{center}\begin{tabular}{c}
-  $w(z) := {e}^{2i \cdot {\pi} \cdot z}$
-\end{tabular}\end{center}
-\begin{center}\begin{tabular}{c}
-  $g(x,y) := \frac{sin \left( hypot \left( x,\, y\right) \right) }{hypot \left( x,\, y / 2\right)  + 1}$
-\end{tabular}\end{center}
 
 Rechts von der Funktion findet sich
 eine mathematische Formel um die
@@ -233,51 +220,6 @@ Sie das Argument. Dies kann auch eine
 Formel sein, die andere Operatoren
 oder Funktionen enthält.
 
-\subsubsection{Array}
-
-Arrays sind besondere Funktionen, die
-folgende Eigenschaften haben:
-
-a) jedes Argument des Arrays muss ein
-vorher definiertes Intervall sein:
-\begin{center}\begin{tabular}{cc}
-  $k := \left[ 0,\, 1 \,..\, 100 \right]$ &
-  $m := \left[ 0,\, 1 \,..\, 200 \right]$ \cr
-\end{tabular}\end{center}
-
-a) die Argumente des Arrays sind in eckigen
-Klammern ''[ ]'' anstelle der runden
-Klammern ''( )'' geschrieben:
-\begin{center}\begin{tabular}{c}
-  $M[k,m] := {sin \left( k / 10\right) }^{2} - 3 \cdot  \left| cos \left( m / 10\right)  \right| $
-\end{tabular}\end{center}
-
-c) die Array-Elemente werden berechnet
-und gespeichert. Dadurch ist der
-Zugriff auf diese Elemente viel
-schneller.
-
-d) man kann die Array-Elemente nur
-mittels eines Index zugreifen. Um
-solchen Index zu erzeugen, geben Sie
-''['' nach dem Array-Namen:
-\begin{center}\begin{tabular}{cc}
-  $M_{5,\, 10}  = -1.39106$ &
-  $M_{10,\, 5}  = -1.92467$ \cr
-\end{tabular}\end{center}
-\begin{center}\begin{tabular}{c}
-  $N[k,m] := floor \left( -10 \cdot M_{k,\, m} \right) $
-\end{tabular}\end{center}
-
-e) wenn ein Index ist komplex, negativ 
-oder größer als die Obergrenze des
-dazugehörigen Intervalls, dann wird
-ein ungültigen Wert zurückgegeben:
-\begin{center}\begin{tabular}{cc}
-  $M_{10i,\, 100}  = NaN$ &
-  $M_{90,\, 210}  = NaN$ \cr
-\end{tabular}\end{center}
-
 \subsection{Ergebnisansicht}
 
 Dieses Element soll das Ergebnis einer
@@ -286,7 +228,7 @@ darstellen. Um eine Ergebnisansicht zu
 erstellen, verwenden Sie den ''Neu''
 Button in der Menüleiste oder
 ''Ergebnisansicht hinzufügen'' Button in
-der Werkzeugleiste:
+der Werkzeugleiste: 
 \begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig6.png} \end{tabular}\end{center}
 
 Eine Gleichung mit zwei lehren Feldern
@@ -307,18 +249,9 @@ sowie alle integrierte Funktionen:
 
 Falls der linke Teil keine
 ''intervallähnlichen'' Variablen enthält
-ist das Rechenergebnis nur eine reelle
-oder komplexe Zahl.
+ist das Rechenergebnis nur eine Zahl:
 \begin{center}\begin{tabular}{c}
   $y \left( N - 1\right)  - y \left( 0\right)  = 9.95$
-\end{tabular}\end{center}
-\begin{center}\begin{tabular}{ccc}
-  $\Re\left( z \right)  = 5.0$ &
-  $\Im\left( z \right)  = 3.0$ &
-  $ \left| z \right|  = 5.83095$ \cr
-\end{tabular}\end{center}
-\begin{center}\begin{tabular}{c}
-  $\sqrt{sin \left( \frac{3}{2} \cdot {\pi}\right) }  = 0.0+1.0i$
 \end{tabular}\end{center}
 
 Falls der linke Teil als Variable ein
@@ -328,13 +261,11 @@ Intervall entsprechen. Aufgrund der
 Platzbeschränkungen auf dem Display
 werden nur die ersten sechs sowie das
 letzte Element des Vektors angezeigt:
-\begin{center}\begin{tabular}{ccc}
-  $x = \begin{bmatrix}0.0\\0.1\\0.2\\0.3\\0.4\\0.5\\\dots\\10.0\\\end{bmatrix}$ &
-  $y = \begin{bmatrix}0.0\\0.05\\0.1\\0.15\\0.2\\0.25\\\dots\\10.0\\\end{bmatrix}$ &
-  $2 \cdot y = \begin{bmatrix}0.0\\0.1\\0.2\\0.3\\0.4\\0.5\\\dots\\20.0\\\end{bmatrix}$ \cr
+\begin{center}\begin{tabular}{c}
+  $x = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, ..., 10.0]$
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $N_{k,\, m}  = \begin{bmatrix}30.0&29.0&29.0&28.0&\dots&12.0\\29.0&29.0&29.0&28.0&\dots&12.0\\29.0&29.0&29.0&28.0&\dots&11.0\\29.0&28.0&28.0&27.0&\dots&11.0\\\dots&\dots&\dots&\dots&\dots&\dots\\27.0&26.0&26.0&25.0&\dots&9.0\\\end{bmatrix}$
+  $2 \cdot y = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, ..., 19.9]$
 \end{tabular}\end{center}
 
 Sie können die Anzahl der angezeigten
@@ -357,7 +288,7 @@ diesen Button öffnet das Dialogfenster
 sehen können.
 
 Bitte beachten Sie, dass die
-Verwendung von drei oder mehr
+Verwendung von zwei oder mehr
 intervallähnlichen Variablen im linken
 Teil einer Ergebnisansicht in dieser
 Version des Apps nicht gestattet ist.
@@ -383,32 +314,6 @@ mittleren unteren Feld.
 Für mehr Details siehe das ''Plot einer
 Funktion'' Beispiel des Hauptmenüs.
 
-\subsection{3D Plot}
-
-Das 3D Plot Element stellt Graphen
-einer einzelnen Funktion dar, die von
-zwei Argumenten abhängt. Um so einen
-Plot zu erstellen, nutzen Sie den
-''Neu'' Button in der Menüleiste oder
-''3D Plot hinzufügen'' Button in der
-Werkzeugleiste:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig10.png} \end{tabular}\end{center}
-\begin{center}\begin{tabular}{cc}
-  $x := \left[ -10,\, -9.5 \,..\, 10 \right]$ &
-  $y := \left[ -10,\, -9.5 \,..\, 10 \right]$ \cr
-\end{tabular}\end{center}
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig11.png} \end{tabular}\end{center}
-
-Fügen Sie im unteren Zentrum den
-Funktionsname oder eine Gleichung ein,
-die genau zwei zuvor definierte
-Intervalle enthält. Sie können hier
-auch ein Array benuzen:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig12.png} \end{tabular}\end{center}
-
-Für mehr Details siehe ''3D Plot''
-Beispiel im Hauptmenü.
-
 \subsection{Textfragment}
 
 Das Textfragment Element stellt
@@ -417,7 +322,7 @@ ein Textfragment hinzuzufügen, nutzen
 Sie den ''Neu'' Button der Menüleiste
 oder ''Textfragment hinzufügen'' Button
 in der Werkzeugleiste:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig13.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig10.png} \end{tabular}\end{center}
 
 Wenn Sie auf den Text lange gedrückt
 halten, und dann den ganzen Text
@@ -441,7 +346,7 @@ Datei hinzufügen. Nutzen Sie dafür den
 Button ''Neu'' in der Menüleiste oder
 den Button ''Bild aus Datei hinzufügen''
 in der Werkzeugleiste:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig14.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig11.png} \end{tabular}\end{center}
 
 Der Dialog ''Bildeinstellungen'' wird
 geöffnet. Dort können Sie eine Datei

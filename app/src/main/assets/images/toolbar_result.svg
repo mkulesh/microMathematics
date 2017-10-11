@@ -8,7 +8,7 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="335"
+   width="290"
    height="65"
    id="svg11300">
   <metadata
@@ -185,66 +185,7 @@
     </g>
   </g>
   <g
-     transform="translate(175.54531,3.0142164)"
-     id="g3345">
-    <path
-       d="m 26,29.076271 a 10.381356,18.076271 0 1 1 -20.7627125,0 10.381356,18.076271 0 1 1 20.7627125,0 z"
-       transform="matrix(1.0763265,0,-0.59341768,0.9978903,20.617342,-4.0149288)"
-       id="path2911"
-       style="fill:#353535;fill-opacity:0.84313725;stroke:none" />
-    <rect
-       width="46.014156"
-       height="45.816196"
-       rx="6.2652392"
-       ry="5.4422288"
-       x="1.074217"
-       y="1.0784065"
-       id="rect11518-7"
-       style="color:#000000;fill:#323232;fill-opacity:0.8;fill-rule:evenodd;stroke:#353535;stroke-width:1.14610016;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
-    <path
-       d="m 26,29.076271 a 10.381356,18.076271 0 1 1 -20.7627125,0 10.381356,18.076271 0 1 1 20.7627125,0 z"
-       transform="matrix(0.90887264,0,-0.39327017,0.83699602,17.1642,0.8649529)"
-       id="path2911-3"
-       style="fill:#5a5a5a;fill-opacity:0.84313725;stroke:none" />
-    <path
-       d="m 26,29.076271 a 10.381356,18.076271 0 1 1 -20.7627125,0 10.381356,18.076271 0 1 1 20.7627125,0 z"
-       transform="matrix(0.73014646,0,-0.26096866,0.71407752,15.905744,4.734754)"
-       id="path2911-3-5"
-       style="fill:#828282;fill-opacity:0.84313725;stroke:none" />
-    <path
-       d="m 26,29.076271 a 10.381356,18.076271 0 1 1 -20.7627125,0 10.381356,18.076271 0 1 1 20.7627125,0 z"
-       transform="matrix(0.5761732,0,-0.15040962,0.5929307,14.765447,8.601075)"
-       id="path2911-3-5-0-5"
-       style="fill:#aaaaaa;fill-opacity:0.84313725;stroke:none" />
-    <path
-       d="m 26,29.076271 a 10.381356,18.076271 0 1 1 -20.7627125,0 10.381356,18.076271 0 1 1 20.7627125,0 z"
-       transform="matrix(0.4411507,0,-0.04811202,0.45574627,13.649512,12.925599)"
-       id="path2911-3-5-0"
-       style="fill:#d2d2d2;fill-opacity:0.84313725;stroke:none" />
-    <rect
-       width="42.613228"
-       height="42.429905"
-       rx="4.4872475"
-       ry="3.8977964"
-       x="2.7749097"
-       y="2.7717824"
-       id="rect11528-1"
-       style="color:#000000;fill:none;stroke:#ffffff;stroke-width:2.29220033;stroke-linejoin:bevel;stroke-miterlimit:10" />
-    <path
-       d="m 8.7846059,9.759678 0,29.110395 31.1792301,0"
-       id="path9988-8"
-       style="fill:none;stroke:#ffffff;stroke-width:2.31746578" />
-    <path
-       d="m 8.6777283,5.0408691 -4.0040559,8.2569019 8.0081206,0 -4.0040647,-8.2569019"
-       id="path9992-3"
-       style="fill:#ffffff;fill-rule:evenodd" />
-    <path
-       d="m 43.326328,38.830678 -8.008116,-4.128453 0,8.256906 8.008116,-4.128453"
-       id="path9994-1"
-       style="fill:#ffffff;fill-rule:evenodd" />
-  </g>
-  <g
-     transform="translate(229.86488,3.0007214)"
+     transform="translate(175.58488,3.0007214)"
      id="g3448">
     <rect
        width="46.014156"
@@ -275,7 +216,7 @@
          id="tspan3082-5">TXT</tspan></text>
   </g>
   <g
-     transform="translate(284.02188,3.0007214)"
+     transform="translate(229.74188,3.0007214)"
      id="g3525">
     <rect
        width="46.014156"
@@ -296,7 +237,7 @@
        id="rect11528-8"
        style="color:#000000;fill:none;stroke:#ffffff;stroke-width:2.29220033;stroke-linejoin:bevel;stroke-miterlimit:10" />
     <polygon
-       points="226.755,443.662 220.074,438.766 212.808,442.867 202.527,435.355 193.422,442.424 193.422,456.162 226.755,456.162 "
+       points="193.422,442.424 193.422,456.162 226.755,456.162 226.755,443.662 220.074,438.766 212.808,442.867 202.527,435.355 "
        transform="matrix(1.0671193,0,0,1.1173008,-200.0693,-467.57644)"
        id="polygon5611"
        style="fill:#ffffff;fill-opacity:1" />

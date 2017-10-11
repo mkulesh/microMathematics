@@ -2,13 +2,13 @@
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
   <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="false">
     <text_fragment>
-      <term key="text" text='Thank you for choosing "micro&#10;Mathematics Plus", the world’s first&#10;mathematical calculator on Android,&#10;oriented around an interactive&#10;document.&#10;&#10;The document can contain not only&#10;formulas and plots, but also some text&#10;and images.&#10;&#10;This document is just a sample and at&#10;the same time it is a template&#10;demonstrating a function plot.&#10;&#10;First of all, we shall define the&#10;interval for the function input x. We&#10;achieve it by adding following&#10;equations using the "New element"&#10;button from the action bar' />
+      <term key="text" text='Thank you for choosing "micro&#10;Mathematics", the world’s first&#10;mathematical calculator on Android,&#10;oriented around an interactive&#10;document.&#10;&#10;The document can contain not only&#10;formulas and plots, but also some text&#10;and images.&#10;&#10;This document is just a sample and at&#10;the same time it is a template&#10;demonstrating a function plot.&#10;&#10;First of all, we shall define the&#10;interval for the function input x. We&#10;achieve it by adding following&#10;equations using the "New element"&#10;button from the action bar' />
     </text_fragment>
     <image_fragment fileName="asset:/images/menu_new.svg" embedded="false" originalSize="false" width="330" height="90" />
     <text_fragment>
       <term key="text" text='or the "Add equation" button from the&#10;toolbar:' />
     </text_fragment>
-    <image_fragment fileName="asset:/images/toolbar_equation.svg" embedded="false" originalSize="false" width="450" height="90" />
+    <image_fragment fileName="asset:/images/toolbar_equation.svg" embedded="false" originalSize="false" width="400" height="90" />
     <text_fragment>
       <term key="text" text="The first x-value:" />
     </text_fragment>
@@ -54,40 +54,15 @@
             <term key="rightTerm" text="10" />
           </term>
         </term>
-        <term key="rightTerm" code="summation">
-          <term key="maxValue" text="20" />
-          <term key="index" text="n" />
-          <term key="minValue" text="0" />
-          <term key="argTerm" code="mult">
-            <term key="leftTerm" code="divide">
-              <term key="leftTerm" code="power">
-                <term key="leftTerm" code="identity">
-                  <term key="argTerm" text="-1" />
-                </term>
-                <term key="rightTerm" text="n" />
-              </term>
-              <term key="rightTerm" code="factorial">
-                <term key="argTerm" code="mult">
-                  <term key="leftTerm" text="2" />
-                  <term key="rightTerm" text="n" />
-                </term>
-              </term>
-            </term>
-            <term key="rightTerm" code="power">
-              <term key="leftTerm" text="x" />
-              <term key="rightTerm" code="mult">
-                <term key="leftTerm" text="2" />
-                <term key="rightTerm" text="n" />
-              </term>
-            </term>
-          </term>
+        <term key="rightTerm" code="sin">
+          <term key="argTerm" text="x" />
         </term>
       </term>
     </equation>
     <text_fragment>
       <term key="text" text='Finally, we add a plot panel using the&#10;button "Add function plot" from the&#10;toolbar:' />
     </text_fragment>
-    <image_fragment fileName="asset:/images/toolbar_plot_function.svg" embedded="false" originalSize="false" width="450" height="90" />
+    <image_fragment fileName="asset:/images/toolbar_plot_function.svg" embedded="false" originalSize="false" width="400" height="90" />
     <text_fragment>
       <term key="text" text="We put the function input x into the&#10;center-bottom field and the function&#10;name into the center-left field. Four&#10;other fields corresponding to axes&#10;boundaries can remain empty and will&#10;be calculated automatically:" />
     </text_fragment>

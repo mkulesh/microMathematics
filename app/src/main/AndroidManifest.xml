@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mkulesh.micromath.plus"
+    package="com.mkulesh.micromath"
     android:installLocation="auto" >
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -16,7 +16,7 @@
         android:description="@string/app_description">
 
         <activity
-            android:name="com.mkulesh.micromath.plus.MainActivityPlus"
+            android:name="com.mkulesh.micromath.MainActivity"
             android:label="@string/app_short_name"
             android:launchMode="singleTask"
             android:theme="@style/MicroMathActionBarTheme"
@@ -50,11 +50,11 @@
         <activity
             android:name="com.mkulesh.micromath.SettingsActivity"
             android:label="@string/action_app_settings"
-            android:parentActivityName="com.mkulesh.micromath.plus.MainActivityPlus"
+            android:parentActivityName="com.mkulesh.micromath.MainActivity"
             android:theme="@style/PreferenceScreen" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mkulesh.micromath.plus.MainActivityPlus" />
+                android:value="com.mkulesh.micromath.MainActivity" />
         </activity>
 
     </application>

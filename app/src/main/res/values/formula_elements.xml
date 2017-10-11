@@ -25,8 +25,6 @@
     <string name="formula_y_function_key" translatable="false">yFunction</string>
     <string name="formula_y_min_value_key" translatable="false">yMinValue</string>
     <string name="formula_y_max_value_key" translatable="false">yMaxValue</string>
-    <string name="formula_z_function_key" translatable="false">zFunction</string>
-    <string name="formula_index_key" translatable="false">index</string>
     <string name="text_fragment" translatable="false">text</string>
     <string name="function_main_layout" translatable="false">functionMainLayout</string>
     
@@ -39,32 +37,13 @@
     <string name="formula_operator_divide" translatable="false">÷</string>
     <string name="formula_operator_divide_slash" translatable="false">/</string>
     <string name="formula_operator_power" translatable="false">^</string>
-    <string name="formula_comparator_equal" translatable="false">==</string>
-    <string name="formula_comparator_not_equal" translatable="false">=|</string>
-    <string name="formula_comparator_less" translatable="false">&#60;&#60;</string>
-    <string name="formula_comparator_less_eq" translatable="false">&#60;=</string>
-    <string name="formula_comparator_greater" translatable="false">&#62;&#62;</string>
-    <string name="formula_comparator_greater_eq" translatable="false">&#62;=</string>
-    <string name="formula_comparator_and" translatable="false">&#38;&#38;</string>
-    <string name="formula_comparator_or" translatable="false">&#38;|</string>
-    <string name="formula_loop_summation" translatable="false">SUMM</string>
-    <string name="formula_loop_product" translatable="false">PROD</string>
-    <string name="formula_loop_integral" translatable="false">INTEG</string>
-    <string name="formula_loop_derivative" translatable="false">DERIV</string>
-    <string name="formula_loop_diff" translatable="false">d</string>
-    <string name="formula_loop_parameter_definition" translatable="false">=</string>
     <string name="formula_function_start_bracket" translatable="false">(</string>
     <string name="formula_function_end_bracket" translatable="false">)</string>
-    <string name="formula_function_start_index" translatable="false">[</string>
-    <string name="formula_function_end_index" translatable="false">]</string>
     <string name="formula_function_sqrt_layout" translatable="false">#</string>
-    <string name="formula_function_nthrt_layout" translatable="false">$</string>
     <string name="formula_function_abs_layout" translatable="false">|</string>
     <string name="formula_function_factorial_layout" translatable="false">!</string>
-    <string name="formula_function_conjugate_layout" translatable="false">~</string>
     <string name="formula_quidistant_interval" translatable="false">:</string>
     <string name="formula_interval_first_separator" translatable="false">,</string>
     <string name="formula_interval_second_separator" translatable="false"> .. </string>
-    <string name="formula_term_separator" translatable="false">,</string>
-    
+
 </resources>

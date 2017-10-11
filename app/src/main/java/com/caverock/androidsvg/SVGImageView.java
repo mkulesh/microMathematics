@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 
 import android.content.Context;
 import android.content.res.TypedArray;

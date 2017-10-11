@@ -32,7 +32,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.Locale;

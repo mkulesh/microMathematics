@@ -24,7 +24,7 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.ImageButton;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.ListChangeIf;
 
@@ -73,8 +73,6 @@ public class DialogNewFormula extends DialogBase implements OnLongClickListener
         objectButtons.put(ListChangeIf.FormulaType.RESULT, (ImageButton) findViewById(R.id.dialog_button_new_result));
         objectButtons.put(ListChangeIf.FormulaType.PLOT_FUNCTION,
                 (ImageButton) findViewById(R.id.dialog_button_new_function_plot));
-        objectButtons.put(ListChangeIf.FormulaType.PLOT_CONTOUR,
-                (ImageButton) findViewById(R.id.dialog_button_new_contour_plot));
         objectButtons.put(ListChangeIf.FormulaType.TEXT_FRAGMENT,
                 (ImageButton) findViewById(R.id.dialog_button_new_text_fragment));
         objectButtons.put(ListChangeIf.FormulaType.IMAGE_FRAGMENT,

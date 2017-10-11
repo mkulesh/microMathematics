@@ -24,7 +24,6 @@
             style="@style/FormulaTextEditStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            micromath:newTermEnabled="true"
             android:text="@string/formula_arg_term_key" />
 
         <com.mkulesh.micromath.widgets.CustomTextView

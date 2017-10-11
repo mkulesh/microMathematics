@@ -33,8 +33,8 @@ import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.formula.FormulaBase;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.widgets.TwoDScrollView;
 
 import org.apache.commons.math3.util.FastMath;

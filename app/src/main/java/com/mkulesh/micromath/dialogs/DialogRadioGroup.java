@@ -26,7 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 
 public class DialogRadioGroup extends DialogBase
 {

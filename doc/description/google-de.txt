@@ -1,6 +1,6 @@
-microMathematics Plus ermöglicht Durchführung mathematischer Berechnungen, die in natürlicher Weise dargestellt und intuitiv bedienbar sind. Mit ihrer Hilfe ist es möglich, eigene Sammlungen von interaktiven mathematischen Formeln zu erstellen und zu bearbeiten.
+microMathematics ermöglicht Durchführung mathematischer Berechnungen, die in natürlicher Weise dargestellt und intuitiv bedienbar sind. Mit ihrer Hilfe ist es möglich, eigene Sammlungen von interaktiven mathematischen Formeln zu erstellen und zu bearbeiten. Diese App ist absolut kostenfrei und enthält keinerlei Werbung.
 
-Die App microMathematics Plus ist eine innovative Art der mobilen Kalkulatoren. Sie ist der erste mathematische Taschenrechner für Android weltweit, der auf einer Kalkulationstabelle basiert, die es erlaubt, mathematische Elemente direkt einzugeben und zudem hochgenaue Ergebnisse liefert.
+microMathematics ist eine innovative Art der mobilen Kalkulatoren. Sie ist der erste mathematische Taschenrechner für Android weltweit, der auf einer Kalkulationstabelle basiert, die es erlaubt, mathematische Elemente direkt einzugeben und zudem hochgenaue Ergebnisse liefert.
 
 Nicht nur Gymnasialschüler, Studenten, Wissenschaftler und Ingenieure, aber auch alle mathematisch Interessierte, die mehr als einen üblichen Taschenrechner haben wollen, können von diesem leistungsstarken und grafisch orientierten Kalkulator profitieren.
 
@@ -12,16 +12,15 @@ Features und Vorteile:
 - ermöglicht Eingabe mathematischer Formeln in einer natürlichen und intuitiven Weise
 - erleichtert Editierung durch leistungsstarken Touchscreen-Editor mit Undo-Funktion
 - gleichzeitige Berechnung und einfache nachträgliche Korrektur mehrerer Formeln
-- es ist möglich, die Zwischenresultate in ein 1-D, 2-D, oder 3-D Array zu speichern, um Kalkulationsleistung zu verbessern 
 - das Dokument kann nicht nur mathematische Formeln und grafische Darstellungen enthalten, sondern auch Textfragmente und Bilder (inklusive SVG-Format)
 - es ist möglich, das Dokument auf einer SD-Karte abzuspeichern (Lese- und Schreibrechte auf SD-Karte erforderlich)
 - SD Cards unter Android 6.0 werden nun auch unterstützt 
 - Export in LaTeX- oder Bild-Format
 - erleichterte Einführung durch ausführliche Dokumentation und viele Beispiele
 
-Die microMathematics Plus sieht genau so aus wie die kostenfreie Version, hat aber mehr Funktionalität: sie unterstützt Arrays, komplexe Zahlen, Funktionen mehrerer Variablen, Funktionsgraphen mehrerer Funktionen, 3-D Graphen, Summe und Produkt einer Folge, bestimmtes Integral und Ableitung sowie logische Operatoren. Diese Version hat folgende Einschränkungen: sie unterstützt weder Sonderfunktionen, Vektoren, Matrizen noch viele andere Dinge auf mathematisch höherem Niveau.
+microMathematics unterstützt die einfachen mathematischen Berechnungen. Wenn diese App Sie überzeugt hat und Sie mehr mathematische Funktionalität nutzen möchten (komplexe Zahlen, Funktionen mit mehreren Argumenten, grafische Darstellungen von mehreren Funktionen, 3D-Grafiken, Addition und Multiplikation, Ableitungen, Integrale, logische Operatoren, Wurzeln n-tes Grades u.v.m.), dann probieren Sie die kostenpflichtige Version microMathematics Plus aus.
 
-Der Code ist komplett quell-offen. Du kannst ihn herunterladen, kennen lernen, weiterentwickeln unter https://github.com/mkulesh/microMathematics
+Der Code ist komplett quell-offen. Du kannst ihn herunterladen, kennen lernen, weiterentwickeln unter https://github.com/mkulesh/microMathematics/tree/light
 Dort kannst Du auch Bugs melden oder mit entwickeln.
 
-Sprachen: Englisch, Russisch, Deutsch, Brasilianisches Portugiesisch.
+Sprachen: Englisch, Russisch, Deutsch.

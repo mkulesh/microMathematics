@@ -25,7 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 
 /**
  * A file chooser implemented in a Dialog.

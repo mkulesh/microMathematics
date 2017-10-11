@@ -37,21 +37,19 @@ import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputConnectionWrapper;
 import android.widget.Toast;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.ClipboardManager;
 
 public class CustomEditText extends AppCompatEditText implements OnLongClickListener, OnFocusChangeListener
 {
     private AppCompatActivity activity = null;
     private TextChangeIf textChangeIf = null;
-    private FocusChangeIf focusChangeIf = null;
     private TextWatcher textWatcher = new EditTextWatcher();
     private boolean textWatcherActive = true;
 
     private boolean toBeDeleted = false;
     private boolean emptyEnabled = false;
     private boolean intervalEnabled = false;
-    private boolean complexEnabled = true;
     private boolean comparatorEnabled = false;
     private boolean textFragment = false;
     private boolean equationName = false;
@@ -94,7 +92,6 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CustomViewExtension, 0, 0);
             emptyEnabled = a.getBoolean(R.styleable.CustomViewExtension_emptyEnabled, false);
             intervalEnabled = a.getBoolean(R.styleable.CustomViewExtension_intervalEnabled, false);
-            complexEnabled = a.getBoolean(R.styleable.CustomViewExtension_complexEnabled, true);
             comparatorEnabled = a.getBoolean(R.styleable.CustomViewExtension_comparatorEnabled, false);
             textFragment = a.getBoolean(R.styleable.CustomViewExtension_textFragment, false);
             equationName = a.getBoolean(R.styleable.CustomViewExtension_equationName, false);
@@ -131,11 +128,6 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     public boolean isIntervalEnabled()
     {
         return intervalEnabled;
-    }
-
-    public boolean isComplexEnabled()
-    {
-        return complexEnabled;
     }
 
     public boolean isComparatorEnabled()
@@ -184,10 +176,10 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
                 && !isCalculatedValue();
     }
 
-    public void updateTextSize(ScaledDimensions dimen, int termDepth, ScaledDimensions.Type paddingType)
+    public void updateTextSize(ScaledDimensions dimen, int termDepth)
     {
         setTextSize(TypedValue.COMPLEX_UNIT_PX, dimen.getTextSize(termDepth));
-        final int p = dimen.get(paddingType);
+        final int p = dimen.get(ScaledDimensions.Type.HOR_TEXT_PADDING);
         setPadding(p, 0, p, 0);
         updateMinimumWidth(dimen);
     }
@@ -224,10 +216,9 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     /**
      * Set the text watcher interface
      */
-    public void setChangeIf(TextChangeIf textChangeIf, FocusChangeIf focusChangeIf)
+    public void setTextChangeIf(TextChangeIf textChangeIf)
     {
         this.textChangeIf = textChangeIf;
-        this.focusChangeIf = focusChangeIf;
         setTextWatcher(true);
     }
 
@@ -421,15 +412,15 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         {
             return;
         }
-        if (hasFocus && focusChangeIf != null)
+        if (hasFocus && textChangeIf != null)
         {
-            setNextFocusDownId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_DOWN));
-            setNextFocusLeftId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_LEFT));
-            setNextFocusRightId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_RIGHT));
-            setNextFocusUpId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_UP));
+            setNextFocusDownId(textChangeIf.onGetNextFocusId(this, TextChangeIf.NextFocusType.FOCUS_DOWN));
+            setNextFocusLeftId(textChangeIf.onGetNextFocusId(this, TextChangeIf.NextFocusType.FOCUS_LEFT));
+            setNextFocusRightId(textChangeIf.onGetNextFocusId(this, TextChangeIf.NextFocusType.FOCUS_RIGHT));
+            setNextFocusUpId(textChangeIf.onGetNextFocusId(this, TextChangeIf.NextFocusType.FOCUS_UP));
             if (Build.VERSION.SDK_INT >= 11)
             {
-                setNextFocusForwardId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_RIGHT));
+                setNextFocusForwardId(textChangeIf.onGetNextFocusId(this, TextChangeIf.NextFocusType.FOCUS_RIGHT));
             }
         }
         if (formulaChangeIf != null)
@@ -471,7 +462,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         if (isTextFragment() && id == android.R.id.selectAll)
         {
             this.selectAll();
-            // null for input view means that we will start ActionMode without owner:
+            // null for input view means that we will start ActionMode without owner: 
             // the root formula will be selected instead of owner term
             this.onLongClick(null);
             return true;

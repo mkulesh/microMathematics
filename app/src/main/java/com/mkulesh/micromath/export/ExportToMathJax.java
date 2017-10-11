@@ -24,6 +24,7 @@ import android.graphics.Canvas;
 import android.net.Uri;
 import android.view.View;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.fman.AdapterIf;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.Equation;
@@ -32,7 +33,6 @@ import com.mkulesh.micromath.formula.FormulaListView;
 import com.mkulesh.micromath.formula.FormulaResult;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TextFragment;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.io.OutputStream;

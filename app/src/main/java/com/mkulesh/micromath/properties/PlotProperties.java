@@ -23,8 +23,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.DisplayMetrics;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.formula.FormulaList;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -37,11 +37,6 @@ public class PlotProperties implements Parcelable
     public static final String XML_PROP_WIDTH = "width";
     public static final String XML_PROP_HEIGHT = "height";
     public static final String XML_PROP_AXES_STYLE = "axes_style";
-    public static final String XML_PROP_MESH_LINES = "meshLines";
-    public static final String XML_PROP_MESH_FILL = "meshFill";
-    public static final String XML_PROP_MESH_OPACITY = "meshOpacity";
-    public static final String XML_PROP_ROTATION = "rotation";
-    public static final String XML_PROP_ELEVATION = "elevation";
 
     public enum AxesStyle
     {
@@ -50,27 +45,10 @@ public class PlotProperties implements Parcelable
         NONE
     }
 
-    public enum TwoDPlotStyle
-    {
-        CONTOUR,
-        SURFACE
-    }
-
-    // attributes that are not stored within the state and XML
     private DisplayMetrics displayMetrics = null;
-    public TwoDPlotStyle twoDPlotStyle = TwoDPlotStyle.CONTOUR;
-
-    // state- and XML-related attributes
     public int width = 300;
     public int height = 300;
     public AxesStyle axesStyle = AxesStyle.BOXED;
-
-    // state- and XML-related attributes for surface plot
-    public boolean meshLines = false;
-    public boolean meshFill = false;
-    public int meshOpacity = 150;
-    public int rotation = 35;
-    public int elevation = 20;
 
     /**
      * Parcelable interface
@@ -93,11 +71,6 @@ public class PlotProperties implements Parcelable
         dest.writeInt(width);
         dest.writeInt(height);
         dest.writeString(axesStyle.toString());
-        dest.writeString(String.valueOf(meshLines));
-        dest.writeString(String.valueOf(meshFill));
-        dest.writeInt(meshOpacity);
-        dest.writeInt(rotation);
-        dest.writeInt(elevation);
     }
 
     public void readFromParcel(Parcel in)
@@ -105,11 +78,6 @@ public class PlotProperties implements Parcelable
         width = in.readInt();
         height = in.readInt();
         axesStyle = AxesStyle.valueOf(in.readString());
-        meshLines = Boolean.valueOf(in.readString());
-        meshFill = Boolean.valueOf(in.readString());
-        meshOpacity = in.readInt();
-        rotation = in.readInt();
-        elevation = in.readInt();
     }
 
     public static final Parcelable.Creator<PlotProperties> CREATOR = new Parcelable.Creator<PlotProperties>()
@@ -138,11 +106,6 @@ public class PlotProperties implements Parcelable
         width = a.width;
         height = a.height;
         axesStyle = a.axesStyle;
-        meshLines = a.meshLines;
-        meshFill = a.meshFill;
-        meshOpacity = a.meshOpacity;
-        rotation = a.rotation;
-        elevation = a.elevation;
     }
 
     public void initialize(Context context)
@@ -179,31 +142,6 @@ public class PlotProperties implements Parcelable
                 // nothing to do
             }
         }
-        attr = parser.getAttributeValue(null, XML_PROP_MESH_LINES);
-        if (attr != null)
-        {
-            meshLines = Boolean.valueOf(attr);
-        }
-        attr = parser.getAttributeValue(null, XML_PROP_MESH_FILL);
-        if (attr != null)
-        {
-            meshFill = Boolean.valueOf(attr);
-        }
-        attr = parser.getAttributeValue(null, XML_PROP_MESH_OPACITY);
-        if (attr != null)
-        {
-            meshOpacity = Integer.parseInt(attr);
-        }
-        attr = parser.getAttributeValue(null, XML_PROP_ROTATION);
-        if (attr != null)
-        {
-            rotation = Integer.parseInt(attr);
-        }
-        attr = parser.getAttributeValue(null, XML_PROP_ELEVATION);
-        if (attr != null)
-        {
-            elevation = Integer.parseInt(attr);
-        }
     }
 
     public void writeToXml(XmlSerializer serializer) throws Exception
@@ -213,14 +151,6 @@ public class PlotProperties implements Parcelable
         serializer.attribute(FormulaList.XML_NS, XML_PROP_HEIGHT,
                 String.valueOf(ViewUtils.pxToDp(displayMetrics, height)));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_AXES_STYLE, axesStyle.toString().toLowerCase(Locale.ENGLISH));
-        if (twoDPlotStyle == TwoDPlotStyle.SURFACE)
-        {
-            serializer.attribute(FormulaList.XML_NS, XML_PROP_MESH_LINES, String.valueOf(meshLines));
-            serializer.attribute(FormulaList.XML_NS, XML_PROP_MESH_FILL, String.valueOf(meshFill));
-            serializer.attribute(FormulaList.XML_NS, XML_PROP_MESH_OPACITY, String.valueOf(meshOpacity));
-            serializer.attribute(FormulaList.XML_NS, XML_PROP_ROTATION, String.valueOf(rotation));
-            serializer.attribute(FormulaList.XML_NS, XML_PROP_ELEVATION, String.valueOf(elevation));
-        }
     }
 
     public boolean isCrossedAxes()

@@ -78,12 +78,6 @@
 
                 <ImageButton
                     style="@style/DialogButtonStyle"
-                    android:id="@+id/dialog_button_new_contour_plot"
-                    android:contentDescription="@string/math_new_contour_plot"
-                    android:src="@drawable/p_plot_contour" />
-                
-                <ImageButton
-                    style="@style/DialogButtonStyle"
                     android:id="@+id/dialog_button_new_text_fragment"
                     android:contentDescription="@string/math_new_text_fragment"
                     android:src="@drawable/p_text_fragment" />

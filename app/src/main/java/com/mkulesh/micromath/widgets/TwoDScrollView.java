@@ -44,7 +44,7 @@ import android.widget.LinearLayout;
 import android.widget.Scroller;
 import android.widget.TextView;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 
 import java.util.List;
 

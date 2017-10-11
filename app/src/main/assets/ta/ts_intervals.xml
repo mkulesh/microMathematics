@@ -28,7 +28,7 @@
         <term key="rightTerm" text="begin" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="begin" />
       <term key="rightTerm" />
     </result>
@@ -46,7 +46,7 @@
         </term>
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="result" />
       <term key="rightTerm" />
     </result>
@@ -54,7 +54,7 @@
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" text="Nan" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" />
     </result>
@@ -62,7 +62,7 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" text="begin" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
@@ -76,7 +76,7 @@
         <term key="rightTerm" text="begin" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="begin" />
       <term key="rightTerm" />
     </result>
@@ -90,7 +90,7 @@
         <term key="maxValue" text="1000" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="result" />
       <term key="rightTerm" />
     </result>
@@ -98,7 +98,7 @@
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" text="Nan" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" />
     </result>
@@ -106,7 +106,7 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" text="begin" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
@@ -120,7 +120,7 @@
         <term key="rightTerm" text="begin" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="begin" />
       <term key="rightTerm" />
     </result>
@@ -132,7 +132,7 @@
         <term key="maxValue" text="10" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="result" />
       <term key="rightTerm" />
     </result>
@@ -140,7 +140,7 @@
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" text="Nan" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" />
     </result>
@@ -148,7 +148,7 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" text="begin" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
@@ -162,7 +162,7 @@
         <term key="rightTerm" text="begin" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="begin" />
       <term key="rightTerm" />
     </result>
@@ -176,11 +176,11 @@
     </equation>
     <equation>
       <term key="leftTerm" text="result" />
-      <term key="rightTerm" code="content:com.mkulesh.micromath.index.x">
+      <term key="rightTerm" code="content:com.mkulesh.micromath.link.x">
         <term key="argTerm" text="1" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="result" />
       <term key="rightTerm" />
     </result>
@@ -188,7 +188,7 @@
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" text="Nan" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" />
     </result>
@@ -196,7 +196,7 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" text="begin" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
@@ -210,7 +210,7 @@
         <term key="rightTerm" text="begin" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="begin" />
       <term key="rightTerm" />
     </result>
@@ -223,12 +223,12 @@
     <equation>
       <term key="leftTerm" text="result" />
       <term key="rightTerm" code="content:com.mkulesh.micromath.link.f">
-        <term key="argTerm" code="content:com.mkulesh.micromath.index.x">
+        <term key="argTerm" code="content:com.mkulesh.micromath.link.x">
           <term key="argTerm" text="2" />
         </term>
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="result" />
       <term key="rightTerm" />
     </result>
@@ -236,7 +236,7 @@
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" text="Nan" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" />
     </result>
@@ -244,7 +244,7 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" text="begin" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
@@ -258,7 +258,7 @@
         <term key="rightTerm" text="begin" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="begin" />
       <term key="rightTerm" />
     </result>
@@ -270,17 +270,17 @@
         <term key="maxValue" text="10" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="y" />
       <term key="rightTerm" />
     </result>
     <equation>
       <term key="leftTerm" text="result" />
-      <term key="rightTerm" code="content:com.mkulesh.micromath.index.y">
+      <term key="rightTerm" code="content:com.mkulesh.micromath.link.y">
         <term key="argTerm" text="5" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="result" />
       <term key="rightTerm" />
     </result>
@@ -288,7 +288,7 @@
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" text="6" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" />
     </result>
@@ -301,7 +301,7 @@
         </term>
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="Δ" />
       <term key="rightTerm" />
     </result>
@@ -316,7 +316,7 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" text="begin" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
@@ -330,7 +330,7 @@
         <term key="rightTerm" text="begin" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="begin" />
       <term key="rightTerm" />
     </result>
@@ -344,12 +344,12 @@
     <equation>
       <term key="leftTerm" text="result" />
       <term key="rightTerm" code="content:com.mkulesh.micromath.link.f">
-        <term key="argTerm" code="content:com.mkulesh.micromath.index.y">
+        <term key="argTerm" code="content:com.mkulesh.micromath.link.y">
           <term key="argTerm" text="5" />
         </term>
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="result" />
       <term key="rightTerm" />
     </result>
@@ -357,7 +357,7 @@
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" text="36" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" />
     </result>
@@ -370,7 +370,7 @@
         </term>
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="Δ" />
       <term key="rightTerm" />
     </result>
@@ -385,7 +385,7 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" text="begin" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
@@ -399,7 +399,7 @@
         <term key="rightTerm" text="begin" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="begin" />
       <term key="rightTerm" />
     </result>
@@ -446,7 +446,7 @@
         <term key="maxValue" text="y2" />
       </term>
     </equation>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result>
       <term key="leftTerm" text="y" />
       <term key="rightTerm" />
     </result>
@@ -477,11 +477,11 @@
     </plot_function>
     <equation>
       <term key="leftTerm" text="result" />
-      <term key="rightTerm" code="content:com.mkulesh.micromath.index.y">
+      <term key="rightTerm" code="content:com.mkulesh.micromath.link.y">
         <term key="argTerm" text="0" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="result" />
       <term key="rightTerm" />
     </result>
@@ -489,7 +489,7 @@
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" text="y1" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" />
     </result>
@@ -502,7 +502,7 @@
         </term>
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="Δ" />
       <term key="rightTerm" />
     </result>
@@ -517,7 +517,7 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" text="begin" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
@@ -531,17 +531,17 @@
         <term key="rightTerm" text="begin" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="begin" />
       <term key="rightTerm" />
     </result>
     <equation>
       <term key="leftTerm" text="result" />
-      <term key="rightTerm" code="content:com.mkulesh.micromath.index.y">
+      <term key="rightTerm" code="content:com.mkulesh.micromath.link.y">
         <term key="argTerm" text="M" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="result" />
       <term key="rightTerm" />
     </result>
@@ -549,7 +549,7 @@
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" text="y2" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" />
     </result>
@@ -562,7 +562,7 @@
         </term>
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="Δ" />
       <term key="rightTerm" />
     </result>
@@ -577,7 +577,7 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" text="begin" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
@@ -591,20 +591,20 @@
         <term key="rightTerm" text="begin" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="begin" />
       <term key="rightTerm" />
     </result>
     <equation>
       <term key="leftTerm" text="result" />
-      <term key="rightTerm" code="content:com.mkulesh.micromath.index.y">
+      <term key="rightTerm" code="content:com.mkulesh.micromath.link.y">
         <term key="argTerm" code="plus">
           <term key="leftTerm" text="M" />
           <term key="rightTerm" text="1" />
         </term>
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="result" />
       <term key="rightTerm" />
     </result>
@@ -612,7 +612,7 @@
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" text="Nan" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" />
     </result>
@@ -620,14 +620,14 @@
       <term key="leftTerm" text="end" />
       <term key="rightTerm" text="begin" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true">
       <term key="leftTerm" text="end" />
       <term key="rightTerm" />
     </result>
     <text_fragment>
       <term key="text" text="&#10;Overall error" />
     </text_fragment>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result>
       <term key="leftTerm" text="error" />
       <term key="rightTerm" />
     </result>

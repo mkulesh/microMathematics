@@ -26,7 +26,6 @@ import android.preference.Preference;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.AppLocale;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;

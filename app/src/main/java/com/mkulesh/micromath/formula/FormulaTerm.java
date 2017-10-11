@@ -22,14 +22,12 @@ import android.content.Context;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.ClipboardManager;
-import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
-import com.mkulesh.micromath.widgets.FocusChangeIf;
+import com.mkulesh.micromath.widgets.TextChangeIf;
 
-import java.util.ArrayList;
 import java.util.Locale;
 
 public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
@@ -39,10 +37,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     enum TermType
     {
         OPERATOR,
-        COMPARATOR,
         FUNCTION,
-        INTERVAL,
-        LOOP
+        INTERVAL
     }
 
     /*********************************************************
@@ -120,11 +116,11 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     }
 
     @Override
-    public int getNextFocusId(CustomEditText owner, FocusChangeIf.NextFocusType focusType)
+    public int getNextFocusId(CustomEditText owner, TextChangeIf.NextFocusType focusType)
     {
         if (formulaRoot != null
                 && owner != null
-                && (focusType == FocusChangeIf.NextFocusType.FOCUS_UP || focusType == FocusChangeIf.NextFocusType.FOCUS_DOWN))
+                && (focusType == TextChangeIf.NextFocusType.FOCUS_UP || focusType == TextChangeIf.NextFocusType.FOCUS_DOWN))
         {
             return formulaRoot.getNextFocusId(owner, focusType);
         }
@@ -142,11 +138,6 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             return t1.toString().toLowerCase(Locale.ENGLISH);
         }
-        FormulaTermComparator.ComparatorType t2 = FormulaTermComparator.getComparatorType(contex, code);
-        if (t2 != null)
-        {
-            return t2.toString().toLowerCase(Locale.ENGLISH);
-        }
         FormulaTermFunction.FunctionType t3 = FormulaTermFunction.getFunctionType(contex, code);
         if (t3 != null && enableFunction)
         {
@@ -156,11 +147,6 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         if (t4 != null)
         {
             return t4.toString().toLowerCase(Locale.ENGLISH);
-        }
-        FormulaTermLoop.LoopType t5 = FormulaTermLoop.getLoopType(contex, code);
-        if (t5 != null)
-        {
-            return t5.toString().toLowerCase(Locale.ENGLISH);
         }
         return null;
     }
@@ -172,14 +158,10 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
         case OPERATOR:
             return new FormulaTermOperator(termField, layout, s, textIndex);
-        case COMPARATOR:
-            return new FormulaTermComparator(termField, layout, s, textIndex);
         case FUNCTION:
             return new FormulaTermFunction(termField, layout, s, textIndex);
         case INTERVAL:
             return new FormulaTermInterval(termField, layout, s, textIndex);
-        case LOOP:
-            return new FormulaTermLoop(termField, layout, s, textIndex);
         }
         return null;
     }
@@ -194,18 +176,6 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             // for an operator, we add operator code to the end of line in order to move
             // existing text in the first term
             newValue = contex.getResources().getString(t1.getSymbolId());
-            if (prevText != null)
-            {
-                newValue = prevText + newValue;
-            }
-        }
-        // comparator
-        final FormulaTermComparator.ComparatorType t2 = FormulaTermComparator.getComparatorType(contex, code);
-        if (newValue == null && t2 != null)
-        {
-            // for a comparator, we add operator code to the end of line in order to move
-            // existing text in the first term
-            newValue = contex.getResources().getString(t2.getSymbolId());
             if (prevText != null)
             {
                 newValue = prevText + newValue;
@@ -235,18 +205,6 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             // for an interval, we add operator code at the beginning of line in order to move
             // existing text in the function argument term
             newValue = contex.getResources().getString(t4.getSymbolId());
-            if (prevText != null)
-            {
-                newValue += prevText;
-            }
-        }
-        // loop
-        final FormulaTermLoop.LoopType t5 = FormulaTermLoop.getLoopType(contex, code);
-        if (newValue == null && t5 != null)
-        {
-            // for a loop, we add operator code at the beginning of line in order to move
-            // existing text in the function argument term
-            newValue = contex.getResources().getString(t5.getSymbolId());
             if (prevText != null)
             {
                 newValue += prevText;
@@ -329,154 +287,5 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                 initializeLayout((LinearLayout) v);
             }
         }
-    }
-
-    /**
-     * Procedure adds new argument layout for this function
-     */
-    protected TermField addArgument(TermField startField, int argLayoutId, int addDepth)
-    {
-        // target layout where terms will be added
-        View expandable = startField.getLayout();
-        if (expandable == null)
-        {
-            return null;
-        }
-        LinearLayout expandableLayout = (LinearLayout) expandable;
-
-        // view index of the field within the target layout and within the terms vector
-        int viewIndex = -1;
-        if (startField.isTerm())
-        {
-            ArrayList<View> list = new ArrayList<View>();
-            startField.getTerm().collectElemets(expandableLayout, list);
-            for (View l : list)
-            {
-                viewIndex = Math.max(viewIndex, ViewUtils.getViewIndex(expandableLayout, l));
-            }
-        }
-        else
-        {
-            viewIndex = ViewUtils.getViewIndex(expandableLayout, startField.getEditText());
-        }
-        int termIndex = terms.indexOf(startField);
-        if (viewIndex < 0 || termIndex < 0)
-        {
-            return null;
-        }
-
-        // collect terms to be added
-        ArrayList<View> newTerms = new ArrayList<View>();
-        inflateElements(newTerms, argLayoutId, true);
-        TermField newArg = null;
-        for (View t : newTerms)
-        {
-            if (t instanceof CustomTextView)
-            {
-                ((CustomTextView) t).prepare(CustomTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList()
-                        .getActivity(), this);
-            }
-            else if (t instanceof CustomEditText)
-            {
-                newArg = addTerm(getFormulaRoot(), expandableLayout, ++termIndex, (CustomEditText) t, this, addDepth);
-                newArg.bracketsType = TermField.BracketsType.NEVER;
-            }
-            expandableLayout.addView(t, ++viewIndex);
-        }
-        reIndexTerms();
-        return newArg;
-    }
-
-    /**
-     * Procedure deletes argument layout for given term and returns the previous term
-     */
-    protected TermField deleteArgument(TermField owner, String sep, boolean storeUndoState)
-    {
-        // target layout where terms will be deleted
-        View expandable = owner.getLayout();
-        if (expandable == null)
-        {
-            return null;
-        }
-        LinearLayout expandableLayout = (LinearLayout) expandable;
-
-        // view index of the field within the parent layout
-        int startIndex = ViewUtils.getViewIndex(expandableLayout, owner.getEditText());
-        if (startIndex < 0)
-        {
-            return null;
-        }
-
-        // how much views shall be deleted:
-        int count = 1;
-        {
-            final String termKey = getContext().getResources().getString(R.string.formula_arg_term_key);
-            final boolean firstTerm = owner.getTermKey().equals(termKey + String.valueOf(1));
-            if (firstTerm && startIndex + 1 < expandableLayout.getChildCount()
-                    && expandableLayout.getChildAt(startIndex + 1) instanceof CustomTextView)
-            {
-                final CustomTextView next = ((CustomTextView) expandableLayout.getChildAt(startIndex + 1));
-                if (next.getText().toString().equals(sep))
-                {
-                    count++;
-                }
-            }
-            else if (!firstTerm && startIndex >= 1
-                    && expandableLayout.getChildAt(startIndex - 1) instanceof CustomTextView)
-            {
-                final CustomTextView prev = ((CustomTextView) expandableLayout.getChildAt(startIndex - 1));
-                if (prev.getText().toString().equals(sep))
-                {
-                    startIndex--;
-                    count++;
-                }
-            }
-        }
-
-        if (storeUndoState && parentField != null)
-        {
-            getFormulaList().getUndoState().addEntry(parentField.getState());
-        }
-        int prevIndex = terms.indexOf(owner);
-        prevIndex--;
-        terms.remove(owner);
-        expandableLayout.removeViews(startIndex, count);
-        reIndexTerms();
-
-        return (prevIndex >= 0) ? terms.get(prevIndex) : null;
-    }
-
-    /**
-     * Procedure performs re-index of terms
-     */
-    private void reIndexTerms()
-    {
-        if (terms.size() == 1)
-        {
-            terms.get(0).setTermKey(getContext().getResources().getString(R.string.formula_arg_term_key));
-        }
-        else
-        {
-            int i = 1;
-            for (TermField t : terms)
-            {
-                t.setTermKey(getContext().getResources().getString(R.string.formula_arg_term_key) + String.valueOf(i++));
-            }
-        }
-    }
-
-    /**
-     * Check whether this term depends on given equation
-     */
-    public boolean dependsOn(Equation e)
-    {
-        for (TermField t : terms)
-        {
-            if (t.dependsOn(e))
-            {
-                return true;
-            }
-        }
-        return false;
     }
 }

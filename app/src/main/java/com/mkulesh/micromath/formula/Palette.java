@@ -30,11 +30,10 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
-import com.mkulesh.micromath.widgets.FocusChangeIf;
 import com.mkulesh.micromath.widgets.ListChangeIf;
 import com.mkulesh.micromath.widgets.TextChangeIf;
 
@@ -44,16 +43,14 @@ import java.util.Locale;
 /*********************************************************
  * This class implements symbol palette
  *********************************************************/
-public class Palette implements OnClickListener, OnLongClickListener, TextChangeIf, FocusChangeIf
+public class Palette implements OnClickListener, OnLongClickListener, TextChangeIf
 {
     static final int NO_BUTTON = -1;
 
     public enum PaletteType
     {
-        NEW_TERM,
         UPDATE_INTERVAL,
-        UPDATE_TERM,
-        COMPARATORS
+        UPDATE_TERM
     }
 
     private class PaletteImageButton extends AppCompatImageButton
@@ -132,7 +129,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         this.paletteLayout = paletteLayout;
 
         hiddenInput = (CustomEditText) paletteLayout.findViewById(R.id.hidden_edit_text);
-        hiddenInput.setChangeIf(this, this);
+        hiddenInput.setTextChangeIf(this);
         hiddenInput.setVisibility(View.GONE);
         hiddenInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
@@ -152,7 +149,6 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
                 paletteLayout.addView(p);
                 if (t == FormulaBase.BaseType.TERM)
                 {
-                    paletteBlock.get(PaletteType.NEW_TERM.ordinal()).add(p);
                     paletteBlock.get(PaletteType.UPDATE_TERM.ordinal()).add(p);
                 }
             }
@@ -182,18 +178,6 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
                 paletteBlock.get(PaletteType.UPDATE_TERM.ordinal()).add(p);
             }
         }
-        // loop operators
-        for (int i = 0; i < FormulaTermLoop.LoopType.values().length; i++)
-        {
-            final FormulaTermLoop.LoopType t = FormulaTermLoop.LoopType.values()[i];
-            if (t.getImageId() != NO_BUTTON)
-            {
-                PaletteImageButton p = new PaletteImageButton(context, t.getImageId(), t.getDescriptionId(), t
-                        .toString().toLowerCase(Locale.ENGLISH));
-                paletteLayout.addView(p);
-                paletteBlock.get(PaletteType.UPDATE_TERM.ordinal()).add(p);
-            }
-        }
         // functions
         for (int i = 0; i < FormulaTermFunction.FunctionType.values().length; i++)
         {
@@ -206,19 +190,6 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
                 paletteBlock.get(PaletteType.UPDATE_TERM.ordinal()).add(p);
             }
         }
-        // comparators
-        for (int i = 0; i < FormulaTermComparator.ComparatorType.values().length; i++)
-        {
-            final FormulaTermComparator.ComparatorType t = FormulaTermComparator.ComparatorType.values()[i];
-            if (t.getImageId() != NO_BUTTON)
-            {
-                PaletteImageButton p = new PaletteImageButton(context, t.getImageId(), t.getDescriptionId(), t
-                        .toString().toLowerCase(Locale.ENGLISH));
-                paletteLayout.addView(p);
-                paletteBlock.get(PaletteType.COMPARATORS.ordinal()).add(p);
-            }
-        }
-
         // prepare all buttons
         for (int i = 0; i < paletteLayout.getChildCount(); i++)
         {
@@ -337,9 +308,8 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             return;
         }
 
-        final String termSep = context.getResources().getString(R.string.formula_term_separator);
-        final String code = (termSep.equals(s)) ? FormulaBase.BaseType.TERM.toString() : FormulaTerm.getOperatorCode(
-                context, s, FormulaTermFunction.isConversionEnabled(context, s));
+        final String code = FormulaTerm
+                .getOperatorCode(context, s, FormulaTermFunction.isConversionEnabled(context, s));
         if (code == null)
         {
             return;
@@ -374,7 +344,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
     }
 
     @Override
-    public int onGetNextFocusId(CustomEditText owner, FocusChangeIf.NextFocusType focusType)
+    public int onGetNextFocusId(CustomEditText owner, NextFocusType focusType)
     {
         return R.id.main_list_view;
     }

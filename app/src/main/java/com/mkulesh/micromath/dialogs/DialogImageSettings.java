@@ -27,11 +27,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.fman.AdapterIf;
 import com.mkulesh.micromath.fman.Commander;
 import com.mkulesh.micromath.fman.FileType;
 import com.mkulesh.micromath.fman.FileUtils;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.ImageProperties;
 import com.mkulesh.micromath.properties.ImagePropertiesChangeIf;
 import com.mkulesh.micromath.utils.ViewUtils;

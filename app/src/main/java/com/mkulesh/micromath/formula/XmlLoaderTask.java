@@ -22,8 +22,8 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.util.Xml;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.fman.FileUtils;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.TextProperties;
 import com.mkulesh.micromath.utils.SynchronizedBoolean;
 import com.mkulesh.micromath.utils.ViewUtils;

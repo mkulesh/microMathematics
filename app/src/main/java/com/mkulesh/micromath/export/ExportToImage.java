@@ -24,8 +24,8 @@ import android.graphics.Canvas;
 import android.net.Uri;
 import android.widget.LinearLayout;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.formula.FormulaListView;
-import com.mkulesh.micromath.plus.R;
 
 import java.io.OutputStream;
 

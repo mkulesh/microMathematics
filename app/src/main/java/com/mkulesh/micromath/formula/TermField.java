@@ -26,28 +26,24 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.FormulaBase.FocusType;
 import com.mkulesh.micromath.formula.Palette.PaletteType;
-import com.mkulesh.micromath.math.CalculatedValue;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.IdGenerator;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomLayout;
-import com.mkulesh.micromath.widgets.FocusChangeIf;
-import com.mkulesh.micromath.widgets.ScaledDimensions;
 import com.mkulesh.micromath.widgets.TextChangeIf;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
-public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
+public class TermField implements TextChangeIf, CalculatableIf
 {
     /*
      * Constants used to save/restore the instance state.
@@ -142,7 +138,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         termKey = text.getText().toString();
         this.text = text;
         this.text.setText("");
-        this.text.setChangeIf(this, this);
+        this.text.setTextChangeIf(this);
         this.text.setId(IdGenerator.generateId());
         updateViewColor();
     }
@@ -188,7 +184,8 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             return contentType;
         }
         contentType = ContentType.INVALID;
-        parser.setText(this, formulaRoot, text);
+        parser.ensureEquationName = text.isEquationName();
+        parser.setText(formulaRoot, getText());
         if (text.isEquationName())
         {
             // in this mode, only a name is allowed and shall be unique
@@ -204,7 +201,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             {
                 contentType = ContentType.NUMBER;
             }
-            else if (parser.getArgumentHolder() != null && parser.getArgumentIndex() != ViewUtils.INVALID_INDEX)
+            else if (parser.getArgumentIndex() >= 0)
             {
                 contentType = ContentType.ARGUMENT;
             }
@@ -238,7 +235,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     /**
      * Procedure calculates recursively the formula value
      */
-    public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
+    public double getValue(CalculaterTask thread) throws CancelException
     {
         if (thread != null)
         {
@@ -246,64 +243,28 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         }
         if (isTerm())
         {
-            return term.getValue(thread, outValue);
+            return term.getValue(thread);
         }
         else
         {
             switch (contentType)
             {
             case NUMBER:
-                return outValue.assign(parser.getValue());
+                return parser.getSign() * parser.getValue();
             case ARGUMENT:
-                outValue.assign(parser.getArgumentHolder().getArgumentValue(parser.getArgumentIndex()));
-                return outValue.multiply(parser.getSign());
+                if (formulaRoot instanceof Equation)
+                {
+                    return parser.getSign() * ((Equation) formulaRoot).getArgument();
+                }
+                break;
             case VARIABLE_LINK:
-                if (linkedVariable.isInterval())
-                {
-                    outValue.assign(linkedVariable.getArgumentValue(0));
-                }
-                else
-                {
-                    linkedVariable.getValue(thread, outValue);
-                }
-                return outValue.multiply(parser.getSign());
+                return parser.getSign()
+                        * (linkedVariable.isInterval() ? linkedVariable.getArgument() : linkedVariable.getValue(thread));
             default:
-                return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
+                break;
             }
         }
-    }
-
-    /**
-     * Procedure checks whether this term holds a differentiable equation with respect to given variable name
-     */
-    public DifferentiableType isDifferentiable(String var)
-    {
-        if (isTerm())
-        {
-            return term.isDifferentiable(var);
-        }
-        if (contentType == ContentType.ARGUMENT && parser.isArgumentInHolder(var))
-        {
-            return DifferentiableType.ANALYTICAL;
-        }
-        return DifferentiableType.INDEPENDENT;
-    }
-
-    /**
-     * Procedure calculates recursively the derivative value
-     */
-    public CalculatedValue.ValueType getDerivativeValue(String var, CalculaterTask thread, CalculatedValue outValue)
-            throws CancelException
-    {
-        if (isTerm())
-        {
-            return term.getDerivativeValue(var, thread, outValue);
-        }
-        if (contentType == ContentType.ARGUMENT && parser.isArgumentInHolder(var))
-        {
-            return outValue.setValue(parser.getSign());
-        }
-        return outValue.setValue(0.0);
+        return Double.NaN;
     }
 
     /**
@@ -351,8 +312,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         }
         else
         {
-            text.updateTextSize(formulaRoot.getFormulaList().getDimen(), termDepth,
-                    ScaledDimensions.Type.HOR_TEXT_PADDING);
+            text.updateTextSize(formulaRoot.getFormulaList().getDimen(), termDepth);
         }
     }
 
@@ -380,21 +340,13 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     {
         if (isManualInput)
         {
-            if (text.isNewTermEnabled())
-            {
-                formulaRoot.getFormulaList().getUndoState().addEntry(parentFormula.getState());
-            }
-            else
-            {
-                formulaRoot.getFormulaList().getUndoState().addEntry(getState());
-            }
+            formulaRoot.getFormulaList().getUndoState().addEntry(getState());
         }
     }
 
     @Override
     public void onTextChanged(String s, boolean isManualInput)
     {
-        boolean converted = false;
         final boolean isEmpty = (s == null || s.length() == 0);
         if (textChangeDetectionEnabled)
         {
@@ -405,15 +357,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             term = convertToTerm(s, null, FormulaTermFunction.isConversionEnabled(getContext(), s));
             if (term != null)
             {
-                converted = true;
                 requestFocus();
-            }
-        }
-        if (!isEmpty && !converted && text.isNewTermEnabled())
-        {
-            if (parentFormula.onNewTerm(this, s, true))
-            {
-                return;
             }
         }
         if (!isTerm())
@@ -434,7 +378,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     }
 
     @Override
-    public int onGetNextFocusId(CustomEditText owner, FocusChangeIf.NextFocusType focusType)
+    public int onGetNextFocusId(CustomEditText owner, TextChangeIf.NextFocusType focusType)
     {
         return parentFormula.getNextFocusId(text, focusType);
     }
@@ -563,14 +507,6 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     public Context getContext()
     {
         return formulaRoot.getFormulaList().getContext();
-    }
-
-    /**
-     * Procedure returns the parent layout
-     */
-    public LinearLayout getLayout()
-    {
-        return layout;
     }
 
     /**
@@ -831,10 +767,6 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         {
             term = convertToTerm(FormulaTerm.TermType.OPERATOR, s);
         }
-        else if (text.isComparatorEnabled() && FormulaTermComparator.isComparator(getContext(), s))
-        {
-            term = convertToTerm(FormulaTerm.TermType.COMPARATOR, s);
-        }
         else if (enableFunction && FormulaTermFunction.isFunction(getContext(), s))
         {
             term = convertToTerm(FormulaTerm.TermType.FUNCTION, s);
@@ -842,10 +774,6 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         else if (text.isIntervalEnabled() && FormulaTermInterval.isInterval(getContext(), s))
         {
             term = convertToTerm(FormulaTerm.TermType.INTERVAL, s);
-        }
-        else if (FormulaTermLoop.isLoop(getContext(), s))
-        {
-            term = convertToTerm(FormulaTerm.TermType.LOOP, s);
         }
         repairTermDepth(true);
         if (isTerm())
@@ -864,38 +792,12 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
      */
     public void addOperatorCode(String code)
     {
-        if (FormulaBase.BaseType.TERM.toString().equals(code.toUpperCase(Locale.ENGLISH)))
-        {
-            code = getContext().getResources().getString(R.string.formula_term_separator);
-        }
-        if (text.isNewTermEnabled())
-        {
-            formulaRoot.getFormulaList().getUndoState().addEntry(parentFormula.getState());
-            if (parentFormula.onNewTerm(this, code, true))
-            {
-                return;
-            }
-        }
-
         if (FormulaTerm.getOperatorCode(getContext(), code, true) == null)
         {
             return;
         }
 
         formulaRoot.getFormulaList().getUndoState().addEntry(getState());
-
-        // comparator change
-        FormulaTermComparator.ComparatorType t2 = FormulaTermComparator.getComparatorType(getContext(), code);
-        if (isTerm() && t2 != null)
-        {
-            if (getTerm() instanceof FormulaTermComparator)
-            {
-                if (((FormulaTermComparator) getTerm()).changeComparatorType(t2))
-                {
-                    return;
-                }
-            }
-        }
 
         text.setRequestFocusEnabled(false);
         Bundle savedState = null;
@@ -1053,7 +955,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         updateViewColor();
     }
 
-    public void requestFocus()
+    private void requestFocus()
     {
         if (text.isRequestFocusEnabled())
         {
@@ -1069,67 +971,18 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
      */
     public boolean isEnabledInPalette(PaletteType pt)
     {
-        if (isTerm() && term instanceof FormulaTermInterval && pt != PaletteType.NEW_TERM)
+        if (isTerm() && term instanceof FormulaTermInterval)
         {
             return false;
         }
         switch (pt)
         {
-        case NEW_TERM:
-            return parentFormula.isNewTermEnabled() && text.isNewTermEnabled();
         case UPDATE_INTERVAL:
             return text.isIntervalEnabled();
         case UPDATE_TERM:
             return text.isConversionEnabled();
-        case COMPARATORS:
-            return text.isComparatorEnabled();
         }
         return false;
-    }
-
-    /**
-     * Check whether this term depends on given equation
-     */
-    public boolean dependsOn(Equation e)
-    {
-        if (isTerm())
-        {
-            return term.dependsOn(e);
-        }
-        else if (contentType == ContentType.VARIABLE_LINK && linkedVariable != null
-                && linkedVariable instanceof Equation)
-        {
-            return linkedVariable.getId() == e.getId();
-        }
-        return false;
-    }
-
-    /**
-     * Procedure search an owner argument holder that defines (holds) the given argument
-     */
-    public ArgumentHolderIf findArgumentHolder(String argumentName)
-    {
-        FormulaBase parent = getParentFormula();
-        while (parent != null)
-        {
-            if (parent instanceof ArgumentHolderIf)
-            {
-                ArgumentHolderIf argHolder = (ArgumentHolderIf) parent;
-                if (argHolder.getArgumentIndex(argumentName) != ViewUtils.INVALID_INDEX)
-                {
-                    return argHolder;
-                }
-            }
-            if (parent.getParentField() != null)
-            {
-                parent = parent.getParentField().getParentFormula();
-            }
-            else
-            {
-                break;
-            }
-        }
-        return null;
     }
 
     /**

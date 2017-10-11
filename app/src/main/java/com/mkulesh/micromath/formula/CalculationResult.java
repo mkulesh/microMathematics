@@ -23,9 +23,7 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
-import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plots.FunctionIf;
-import com.mkulesh.micromath.plots.views.PlotView;
 import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.ViewUtils;
 
@@ -133,18 +131,17 @@ public abstract class CalculationResult extends LinkHolder
         final boolean updateMax = fMax.isEmptyOrAutoContent();
         if (updateMin || updateMax)
         {
-            final CalculatedValue calcVal = new CalculatedValue();
             // inspect minimum value
-            calcVal.setValue(minMaxValues[FunctionIf.MIN]);
-            String strMin = calcVal.getResultDescription(getFormulaList().getDocumentSettings());
-            if (updateMin && calcVal.isNaN())
+            final double min = minMaxValues[FunctionIf.MIN];
+            String strMin = TermParser.doubleToString(min, getFormulaList().getDocumentSettings());
+            if (updateMin && TermParser.isInvalidReal(min))
             {
                 isValid = false;
             }
             // inspect maximum value
-            calcVal.setValue(minMaxValues[FunctionIf.MAX]);
-            String strMax = calcVal.getResultDescription(getFormulaList().getDocumentSettings());
-            if (updateMax && calcVal.isNaN())
+            final double max = minMaxValues[FunctionIf.MAX];
+            String strMax = TermParser.doubleToString(max, getFormulaList().getDocumentSettings());
+            if (updateMax && TermParser.isInvalidReal(max))
             {
                 isValid = false;
             }
@@ -184,27 +181,6 @@ public abstract class CalculationResult extends LinkHolder
                 minMaxValues[FunctionIf.MIN] = val - delta;
                 minMaxValues[FunctionIf.MAX] = val + delta;
             }
-        }
-    }
-
-    protected void updatePlotBoundaries(PlotView view, TermField xMinTerm, TermField xMaxTerm, TermField yMinTerm,
-                                        TermField yMaxTerm)
-    {
-        try
-        {
-            final CalculatedValue xMinVal = new CalculatedValue();
-            final CalculatedValue xMaxVal = new CalculatedValue();
-            final CalculatedValue yMinVal = new CalculatedValue();
-            final CalculatedValue yMaxVal = new CalculatedValue();
-            xMinVal.processRealTerm(null, xMinTerm);
-            xMaxVal.processRealTerm(null, xMaxTerm);
-            yMinVal.processRealTerm(null, yMinTerm);
-            yMaxVal.processRealTerm(null, yMaxTerm);
-            view.setArea(xMinVal.getReal(), xMaxVal.getReal(), yMinVal.getReal(), yMaxVal.getReal());
-        }
-        catch (CancelException e)
-        {
-            // nothing to do
         }
     }
 }

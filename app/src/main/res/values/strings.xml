@@ -2,9 +2,9 @@
 <resources>
 
     <!-- General settings -->
-    <string name="app_name">microMathematics Plus</string>
-    <string name="app_short_name">μMath+</string>
-    <string name="app_description">Extended visual calculator: live editing and computations of formulas</string>
+    <string name="app_name">microMathematics</string>
+    <string name="app_short_name">μMath</string>
+    <string name="app_description">Visual calculator: live editing and computations of mathematical formulas</string>
     
     <!-- Drawer -->
     <string name="drawer_open">Open navigation drawer</string>
@@ -13,48 +13,48 @@
         <item>How To Use</item>
         <item>Example</item>
         <item>Example</item>
-        <item>Example</item>
-        <item>Example</item>
         <item>About</item>
         <item>Documentation</item>
+        <item>Rate this app</item>
+        <item>Need more?</item>
     </string-array>
     <string-array name="activity_subtitles">
         <item>My Document</item>
         <item>App Description</item>
         <item>Function Plot</item>
         <item>Polar Function Plot</item>
-        <item>3D Plot</item>
-        <item>Series and Integrals</item>
-        <item>microMathematics Plus</item>
+        <item>microMathematics</item>
         <item>Download PDF</item>
-    </string-array>
+        <item></item>
+        <item>Buy Plus Version</item>
+     </string-array>
     <string-array name="activity_logos">
         <item>drawer_worksheet</item>
         <item>drawer_how_to_use</item>
         <item>drawer_function_plot</item>
         <item>drawer_polar_plot</item>
-        <item>drawer_three_d_plot</item>
-        <item>drawer_series_and_integrals</item>
         <item>drawer_about</item>
         <item>drawer_documentation</item>
+        <item>drawer_rating</item>
+        <item>drawer_buy_now</item>
     </string-array>
     <string-array name="activity_resources">
         <item></item>
         <item>asset:/doc_en/how_to_use.xml</item>
         <item>asset:/doc_en/function_plot.xml</item>
         <item>asset:/doc_en/polar_plot.xml</item>
-        <item>asset:/doc_en/three_d_plot.xml</item>
-        <item>asset:/doc_en/series_and_integrals.xml</item>
         <item>asset:/doc_en/about_micromath.xml</item>
-        <item>https://github.com/mkulesh/microMathematics/releases/download/v2.15.4/microMathematics-v2.15.4.pdf</item>
+        <item>https://drive.google.com/open?id=0Bwle6EObrO16ci1rOUNsZmdkSDg</item>
+        <item>https://play.google.com/store/apps/details?id=com.mkulesh.micromath</item>
+        <item>https://play.google.com/store/apps/details?id=com.mkulesh.micromath.plus</item>
     </string-array>
     <string name="activity_welcome">asset:/doc_en/welcome.xml</string>
 
     <!-- Permissions -->
     <string name="allow_storage_access_title">Allow to access worksheet files</string>
-    <string name="allow_storage_access_description">This app needs you to grant permission to access the worksheet files on this device</string>
+    <string name="allow_storage_access_description">microMathematics needs you to grant permission to access the worksheet files on this device</string>
     <string name="allow_storage_access_grant">Grant permission</string>
-    
+
     <!-- Main menu -->
     <string name="action_exit">Exit</string>
     <string name="action_play">Calculate worksheet</string>
@@ -86,13 +86,11 @@
         <item>en</item>
         <item>ru</item>
         <item>de</item>
-        <item>pt-rBR</item>
     </string-array>
     <string-array name="pref_language_names">
         <item>English</item>
         <item>Russian</item>
         <item>German</item>
-        <item>Brazilian Portuguese</item>
     </string-array>
 
     <!-- Dialogs -->
@@ -121,15 +119,6 @@
     <string name="dialog_plot_point_circle">Circle-shaped points</string>
     <string name="dialog_plot_point_diamond">Diamond-shaped points</string>
     <string name="dialog_plot_point_cross">X-shaped points</string>
-    <string name="dialog_surface_settings_contour">Contour plot</string>
-    <string name="dialog_surface_settings_surface">Surface plot</string>
-    <string name="dialog_surface_settings_mesh_lines">Show mesh lines</string>
-    <string name="dialog_surface_settings_mesh_fill">Fill mesh with color</string>
-    <string name="dialog_surface_settings_mesh_opacity">Opacity</string>
-    <string name="dialog_surface_settings_rotation">Rotation angle</string>
-    <string name="dialog_surface_settings_elevation">Elevation angle</string>
-    <string name="dialog_colormap_settings_title">Color map settings</string>
-    <string name="dialog_colormap_settings_zlabels">Number of Z-labels</string>
     <string name="dialog_document_settings_reformat">Format text fragment</string>
     <string name="dialog_document_settings_width_size">Line length</string>
     <string name="dialog_document_settings_significant_digits">Significant digits in result</string>
@@ -156,18 +145,15 @@
     <string name="dialog_text_style_text_body">Text body</string>
     <string name="dialog_text_style_numbering">Numbering</string>
     <string name="dialog_list_items">item (s)</string>
-    <string name="dialog_function_selection">Function</string>
 
     <!-- Mathematical elements -->
     <string name="math_new_element">New element</string>
     <string name="math_new_equation">Add equation</string>
     <string name="math_new_result">Add result view</string>
     <string name="math_new_function_plot">Add function plot</string>
-    <string name="math_new_contour_plot">Add 3D plot</string>
     <string name="math_new_text_fragment">Add text fragment</string>
     <string name="math_new_image_fragment">Add image from file</string>
     <string name="image_fragment_text">Long press to import image</string>
-    <string name="math_new_term">Add new argument (\',\')</string>
     <string name="math_equidistant_interval">Equidistant interval (\':\')</string>
     <string name="math_operator_plus">Addition (\'+ +\')</string>
     <string name="math_operator_minus">Subtraction (\'- -\')</string>
@@ -175,28 +161,9 @@
     <string name="math_operator_divide">Division (\'÷\')</string>
     <string name="math_operator_divide_slash">Division (\'/\')</string>
     <string name="math_operator_power">Raise to power (\'^\')</string>
-    <string name="math_comparator_equal">Test two terms for equality (\'= =\')</string>
-    <string name="math_comparator_not_equal">Test two terms for inequality (\'=|\')</string>
-    <string name="math_comparator_less">Test that left term is less than right one (\'&#60;&#60;\')</string>
-    <string name="math_comparator_less_eq">Test that left term is less than or equal to right term (\'&#60;=\')</string>
-    <string name="math_comparator_greater">Test that left term is greater than right one (\'&#62;&#62;\')</string>
-    <string name="math_comparator_greater_eq">Test that left term is greater than or equal to right term (\'&#62;=\')</string>
-    <string name="math_comparator_and">Test that both terms are true (\'&#38;&#38;\')</string>
-    <string name="math_comparator_and_text"> and </string>
-    <string name="math_comparator_or">Test that at least one term is true (\'&#38;|\')</string>
-    <string name="math_comparator_or_text"> or </string>
-    <string name="math_loop_summation">The summation of the sequence (\'SUMM\')</string>
-    <string name="math_loop_product">The product of the sequence (\'PROD\')</string>
-    <string name="math_loop_integral">The definite integral (\'INTEG\')</string>
-    <string name="math_loop_derivative">The first derivative (\'DERIV\')</string>
     <string name="math_function_identity">Parenthesis (\'(\')</string>
-    <string name="math_function_abs">The absolute value of the real or complex argument (\'|\')</string>
-    <string name="math_function_conjugate">The complex conjugate of the complex argument (\'~\')</string>
-    <string name="math_function_re">The real part of the complex argument</string>
-    <string name="math_function_im">The imaginaty part of the complex argument</string>
+    <string name="math_function_abs">The absolute value of the argument (\'|\')</string>
     <string name="math_function_sqrt">The square root of the argument (\'#\')</string>
-    <string name="math_function_nthrt">The n-th root of the argument (\'$\')</string>
-    <string name="math_function_if">Select a term to be used depending on comparison result for two expressions</string>
     <string name="math_function_sin">The sine of the argument</string>
     <string name="math_function_asin">The arc sine of the argument within the range [-pi/2..pi/2]</string>
     <string name="math_function_sinh">The hyperbolic sine of the argument</string>
@@ -205,7 +172,6 @@
     <string name="math_function_cosh">The hyperbolic cosine of the argument</string>
     <string name="math_function_tan">The tangent of the argument</string>
     <string name="math_function_atan">The arc tangent of the argument within the range [-pi/2..pi/2]</string>
-    <string name="math_function_atan2">The arc tangent of y/x within the range [-pi..pi]</string>
     <string name="math_function_tanh">The hyperbolic tangent of the argument</string>
     <string name="math_function_exp">The raising \'e\' to the power of the argument</string>
     <string name="math_function_log">The natural logarithm of the argument</string>
@@ -214,23 +180,14 @@
     <string name="math_function_floor">The most positive (closest to positive infinity) integer value less than or equal to the argument</string>
     <string name="math_function_rnd">The a pseudo-random value between zero and the argument</string>
     <string name="math_function_factorial">The product of all positive integers less than or equal to the argument (\'!\')</string>
-    <string name="math_function_max">The most positive (closest to positive infinity) of the two arguments</string>
-    <string name="math_function_min">The most negative (closest to negative infinity) of the two arguments</string>
-    <string name="math_function_hypot">The length of the hypotenuse of a right-angle triangle: sqrt(x^2 + y^2)</string>
-    
+
     <!-- Errors -->
     <string name="error_max_layout_depth">Reached layout depth limit for this Android version</string>
     <string name="error_brackets_not_completed">Brackets are not completed</string>
     <string name="error_invalid_variable_name">Invalid variable name</string>
     <string name="error_unknown_variable">Symbol is not a known variable or argument</string>
     <string name="error_unknown_function">Function %s is not defined and is not a built-in function</string>
-    <string name="error_unknown_array">Array %s is not defined</string>
-    <string name="error_not_an_array">%s can not be accessed by index since it is not an array</string>
-    <string name="error_not_a_function">%s can not be accessed by value since it is not a function</string>
-    <string name="error_invalid_array_dimension">Arrays of dimension %s is not yet supported</string>
-    <string name="error_invalid_array_interval">Interval %s referenced but not declared as index</string>
-    <string name="error_invalid_array_index">Index %s is not a known interval</string>
-    <string name="error_recursive_call">Equation is called recursively from its definition</string>
+    <string name="error_recursive_call">Function is called recursively from its definition</string>
     <string name="error_not_differentiable">Function is not a differentiable function of %s</string>
     <string name="error_invalid_brackets_order">Invalid brackets order</string>
     <string name="error_empty_argument_list">Function shall have an argument</string>
@@ -238,11 +195,9 @@
     <string name="error_empty_argument">An argument can not be empty</string>
     <string name="error_invalid_argument">Function argument shall contain letters or digits only</string>
     <string name="error_ensure_single_interval">Function shall depend on one interval only</string>
-    <string name="error_ensure_double_interval">Function shall depend on two intervals</string>
+    <string name="error_ensure_single_argument">Function shall have one argument only</string>
     <string name="error_indirect_intervals">There are indirectly referenced intervals: %s</string>
     <string name="error_duplicated_identifier">This identifier is already used</string>
-    <string name="error_forbidden_arguments">Arguments are not allowed for this identifier</string>
-    <string name="error_forbidden_complex">Complex number is not allowed for this field</string>
     <string name="error_forbidden_imaginary_unit">Symbol \'i\' is reserved for the imaginary unit that is not allowed in this context</string>
     <string name="error_nan_value">Field contains value that is not a number</string>
     <string name="error_unknown_file_format">Format of the file %s is unknown</string>
@@ -260,7 +215,7 @@
     <string name="fman_external_descr">Access files on the physically inserted SD card. It may be read-only on some devices</string>
     <string name="fman_saf">Documents</string>
     <string name="fman_saf_descr">Access files in the document storage</string>
-    <string name="fman_assets">Resources of \"microMathematics Plus\"</string>
+    <string name="fman_assets">Resources of \"microMathematics\"</string>
     <string name="fman_assets_descr">Documentation and examples delivered with this app</string>
     <string name="fman_home">Home</string>
     <string name="fman_sort_by_name">Sort by name</string>
@@ -295,18 +250,18 @@
     
     <!-- Messages -->
     <string name="message_file_written">File %s is written</string>
-    
+
     <!-- Developer options -->
     <string name="action_dev_autotest">Automatic test</string>
     <string name="action_dev_export_doc">Export documentation</string>
     <string name="action_dev_take_screenshot">Export screenshots</string>
     <string name="message_developer_mode">Developer mode is activated</string>
-    
+
     <!-- Library licenses -->
     <string name="dialog_licenses_support_v7">The Android Support v7 Library</string>
     <string name="dialog_licenses_support_v7_path">https://developer.android.com</string>
     <string name="dialog_licenses_support_v7_text">Copyright © 2013 The Android Open Source Project\n\nLicensed under the Apache License, Version 2.0 (the \"License\"). You may not use this file except in compliance with the License. You may obtain a copy of the License at\n\nhttps://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</string>
-    
+
     <string name="dialog_licenses_math3">The Apache Commons Mathematics Library</string>
     <string name="dialog_licenses_math3_path">http://commons.apache.org</string>
     <string name="dialog_licenses_math3_text">Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file to You under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n\nhttps://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</string>

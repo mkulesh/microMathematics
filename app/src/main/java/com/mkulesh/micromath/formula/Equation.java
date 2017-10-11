@@ -19,27 +19,22 @@
 package com.mkulesh.micromath.formula;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.util.AttributeSet;
-import android.view.View;
 
-import com.mkulesh.micromath.dialogs.DialogResultDetails;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.TermField.ErrorNotification;
-import com.mkulesh.micromath.math.CalculatedValue;
-import com.mkulesh.micromath.math.EquationArrayResult;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
 
 import java.util.ArrayList;
 
-public class Equation extends CalculationResult implements ArgumentHolderIf, CalculatableIf
+public class Equation extends LinkHolder implements CalculatableIf
 {
     private TermField leftTerm = null;
     private TermField rightTerm = null;
-    private CalculatedValue[] argumentValues = null;
+    private double argumentValue = 0.0;
 
     /*********************************************************
      * Constant result
@@ -47,21 +42,19 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
 
     private class EquationConstantResult
     {
-        private CalculatedValue value = null;
+        private Double value = null;
 
-        public CalculatedValue getValue(CalculaterTask thread) throws CancelException
+        public Double getValue(CalculaterTask thread) throws CancelException
         {
             if (value == null)
             {
-                value = new CalculatedValue();
-                rightTerm.getValue(thread, value);
+                value = rightTerm.getValue(thread);
             }
             return value;
         }
     }
 
     private EquationConstantResult constantResult = null;
-    private EquationArrayResult arrayResult = null;
 
     /*********************************************************
      * Constructors
@@ -121,7 +114,6 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         return BaseType.EQUATION;
     }
 
-    @Override
     public boolean enableObjectProperties()
     {
         return false;
@@ -132,7 +124,6 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     {
         boolean isValid = super.isContentValid(type);
         constantResult = null;
-        arrayResult = null;
 
         switch (type)
         {
@@ -151,27 +142,14 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
                 }
                 leftTerm.setError(errorMsg, ErrorNotification.LAYOUT_BORDER, null);
             }
-            if (!isValid || isInterval())
+            // check that the equation result can be cashed
+            if (isValid)
             {
-                break;
-            }
-            // check that the equation result can be cached
-            if (isConstantResult())
-            {
-                constantResult = new EquationConstantResult();
-                break;
-            }
-            // check that the equation can be calculated as an array
-            if (isArray())
-            {
-                final String errorMsg = checkArrayResult();
-                if (errorMsg == null)
+                final ArrayList<Equation> linkedIntervals = getAllIntervals();
+                final ArrayList<String> arguments = getArguments();
+                if (!isInterval() && linkedIntervals.isEmpty() && (arguments == null || arguments.isEmpty()))
                 {
-                    arrayResult = new EquationArrayResult(this, rightTerm);
-                }
-                else
-                {
-                    leftTerm.setError(errorMsg, ErrorNotification.LAYOUT_BORDER, null);
+                    constantResult = new EquationConstantResult();
                 }
             }
             break;
@@ -179,152 +157,18 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         return isValid;
     }
 
-    private boolean isConstantResult()
-    {
-        final ArrayList<Equation> linkedIntervals = getAllIntervals();
-        final ArrayList<String> arguments = getArguments();
-        return linkedIntervals.isEmpty() && (arguments == null || arguments.isEmpty());
-    }
-
-    private String checkArrayResult()
-    {
-        final Resources res = getContext().getResources();
-
-        final ArrayList<String> arguments = getArguments();
-        if (arguments.size() > EquationArrayResult.MAX_DIMENSION)
-        {
-            // error: invalid array dimension
-            return String.format(res.getString(R.string.error_invalid_array_dimension), Integer.toString(200));
-        }
-
-        // Linked intervals are not allowed since all indexed variables in the right part
-        // will be defined by term parser as arguments but not as a linked variables
-        final ArrayList<Equation> linkedIntervals = getAllIntervals();
-        for (Equation e : linkedIntervals)
-        {
-            if (!arguments.contains(e.getName()))
-            {
-                // error: interval is not defined as index
-                return String.format(res.getString(R.string.error_invalid_array_interval), e.getName());
-            }
-        }
-
-        // check that all arguments are valid intervals
-        for (String s : arguments)
-        {
-            FormulaBase f = getFormulaList().getFormula(s, 0, getId(), true);
-            if (f == null || !(f instanceof Equation) || !((Equation) f).isInterval())
-            {
-                // error: index not an interval
-                return String.format(res.getString(R.string.error_invalid_array_index), s);
-            }
-        }
-        return null;
-    }
-
-    /*********************************************************
-     * Implementation of ArgumentHolderIf interface
-     *********************************************************/
-
-    @Override
-    public ArrayList<String> getArguments()
-    {
-        return leftTerm.getParser().getFunctionArgs();
-    }
-
-    @Override
-    public int getArgumentIndex(String text)
-    {
-        if (text != null && getArguments() != null)
-        {
-            return getArguments().indexOf(text);
-        }
-        return ViewUtils.INVALID_INDEX;
-    }
-
-    @Override
-    public CalculatedValue getArgumentValue(int idx)
-    {
-        if (argumentValues != null && idx < argumentValues.length && argumentValues[idx] != null)
-        {
-            return argumentValues[idx];
-        }
-        return CalculatedValue.NaN;
-    }
-
     /*********************************************************
      * Re-implementation for methods for Calculatable interface
      *********************************************************/
 
     @Override
-    public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
+    public double getValue(CalculaterTask thread) throws CancelException
     {
-        if (constantResult != null && argumentValues == null)
+        if (constantResult != null)
         {
-            return outValue.assign(constantResult.getValue(thread));
+            return constantResult.getValue(thread);
         }
-        else if (arrayResult != null && argumentValues != null)
-        {
-            return outValue.assign(arrayResult.getValue(argumentValues));
-        }
-        return rightTerm.getValue(thread, outValue);
-    }
-
-    @Override
-    public DifferentiableType isDifferentiable(String var)
-    {
-        return rightTerm.isDifferentiable(var);
-    }
-
-    @Override
-    public CalculatedValue.ValueType getDerivativeValue(String var, CalculaterTask thread, CalculatedValue outValue)
-            throws CancelException
-    {
-        return rightTerm.getDerivativeValue(var, thread, outValue);
-    }
-
-    /*********************************************************
-     * Equation-specific methods
-     *********************************************************/
-
-    @Override
-    public void invalidateResult()
-    {
-        arrayResult = null;
-    }
-
-    @Override
-    public void calculate(CalculaterTask thread) throws CancelException
-    {
-        if (arrayResult == null)
-        {
-            return;
-        }
-        arrayResult.calculate(thread, getArguments());
-    }
-
-    @Override
-    public void showResult()
-    {
-        // empty
-    }
-
-    @Override
-    public boolean enableDetails()
-    {
-        return arrayResult != null && arrayResult.getDimNumber() == 1 && arrayResult.getRawValues() != null;
-    }
-
-    @Override
-    public void onDetails(View owner)
-    {
-        if (enableDetails())
-        {
-            DialogResultDetails d = new DialogResultDetails(getFormulaList().getActivity(),
-                    arrayResult,
-                    getFormulaList().getDocumentSettings());
-            d.show();
-        }
+        return rightTerm.getValue(thread);
     }
 
     /*********************************************************
@@ -364,12 +208,33 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     }
 
     /**
-     * Procedure sets the list of argument values
+     * Procedure returns the parsed arguments of this formula
      */
-    public boolean setArgumentValues(CalculatedValue[] argumentValues)
+    public ArrayList<String> getArguments()
     {
-        this.argumentValues = argumentValues;
-        return this.argumentValues != null;
+        return leftTerm.getParser().getFunctionArgs();
+    }
+
+    /**
+     * Procedure returns whether the given string is an argument
+     */
+    public boolean isArgument(String text)
+    {
+        if (text != null && getArguments() != null)
+        {
+            return (getArguments().indexOf(text) >= 0);
+        }
+        return false;
+    }
+
+    public void setArgument(double value)
+    {
+        argumentValue = value;
+    }
+
+    public double getArgument()
+    {
+        return argumentValue;
     }
 
     /**
@@ -379,14 +244,6 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     {
         FormulaTerm t = rightTerm.getTerm();
         return (t != null && t instanceof FormulaTermInterval);
-    }
-
-    /**
-     * Procedure checks whether this root formula represents an array
-     */
-    public boolean isArray()
-    {
-        return leftTerm.getParser().isArray();
     }
 
     /**
@@ -405,7 +262,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     /**
      * Procedure fills the given value array and array with minimum and maximum values from this interval
      */
-    public double[] fillBoundedInterval(CalculaterTask thread, double[] targetValues, double[] minMaxValues)
+    public double[] fillInterval(CalculaterTask thread, double[] targetValues, double[] minMaxValues)
             throws CancelException
     {
         if (!isInterval() || minMaxValues == null || minMaxValues.length != 2)
@@ -417,26 +274,12 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         {
             return null;
         }
-        ArrayList<Double> newArr = new ArrayList<Double>();
-        for (int i = 0; i < arr.size(); i++)
-        {
-            final double v = arr.get(i);
-            if (minMaxValues[1] != Double.POSITIVE_INFINITY && v > minMaxValues[1])
-            {
-                break;
-            }
-            if ((minMaxValues[0] != Double.NEGATIVE_INFINITY && v >= minMaxValues[0])
-                    || minMaxValues[0] == Double.NEGATIVE_INFINITY)
-            {
-                newArr.add(v);
-            }
-        }
-        double[] retValues = (targetValues != null && targetValues.length == newArr.size()) ? targetValues
-                : new double[newArr.size()];
+        double[] retValues = (targetValues != null && targetValues.length == arr.size()) ? targetValues
+                : new double[arr.size()];
         minMaxValues[0] = minMaxValues[1] = Double.NaN;
         for (int i = 0; i < retValues.length; i++)
         {
-            final double v = newArr.get(i);
+            final double v = arr.get(i);
             retValues[i] = v;
             if (i == 0)
             {

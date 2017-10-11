@@ -30,7 +30,7 @@ import android.widget.RadioButton;
 import com.larswerkman.holocolorpicker.ColorPicker;
 import com.larswerkman.holocolorpicker.OpacityBar;
 import com.larswerkman.holocolorpicker.ValueBar;
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.properties.LineProperties;
 import com.mkulesh.micromath.properties.LinePropertiesChangeIf;
 import com.mkulesh.micromath.utils.CompatUtils;

@@ -33,7 +33,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
@@ -160,8 +160,7 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
         else if (v instanceof TextView)
         {
             TextView b = (TextView) v;
-            b.setTextColor(b.isEnabled() ? CompatUtils.getColor(getContext(), R.color.dialog_content_color)
-                    : Color.GRAY);
+            b.setTextColor(b.isEnabled() ? CompatUtils.getColor(getContext(), R.color.dialog_content_color) : Color.GRAY);
         }
     }
 

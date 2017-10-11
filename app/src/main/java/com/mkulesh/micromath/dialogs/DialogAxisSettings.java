@@ -24,7 +24,7 @@ import android.view.View;
 import com.larswerkman.holocolorpicker.ColorPicker;
 import com.larswerkman.holocolorpicker.OpacityBar;
 import com.larswerkman.holocolorpicker.ValueBar;
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.properties.AxisProperties;
 import com.mkulesh.micromath.properties.AxisPropertiesChangeIf;
 import com.mkulesh.micromath.widgets.HorizontalNumberPicker;

@@ -10,10 +10,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/dialog_content_padding"
-            android:paddingTop="@dimen/dialog_content_padding"
             android:gravity="center_horizontal"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dialog_content_padding"
+            android:paddingTop="@dimen/dialog_content_padding" >
 
             <com.mkulesh.micromath.widgets.HorizontalNumberPicker
                 android:id="@+id/dialog_picker_width"
@@ -30,36 +30,6 @@
                 android:orientation="horizontal"
                 micromath:label="@string/dialog_plot_settings_height"
                 micromath:minWidth="80dp" />
-
-            <LinearLayout
-                android:id="@+id/dialog_dimension_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:visibility="gone" >
-
-                <View
-                    style="@style/HorizontalDividerStyle"
-                    android:layout_marginBottom="@dimen/dialog_content_padding"
-                    android:layout_marginTop="@dimen/dialog_content_padding" />
-
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical" >
-
-                    <RadioButton
-                        android:id="@+id/dialog_button_contour"
-                        style="@style/RadioButtonStyle"
-                        android:text="@string/dialog_surface_settings_contour" />
-
-                    <RadioButton
-                        android:id="@+id/dialog_button_surface"
-                        style="@style/RadioButtonStyle"
-                        android:text="@string/dialog_surface_settings_surface" />
-                </RadioGroup>
-            </LinearLayout>
 
             <View
                 style="@style/HorizontalDividerStyle"
@@ -86,68 +56,6 @@
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_plot_settings_axes_none" />
             </RadioGroup>
-
-            <LinearLayout
-                android:id="@+id/dialog_surface_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:orientation="vertical"
-                android:visibility="gone" >
-
-                <View
-                    style="@style/HorizontalDividerStyle"
-                    android:layout_marginBottom="@dimen/dialog_content_padding"
-                    android:layout_marginTop="@dimen/dialog_content_padding" />
-
-                <CheckBox
-                    android:id="@+id/dialog_checkbox_mesh_lines"
-                    style="@style/CheckBoxStyle"
-                    android:checked="false"
-                    android:text="@string/dialog_surface_settings_mesh_lines" />
-
-                <CheckBox
-                    android:id="@+id/dialog_checkbox_mesh_fill"
-                    style="@style/CheckBoxStyle"
-                    android:checked="false"
-                    android:text="@string/dialog_surface_settings_mesh_fill" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:baselineAligned="false"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/DialogTextViewStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingRight="@dimen/dialog_content_padding"
-                        android:text="@string/dialog_surface_settings_mesh_opacity" />
-
-                    <com.larswerkman.holocolorpicker.OpacityBar
-                        android:id="@+id/dialog_colorpicker_mesh_opacity"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-
-                <com.mkulesh.micromath.widgets.HorizontalNumberPicker
-                    android:id="@+id/dialog_picker_rotation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    micromath:label="@string/dialog_surface_settings_rotation"
-                    micromath:minWidth="80dp" />
-
-                <com.mkulesh.micromath.widgets.HorizontalNumberPicker
-                    android:id="@+id/dialog_picker_elevation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    micromath:label="@string/dialog_surface_settings_elevation"
-                    micromath:minWidth="80dp" />
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

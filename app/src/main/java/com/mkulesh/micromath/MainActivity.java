@@ -57,7 +57,6 @@ import android.widget.Toast;
 import com.mkulesh.micromath.dialogs.DialogLicenses;
 import com.mkulesh.micromath.fman.AdapterDocuments;
 import com.mkulesh.micromath.formula.StoredFormula;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.AppLocale;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;

@@ -28,8 +28,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.fman.CommanderIf.SelectionMode;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.CompatUtils;
 
 import java.util.ArrayList;

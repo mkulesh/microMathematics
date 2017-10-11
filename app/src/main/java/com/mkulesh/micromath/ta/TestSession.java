@@ -28,6 +28,7 @@ import android.os.AsyncTask;
 import android.view.View;
 import android.widget.Toast;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.export.Exporter;
 import com.mkulesh.micromath.fman.AdapterFileSystem;
 import com.mkulesh.micromath.fman.FileType;
@@ -36,7 +37,6 @@ import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.formula.TextFragment;
 import com.mkulesh.micromath.formula.XmlLoaderTask;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.ta.TestScript.NumberType;
 import com.mkulesh.micromath.utils.SynchronizedBoolean;
 import com.mkulesh.micromath.utils.ViewUtils;

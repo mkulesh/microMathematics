@@ -28,7 +28,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.CompatUtils;
@@ -39,10 +39,10 @@ import com.mkulesh.micromath.widgets.ContextMenuHandler;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomLayout;
 import com.mkulesh.micromath.widgets.CustomTextView;
-import com.mkulesh.micromath.widgets.FocusChangeIf;
 import com.mkulesh.micromath.widgets.FormulaChangeIf;
 import com.mkulesh.micromath.widgets.ListChangeIf;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
+import com.mkulesh.micromath.widgets.TextChangeIf;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
@@ -63,10 +63,9 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         EQUATION(R.drawable.p_equation, R.string.math_new_equation),
         RESULT(R.drawable.p_result, R.string.math_new_result),
         PLOT_FUNCTION(R.drawable.p_plot_function, R.string.math_new_function_plot),
-        PLOT_CONTOUR(R.drawable.p_plot_contour, R.string.math_new_contour_plot),
         TEXT_FRAGMENT(R.drawable.p_text_fragment, R.string.math_new_text_fragment),
         IMAGE_FRAGMENT(R.drawable.p_image_fragment, R.string.math_new_image_fragment),
-        TERM(R.drawable.p_new_term, R.string.math_new_term);
+        TERM(Palette.NO_BUTTON, Palette.NO_BUTTON);
 
         private final int imageId;
         private final int descriptionId;
@@ -163,14 +162,6 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     public ArrayList<TermField> getTerms()
     {
         return terms;
-    }
-
-    /**
-     * Procedure returns whether a new term is enabled for this formula
-     */
-    public boolean isNewTermEnabled()
-    {
-        return false;
     }
 
     /**
@@ -513,12 +504,6 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     }
 
     @Override
-    public boolean onNewTerm(TermField field, String s, boolean requestFocus)
-    {
-        return false;
-    }
-
-    @Override
     public boolean enableDetails()
     {
         return false;
@@ -731,24 +716,16 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
      */
     protected void inflateElements(int resId, boolean removeFromLayout)
     {
-        inflateElements(elements, resId, removeFromLayout);
-    }
-
-    /**
-     * Procedure inflates elements from the given resource into the given vector
-     */
-    protected void inflateElements(ArrayList<View> out, int resId, boolean removeFromLayout)
-    {
         final int lastIdx = layout.getChildCount();
         final LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(resId, layout);
         for (int i = lastIdx; i < layout.getChildCount(); i++)
         {
-            out.add(layout.getChildAt(i));
+            elements.add(layout.getChildAt(i));
         }
         if (removeFromLayout)
         {
-            for (View v : out)
+            for (View v : elements)
             {
                 layout.removeView(v);
             }
@@ -1044,17 +1021,17 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     /**
      * Procedure returns the ID of the next focused EditText relative to the given owner
      */
-    public int getNextFocusId(CustomEditText owner, FocusChangeIf.NextFocusType focusType)
+    public int getNextFocusId(CustomEditText owner, TextChangeIf.NextFocusType focusType)
     {
         FormulaBase f = null;
         // Process UP/DOWN
         if (isRootFormula() && owner != null)
         {
-            if (focusType == FocusChangeIf.NextFocusType.FOCUS_UP)
+            if (focusType == TextChangeIf.NextFocusType.FOCUS_UP)
             {
                 f = getFormulaList().getFormulaListView().getFormula(getId(), ListChangeIf.Position.BEFORE);
             }
-            else if (focusType == FocusChangeIf.NextFocusType.FOCUS_DOWN)
+            else if (focusType == TextChangeIf.NextFocusType.FOCUS_DOWN)
             {
                 f = getFormulaList().getFormulaListView().getFormula(getId(), ListChangeIf.Position.AFTER);
             }
@@ -1077,23 +1054,23 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         TermField t = null;
         if (i < n)
         {
-            if (focusType == FocusChangeIf.NextFocusType.FOCUS_LEFT && i > 0)
+            if (focusType == TextChangeIf.NextFocusType.FOCUS_LEFT && i > 0)
             {
                 t = terms.get(i - 1);
             }
-            else if (focusType == FocusChangeIf.NextFocusType.FOCUS_RIGHT && i < n - 1)
+            else if (focusType == TextChangeIf.NextFocusType.FOCUS_RIGHT && i < n - 1)
             {
                 t = terms.get(i + 1);
             }
         }
         else if (owner == null && terms.size() > 0)
         {
-            if (focusType == FocusChangeIf.NextFocusType.FOCUS_LEFT)
+            if (focusType == TextChangeIf.NextFocusType.FOCUS_LEFT)
             {
                 t = terms.get(n - 1);
             }
-            if (focusType == FocusChangeIf.NextFocusType.FOCUS_RIGHT || focusType == FocusChangeIf.NextFocusType.FOCUS_UP
-                    || focusType == FocusChangeIf.NextFocusType.FOCUS_DOWN)
+            if (focusType == TextChangeIf.NextFocusType.FOCUS_RIGHT || focusType == TextChangeIf.NextFocusType.FOCUS_UP
+                    || focusType == TextChangeIf.NextFocusType.FOCUS_DOWN)
             {
                 t = terms.get(0);
             }
@@ -1108,11 +1085,11 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         }
         else if (isRootFormula())
         {
-            if (focusType == FocusChangeIf.NextFocusType.FOCUS_LEFT)
+            if (focusType == TextChangeIf.NextFocusType.FOCUS_LEFT)
             {
                 f = getFormulaList().getFormulaListView().getFormula(getId(), ListChangeIf.Position.LEFT);
             }
-            else if (focusType == FocusChangeIf.NextFocusType.FOCUS_RIGHT)
+            else if (focusType == TextChangeIf.NextFocusType.FOCUS_RIGHT)
             {
                 f = getFormulaList().getFormulaListView().getFormula(getId(), ListChangeIf.Position.RIGHT);
             }

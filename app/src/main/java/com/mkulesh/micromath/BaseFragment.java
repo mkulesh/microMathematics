@@ -40,7 +40,6 @@ import com.mkulesh.micromath.fman.Commander;
 import com.mkulesh.micromath.fman.FileType;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.FormulaList;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.FloatingButtonsSet;
 
@@ -82,8 +81,8 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
      */
     public final static int[] framentIcons = {
             R.drawable.drawer_about, R.drawable.drawer_documentation, R.drawable.drawer_function_plot,
-            R.drawable.drawer_how_to_use, R.drawable.drawer_polar_plot, R.drawable.drawer_series_and_integrals,
-            R.drawable.drawer_three_d_plot, R.drawable.drawer_worksheet
+            R.drawable.drawer_how_to_use, R.drawable.drawer_polar_plot, R.drawable.drawer_worksheet,
+            R.drawable.drawer_buy_now, R.drawable.drawer_rating
     };
 
     /**

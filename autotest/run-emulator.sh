@@ -4,8 +4,8 @@
 setenv EMU_NAME ${1}
 setenv APK_DATA /sdcard/Android/data
 
-setenv APK_PACK com.mkulesh.micromath.plus
-setenv APK_ACT MainActivityPlus
+setenv APK_PACK com.mkulesh.micromath
+setenv APK_ACT MainActivity
 setenv APK_FILE ${2}
 
 setenv TOOLS_PATH ${ANDROID_HOME}/tools

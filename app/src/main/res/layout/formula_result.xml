@@ -21,13 +21,7 @@
         style="@style/FormulaTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/formula_result_definition" />
-
-    <com.mkulesh.micromath.widgets.CustomTextView
-        android:id="@+id/formula_result_left_bracket"
-        style="@style/FormulaTextViewStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+        android:text="@string/formula_assign_definition" />
 
     <com.mkulesh.micromath.widgets.CustomEditText
         android:id="@+id/formula_result_value"
@@ -36,19 +30,6 @@
         android:layout_height="wrap_content"
         android:text="@string/formula_right_term_key"
         micromath:calculatedValue="true"
-        micromath:emptyEnabled="true"
-        micromath:contextMenuCut="false"
-        micromath:contextMenuPaste="false" />
-
-    <com.mkulesh.micromath.widgets.ResultMatrixLayout
-        android:id="@+id/formula_result_table"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <com.mkulesh.micromath.widgets.CustomTextView
-        android:id="@+id/formula_result_right_bracket"
-        style="@style/FormulaTextViewStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+        micromath:emptyEnabled="true" />
 
 </merge>

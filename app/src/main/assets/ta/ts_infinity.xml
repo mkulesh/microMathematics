@@ -394,22 +394,6 @@
       <term key="xFunction" text="x" />
       <term key="xMaxValue" text="" />
     </plot_function>
-    <plot_function inRightOfPrevious="true" width="400" height="400" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="2">
-      <term key="yMaxValue" text="" />
-      <term key="yFunction1" color="#FFFF2500" width="3" lineStyle="dotted" code="divide_slash">
-        <term key="leftTerm" text="1" />
-        <term key="rightTerm" text="x" />
-      </term>
-      <term key="yFunction2" color="#FF0000FF" width="3" lineStyle="solid" code="divide_slash">
-        <term key="leftTerm" text="-1" />
-        <term key="rightTerm" text="x" />
-      </term>
-      <term key="yMinValue" text="" />
-      <term key="xMinValue" text="" />
-      <term key="xFunction1" text="x" />
-      <term key="xFunction2" text="x" />
-      <term key="xMaxValue" text="" />
-    </plot_function>
     <equation>
       <term key="leftTerm" text="b" />
       <term key="rightTerm" text="0.5" />
@@ -434,22 +418,6 @@
       <term key="yMinValue" text="-b" />
       <term key="xMinValue" text="" />
       <term key="xFunction" text="x" />
-      <term key="xMaxValue" text="" />
-    </plot_function>
-    <plot_function inRightOfPrevious="true" width="400" height="400" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="2">
-      <term key="yMaxValue" text="b" />
-      <term key="yFunction1" color="#FFFF2500" width="3" lineStyle="dotted" code="divide_slash">
-        <term key="leftTerm" text="1" />
-        <term key="rightTerm" text="x" />
-      </term>
-      <term key="yFunction2" color="#FF0000FF" width="3" lineStyle="solid" code="divide_slash">
-        <term key="leftTerm" text="-1" />
-        <term key="rightTerm" text="x" />
-      </term>
-      <term key="yMinValue" text="-b" />
-      <term key="xMinValue" text="" />
-      <term key="xFunction1" text="x" />
-      <term key="xFunction2" text="x" />
       <term key="xMaxValue" text="" />
     </plot_function>
   </formulaList>

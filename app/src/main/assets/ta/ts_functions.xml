@@ -1,0 +1,606 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="60" significantDigits="6" scale="0.5" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="The use of build-in functions" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="a" />
+      <term key="rightTerm" text="25" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="b" />
+      <term key="rightTerm" text="-5" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="Nan" />
+      <term key="rightTerm" code="factorial">
+        <term key="argTerm" text="-1" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="l(x)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="2" />
+        <term key="rightTerm" text="x" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="r(x)" />
+      <term key="rightTerm" text="x" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="10" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;1. Square root&#10;&#10;TC: square root from a positive number" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" text="25" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="5" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: square root from a negative number" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" text="-25" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="Nan" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: square root from a constant" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" text="a" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="5" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;TC: square root from NaN" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" text="Nan" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="Nan" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;2. Other functions&#10;&#10;TC: a calculation sequence " />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="a1" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" code="abs_layout">
+          <term key="argTerm" text="-25" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="a1" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: 5" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="a2" />
+      <term key="rightTerm" code="factorial">
+        <term key="argTerm" code="identity">
+          <term key="argTerm" code="power">
+            <term key="leftTerm" text="2" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="a2" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: 24" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="a3" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" code="plus">
+          <term key="leftTerm" text="a2" />
+          <term key="rightTerm" code="plus">
+            <term key="leftTerm" text="a1" />
+            <term key="rightTerm" text="1" />
+          </term>
+        </term>
+        <term key="rightTerm" text="10" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="a3" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: 3" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="a4" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="sin">
+          <term key="argTerm" code="divide_slash">
+            <term key="leftTerm" text="π" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+        <term key="rightTerm" text="a3" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="a4" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: 4" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="a5" />
+      <term key="rightTerm" code="asin">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="a4" />
+          <term key="rightTerm" text="3" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="a5" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: π/2" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="a6" />
+      <term key="rightTerm" code="cos">
+        <term key="argTerm" text="a5" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="a6" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: near to zero" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="a7" />
+      <term key="rightTerm" code="acos">
+        <term key="argTerm" text="a6" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="a7" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: π/2" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="a8" />
+      <term key="rightTerm" code="ceil">
+        <term key="argTerm" text="a7" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="a8" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: 2" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="a9" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" code="plus">
+          <term key="leftTerm" code="sinh">
+            <term key="argTerm" text="a8" />
+          </term>
+          <term key="rightTerm" code="cosh">
+            <term key="argTerm" text="a8" />
+          </term>
+        </term>
+        <term key="rightTerm" text="0.5" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="a9" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: 2*e^2" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="b1" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" text="a9" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" code="exp">
+            <term key="argTerm" text="a8" />
+          </term>
+          <term key="rightTerm" text="2" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="b1" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: 0" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="b2" />
+      <term key="rightTerm" code="tan">
+        <term key="argTerm" code="plus">
+          <term key="leftTerm" text="b1" />
+          <term key="rightTerm" text="1" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="b2" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="b3" />
+      <term key="rightTerm" code="atan">
+        <term key="argTerm" text="b2" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="b3" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: 1" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="b4" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" code="tanh">
+          <term key="argTerm" text="b3" />
+        </term>
+        <term key="rightTerm" code="divide">
+          <term key="leftTerm" code="sinh">
+            <term key="argTerm" text="b3" />
+          </term>
+          <term key="rightTerm" code="cosh">
+            <term key="argTerm" text="b3" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="b4" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: 0" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="b5" />
+      <term key="rightTerm" code="exp">
+        <term key="argTerm" code="plus">
+          <term key="leftTerm" text="6" />
+          <term key="rightTerm" text="b4" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="b5" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: e^6" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="b6" />
+      <term key="rightTerm" code="log">
+        <term key="argTerm" text="b5" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="b6" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: 6" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="b7" />
+      <term key="rightTerm" code="power">
+        <term key="leftTerm" text="10" />
+        <term key="rightTerm" code="plus">
+          <term key="leftTerm" text="b6" />
+          <term key="rightTerm" text="b3" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="b7" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: 1e7" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="b8" />
+      <term key="rightTerm" code="log10">
+        <term key="argTerm" text="b7" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="b8" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: 7" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="b9" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="b8" />
+        <term key="rightTerm" code="floor">
+          <term key="argTerm" code="divide">
+            <term key="leftTerm" code="rnd">
+              <term key="argTerm" text="10" />
+            </term>
+            <term key="rightTerm" text="10" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="b9" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Desired: 7" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="b9" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="7" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;Overall error" />
+    </text_fragment>
+    <result>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" />
+    </result>
+  </formulaList>
+</micromath>

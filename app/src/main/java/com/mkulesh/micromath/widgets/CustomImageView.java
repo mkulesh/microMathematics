@@ -39,9 +39,9 @@ import android.widget.Toast;
 
 import com.caverock.androidsvg.SVG;
 import com.caverock.androidsvg.SVGParseException;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.FormulaList;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.ImageProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
 
@@ -144,7 +144,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         if (fileName == null || fileName.length() == 0)
         {
             // not an error: just erase image end exit
-            // Note: parentDocument can be empty (for example, welcome asset at the first start)
+            // Note: parentDocument can be empty (for example, welcome asset at the first start) 
             return;
         }
 
@@ -471,12 +471,6 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
             try
             {
                 setBitmap(BitmapFactory.decodeStream(stream));
-            }
-            catch (OutOfMemoryError ex)
-            {
-                String error = getContext().getResources().getString(R.string.error_out_of_memory);
-                Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
-                // no return since we need to close stream
             }
             catch (Exception e)
             {

@@ -22,12 +22,13 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.TermField.BracketsType;
-import com.mkulesh.micromath.math.CalculatedValue;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
+
+import org.apache.commons.math3.util.FastMath;
 
 import java.util.Locale;
 
@@ -102,10 +103,6 @@ public class FormulaTermOperator extends FormulaTerm
     private TermField leftTerm = null, rightTerm = null;
     private boolean useBrackets = false;
 
-    // Attention: this is not thread-safety declaration!
-    private final CalculatedValue fVal = new CalculatedValue(), gVal = new CalculatedValue(),
-            fDer = new CalculatedValue(), gDer = new CalculatedValue();
-
     /*********************************************************
      * Constructors
      *********************************************************/
@@ -136,113 +133,26 @@ public class FormulaTermOperator extends FormulaTerm
      *********************************************************/
 
     @Override
-    public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
+    public double getValue(CalculaterTask thread) throws CancelException
     {
-        if (operatorType != null && leftTerm != null && rightTerm != null)
+        if (operatorType != null)
         {
-            leftTerm.getValue(thread, fVal);
-            rightTerm.getValue(thread, gVal);
             switch (operatorType)
             {
             case PLUS:
-                return outValue.add(fVal, gVal);
+                return leftTerm.getValue(thread) + rightTerm.getValue(thread);
             case MINUS:
-                return outValue.subtract(fVal, gVal);
+                return leftTerm.getValue(thread) - rightTerm.getValue(thread);
             case MULT:
-                return outValue.multiply(fVal, gVal);
+                return leftTerm.getValue(thread) * rightTerm.getValue(thread);
             case DIVIDE:
             case DIVIDE_SLASH:
-                return outValue.divide(fVal, gVal);
+                return leftTerm.getValue(thread) / rightTerm.getValue(thread);
             case POWER:
-                return outValue.pow(fVal, gVal);
+                return FastMath.pow(leftTerm.getValue(thread), rightTerm.getValue(thread));
             }
         }
-        return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
-    }
-
-    @Override
-    public DifferentiableType isDifferentiable(String var)
-    {
-        final int dGrad = Math.min(leftTerm.isDifferentiable(var).ordinal(), rightTerm.isDifferentiable(var).ordinal());
-        return DifferentiableType.values()[dGrad];
-    }
-
-    @Override
-    public CalculatedValue.ValueType getDerivativeValue(String var, CalculaterTask thread, CalculatedValue outValue)
-            throws CancelException
-    {
-        if (operatorType != null && leftTerm != null && rightTerm != null)
-        {
-            leftTerm.getDerivativeValue(var, thread, fDer);
-            rightTerm.getDerivativeValue(var, thread, gDer);
-            switch (operatorType)
-            {
-            case PLUS:
-                return outValue.add(fDer, gDer);
-            case MINUS:
-                return outValue.subtract(fDer, gDer);
-            case MULT:
-            {
-                leftTerm.getValue(thread, fVal);
-                rightTerm.getValue(thread, gVal);
-                fDer.multiply(fDer, gVal);
-                fVal.multiply(fVal, gDer);
-                return outValue.add(fDer, fVal);
-            }
-            case DIVIDE:
-            case DIVIDE_SLASH:
-            {
-                leftTerm.getValue(thread, fVal);
-                rightTerm.getValue(thread, gVal);
-                fDer.multiply(fDer, gVal);
-                fVal.multiply(fVal, gDer);
-                gDer.subtract(fDer, fVal);
-                fDer.multiply(gVal, gVal);
-                return outValue.divide(gDer, fDer);
-            }
-            case POWER:
-            {
-                leftTerm.getValue(thread, fVal);
-                rightTerm.getValue(thread, gVal);
-                if (fDer.isZero() && gDer.isZero())
-                {
-                    // the case a^a
-                    return outValue.setValue(0.0);
-                }
-                else if (!fDer.isZero() && gDer.isZero())
-                {
-                    // the case f^a: result = g * f^(g-1) * fDer;
-                    CalculatedValue tmp = new CalculatedValue();
-                    tmp.subtract(gVal, CalculatedValue.ONE);
-                    tmp.pow(fVal, tmp);
-                    outValue.multiply(gVal, tmp);
-                    return outValue.multiply(outValue, fDer);
-                }
-                else if (fDer.isZero() && !gDer.isZero())
-                {
-                    // the case a^g: result = f^g * log(f) * gDer;
-                    CalculatedValue tmp = new CalculatedValue();
-                    tmp.log(fVal);
-                    outValue.pow(fVal, gVal);
-                    outValue.multiply(outValue, tmp);
-                    return outValue.multiply(outValue, gDer);
-                }
-                else
-                {
-                    // case f^g: result = f^g * {fDer * g / f  +  gDer * log(f)}
-                    CalculatedValue tmp1 = new CalculatedValue(), tmp2 = new CalculatedValue();
-                    tmp1.multiply(fDer, gVal);
-                    tmp1.divide(tmp1, fVal);
-                    tmp2.log(fVal);
-                    tmp2.multiply(gDer, tmp2);
-                    tmp1.add(tmp1, tmp2);
-                    outValue.pow(fVal, gVal);
-                    return outValue.multiply(outValue, tmp1);
-                }
-            }
-            }
-        }
-        return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
+        return Double.NaN;
     }
 
     @Override

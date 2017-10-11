@@ -23,11 +23,11 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.widget.Toast;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.fman.AdapterIf;
 import com.mkulesh.micromath.fman.FileType;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.FormulaList;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.io.OutputStream;

@@ -22,9 +22,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
-import com.mkulesh.micromath.math.CalculatedValue;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
 
@@ -98,10 +97,6 @@ public class FormulaTermInterval extends FormulaTerm
     private IntervalType intervalType = null;
     private TermField minValueTerm, nextValueTerm, maxValueTerm = null;
 
-    // Attention: this is not thread-safety declaration!
-    private final CalculatedValue minValue = new CalculatedValue(), nextValue = new CalculatedValue(),
-            maxValue = new CalculatedValue();
-
     /*********************************************************
      * Constructors
      *********************************************************/
@@ -132,52 +127,40 @@ public class FormulaTermInterval extends FormulaTerm
      *********************************************************/
 
     @Override
-    public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
+    public double getValue(CalculaterTask thread) throws CancelException
     {
         if (getFormulaRoot() instanceof Equation)
         {
-            minValue.processRealTerm(thread, minValueTerm);
-            nextValue.processRealTerm(thread, nextValueTerm);
-            maxValue.processRealTerm(thread, maxValueTerm);
-            if (minValue.isNaN() || nextValue.isNaN() || maxValue.isNaN())
+            final double minValue = minValueTerm.getValue(thread);
+            final double nextValue = nextValueTerm.getValue(thread);
+            final double maxValue = maxValueTerm.getValue(thread);
+            if (TermParser.isInvalidReal(minValue) || TermParser.isInvalidReal(nextValue)
+                    || TermParser.isInvalidReal(maxValue))
             {
-                return outValue.invalidate(CalculatedValue.ErrorType.NOT_A_REAL);
+                return Double.NaN;
             }
-            final CalculatedValue calcDelta = getDelta(minValue.getReal(), nextValue.getReal(), maxValue.getReal());
-            final CalculatedValue ravArg = ((Equation) getFormulaRoot()).getArgumentValue(0);
-            if (calcDelta.isNaN() || ravArg.isNaN())
+            final double delta = getDelta(minValue, nextValue, maxValue);
+            final double ravArg = ((Equation) getFormulaRoot()).getArgument();
+            if (TermParser.isInvalidReal(delta) || TermParser.isInvalidReal(ravArg))
             {
-                return outValue.invalidate(CalculatedValue.ErrorType.NOT_A_REAL);
+                return Double.NaN;
             }
-            final long idx = ravArg.getInteger();
-            final int N = getNumberOfPoints(minValue.getReal(), maxValue.getReal(), calcDelta.getReal());
+            final int idx = (int) FastMath.floor(ravArg);
+            final int N = getNumberOfPoints(minValue, maxValue, delta);
             if (idx == 0)
             {
-                return outValue.setValue(minValue.getReal());
+                return minValue;
             }
             else if (idx == N)
             {
-                return outValue.setValue(maxValue.getReal());
+                return maxValue;
             }
             else if (idx > 0 && idx < N)
             {
-                return outValue.setValue(minValue.getReal() + calcDelta.getReal() * (double) idx);
+                return minValue + delta * (double) idx;
             }
         }
-        return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
-    }
-
-    @Override
-    public DifferentiableType isDifferentiable(String var)
-    {
-        return DifferentiableType.NONE;
-    }
-
-    @Override
-    public CalculatedValue.ValueType getDerivativeValue(String var, CalculaterTask thread, CalculatedValue outValue)
-            throws CancelException
-    {
-        return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
+        return Double.NaN;
     }
 
     @Override
@@ -289,19 +272,16 @@ public class FormulaTermInterval extends FormulaTerm
      */
     public ArrayList<Double> getInterval(CalculaterTask thread) throws CancelException
     {
-        minValue.processRealTerm(thread, minValueTerm);
-        nextValue.processRealTerm(thread, nextValueTerm);
-        maxValue.processRealTerm(thread, maxValueTerm);
-        if (minValue.isNaN() || nextValue.isNaN() || maxValue.isNaN())
+        final double minValue = minValueTerm.getValue(thread);
+        final double nextValue = nextValueTerm.getValue(thread);
+        final double maxValue = maxValueTerm.getValue(thread);
+        final double delta = getDelta(minValue, nextValue, maxValue);
+        if (TermParser.isInvalidReal(minValue) || TermParser.isInvalidReal(nextValue)
+                || TermParser.isInvalidReal(maxValue) || TermParser.isInvalidReal(delta))
         {
             return null;
         }
-        final CalculatedValue calcDelta = getDelta(minValue.getReal(), nextValue.getReal(), maxValue.getReal());
-        if (calcDelta.isNaN())
-        {
-            return null;
-        }
-        final int N = getNumberOfPoints(minValue.getReal(), maxValue.getReal(), calcDelta.getReal());
+        final int N = getNumberOfPoints(minValue, maxValue, delta);
         ArrayList<Double> retValue = new ArrayList<Double>(N);
         for (int idx = 0; idx <= N; idx++)
         {
@@ -311,15 +291,15 @@ public class FormulaTermInterval extends FormulaTerm
             }
             if (idx == 0)
             {
-                retValue.add(minValue.getReal());
+                retValue.add(minValue);
             }
             else if (idx == N)
             {
-                retValue.add(maxValue.getReal());
+                retValue.add(maxValue);
             }
             else
             {
-                retValue.add(minValue.getReal() + calcDelta.getReal() * (double) idx);
+                retValue.add(minValue + delta * (double) idx);
             }
         }
         return retValue;
@@ -328,19 +308,16 @@ public class FormulaTermInterval extends FormulaTerm
     /**
      * Procedure checks and returns delta value
      */
-    private CalculatedValue getDelta(final double min, final double next, final double max)
+    private double getDelta(final double min, final double next, final double max)
     {
-        final CalculatedValue calcVal = new CalculatedValue();
         if (next <= min || max < next)
         {
-            // error: invalid boundaries
-            calcVal.invalidate(CalculatedValue.ErrorType.NOT_A_NUMBER);
+            return Double.NaN;
         }
         else
         {
-            calcVal.setValue(next - min);
+            return (next - min);
         }
-        return calcVal;
     }
 
     private int getNumberOfPoints(double min, double max, double delta)

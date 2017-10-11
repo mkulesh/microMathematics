@@ -34,12 +34,11 @@ import android.widget.Toast;
 
 import com.mkulesh.micromath.BaseFragment;
 import com.mkulesh.micromath.MainActivity;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.StoredFormula.StoredTerm;
 import com.mkulesh.micromath.plots.ImageFragment;
-import com.mkulesh.micromath.plots.PlotContour;
 import com.mkulesh.micromath.plots.PlotFunction;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.properties.DocumentPropertiesChangeIf;
 import com.mkulesh.micromath.properties.TextProperties;
@@ -348,9 +347,6 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
             break;
         case PLOT_FUNCTION:
             f = addBaseFormula(FormulaBase.BaseType.PLOT_FUNCTION);
-            break;
-        case PLOT_CONTOUR:
-            f = addBaseFormula(FormulaBase.BaseType.PLOT_CONTOUR);
             break;
         case TEXT_FRAGMENT:
             f = addBaseFormula(FormulaBase.BaseType.TEXT_FRAGMENT);
@@ -945,9 +941,6 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
             break;
         case PLOT_FUNCTION:
             f = new PlotFunction(this, id);
-            break;
-        case PLOT_CONTOUR:
-            f = new PlotContour(this, id);
             break;
         case TEXT_FRAGMENT:
             f = new TextFragment(this, id);

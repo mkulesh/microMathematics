@@ -4,11 +4,11 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.mkulesh.micromath.plus"
+        applicationId "com.mkulesh.micromath"
         minSdkVersion 9
         targetSdkVersion 25
-        versionCode 302
-        versionName "2.15.4"
+        versionCode 36
+        versionName "1.18"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

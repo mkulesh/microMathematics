@@ -2,13 +2,13 @@
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
   <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="false">
     <text_fragment>
-      <term key="text" text='Vielen Dank für den Kauf von "micro&#10;Mathematics Plus"! Diese App ist der&#10;erste mathematische Taschenrechner für&#10;Android weltweit, der mit einem&#10;interaktiven Dokument arbeitet.&#10;&#10;Ein Dokument kann nicht nur Formeln&#10;oder graphische Darstellungen, sondern&#10;auch Textfragmente und Bilder&#10;enthalten.&#10;&#10;Dieses Dokument ist ein Beispiel und&#10;gleichzeitig eine Vorlage, die einen&#10;Funktionsgraphen demonstriert.&#10;&#10;Erstens, müssen wir ein Intervall&#10;definieren, dass ein Funktionsargument&#10;darstellt. Wir nutzen dafür den "Neu"&#10;Button in der Menüleiste' />
+      <term key="text" text='Vielen Dank für Download von "micro&#10;Mathematics"! Diese App ist der&#10;erste mathematische Taschenrechner für&#10;Android weltweit, der mit einem&#10;interaktiven Dokument arbeitet.&#10;&#10;Ein Dokument kann nicht nur Formeln&#10;oder graphische Darstellungen, sondern&#10;auch Textfragmente und Bilder&#10;enthalten.&#10;&#10;Dieses Dokument ist ein Beispiel und&#10;gleichzeitig eine Vorlage, die einen&#10;Funktionsgraphen demonstriert.&#10;&#10;Erstens, müssen wir ein Intervall&#10;definieren, dass ein Funktionsargument&#10;darstellt. Wir nutzen dafür den "Neu"&#10;Button in der Menüleiste' />
     </text_fragment>
     <image_fragment fileName="asset:/images/menu_new.svg" embedded="false" originalSize="false" width="330" height="90" />
     <text_fragment>
       <term key="text" text='oder den "Gleichung hinzufügen" Button&#10;in der Werkzeugleiste und fügen&#10;folgende Gleichungen hinzu:' />
     </text_fragment>
-    <image_fragment fileName="asset:/images/toolbar_equation.svg" embedded="false" originalSize="false" width="450" height="90" />
+    <image_fragment fileName="asset:/images/toolbar_equation.svg" embedded="false" originalSize="false" width="400" height="90" />
     <text_fragment>
       <term key="text" text="Anfangspunkt:" />
     </text_fragment>
@@ -54,40 +54,15 @@
             <term key="rightTerm" text="10" />
           </term>
         </term>
-        <term key="rightTerm" code="summation">
-          <term key="maxValue" text="20" />
-          <term key="index" text="n" />
-          <term key="minValue" text="0" />
-          <term key="argTerm" code="mult">
-            <term key="leftTerm" code="divide">
-              <term key="leftTerm" code="power">
-                <term key="leftTerm" code="identity">
-                  <term key="argTerm" text="-1" />
-                </term>
-                <term key="rightTerm" text="n" />
-              </term>
-              <term key="rightTerm" code="factorial">
-                <term key="argTerm" code="mult">
-                  <term key="leftTerm" text="2" />
-                  <term key="rightTerm" text="n" />
-                </term>
-              </term>
-            </term>
-            <term key="rightTerm" code="power">
-              <term key="leftTerm" text="x" />
-              <term key="rightTerm" code="mult">
-                <term key="leftTerm" text="2" />
-                <term key="rightTerm" text="n" />
-              </term>
-            </term>
-          </term>
+        <term key="rightTerm" code="sin">
+          <term key="argTerm" text="x" />
         </term>
       </term>
     </equation>
     <text_fragment>
       <term key="text" text='Als Letztes nutzen wir den&#10;"Funktionsgraph hinzufügen" Button in&#10;der Werkzeugleiste und erstellen einen&#10;Graphen:' />
     </text_fragment>
-    <image_fragment fileName="asset:/images/toolbar_plot_function.svg" embedded="false" originalSize="false" width="450" height="90" />
+    <image_fragment fileName="asset:/images/toolbar_plot_function.svg" embedded="false" originalSize="false" width="400" height="90" />
     <text_fragment>
       <term key="text" text="Die darzustellende Funktion soll im&#10;linken mittleren Feld sein und das&#10;Funktionsargument im mittleren unteren&#10;Feld. Die vier anderen Felder&#10;definieren die Plot-Grenzen. Falls&#10;diese Elemente leer bleiben, wird das&#10;Programm die entsprechenden Werte&#10;automatisch berechnen:" />
     </text_fragment>

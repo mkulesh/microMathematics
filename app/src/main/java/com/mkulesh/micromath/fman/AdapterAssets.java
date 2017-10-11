@@ -22,7 +22,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.net.Uri;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 
 import java.io.File;
 import java.io.InputStream;

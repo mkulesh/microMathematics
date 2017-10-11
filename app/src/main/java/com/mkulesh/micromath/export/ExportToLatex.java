@@ -27,6 +27,7 @@ import android.net.Uri;
 import android.util.DisplayMetrics;
 import android.view.View;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.fman.AdapterIf;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.Equation;
@@ -34,19 +35,14 @@ import com.mkulesh.micromath.formula.FormulaBase;
 import com.mkulesh.micromath.formula.FormulaListView;
 import com.mkulesh.micromath.formula.FormulaResult;
 import com.mkulesh.micromath.formula.FormulaTerm;
-import com.mkulesh.micromath.formula.FormulaTermComparator;
 import com.mkulesh.micromath.formula.FormulaTermFunction;
-import com.mkulesh.micromath.formula.FormulaTermFunction.FunctionType;
 import com.mkulesh.micromath.formula.FormulaTermInterval;
-import com.mkulesh.micromath.formula.FormulaTermLoop;
 import com.mkulesh.micromath.formula.FormulaTermOperator;
 import com.mkulesh.micromath.formula.FormulaTermOperator.OperatorType;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TextFragment;
 import com.mkulesh.micromath.plots.ImageFragment;
-import com.mkulesh.micromath.plots.PlotContour;
 import com.mkulesh.micromath.plots.PlotFunction;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.TextProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
 
@@ -137,8 +133,7 @@ public class ExportToLatex
         }
         if (skipImageLocale() && fileName.length() > 3)
         {
-            if (fileName.endsWith("_en") || fileName.endsWith("_ru") ||
-                    fileName.endsWith("_de") || fileName.endsWith("_br"))
+            if (fileName.endsWith("_en") || fileName.endsWith("_ru") || fileName.endsWith("_de"))
             {
                 fileName = fileName.substring(0, fileName.length() - 3);
             }
@@ -246,7 +241,7 @@ public class ExportToLatex
         {
             writeFormulaResult((FormulaResult) f, inLine);
         }
-        else if (f instanceof PlotFunction || f instanceof PlotContour || f instanceof ImageFragment)
+        else if (f instanceof PlotFunction || f instanceof ImageFragment)
         {
             writePlotFunction(f, inLine);
         }
@@ -271,31 +266,7 @@ public class ExportToLatex
         if (f.isResultVisible())
         {
             writer.append(" = ");
-            if (f.isArrayResult())
-            {
-                final ArrayList<ArrayList<String>> res = f.fillResultMatrixArray();
-                if (res != null)
-                {
-                    writer.append("\\begin{bmatrix}");
-                    for (ArrayList<String> row : res)
-                    {
-                        for (int i = 0; i < row.size(); i++)
-                        {
-                            writer.append(FormulaResult.CELL_DOTS.equals(row.get(i)) ? "\\dots" : row.get(i));
-                            writer.append(i + 1 < row.size() ? "&" : "\\\\");
-                        }
-                    }
-                    writer.append("\\end{bmatrix}");
-                }
-                else
-                {
-                    writeTermField(f.findTermWithKey(R.string.formula_right_term_key));
-                }
-            }
-            else
-            {
-                writeTermField(f.findTermWithKey(R.string.formula_right_term_key));
-            }
+            writeTermField(f.findTermWithKey(R.string.formula_right_term_key));
         }
     }
 
@@ -438,10 +409,6 @@ public class ExportToLatex
             {
                 writeTermOperator((FormulaTermOperator) ft);
             }
-            else if (ft instanceof FormulaTermComparator)
-            {
-                writeTermComparator((FormulaTermComparator) ft);
-            }
             else if (ft instanceof FormulaTermFunction)
             {
                 writeTermFunction((FormulaTermFunction) ft);
@@ -449,10 +416,6 @@ public class ExportToLatex
             else if (ft instanceof FormulaTermInterval)
             {
                 writeTermInterval((FormulaTermInterval) ft);
-            }
-            else if (ft instanceof FormulaTermLoop)
-            {
-                writeTermLoop((FormulaTermLoop) ft);
             }
         }
     }
@@ -505,48 +468,6 @@ public class ExportToLatex
         }
     }
 
-    private void writeTermComparator(FormulaTermComparator f)
-    {
-        FormulaTermComparator.ComparatorType comparatorType = f.getComparatorType();
-        if (f.isUseBrackets())
-        {
-            writer.append("\\left( ");
-        }
-        writeTermField(f.findTermWithKey(R.string.formula_left_term_key));
-        switch (comparatorType)
-        {
-        case COMPARATOR_AND:
-            writer.append(" and ");
-            break;
-        case COMPARATOR_OR:
-            writer.append(" or ");
-            break;
-        case EQUAL:
-            writer.append(" = ");
-            break;
-        case GREATER:
-            writer.append(" > ");
-            break;
-        case GREATER_EQUAL:
-            writer.append(" \\ge ");
-            break;
-        case LESS:
-            writer.append(" < ");
-            break;
-        case LESS_EQUAL:
-            writer.append(" \\le ");
-            break;
-        case NOT_EQUAL:
-            writer.append(" \\neq ");
-            break;
-        }
-        writeTermField(f.findTermWithKey(R.string.formula_right_term_key));
-        if (f.isUseBrackets())
-        {
-            writer.append(" \\right)");
-        }
-    }
-
     private void writeTermFunction(FormulaTermFunction f)
     {
         FormulaTermFunction.FunctionType functionType = f.getFunctionType();
@@ -557,31 +478,6 @@ public class ExportToLatex
             writer.append("\\sqrt{");
             writeTermField(terms.get(0));
             writer.append("} ");
-            break;
-        case NTHRT_LAYOUT:
-            if (terms.size() == 2)
-            {
-                writer.append("\\sqrt[\\leftroot{-3}\\uproot{3}");
-                writeTermField(terms.get(0));
-                writer.append("]{");
-                writeTermField(terms.get(1));
-                writer.append("} ");
-            }
-            break;
-        case CONJUGATE_LAYOUT:
-            writer.append("\\overline{");
-            writeTermField(terms.get(0));
-            writer.append("} ");
-            break;
-        case RE:
-            writer.append("\\Re\\left( ");
-            writeTermField(terms.get(0));
-            writer.append(" \\right) ");
-            break;
-        case IM:
-            writer.append("\\Im\\left( ");
-            writeTermField(terms.get(0));
-            writer.append(" \\right) ");
             break;
         case ABS_LAYOUT:
             writer.append(" \\left| ");
@@ -597,14 +493,7 @@ public class ExportToLatex
             {
                 writeText(f.getFunctionTerm().getText(), true);
             }
-            if (functionType == FunctionType.FUNCTION_INDEX)
-            {
-                writer.append("_{");
-            }
-            else
-            {
-                writer.append(" \\left( ");
-            }
+            writer.append(" \\left( ");
             for (int i = 0; i < terms.size(); i++)
             {
                 if (i > 0)
@@ -613,14 +502,7 @@ public class ExportToLatex
                 }
                 writeTermField(terms.get(i));
             }
-            if (functionType == FunctionType.FUNCTION_INDEX)
-            {
-                writer.append("} ");
-            }
-            else
-            {
-                writer.append("\\right) ");
-            }
+            writer.append("\\right) ");
             break;
         }
     }
@@ -634,60 +516,6 @@ public class ExportToLatex
         writer.append(" \\,..\\, ");
         writeTermField(f.findTermWithKey(R.string.formula_max_value_key));
         writer.append(" \\right]");
-    }
-
-    private void writeTermLoop(FormulaTermLoop f)
-    {
-        if (f.isUseBrackets())
-        {
-            writer.append("\\left( ");
-        }
-        FormulaTermLoop.LoopType loopType = f.getLoopType();
-        final TermField minValueTerm = f.findTermWithKey(R.string.formula_min_value_key);
-        final TermField maxValueTerm = f.findTermWithKey(R.string.formula_max_value_key);
-        switch (loopType)
-        {
-        case DERIVATIVE:
-            writer.append("\\frac{d}{d");
-            writeText(f.getIndexName(), true);
-            writer.append("} ");
-            writeTermField(f.getArgumentTerm());
-            break;
-        case INTEGRAL:
-            writer.append("\\displaystyle\\int_{");
-            writeTermField(minValueTerm);
-            writer.append("}^{");
-            writeTermField(maxValueTerm);
-            writer.append("}");
-            writeTermField(f.getArgumentTerm());
-            writer.append("\\, d");
-            writeText(f.getIndexName(), true);
-            break;
-        case PRODUCT:
-            writer.append("\\displaystyle\\prod_{");
-            writeText(f.getIndexName(), true);
-            writer.append("=");
-            writeTermField(minValueTerm);
-            writer.append("}^{");
-            writeTermField(maxValueTerm);
-            writer.append("} ");
-            writeTermField(f.getArgumentTerm());
-            break;
-        case SUMMATION:
-            writer.append("\\displaystyle\\sum_{");
-            writeText(f.getIndexName(), true);
-            writer.append("=");
-            writeTermField(minValueTerm);
-            writer.append("}^{");
-            writeTermField(maxValueTerm);
-            writer.append("} ");
-            writeTermField(f.getArgumentTerm());
-            break;
-        }
-        if (f.isUseBrackets())
-        {
-            writer.append(" \\right)");
-        }
     }
 
     private void writeText(CharSequence text, boolean inEquation)

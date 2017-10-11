@@ -36,7 +36,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 
 import java.io.File;
 import java.util.Date;

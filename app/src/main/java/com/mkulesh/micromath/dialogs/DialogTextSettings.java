@@ -23,7 +23,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.properties.TextProperties;
 import com.mkulesh.micromath.properties.TextProperties.TextStyle;
 import com.mkulesh.micromath.properties.TextPropertiesChangeIf;

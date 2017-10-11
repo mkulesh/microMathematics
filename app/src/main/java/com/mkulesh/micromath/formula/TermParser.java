@@ -18,24 +18,19 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
-import com.mkulesh.micromath.math.CalculatedValue;
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
+import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
-import com.mkulesh.micromath.widgets.CustomEditText;
-
-import org.apache.commons.math3.complex.Complex;
 
 import java.util.ArrayList;
 
 public class TermParser
 {
-    private CalculatedValue value = null;
+    private Double value = null;
     private String functionName = null;
     private ArrayList<String> functionArgs = null;
-    private ArgumentHolderIf argumentHolder = null;
-    private int argumentIndex = ViewUtils.INVALID_INDEX, linkedVariableId = -1;
+    private int argumentIndex = -1, linkedVariableId = -1;
     private double sign = 1.0;
-    private boolean isArray = false;
 
     public int errorId = TermField.NO_ERROR_ID;
 
@@ -45,15 +40,15 @@ public class TermParser
     public static final String CONST_PI1 = "π";
     public static final String CONST_PI2 = "pi";
     public static final String IMAGINARY_UNIT = "i";
-    public static final String POSITIVE_SIGN = "+";
-    public static final String NEGATIVE_SIGN = "-";
+
+    public boolean ensureEquationName = false;
 
     public TermParser()
     {
         // empty
     }
 
-    public CalculatedValue getValue()
+    public Double getValue()
     {
         return value;
     }
@@ -66,11 +61,6 @@ public class TermParser
     public ArrayList<String> getFunctionArgs()
     {
         return functionArgs;
-    }
-
-    public ArgumentHolderIf getArgumentHolder()
-    {
-        return argumentHolder;
     }
 
     public int getArgumentIndex()
@@ -88,22 +78,14 @@ public class TermParser
         return sign;
     }
 
-    public boolean isArray()
+    public void setText(FormulaBase formulaRoot, String inText)
     {
-        return isArray;
-    }
-
-    public void setText(TermField owner, FormulaBase formulaRoot, CustomEditText editText)
-    {
-        String inText = editText.getText().toString();
         value = null;
         functionName = null;
         functionArgs = null;
-        argumentHolder = null;
-        argumentIndex = ViewUtils.INVALID_INDEX;
+        argumentIndex = -1;
         linkedVariableId = -1;
         sign = 1.0;
-        isArray = false;
         errorId = TermField.NO_ERROR_ID;
         if (inText == null || inText.length() == 0)
         {
@@ -112,13 +94,20 @@ public class TermParser
 
         String text = inText.trim();
 
+        // check for the sign
+        if (text.startsWith("-"))
+        {
+            sign = -1.0;
+            text = text.substring(1).trim();
+        }
+
         // check for forbidden content
         if (CONST_NAN.equals(text) || CONST_INF.equals(text))
         {
             errorId = R.string.error_nan_value;
             return;
         }
-        if ((editText.isIndexName() || editText.isEquationName()) && IMAGINARY_UNIT.equals(text))
+        if (IMAGINARY_UNIT.equals(text))
         {
             errorId = R.string.error_forbidden_imaginary_unit;
             return;
@@ -127,110 +116,86 @@ public class TermParser
         // check if is a valid double value
         try
         {
-            value = new CalculatedValue(CalculatedValue.ValueType.REAL, Double.parseDouble(text), 0.0);
+            value = Double.parseDouble(text);
             return;
         }
         catch (Exception ex)
         {
             value = null;
             // nothing to do: we will try to convert it to the function name
-        }
-
-        // check if is a valid complex value
-        try
-        {
-            Complex cmplValue = complexValueOf(text);
-            if (cmplValue != null)
-            {
-                if (!editText.isComplexEnabled())
-                {
-                    errorId = R.string.error_forbidden_complex;
-                    return;
-                }
-                if (cmplValue.getImaginary() != 0.0)
-                {
-                    value = new CalculatedValue(CalculatedValue.ValueType.COMPLEX, cmplValue.getReal(),
-                            cmplValue.getImaginary());
-                }
-                else
-                {
-                    value = new CalculatedValue(CalculatedValue.ValueType.REAL, cmplValue.getReal(), 0.0);
-                }
-                return;
-            }
-        }
-        catch (Exception ex)
-        {
-            value = null;
-            // nothing to do: we will try to convert it to the function name
-        }
-
-        // check for the sign
-        if (text.startsWith("-"))
-        {
-            sign = -1.0;
-            text = text.substring(1).trim();
         }
 
         // check if it is a constant
         if (CONST_E.equals(text))
         {
-            value = new CalculatedValue(CalculatedValue.ValueType.REAL, sign * Math.E, 0.0);
-            sign = +1.0;
+            value = Math.E;
             return;
         }
         else if (CONST_PI1.equals(text) || CONST_PI2.equals(text))
         {
-            value = new CalculatedValue(CalculatedValue.ValueType.REAL, sign * Math.PI, 0.0);
-            sign = +1.0;
+            value = Math.PI;
             return;
         }
 
         // check if it is a function name
-        BracketParser brPars = new BracketParser();
-        switch (brPars.parse(text, formulaRoot.getContext().getResources()))
+        String fName = null;
+        ArrayList<String> fArgs = null;
+        if ((text.contains("(") && !text.contains(")")) || (text.contains(")") && !text.contains("(")))
         {
-        case NO_BRACKETS:
-            functionName = text;
-            break;
-        case PARSED_SUCCESSFULLY:
-            functionName = brPars.name;
-            functionArgs = brPars.arguments;
-            isArray = brPars.isArray();
-            break;
-        case PARSED_WITH_ERROR:
-            errorId = brPars.errorId;
+            errorId = R.string.error_brackets_not_completed;
             return;
         }
-
-        if (functionName != null)
+        else if (!text.contains("(") && !text.contains(")"))
         {
-            // check for argument index
-            if (checkArgumentIndex(owner, editText))
+            fName = text;
+        }
+        else
+        {
+            fArgs = getArcs(text);
+            if (fArgs == null || fArgs.isEmpty())
             {
-                // found a valid argument
+                // getArcs sets the parsingErrorId in the case of an error
                 return;
             }
-            else if (errorId != TermField.NO_ERROR_ID)
+            try
             {
-                // found an erroneous argument
+                fName = text.substring(0, text.indexOf("(")).trim();
+            }
+            catch (IndexOutOfBoundsException ex)
+            {
+                errorId = R.string.error_invalid_variable_name;
                 return;
             }
+        }
+        if (fName == null || fName.length() == 0 || !isAlphaOrDigit(fName))
+        {
+            errorId = R.string.error_invalid_variable_name;
+            return;
+        }
+        functionName = fName;
+        functionArgs = fArgs;
 
-            // check for index name
-            if (editText.isIndexName() && functionArgs != null)
-            {
-                // error: found a field that contains argument but it shall be a index
-                errorId = R.string.error_forbidden_arguments;
-                return;
-            }
+        // check for argument index
+        if (functionName != null && formulaRoot instanceof Equation)
+        {
+            argumentIndex = ((Equation) formulaRoot).isArgument(functionName) ? 0 : -1;
+        }
 
+        // check for equation definition and linked formula
+        if (functionName != null && argumentIndex < 0)
+        {
             // check for equation name
-            if (editText.isEquationName())
+            if (ensureEquationName)
             {
                 final FormulaBase fb = formulaRoot.getFormulaList().getFormula(functionName, ViewUtils.INVALID_INDEX,
                         formulaRoot.getId(), true);
-                if (fb != null && !formulaRoot.getFormulaList().getDocumentSettings().redefineAllowed)
+                // check for argument number
+                if (functionArgs != null && functionArgs.size() > 1)
+                {
+                    // error: more than one argument is not allowed in this version
+                    errorId = R.string.error_ensure_single_argument;
+                }
+                else if (fb != null && !formulaRoot.getFormulaList().getDocumentSettings().redefineAllowed)
                 {
                     // error: we found an other equation with the same name as this equation definition:
                     // it is forbidden
@@ -260,116 +225,102 @@ public class TermParser
             }
         }
 
-        errorId = R.string.error_unknown_variable;
+        if (argumentIndex < 0 && linkedVariableId < 0)
+        {
+            errorId = R.string.error_unknown_variable;
+        }
     }
 
-    private boolean checkArgumentIndex(TermField owner, CustomEditText editText)
+    private ArrayList<String> getArcs(String text)
     {
-        argumentHolder = owner.findArgumentHolder(functionName);
-        // no argument holder is found
-        if (argumentHolder == null || !(argumentHolder instanceof FormulaBase))
+        final int lbPosition = text.indexOf("(");
+        final int rbPosition = text.indexOf(")");
+        if (lbPosition > rbPosition)
         {
-            return false;
+            errorId = R.string.error_invalid_brackets_order;
+            return null;
         }
-        if (editText.isEquationName())
+        String args = null;
+        try
         {
-            // get the parent holder in the case of an equation name
-            final TermField parentHolderTerm = ((FormulaBase) argumentHolder).getParentField();
-            argumentHolder = (parentHolderTerm != null) ? parentHolderTerm.findArgumentHolder(functionName) : null;
-            if (argumentHolder != null)
+            args = text.substring(lbPosition + 1, rbPosition);
+        }
+        catch (IndexOutOfBoundsException ex)
+        {
+            errorId = R.string.error_invalid_brackets_order;
+            return null;
+        }
+        if (args.length() == 0)
+        {
+            errorId = R.string.error_empty_argument_list;
+            return null;
+        }
+        ArrayList<String> tmpArgs = new ArrayList<String>();
+        while (true)
+        {
+            int cmPosition = args.indexOf(",");
+            if (cmPosition < 0)
             {
-                errorId = R.string.error_duplicated_identifier;
+                tmpArgs.add(args.trim());
+                break;
             }
-            argumentHolder = null;
-            return false;
+            try
+            {
+                tmpArgs.add(args.substring(0, cmPosition).trim());
+                args = args.substring(cmPosition + 1, args.length());
+            }
+            catch (IndexOutOfBoundsException ex)
+            {
+                errorId = R.string.error_invalid_comma_position;
+                return null;
+            }
         }
-        if (editText.isIntermediateArgument())
+        for (String s : tmpArgs)
         {
-            // get the parent holder in the case of an intermediate argument
-            final TermField parentHolderTerm = ((FormulaBase) argumentHolder).getParentField();
-            argumentHolder = (parentHolderTerm != null) ? parentHolderTerm.findArgumentHolder(functionName) : null;
-            if (argumentHolder == null)
+            if (s == null || s.length() == 0)
+            {
+                errorId = R.string.error_empty_argument;
+                return null;
+            }
+            if (!isAlphaOrDigit(s))
+            {
+                errorId = R.string.error_invalid_argument;
+                return null;
+            }
+
+        }
+        return tmpArgs;
+    }
+
+    private boolean isAlphaOrDigit(String name)
+    {
+        final char[] chars = name.toCharArray();
+        for (char c : chars)
+        {
+            if (!Character.isLetterOrDigit(c))
             {
                 return false;
             }
         }
-        // obtain argument index
-        argumentIndex = argumentHolder.getArgumentIndex(functionName);
-        if (argumentIndex == ViewUtils.INVALID_INDEX)
-        {
-            // should never happen since findArgumentHolder already checks the argument index
-            argumentHolder = null;
-        }
-        return (argumentHolder != null && argumentIndex != ViewUtils.INVALID_INDEX);
+        return true;
     }
 
-    public boolean isArgumentInHolder(String var)
+    public static boolean isInvalidReal(double v)
     {
-        if (argumentHolder != null)
-        {
-            final ArrayList<String> args = argumentHolder.getArguments();
-            if (args != null && getArgumentIndex() >= 0 && getArgumentIndex() < args.size())
-            {
-                final String arg = args.get(getArgumentIndex());
-                if (var != null && arg != null)
-                {
-                    return var.equals(arg);
-                }
-            }
-        }
-        return false;
+        return Double.isNaN(v) || Double.isInfinite(v);
     }
 
-    public static Complex complexValueOf(String text)
+    public static String doubleToString(double v, DocumentProperties doc)
     {
-        // text shall contain imaginary unit
-        if (text == null || !text.contains(IMAGINARY_UNIT))
+        if (Double.isNaN(v))
         {
-            return null;
+            return CONST_NAN;
         }
-
-        // imaginary unit shall be the last character
-        final int unitPos = text.indexOf(IMAGINARY_UNIT);
-        if (unitPos != text.length() - 1)
+        if (Double.isInfinite(v))
         {
-            return null;
+            return (v < 0) ? "-" + CONST_INF : CONST_INF;
         }
-
-        // search for +/- sign before imaginary unit
-        int signPos = text.lastIndexOf(POSITIVE_SIGN);
-        if (signPos < 0)
-        {
-            signPos = text.lastIndexOf(NEGATIVE_SIGN);
-        }
-        if (signPos < 0)
-        {
-            signPos = 0;
-        }
-
-        // split real and imaginary part
-        String rePart = "", imPart = "";
-        try
-        {
-            rePart = (signPos > 0) ? text.substring(0, signPos) : "0.0";
-            imPart = (unitPos > signPos) ? text.substring(signPos, unitPos) : "1.0";
-            if (imPart.equals(POSITIVE_SIGN) || imPart.equals(NEGATIVE_SIGN))
-            {
-                imPart += "1.0";
-            }
-        }
-        catch (IndexOutOfBoundsException e)
-        {
-            return null;
-        }
-
-        // convert both parts
-        try
-        {
-            return new Complex(Double.valueOf(rePart), Double.valueOf(imPart));
-        }
-        catch (NumberFormatException e)
-        {
-            return null;
-        }
+        final double roundV = ViewUtils.roundToNumberOfSignificantDigits(v, doc.significantDigits);
+        return Double.toString(roundV);
     }
 }

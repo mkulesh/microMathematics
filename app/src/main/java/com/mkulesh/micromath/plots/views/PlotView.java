@@ -22,56 +22,43 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.Paint;
+import android.graphics.Path;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 
-import com.mkulesh.micromath.math.Vector2D;
-import com.mkulesh.micromath.plots.FunctionIf;
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.properties.AxisProperties;
-import com.mkulesh.micromath.properties.ColorMapProperties;
+import com.mkulesh.micromath.properties.LineProperties;
 import com.mkulesh.micromath.properties.PlotProperties;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.FormulaChangeIf;
-
-import java.util.ArrayList;
 
 public abstract class PlotView extends CustomTextView
 {
     /*
      * Constants used to save/restore the instance state.
      */
+    private static final String STATE_LINE_PARAMETERS = "line_parameters";
     private static final String STATE_AXIS_PARAMETERS = "axis_parameters";
     private static final String STATE_PLOT_PARAMETERS = "plot_parameters";
-    private static final String STATE_COLORMAP_PARAMETERS = "colormap_parameters";
 
     // settings
+    protected final LineProperties lineParameters = new LineProperties();
     protected final AxisProperties axisParameters = new AxisProperties();
     protected final PlotProperties plotParameters = new PlotProperties();
-    protected ColorMapView colorMapView = null;
 
     // cache
     protected Bitmap drawingCache = null;
 
     // data
-    protected ArrayList<FunctionIf> functions = null;
     protected int significantDigits = 6;
 
-    /*********************************************************
-     * Helper class that holds labels
-     *********************************************************/
-    public final class Label
-    {
-        Vector2D point = null;
-        String name = null;
-
-        public Label(int idx, double v, Vector2D lc)
-        {
-            point = (idx == FunctionIf.X) ? new Vector2D(v, lc.y) : new Vector2D(lc.x, v);
-        }
-    }
+    // temporary variables used for drawing
+    protected final Paint paint = new Paint();
+    protected final Path path = new Path();
 
     /*********************************************************
      * Creating
@@ -99,6 +86,7 @@ public abstract class PlotView extends CustomTextView
         if (attrs != null)
         {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.PlotViewExtension, 0, 0);
+            lineParameters.initialize(a);
             axisParameters.initialize(a);
             a.recycle();
         }
@@ -108,10 +96,6 @@ public abstract class PlotView extends CustomTextView
     {
         super.prepare(SymbolType.EMPTY, activity, termChangeIf);
         plotParameters.initialize(getContext());
-        if (colorMapView != null)
-        {
-            colorMapView.prepare(activity, termChangeIf);
-        }
     }
 
     /*********************************************************
@@ -125,6 +109,12 @@ public abstract class PlotView extends CustomTextView
     public Parcelable onSaveInstanceState()
     {
         Bundle bundle = new Bundle();
+        // line parameters
+        {
+            LineProperties lp = new LineProperties();
+            lp.assign(lineParameters);
+            bundle.putParcelable(STATE_LINE_PARAMETERS, lp);
+        }
         // axis parameters
         {
             AxisProperties ap = new AxisProperties();
@@ -136,13 +126,6 @@ public abstract class PlotView extends CustomTextView
             PlotProperties pp = new PlotProperties();
             pp.assign(plotParameters);
             bundle.putParcelable(STATE_PLOT_PARAMETERS, pp);
-        }
-        // color map parameters
-        if (colorMapView != null)
-        {
-            ColorMapProperties cp = new ColorMapProperties();
-            cp.assign(colorMapView.getColorMapParameters());
-            bundle.putParcelable(STATE_COLORMAP_PARAMETERS, cp);
         }
         return bundle;
     }
@@ -160,19 +143,20 @@ public abstract class PlotView extends CustomTextView
         if (state instanceof Bundle)
         {
             Bundle bundle = (Bundle) state;
+            lineParameters.assign((LineProperties) bundle.getParcelable(STATE_LINE_PARAMETERS));
             axisParameters.assign((AxisProperties) bundle.getParcelable(STATE_AXIS_PARAMETERS));
             plotParameters.assign((PlotProperties) bundle.getParcelable(STATE_PLOT_PARAMETERS));
-            if (colorMapView != null)
-            {
-                colorMapView.getColorMapParameters().assign(
-                        (ColorMapProperties) bundle.getParcelable(STATE_COLORMAP_PARAMETERS));
-            }
         }
     }
 
     /*********************************************************
      * Properties
      *********************************************************/
+
+    public LineProperties getLineParameters()
+    {
+        return lineParameters;
+    }
 
     public AxisProperties getAxisParameters()
     {
@@ -182,16 +166,6 @@ public abstract class PlotView extends CustomTextView
     public PlotProperties getPlotParameters()
     {
         return plotParameters;
-    }
-
-    public ColorMapView getColorMapView()
-    {
-        return colorMapView;
-    }
-
-    public void setColorMapView(ColorMapView colorMapView)
-    {
-        this.colorMapView = colorMapView;
     }
 
     /*********************************************************
@@ -204,46 +178,9 @@ public abstract class PlotView extends CustomTextView
 
     public abstract void updateLabels();
 
-    public ArrayList<FunctionIf> getFunctions()
-    {
-        return functions;
-    }
-
-    public void setFunctions(ArrayList<FunctionIf> functions)
-    {
-        this.functions = functions;
-    }
-
-    public void setFunction(FunctionIf function)
-    {
-        if (function == null)
-        {
-            functions = null;
-            return;
-        }
-
-        if (functions == null)
-        {
-            functions = new ArrayList<FunctionIf>();
-        }
-        else
-        {
-            functions.clear();
-        }
-        functions.add(function);
-        if (colorMapView != null)
-        {
-            colorMapView.setFunction(function);
-        }
-    }
-
     public void setSignificantDigits(int significantDigits)
     {
         this.significantDigits = significantDigits;
-        if (colorMapView != null)
-        {
-            colorMapView.setSignificantDigits(significantDigits);
-        }
     }
 
     /*********************************************************
@@ -259,10 +196,6 @@ public abstract class PlotView extends CustomTextView
     public void invalidate()
     {
         drawingCache = null;
-        if (colorMapView != null)
-        {
-            colorMapView.invalidate();
-        }
         super.invalidate();
     }
 

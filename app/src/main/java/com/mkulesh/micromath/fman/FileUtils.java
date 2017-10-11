@@ -29,7 +29,7 @@ import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.io.Closeable;

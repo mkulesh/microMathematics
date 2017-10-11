@@ -20,18 +20,32 @@ package com.mkulesh.micromath.widgets;
 
 public interface TextChangeIf
 {
+    enum NextFocusType
+    {
+        FOCUS_DOWN,
+        FOCUS_LEFT,
+        FOCUS_RIGHT,
+        FOCUS_UP
+    }
+
     /**
      * Procedure is called before text change
      */
-    void beforeTextChanged(String s, boolean isManualInput);
+    public void beforeTextChanged(String s, boolean isManualInput);
 
     /**
      * Procedure is called on text change
      */
-    void onTextChanged(String s, boolean isManualInput);
+    public void onTextChanged(String s, boolean isManualInput);
 
     /**
      * Procedure is called after the text change
      */
-    void onSizeChanged();
+    public void onSizeChanged();
+
+    /**
+     * Procedure is called ID of next focused term is required
+     */
+    public int onGetNextFocusId(CustomEditText owner, NextFocusType focusType);
+
 }

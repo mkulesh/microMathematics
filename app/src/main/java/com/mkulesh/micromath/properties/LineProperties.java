@@ -18,12 +18,14 @@
  ******************************************************************************/
 package com.mkulesh.micromath.properties;
 
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.formula.FormulaList;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -118,6 +120,12 @@ public class LineProperties implements Parcelable
     public LineProperties()
     {
         // empty
+    }
+
+    public void initialize(TypedArray a)
+    {
+        color = a.getColor(R.styleable.PlotViewExtension_functionLineColor, color);
+        width = a.getDimensionPixelSize(R.styleable.PlotViewExtension_functionLineWidth, width);
     }
 
     public void assign(LineProperties a)
@@ -220,36 +228,5 @@ public class LineProperties implements Parcelable
     public Paint getPaint()
     {
         return paint;
-    }
-
-    public void setNextDefault(LineProperties lineParameters)
-    {
-        switch (lineParameters.lineStyle)
-        {
-        case SOLID:
-            lineStyle = LineStyle.DASHED;
-            break;
-        case DASHED:
-            lineStyle = LineStyle.DOTTED;
-            break;
-        case DOTTED:
-            lineStyle = LineStyle.DASH_DOT;
-            break;
-        case DASH_DOT:
-            lineStyle = LineStyle.SOLID;
-        }
-
-        final float[] hsv = new float[3];
-        Color.colorToHSV(lineParameters.color, hsv);
-        hsv[0] += 90;
-        if (hsv[0] >= 360)
-        {
-            hsv[0] -= 360;
-        }
-        if (hsv[0] > 0 && hsv[0] < 180)
-        {
-            hsv[2] = Math.min(hsv[2], 0.6f);
-        }
-        color = Color.HSVToColor(Color.alpha(lineParameters.color), hsv);
     }
 }

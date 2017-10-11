@@ -32,7 +32,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 
 public class CustomTextView extends AppCompatTextView implements OnLongClickListener, OnClickListener
 {

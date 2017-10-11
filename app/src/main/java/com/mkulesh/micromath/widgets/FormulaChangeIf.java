@@ -20,8 +20,6 @@ package com.mkulesh.micromath.widgets;
 
 import android.view.View;
 
-import com.mkulesh.micromath.formula.TermField;
-
 import java.util.ArrayList;
 
 public interface FormulaChangeIf
@@ -80,11 +78,6 @@ public interface FormulaChangeIf
      * Procedure will be called if a details for given owner term shall be displayed
      */
     void onDetails(View owner);
-
-    /**
-     * Procedure will be called if the given field obtains a command aimed to be expanded by a new term
-     */
-    boolean onNewTerm(TermField owner, String s, boolean requestFocus);
 
     /**
      * Procedure returns whether the object properties are enabled for this formula

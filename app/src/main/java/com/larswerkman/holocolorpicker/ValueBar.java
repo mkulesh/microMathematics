@@ -16,7 +16,7 @@
 
 package com.larswerkman.holocolorpicker;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 
 import android.content.Context;
 import android.content.res.Resources;

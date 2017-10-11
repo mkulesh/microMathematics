@@ -8,7 +8,7 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="335"
+   width="290"
    height="65"
    id="svg11300">
   <metadata
@@ -30,12 +30,12 @@
      height="54"
      rx="0"
      ry="0"
-     x="65.410301"
+     x="12.850301"
      y="0.28100163"
      id="rect3644"
      style="fill:#ff8000;fill-opacity:1;stroke:none" />
   <g
-     transform="matrix(0.18191764,0.22336433,-0.26958493,0.1708351,334.86196,-139.3942)"
+     transform="matrix(0.18191764,0.22336433,-0.26958493,0.1708351,282.30196,-139.3942)"
      id="g3915-6-3-7">
     <path
        d="m 89.471,1065.9 c 3.7268,6.1263 -0.48379,10.049 -6.16,12.947 -8.0302,4.0988 -27.898,2.1019 -34.7,-2.0136 -6.2427,-3.777 -9.0128,-9.3495 -6.0403,-14.184"
@@ -71,43 +71,7 @@
        style="text-indent:0;text-transform:none;block-progression:tb;opacity:0.7;color:#000000" />
   </g>
   <g
-     transform="translate(12.981635,2.9922527)"
-     id="g3487">
-    <g
-       transform="translate(0,-1004.3622)"
-       id="layer1">
-      <text
-         x="15.966964"
-         y="1102.2946"
-         transform="scale(1.0569305,0.946136)"
-         id="text8206"
-         xml:space="preserve"
-         style="font-size:25.12223816px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><tspan
-           x="15.966964"
-           y="1102.2946"
-           id="tspan8208">,</tspan></text>
-      <rect
-         width="15.467106"
-         height="29.467106"
-         rx="1.8996531"
-         ry="1.9622538"
-         x="1.7338426"
-         y="1013.6287"
-         id="rect11518-5-1"
-         style="color:#000000;fill:#353535;fill-opacity:0.8;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.53289378;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
-      <rect
-         width="15.467106"
-         height="29.467106"
-         rx="1.8996531"
-         ry="1.9622538"
-         x="30.659304"
-         y="1013.6287"
-         id="rect11518-5-1-4"
-         style="color:#000000;fill:#353535;fill-opacity:0.8;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.53289378;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
-    </g>
-  </g>
-  <g
-     transform="translate(68.227556,2.4736691)"
+     transform="translate(15.667554,2.4736691)"
      id="g3629">
     <text
        x="-1.9407928"
@@ -121,7 +85,7 @@
          id="tspan3082">[...]</tspan></text>
   </g>
   <g
-     transform="translate(238.58863,3.0006756)"
+     transform="translate(187.70863,3.0006756)"
      id="g3208">
     <g
        transform="translate(0,-1004.3622)"
@@ -152,7 +116,7 @@
     </g>
   </g>
   <g
-     transform="translate(125.10581,3.0006754)"
+     transform="translate(73.10581,3.0006754)"
      id="g4241">
     <rect
        width="13.95173"
@@ -189,7 +153,7 @@
        style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
   </g>
   <g
-     transform="translate(181.81597,3.0006754)"
+     transform="translate(130.37597,3.0006754)"
      id="g4318">
     <rect
        width="13.95173"
@@ -218,7 +182,7 @@
        style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
   </g>
   <g
-     transform="translate(284.02801,3.0007209)"
+     transform="translate(237.62801,3.0007209)"
      id="g3097">
     <rect
        width="19.538784"

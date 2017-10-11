@@ -31,7 +31,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 
 /**
  * Displays a holo-themed color picker.

@@ -18,7 +18,7 @@
  ******************************************************************************/
 package com.mkulesh.micromath.fman;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 
 public enum FileType
 {
