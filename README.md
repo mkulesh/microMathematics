@@ -1,39 +1,15 @@
-[![License](https://img.shields.io/badge/license-GNU_GPLv3-orange.svg)](https://github.com/mkulesh/microMathematics/blob/master/LICENSE) [![Build Status](https://travis-ci.org/mkulesh/microMathematics.svg?branch=master)](https://travis-ci.org/mkulesh/microMathematics) [![Download unsigned APK from latest autobuild](https://img.shields.io/badge/APK-autobuild-blue.svg)](https://github.com/mkulesh/microMathematics/raw/autobuild/autobuild/microMathematics-v2.15.4.apk)
+[![License](https://img.shields.io/badge/license-GNU_GPLv3-orange.svg)](https://github.com/mkulesh/microMathematics/blob/master/LICENSE)
 
-# <img src="https://github.com/mkulesh/microMathematics/blob/master/images/icon.png" align="center" height="48" width="48"> "microMathematics Plus - Extended visual calculator"
+# <img src="https://github.com/mkulesh/microMathematics/blob/master/images/icon.png" align="center" height="48" width="48"> "microMathematics Light - Basic visual calculator"
 
-With microMathematics Plus, you can not only perform mathematical calculations in naturally readable form, but can also create and manage your own collection of interactive formulas!
-
-microMathematics Plus is a revolutionary new kind of mobile calculator. It is the scientific graphing calculator and function plotter on Android oriented around a worksheet. It allows live editing of mathematical identities combined with highly accurate computations.
-
-Not only students, but also everybody who likes mathematics or needs more than just a basic calculator will benefit from this amazing technique of mathematical calculations and plotting.
+this is a fork of microMathematics Plus that supports basic level of mathematical calculations. It does not support complex numbers, functions with many arguments, plots for several functions, 3D plots, summation and product operations, derivative and definite integrals, logical operators, n-th root.
 
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
-      alt="Get it on Google Play" height="110">](https://play.google.com/store/apps/details?id=com.mkulesh.micromath.plus)
-[<img src="https://gitlab.com/fdroid/artwork/raw/master/badge/get-it-on.png"
-      alt="Get it on F-Droid" height="110">](https://f-droid.org/packages/com.mkulesh.micromath.plus)
-
-## Benefits and features:
-
-* Verification, validation, documentation and re-use of mathematical calculations
-* Works on smartphone or tablet in portrait and landscape mode
-* Supports all commonly used mathematical operations
-* Mathematical expressions are written in an intuitive and naturally readable form
-* Powerful mathematical touch-screen editor with undo function makes editing easier
-* You can do multiple calculations and subsequently correct or change all used formulas
-* It is possible to store intermediate results into 1D, 2D, or 3D array that can improve calculation performance
-* Mathematical expressions are collected in a document, that includes not only formulas and plots, but also additional text and images ([SVG format](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) is also supported)
-* You can store your document on SD card and export it into [LaTeX format](https://www.latex-project.org/) or an image (SD writing permission is needed)
-* SD card on Android 6+ is also supported
-* The app contains detailed "How to use" page and several examples
+      alt="Get it on Google Play" height="110">](https://play.google.com/store/apps/details?id=com.mkulesh.micromath)
 
 ## Screenshots:
 
-![Example of a function plot](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/rayleigh_wave.png)
-![Example of a 3D plot](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/valentine.png)
-![Example of calculation with complex numbers](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/fourie_transform.png)
-
-For more screenshots, see directory images/screenshots.
+![Example of a function plot](https://github.com/mkulesh/microMathematics/blob/light/images/screenshots/rayleigh_wave.png)
 
 ## Reviews and publications:
 
@@ -52,12 +28,10 @@ For more screenshots, see directory images/screenshots.
 * English
 * Russian
 * German
-* Brazilian Portuguese
 
 ## Authors
 
 * Mikhail Kulesh (core development, German/Russian translation), mikhail.kulesh@gmail.com
-* Caio Roberto Ramos da Silva (Brazilian Portuguese translation), caiorrs@gmail.com
 
 ## License
 
