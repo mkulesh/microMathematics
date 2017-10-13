@@ -38,7 +38,6 @@
     <string name="formula_operator_mult" translatable="false">*</string>
     <string name="formula_operator_divide" translatable="false">÷</string>
     <string name="formula_operator_divide_slash" translatable="false">/</string>
-    <string name="formula_operator_power" translatable="false">^</string>
     <string name="formula_comparator_equal" translatable="false">==</string>
     <string name="formula_comparator_not_equal" translatable="false">=|</string>
     <string name="formula_comparator_less" translatable="false">&#60;&#60;</string>
@@ -53,6 +52,7 @@
     <string name="formula_loop_derivative" translatable="false">DERIV</string>
     <string name="formula_loop_diff" translatable="false">d</string>
     <string name="formula_loop_parameter_definition" translatable="false">=</string>
+    <string name="formula_function_power" translatable="false">^</string>
     <string name="formula_function_start_bracket" translatable="false">(</string>
     <string name="formula_function_end_bracket" translatable="false">)</string>
     <string name="formula_function_start_index" translatable="false">[</string>

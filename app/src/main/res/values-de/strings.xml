@@ -167,7 +167,6 @@
     <string name="math_operator_mult">Multiplikation (\'*\')</string>
     <string name="math_operator_divide">Division (\'÷\')</string>
     <string name="math_operator_divide_slash">Division (\'/\')</string>
-    <string name="math_operator_power">Potenzzeichen (\'^\')</string>
     <string name="math_comparator_equal">Gleichheitszeichen (\'= =\')</string>
     <string name="math_comparator_not_equal">Ungleichzeichen (\'=|\')</string>
     <string name="math_comparator_less">Kleinerzeichen (\'&#60;&#60;\')</string>
@@ -183,6 +182,7 @@
     <string name="math_loop_integral">Bestimmtes Integral (\'INTEG\')</string>
     <string name="math_loop_derivative">Erste Ableitung (\'DERIV\')</string>
     <string name="math_function_identity">Runde Klammern (\'(\')</string>
+    <string name="math_function_power">Potenzzeichen (\'^\')</string>
     <string name="math_function_abs">Betrag des Arguments (\'|\')</string>
     <string name="math_function_conjugate">Konjugiert komplexe Zahl des Arguments (\'~\')</string>
     <string name="math_function_re">Realteil der komplexen Zahl</string>

@@ -45,8 +45,7 @@ public class FormulaTermOperator extends FormulaTerm
         DIVIDE_SLASH(
                 R.string.formula_operator_divide_slash,
                 R.drawable.p_operator_divide_slash,
-                R.string.math_operator_divide_slash),
-        POWER(R.string.formula_operator_power, R.drawable.p_operator_power, R.string.math_operator_power);
+                R.string.math_operator_divide_slash);
 
         private final int symbolId;
         private final int imageId;
@@ -153,8 +152,6 @@ public class FormulaTermOperator extends FormulaTerm
             case DIVIDE:
             case DIVIDE_SLASH:
                 return outValue.divide(fVal, gVal);
-            case POWER:
-                return outValue.pow(fVal, gVal);
             }
         }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
@@ -199,46 +196,6 @@ public class FormulaTermOperator extends FormulaTerm
                 gDer.subtract(fDer, fVal);
                 fDer.multiply(gVal, gVal);
                 return outValue.divide(gDer, fDer);
-            }
-            case POWER:
-            {
-                leftTerm.getValue(thread, fVal);
-                rightTerm.getValue(thread, gVal);
-                if (fDer.isZero() && gDer.isZero())
-                {
-                    // the case a^a
-                    return outValue.setValue(0.0);
-                }
-                else if (!fDer.isZero() && gDer.isZero())
-                {
-                    // the case f^a: result = g * f^(g-1) * fDer;
-                    CalculatedValue tmp = new CalculatedValue();
-                    tmp.subtract(gVal, CalculatedValue.ONE);
-                    tmp.pow(fVal, tmp);
-                    outValue.multiply(gVal, tmp);
-                    return outValue.multiply(outValue, fDer);
-                }
-                else if (fDer.isZero() && !gDer.isZero())
-                {
-                    // the case a^g: result = f^g * log(f) * gDer;
-                    CalculatedValue tmp = new CalculatedValue();
-                    tmp.log(fVal);
-                    outValue.pow(fVal, gVal);
-                    outValue.multiply(outValue, tmp);
-                    return outValue.multiply(outValue, gDer);
-                }
-                else
-                {
-                    // case f^g: result = f^g * {fDer * g / f  +  gDer * log(f)}
-                    CalculatedValue tmp1 = new CalculatedValue(), tmp2 = new CalculatedValue();
-                    tmp1.multiply(fDer, gVal);
-                    tmp1.divide(tmp1, fVal);
-                    tmp2.log(fVal);
-                    tmp2.multiply(gDer, tmp2);
-                    tmp1.add(tmp1, tmp2);
-                    outValue.pow(fVal, gVal);
-                    return outValue.multiply(outValue, tmp1);
-                }
             }
             }
         }
@@ -287,10 +244,6 @@ public class FormulaTermOperator extends FormulaTerm
                     v.prepare(CustomTextView.SymbolType.SLASH, getFormulaRoot().getFormulaList().getActivity(), this);
                     v.setText("_");
                     break;
-                case POWER:
-                    v.prepare(CustomTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
-                    v.setText("_");
-                    break;
                 }
             }
             else if (t.equals(getContext().getResources().getString(R.string.formula_left_bracket_key)))
@@ -315,20 +268,12 @@ public class FormulaTermOperator extends FormulaTerm
         {
             if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_left_term_key)))
             {
-                boolean addDepth = (operatorType == OperatorType.DIVIDE) ? true : false;
+                final boolean addDepth = (operatorType == OperatorType.DIVIDE) ? true : false;
                 leftTerm = addTerm(getFormulaRoot(), l, v, this, addDepth);
             }
             if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_right_term_key)))
             {
-                int addDepth = 0;
-                if (operatorType == OperatorType.DIVIDE)
-                {
-                    addDepth = 1;
-                }
-                if (operatorType == OperatorType.POWER)
-                {
-                    addDepth = 3;
-                }
+                final int addDepth = (operatorType == OperatorType.DIVIDE)? 1 : 0;
                 rightTerm = addTerm(getFormulaRoot(), l, -1, v, this, addDepth);
             }
         }
@@ -390,10 +335,6 @@ public class FormulaTermOperator extends FormulaTerm
             inflateElements(useBrackets ? R.layout.formula_operator_vert_brackets : R.layout.formula_operator_vert,
                     true);
             break;
-        case POWER:
-            useBrackets = false;
-            inflateElements(R.layout.formula_operator_pow, true);
-            break;
         }
         initializeElements(idx);
         if (leftTerm == null || rightTerm == null)
@@ -419,10 +360,6 @@ public class FormulaTermOperator extends FormulaTerm
         case MINUS:
             leftTerm.bracketsType = BracketsType.NEVER;
             rightTerm.bracketsType = BracketsType.IFNECESSARY;
-            break;
-        case POWER:
-            leftTerm.bracketsType = BracketsType.ALWAYS;
-            rightTerm.bracketsType = BracketsType.NEVER;
             break;
         }
     }

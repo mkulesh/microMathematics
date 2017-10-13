@@ -167,7 +167,6 @@
     <string name="math_operator_mult">Умножение (\'*\')</string>
     <string name="math_operator_divide">Деление (\'÷\')</string>
     <string name="math_operator_divide_slash">Деление (\'/\')</string>
-    <string name="math_operator_power">Возведение в степень (\'^\')</string>
     <string name="math_comparator_equal">Проверка, что операнды равны (\'= =\')</string>
     <string name="math_comparator_not_equal">Проверка, что операнды не равны (\'=|\')</string>
     <string name="math_comparator_less">Проверка, что левый операнд меньше правого (\'&#60;&#60;\')</string>
@@ -183,6 +182,7 @@
     <string name="math_loop_integral">Вычисление определенного интеграла (\'INTEG\')</string>
     <string name="math_loop_derivative">Вычисление производной (\'DERIV\')</string>
     <string name="math_function_identity">Круглые скобки (\'(\')</string>
+    <string name="math_function_power">Возведение в степень (\'^\')</string>
     <string name="math_function_abs">Модуль вещественного или комплексного числа (\'|\')</string>
     <string name="math_function_conjugate">Комплексно-сопряжённое значение аргумента (\'~\')</string>
     <string name="math_function_re">Вещественная часть комплексного аргумента</string>

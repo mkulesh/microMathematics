@@ -174,7 +174,6 @@
     <string name="math_operator_mult">Multiplication (\'*\')</string>
     <string name="math_operator_divide">Division (\'÷\')</string>
     <string name="math_operator_divide_slash">Division (\'/\')</string>
-    <string name="math_operator_power">Raise to power (\'^\')</string>
     <string name="math_comparator_equal">Test two terms for equality (\'= =\')</string>
     <string name="math_comparator_not_equal">Test two terms for inequality (\'=|\')</string>
     <string name="math_comparator_less">Test that left term is less than right one (\'&#60;&#60;\')</string>
@@ -190,10 +189,11 @@
     <string name="math_loop_integral">The definite integral (\'INTEG\')</string>
     <string name="math_loop_derivative">The first derivative (\'DERIV\')</string>
     <string name="math_function_identity">Parenthesis (\'(\')</string>
+    <string name="math_function_power">Raise to power (\'^\')</string>
     <string name="math_function_abs">The absolute value of the real or complex argument (\'|\')</string>
     <string name="math_function_conjugate">The complex conjugate of the complex argument (\'~\')</string>
     <string name="math_function_re">The real part of the complex argument</string>
-    <string name="math_function_im">The imaginaty part of the complex argument</string>
+    <string name="math_function_im">The imaginary part of the complex argument</string>
     <string name="math_function_sqrt">The square root of the argument (\'#\')</string>
     <string name="math_function_nthrt">The n-th root of the argument (\'$\')</string>
     <string name="math_function_if">Select a term to be used depending on comparison result for two expressions</string>

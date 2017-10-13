@@ -13,7 +13,7 @@
         <item>asset:/ta/ts_operator_substraction.xml</item>
         <item>asset:/ta/ts_operator_multiplication.xml</item>
         <item>asset:/ta/ts_operator_division.xml</item>
-        <item>asset:/ta/ts_operator_power.xml</item>
+        <item>asset:/ta/ts_functions_power.xml</item>
         <item>asset:/ta/ts_functions_if.xml</item>
         <item>asset:/ta/ts_functions_nthroot.xml</item>
         <item>asset:/ta/ts_functions_exp.xml</item>

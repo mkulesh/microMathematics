@@ -182,10 +182,10 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
                 paletteBlock.get(PaletteType.UPDATE_TERM.ordinal()).add(p);
             }
         }
-        // loop operators
-        for (int i = 0; i < FormulaTermLoop.LoopType.values().length; i++)
+        // functions
+        for (int i = 0; i < FormulaTermFunction.FunctionType.values().length; i++)
         {
-            final FormulaTermLoop.LoopType t = FormulaTermLoop.LoopType.values()[i];
+            final FormulaTermFunction.FunctionType t = FormulaTermFunction.FunctionType.values()[i];
             if (t.getImageId() != NO_BUTTON)
             {
                 PaletteImageButton p = new PaletteImageButton(context, t.getImageId(), t.getDescriptionId(), t
@@ -194,10 +194,10 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
                 paletteBlock.get(PaletteType.UPDATE_TERM.ordinal()).add(p);
             }
         }
-        // functions
-        for (int i = 0; i < FormulaTermFunction.FunctionType.values().length; i++)
+        // loop operators
+        for (int i = 0; i < FormulaTermLoop.LoopType.values().length; i++)
         {
-            final FormulaTermFunction.FunctionType t = FormulaTermFunction.FunctionType.values()[i];
+            final FormulaTermLoop.LoopType t = FormulaTermLoop.LoopType.values()[i];
             if (t.getImageId() != NO_BUTTON)
             {
                 PaletteImageButton p = new PaletteImageButton(context, t.getImageId(), t.getDescriptionId(), t

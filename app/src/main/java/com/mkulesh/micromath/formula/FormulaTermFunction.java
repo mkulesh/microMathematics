@@ -49,6 +49,7 @@ public class FormulaTermFunction extends FormulaTerm
     public enum FunctionType
     {
         IDENTITY(1, R.drawable.p_function_identity, R.string.math_function_identity, null),
+        POWER(2, R.drawable.p_function_power, R.string.math_function_power, null),
         SQRT_LAYOUT(1, R.drawable.p_function_sqrt, R.string.math_function_sqrt, null),
         NTHRT_LAYOUT(2, R.drawable.p_function_nthrt, R.string.math_function_nthrt, null),
         FACTORIAL(1, R.drawable.p_function_factorial, R.string.math_function_factorial, null),
@@ -130,6 +131,7 @@ public class FormulaTermFunction extends FormulaTerm
         INDEX(R.string.formula_function_start_index, FunctionType.FUNCTION_INDEX, true),
         ABS(R.string.formula_function_abs_layout, FunctionType.ABS_LAYOUT, true),
         SQRT(R.string.formula_function_sqrt_layout, FunctionType.SQRT_LAYOUT, true),
+        POWER(R.string.formula_function_power, FunctionType.POWER, false),
         NTHRT(R.string.formula_function_nthrt_layout, FunctionType.NTHRT_LAYOUT, true),
         FACTORIAL(R.string.formula_function_factorial_layout, FunctionType.FACTORIAL, false),
         CONJUGATE(R.string.formula_function_conjugate_layout, FunctionType.CONJUGATE_LAYOUT, false);
@@ -336,6 +338,8 @@ public class FormulaTermFunction extends FormulaTerm
             {
             case IDENTITY:
                 return outValue.assign(a0);
+            case POWER:
+                return outValue.pow(a0, argVal[1]);
             case SIN:
                 return outValue.sin(a0);
             case ASIN:
@@ -470,6 +474,7 @@ public class FormulaTermFunction extends FormulaTerm
         {
         // for these functions, derivative can be calculated analytically
         case IDENTITY:
+        case POWER:
         case SIN:
         case ASIN:
         case SINH:
@@ -553,6 +558,46 @@ public class FormulaTermFunction extends FormulaTerm
             // for these functions, derivative can be calculated analytically
             case IDENTITY:
                 return outValue.assign(a0derVal);
+            case POWER:
+            {
+                final CalculatedValue a1 = argVal[1];
+                terms.get(1).getDerivativeValue(var, thread, a1derVal);
+                if (a0derVal.isZero() && a1derVal.isZero())
+                {
+                    // the case a^a
+                    return outValue.setValue(0.0);
+                }
+                else if (!a0derVal.isZero() && a1derVal.isZero())
+                {
+                    // the case f^a: result = g * f^(g-1) * a0derVal;
+                    CalculatedValue tmp = new CalculatedValue();
+                    tmp.subtract(a1, CalculatedValue.ONE);
+                    tmp.pow(a0, tmp);
+                    outValue.multiply(a1, tmp);
+                    return outValue.multiply(outValue, a0derVal);
+                }
+                else if (a0derVal.isZero() && !a1derVal.isZero())
+                {
+                    // the case a^g: result = f^g * log(f) * a1derVal;
+                    CalculatedValue tmp = new CalculatedValue();
+                    tmp.log(a0);
+                    outValue.pow(a0, a1);
+                    outValue.multiply(outValue, tmp);
+                    return outValue.multiply(outValue, a1derVal);
+                }
+                else
+                {
+                    // case f^g: result = f^g * {a0derVal * g / f  +  a1derVal * log(f)}
+                    CalculatedValue tmp1 = new CalculatedValue(), tmp2 = new CalculatedValue();
+                    tmp1.multiply(a0derVal, a1);
+                    tmp1.divide(tmp1, a0);
+                    tmp2.log(a0);
+                    tmp2.multiply(a1derVal, tmp2);
+                    tmp1.add(tmp1, tmp2);
+                    outValue.pow(a0, a1);
+                    return outValue.multiply(outValue, tmp1);
+                }
+            }
             case SIN: // cos(a0) * a0'
                 outValue.cos(a0);
                 return outValue.multiply(outValue, a0derVal);
@@ -786,6 +831,9 @@ public class FormulaTermFunction extends FormulaTerm
                 v.prepare(CustomTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
                 switch (functionType)
                 {
+                case POWER:
+                    v.setText("_");
+                    break;
                 case FACTORIAL:
                     v.setText(res.getString(R.string.formula_function_factorial_layout));
                     break;
@@ -846,6 +894,18 @@ public class FormulaTermFunction extends FormulaTerm
                     && val.equals(getContext().getResources().getString(R.string.formula_right_term_key)))
             {
                 final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 0);
+                t.bracketsType = TermField.BracketsType.NEVER;
+            }
+            else if (functionType == FunctionType.POWER
+                    && val.equals(getContext().getResources().getString(R.string.formula_left_term_key)))
+            {
+                final TermField t = addTerm(getFormulaRoot(), l, v, this, false);
+                t.bracketsType = TermField.BracketsType.ALWAYS;
+            }
+            else if (functionType == FunctionType.POWER
+                    && val.equals(getContext().getResources().getString(R.string.formula_right_term_key)))
+            {
+                final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 3);
                 t.bracketsType = TermField.BracketsType.NEVER;
             }
         }
@@ -1067,6 +1127,9 @@ public class FormulaTermFunction extends FormulaTerm
         case ABS_LAYOUT:
         case IDENTITY:
             inflateElements(R.layout.formula_function_noname, true);
+            break;
+        case POWER:
+            inflateElements(R.layout.formula_function_pow, true);
             break;
         default:
             inflateElements(R.layout.formula_function_named, true);
@@ -1298,6 +1361,7 @@ public class FormulaTermFunction extends FormulaTerm
         case FUNCTION_INDEX:
             return functionLinkName;
         case IDENTITY:
+        case POWER:
         case SQRT_LAYOUT:
         case NTHRT_LAYOUT:
         case FACTORIAL:

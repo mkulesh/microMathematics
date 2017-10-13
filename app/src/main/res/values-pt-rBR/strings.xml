@@ -167,7 +167,6 @@
     <string name="math_operator_mult">Multiplicação (\'*\')</string>
     <string name="math_operator_divide">Divisão (\'÷\')</string>
     <string name="math_operator_divide_slash">Divisão (\'/\')</string>
-    <string name="math_operator_power">Elevar à potência (\'^\')</string>
     <string name="math_comparator_equal">Testar dois termos para igualdade (\'= =\')</string>
     <string name="math_comparator_not_equal">Testar dois termos para desigualdade (\'=|\')</string>
     <string name="math_comparator_less">Testar se o termo à esquerda é menor do que o da direita (\'&#60;&#60;\')</string>
@@ -183,6 +182,7 @@
     <string name="math_loop_integral">A definição de integral (\'INTEG\')</string>
     <string name="math_loop_derivative">A primeira derivada de (\'DERIV\')</string>
     <string name="math_function_identity">Parênteses (\'(\')</string>
+    <string name="math_function_power">Elevar à potência (\'^\')</string>
     <string name="math_function_abs">O valor absoluto do argumento real ou complexo (\'|\')</string>
     <string name="math_function_conjugate">O conjugado complexo do argumento complexo (\'~\')</string>
     <string name="math_function_re">A parte real do argumento complexo</string>

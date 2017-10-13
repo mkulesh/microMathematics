@@ -184,7 +184,6 @@
     <string name="math_operator_mult">Multiplication (\'*\')</string>
     <string name="math_operator_divide">Division (\'÷\')</string>
     <string name="math_operator_divide_slash">Division (\'/\')</string>
-    <string name="math_operator_power">Élever à la puissange (\'^\')</string>
     <string name="math_comparator_equal">Tester l\'égalité de deux termes (\'= =\')</string>
     <string name="math_comparator_not_equal">Tester l\'inégalité de deux termes (\'=|\')</string>
     <string name="math_comparator_less">Tester que le terme de gauche est strictement plus petit que celui de droite (\'&#60;&#60;\')</string>
@@ -200,6 +199,7 @@
     <!--<string name="math_loop_integral">The definite integral (\'INTEG\')</string>
     <string name="math_loop_derivative">The first derivative (\'DERIV\')</string>-->
     <string name="math_function_identity">Parenthèse (\'(\')</string>
+    <string name="math_function_power">Élever à la puissange (\'^\')</string>
     <string name="math_function_abs">La valeur absolue d\'un argument réel ou complexe (\'|\')</string>
     <!--<string name="math_function_conjugate">The complex conjugate of the complex argument (\'~\')</string>-->
     <string name="math_function_re">La partie réelle de cet argument complexe</string>
