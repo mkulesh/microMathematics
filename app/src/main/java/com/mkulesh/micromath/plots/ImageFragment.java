@@ -121,7 +121,10 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
     public void undo(FormulaState state)
     {
         super.undo(state);
-        imageView.loadImage(parameters);
+        if (!parameters.embedded)
+        {
+            imageView.loadImage(parameters);
+        }
         updateImageView();
         ViewUtils.invalidateLayout(imageView, layout);
     }
@@ -135,7 +138,7 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
     {
         if (list == null && owner == imageView)
         {
-            list = new ArrayList<View>();
+            list = new ArrayList<>();
             list.add(owner);
         }
         super.onTermSelection(owner, isSelected, list);
