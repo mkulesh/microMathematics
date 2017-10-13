@@ -61,7 +61,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
     /*
      * Constants used to save/restore the instance state.
      */
-    private static final String SATATE_IMAGE_TYPE = "imag_type";
+    private static final String STATE_IMAGE_TYPE = "image_type";
     private static final String STATE_IMAGE_BITMAP = "image_bitmap";
     private static final String STATE_IMAGE_SVG = "image_svg";
     private static final String XML_PROP_BIN_ENCODING = "binEncoding";
@@ -210,7 +210,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
     public Parcelable onSaveInstanceState()
     {
         Bundle bundle = new Bundle();
-        bundle.putString(SATATE_IMAGE_TYPE, imageType.toString());
+        bundle.putString(STATE_IMAGE_TYPE, imageType.toString());
         switch (imageType)
         {
         case NONE:
@@ -246,7 +246,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         if (state instanceof Bundle)
         {
             Bundle bundle = (Bundle) state;
-            final ImageType type = ImageType.valueOf(bundle.getString(SATATE_IMAGE_TYPE));
+            final ImageType type = ImageType.valueOf(bundle.getString(STATE_IMAGE_TYPE));
             switch (type)
             {
             case NONE:
