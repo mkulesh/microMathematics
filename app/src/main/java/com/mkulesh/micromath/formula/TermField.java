@@ -28,7 +28,7 @@ import android.widget.Toast;
 
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.FormulaBase.FocusType;
-import com.mkulesh.micromath.formula.Palette.PaletteType;
+import com.mkulesh.micromath.formula.PaletteButton.Category;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.undo.FormulaState;
@@ -1067,9 +1067,9 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     /**
      * Check whether this term is enabled for the given palette
      */
-    public boolean isEnabledInPalette(PaletteType pt)
+    public boolean isEnabledInPalette(Category pt)
     {
-        if (isTerm() && term instanceof FormulaTermInterval && pt != PaletteType.NEW_TERM)
+        if (isTerm() && term instanceof FormulaTermInterval && pt != Category.NEW_TERM)
         {
             return false;
         }
