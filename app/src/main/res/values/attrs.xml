@@ -19,6 +19,7 @@
         <attr name="symbolViewIndex" format="integer" />
         <attr name="emptyEnabled" format="boolean" />
         <attr name="intervalEnabled" format="boolean" />
+        <attr name="complexEnabled" format="boolean" />
         <attr name="comparatorEnabled" format="boolean" />
         <attr name="textFragment" format="boolean" />
         <attr name="equationName" format="boolean" />

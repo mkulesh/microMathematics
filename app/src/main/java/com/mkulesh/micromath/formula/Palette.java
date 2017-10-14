@@ -32,22 +32,22 @@ import com.mkulesh.micromath.formula.PaletteButton.Category;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
+import com.mkulesh.micromath.widgets.FocusChangeIf;
 import com.mkulesh.micromath.widgets.ListChangeIf;
 import com.mkulesh.micromath.widgets.TextChangeIf;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 /*********************************************************
  * This class implements symbol palette
  *********************************************************/
-public class Palette implements OnClickListener, OnLongClickListener, TextChangeIf
+public class Palette implements OnClickListener, OnLongClickListener, TextChangeIf, FocusChangeIf
 {
     static final int NO_BUTTON = -1;
 
     private final Context context;
     private final ListChangeIf listChangeIf;
-    private final ArrayList<ArrayList<PaletteButton>> paletteBlock = new ArrayList<ArrayList<PaletteButton>>();
+    private final ArrayList<ArrayList<PaletteButton>> paletteBlock = new ArrayList<>();
     private final LinearLayout paletteLayout;
     private final CustomEditText hiddenInput;
     private String lastHiddenInput = "";
@@ -59,7 +59,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         this.paletteLayout = paletteLayout;
 
         hiddenInput = (CustomEditText) paletteLayout.findViewById(R.id.hidden_edit_text);
-        hiddenInput.setTextChangeIf(this);
+        hiddenInput.setChangeIf(this, this);
         hiddenInput.setVisibility(View.GONE);
         hiddenInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
@@ -74,60 +74,35 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             final FormulaBase.BaseType t = FormulaBase.BaseType.values()[i];
             if (t.getImageId() != NO_BUTTON)
             {
-                PaletteButton p = new PaletteButton(context, t.getImageId(), t.getDescriptionId(),
-                        t.toString());
+                PaletteButton p = new PaletteButton(context,
+                        NO_BUTTON, t.getImageId(), t.getDescriptionId(), t.toString());
                 paletteLayout.addView(p);
-                if (t == FormulaBase.BaseType.TERM)
-                {
-                    paletteBlock.get(Category.UPDATE_TERM.ordinal()).add(p);
-                }
             }
         }
-        // intervals
-        for (int i = 0; i < FormulaTermInterval.IntervalType.values().length; i++)
-        {
-            final FormulaTermInterval.IntervalType t = FormulaTermInterval.IntervalType.values()[i];
-            if (t.getImageId() != NO_BUTTON)
-            {
-                PaletteButton p = new PaletteButton(context, t.getImageId(), t.getDescriptionId(), t
-                        .toString().toLowerCase(Locale.ENGLISH));
-                paletteLayout.addView(p);
-                paletteBlock.get(Category.UPDATE_INTERVAL.ordinal()).add(p);
-                paletteBlock.get(Category.UPDATE_TERM.ordinal()).add(p);
-            }
-        }
-        // term operators
-        for (int i = 0; i < FormulaTermOperator.OperatorType.values().length; i++)
-        {
-            final FormulaTermOperator.OperatorType t = FormulaTermOperator.OperatorType.values()[i];
-            if (t.getImageId() != NO_BUTTON)
-            {
-                PaletteButton p = new PaletteButton(context, t.getImageId(), t.getDescriptionId(), t
-                        .toString().toLowerCase(Locale.ENGLISH));
-                paletteLayout.addView(p);
-                paletteBlock.get(Category.UPDATE_TERM.ordinal()).add(p);
-            }
-        }
-        // functions
-        for (int i = 0; i < FormulaTermFunction.FunctionType.values().length; i++)
-        {
-            final FormulaTermFunction.FunctionType t = FormulaTermFunction.FunctionType.values()[i];
-            if (t.getImageId() != NO_BUTTON)
-            {
-                PaletteButton p = new PaletteButton(context, t.getImageId(), t.getDescriptionId(), t
-                        .toString().toLowerCase(Locale.ENGLISH));
-                paletteLayout.addView(p);
-                paletteBlock.get(Category.UPDATE_TERM.ordinal()).add(p);
-            }
-        }
+
+        FormulaTermInterval.addToPalette(context, paletteLayout,
+                new Category[]{ Category.INTERVAL, Category.CONVERSION });
+        FormulaTermOperator.addToPalette(context, paletteLayout,
+                new Category[]{ Category.CONVERSION });
+        FormulaTermFunction.addToPalette(context, paletteLayout,
+                new Category[]{ Category.CONVERSION });
+
         // prepare all buttons
         for (int i = 0; i < paletteLayout.getChildCount(); i++)
         {
             View b = paletteLayout.getChildAt(i);
             if (b instanceof PaletteButton)
             {
-                ((PaletteButton) b).setOnLongClickListener(this);
-                ((PaletteButton) b).setOnClickListener(this);
+                final PaletteButton pb = (PaletteButton) b;
+                if (pb.getCategories() != null)
+                {
+                    for (Category cat : pb.getCategories())
+                    {
+                        paletteBlock.get(cat.ordinal()).add(pb);
+                    }
+                }
+                pb.setOnLongClickListener(this);
+                pb.setOnClickListener(this);
             }
         }
     }
@@ -178,7 +153,8 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
     {
         if (b instanceof PaletteButton && listChangeIf != null)
         {
-            listChangeIf.onPalettePressed(((PaletteButton) b).getCode());
+            final PaletteButton pb = (PaletteButton) b;
+            listChangeIf.onPalettePressed(pb.getCode());
         }
     }
 
@@ -274,7 +250,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
     }
 
     @Override
-    public int onGetNextFocusId(CustomEditText owner, NextFocusType focusType)
+    public int onGetNextFocusId(CustomEditText owner, FocusChangeIf.NextFocusType focusType)
     {
         return R.id.main_list_view;
     }

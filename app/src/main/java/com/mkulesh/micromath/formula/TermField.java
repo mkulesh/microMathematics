@@ -36,6 +36,8 @@ import com.mkulesh.micromath.utils.IdGenerator;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomLayout;
+import com.mkulesh.micromath.widgets.FocusChangeIf;
+import com.mkulesh.micromath.widgets.ScaledDimensions;
 import com.mkulesh.micromath.widgets.TextChangeIf;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -43,7 +45,7 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.ArrayList;
 
-public class TermField implements TextChangeIf, CalculatableIf
+public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
 {
     /*
      * Constants used to save/restore the instance state.
@@ -138,7 +140,7 @@ public class TermField implements TextChangeIf, CalculatableIf
         termKey = text.getText().toString();
         this.text = text;
         this.text.setText("");
-        this.text.setTextChangeIf(this);
+        this.text.setChangeIf(this, this);
         this.text.setId(IdGenerator.generateId());
         updateViewColor();
     }
@@ -312,7 +314,8 @@ public class TermField implements TextChangeIf, CalculatableIf
         }
         else
         {
-            text.updateTextSize(formulaRoot.getFormulaList().getDimen(), termDepth);
+            text.updateTextSize(formulaRoot.getFormulaList().getDimen(), termDepth,
+                    ScaledDimensions.Type.HOR_TEXT_PADDING);
         }
     }
 
@@ -378,7 +381,7 @@ public class TermField implements TextChangeIf, CalculatableIf
     }
 
     @Override
-    public int onGetNextFocusId(CustomEditText owner, TextChangeIf.NextFocusType focusType)
+    public int onGetNextFocusId(CustomEditText owner, FocusChangeIf.NextFocusType focusType)
     {
         return parentFormula.getNextFocusId(text, focusType);
     }
@@ -977,9 +980,9 @@ public class TermField implements TextChangeIf, CalculatableIf
         }
         switch (pt)
         {
-        case UPDATE_INTERVAL:
+        case INTERVAL:
             return text.isIntervalEnabled();
-        case UPDATE_TERM:
+        case CONVERSION:
             return text.isConversionEnabled();
         }
         return false;

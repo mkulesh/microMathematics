@@ -154,16 +154,16 @@
     <string name="math_new_text_fragment">Add text fragment</string>
     <string name="math_new_image_fragment">Add image from file</string>
     <string name="image_fragment_text">Long press to import image</string>
-    <string name="math_equidistant_interval">Equidistant interval (\':\')</string>
-    <string name="math_operator_plus">Addition (\'+ +\')</string>
-    <string name="math_operator_minus">Subtraction (\'- -\')</string>
-    <string name="math_operator_mult">Multiplication (\'*\')</string>
-    <string name="math_operator_divide">Division (\'÷\')</string>
-    <string name="math_operator_divide_slash">Division (\'/\')</string>
-    <string name="math_function_identity">Parenthesis (\'(\')</string>
-    <string name="math_function_abs">The absolute value of the argument (\'|\')</string>
-    <string name="math_function_power">Raise to power (\'^\')</string>
-    <string name="math_function_sqrt">The square root of the argument (\'#\')</string>
+    <string name="math_equidistant_interval">Equidistant interval</string>
+    <string name="math_operator_plus">Addition</string>
+    <string name="math_operator_minus">Subtraction</string>
+    <string name="math_operator_mult">Multiplication</string>
+    <string name="math_operator_divide">Division</string>
+    <string name="math_operator_divide_slash">Division</string>
+    <string name="math_function_identity">Parenthesis</string>
+    <string name="math_function_abs">The absolute value of the argument</string>
+    <string name="math_function_power">Raise to power</string>
+    <string name="math_function_sqrt">The square root of the argument</string>
     <string name="math_function_sin">The sine of the argument</string>
     <string name="math_function_asin">The arc sine of the argument within the range [-pi/2..pi/2]</string>
     <string name="math_function_sinh">The hyperbolic sine of the argument</string>
@@ -179,7 +179,7 @@
     <string name="math_function_ceil">The most negative (closest to negative infinity) integer value greater than or equal to the argument</string>
     <string name="math_function_floor">The most positive (closest to positive infinity) integer value less than or equal to the argument</string>
     <string name="math_function_rnd">The a pseudo-random value between zero and the argument</string>
-    <string name="math_function_factorial">The product of all positive integers less than or equal to the argument (\'!\')</string>
+    <string name="math_function_factorial">The product of all positive integers less than or equal to the argument</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Reached layout depth limit for this Android version</string>

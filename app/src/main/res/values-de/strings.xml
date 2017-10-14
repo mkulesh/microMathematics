@@ -148,16 +148,16 @@
     <string name="math_new_text_fragment">Textfragment hinzufügen</string>
     <string name="math_new_image_fragment">Bild aus Datei hinzufügen</string>
     <string name="image_fragment_text">Langes Gedrückthalten um Bild hinzufügen</string>
-    <string name="math_equidistant_interval">Äquidistantes Intervall (\':\')</string>
-    <string name="math_operator_plus">Addition (\'+ +\')</string>
-    <string name="math_operator_minus">Subtraktion (\'- -\')</string>
-    <string name="math_operator_mult">Multiplikation (\'*\')</string>
-    <string name="math_operator_divide">Division (\'÷\')</string>
-    <string name="math_operator_divide_slash">Division (\'/\')</string>
-    <string name="math_function_identity">Runde Klammern (\'(\')</string>
-    <string name="math_function_power">Potenzzeichen (\'^\')</string>
-    <string name="math_function_abs">Betrag des Arguments (\'|\')</string>
-    <string name="math_function_sqrt">Quadratwurzel des Arguments (\'#\')</string>
+    <string name="math_equidistant_interval">Äquidistantes Intervall</string>
+    <string name="math_operator_plus">Addition</string>
+    <string name="math_operator_minus">Subtraktion</string>
+    <string name="math_operator_mult">Multiplikation</string>
+    <string name="math_operator_divide">Division</string>
+    <string name="math_operator_divide_slash">Division</string>
+    <string name="math_function_identity">Runde Klammern</string>
+    <string name="math_function_power">Potenzzeichen</string>
+    <string name="math_function_abs">Betrag des Arguments</string>
+    <string name="math_function_sqrt">Quadratwurzel des Arguments</string>
     <string name="math_function_sin">Sinus des Arguments</string>
     <string name="math_function_asin">Arcus-Sinus des Arguments im Interval [-pi/2..pi/2]</string>
     <string name="math_function_sinh">Hyperbelsinus des Arguments</string>
@@ -173,7 +173,7 @@
     <string name="math_function_ceil">Rundet auf die nächsthöhere Ganzzahl ab</string>
     <string name="math_function_floor">Rundet auf die nächstniedrigere Ganzzahl ab</string>
     <string name="math_function_rnd">Zufallszahlen zwischen größer gleich 0,0 und echt kleiner als Argument</string>
-    <string name="math_function_factorial">Produkt aller natürlichen Zahlen kleiner und gleich des Arguments (\'!\')</string>
+    <string name="math_function_factorial">Produkt aller natürlichen Zahlen kleiner und gleich des Arguments</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Der Grenzwert für die Layouttiefe für diese Android Version ist erreicht</string>

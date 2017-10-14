@@ -148,16 +148,16 @@
     <string name="math_new_text_fragment">Вставить текстовое поле</string>
     <string name="math_new_image_fragment">Вставить изображение из файла</string>
     <string name="image_fragment_text">Долгое нажатие для настройки изображения</string>
-    <string name="math_equidistant_interval">Интервал (\':\')</string>
-    <string name="math_operator_plus">Сложение (\'+ +\')</string>
-    <string name="math_operator_minus">Вычитание (\'- -\')</string>
-    <string name="math_operator_mult">Умножение (\'*\')</string>
-    <string name="math_operator_divide">Деление (\'÷\')</string>
-    <string name="math_operator_divide_slash">Деление (\'/\')</string>
-    <string name="math_function_identity">Круглые скобки (\'(\')</string>
-    <string name="math_function_power">Возведение в степень (\'^\')</string>
-    <string name="math_function_abs">Модуль аргумента (\'|\')</string>
-    <string name="math_function_sqrt">Квадратный корень аргумента (\'#\')</string>
+    <string name="math_equidistant_interval">Интервал</string>
+    <string name="math_operator_plus">Сложение</string>
+    <string name="math_operator_minus">Вычитание</string>
+    <string name="math_operator_mult">Умножение</string>
+    <string name="math_operator_divide">Деление</string>
+    <string name="math_operator_divide_slash">Деление</string>
+    <string name="math_function_identity">Круглые скобки</string>
+    <string name="math_function_power">Возведение в степень</string>
+    <string name="math_function_abs">Модуль аргумента</string>
+    <string name="math_function_sqrt">Квадратный корень аргумента</string>
     <string name="math_function_sin">Синус аргумента</string>
     <string name="math_function_asin">Обратный синус аргумента в интервале [-pi/2..pi/2]</string>
     <string name="math_function_sinh">Гиперболический синус аргумента</string>
@@ -173,7 +173,7 @@
     <string name="math_function_ceil">Ближайшее (справа) целое значение, которое больше или равно значению аргумента</string>
     <string name="math_function_floor">Ближайшее (слева) целое значение, которое меньше или равно значению аргумента</string>
     <string name="math_function_rnd">Псевдослучайное число между нулём и значением аргумента</string>
-    <string name="math_function_factorial">Факториал: произведение всех позитивных целых чисел меньше или равных аргументу (\'!\')</string>
+    <string name="math_function_factorial">Факториал: произведение всех позитивных целых чисел меньше или равных аргументу</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">К сожалению, достигнут предел глубины формулы для данной версии Android</string>

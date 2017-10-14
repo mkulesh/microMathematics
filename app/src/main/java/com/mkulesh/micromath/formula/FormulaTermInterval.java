@@ -329,4 +329,24 @@ public class FormulaTermInterval extends FormulaTerm
         }
         return N;
     }
+
+    /**
+     * Add palette buttons for this term
+     */
+    public static void addToPalette(Context context, LinearLayout paletteLayout,
+                                    PaletteButton.Category[] categories)
+    {
+        for (int i = 0; i < IntervalType.values().length; i++)
+        {
+            final IntervalType t = IntervalType.values()[i];
+            if (t.getImageId() != Palette.NO_BUTTON)
+            {
+                PaletteButton p = new PaletteButton(context,
+                        t.getSymbolId(), t.getImageId(), t.getDescriptionId(),
+                        t.toString().toLowerCase(Locale.ENGLISH));
+                paletteLayout.addView(p);
+                p.setCategories(categories);
+            }
+        }
+    }
 }
