@@ -21,16 +21,14 @@ package com.mkulesh.micromath.formula;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.support.v7.widget.AppCompatImageButton;
 import android.text.InputType;
-import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.R;
+import com.mkulesh.micromath.formula.PaletteButton.Category;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
@@ -47,77 +45,9 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
 {
     static final int NO_BUTTON = -1;
 
-    public enum PaletteType
-    {
-        UPDATE_INTERVAL,
-        UPDATE_TERM
-    }
-
-    private class PaletteImageButton extends AppCompatImageButton
-    {
-        private String code = null;
-        private final boolean[] enabled = new boolean[PaletteType.values().length];
-
-        public PaletteImageButton(Context context, AttributeSet attrs)
-        {
-            super(context, attrs);
-            enableAll();
-        }
-
-        public PaletteImageButton(Context context)
-        {
-            super(context);
-            enableAll();
-        }
-
-        public PaletteImageButton(Context context, int imageId, int descriptionId, String code)
-        {
-            super(context);
-            final int buttonSize = context.getResources().getDimensionPixelSize(R.dimen.activity_toolbar_height) - 2
-                    * context.getResources().getDimensionPixelSize(R.dimen.activity_palette_vertical_padding);
-            setImageResource(imageId);
-            setBackgroundResource(R.drawable.clickable_background);
-            setLayoutParams(new ViewGroup.LayoutParams(buttonSize, buttonSize));
-            if (descriptionId != NO_BUTTON)
-            {
-                setContentDescription(context.getResources().getString(descriptionId));
-                setLongClickable(true);
-            }
-            this.code = code;
-            enableAll();
-        }
-
-        private void enableAll()
-        {
-            for (int i = 0; i < enabled.length; i++)
-            {
-                enabled[i] = true;
-            }
-        }
-
-        public void setEnabled(PaletteType t, boolean value)
-        {
-            enabled[t.ordinal()] = value;
-            super.setEnabled(true);
-            for (int i = 0; i < enabled.length; i++)
-            {
-                if (!enabled[i])
-                {
-                    super.setEnabled(false);
-                    break;
-                }
-            }
-        }
-
-        public String getCode()
-        {
-            return code;
-        }
-    }
-
     private final Context context;
     private final ListChangeIf listChangeIf;
-    private final ArrayList<ArrayList<PaletteImageButton>> paletteBlock = new ArrayList<ArrayList<PaletteImageButton>>();
+    private final ArrayList<ArrayList<PaletteButton>> paletteBlock = new ArrayList<ArrayList<PaletteButton>>();
     private final LinearLayout paletteLayout;
     private final CustomEditText hiddenInput;
     private String lastHiddenInput = "";
@@ -133,9 +63,9 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         hiddenInput.setVisibility(View.GONE);
         hiddenInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
-        for (int i = 0; i < PaletteType.values().length; i++)
+        for (int i = 0; i < Category.values().length; i++)
         {
-            paletteBlock.add(new ArrayList<PaletteImageButton>());
+            paletteBlock.add(new ArrayList<PaletteButton>());
         }
 
         // list operations
@@ -144,12 +74,12 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             final FormulaBase.BaseType t = FormulaBase.BaseType.values()[i];
             if (t.getImageId() != NO_BUTTON)
             {
-                PaletteImageButton p = new PaletteImageButton(context, t.getImageId(), t.getDescriptionId(),
+                PaletteButton p = new PaletteButton(context, t.getImageId(), t.getDescriptionId(),
                         t.toString());
                 paletteLayout.addView(p);
                 if (t == FormulaBase.BaseType.TERM)
                 {
-                    paletteBlock.get(PaletteType.UPDATE_TERM.ordinal()).add(p);
+                    paletteBlock.get(Category.UPDATE_TERM.ordinal()).add(p);
                 }
             }
         }
@@ -159,11 +89,11 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             final FormulaTermInterval.IntervalType t = FormulaTermInterval.IntervalType.values()[i];
             if (t.getImageId() != NO_BUTTON)
             {
-                PaletteImageButton p = new PaletteImageButton(context, t.getImageId(), t.getDescriptionId(), t
+                PaletteButton p = new PaletteButton(context, t.getImageId(), t.getDescriptionId(), t
                         .toString().toLowerCase(Locale.ENGLISH));
                 paletteLayout.addView(p);
-                paletteBlock.get(PaletteType.UPDATE_INTERVAL.ordinal()).add(p);
-                paletteBlock.get(PaletteType.UPDATE_TERM.ordinal()).add(p);
+                paletteBlock.get(Category.UPDATE_INTERVAL.ordinal()).add(p);
+                paletteBlock.get(Category.UPDATE_TERM.ordinal()).add(p);
             }
         }
         // term operators
@@ -172,10 +102,10 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             final FormulaTermOperator.OperatorType t = FormulaTermOperator.OperatorType.values()[i];
             if (t.getImageId() != NO_BUTTON)
             {
-                PaletteImageButton p = new PaletteImageButton(context, t.getImageId(), t.getDescriptionId(), t
+                PaletteButton p = new PaletteButton(context, t.getImageId(), t.getDescriptionId(), t
                         .toString().toLowerCase(Locale.ENGLISH));
                 paletteLayout.addView(p);
-                paletteBlock.get(PaletteType.UPDATE_TERM.ordinal()).add(p);
+                paletteBlock.get(Category.UPDATE_TERM.ordinal()).add(p);
             }
         }
         // functions
@@ -184,20 +114,20 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             final FormulaTermFunction.FunctionType t = FormulaTermFunction.FunctionType.values()[i];
             if (t.getImageId() != NO_BUTTON)
             {
-                PaletteImageButton p = new PaletteImageButton(context, t.getImageId(), t.getDescriptionId(), t
+                PaletteButton p = new PaletteButton(context, t.getImageId(), t.getDescriptionId(), t
                         .toString().toLowerCase(Locale.ENGLISH));
                 paletteLayout.addView(p);
-                paletteBlock.get(PaletteType.UPDATE_TERM.ordinal()).add(p);
+                paletteBlock.get(Category.UPDATE_TERM.ordinal()).add(p);
             }
         }
         // prepare all buttons
         for (int i = 0; i < paletteLayout.getChildCount(); i++)
         {
             View b = paletteLayout.getChildAt(i);
-            if (b instanceof PaletteImageButton)
+            if (b instanceof PaletteButton)
             {
-                ((PaletteImageButton) b).setOnLongClickListener(this);
-                ((PaletteImageButton) b).setOnClickListener(this);
+                ((PaletteButton) b).setOnLongClickListener(this);
+                ((PaletteButton) b).setOnClickListener(this);
             }
         }
     }
@@ -214,9 +144,9 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
     /**
      * This procedure is used to enable/disable palette buttons related to a formula term
      */
-    public void setPaletteBlockEnabled(PaletteType t, boolean enabled)
+    public void setPaletteBlockEnabled(Category t, boolean enabled)
     {
-        for (PaletteImageButton b : paletteBlock.get(t.ordinal()))
+        for (PaletteButton b : paletteBlock.get(t.ordinal()))
         {
             b.setEnabled(t, enabled);
         }
@@ -230,11 +160,11 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
     {
         for (int i = 0; i < paletteLayout.getChildCount(); i++)
         {
-            if (!(paletteLayout.getChildAt(i) instanceof PaletteImageButton))
+            if (!(paletteLayout.getChildAt(i) instanceof PaletteButton))
             {
                 continue;
             }
-            PaletteImageButton b = (PaletteImageButton) paletteLayout.getChildAt(i);
+            PaletteButton b = (PaletteButton) paletteLayout.getChildAt(i);
             b.clearColorFilter();
             if (!b.isEnabled() || !paletteLayout.isEnabled())
             {
@@ -246,16 +176,16 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
     @Override
     public void onClick(View b)
     {
-        if (b instanceof PaletteImageButton && listChangeIf != null)
+        if (b instanceof PaletteButton && listChangeIf != null)
         {
-            listChangeIf.onPalettePressed(((PaletteImageButton) b).getCode());
+            listChangeIf.onPalettePressed(((PaletteButton) b).getCode());
         }
     }
 
     @Override
     public boolean onLongClick(View b)
     {
-        if (b instanceof PaletteImageButton)
+        if (b instanceof PaletteButton)
         {
             return ViewUtils.showButtonDescription(context, b);
         }
@@ -324,9 +254,9 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
 
         for (int i = 0; i < paletteLayout.getChildCount(); i++)
         {
-            if (paletteLayout.getChildAt(i) instanceof PaletteImageButton)
+            if (paletteLayout.getChildAt(i) instanceof PaletteButton)
             {
-                PaletteImageButton b = (PaletteImageButton) paletteLayout.getChildAt(i);
+                PaletteButton b = (PaletteButton) paletteLayout.getChildAt(i);
                 if (b.isEnabled() && b.getCode() != null && b.getCode().equalsIgnoreCase(code))
                 {
                     hiddenInput.setTextWatcher(false);

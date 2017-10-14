@@ -1219,7 +1219,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         {
             term = s.findFocusedTerm();
         }
-        for (Palette.PaletteType pt : Palette.PaletteType.values())
+        for (PaletteButton.Category pt : PaletteButton.Category.values())
         {
             boolean enabled = false;
             boolean hiddenInputEnabled = false;
