@@ -37,7 +37,6 @@ import com.mkulesh.micromath.widgets.ListChangeIf;
 import com.mkulesh.micromath.widgets.TextChangeIf;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 /*********************************************************
  * This class implements symbol palette
@@ -48,7 +47,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
 
     private final Context context;
     private final ListChangeIf listChangeIf;
-    private final ArrayList<ArrayList<PaletteButton>> paletteBlock = new ArrayList<ArrayList<PaletteButton>>();
+    private final ArrayList<ArrayList<PaletteButton>> paletteBlock = new ArrayList<>();
     private final LinearLayout paletteLayout;
     private final CustomEditText hiddenInput;
     private String lastHiddenInput = "";
@@ -75,77 +74,32 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             final FormulaBase.BaseType t = FormulaBase.BaseType.values()[i];
             if (t.getImageId() != NO_BUTTON)
             {
-                PaletteButton p = new PaletteButton(context, t.getImageId(), t.getDescriptionId(),
-                        t.toString());
-                paletteLayout.addView(p);
                 if (t == FormulaBase.BaseType.TERM)
                 {
-                    paletteBlock.get(Category.NEW_TERM.ordinal()).add(p);
-                    paletteBlock.get(Category.UPDATE_TERM.ordinal()).add(p);
+                    PaletteButton p = new PaletteButton(context,
+                            R.string.formula_term_separator, t.getImageId(), t.getDescriptionId(), t.toString());
+                    paletteLayout.addView(p);
+                    p.setCategories(new Category[]{ Category.NEW_TERM, Category.CONVERSION });
+                }
+                else
+                {
+                    PaletteButton p = new PaletteButton(context,
+                            NO_BUTTON, t.getImageId(), t.getDescriptionId(), t.toString());
+                    paletteLayout.addView(p);
                 }
             }
         }
-        // intervals
-        for (int i = 0; i < FormulaTermInterval.IntervalType.values().length; i++)
-        {
-            final FormulaTermInterval.IntervalType t = FormulaTermInterval.IntervalType.values()[i];
-            if (t.getImageId() != NO_BUTTON)
-            {
-                PaletteButton p = new PaletteButton(context, t.getImageId(), t.getDescriptionId(), t
-                        .toString().toLowerCase(Locale.ENGLISH));
-                paletteLayout.addView(p);
-                paletteBlock.get(Category.UPDATE_INTERVAL.ordinal()).add(p);
-                paletteBlock.get(Category.UPDATE_TERM.ordinal()).add(p);
-            }
-        }
-        // term operators
-        for (int i = 0; i < FormulaTermOperator.OperatorType.values().length; i++)
-        {
-            final FormulaTermOperator.OperatorType t = FormulaTermOperator.OperatorType.values()[i];
-            if (t.getImageId() != NO_BUTTON)
-            {
-                PaletteButton p = new PaletteButton(context, t.getImageId(), t.getDescriptionId(), t
-                        .toString().toLowerCase(Locale.ENGLISH));
-                paletteLayout.addView(p);
-                paletteBlock.get(Category.UPDATE_TERM.ordinal()).add(p);
-            }
-        }
-        // functions
-        for (int i = 0; i < FormulaTermFunction.FunctionType.values().length; i++)
-        {
-            final FormulaTermFunction.FunctionType t = FormulaTermFunction.FunctionType.values()[i];
-            if (t.getImageId() != NO_BUTTON)
-            {
-                PaletteButton p = new PaletteButton(context, t.getImageId(), t.getDescriptionId(), t
-                        .toString().toLowerCase(Locale.ENGLISH));
-                paletteLayout.addView(p);
-                paletteBlock.get(Category.UPDATE_TERM.ordinal()).add(p);
-            }
-        }
-        // loop operators
-        for (int i = 0; i < FormulaTermLoop.LoopType.values().length; i++)
-        {
-            final FormulaTermLoop.LoopType t = FormulaTermLoop.LoopType.values()[i];
-            if (t.getImageId() != NO_BUTTON)
-            {
-                PaletteButton p = new PaletteButton(context, t.getImageId(), t.getDescriptionId(), t
-                        .toString().toLowerCase(Locale.ENGLISH));
-                paletteLayout.addView(p);
-                paletteBlock.get(Category.UPDATE_TERM.ordinal()).add(p);
-            }
-        }
-        // comparators
-        for (int i = 0; i < FormulaTermComparator.ComparatorType.values().length; i++)
-        {
-            final FormulaTermComparator.ComparatorType t = FormulaTermComparator.ComparatorType.values()[i];
-            if (t.getImageId() != NO_BUTTON)
-            {
-                PaletteButton p = new PaletteButton(context, t.getImageId(), t.getDescriptionId(), t
-                        .toString().toLowerCase(Locale.ENGLISH));
-                paletteLayout.addView(p);
-                paletteBlock.get(Category.COMPARATORS.ordinal()).add(p);
-            }
-        }
+
+        FormulaTermInterval.addToPalette(context, paletteLayout,
+                new Category[]{ Category.INTERVAL, Category.CONVERSION });
+        FormulaTermOperator.addToPalette(context, paletteLayout,
+                new Category[]{ Category.CONVERSION });
+        FormulaTermFunction.addToPalette(context, paletteLayout,
+                new Category[]{ Category.CONVERSION });
+        FormulaTermLoop.addToPalette(context, paletteLayout,
+                new Category[]{ Category.CONVERSION });
+        FormulaTermComparator.addToPalette(context, paletteLayout,
+                new Category[]{ Category.COMPARATOR });
 
         // prepare all buttons
         for (int i = 0; i < paletteLayout.getChildCount(); i++)
@@ -153,8 +107,16 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             View b = paletteLayout.getChildAt(i);
             if (b instanceof PaletteButton)
             {
-                ((PaletteButton) b).setOnLongClickListener(this);
-                ((PaletteButton) b).setOnClickListener(this);
+                final PaletteButton pb = (PaletteButton) b;
+                if (pb.getCategories() != null)
+                {
+                    for (Category cat : pb.getCategories())
+                    {
+                        paletteBlock.get(cat.ordinal()).add(pb);
+                    }
+                }
+                pb.setOnLongClickListener(this);
+                pb.setOnClickListener(this);
             }
         }
     }
@@ -205,7 +167,16 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
     {
         if (b instanceof PaletteButton && listChangeIf != null)
         {
-            listChangeIf.onPalettePressed(((PaletteButton) b).getCode());
+            final PaletteButton pb = (PaletteButton) b;
+            if (pb.getShortCut() != null)
+            {
+                lastHiddenInput = "";
+                onTextChanged(pb.getShortCut(), true);
+            }
+            else
+            {
+                listChangeIf.onPalettePressed(pb.getCode());
+            }
         }
     }
 

@@ -894,4 +894,20 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         }
     }
 
+    /**
+     * Add palette buttons for this term
+     */
+    public static void addToPalette(Context context, LinearLayout paletteLayout,
+                                    PaletteButton.Category[] categories)
+    {
+        for (int i = 0; i < LoopType.values().length; i++)
+        {
+            final LoopType t = LoopType.values()[i];
+            PaletteButton p = new PaletteButton(context,
+                    t.getSymbolId(), t.getImageId(), t.getDescriptionId(),
+                    t.toString().toLowerCase(Locale.ENGLISH));
+            paletteLayout.addView(p);
+            p.setCategories(categories);
+        }
+    }
 }

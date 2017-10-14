@@ -273,7 +273,7 @@ public class FormulaTermOperator extends FormulaTerm
             }
             if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_right_term_key)))
             {
-                final int addDepth = (operatorType == OperatorType.DIVIDE)? 1 : 0;
+                final int addDepth = (operatorType == OperatorType.DIVIDE) ? 1 : 0;
                 rightTerm = addTerm(getFormulaRoot(), l, -1, v, this, addDepth);
             }
         }
@@ -378,5 +378,23 @@ public class FormulaTermOperator extends FormulaTerm
     public boolean isUseBrackets()
     {
         return useBrackets;
+    }
+
+
+    /**
+     * Add palette buttons for this term
+     */
+    public static void addToPalette(Context context, LinearLayout paletteLayout,
+                                    PaletteButton.Category[] categories)
+    {
+        for (int i = 0; i < OperatorType.values().length; i++)
+        {
+            final OperatorType t = OperatorType.values()[i];
+            PaletteButton p = new PaletteButton(context,
+                    t.getSymbolId(), t.getImageId(), t.getDescriptionId(),
+                    t.toString().toLowerCase(Locale.ENGLISH));
+            paletteLayout.addView(p);
+            p.setCategories(categories);
+        }
     }
 }

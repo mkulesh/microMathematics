@@ -1077,11 +1077,11 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         {
         case NEW_TERM:
             return parentFormula.isNewTermEnabled() && text.isNewTermEnabled();
-        case UPDATE_INTERVAL:
+        case INTERVAL:
             return text.isIntervalEnabled();
-        case UPDATE_TERM:
+        case CONVERSION:
             return text.isConversionEnabled();
-        case COMPARATORS:
+        case COMPARATOR:
             return text.isComparatorEnabled();
         }
         return false;

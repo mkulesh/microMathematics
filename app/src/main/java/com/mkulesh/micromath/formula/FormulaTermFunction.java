@@ -1290,7 +1290,7 @@ public class FormulaTermFunction extends FormulaTerm
         }
         catch (Exception ex)
         {
-            // nothig to do
+            // nothing to do
         }
         return 1;
     }
@@ -1373,4 +1373,31 @@ public class FormulaTermFunction extends FormulaTerm
         }
     }
 
+    /**
+     * Add palette buttons for this term
+     */
+    public static void addToPalette(Context context, LinearLayout paletteLayout,
+                                    PaletteButton.Category[] categories)
+    {
+        for (int i = 0; i < FunctionType.values().length; i++)
+        {
+            final FunctionType t = FunctionType.values()[i];
+            if (t.getImageId() != Palette.NO_BUTTON)
+            {
+                int shortCuId = Palette.NO_BUTTON;
+                for (Trigger trigger : Trigger.values())
+                {
+                    if (trigger.getFunctionType() == t)
+                    {
+                        shortCuId = trigger.getCodeId();
+                    }
+                }
+                PaletteButton p = new PaletteButton(context,
+                        shortCuId, t.getImageId(), t.getDescriptionId(),
+                        t.toString().toLowerCase(Locale.ENGLISH));
+                paletteLayout.addView(p);
+                p.setCategories(categories);
+            }
+        }
+    }
 }
