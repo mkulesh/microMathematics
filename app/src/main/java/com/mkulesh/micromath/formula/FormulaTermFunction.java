@@ -1093,7 +1093,7 @@ public class FormulaTermFunction extends FormulaTerm
         switch (functionType)
         {
         case FUNCTION_LINK:
-            functionLinkName = getFunctionLinkName(s, functionType.getLinkObject(),
+            functionLinkName = getFunctionLinkName(s, functionType,
                     R.string.formula_function_start_bracket);
             if (functionLinkName == null)
             {
@@ -1103,7 +1103,7 @@ public class FormulaTermFunction extends FormulaTerm
             argNumber = getArgNumber(s, functionLinkName);
             break;
         case FUNCTION_INDEX:
-            functionLinkName = getFunctionLinkName(s, functionType.getLinkObject(),
+            functionLinkName = getFunctionLinkName(s, functionType,
                     R.string.formula_function_start_index);
             if (functionLinkName == null)
             {
@@ -1202,7 +1202,7 @@ public class FormulaTermFunction extends FormulaTerm
                 }
                 catch (Exception ex)
                 {
-                    // nothig to do
+                    // nothing to do
                 }
                 break;
             }
@@ -1212,7 +1212,7 @@ public class FormulaTermFunction extends FormulaTerm
     /**
      * Procedure extracts linked function name from given string
      */
-    private String getFunctionLinkName(String s, String linkName, int bracketId)
+    private String getFunctionLinkName(String s, FunctionType f, int bracketId)
     {
         try
         {
@@ -1221,9 +1221,9 @@ public class FormulaTermFunction extends FormulaTerm
                 String opCode = getContext().getResources().getString(bracketId);
                 return s.substring(0, s.indexOf(opCode)).trim();
             }
-            if (s.contains(linkName))
+            if (s.contains(f.getLinkObject()))
             {
-                final String opCode = linkName + ".";
+                final String opCode = f.getLinkObject() + ".";
                 final String nameAndArgs = s.substring(s.indexOf(opCode) + opCode.length(), s.length());
                 if (nameAndArgs != null && nameAndArgs.length() > 0)
                 {
@@ -1238,7 +1238,7 @@ public class FormulaTermFunction extends FormulaTerm
         }
         catch (Exception ex)
         {
-            // nothig to do
+            // nothing to do
         }
         return null;
     }
