@@ -168,15 +168,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         if (b instanceof PaletteButton && listChangeIf != null)
         {
             final PaletteButton pb = (PaletteButton) b;
-            if (pb.getShortCut() != null)
-            {
-                lastHiddenInput = "";
-                onTextChanged(pb.getShortCut(), true);
-            }
-            else
-            {
-                listChangeIf.onPalettePressed(pb.getCode());
-            }
+            listChangeIf.onPalettePressed(pb.getCode());
         }
     }
 

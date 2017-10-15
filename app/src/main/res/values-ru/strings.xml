@@ -182,6 +182,7 @@
     <string name="math_loop_integral">Вычисление определенного интеграла</string>
     <string name="math_loop_derivative">Вычисление производной</string>
     <string name="math_function_identity">Круглые скобки</string>
+    <string name="math_function_index">Элемент массива по индексу</string>
     <string name="math_function_power">Возведение в степень</string>
     <string name="math_function_abs">Модуль вещественного или комплексного числа</string>
     <string name="math_function_conjugate">Комплексно-сопряжённое значение аргумента</string>

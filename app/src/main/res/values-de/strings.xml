@@ -182,6 +182,7 @@
     <string name="math_loop_integral">Bestimmtes Integral</string>
     <string name="math_loop_derivative">Erste Ableitung</string>
     <string name="math_function_identity">Runde Klammern</string>
+    <string name="math_function_index">Elemente in einem Array über den Index zugreifen</string>
     <string name="math_function_power">Potenzzeichen</string>
     <string name="math_function_abs">Betrag des Arguments</string>
     <string name="math_function_conjugate">Konjugiert komplexe Zahl des Arguments</string>

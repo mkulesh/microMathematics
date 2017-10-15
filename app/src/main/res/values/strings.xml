@@ -189,6 +189,7 @@
     <string name="math_loop_integral">The definite integral</string>
     <string name="math_loop_derivative">The first derivative</string>
     <string name="math_function_identity">Parenthesis</string>
+    <string name="math_function_index">Get array element by index</string>
     <string name="math_function_power">Raise to power</string>
     <string name="math_function_abs">The absolute value of the real or complex argument</string>
     <string name="math_function_conjugate">The complex conjugate of the complex argument</string>

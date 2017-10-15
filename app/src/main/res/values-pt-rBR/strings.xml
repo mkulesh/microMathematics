@@ -182,6 +182,7 @@
     <string name="math_loop_integral">A definição de integral</string>
     <string name="math_loop_derivative">A primeira derivada de</string>
     <string name="math_function_identity">Parênteses</string>
+    <string name="math_function_index">Obter um elemento de matriz por índice</string>
     <string name="math_function_power">Elevar à potência</string>
     <string name="math_function_abs">O valor absoluto do argumento real ou complexo</string>
     <string name="math_function_conjugate">O conjugado complexo do argumento complexo</string>

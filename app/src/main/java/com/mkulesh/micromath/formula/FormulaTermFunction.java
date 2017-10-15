@@ -49,6 +49,7 @@ public class FormulaTermFunction extends FormulaTerm
     public enum FunctionType
     {
         IDENTITY(1, R.drawable.p_function_identity, R.string.math_function_identity, null),
+        FUNCTION_INDEX(-1, R.drawable.p_function_index, R.string.math_function_index, "content:com.mkulesh.micromath.index"),
         POWER(2, R.drawable.p_function_power, R.string.math_function_power, null),
         SQRT_LAYOUT(1, R.drawable.p_function_sqrt, R.string.math_function_sqrt, null),
         NTHRT_LAYOUT(2, R.drawable.p_function_nthrt, R.string.math_function_nthrt, null),
@@ -80,8 +81,7 @@ public class FormulaTermFunction extends FormulaTerm
         SQRT(1, Palette.NO_BUTTON, Palette.NO_BUTTON, null),
         ABS(1, Palette.NO_BUTTON, Palette.NO_BUTTON, null),
         SIGNUM(1, Palette.NO_BUTTON, Palette.NO_BUTTON, null),
-        FUNCTION_LINK(-1, Palette.NO_BUTTON, Palette.NO_BUTTON, "content:com.mkulesh.micromath.link"),
-        FUNCTION_INDEX(-1, Palette.NO_BUTTON, Palette.NO_BUTTON, "content:com.mkulesh.micromath.index");
+        FUNCTION_LINK(-1, Palette.NO_BUTTON, Palette.NO_BUTTON, "content:com.mkulesh.micromath.link");
 
         private final int argNumber;
         private final int imageId;
@@ -1109,6 +1109,8 @@ public class FormulaTermFunction extends FormulaTerm
             {
                 throw new Exception("cannot create FormulaFunction(INDEX) since function name is invalid");
             }
+            s = functionLinkName +
+                    getContext().getResources().getString(R.string.formula_function_start_index);
             inflateElements(R.layout.formula_function_index, true);
             argNumber = getArgNumber(s, functionLinkName);
             break;
@@ -1214,11 +1216,12 @@ public class FormulaTermFunction extends FormulaTerm
      */
     private String getFunctionLinkName(String s, FunctionType f, int bracketId)
     {
+        final Resources res = getContext().getResources();
         try
         {
-            if (s.contains(getContext().getResources().getString(bracketId)))
+            if (s.contains(res.getString(bracketId)))
             {
-                String opCode = getContext().getResources().getString(bracketId);
+                String opCode = res.getString(bracketId);
                 return s.substring(0, s.indexOf(opCode)).trim();
             }
             if (s.contains(f.getLinkObject()))
@@ -1234,6 +1237,12 @@ public class FormulaTermFunction extends FormulaTerm
                     }
                 }
                 return nameAndArgs;
+            }
+            final String fName = f.toString().toLowerCase(Locale.ENGLISH)
+                    + res.getString(R.string.formula_function_start_bracket);
+            if (s.contains(fName))
+            {
+                return s.replace(fName, "");
             }
         }
         catch (Exception ex)
