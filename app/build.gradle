@@ -36,6 +36,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
     compile 'org.apache.commons:commons-math3:3.6.1'
     testCompile 'junit:junit:4.12'
 }

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="MicroMathActionBarTheme" parent="@style/Theme.AppCompat.Light">
-        <item name="android:selectableItemBackground">@drawable/clickable_background</item>
-        <item name="android:selectableItemBackgroundBorderless">@drawable/clickable_background</item>
+    <style name="MmdActionBarTheme" parent="AppBaseTheme">
         <item name="android:actionBarItemBackground">@drawable/clickable_background</item>
-        <item name="android:listChoiceBackgroundIndicator">@drawable/clickable_background_no_padding</item>
-        <item name="actionModeBackground">@null</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="windowActionModeOverlay">true</item>
     </style>
     
     <style name="CustomProgressBarTheme" parent="Theme.AppCompat.Light">

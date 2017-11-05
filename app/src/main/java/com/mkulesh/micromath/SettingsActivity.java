@@ -24,11 +24,13 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.AppLocale;
-import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.Locale;
@@ -40,19 +42,30 @@ public class SettingsActivity extends AppCompatPreferenceActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        setupActionBar();
         addPreferencesFromResource(R.xml.preferences);
+        prepareListPreference((ListPreference) findPreference("app_language"));
+    }
 
-        // Prepare action bar
+    private void setupActionBar()
+    {
+        ViewGroup rootView = (ViewGroup) findViewById(R.id.action_bar_root); //id from appcompat
+        if (rootView != null)
+        {
+            View view = getLayoutInflater().inflate(R.layout.activity_toolbar, rootView, false);
+            rootView.addView(view, 0);
+
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+        }
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)
         {
+            // Show the Up button in the action bar.
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setBackgroundDrawable(CompatUtils.getDrawable(this, R.drawable.action_bar_background));
-            actionBar.setElevation(3);
             actionBar.setTitle(R.string.action_app_settings);
         }
-
-        prepareListPreference((ListPreference) findPreference("app_language"));
     }
 
     @Override

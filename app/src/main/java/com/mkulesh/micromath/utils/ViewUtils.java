@@ -321,7 +321,7 @@ public final class ViewUtils
         Drawable drawable = m.getIcon();
         if (drawable != null)
         {
-            final int c = ContextCompat.getColor(context, m.isEnabled()? color : R.color.disabled_element);
+            final int c = ContextCompat.getColor(context, m.isEnabled()? color : R.color.micromath_primary_dark);
             drawable.clearColorFilter();
             drawable.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
         }
@@ -329,7 +329,7 @@ public final class ViewUtils
 
     public static void setButtonIconColor(Context context, ImageButton b, int color)
     {
-        final int c = ContextCompat.getColor(context, b.isEnabled()? color : R.color.disabled_element);
+        final int c = ContextCompat.getColor(context, b.isEnabled()? color : R.color.micromath_primary_dark);
         b.clearColorFilter();
         b.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
     }
