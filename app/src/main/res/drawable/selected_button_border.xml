@@ -7,7 +7,7 @@
     <!-- border color and width -->
     <stroke
         android:width="2dp"
-        android:color="@color/micromath_theme_color" >
+        android:color="@color/micromath_accent" >
     </stroke>
     
     <corners android:radius="@dimen/abc_control_corner_material" />

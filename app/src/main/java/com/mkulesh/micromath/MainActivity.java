@@ -42,6 +42,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     private StoredFormula storedFormula = null;
     private CharSequence worksheetName = null;
 
-    private ActionBar actionBar = null;
+    private Toolbar mToolbar = null;
     private ArrayList<android.support.v7.view.ActionMode> activeActionModes = null;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -103,14 +104,11 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
                 "App started, android version " + Build.VERSION.SDK_INT + ", installation source: "
                         + pm.getInstallerPackageName(getPackageName()));
 
-        // action bar (v7 compatibility library)
-        actionBar = getSupportActionBar();
+        // Action bar (v7 compatibility library): use Toolbar
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeButtonEnabled(true);
-        actionBar.setShowHideAnimationEnabled(true);
-        actionBar.setBackgroundDrawable(CompatUtils.getDrawable(this, R.drawable.action_bar_background));
-        actionBar.setElevation(3);
-        CompatUtils.addOnMenuVisibilityListener(actionBar, this);
 
         // Action bar drawer
         mDrawerLayout = (DrawerLayout) findViewById(R.id.main_drawer_layout);
@@ -316,6 +314,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     @Override
     public void onSupportActionModeStarted(android.support.v7.view.ActionMode mode)
     {
+        mToolbar.setVisibility(View.INVISIBLE);
         super.onSupportActionModeStarted(mode);
         activeActionModes.add(mode);
         final BaseFragment f = getVisibleFragment();
@@ -329,6 +328,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     public void onSupportActionModeFinished(android.support.v7.view.ActionMode mode)
     {
         super.onSupportActionModeFinished(mode);
+        mToolbar.setVisibility(View.VISIBLE);
         activeActionModes.remove(mode);
         final BaseFragment f = getVisibleFragment();
         if (f != null)
@@ -400,12 +400,12 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
 
     public void setTitle(CharSequence name)
     {
-        actionBar.setTitle(name);
+        mToolbar.setTitle(name);
     }
 
     public void setSubTitle(CharSequence name)
     {
-        actionBar.setSubtitle(name);
+        mToolbar.setSubtitle(name);
     }
 
     @SuppressLint("RestrictedApi")

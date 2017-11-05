@@ -2,29 +2,21 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Application theme. -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
-    </style>
-
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    </style>
-
-    <!-- Action Bar and standard navigation theme. -->
-    <style name="MicroMathActionBarTheme" parent="@style/Theme.AppCompat.Light">
-        <item name="selectableItemBackground">@drawable/clickable_background</item>
-        <item name="selectableItemBackgroundBorderless">@drawable/clickable_background</item>
+    <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="actionBarItemBackground">@drawable/clickable_background</item>
-        <!-- "listChoiceBackgroundIndicator" is not working on Android 2.x-->
-        <item name="actionModeBackground">@null</item>
+        <item name="actionModeBackground">@color/micromath_primary</item>
+        <item name="colorPrimary">@color/micromath_primary</item>
+        <item name="colorPrimaryDark">@color/micromath_primary_dark</item>
+        <item name="colorAccent">@color/micromath_accent</item>
+        <item name="android:textColor">@color/micromath_primary_text</item>
+        <item name="android:textColorSecondary">@color/micromath_secondary_text</item>
     </style>
 
-    <style name="PreferenceScreen" parent="MicroMathActionBarTheme">
-        <item name="android:textColor">@color/dialog_content_color</item>
+    <style name="MicroMathActionBarTheme" parent="AppBaseTheme">
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="PreferenceScreen" parent="AppBaseTheme">
     </style>
 
     <!-- Custom styles -->
