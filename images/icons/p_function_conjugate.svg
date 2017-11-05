@@ -25,20 +25,20 @@
   <g
      id="g4135">
     <rect
-       style="color:#000000;fill:#353535;fill-opacity:0.8;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.49603164;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8"
-       id="rect11518-5-1"
-       y="10.556907"
-       x="17.018978"
-       ry="1.881749"
-       rx="1.9010571"
+       width="13.962042"
        height="28.28363"
-       width="13.962042" />
+       rx="1.9010571"
+       ry="1.881749"
+       x="17.018978"
+       y="10.556907"
+       id="rect11518-5-1"
+       style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.49603164;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
     <rect
-       style="fill:#353535;fill-opacity:0.80000001;fill-rule:nonzero;stroke:none"
-       id="rect3076"
-       y="3.5904927"
-       x="15.464957"
+       width="17.070086"
        height="3.2427416"
-       width="17.070086" />
+       x="15.464957"
+       y="3.5904927"
+       id="rect3076"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
   </g>
 </svg>

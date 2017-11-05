@@ -123,7 +123,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     private final Palette palette;
     private int selectedFormulaId = ViewUtils.INVALID_INDEX;
     private XmlLoaderTask xmlLoaderTask = null;
-    private final UndoState undoState = new UndoState();
+    private final UndoState undoState;
     private TestSession taSession = null;
 
     @SuppressLint("UseSparseArrays")
@@ -149,6 +149,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         updatePalette();
 
         documentSettings = new DocumentProperties(getContext());
+        undoState = new UndoState(activity);
     }
 
     /*********************************************************

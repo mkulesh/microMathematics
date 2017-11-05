@@ -24,6 +24,7 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.Arrays;
 
@@ -80,6 +81,7 @@ public class PaletteButton extends AppCompatImageButton
         }
         this.code = code;
         enableAll();
+        ViewUtils.setButtonIconColor(getContext(), this, R.color.micromath_icons);
     }
 
     public String getCode()

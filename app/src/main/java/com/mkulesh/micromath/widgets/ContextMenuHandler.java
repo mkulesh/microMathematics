@@ -29,6 +29,7 @@ import android.view.View;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ClipboardManager;
+import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.ArrayList;
 
@@ -65,7 +66,9 @@ public class ContextMenuHandler
     {
         this.context = context;
         for (int i = 0; i < Type.values().length; i++)
+        {
             enabled[i] = true;
+        }
     }
 
     public void initialize(TypedArray a)
@@ -102,6 +105,10 @@ public class ContextMenuHandler
             MenuInflater inflater = mode.getMenuInflater();
             inflater.inflate(R.menu.context_menu, menu);
             ContextMenuHandler.this.menu = menu;
+            for (int i = 0; i < menu.size(); i++)
+            {
+                ViewUtils.setMenuIconColor(context, menu.getItem(i), R.color.micromath_icons);
+            }
             for (int i = 0; i < Type.values().length; i++)
             {
                 menu.findItem(Type.values()[i].getResId()).setVisible(enabled[i]);

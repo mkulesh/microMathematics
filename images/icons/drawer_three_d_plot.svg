@@ -28,23 +28,23 @@
     <path
        d="m 29.214035,26.436344 a 9.191966,21.927109 38.77354 0 1 -22.3474577,0 9.191966,21.927109 38.77354 1 1 22.3474577,0 z"
        id="path2911"
-       style="fill:#303030;fill-opacity:0.8;stroke:none" />
+       style="fill:#303030;fill-opacity:1;stroke:none" />
     <path
        d="m 27.226636,26.63802 a 8.2323284,17.340702 33.721964 0 1 -18.8706607,0 8.2323284,17.340702 33.721964 1 1 18.8706607,0 z"
        id="path2911-3"
-       style="fill:#5e5e5e;fill-opacity:0.8;stroke:none" />
+       style="fill:#5e5e5e;fill-opacity:1;stroke:none" />
     <path
        d="m 25.168134,26.933809 a 6.9538207,14.070023 27.243988 0 1 -15.159821,0 6.9538207,14.070023 27.243988 1 1 15.159821,0 z"
        id="path2911-3-5"
-       style="fill:#858585;fill-opacity:0.8;stroke:none" />
+       style="fill:#858585;fill-opacity:1;stroke:none" />
     <path
        d="m 23.239177,27.277632 a 5.7289666,11.19035 19.551907 0 1 -11.962919,0 5.7289666,11.19035 19.551907 1 1 11.962919,0 z"
        id="path2911-3-5-0-5"
-       style="fill:#aaaaaa;fill-opacity:0.8;stroke:none" />
+       style="fill:#aaaaaa;fill-opacity:1;stroke:none" />
     <path
        d="m 21.58709,27.613345 a 4.5435028,8.3039041 8.626828 0 1 -9.159486,0 4.5435028,8.3039041 8.626828 1 1 9.159486,0 z"
        id="path2911-3-5-0"
-       style="fill:#d2d2d2;fill-opacity:0.8;stroke:none" />
+       style="fill:#d2d2d2;fill-opacity:1;stroke:none" />
   </g>
   <g
      id="g3057">
@@ -54,11 +54,11 @@
       <path
          d="m 22.577093,8.3396859 c 0,34.3762021 0,34.3762021 0,34.3762021"
          id="path3032"
-         style="fill:none;stroke:#353535;stroke-width:3.8858192;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.8;stroke-dasharray:none" />
+         style="fill:none;stroke:#000000;stroke-width:3.8858192;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.8;stroke-dasharray:none" />
       <path
          d="M 22.532944,1.8389831 18.662091,8.4244601 26.492095,8.3877521 22.532944,1.838985"
          id="path9994-5"
-         style="fill:#353535;fill-opacity:0.8;fill-rule:evenodd" />
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd" />
     </g>
     <g
        transform="matrix(0,1.0200318,-0.93220006,0,45.714319,14.947659)"
@@ -66,11 +66,11 @@
       <path
          d="m 22.577093,8.3396859 c 0,34.3762021 0,34.3762021 0,34.3762021"
          id="path3032-1"
-         style="fill:none;stroke:#353535;stroke-width:3.8858192;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.8;stroke-dasharray:none" />
+         style="fill:none;stroke:#000000;stroke-width:3.8858192;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.8;stroke-dasharray:none" />
       <path
          d="M 22.532944,1.8389831 18.662091,8.4244601 26.492095,8.3877521 22.532944,1.838985"
          id="path9994-5-0"
-         style="fill:#353535;fill-opacity:0.8;fill-rule:evenodd" />
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd" />
     </g>
   </g>
 </svg>

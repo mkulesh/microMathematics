@@ -28,7 +28,7 @@
      transform="scale(0.9567352,1.0452213)"
      id="text3080"
      xml:space="preserve"
-     style="font-size:35.36811829px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#353535;fill-opacity:0.8;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"><tspan
+     style="font-size:35.36811829px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"><tspan
        x="0.44160676"
        y="31.846848"
        id="tspan3082">|   |</tspan></text>
@@ -40,5 +40,5 @@
      x="17.024136"
      y="9.2531719"
      id="rect11518-5-1"
-     style="color:#000000;fill:#353535;fill-opacity:0.8;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.50634402;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
+     style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.50634402;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
 </svg>

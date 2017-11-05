@@ -43,7 +43,7 @@
        x="1.7338426"
        y="1013.6287"
        id="rect11518-5-1"
-       style="color:#000000;fill:#353535;fill-opacity:0.8;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.53289378;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
+       style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.53289378;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
     <rect
        width="15.467106"
        height="29.467106"
@@ -52,6 +52,6 @@
        x="30.659304"
        y="1013.6287"
        id="rect11518-5-1-4"
-       style="color:#000000;fill:#353535;fill-opacity:0.8;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.53289378;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
+       style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.53289378;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
   </g>
 </svg>

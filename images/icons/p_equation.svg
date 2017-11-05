@@ -5,77 +5,30 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   id="svg11300"
-   height="48"
+   version="1.1"
    width="48"
-   version="1.1">
+   height="48"
+   id="svg11300">
   <metadata
-     id="metadata16">
+     id="metadata14">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="com.mkulesh.micromath" />
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <defs
      id="defs3" />
-  <rect
-     style="color:#000000;fill:#353535;fill-opacity:0.8;fill-rule:evenodd;stroke:#353535;stroke-width:1.14610016;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8"
+  <path
+     d="M 7,3.5 C 5.061,3.5 3.5,5.061 3.5,7 l 0,34 c 0,1.939 1.561,3.5 3.5,3.5 l 34,0 c 1.939,0 3.5,-1.561 3.5,-3.5 l 0,-34 C 44.5,5.061 42.939,3.5 41,3.5 z M 5,15 15,15 15,33 5,33 z m 28,0 10,0 0,18 -10,0 z m -27,1 0,16 8,0 0,-16 z m 28,0 0,16 8,0 0,-16 z m -17,2 4,0 0,4 -4,0 z m 5,3 9,0 0,2 -9,0 z m 0,4 9,0 0,2 -9,0 z m -5,1 4,0 0,4 -4,0 z"
+     id="rect11528-8"
+     style="color:#000000;fill:#000000;fill-opacity:1;stroke:none" />
+  <path
+     d="M 6,0.5 C 2.953,0.5 0.5,2.953 0.5,6 l 0,36 c 0,3.047 2.453,5.5 5.5,5.5 l 36,0 c 3.047,0 5.5,-2.453 5.5,-5.5 l 0,-36 C 47.5,2.953 45.047,0.5 42,0.5 l -36,0 z m 0,1 36,0 c 2.493,0 4.5,2.007 4.5,4.5 l 0,36 c 0,2.493 -2.007,4.5 -4.5,4.5 l -36,0 C 3.507,46.5 1.5,44.493 1.5,42 L 1.5,6 C 1.5,3.507 3.507,1.5 6,1.5 z"
      id="rect11518"
-     y="1.0919018"
-     x="1.074217"
-     ry="5.4422288"
-     rx="6.2652392"
-     height="45.816196"
-     width="46.014156" />
-  <rect
-     style="color:#000000;fill:none;stroke:#ffffff;stroke-width:2.29220033;stroke-linejoin:bevel;stroke-miterlimit:10"
-     id="rect11528"
-     y="2.7850475"
-     x="2.7749097"
-     ry="3.8977964"
-     rx="4.4872475"
-     height="42.429905"
-     width="42.613228" />
-  <text
-     style="font-size:30.20453835px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"
-     xml:space="preserve"
-     id="text3080"
-     transform="scale(1.0200316,0.98036183)"
-     y="32.195084"
-     x="13.617914"><tspan
-       id="tspan3082"
-       y="32.195084"
-       x="13.617914">:</tspan></text>
-  <text
-     style="font-size:18.54824257px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"
-     xml:space="preserve"
-     id="text3080-5"
-     transform="scale(0.9274121,1.0782693)"
-     y="28.398373"
-     x="23.482075"><tspan
-       id="tspan3082-6"
-       y="28.398373"
-       x="23.482075">=</tspan></text>
-  <rect
-     style="opacity:0.9;fill:none;stroke:#ffffff;stroke-width:0.83180285;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.456"
-     id="rect3926"
-     y="15.271835"
-     x="4.7972569"
-     ry="0"
-     rx="0"
-     height="17.456329"
-     width="10.846164" />
-  <rect
-     style="opacity:0.9;fill:none;stroke:#ffffff;stroke-width:0.83180285;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.456"
-     id="rect3926-3"
-     y="15.271835"
-     x="32.610817"
-     ry="0"
-     rx="0"
-     height="17.456329"
-     width="10.846164" />
+     style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none" />
 </svg>

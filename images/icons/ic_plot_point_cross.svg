@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   id="svg11300"
-   height="48"
+   version="1.1"
    width="48"
-   version="1.1">
+   height="48"
+   id="svg11300">
   <metadata
      id="metadata3034">
     <rdf:RDF>
@@ -24,32 +24,32 @@
   <defs
      id="defs3" />
   <rect
-     style="fill:#000000;fill-opacity:1;stroke:none"
-     id="rect2889-3"
-     y="22"
-     x="1"
-     ry="1"
-     rx="0.99999994"
+     width="46"
      height="4"
-     width="46" />
+     rx="0.99999994"
+     ry="1"
+     x="1"
+     y="22"
+     id="rect2889-3"
+     style="fill:#000000;fill-opacity:1;stroke:none" />
   <rect
-     transform="matrix(-0.70944412,0.70476169,-0.69053183,-0.72330201,0,0)"
-     style="fill:#232323;fill-opacity:1;stroke:none"
-     id="rect2889"
-     y="-36.423042"
+     width="34.648685"
+     height="4.9508152"
+     rx="0"
+     ry="0"
      x="-18.110981"
-     ry="0"
-     rx="0"
-     height="4.9508152"
-     width="34.648685" />
+     y="-36.423042"
+     transform="matrix(-0.70944412,0.70476169,-0.69053183,-0.72330201,0,0)"
+     id="rect2889"
+     style="fill:#000000;fill-opacity:1;stroke:none" />
   <rect
-     transform="matrix(-0.70944412,-0.70476169,-0.69053183,0.72330201,0,0)"
-     style="fill:#232323;fill-opacity:1;stroke:none"
-     id="rect2889-7"
-     y="-2.3630071"
-     x="-51.263046"
-     ry="0"
-     rx="0"
+     width="34.648685"
      height="4.9508152"
-     width="34.648685" />
+     rx="0"
+     ry="0"
+     x="-51.263046"
+     y="-2.3630071"
+     transform="matrix(-0.70944412,-0.70476169,-0.69053183,0.72330201,0,0)"
+     id="rect2889-7"
+     style="fill:#000000;fill-opacity:1;stroke:none" />
 </svg>

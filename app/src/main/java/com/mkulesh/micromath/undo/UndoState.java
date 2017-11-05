@@ -18,10 +18,12 @@
  ******************************************************************************/
 package com.mkulesh.micromath.undo;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MenuItem;
 
+import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.ArrayList;
@@ -35,13 +37,14 @@ public class UndoState
 
     private final ArrayList<Parcelable> entrys = new ArrayList<Parcelable>();
     private MenuItem menuItem = null;
+    private final Context context;
 
     /**
      * Default constructor
      */
-    public UndoState()
+    public UndoState(Context context)
     {
-        // empty
+        this.context = context;
     }
 
     /*********************************************************
@@ -136,7 +139,7 @@ public class UndoState
         if (menuItem != null)
         {
             menuItem.setEnabled(!entrys.isEmpty());
-            ViewUtils.updateMenuItemColor(menuItem);
+            ViewUtils.setMenuIconColor(context, menuItem, R.color.micromath_icons);
         }
     }
 

@@ -19,8 +19,6 @@
 package com.mkulesh.micromath.formula;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.text.InputType;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -154,11 +152,8 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
                 continue;
             }
             PaletteButton b = (PaletteButton) paletteLayout.getChildAt(i);
-            b.clearColorFilter();
-            if (!b.isEnabled() || !paletteLayout.isEnabled())
-            {
-                b.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
-            }
+            final boolean isEnabled = b.isEnabled() && paletteLayout.isEnabled();
+            ViewUtils.setButtonIconColor(context, b, isEnabled? R.color.micromath_icons : R.color.disabled_element);
         }
     }
 
