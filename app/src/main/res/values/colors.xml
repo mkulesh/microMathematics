@@ -2,7 +2,9 @@
 <resources>
 
     <color name="micromath_theme_color">#ffff8000</color>
-    
+    <color name="micromath_icons">@color/primary_text_default_material_light</color>
+    <color name="disabled_element">#ff888888</color>
+
     <!-- Main view -->
     <color name="action_bar_bg_start_color">#ffdfdfdf</color>
     <color name="action_bar_bg_end_color">#ffb6b6b6</color>
@@ -16,7 +18,7 @@
     <color name="dialog_panel_color">#ffe6e6e6</color>
     <color name="dialog_panel_stroke_color">#ffbdbfc9</color>
     <color name="dialog_title_color">@color/micromath_theme_color</color>
-    
+
     <!-- Formula -->
     <color name="formula_background_color">@android:color/transparent</color>
     <color name="formula_selected_root_color">#ffdddddd</color>

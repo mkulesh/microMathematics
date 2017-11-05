@@ -79,7 +79,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     /**
      * Dummy array used to avoid Lint warning "Unused resources"
      */
-    public final static int[] framentIcons = {
+    public final static int[] fragmentIcons = {
             R.drawable.drawer_about, R.drawable.drawer_documentation, R.drawable.drawer_function_plot,
             R.drawable.drawer_how_to_use, R.drawable.drawer_polar_plot, R.drawable.drawer_worksheet,
             R.drawable.drawer_buy_now, R.drawable.drawer_rating
@@ -309,7 +309,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
                 m.setVisible(!FileUtils.isAssetUri(uri));
             }
             // update buttons background
-            ViewUtils.updateMenuItemColor(m);
+            ViewUtils.setMenuIconColor(getContext(), m, R.color.micromath_icons);
         }
 
         // update floating buttons

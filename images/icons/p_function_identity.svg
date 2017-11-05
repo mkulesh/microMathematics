@@ -29,7 +29,7 @@
      transform="scale(0.91488362,1.0930352)"
      id="text3080"
      xml:space="preserve"
-     style="font-size:34.35246658px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#353535;fill-opacity:0.8;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"><tspan
+     style="font-size:34.35246658px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"><tspan
        x="0.51881474"
        y="30.838863"
        id="tspan3082">(   )</tspan></text>
@@ -41,5 +41,5 @@
      x="17.024136"
      y="9.2531719"
      id="rect11518-5-1"
-     style="color:#000000;fill:#353535;fill-opacity:0.8;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.50634402;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
+     style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.50634402;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
 </svg>

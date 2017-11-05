@@ -19,7 +19,6 @@
 package com.mkulesh.micromath.dialogs;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.view.View;
 import android.view.View.OnLongClickListener;
@@ -129,7 +128,8 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
         b.clearColorFilter();
         if (!b.isEnabled())
         {
-            b.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
+            b.setColorFilter(CompatUtils.getColor(getContext(), R.color.disabled_element),
+                    PorterDuff.Mode.SRC_ATOP);
         }
     }
 

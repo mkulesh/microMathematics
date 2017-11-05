@@ -20,7 +20,6 @@ package com.mkulesh.micromath.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -84,10 +83,12 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
         bDecrease = (ImageButton) findViewById(R.id.button_decrease);
         bDecrease.setOnClickListener(this);
         bDecrease.setOnLongClickListener(this);
+        updateViewColor(bDecrease);
 
         bIncrease = (ImageButton) findViewById(R.id.button_increase);
         bIncrease.setOnClickListener(this);
         bIncrease.setOnLongClickListener(this);
+        updateViewColor(bIncrease);
 
         description = (TextView) findViewById(R.id.label_text);
     }
@@ -154,13 +155,15 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
             b.clearColorFilter();
             if (!b.isEnabled() || !v.isEnabled())
             {
-                b.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
+                b.setColorFilter(CompatUtils.getColor(getContext(), R.color.disabled_element),
+                        PorterDuff.Mode.SRC_ATOP);
             }
         }
         else if (v instanceof TextView)
         {
             TextView b = (TextView) v;
-            b.setTextColor(b.isEnabled() ? CompatUtils.getColor(getContext(), R.color.dialog_content_color) : Color.GRAY);
+            b.setTextColor(CompatUtils.getColor(getContext(), b.isEnabled() ?
+                    R.color.dialog_content_color : R.color.disabled_element));
         }
     }
 

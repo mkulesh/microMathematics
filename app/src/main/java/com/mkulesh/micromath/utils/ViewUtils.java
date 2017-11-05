@@ -22,14 +22,16 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewParent;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -314,16 +316,22 @@ public final class ViewUtils
     /**
      * Procedure updates menu item color depends its enabled state
      */
-    public static void updateMenuItemColor(MenuItem m)
+    public static void setMenuIconColor(Context context, MenuItem m, int color)
     {
-        if (m.getIcon() != null)
+        Drawable drawable = m.getIcon();
+        if (drawable != null)
         {
-            m.getIcon().clearColorFilter();
-            if (!m.isEnabled())
-            {
-                m.getIcon().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
-            }
+            final int c = ContextCompat.getColor(context, m.isEnabled()? color : R.color.disabled_element);
+            drawable.clearColorFilter();
+            drawable.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
         }
+    }
+
+    public static void setButtonIconColor(Context context, ImageButton b, int color)
+    {
+        final int c = ContextCompat.getColor(context, b.isEnabled()? color : R.color.disabled_element);
+        b.clearColorFilter();
+        b.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
     }
 
     /**
