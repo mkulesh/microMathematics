@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="192dp"
+    android:background="@drawable/app_header"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat"
+    android:orientation="vertical"
+    android:gravity="bottom">
+
+    <TextView
+        android:textAppearance="@style/NavigationViewHeaderText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/micromath_icons"/>
+
+</LinearLayout>

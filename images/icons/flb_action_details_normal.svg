@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   width="56"
+   id="svg4387"
    height="56"
-   id="svg4387">
+   width="56"
+   version="1.1">
   <metadata
      id="metadata12">
     <rdf:RDF>
@@ -24,26 +24,26 @@
   <defs
      id="defs4391">
     <filter
-       color-interpolation-filters="sRGB"
-       id="filter4391">
+       id="filter4391"
+       color-interpolation-filters="sRGB">
       <feGaussianBlur
          stdDeviation="1.4065307"
          id="feGaussianBlur4393" />
     </filter>
   </defs>
   <path
-     d="M 28.78125,0.5625 A 27,27 0 0 0 1,27.53125 27,27 0 0 0 12.6875,49.75 25.782362,25.782362 0 0 1 2.21875,29 25.782362,25.782362 0 1 1 53.78125,29 25.782362,25.782362 0 0 1 42.375,50.375 27,27 0 0 0 55,27.53125 27,27 0 0 0 28.78125,0.5625 z M 42.375,50.375 a 27,27 0 0 1 -28,0.46875 25.782362,25.782362 0 0 0 28,-0.46875 z"
-     transform="matrix(0.95471133,0,0,-0.95166191,1.2680828,55.302003)"
+     style="fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter4391)"
      id="path2930-9"
-     style="fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter4391)" />
+     transform="matrix(0.95471133,0,0,-0.95166191,1.2680828,55.302003)"
+     d="M 28.78125,0.5625 A 27,27 0 0 0 1,27.53125 27,27 0 0 0 12.6875,49.75 25.782362,25.782362 0 0 1 2.21875,29 25.782362,25.782362 0 1 1 53.78125,29 25.782362,25.782362 0 0 1 42.375,50.375 27,27 0 0 0 55,27.53125 27,27 0 0 0 28.78125,0.5625 z M 42.375,50.375 a 27,27 0 0 1 -28,0.46875 25.782362,25.782362 0 0 0 28,-0.46875 z" />
   <path
-     d="m 19.390953,15.544099 24,12 -24,12 0,-24 z"
+     style="fill:#ffffff;fill-opacity:1;stroke:none"
      id="path4399"
-     style="fill:#ffffff;fill-opacity:1;stroke:none" />
+     d="m 19.390953,15.544099 24,12 -24,12 0,-24 z" />
   <path
-     d="m 55,27.010048 a 27,27 0 0 1 -54.00000014,0 27,27 0 1 1 54.00000014,0 z"
+     style="fill:#00a61e;fill-opacity:0.70588237;stroke:none"
      id="path2930-3"
-     style="fill:#003dbb;fill-opacity:0.70588235;stroke:none" />
+     d="m 55,27.010048 a 27,27 0 0 1 -54.00000014,0 27,27 0 1 1 54.00000014,0 z" />
   <g
      transform="matrix(0.01339286,0,0,-0.01704545,-11.013875,31.795114)"
      id="g3988">

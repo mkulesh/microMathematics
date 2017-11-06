@@ -20,38 +20,16 @@
     </style>
 
     <!-- Custom styles -->
-    <style name="DrawerTitleStyle" parent="@android:style/TextAppearance.Small">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center</item>
-        <item name="android:inputType">none</item>
-        <item name="android:focusable">false</item>
-        <item name="android:paddingBottom">0dp</item>
-        <item name="android:paddingLeft">0dp</item>
-        <item name="android:paddingRight">0dp</item>
-        <item name="android:paddingTop">0dp</item>
-        <item name="android:text">text</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:textSize">@dimen/activity_drawer_title_size</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/drawer_title_color</item>
-    </style>
 
-    <style name="DrawerSubtitleStyle" parent="@android:style/TextAppearance.Small">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center</item>
-        <item name="android:inputType">none</item>
-        <item name="android:focusable">false</item>
-        <item name="android:paddingBottom">3sp</item>
-        <item name="android:paddingLeft">0dp</item>
-        <item name="android:paddingRight">0dp</item>
-        <item name="android:paddingTop">0dp</item>
-        <item name="android:text">text</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:textSize">@dimen/activity_drawer_subtitle_size</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/drawer_subtitle_color</item>
+    <style name="NavigationViewHeaderText" parent="@android:style/TextAppearance">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/micromath_icons</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:shadowColor">#ba000000</item>
     </style>
 
     <style name="FormulaTextViewStyle" parent="@android:style/TextAppearance">

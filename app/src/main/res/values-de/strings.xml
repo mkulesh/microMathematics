@@ -48,6 +48,7 @@
         <item>https://play.google.com/store/apps/details?id=com.mkulesh.micromath</item>
         <item>https://play.google.com/store/apps/details?id=com.mkulesh.micromath.plus</item>
     </string-array>
+    <string name="activity_example">Beispiele</string>
     <string name="activity_welcome">asset:/doc_de/welcome_de.xml</string>
     
     <!-- Permissions -->

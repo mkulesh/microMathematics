@@ -72,6 +72,13 @@ public class MainFragmentAsset extends BaseFragment
         }
     }
 
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        ((MainActivity) activity).updateFragmentInfo(this);
+    }
+
     /*********************************************************
      * File handling
      *********************************************************/
@@ -108,7 +115,7 @@ public class MainFragmentAsset extends BaseFragment
             d2.show();
             break;
         case R.id.action_new_document:
-            ((MainActivity) activity).selectItem(WORKSHEET_FRAGMENT_ID, R.id.action_new_document);
+            ((MainActivity) activity).selectWorksheet(R.id.action_new_document);
             break;
         case R.id.action_save_as:
             saveFileAs(/* storeOpenedFileInfo= */true);
@@ -122,7 +129,7 @@ public class MainFragmentAsset extends BaseFragment
     @Override
     protected void onSaveFinished()
     {
-        ((MainActivity) activity).selectItem(WORKSHEET_FRAGMENT_ID, INVALID_ACTION_ID);
+        ((MainActivity) activity).selectWorksheet(INVALID_ACTION_ID);
     }
 
     @Override
