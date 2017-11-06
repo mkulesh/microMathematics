@@ -28,16 +28,6 @@
         <item>microMathematics Plus</item>
         <item>PDF herunterladen</item>
     </string-array>
-    <string-array name="activity_logos">
-        <item>drawer_worksheet</item>
-        <item>drawer_how_to_use</item>
-        <item>drawer_function_plot</item>
-        <item>drawer_polar_plot</item>
-        <item>drawer_three_d_plot</item>
-        <item>drawer_series_and_integrals</item>
-        <item>drawer_about</item>
-        <item>drawer_documentation</item>
-    </string-array>
     <string-array name="activity_resources">
         <item></item>
         <item>asset:/doc_de/how_to_use_de.xml</item>
@@ -48,6 +38,7 @@
         <item>asset:/doc_de/about_micromath_de.xml</item>
         <item>https://github.com/mkulesh/microMathematics/releases/download/v2.15.4/microMathematics-v2.15.4-de.pdf</item>
     </string-array>
+    <string name="activity_example">Beispiele</string>
     <string name="activity_welcome">asset:/doc_de/welcome_de.xml</string>
     
     <!-- Permissions -->

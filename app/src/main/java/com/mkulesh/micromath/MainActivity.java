@@ -26,33 +26,23 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mkulesh.micromath.dialogs.DialogLicenses;
@@ -87,9 +77,10 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     private Toolbar mToolbar = null;
     private ArrayList<android.support.v7.view.ActionMode> activeActionModes = null;
     private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
+    private NavigationView navigationView = null;
+    private CharSequence[] activityTitles = null, activitySubtitles = null, activityResources = null;
+    private final ArrayList<MenuItem> activityMenuItems = new ArrayList<>();
     private ActionBarDrawerToggle mDrawerToggle;
-    private DrawerListAdapter drawerListAdapter = null;
     private Uri externalUri = null;
 
     @SuppressLint("RestrictedApi")
@@ -113,19 +104,15 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
 
         // Action bar drawer
         mDrawerLayout = (DrawerLayout) findViewById(R.id.main_drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.main_left_drawer);
-
-        // set a custom shadow that overlays the main content when the drawer opens
-        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-        // set up the drawer's list view with items and click listener
-        drawerListAdapter = new DrawerListAdapter(this);
-        mDrawerList.setAdapter(drawerListAdapter);
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        if (navigationView != null)
+        {
+            prepareNavigationView();
+        }
 
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
-        mDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
-                mDrawerLayout, /* DrawerLayout object */
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.string.drawer_open, R.string.drawer_open)
         {
             public void onDrawerClosed(View view)
@@ -150,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         }
         if (savedInstanceState == null)
         {
-            selectItem(BaseFragment.WORKSHEET_FRAGMENT_ID, BaseFragment.INVALID_ACTION_ID);
+            selectWorksheet(BaseFragment.INVALID_ACTION_ID);
         }
     }
 
@@ -380,6 +367,76 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
      * Navigation drawer
      *********************************************************/
 
+    private void prepareNavigationView()
+    {
+        activityTitles = getResources().getStringArray(R.array.activity_titles);
+        activitySubtitles = getResources().getStringArray(R.array.activity_subtitles);
+        activityResources = getResources().getStringArray(R.array.activity_resources);
+
+        for (int i = 0; i < navigationView.getMenu().size(); i++)
+        {
+            final MenuItem m = navigationView.getMenu().getItem(i);
+            if (m.getItemId() == R.id.nav_group_examples)
+            {
+                for (int j = 0; j < Math.min(m.getSubMenu().size(), activitySubtitles.length); j++)
+                {
+                    final MenuItem m1 = m.getSubMenu().getItem(j);
+                    activityMenuItems.add(m1);
+                    m1.setTitle(activitySubtitles[m1.getOrder()]);
+                }
+            }
+            else if (m.getItemId() == R.id.nav_group_etc)
+            {
+                for (int j = 0; j < Math.min(m.getSubMenu().size(), activityTitles.length); j++)
+                {
+                    final MenuItem m1 = m.getSubMenu().getItem(j);
+                    activityMenuItems.add(m1);
+                    m1.setTitle(activityTitles[m1.getOrder()]);
+                }
+            }
+            else if (m.getOrder() < activityTitles.length)
+            {
+                activityMenuItems.add(m);
+                m.setTitle(activityTitles[m.getOrder()]);
+            }
+        }
+
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener()
+                {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem)
+                    {
+                        selectNavigationItem(menuItem, BaseFragment.INVALID_ACTION_ID);
+                        return true;
+                    }
+                });
+    }
+
+    public void updateFragmentInfo(BaseFragment fragment)
+    {
+        if (fragment != null)
+        {
+            final int position = fragment.getFragmentNumber();
+            if (position >= 0 && position < activityTitles.length)
+            {
+                mToolbar.setTitle(activityTitles[position]);
+            }
+            if (position >= 0 && position < activitySubtitles.length)
+            {
+                mToolbar.setSubtitle(activitySubtitles[position]);
+            }
+            for (MenuItem m : activityMenuItems)
+            {
+                m.setChecked(m.getOrder() == position);
+            }
+        }
+    }
+
+    public void selectWorksheet(int postActionId)
+    {
+        selectNavigationItem(navigationView.getMenu().getItem(0), postActionId);
+    }
     public CharSequence getWorksheetName()
     {
         return worksheetName;
@@ -390,23 +447,8 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         this.worksheetName = name;
         if (position == BaseFragment.WORKSHEET_FRAGMENT_ID)
         {
-            setSubTitle(worksheetName);
+            mToolbar.setSubtitle(worksheetName);
         }
-        drawerListAdapter.setSubtitle(0, worksheetName);
-        for (int i = 0; i < mDrawerList.getCount(); i++)
-        {
-            mDrawerList.setItemChecked(i, i == position);
-        }
-    }
-
-    public void setTitle(CharSequence name)
-    {
-        mToolbar.setTitle(name);
-    }
-
-    public void setSubTitle(CharSequence name)
-    {
-        mToolbar.setSubtitle(name);
     }
 
     @SuppressLint("RestrictedApi")
@@ -424,20 +466,18 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         return null;
     }
 
-    /* The click listener for ListView in the navigation drawer */
-    private class DrawerItemClickListener implements ListView.OnItemClickListener
+    public void selectNavigationItem(MenuItem menuItem, int postActionId)
     {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+        final int position = menuItem.getOrder();
+        for (MenuItem m : activityMenuItems)
         {
-            selectItem(position, BaseFragment.INVALID_ACTION_ID);
+            m.setChecked(m.getOrder() == position);
         }
-    }
+        mDrawerLayout.closeDrawers();
 
-    public void selectItem(int position, int postActionId)
-    {
         Fragment fragment = null;
-        final CharSequence res = drawerListAdapter.getResource(position);
+        final CharSequence res = (position >= 0 && position < activityResources.length)?
+                activityResources[position] : null;
         if (position == BaseFragment.WORKSHEET_FRAGMENT_ID)
         {
             fragment = new MainFragmentWorksheet();
@@ -477,107 +517,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.replace(R.id.main_content_frame, fragment);
             transaction.commit();
-        }
-
-        // update selected item and title, then close the drawer
-        mDrawerList.setItemChecked(position, true);
-        mDrawerLayout.closeDrawer(mDrawerList);
-    }
-
-    /**
-     * Custom drawer list adapter.
-     */
-    private final class DrawerListAdapter extends BaseAdapter
-    {
-        private LayoutInflater layoutInflater;
-        private ArrayList<Bitmap> logos = null;
-        private CharSequence[] titles = null, subtitles = null, resources = null;
-
-        public DrawerListAdapter(Context context)
-        {
-            layoutInflater = LayoutInflater.from(context);
-            titles = context.getResources().getStringArray(R.array.activity_titles);
-            subtitles = context.getResources().getStringArray(R.array.activity_subtitles);
-            resources = context.getResources().getStringArray(R.array.activity_resources);
-            String[] imageNames = context.getResources().getStringArray(R.array.activity_logos);
-            logos = new ArrayList<Bitmap>(imageNames.length);
-            for (int i = 0; i < imageNames.length; i++)
-            {
-                final String imageName = "drawable/" + imageNames[i];
-                final int imageId = context.getResources().getIdentifier(imageName, null, context.getPackageName());
-                if (imageId != 0)
-                {
-                    Bitmap image = BitmapFactory.decodeResource(context.getResources(), imageId);
-                    logos.add(image);
-                }
-                else
-                {
-                    logos.add(null);
-                }
-            }
-        }
-
-        public CharSequence getResource(int idx)
-        {
-            if (idx < resources.length && idx >= 0)
-            {
-                return resources[idx];
-            }
-            return null;
-        }
-
-        public void setSubtitle(int idx, CharSequence str)
-        {
-            if (idx >= 0 && idx < subtitles.length)
-            {
-                subtitles[idx] = str;
-            }
-        }
-
-        @Override
-        public int getCount()
-        {
-            return titles.length;
-        }
-
-        @Override
-        public Object getItem(int position)
-        {
-            return position;
-        }
-
-        @Override
-        public long getItemId(int position)
-        {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View inView, ViewGroup parent)
-        {
-            View view = inView;
-            if (view == null)
-            {
-                view = layoutInflater.inflate(R.layout.activity_drawer_list_item, parent, false);
-            }
-
-            // Icon...
-            ImageView logo = (ImageView) view.findViewById(R.id.main_drawer_logo);
-            if (logos != null)
-            {
-                logo.setImageDrawable(new BitmapDrawable(getResources(), logos.get(position)));
-            }
-
-            // Title...
-            TextView title = (TextView) view.findViewById(R.id.main_drawer_title);
-            title.setText(titles[position]);
-
-            // Subtitle...
-            TextView subtitle = ((TextView) view.findViewById(R.id.main_drawer_subtitle));
-            subtitle.setText(subtitles[position]);
-            subtitle.setVisibility("".equals(subtitle.getText()) ? View.GONE : View.VISIBLE);
-
-            return view;
         }
     }
 

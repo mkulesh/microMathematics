@@ -89,6 +89,7 @@ public class MainFragmentWorksheet extends BaseFragment
     @Override
     public void onResume()
     {
+        ((MainActivity) activity).updateFragmentInfo(this);
         if (invalidateFile)
         {
             setXmlReadingResult(false);

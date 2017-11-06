@@ -9,15 +9,11 @@
     <color name="micromath_primary_text">#212121</color>
     <color name="micromath_secondary_text">#757575</color>
     <color name="micromath_icons">#FFFFFFFF</color>
+    <color name="micromath_background">@color/background_material_light</color>
 
-    <!-- Main view -->
-    <color name="main_panel_bg_color">@color/background_material_light</color>
-    <color name="drawer_title_color">@color/primary_text_default_material_light</color>
-    <color name="drawer_subtitle_color">@color/secondary_text_default_material_light</color>
-    
     <!-- Dialogs -->
     <color name="dialog_bg_color">#eed9dae6</color>
-    <color name="dialog_content_color">@color/primary_text_default_material_light</color>
+    <color name="dialog_content_color">@color/micromath_primary_text</color>
     <color name="dialog_panel_color">#ffe6e6e6</color>
     <color name="dialog_panel_stroke_color">#ffbdbfc9</color>
     <color name="dialog_title_color">@color/micromath_accent</color>
@@ -29,7 +25,7 @@
     <color name="formula_filled_border_color">@android:color/transparent</color>
     <color name="formula_enabled_empty_border_color">#ffa0e2ef</color>
     <color name="formula_invalid_content_color">#ffff0000</color>
-    <color name="formula_text_color">@color/primary_text_default_material_light</color>
+    <color name="formula_text_color">@color/micromath_primary_text</color>
     <color name="formula_text_fragment_color">#ff000066</color>
     <color name="formula_calculated_value_color">#ff787878</color>
 
@@ -37,6 +33,6 @@
     <color name="plot_grid_line_color">#ff787878</color>
 
     <!-- Fman colors -->
-    <color name="fman_path_color">@color/secondary_text_default_material_light</color>
+    <color name="fman_path_color">@color/micromath_secondary_text</color>
         
 </resources>

@@ -46,7 +46,7 @@ public class ExportToImage
         {
             bitmap = Bitmap.createBitmap(f.getMeasuredWidth(), f.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
             final Canvas canvas = new Canvas(bitmap);
-            f.setBackgroundResource(R.color.main_panel_bg_color);
+            f.setBackgroundResource(R.color.micromath_background);
             f.draw(canvas);
         }
         catch (OutOfMemoryError e)

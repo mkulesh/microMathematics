@@ -20,13 +20,15 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
-    <ListView
-        android:id="@+id/main_left_drawer"
-        android:layout_width="240dp"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_height="match_parent"
+        android:layout_width="wrap_content"
         android:layout_gravity="start"
-        android:choiceMode="singleChoice"
-        android:divider="@drawable/divider_horizontal_light"
-        android:dividerHeight="2dp"
-        android:background="@color/dialog_panel_color"/>
+        android:background="@color/micromath_background"
+        app:itemTextColor="@color/drawer_text_color"
+        app:itemIconTint="@color/micromath_secondary_text"
+        app:headerLayout="@layout/activity_drawer_header"
+        app:menu="@menu/activity_drawer_items"/>
+
 </android.support.v4.widget.DrawerLayout>

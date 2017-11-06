@@ -106,14 +106,6 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
 
         setHasOptionsMenu(true);
 
-        String[] titles = getResources().getStringArray(R.array.activity_titles);
-        CharSequence title = (fragmentNumber < titles.length) ? titles[fragmentNumber] : activity.getTitle();
-        ((MainActivity) activity).setTitle(title);
-
-        String[] subtitles = getResources().getStringArray(R.array.activity_subtitles);
-        CharSequence subTitle = (fragmentNumber < subtitles.length) ? subtitles[fragmentNumber] : "";
-        ((MainActivity) activity).setSubTitle(subTitle);
-
         primaryButtonsSet = (FloatingButtonsSet) rootView.findViewById(R.id.main_flb_set_primary);
         secondaryButtonsSet = (FloatingButtonsSet) rootView.findViewById(R.id.main_flb_set_secondary);
 
@@ -423,5 +415,10 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
             }
         }
         return false;
+    }
+
+    public int getFragmentNumber()
+    {
+        return fragmentNumber;
     }
 }
