@@ -110,11 +110,20 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
         {
             if (editText.getText().length() != 0)
             {
-                int value = Integer.valueOf(editText.getText().toString()) + inc;
-                if (value >= minValue && value <= maxValue)
+                int res = inc > 0? maxValue : minValue;
+                try
                 {
-                    editText.setText(String.valueOf(value));
+                    int value = Integer.valueOf(editText.getText().toString()) + inc;
+                    if (value >= minValue && value <= maxValue)
+                    {
+                        res = value;
+                    }
                 }
+                catch (NumberFormatException e)
+                {
+                    // nothing to do
+                }
+                editText.setText(String.valueOf(res));
             }
             else if (inc > 0)
             {
