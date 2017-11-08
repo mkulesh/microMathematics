@@ -204,7 +204,7 @@
     <string name="math_function_log10">The base 10 logarithm of the argument</string>
     <string name="math_function_ceil">The most negative (closest to negative infinity) integer value greater than or equal to the argument</string>
     <string name="math_function_floor">The most positive (closest to positive infinity) integer value less than or equal to the argument</string>
-    <string name="math_function_rnd">The a pseudo-random value between zero and the argument</string>
+    <string name="math_function_rnd">The pseudo-random value between zero and the argument</string>
     <string name="math_function_factorial">The product of all positive integers less than or equal to the argument</string>
     <string name="math_function_max">The most positive (closest to positive infinity) of the two arguments</string>
     <string name="math_function_min">The most negative (closest to negative infinity) of the two arguments</string>

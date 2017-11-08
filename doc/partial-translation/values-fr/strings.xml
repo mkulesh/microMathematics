@@ -126,20 +126,20 @@
     <string name="dialog_surface_settings_mesh_lines">Show mesh lines</string>
     <string name="dialog_surface_settings_mesh_fill">Fill mesh with color</string>-->
     <string name="dialog_surface_settings_mesh_opacity">Opacité</string>
-    <!--<string name="dialog_surface_settings_rotation">Rotation angle</string>
-    <string name="dialog_surface_settings_elevation">Elevation angle</string>
+    <string name="dialog_surface_settings_rotation">Angle de rotation</string>
+    <!--<string name="dialog_surface_settings_elevation">Elevation angle</string>
     <string name="dialog_colormap_settings_title">Color map settings</string>
     <string name="dialog_colormap_settings_zlabels">Number of Z-labels</string>
-    <string name="dialog_document_settings_reformat">Format text fragment</string>
+    <string name="dialog_document_settings_reformat">Format text fragment</string>-->
     <string name="dialog_document_settings_width_size">Taille de la ligne</string>
-    <string name="dialog_document_settings_significant_digits">Significant digits in result</string>
-    <string name="dialog_document_settings_redefine_allowed">Allow to re-define equations</string>-->
+    <string name="dialog_document_settings_significant_digits">Nombres significatifs dans le resultat</string>
+    <string name="dialog_document_settings_redefine_allowed">Autoriser de redéfinir les équations</string>
     <string name="dialog_result_details_argument">Argument</string>
     <string name="dialog_result_details_value">Valeur</string>
     <string name="dialog_image_settings_title">Paramètres de l\'image</string>
     <string name="dialog_image_settings_file">Fichier (png, bmp, gif, jpeg, svg)</string>
     <string name="dialog_image_settings_select_file">Sélectionner le fichier</string>
-    <!--<string name="dialog_image_settings_embedded">Embedded image</string>-->
+    <string name="dialog_image_settings_embedded">Image intégrée</string>
     <string name="dialog_image_settings_original_size">Taille original</string>
     <string name="dialog_image_settings_custom_size">Taille personnalisée</string>
     <string name="dialog_image_settings_width">Largeur de l\'image</string>
@@ -208,12 +208,12 @@
     <string name="math_function_atan2">The arc tangent of y/x within the range [-pi..pi]</string>
     <string name="math_function_tanh">The hyperbolic tangent of the argument</string>
     <string name="math_function_exp">The raising \'e\' to the power of the argument</string>
-    <string name="math_function_log">The natural logarithm of the argument</string>
-    <string name="math_function_log10">The base 10 logarithm of the argument</string>
-    <string name="math_function_ceil">The most negative (closest to negative infinity) integer value greater than or equal to the argument</string>
-    <string name="math_function_floor">The most positive (closest to positive infinity) integer value less than or equal to the argument</string>
-    <string name="math_function_rnd">The a pseudo-random value between zero and the argument</string>
-    <string name="math_function_factorial">The product of all positive integers less than or equal to the argument</string>-->
+    <string name="math_function_log">The natural logarithm of the argument</string>-->
+    <string name="math_function_log10">Le logarithme en base 10 de l\'argument</string>
+    <string name="math_function_ceil">La plus négative (la plus proche de l'infinité négative) valeur entière supérieure ou égale à l\'argument</string>
+    <string name="math_function_floor">La plus positive (la plus proche de l'infinité positive) valeur entière inférieure ou égale à l\'argument</string>
+    <string name="math_function_rnd">La valeur pseudo-aléatoire entre zéro et l\'argument</string>
+    <!--<string name="math_function_factorial">The product of all positive integers less than or equal to the argument</string>-->
     <string name="math_function_max">Le plus positif (le plus proche de l\'infini positif) des 2 arguments</string>
     <string name="math_function_min">Le plus négatif (le plus proche de l\'infini négatif) des deux arguments</string>
     <string name="math_function_hypot">La longueur de l\'hypoténuse d\'un angle droit d\'un triangle : sqrt(x^2 + y^2)</string>
@@ -236,7 +236,7 @@
     <string name="error_empty_argument_list">Function shall have an argument</string>
     <string name="error_invalid_comma_position">Position invalide du comma</string>-->
     <string name="error_empty_argument">Un argument ne peut pas être vide</string>
-    <!--<string name="error_invalid_argument">Function argument shall contain letters or digits only</string>-->
+    <!--<string name="error_invalid_argument">L\'argument de la fonction doit contenir seulement des lettres ou des chiffres</string>-->
     <string name="error_ensure_single_interval">La fonction doit dépendre d\'un seul intervalle</string>
     <string name="error_ensure_double_interval">La fonction doit dépendre de deux intervalles</string>
     <string name="error_indirect_intervals">Il y a des intervalles référencés indirectement : %s</string>-->
@@ -299,7 +299,7 @@
     <!-- Developer options -->
     <string name="action_dev_autotest">Test automatique</string>
     <string name="action_dev_export_doc">Exporter la documentation</string>
-    <!-- <string name="action_dev_take_screenshot">Export screenshots</string> -->
+    <string name="action_dev_take_screenshot">Exporter les captures d\'écran</string>
     <string name="message_developer_mode">Le mode développeur/développeuse est activé</string>
     
     <!-- Library licenses -->
