@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -97,38 +98,13 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
     @Override
     public void onClick(View v)
     {
-        int inc = 0;
         if (v.getId() == R.id.button_decrease)
         {
-            inc = -1;
+            editText.setText(String.valueOf(convertToInt(editText.getText(), -1)));
         }
         else if (v.getId() == R.id.button_increase)
         {
-            inc = 1;
-        }
-        if (inc != 0)
-        {
-            if (editText.getText().length() != 0)
-            {
-                int res = inc > 0? maxValue : minValue;
-                try
-                {
-                    int value = Integer.valueOf(editText.getText().toString()) + inc;
-                    if (value >= minValue && value <= maxValue)
-                    {
-                        res = value;
-                    }
-                }
-                catch (NumberFormatException e)
-                {
-                    // nothing to do
-                }
-                editText.setText(String.valueOf(res));
-            }
-            else if (inc > 0)
-            {
-                editText.setText(String.valueOf(inc));
-            }
+            editText.setText(String.valueOf(convertToInt(editText.getText(), 1)));
         }
     }
 
@@ -139,8 +115,20 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
 
     public int getValue()
     {
-        final int r = Integer.valueOf(editText.getText().toString());
-        return ((r < minValue) ? minValue : ((r > maxValue) ? maxValue : r));
+        return convertToInt(editText.getText(), 0);
+    }
+
+    private int convertToInt(Editable field, int inc)
+    {
+        try
+        {
+            final int r = Integer.valueOf(field.length() > 0? field.toString() : "") + inc;
+            return ((r < minValue) ? minValue : ((r > maxValue) ? maxValue : r));
+        }
+        catch (Exception e)
+        {
+            return inc > 0? maxValue : minValue;
+        }
     }
 
     @Override
