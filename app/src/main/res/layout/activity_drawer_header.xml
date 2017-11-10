@@ -10,10 +10,18 @@
     android:gravity="bottom">
 
     <TextView
+        android:id="@+id/navigation_view_header_name"
         android:textAppearance="@style/NavigationViewHeaderText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
+        android:textColor="@color/micromath_icons"/>
+
+    <TextView
+        android:id="@+id/navigation_view_header_version"
+        android:textAppearance="@style/NavigationViewHeaderText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:textColor="@color/micromath_icons"/>
 
 </LinearLayout>
