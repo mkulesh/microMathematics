@@ -24,6 +24,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.Uri;
@@ -43,6 +44,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mkulesh.micromath.dialogs.DialogLicenses;
@@ -103,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
 
         // Action bar drawer
         mDrawerLayout = (DrawerLayout) findViewById(R.id.main_drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.navigation_view);
         if (navigationView != null)
         {
             prepareNavigationView();
@@ -410,6 +412,34 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
                         return true;
                     }
                 });
+
+        updateVersionInfo();
+    }
+
+    private void updateVersionInfo()
+    {
+        TextView versionInfo = null;
+        for (int i = 0; i < navigationView.getHeaderCount(); i++)
+        {
+            versionInfo = (TextView)navigationView.getHeaderView(i).findViewById(R.id.navigation_view_header_version);
+            if (versionInfo != null)
+            {
+                break;
+            }
+        }
+        if (versionInfo != null && versionInfo.getText().length() == 0)
+        {
+            try
+            {
+                final PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
+                final String verInfo = "v." + pi.versionName + "/" + pi.versionCode;
+                versionInfo.setText(verInfo);
+            }
+            catch (Exception e)
+            {
+                ViewUtils.Debug(this, "Can not obtain app version: " + e.getLocalizedMessage());
+            }
+        }
     }
 
     public void updateFragmentInfo(BaseFragment fragment)
