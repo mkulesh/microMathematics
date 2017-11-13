@@ -5,7 +5,22 @@
       <term key="text" text="Current release:" />
     </text_fragment>
     <text_fragment numbering="true">
-      <term key="text" text='Added Brazilian Portuguese translation.' />
+      <term key="text" text="Changed design of the main windows" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Added a button to the math. palette that&#10;allows to access an array element by&#10;index" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Fixed some minor errors" />
+    </text_fragment>
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Previous releases:" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Version 2.15.5" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Added Brazilian Portuguese translation." />
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text='Now it is possible to change app locale&#10;independently from the current system&#10;locale. To do it, use "App settings" in&#10;the main menu.' />
@@ -64,9 +79,6 @@
       </term>
       <term key="rightTerm" />
     </result>
-    <text_fragment textStyle="subsection">
-      <term key="text" text="Previous releases:" />
-    </text_fragment>
     <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Version 2.15.3" />
     </text_fragment>

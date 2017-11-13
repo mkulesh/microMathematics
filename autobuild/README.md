@@ -24,7 +24,7 @@ cd microMathematics_autobuild
 
 * Next, we copy the newly created APK from gradle output directory `./app/build/outputs/apk` into this directory of the `autobuild` branch
 ```
-mv ../microMathematics/app/build/outputs/apk/microMathematics-v2.15.4a.apk ./autobuild
+mv ../microMathematics/app/build/outputs/apk/microMathematics-v2.15.5.apk ./autobuild
 ```
 
 * Next, we prepare git for push into a remote repository using github personal access token as a "Travis CI" user:
