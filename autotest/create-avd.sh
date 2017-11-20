@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TOOLS_PATH=/work/adt-eclipse/sdk/tools
+TOOLS_PATH=/work/android/sdk/tools
 AVDS_PATH=/work/android/avds
 
 createAVD()
