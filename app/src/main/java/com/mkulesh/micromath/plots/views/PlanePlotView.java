@@ -206,9 +206,9 @@ public abstract class PlanePlotView extends PlotView
     @Override
     protected void onDraw(Canvas can)
     {
-        if (drawingCache == null)
+        try
         {
-            try
+            if (drawingCache == null)
             {
                 final int bitmapWidth = this.getMeasuredWidth();
                 final int bitmapHeight = this.getMeasuredHeight();
@@ -275,20 +275,20 @@ public abstract class PlanePlotView extends PlotView
                 // paint.setColor(Color.GREEN);
                 // c.drawRect(rect, paint);
             }
-            catch (OutOfMemoryError ex)
-            {
-                String error = getContext().getResources().getString(R.string.error_out_of_memory);
-                Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
-                return;
-            }
-            catch (Exception ex)
-            {
-                String error = getContext().getResources().getString(R.string.error_out_of_memory);
-                Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
-                return;
-            }
+            can.drawBitmap(drawingCache, 0, 0, paint);
         }
-        can.drawBitmap(drawingCache, 0, 0, paint);
+        catch (OutOfMemoryError ex)
+        {
+            String error = getContext().getResources().getString(R.string.error_out_of_memory);
+            Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
+            return;
+        }
+        catch (Exception ex)
+        {
+            String error = getContext().getResources().getString(R.string.error_out_of_memory);
+            Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
+            return;
+        }
     }
 
     protected void drawBorder(Canvas c, Paint p)
