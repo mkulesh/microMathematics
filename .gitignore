@@ -3,5 +3,6 @@
 app/build/
 app/app.iml
 build/
-microMathematics.iml
+uMathPlus.iml
 local.properties
+release/
