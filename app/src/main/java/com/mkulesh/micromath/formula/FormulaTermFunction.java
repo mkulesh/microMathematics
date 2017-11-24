@@ -46,6 +46,7 @@ public class FormulaTermFunction extends FormulaTerm
     public enum FunctionType
     {
         IDENTITY(1, R.drawable.p_function_identity, R.string.math_function_identity),
+        POWER(2, R.drawable.p_function_power, R.string.math_function_power),
         ABS_LAYOUT(1, R.drawable.p_function_abs, R.string.math_function_abs),
         SQRT_LAYOUT(1, R.drawable.p_function_sqrt, R.string.math_function_sqrt),
         FACTORIAL(1, R.drawable.p_function_factorial, R.string.math_function_factorial),
@@ -104,7 +105,8 @@ public class FormulaTermFunction extends FormulaTerm
         GENERAL(R.string.formula_function_start_bracket, null, true),
         ABS(R.string.formula_function_abs_layout, FunctionType.ABS_LAYOUT, true),
         SQRT(R.string.formula_function_sqrt_layout, FunctionType.SQRT_LAYOUT, true),
-        FACTORIAL(R.string.formula_function_factorial_layout, FunctionType.FACTORIAL, false);
+        FACTORIAL(R.string.formula_function_factorial_layout, FunctionType.FACTORIAL, false),
+        POWER(R.string.formula_function_power, FunctionType.POWER, false);
 
         private final int codeId;
         private final FunctionType functionType;
@@ -218,7 +220,7 @@ public class FormulaTermFunction extends FormulaTerm
      */
     private FunctionType functionType = null;
     private CustomTextView functionTerm = null;
-    private TermField argTerm = null;
+    private TermField argTerm = null, powerTerm = null;
     private CustomLayout functionMainLayout = null;
     private String functionLinkName = "unknown";
     private Equation linkedFunction = null;
@@ -262,6 +264,8 @@ public class FormulaTermFunction extends FormulaTerm
             {
             case IDENTITY:
                 return v;
+            case POWER:
+                return FastMath.pow(v, powerTerm.getValue(thread));
             case SIN:
                 return FastMath.sin(v);
             case ASIN:
@@ -400,23 +404,19 @@ public class FormulaTermFunction extends FormulaTerm
             String t = v.getText().toString();
             if (t.equals(res.getString(R.string.formula_operator_key)))
             {
-                if (functionType == FunctionType.FUNCTION_LINK)
-                {
-                    v.setText(functionLinkName);
-                }
-                else if (functionType == FunctionType.SQRT_LAYOUT)
-                {
-                    v.setText("");
-                }
-                else if (functionType == FunctionType.FACTORIAL)
-                {
-                    v.setText(res.getString(R.string.formula_function_factorial_layout));
-                }
-                else
-                {
-                    v.setText(getFunctionLabel());
-                }
                 v.prepare(CustomTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
+                switch (functionType)
+                {
+                    case POWER:
+                        v.setText("_");
+                        break;
+                    case FACTORIAL:
+                        v.setText(res.getString(R.string.formula_function_factorial_layout));
+                        break;
+                    default:
+                        v.setText(getFunctionLabel());
+                        break;
+                }
                 functionTerm = v;
             }
             else if (t.equals(res.getString(R.string.formula_left_bracket_key)))
@@ -442,11 +442,24 @@ public class FormulaTermFunction extends FormulaTerm
     {
         if (v.getText() != null)
         {
-            if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_arg_term_key)))
+            final String val = v.getText().toString();
+            if (val.equals(getContext().getResources().getString(R.string.formula_arg_term_key)))
             {
                 argTerm = addTerm(getFormulaRoot(), l, v, this, false);
                 argTerm.bracketsType = (functionType == FunctionType.FACTORIAL) ? TermField.BracketsType.ALWAYS
                         : TermField.BracketsType.NEVER;
+            }
+            else if (functionType == FunctionType.POWER
+                    && val.equals(getContext().getResources().getString(R.string.formula_left_term_key)))
+            {
+                argTerm = addTerm(getFormulaRoot(), l, v, this, false);
+                argTerm.bracketsType = TermField.BracketsType.ALWAYS;
+            }
+            else if (functionType == FunctionType.POWER
+                    && val.equals(getContext().getResources().getString(R.string.formula_right_term_key)))
+            {
+                powerTerm = addTerm(getFormulaRoot(), l, -1, v, this, 3);
+                powerTerm.bracketsType = TermField.BracketsType.NEVER;
             }
         }
         return v;
@@ -532,6 +545,9 @@ public class FormulaTermFunction extends FormulaTerm
         case IDENTITY:
             inflateElements(R.layout.formula_function_noname, true);
             break;
+        case POWER:
+            inflateElements(R.layout.formula_function_pow, true);
+            break;
         default:
             inflateElements(R.layout.formula_function_named, true);
             break;
@@ -540,6 +556,10 @@ public class FormulaTermFunction extends FormulaTerm
         if (argTerm == null)
         {
             throw new Exception("cannot initialize function term");
+        }
+        if (functionType == FunctionType.POWER && powerTerm == null)
+        {
+            throw new Exception("cannot initialize power term");
         }
 
         // store the main layout in order to show errors 
@@ -661,6 +681,7 @@ public class FormulaTermFunction extends FormulaTerm
         case FUNCTION_LINK:
             return functionLinkName;
         case IDENTITY:
+        case POWER:
         case SQRT_LAYOUT:
         case FACTORIAL:
         case ABS_LAYOUT:

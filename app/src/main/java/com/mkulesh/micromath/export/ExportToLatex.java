@@ -431,10 +431,6 @@ public class ExportToLatex
         {
             writer.append("\\frac{");
         }
-        else if (operatorType == OperatorType.POWER)
-        {
-            writer.append("{");
-        }
         writeTermField(f.findTermWithKey(R.string.formula_left_term_key));
         switch (operatorType)
         {
@@ -453,12 +449,9 @@ public class ExportToLatex
         case PLUS:
             writer.append(" + ");
             break;
-        case POWER:
-            writer.append("}^{");
-            break;
         }
         writeTermField(f.findTermWithKey(R.string.formula_right_term_key));
-        if (operatorType == OperatorType.DIVIDE || operatorType == OperatorType.POWER)
+        if (operatorType == OperatorType.DIVIDE)
         {
             writer.append("}");
         }
@@ -487,6 +480,13 @@ public class ExportToLatex
         case FACTORIAL:
             writeTermField(terms.get(0));
             writer.append("! ");
+            break;
+        case POWER:
+            writer.append("{");
+            writeTermField(terms.get(0));
+            writer.append("}^{");
+            writeTermField(terms.get(1));
+            writer.append("}");
             break;
         default:
             if (f.getFunctionTerm() != null)

@@ -154,8 +154,8 @@
     <string name="math_operator_mult">Умножение (\'*\')</string>
     <string name="math_operator_divide">Деление (\'÷\')</string>
     <string name="math_operator_divide_slash">Деление (\'/\')</string>
-    <string name="math_operator_power">Возведение в степень (\'^\')</string>
     <string name="math_function_identity">Круглые скобки (\'(\')</string>
+    <string name="math_function_power">Возведение в степень (\'^\')</string>
     <string name="math_function_abs">Модуль аргумента (\'|\')</string>
     <string name="math_function_sqrt">Квадратный корень аргумента (\'#\')</string>
     <string name="math_function_sin">Синус аргумента</string>

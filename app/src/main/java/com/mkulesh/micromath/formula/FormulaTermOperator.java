@@ -28,8 +28,6 @@ import com.mkulesh.micromath.formula.TermField.BracketsType;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
 
-import org.apache.commons.math3.util.FastMath;
-
 import java.util.Locale;
 
 public class FormulaTermOperator extends FormulaTerm
@@ -46,8 +44,7 @@ public class FormulaTermOperator extends FormulaTerm
         DIVIDE_SLASH(
                 R.string.formula_operator_divide_slash,
                 R.drawable.p_operator_divide_slash,
-                R.string.math_operator_divide_slash),
-        POWER(R.string.formula_operator_power, R.drawable.p_operator_power, R.string.math_operator_power);
+                R.string.math_operator_divide_slash);
 
         private final int symbolId;
         private final int imageId;
@@ -148,8 +145,6 @@ public class FormulaTermOperator extends FormulaTerm
             case DIVIDE:
             case DIVIDE_SLASH:
                 return leftTerm.getValue(thread) / rightTerm.getValue(thread);
-            case POWER:
-                return FastMath.pow(leftTerm.getValue(thread), rightTerm.getValue(thread));
             }
         }
         return Double.NaN;
@@ -197,10 +192,6 @@ public class FormulaTermOperator extends FormulaTerm
                     v.prepare(CustomTextView.SymbolType.SLASH, getFormulaRoot().getFormulaList().getActivity(), this);
                     v.setText("_");
                     break;
-                case POWER:
-                    v.prepare(CustomTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
-                    v.setText("_");
-                    break;
                 }
             }
             else if (t.equals(getContext().getResources().getString(R.string.formula_left_bracket_key)))
@@ -225,20 +216,12 @@ public class FormulaTermOperator extends FormulaTerm
         {
             if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_left_term_key)))
             {
-                boolean addDepth = (operatorType == OperatorType.DIVIDE) ? true : false;
+                final boolean addDepth = (operatorType == OperatorType.DIVIDE) ? true : false;
                 leftTerm = addTerm(getFormulaRoot(), l, v, this, addDepth);
             }
             if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_right_term_key)))
             {
-                int addDepth = 0;
-                if (operatorType == OperatorType.DIVIDE)
-                {
-                    addDepth = 1;
-                }
-                if (operatorType == OperatorType.POWER)
-                {
-                    addDepth = 3;
-                }
+                final int addDepth = (operatorType == OperatorType.DIVIDE)? 1 : 0;
                 rightTerm = addTerm(getFormulaRoot(), l, -1, v, this, addDepth);
             }
         }
@@ -300,10 +283,6 @@ public class FormulaTermOperator extends FormulaTerm
             inflateElements(useBrackets ? R.layout.formula_operator_vert_brackets : R.layout.formula_operator_vert,
                     true);
             break;
-        case POWER:
-            useBrackets = false;
-            inflateElements(R.layout.formula_operator_pow, true);
-            break;
         }
         initializeElements(idx);
         if (leftTerm == null || rightTerm == null)
@@ -329,10 +308,6 @@ public class FormulaTermOperator extends FormulaTerm
         case MINUS:
             leftTerm.bracketsType = BracketsType.NEVER;
             rightTerm.bracketsType = BracketsType.IFNECESSARY;
-            break;
-        case POWER:
-            leftTerm.bracketsType = BracketsType.ALWAYS;
-            rightTerm.bracketsType = BracketsType.NEVER;
             break;
         }
     }
