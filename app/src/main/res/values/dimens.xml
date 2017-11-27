@@ -11,8 +11,6 @@
     <dimen name="activity_hidden_text_height">32dp</dimen>
     <dimen name="activity_palette_button_padding">@dimen/abc_action_bar_default_padding_start_material</dimen>
     <dimen name="activity_palette_vertical_padding">@dimen/abc_action_bar_default_padding_start_material</dimen>
-    <dimen name="activity_drawer_title_size">@dimen/abc_text_size_menu_material</dimen>
-    <dimen name="activity_drawer_subtitle_size">@dimen/abc_text_size_caption_material</dimen>
 
     <!-- Dialogs -->
     <dimen name="dialog_title_text_size">@dimen/abc_text_size_subhead_material</dimen>
