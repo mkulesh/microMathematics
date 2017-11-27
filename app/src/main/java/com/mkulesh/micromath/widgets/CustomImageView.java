@@ -144,7 +144,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         if (fileName == null || fileName.length() == 0)
         {
             // not an error: just erase image end exit
-            // Note: parentDocument can be empty (for example, welcome asset at the first start) 
+            // Note: parentDocument can be empty (for example, welcome asset at the first start)
             return;
         }
 
@@ -471,6 +471,12 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
             try
             {
                 setBitmap(BitmapFactory.decodeStream(stream));
+            }
+            catch (OutOfMemoryError ex)
+            {
+                String error = getContext().getResources().getString(R.string.error_out_of_memory);
+                Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
+                // no return since we need to close stream
             }
             catch (Exception e)
             {
