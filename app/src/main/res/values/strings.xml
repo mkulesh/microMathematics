@@ -28,16 +28,6 @@
         <item></item>
         <item>Buy Plus Version</item>
      </string-array>
-    <string-array name="activity_logos">
-        <item>drawer_worksheet</item>
-        <item>drawer_how_to_use</item>
-        <item>drawer_function_plot</item>
-        <item>drawer_polar_plot</item>
-        <item>drawer_about</item>
-        <item>drawer_documentation</item>
-        <item>drawer_rating</item>
-        <item>drawer_buy_now</item>
-    </string-array>
     <string-array name="activity_resources">
         <item></item>
         <item>asset:/doc_en/how_to_use.xml</item>

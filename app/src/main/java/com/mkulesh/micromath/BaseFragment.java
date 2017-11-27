@@ -40,7 +40,6 @@ import com.mkulesh.micromath.fman.Commander;
 import com.mkulesh.micromath.fman.FileType;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.FormulaList;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.FloatingButtonsSet;
 
