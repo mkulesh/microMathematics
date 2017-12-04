@@ -293,7 +293,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
                 m.setVisible(!FileUtils.isAssetUri(uri));
             }
             // update buttons background
-            ViewUtils.setMenuIconColor(getContext(), m, R.color.micromath_icons);
+            ViewUtils.setMenuIconColor(activity, m, R.color.micromath_icons);
         }
 
         // update floating buttons
