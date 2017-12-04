@@ -5,29 +5,28 @@ AVDS_PATH=/work/android/avds
 
 createAVD()
 {
-echo "Creating $2($3)..."
-${TOOLS_PATH}/android create avd -t $1 -n $2 -p ${AVDS_PATH}/$2 -d 8 -c 200M -b $3 -s 1080x1920 -f
+echo ""
+echo "----------------------------------------------------------------------------------"
+echo "Creating $1($2)"
+echo 'no' | ${TOOLS_PATH}/bin/avdmanager create avd --name $1 --path ${AVDS_PATH}/$1 --sdcard 200M --force --package $2
 # after creation, manually add in each .ini file the following parameters:
-# hw.ramSize=512
-# skin.dynamic=yes
-# vm.heapSize=48
-echo "hw.ramSize=512" >> ${AVDS_PATH}/$2/config.ini
-echo "skin.dynamic=yes" >> ${AVDS_PATH}/$2/config.ini
-echo "vm.heapSize=48" >> ${AVDS_PATH}/$2/config.ini
+cat device.cfg >> ${AVDS_PATH}/$1/config.ini
 }
 
-createAVD 1  android_2.3.3 x86
-createAVD 3  android_4.0.3 x86
-createAVD 4  android_4.1.2 x86
-createAVD 5  android_4.2.2 x86
-createAVD 6  android_4.3.1 x86
-createAVD 7  android_4.4.2 x86
-createAVD 8  android_5.0.1 x86_64
-createAVD 9  android_5.1.1 x86_64
-createAVD 10 android_6.0.0 x86_64
-createAVD 10 DocExport_6.0 x86_64
-createAVD 11 android_7.0.0 x86_64
-createAVD 12 android_7.1.1 google_apis/x86_64
+createAVD android_2.3.3 'system-images;android-10;default;x86'
+createAVD android_4.0.3 'system-images;android-15;default;x86'
+createAVD android_4.1.2 'system-images;android-16;default;x86'
+createAVD android_4.2.2 'system-images;android-17;default;x86'
+createAVD android_4.3.1 'system-images;android-18;default;x86'
+createAVD android_4.4.2 'system-images;android-19;default;x86'
+createAVD android_5.0.1 'system-images;android-21;default;x86_64'
+createAVD android_5.1.1 'system-images;android-22;default;x86_64'
+createAVD android_6.0.0 'system-images;android-23;default;x86_64'
+createAVD android_7.0.0 'system-images;android-24;default;x86_64'
+createAVD android_7.1.1 'system-images;android-25;google_apis;x86'
+createAVD android_8.0.0 'system-images;android-26;google_apis;x86'
 
+echo ""
+echo "----------------------------------------------------------------------------------"
 ${TOOLS_PATH}/emulator -list-avds
 
