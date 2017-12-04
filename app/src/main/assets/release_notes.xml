@@ -2,7 +2,7 @@
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
   <formulaList textWidth="40" significantDigits="3" scale="0.50000" redefineAllowed="true">
     <text_fragment textStyle="subsection">
-      <term key="text" text="Current release 2.15.5:" />
+      <term key="text" text="Current release:" />
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text="Changed design of the main windows" />
