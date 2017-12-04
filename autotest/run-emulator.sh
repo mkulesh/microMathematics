@@ -18,7 +18,6 @@ echo Starting ${EMU_NAME} on port ${EMU_PORT}...
 echo ================================================================================
 adb kill-server
 adb start-server
-adb devices
 ${TOOLS_PATH}/emulator -avd ${EMU_NAME} -no-boot-anim -port ${EMU_PORT} &
 
 # waiting until boot_completed
@@ -29,6 +28,7 @@ sleep 1
 
 # actual device
 adb devices
+adb root
 
 echo Uninstalling ${APK_PACK}...
 ${ADB_CMD} uninstall ${APK_PACK}
@@ -50,11 +50,12 @@ sleep 1
 
 echo Collect results
 ${ADB_CMD} pull ${APK_DATA}/${APK_PACK}/files/autotest.html ${1}.html
-${ADB_CMD} shell rm -f ${APK_DATA}/${APK_PACK}/files/autotest.cfg
-${ADB_CMD} shell rm -f ${APK_DATA}/${APK_PACK}/files/autotest.html
+${ADB_CMD} uninstall ${APK_PACK}
 
 echo Stopping emulator...
-expect -f kill-emulator.exp ${EMU_PORT}
+${ADB_CMD} -e emu kill
+sleep 5
+killall qemu-system-i386
 adb kill-server
 
 exit 1
