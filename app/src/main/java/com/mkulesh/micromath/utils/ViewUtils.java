@@ -24,7 +24,6 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -321,7 +320,7 @@ public final class ViewUtils
         Drawable drawable = m.getIcon();
         if (drawable != null)
         {
-            final int c = ContextCompat.getColor(context, m.isEnabled()? color : R.color.micromath_primary_dark);
+            final int c = CompatUtils.getColor(context, m.isEnabled()? color : R.color.micromath_primary_dark);
             drawable.clearColorFilter();
             drawable.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
         }
@@ -329,7 +328,7 @@ public final class ViewUtils
 
     public static void setButtonIconColor(Context context, ImageButton b, int color)
     {
-        final int c = ContextCompat.getColor(context, b.isEnabled()? color : R.color.micromath_primary_dark);
+        final int c = CompatUtils.getColor(context, b.isEnabled()? color : R.color.micromath_primary_dark);
         b.clearColorFilter();
         b.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
     }
