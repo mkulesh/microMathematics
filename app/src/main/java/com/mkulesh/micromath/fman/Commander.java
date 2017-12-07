@@ -46,6 +46,7 @@ import com.mkulesh.micromath.dialogs.DialogBase;
 import com.mkulesh.micromath.dialogs.DialogRadioGroup;
 import com.mkulesh.micromath.dialogs.SimpleDialog;
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 public class Commander extends DialogBase implements CommanderIf
@@ -100,6 +101,7 @@ public class Commander extends DialogBase implements CommanderIf
 
         homeButton = (ImageButton) findViewById(R.id.fman_action_home);
         homeButton.setOnClickListener(this);
+        ViewUtils.setButtonIconColor(context, homeButton, R.color.dialog_content_color);
         homeButton.setOnLongClickListener(new OnLongClickListener()
         {
             public boolean onLongClick(View v)
@@ -350,8 +352,8 @@ public class Commander extends DialogBase implements CommanderIf
                     public void onCreate(SimpleDialog d, LinearLayout dLayout)
                     {
                         final ImageView image = (ImageView) dLayout.findViewById(R.id.fman_message_dialog_icon);
-                        image.setVisibility(View.VISIBLE);
-                        image.setImageResource(R.drawable.ic_action_content_discard);
+                        d.setImage(image, R.drawable.ic_action_content_discard,
+                                CompatUtils.getColor(context, R.color.dialog_content_color));
                         final TextView prompt = (TextView) dLayout
                                 .findViewById(R.id.fman_message_dialog_prompt);
                         prompt.setText(context.getString(R.string.fman_delete_dialog_prompt, selectedItem));
@@ -679,8 +681,8 @@ public class Commander extends DialogBase implements CommanderIf
                     public void onCreate(SimpleDialog d, LinearLayout dLayout)
                     {
                         final ImageView image = (ImageView) dLayout.findViewById(R.id.fman_message_dialog_icon);
-                        image.setVisibility(View.VISIBLE);
-                        image.setImageResource(R.drawable.ic_action_content_save);
+                        d.setImage(image, R.drawable.ic_action_content_save,
+                                CompatUtils.getColor(context, R.color.dialog_content_color));
                         final TextView prompt = (TextView) dLayout
                                 .findViewById(R.id.fman_message_dialog_prompt);
                         prompt.setText(context.getString(R.string.fman_overwrite_file, fileName));
