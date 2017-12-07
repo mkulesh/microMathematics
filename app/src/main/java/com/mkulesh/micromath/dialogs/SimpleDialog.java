@@ -19,7 +19,9 @@
 package com.mkulesh.micromath.dialogs;
 
 import android.app.Activity;
+import android.graphics.PorterDuff;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
@@ -75,4 +77,11 @@ public class SimpleDialog extends DialogBase
         }
     }
 
+    public void setImage(final ImageView image, int res, int color)
+    {
+        image.setVisibility(View.VISIBLE);
+        image.setImageResource(res);
+        image.clearColorFilter();
+        image.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
+    }
 }
