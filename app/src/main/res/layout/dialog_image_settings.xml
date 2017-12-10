@@ -45,7 +45,7 @@
                     android:src="@drawable/ic_action_content_open" />
             </LinearLayout>
 
-            <CheckBox
+            <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/dialog_checkbox_embedded"
                 style="@style/CheckBoxStyle"
                 android:checked="false"
@@ -61,12 +61,12 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical" >
 
-                <RadioButton
+                <android.support.v7.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_original_size"
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_image_settings_original_size" />
 
-                <RadioButton
+                <android.support.v7.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_custom_size"
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_image_settings_custom_size" />

@@ -15,13 +15,13 @@
             android:paddingBottom="@dimen/dialog_content_padding"
             android:paddingTop="@dimen/dialog_content_padding" >
 
-            <CheckBox
+            <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/dialog_result_disable_calculation"
                 style="@style/CheckBoxStyle"
                 android:checked="false"
                 android:text="@string/dialog_result_disable_calculation" />
 
-            <CheckBox
+            <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/dialog_result_hide_result_field"
                 style="@style/CheckBoxStyle"
                 android:checked="false"

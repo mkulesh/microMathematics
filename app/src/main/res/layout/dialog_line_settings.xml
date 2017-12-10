@@ -28,7 +28,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
-                <RadioButton
+                <android.support.v7.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_line_style_solid"
                     style="@style/RadioButtonStyle"
                     android:checked="true" />
@@ -42,7 +42,7 @@
                     android:paddingRight="10dp"
                     micromath:symbol="HOR_LINE" />
 
-                <RadioButton
+                <android.support.v7.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_line_style_dotted"
                     style="@style/RadioButtonStyle" />
 
@@ -62,7 +62,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
-                <RadioButton
+                <android.support.v7.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_line_style_dashed"
                     style="@style/RadioButtonStyle" />
 
@@ -75,7 +75,7 @@
                     android:paddingRight="10dp"
                     micromath:symbol="HOR_LINE" />
 
-                <RadioButton
+                <android.support.v7.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_line_style_dash_dot"
                     style="@style/RadioButtonStyle" />
 
@@ -118,7 +118,7 @@
                 android:paddingBottom="@dimen/dialog_content_padding"
                 android:paddingTop="@dimen/dialog_content_padding" >
 
-                <CheckBox
+                <android.support.v7.widget.AppCompatCheckBox
                     android:id="@+id/dialog_plot_point_shapes"
                     style="@style/CheckBoxStyle"
                     android:checked="false"

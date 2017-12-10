@@ -15,7 +15,7 @@
             android:gravity="left"
             android:orientation="vertical" >
 
-            <CheckBox 
+            <android.support.v7.widget.AppCompatCheckBox
                 style="@style/CheckBoxStyle"
                 android:id="@+id/dialog_checkbox_reformat"
                 android:text="@string/dialog_document_settings_reformat"
@@ -47,7 +47,7 @@
                 android:layout_marginBottom="@dimen/dialog_content_padding"
                 android:layout_marginTop="@dimen/dialog_content_padding" />
             
-            <CheckBox
+            <android.support.v7.widget.AppCompatCheckBox
                 style="@style/CheckBoxStyle"
                 android:id="@+id/dialog_checkbox_redefine_allowed"
                 android:text="@string/dialog_document_settings_redefine_allowed"

@@ -72,10 +72,10 @@
         <item name="android:background">@drawable/dialog_panel</item>
     </style>
 
-    <style name="RadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
-        <item name="android:button">@drawable/radio_button_holo_light</item>
+    <style name="RadioButtonStyle" parent="@style/Widget.AppCompat.CompoundButton.RadioButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="buttonTint">@color/micromath_accent</item>
         <item name="android:textColor">@color/dialog_content_color</item>
         <item name="android:textSize">@dimen/dialog_content_text_size</item>
         <item name="android:paddingLeft">0dp</item>
@@ -83,10 +83,10 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
-    <style name="CheckBoxStyle" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/checkbox_holo_light</item>
+    <style name="CheckBoxStyle" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="buttonTint">@color/micromath_accent</item>
         <item name="android:textColor">@color/dialog_content_color</item>
         <item name="android:textSize">@dimen/dialog_content_text_size</item>
         <item name="android:paddingLeft">0dp</item>
