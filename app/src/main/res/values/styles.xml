@@ -40,7 +40,7 @@
         <item name="android:inputType">none</item>
         <item name="android:focusable">false</item>
         <item name="android:text"></item>
-        <item name="android:background">@drawable/formula_filled_border</item>
+        <item name="android:background">@drawable/formula_term</item>
     </style>
 
     <style name="FormulaTextEditStyle" parent="@style/Widget.AppCompat.EditText">
@@ -56,7 +56,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:typeface">normal</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/formula_filled_border</item>
+        <item name="android:background">@drawable/formula_term</item>
         <item name="android:textColorHighlight">@color/formula_selected_term_color</item>
     </style>
 

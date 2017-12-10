@@ -177,7 +177,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         super.updateTextColor();
         if (isArrayResult())
         {
-            arrayResultMatrix.updateTextColor(R.drawable.formula_filled_border, R.drawable.formula_selected_term);
+            arrayResultMatrix.updateTextColor(R.drawable.formula_term,
+                    R.drawable.formula_term_background, R.color.formula_selected_term_color);
         }
     }
 

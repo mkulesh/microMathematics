@@ -723,22 +723,26 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         }
 
         // text border
+        if (text.isSelected())
         {
-            int resId = R.drawable.formula_filled_border;
-            if (text.isSelected())
-            {
-                resId = R.drawable.formula_selected_term;
-            }
-            else if (errorDetected)
-            {
-                resId = R.drawable.formula_invalid_content_border;
-            }
-            else if (isEmpty())
-            {
-                resId = (text.isEmptyEnabled()) ? R.drawable.formula_enabled_empty_border
-                        : R.drawable.formula_invalid_content_border;
-            }
-            CompatUtils.updateBackground(getContext(), text, resId);
+            CompatUtils.updateBackground(getContext(), text,
+                    R.drawable.formula_term_background, R.color.formula_selected_term_color);
+        }
+        else if (errorDetected)
+        {
+            CompatUtils.updateBackground(getContext(), text,
+                    R.drawable.formula_term_border, R.color.formula_invalid_content_color);
+        }
+        else if (isEmpty())
+        {
+            final int colorId = (text.isEmptyEnabled()) ?
+                    R.color.formula_enabled_empty_border_color : R.color.formula_invalid_content_color;
+            CompatUtils.updateBackground(getContext(), text,
+                    R.drawable.formula_term_border, colorId);
+        }
+        else
+        {
+            CompatUtils.updateBackground(getContext(), text, R.drawable.formula_term);
         }
 
         // text color

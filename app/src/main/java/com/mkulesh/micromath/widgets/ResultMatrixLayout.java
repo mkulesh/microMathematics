@@ -171,16 +171,18 @@ public class ResultMatrixLayout extends TableLayout
         }
     }
 
-    public void updateTextColor(int normalColor, int selectedColor)
+    public void updateTextColor(int normalDrawable, int selectedDrawable, int selectedColor)
     {
         for (CustomEditText field : fields)
         {
-            int resId = normalColor;
             if (field.isSelected())
             {
-                resId = selectedColor;
+                CompatUtils.updateBackground(getContext(), field, selectedDrawable, selectedColor);
             }
-            CompatUtils.updateBackground(getContext(), field, resId);
+            else
+            {
+                CompatUtils.updateBackground(getContext(), field, normalDrawable);
+            }
         }
     }
 

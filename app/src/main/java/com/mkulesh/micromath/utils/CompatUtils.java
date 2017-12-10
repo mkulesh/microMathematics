@@ -21,6 +21,7 @@ package com.mkulesh.micromath.utils;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -131,6 +132,42 @@ public class CompatUtils
             {
                 bg = c.getResources().getDrawable(resId);
             }
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+        {
+            v.setBackground(bg);
+        }
+        else
+        {
+            v.setBackgroundDrawable(bg);
+        }
+    }
+
+    /**
+     * Procedure sets the background for given view as a drawable with given resource id
+     */
+    @SuppressWarnings("deprecation")
+    public static void updateBackground(Context c, View v, int resId, int color)
+    {
+        Drawable bg = null;
+
+        if (resId >= 0)
+        {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            {
+                bg = c.getResources().getDrawable(resId, c.getTheme());
+            }
+            else
+            {
+                bg = c.getResources().getDrawable(resId);
+            }
+        }
+
+        if (bg != null)
+        {
+            bg.clearColorFilter();
+            bg.setColorFilter(getColor(c, color), PorterDuff.Mode.SRC_ATOP);
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)

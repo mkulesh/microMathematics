@@ -322,10 +322,14 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
             {
                 v.setSelected(isSelected);
             }
+            else if (isSelected)
+            {
+                CompatUtils.updateBackground(getContext(), v,
+                        R.drawable.formula_term_background, R.color.formula_selected_term_color);
+            }
             else
             {
-                final int resId = (isSelected) ? R.drawable.formula_selected_term : R.drawable.formula_filled_border;
-                CompatUtils.updateBackground(getContext(), v, resId);
+                CompatUtils.updateBackground(getContext(), v, R.drawable.formula_term);
             }
         }
         if (isRootFormula())

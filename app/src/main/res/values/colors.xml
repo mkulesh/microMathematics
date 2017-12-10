@@ -21,7 +21,6 @@
     <color name="formula_background_color">@android:color/transparent</color>
     <color name="formula_selected_root_color">#ffdddddd</color>
     <color name="formula_selected_term_color">@color/micromath_accent</color>
-    <color name="formula_filled_border_color">@android:color/transparent</color>
     <color name="formula_enabled_empty_border_color">#ffa0e2ef</color>
     <color name="formula_invalid_content_color">#ffff0000</color>
     <color name="formula_text_color">@color/micromath_primary_text</color>
