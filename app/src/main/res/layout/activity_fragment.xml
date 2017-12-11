@@ -57,14 +57,18 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
-                <com.mkulesh.micromath.widgets.CustomEditText
-                    android:id="@+id/hidden_edit_text"
-                    style="@style/DialogTextEditStyle"
-                    android:layout_width="@dimen/activity_toolbar_height"
-                    android:layout_height="@dimen/activity_hidden_text_height"
-                    android:layout_marginLeft="@dimen/activity_palette_button_padding"
-                    android:layout_marginRight="@dimen/activity_palette_button_padding"
-                    android:paddingTop="3dp" />
+                <LinearLayout
+                    style="@style/DialogTextEditBackgroundStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <com.mkulesh.micromath.widgets.CustomEditText
+                        android:id="@+id/hidden_edit_text"
+                        style="@style/DialogTextEditStyle"
+                        android:layout_width="@dimen/activity_toolbar_height"
+                        android:layout_height="@dimen/activity_hidden_text_height"
+                        android:paddingTop="3dp" />
+                </LinearLayout>
+
             </LinearLayout>
         </HorizontalScrollView>
 

@@ -74,13 +74,18 @@
                 android:paddingRight="@dimen/dialog_content_padding"
                 android:text="@string/fman_new_file" />
 
-            <EditText
-                style="@style/DialogTextEditStyle"
-                android:id="@+id/dialog_file_new_name_value"
+            <LinearLayout
+                style="@style/DialogTextEditBackgroundStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_margin="1dp" />
+                android:layout_margin="1dp">
+                <android.support.v7.widget.AppCompatEditText
+                    style="@style/DialogTextEditStyle"
+                    android:id="@+id/dialog_file_new_name_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

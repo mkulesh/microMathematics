@@ -28,7 +28,8 @@
         <item name="android:scrollHorizontally">false</item>
         <item name="android:imeOptions">flagNoExtractUi</item>  
         <item name="android:privateImeOptions">nm</item>
-        <item name="android:background">@drawable/edit_text_border</item>
+        <item name="android:background">@drawable/formula_term_border</item>
+        <item name="backgroundTint">@color/micromath_accent</item>
         <item name="android:textColor">@color/dialog_content_color</item>
         <item name="android:textSize">@dimen/dialog_content_text_size</item>
         <item name="android:textStyle">normal</item>

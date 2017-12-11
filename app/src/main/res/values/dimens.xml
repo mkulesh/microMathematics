@@ -9,7 +9,6 @@
     <dimen name="activity_flb_size">56dp</dimen>
     <dimen name="activity_main_list_padding_bottom">72dp</dimen> <!-- flb top offset related to tool bar -->
     <dimen name="activity_hidden_text_height">32dp</dimen>
-    <dimen name="activity_palette_button_padding">@dimen/abc_action_bar_default_padding_start_material</dimen>
     <dimen name="activity_palette_vertical_padding">@dimen/abc_action_bar_default_padding_start_material</dimen>
 
     <!-- Dialogs -->

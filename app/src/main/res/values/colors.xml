@@ -16,6 +16,7 @@
     <color name="dialog_panel_color">#ffe6e6e6</color>
     <color name="dialog_panel_stroke_color">#ffbdbfc9</color>
     <color name="dialog_title_color">@color/micromath_accent</color>
+    <color name="dialog_edittext_color">@android:color/white</color>
 
     <!-- Formula -->
     <color name="formula_background_color">@android:color/transparent</color>
