@@ -13,11 +13,8 @@
         android:maxLines="9999" />
 
     <ImageButton
+        style="@style/DialogButtonStyle"
         android:id="@+id/button_decrease"
-        android:layout_width="@dimen/number_picker_height"
-        android:layout_height="@dimen/number_picker_height"
-        android:layout_gravity="center"
-        android:background="@drawable/clickable_background"
         android:contentDescription="@string/dialog_button_decrease"
         android:src="@drawable/ic_action_minus" />
 
@@ -40,11 +37,8 @@
     </LinearLayout>
 
     <ImageButton
+        style="@style/DialogButtonStyle"
         android:id="@+id/button_increase"
-        android:layout_width="@dimen/number_picker_height"
-        android:layout_height="@dimen/number_picker_height"
-        android:layout_gravity="center"
-        android:background="@drawable/clickable_background"
         android:contentDescription="@string/dialog_button_increase"
         android:src="@drawable/ic_action_plus" />
 
