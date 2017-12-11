@@ -164,11 +164,7 @@ public class CompatUtils
             }
         }
 
-        if (bg != null)
-        {
-            bg.clearColorFilter();
-            bg.setColorFilter(getColor(c, color), PorterDuff.Mode.SRC_ATOP);
-        }
+        setDrawableColor(bg, getColor(c, color));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
         {
@@ -177,6 +173,15 @@ public class CompatUtils
         else
         {
             v.setBackgroundDrawable(bg);
+        }
+    }
+
+    public static void setDrawableColor(Drawable drawable, int c)
+    {
+        if (drawable != null)
+        {
+            drawable.clearColorFilter();
+            drawable.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
         }
     }
 

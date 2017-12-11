@@ -165,5 +165,19 @@
         <item name="android:layout_height">4dp</item>
         <item name="android:indeterminateOnly">true</item>
     </style>
-    
+
+    <style name="FloatingButtonStyle" parent="@style/Widget.Design.FloatingActionButton">
+        <item name="android:layout_width">@dimen/activity_flb_size</item>
+        <item name="android:layout_height">@dimen/activity_flb_size</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="elevation">4dp</item>
+        <item name="useCompatPadding">true</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:saveEnabled">false</item>
+    </style>
+
 </resources>

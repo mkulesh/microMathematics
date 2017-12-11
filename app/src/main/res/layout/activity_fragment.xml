@@ -101,51 +101,37 @@
         <com.mkulesh.micromath.widgets.FloatingButtonsSet
             android:id="@+id/main_flb_set_secondary"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/activity_flb_size"
-            android:layout_marginLeft="@dimen/activity_flb_margin"
-            android:layout_marginRight="@dimen/activity_flb_margin" >
+            android:layout_height="wrap_content" >
 
-            <ImageButton
+            <android.support.design.widget.FloatingActionButton
+                style="@style/FloatingButtonStyle"
                 android:id="@+id/main_flb_object_properties"
-                android:layout_width="@dimen/activity_flb_size"
-                android:layout_height="@dimen/activity_flb_size"
-                android:background="@drawable/flb_object_properties"
-                android:contentDescription="@string/action_object_properties"
-                android:visibility="gone"
-                android:saveEnabled="false" />
+                android:src="@drawable/flb_object_properties"
+                android:contentDescription="@string/action_object_properties" />
         </com.mkulesh.micromath.widgets.FloatingButtonsSet>
 
         <com.mkulesh.micromath.widgets.FloatingButtonsSet
             android:id="@+id/main_flb_set_primary"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/activity_flb_size"
-            android:layout_margin="@dimen/activity_flb_margin" >
+            android:layout_height="wrap_content" >
 
-            <ImageButton
+            <android.support.design.widget.FloatingActionButton
+                style="@style/FloatingButtonStyle"
                 android:id="@+id/main_flb_action_play"
-                android:layout_width="@dimen/activity_flb_size"
-                android:layout_height="@dimen/activity_flb_size"
-                android:background="@drawable/flb_action_play"
-                android:contentDescription="@string/action_play"
-                android:visibility="gone"
-                android:saveEnabled="false" />
+                android:src="@drawable/flb_action_play"
+                android:contentDescription="@string/action_play" />
 
-            <ImageButton
+            <android.support.design.widget.FloatingActionButton
+                style="@style/FloatingButtonStyle"
                 android:id="@+id/main_flb_action_stop"
-                android:layout_width="@dimen/activity_flb_size"
-                android:layout_height="@dimen/activity_flb_size"
-                android:background="@drawable/flb_action_stop"
-                android:contentDescription="@string/action_stop"
-                android:visibility="gone"
-                android:saveEnabled="false" />
-            <ImageButton
+                android:src="@drawable/flb_action_stop"
+                android:contentDescription="@string/action_stop" />
+
+            <android.support.design.widget.FloatingActionButton
+                style="@style/FloatingButtonStyle"
                 android:id="@+id/main_flb_action_details"
-                android:layout_width="@dimen/activity_flb_size"
-                android:layout_height="@dimen/activity_flb_size"
-                android:background="@drawable/flb_action_details"
-                android:contentDescription="@string/action_details"
-                android:visibility="gone"
-                android:saveEnabled="false" />
+                android:src="@drawable/flb_action_details"
+                android:contentDescription="@string/action_details" />
         </com.mkulesh.micromath.widgets.FloatingButtonsSet>
     </LinearLayout>
 

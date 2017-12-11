@@ -5,7 +5,6 @@
     <dimen name="activity_horizontal_margin">8dp</dimen>
     <dimen name="activity_vertical_margin">1dp</dimen>
     <dimen name="activity_toolbar_height">@dimen/abc_action_bar_default_height_material</dimen>
-    <dimen name="activity_flb_margin">16dp</dimen>
     <dimen name="activity_flb_size">56dp</dimen>
     <dimen name="activity_main_list_padding_bottom">72dp</dimen> <!-- flb top offset related to tool bar -->
     <dimen name="activity_hidden_text_height">32dp</dimen>

@@ -20,13 +20,15 @@ package com.mkulesh.micromath.widgets;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnLongClickListener;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 public class FloatingButtonsSet extends LinearLayout implements OnLongClickListener
@@ -54,7 +56,7 @@ public class FloatingButtonsSet extends LinearLayout implements OnLongClickListe
     @Override
     public boolean onLongClick(View b)
     {
-        if (b instanceof ImageButton)
+        if (b instanceof FloatingActionButton)
         {
             return ViewUtils.showButtonDescription(getContext(), b);
         }
@@ -66,11 +68,16 @@ public class FloatingButtonsSet extends LinearLayout implements OnLongClickListe
         for (int i = 0; i < getChildCount(); i++)
         {
             final View v = getChildAt(i);
-            if (id == v.getId())
+            if (getContext() != null && id == v.getId())
             {
                 v.setVisibility(View.VISIBLE);
                 v.setOnLongClickListener(this);
                 v.setOnClickListener(handler);
+                if (v instanceof FloatingActionButton)
+                {
+                    CompatUtils.setDrawableColor(((FloatingActionButton) v).getDrawable(),
+                            CompatUtils.getColor(getContext(), R.color.micromath_icons));
+                }
             }
             else
             {
