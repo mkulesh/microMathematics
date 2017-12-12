@@ -21,6 +21,8 @@ package com.mkulesh.micromath.dialogs;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +31,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -108,4 +111,22 @@ public class DialogBase extends Dialog implements OnClickListener
         lp.height = WindowManager.LayoutParams.MATCH_PARENT;
         this.getWindow().setAttributes(lp);
     }
+
+    protected void setButtonSelected(ImageButton b, boolean isSelected)
+    {
+        b.setSelected(isSelected);
+        final int color = b.isSelected()? R.color.micromath_accent : R.color.dialog_content_color;
+        ViewUtils.setButtonIconColor(getContext(), b, color);
+    }
+
+    protected void setButtonEnabled(ImageButton b, boolean isEnabled)
+    {
+        b.setEnabled(isEnabled);
+        b.clearColorFilter();
+        if (!b.isEnabled())
+        {
+            b.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
+        }
+    }
+
 }

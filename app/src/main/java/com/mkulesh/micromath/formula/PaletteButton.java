@@ -21,6 +21,7 @@ package com.mkulesh.micromath.formula;
 import android.content.Context;
 import android.support.v7.widget.AppCompatImageButton;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.ViewGroup;
 
 import com.mkulesh.micromath.plus.R;
@@ -60,9 +61,13 @@ public class PaletteButton extends AppCompatImageButton
         super(context);
         final int buttonSize = context.getResources().getDimensionPixelSize(R.dimen.activity_toolbar_height) - 2
                 * context.getResources().getDimensionPixelSize(R.dimen.activity_palette_vertical_padding);
-        setImageResource(imageId);
-        setBackgroundResource(R.drawable.clickable_background);
         setLayoutParams(new ViewGroup.LayoutParams(buttonSize, buttonSize));
+
+        TypedValue outValue = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.selectableItemBackground, outValue, true);
+        setBackgroundResource(outValue.resourceId);
+
+        setImageResource(imageId);
         if (shortCutId != Palette.NO_BUTTON)
         {
             shortCut = context.getResources().getString(shortCutId);

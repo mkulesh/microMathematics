@@ -27,7 +27,7 @@
 
         <ImageButton
             android:id="@+id/fman_action_home"
-            style="@style/DialogButtonStyle"
+            style="@style/DialogImageButtonStyle"
             android:contentDescription="@string/fman_home"
             android:src="@drawable/fman_home" />
     </LinearLayout>
@@ -118,7 +118,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="@drawable/clickable_background_no_padding"
+                android:background="?attr/selectableItemBackground"
                 android:contentDescription="@string/fman_file_type_selection"
                 android:drawableRight="@drawable/fman_file_type"
                 android:textColor="@color/dialog_content_color" />

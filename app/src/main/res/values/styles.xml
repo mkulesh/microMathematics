@@ -3,7 +3,6 @@
 
     <!-- Application theme. -->
     <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="actionBarItemBackground">@drawable/clickable_background</item>
         <item name="actionModeBackground">@color/micromath_primary</item>
         <item name="colorPrimary">@color/micromath_primary</item>
         <item name="colorPrimaryDark">@color/micromath_primary_dark</item>
@@ -94,14 +93,23 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
     
-    <style name="DialogButtonStyle" parent="@android:style/Widget.ImageButton">
+    <style name="DialogImageButtonStyle" parent="@style/Widget.AppCompat.ImageButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:padding">8dp</item>
-        <item name="android:background">@drawable/clickable_background</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
     </style>
-    
+
+    <style name="DialogTextButtonStyle" parent="@style/Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:textColor">@color/dialog_content_color</item>
+    </style>
+
     <style name="HorizontalDividerStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">2dp</item>

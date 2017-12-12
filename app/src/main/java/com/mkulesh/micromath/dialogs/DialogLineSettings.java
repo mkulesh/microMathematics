@@ -19,8 +19,6 @@
 package com.mkulesh.micromath.dialogs;
 
 import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.CheckBox;
@@ -114,23 +112,16 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
         for (Map.Entry<LineProperties.ShapeType, ImageButton> e : shapeTypeButtons.entrySet())
         {
             ImageButton b = e.getValue();
-            b.setSelected(e.getKey() == parameters.shapeType);
             b.setOnClickListener(this);
             b.setOnLongClickListener(this);
-            setEnabled(b, pointShapesBox.isChecked());
+            setButtonEnabled(b, pointShapesBox.isChecked());
+            if (b.isEnabled())
+            {
+                setButtonSelected(b, e.getKey() == parameters.shapeType);
+            }
         }
 
         this.changeIf = changeIf;
-    }
-
-    public void setEnabled(ImageButton b, boolean enabled)
-    {
-        b.setEnabled(enabled);
-        b.clearColorFilter();
-        if (!b.isEnabled())
-        {
-            b.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
-        }
     }
 
     @Override
@@ -161,7 +152,7 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
                 shapeSizePicker.setEnabled(pointShapesBox.isChecked());
                 for (ImageButton b : shapeTypeButtons.values())
                 {
-                    setEnabled(b, pointShapesBox.isChecked());
+                    setButtonEnabled(b, pointShapesBox.isChecked());
                 }
             }
             return;
@@ -170,7 +161,7 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
         {
             for (ImageButton b : shapeTypeButtons.values())
             {
-                b.setSelected(v == b);
+                setButtonSelected(b, v == b);
             }
             return;
         }

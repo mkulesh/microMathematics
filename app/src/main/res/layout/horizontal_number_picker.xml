@@ -13,7 +13,7 @@
         android:maxLines="9999" />
 
     <ImageButton
-        style="@style/DialogButtonStyle"
+        style="@style/DialogImageButtonStyle"
         android:id="@+id/button_decrease"
         android:contentDescription="@string/dialog_button_decrease"
         android:src="@drawable/ic_action_minus" />
@@ -37,7 +37,7 @@
     </LinearLayout>
 
     <ImageButton
-        style="@style/DialogButtonStyle"
+        style="@style/DialogImageButtonStyle"
         android:id="@+id/button_increase"
         android:contentDescription="@string/dialog_button_increase"
         android:src="@drawable/ic_action_plus" />

@@ -140,25 +140,25 @@
 
                 <ImageButton
                     android:id="@+id/dialog_plot_point_square"
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_plot_point_square"
                     android:src="@drawable/ic_plot_point_square" />
 
                 <ImageButton
                     android:id="@+id/dialog_plot_point_circle"
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_plot_point_circle"
                     android:src="@drawable/ic_plot_point_circle" />
 
                 <ImageButton
                     android:id="@+id/dialog_plot_point_diamond"
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_plot_point_diamond"
                     android:src="@drawable/ic_plot_point_diamond" />
 
                 <ImageButton
                     android:id="@+id/dialog_plot_point_cross"
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_plot_point_cross"
                     android:src="@drawable/ic_plot_point_cross" />
             </LinearLayout>

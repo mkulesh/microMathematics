@@ -62,15 +62,10 @@
 
                 <Button
                     android:id="@+id/dialog_button_ok"
-                    style="@style/TextAppearance.AppCompat.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/DialogTextButtonStyle"
                     android:layout_marginBottom="@dimen/dialog_buttons_margin"
-                    android:layout_weight="1"
-                    android:background="@drawable/clickable_background"
                     android:drawableLeft="@drawable/ic_action_navigation_accept"
-                    android:text="@string/dialog_navigation_accept"
-                    android:textColor="@color/dialog_content_color" />
+                    android:text="@string/dialog_navigation_accept" />
 
                 <View
                     android:id="@+id/dialog_button_devider"
@@ -79,15 +74,10 @@
 
                 <Button
                     android:id="@+id/dialog_button_cancel"
-                    style="@style/TextAppearance.AppCompat.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/DialogTextButtonStyle"
                     android:layout_marginBottom="@dimen/dialog_buttons_margin"
-                    android:layout_weight="1"
-                    android:background="@drawable/clickable_background"
                     android:drawableLeft="@drawable/ic_action_navigation_cancel"
-                    android:text="@string/dialog_navigation_cancel"
-                    android:textColor="@color/dialog_content_color" />
+                    android:text="@string/dialog_navigation_cancel" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

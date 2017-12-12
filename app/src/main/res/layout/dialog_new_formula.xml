@@ -15,7 +15,7 @@
             android:gravity="center_horizontal" >
 
            <ImageButton
-               style="@style/DialogButtonStyle"
+               style="@style/DialogImageButtonStyle"
                android:id="@+id/dialog_button_insert_before"
                android:contentDescription="@string/dialog_new_formula_insert_before"
                android:src="@drawable/ic_add_before" />
@@ -26,7 +26,7 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:id="@+id/dialog_button_insert_left"
                     android:contentDescription="@string/dialog_new_formula_insert_left"
                     android:src="@drawable/ic_add_left" />
@@ -36,14 +36,14 @@
 	                android:layout_height="match_parent" />
 
                 <ImageButton
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:id="@+id/dialog_button_insert_right"
                     android:contentDescription="@string/dialog_new_formula_insert_right"
                     android:src="@drawable/ic_add_right" />
             </LinearLayout>
 
             <ImageButton
-                style="@style/DialogButtonStyle"
+                style="@style/DialogImageButtonStyle"
                 android:id="@+id/dialog_button_insert_after"
                 android:contentDescription="@string/dialog_new_formula_insert_after"
                 android:src="@drawable/ic_add_after" />
@@ -59,38 +59,38 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:id="@+id/dialog_button_new_equation"
                     android:contentDescription="@string/math_new_equation"
                     android:src="@drawable/p_equation" />
 
                 <ImageButton
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:id="@+id/dialog_button_new_result"
                     android:contentDescription="@string/math_new_result"
                     android:src="@drawable/p_result" />
 
                 <ImageButton
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:id="@+id/dialog_button_new_function_plot"
                     android:contentDescription="@string/math_new_function_plot"
                     android:src="@drawable/p_plot_function" />
 
                 <ImageButton
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:id="@+id/dialog_button_new_contour_plot"
                     android:contentDescription="@string/math_new_contour_plot"
                     android:src="@drawable/p_plot_contour" />
                 
                 <ImageButton
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:id="@+id/dialog_button_new_text_fragment"
                     android:contentDescription="@string/math_new_text_fragment"
                     android:src="@drawable/p_text_fragment" />
 
                 <ImageButton
                     android:id="@+id/dialog_button_new_image_fragment"
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/math_new_image_fragment"
                     android:src="@drawable/p_image_fragment" />
             </LinearLayout>

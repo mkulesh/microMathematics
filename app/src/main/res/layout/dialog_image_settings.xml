@@ -45,7 +45,7 @@
 
                 <ImageButton
                     android:id="@+id/dialog_button_select_file"
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_image_settings_select_file"
                     android:src="@drawable/ic_action_content_open" />
             </LinearLayout>
