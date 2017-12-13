@@ -118,15 +118,15 @@ public class DialogBase extends Dialog implements OnClickListener
     protected void setButtonSelected(ImageButton b, boolean isSelected)
     {
         b.setSelected(isSelected);
-        ViewUtils.setImageButtonColorRes(getContext(), b,
-                b.isSelected()? R.color.micromath_accent : R.color.dialog_content_color);
+        ViewUtils.setImageButtonColorAttr(getContext(), b,
+                b.isSelected()? R.attr.colorAccent : R.attr.colorDialogContent);
     }
 
     protected void setButtonEnabled(ImageButton b, boolean isEnabled)
     {
         b.setEnabled(isEnabled);
-        ViewUtils.setImageButtonColorRes(getContext(), b,
-                b.isEnabled()? R.color.dialog_content_color : R.color.dialog_disabled_element_color);
+        ViewUtils.setImageButtonColorAttr(getContext(), b,
+                b.isEnabled()? R.attr.colorDialogContent : R.attr.colorDialogDisabledElement);
     }
 
 }

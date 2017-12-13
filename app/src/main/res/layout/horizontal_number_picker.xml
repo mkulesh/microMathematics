@@ -8,7 +8,7 @@
         android:layout_weight="1"
         android:background="@android:color/transparent"
         android:gravity="left"
-        android:textColor="@color/dialog_content_color"
+        android:textColor="?attr/colorDialogContent"
         android:textSize="@dimen/dialog_content_text_size"
         android:maxLines="9999" />
 

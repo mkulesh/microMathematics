@@ -101,7 +101,7 @@ public class Commander extends DialogBase implements CommanderIf
 
         homeButton = (ImageButton) findViewById(R.id.fman_action_home);
         homeButton.setOnClickListener(this);
-        ViewUtils.setImageButtonColorRes(context, homeButton, R.color.dialog_content_color);
+        ViewUtils.setImageButtonColorAttr(context, homeButton, R.attr.colorDialogContent);
         homeButton.setOnLongClickListener(new OnLongClickListener()
         {
             public boolean onLongClick(View v)
@@ -353,7 +353,7 @@ public class Commander extends DialogBase implements CommanderIf
                     {
                         final ImageView image = (ImageView) dLayout.findViewById(R.id.fman_message_dialog_icon);
                         d.setImage(image, R.drawable.ic_action_content_discard,
-                                CompatUtils.getColor(context, R.color.dialog_content_color));
+                                CompatUtils.getThemeColorAttr(context, R.attr.colorDialogContent));
                         final TextView prompt = (TextView) dLayout
                                 .findViewById(R.id.fman_message_dialog_prompt);
                         prompt.setText(context.getString(R.string.fman_delete_dialog_prompt, selectedItem));
@@ -682,7 +682,7 @@ public class Commander extends DialogBase implements CommanderIf
                     {
                         final ImageView image = (ImageView) dLayout.findViewById(R.id.fman_message_dialog_icon);
                         d.setImage(image, R.drawable.ic_action_content_save,
-                                CompatUtils.getColor(context, R.color.dialog_content_color));
+                                CompatUtils.getThemeColorAttr(context, R.attr.colorDialogContent));
                         final TextView prompt = (TextView) dLayout
                                 .findViewById(R.id.fman_message_dialog_prompt);
                         prompt.setText(context.getString(R.string.fman_overwrite_file, fileName));

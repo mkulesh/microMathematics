@@ -22,7 +22,7 @@
             android:paddingRight="2dp"
             android:paddingTop="2dp"
             android:maxLines="9999"
-            android:textColor="@color/dialog_disabled_element_color"
+            android:textColor="?attr/colorDialogDisabledElement"
             android:textSize="@dimen/fman_path_size" />
 
         <android.support.v7.widget.AppCompatImageButton
@@ -121,7 +121,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:contentDescription="@string/fman_file_type_selection"
                 android:drawableRight="@drawable/fman_file_type"
-                android:textColor="@color/dialog_content_color" />
+                android:textColor="?attr/colorDialogContent" />
         </LinearLayout>
     </LinearLayout>
 

@@ -80,7 +80,7 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
         radioLines[3] = (CustomTextView) findViewById(R.id.dialog_marker_line_style_dash_dot);
 
         LineProperties l = new LineProperties();
-        l.color = CompatUtils.getColor(getContext(), R.color.dialog_content_color);
+        l.color = CompatUtils.getThemeColorAttr(getContext(), R.attr.colorDialogContent);
         l.width = ViewUtils.dpToPx(getContext().getResources().getDisplayMetrics(), 2);
 
         for (int i = 0; i < radioButtons.length; i++)

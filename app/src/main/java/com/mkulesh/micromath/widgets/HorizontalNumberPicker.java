@@ -145,15 +145,15 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
 
     private void updateViewColor(View v)
     {
-        final int color = v.isEnabled()? R.color.dialog_content_color : R.color.dialog_disabled_element_color;
+        final int attrId = v.isEnabled()? R.attr.colorDialogContent : R.attr.colorDialogDisabledElement;
         if (v instanceof ImageButton)
         {
-            ViewUtils.setImageButtonColorRes(getContext(), (ImageButton) v, color);
+            ViewUtils.setImageButtonColorAttr(getContext(), (ImageButton) v, attrId);
         }
         else if (v instanceof TextView)
         {
             final TextView b = (TextView) v;
-            b.setTextColor(CompatUtils.getColor(getContext(), color));
+            b.setTextColor(CompatUtils.getThemeColorAttr(getContext(), attrId));
         }
     }
 

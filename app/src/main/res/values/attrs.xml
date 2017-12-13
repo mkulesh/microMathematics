@@ -3,6 +3,8 @@
 
     <attr name="colorMicroMathIcon" format="color" />
     <attr name="colorDialogTitle" format="color" />
+    <attr name="colorDialogContent" format="color" />
+    <attr name="colorDialogDisabledElement" format="color" />
 
     <attr name="specialAlignment">
         <enum name="none" value="0" />

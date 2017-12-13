@@ -63,7 +63,7 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
         buttonSelectFile = (ImageButton) findViewById(R.id.dialog_button_select_file);
         buttonSelectFile.setOnClickListener(this);
         buttonSelectFile.setOnLongClickListener(this);
-        ViewUtils.setImageButtonColorRes(activity, buttonSelectFile, R.color.dialog_content_color);
+        ViewUtils.setImageButtonColorAttr(activity, buttonSelectFile, R.attr.colorDialogContent);
 
         cbEmbedded = (CheckBox) findViewById(R.id.dialog_checkbox_embedded);
         cbEmbedded.setChecked(parameters.embedded);
