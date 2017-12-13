@@ -101,7 +101,7 @@ public class Commander extends DialogBase implements CommanderIf
 
         homeButton = (ImageButton) findViewById(R.id.fman_action_home);
         homeButton.setOnClickListener(this);
-        ViewUtils.setButtonIconColor(context, homeButton, R.color.dialog_content_color);
+        ViewUtils.setImageButtonColorRes(context, homeButton, R.color.dialog_content_color);
         homeButton.setOnLongClickListener(new OnLongClickListener()
         {
             public boolean onLongClick(View v)

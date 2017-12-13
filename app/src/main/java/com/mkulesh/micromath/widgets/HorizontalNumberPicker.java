@@ -20,8 +20,6 @@ package com.mkulesh.micromath.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -147,20 +145,15 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
 
     private void updateViewColor(View v)
     {
+        final int color = v.isEnabled()? R.color.dialog_content_color : R.color.dialog_disabled_element_color;
         if (v instanceof ImageButton)
         {
-            ImageButton b = (ImageButton) v;
-            b.clearColorFilter();
-            if (!b.isEnabled() || !v.isEnabled())
-            {
-                b.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
-            }
+            ViewUtils.setImageButtonColorRes(getContext(), (ImageButton) v, color);
         }
         else if (v instanceof TextView)
         {
-            TextView b = (TextView) v;
-            b.setTextColor(b.isEnabled() ? CompatUtils.getColor(getContext(), R.color.dialog_content_color)
-                    : Color.GRAY);
+            final TextView b = (TextView) v;
+            b.setTextColor(CompatUtils.getColor(getContext(), color));
         }
     }
 

@@ -153,7 +153,8 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             }
             PaletteButton b = (PaletteButton) paletteLayout.getChildAt(i);
             final boolean isEnabled = b.isEnabled() && paletteLayout.isEnabled();
-            ViewUtils.setButtonIconColor(context, b, isEnabled? R.color.micromath_icons : R.color.micromath_primary_dark);
+            ViewUtils.setImageButtonColorRes(context, b,
+                    isEnabled? R.color.micromath_icons : R.color.micromath_primary_dark);
         }
     }
 

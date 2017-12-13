@@ -23,6 +23,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
+import android.support.annotation.ColorRes;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -314,15 +315,18 @@ public final class ViewUtils
     /**
      * Procedure updates menu item color depends its enabled state
      */
-    public static void setMenuIconColor(Context context, MenuItem m, int color)
+    public static void setMenuIconColor(Context context, MenuItem m, @ColorRes int color)
     {
         final int c = CompatUtils.getColor(context, m.isEnabled()? color : R.color.micromath_primary_dark);
         CompatUtils.setDrawableColor(m.getIcon(), c);
     }
 
-    public static void setButtonIconColor(Context context, ImageButton b, int color)
+    /**
+     * Procedure sets ImageButton color given by resource ID
+     */
+    public static void setImageButtonColorRes(Context context, ImageButton b, @ColorRes int color)
     {
-        final int c = CompatUtils.getColor(context, b.isEnabled()? color : R.color.micromath_primary_dark);
+        final int c = CompatUtils.getColor(context, color);
         b.clearColorFilter();
         b.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
     }

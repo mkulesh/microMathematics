@@ -22,7 +22,7 @@
             android:paddingRight="2dp"
             android:paddingTop="2dp"
             android:maxLines="9999"
-            android:textColor="@color/fman_path_color"
+            android:textColor="@color/dialog_disabled_element_color"
             android:textSize="@dimen/fman_path_size" />
 
         <android.support.v7.widget.AppCompatImageButton

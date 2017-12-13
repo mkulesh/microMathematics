@@ -17,6 +17,7 @@
     <color name="dialog_panel_stroke_color">#ffbdbfc9</color>
     <color name="dialog_title_color">@color/micromath_accent</color>
     <color name="dialog_edittext_color">@android:color/white</color>
+    <color name="dialog_disabled_element_color">@color/micromath_secondary_text</color>
 
     <!-- Formula -->
     <color name="formula_background_color">@android:color/transparent</color>
@@ -31,7 +32,4 @@
     <!-- Function plot -->
     <color name="plot_grid_line_color">#ff787878</color>
 
-    <!-- Fman colors -->
-    <color name="fman_path_color">@color/micromath_secondary_text</color>
-        
 </resources>
