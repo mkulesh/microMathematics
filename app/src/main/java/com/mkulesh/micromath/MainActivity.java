@@ -52,6 +52,7 @@ import com.mkulesh.micromath.fman.AdapterDocuments;
 import com.mkulesh.micromath.formula.StoredFormula;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.AppLocale;
+import com.mkulesh.micromath.utils.AppTheme;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
@@ -89,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        setTheme(AppTheme.getTheme(AppTheme.ActivityType.MAIN_ACTIVITY));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -422,7 +424,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         TextView versionInfo = null;
         for (int i = 0; i < navigationView.getHeaderCount(); i++)
         {
-            versionInfo = (TextView)navigationView.getHeaderView(i).findViewById(R.id.navigation_view_header_version);
+            versionInfo = (TextView) navigationView.getHeaderView(i).findViewById(R.id.navigation_view_header_version);
             if (versionInfo != null)
             {
                 break;
@@ -467,6 +469,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     {
         selectNavigationItem(navigationView.getMenu().getItem(0), postActionId);
     }
+
     public CharSequence getWorksheetName()
     {
         return worksheetName;
@@ -506,7 +509,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         mDrawerLayout.closeDrawers();
 
         Fragment fragment = null;
-        final CharSequence res = (position >= 0 && position < activityResources.length)?
+        final CharSequence res = (position >= 0 && position < activityResources.length) ?
                 activityResources[position] : null;
         if (position == BaseFragment.WORKSHEET_FRAGMENT_ID)
         {

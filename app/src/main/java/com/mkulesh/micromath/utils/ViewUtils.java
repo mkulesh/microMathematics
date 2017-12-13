@@ -303,7 +303,7 @@ public final class ViewUtils
     {
         CompatUtils.setDrawableColor(m.getIcon(),
                 CompatUtils.getThemeColorAttr(context,
-                        m.isEnabled()? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark));
+                        m.isEnabled() ? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark));
     }
 
     /**

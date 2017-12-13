@@ -197,7 +197,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     public void setSelected(boolean isSelected)
     {
         setBackgroundColor(CompatUtils.getThemeColorAttr(getContext(),
-                (isSelected)? R.attr.colorFormulaHighlighted : R.attr.colorFormulaBackground));
+                (isSelected) ? R.attr.colorFormulaHighlighted : R.attr.colorFormulaBackground));
     }
 
     /*********************************************************

@@ -154,7 +154,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             PaletteButton b = (PaletteButton) paletteLayout.getChildAt(i);
             final boolean isEnabled = b.isEnabled() && paletteLayout.isEnabled();
             ViewUtils.setImageButtonColorAttr(context, b,
-                    isEnabled? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark);
+                    isEnabled ? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark);
         }
     }
 

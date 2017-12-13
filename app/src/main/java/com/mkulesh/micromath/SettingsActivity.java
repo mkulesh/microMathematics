@@ -31,6 +31,7 @@ import android.view.ViewGroup;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.AppLocale;
+import com.mkulesh.micromath.utils.AppTheme;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.Locale;
@@ -41,6 +42,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity
     @SuppressWarnings("deprecation")
     protected void onCreate(Bundle savedInstanceState)
     {
+        setTheme(AppTheme.getTheme(AppTheme.ActivityType.SETTINGS_ACTIVITY));
         super.onCreate(savedInstanceState);
         setupActionBar();
         addPreferencesFromResource(R.xml.preferences);
