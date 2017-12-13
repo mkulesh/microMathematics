@@ -23,6 +23,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
+import android.support.annotation.AttrRes;
 import android.support.annotation.ColorRes;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -315,10 +316,11 @@ public final class ViewUtils
     /**
      * Procedure updates menu item color depends its enabled state
      */
-    public static void setMenuIconColor(Context context, MenuItem m, @ColorRes int color)
+    public static void updateMenuIconColor(Context context, MenuItem m)
     {
-        final int c = CompatUtils.getColor(context, m.isEnabled()? color : R.color.micromath_primary_dark);
-        CompatUtils.setDrawableColor(m.getIcon(), c);
+        CompatUtils.setDrawableColor(m.getIcon(),
+                CompatUtils.getThemeColorAttr(context,
+                        m.isEnabled()? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark));
     }
 
     /**
@@ -327,6 +329,13 @@ public final class ViewUtils
     public static void setImageButtonColorRes(Context context, ImageButton b, @ColorRes int color)
     {
         final int c = CompatUtils.getColor(context, color);
+        b.clearColorFilter();
+        b.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
+    }
+
+    public static void setImageButtonColorAttr(Context context, ImageButton b, @AttrRes int resId)
+    {
+        final int c = CompatUtils.getThemeColorAttr(context, resId);
         b.clearColorFilter();
         b.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
     }

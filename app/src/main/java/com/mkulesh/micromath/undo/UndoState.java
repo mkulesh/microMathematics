@@ -23,7 +23,6 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MenuItem;
 
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.ArrayList;
@@ -139,7 +138,7 @@ public class UndoState
         if (menuItem != null)
         {
             menuItem.setEnabled(!entrys.isEmpty());
-            ViewUtils.setMenuIconColor(context, menuItem, R.color.micromath_icons);
+            ViewUtils.updateMenuIconColor(context, menuItem);
         }
     }
 

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <attr name="colorMicroMathIcon" format="color" />
+
     <attr name="specialAlignment">
         <enum name="none" value="0" />
         <enum name="top_of_previous" value="1" />

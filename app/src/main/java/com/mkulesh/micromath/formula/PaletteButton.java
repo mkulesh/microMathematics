@@ -86,8 +86,8 @@ public class PaletteButton extends AppCompatImageButton
         }
         this.code = code;
         enableAll();
-        ViewUtils.setImageButtonColorRes(getContext(), this,
-                isEnabled()? R.color.micromath_icons : R.color.micromath_primary_dark);
+        ViewUtils.setImageButtonColorAttr(getContext(), this,
+                isEnabled()? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark);
     }
 
     public String getCode()

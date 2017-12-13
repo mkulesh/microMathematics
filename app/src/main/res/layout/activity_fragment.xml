@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/activity_toolbar_height"
             android:layout_alignParentTop="true"
-            android:background="@color/micromath_primary"
+            android:background="?attr/colorPrimary"
             android:paddingBottom="@dimen/activity_palette_vertical_padding"
             android:paddingTop="@dimen/activity_palette_vertical_padding" >
 

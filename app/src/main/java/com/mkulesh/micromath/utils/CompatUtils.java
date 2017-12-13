@@ -26,9 +26,13 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
+import android.support.annotation.AttrRes;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
@@ -74,7 +78,8 @@ public class CompatUtils
      * Note: Starting from Android Support Library 23, a new getColor() method has been added to ContextCompat.
      */
     @SuppressWarnings("deprecation")
-    public static final int getColor(Context context, int id)
+    @ColorInt
+    public static final int getColor(Context context, @ColorRes int id)
     {
         if (isMarshMallowOrLater())
         {
@@ -84,6 +89,17 @@ public class CompatUtils
         {
             return context.getResources().getColor(id);
         }
+    }
+
+    /**
+     * Procedure returns theme color
+     */
+    @ColorInt
+    public static int getThemeColorAttr(final Context context, @AttrRes int resId)
+    {
+        final TypedValue value = new TypedValue();
+        context.getTheme().resolveAttribute(resId, value, true);
+        return value.data;
     }
 
     @SuppressWarnings("deprecation")

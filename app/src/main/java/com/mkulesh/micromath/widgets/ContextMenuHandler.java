@@ -107,7 +107,7 @@ public class ContextMenuHandler
             ContextMenuHandler.this.menu = menu;
             for (int i = 0; i < menu.size(); i++)
             {
-                ViewUtils.setMenuIconColor(context, menu.getItem(i), R.color.micromath_icons);
+                ViewUtils.updateMenuIconColor(context, menu.getItem(i));
             }
             for (int i = 0; i < Type.values().length; i++)
             {
