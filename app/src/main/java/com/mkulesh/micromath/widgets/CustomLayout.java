@@ -111,7 +111,7 @@ public class CustomLayout extends LinearLayout
             verticalTermPadding = a.getBoolean(R.styleable.CustomViewExtension_verticalTermPadding, false);
             a.recycle();
         }
-        textColor = CompatUtils.getColor(getContext(), R.color.formula_text_color);
+        textColor = CompatUtils.getThemeColorAttr(getContext(), R.attr.colorFormulaNormal);
         paint.setStyle(Paint.Style.STROKE);
         paint.setColor(textColor);
         paint.setAntiAlias(true);
@@ -509,7 +509,7 @@ public class CustomLayout extends LinearLayout
         {
             paint.setStyle(Style.STROKE);
             paint.setStrokeWidth(ViewUtils.dpToPx(getContext().getResources().getDisplayMetrics(), 1));
-            paint.setColor(CompatUtils.getColor(getContext(), R.color.formula_invalid_content_color));
+            paint.setColor(CompatUtils.getThemeColorAttr(getContext(), R.attr.colorFormulaInvalid));
             c.drawRect(1, 1, this.getRight() - this.getLeft() - 1, this.getBottom() - this.getTop() - 1, paint);
         }
 

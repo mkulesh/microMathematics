@@ -5,6 +5,12 @@
     <attr name="colorDialogTitle" format="color" />
     <attr name="colorDialogContent" format="color" />
     <attr name="colorDialogDisabledElement" format="color" />
+    <attr name="colorFormulaNormal" format="color" />
+    <attr name="colorFormulaEmpty" format="color" />
+    <attr name="colorFormulaInvalid" format="color" />
+    <attr name="colorFormulaSelected" format="color" />
+    <attr name="colorFormulaCalculatedValue" format="color" />
+    <attr name="colorFormulaTextFragment" format="color" />
 
     <attr name="specialAlignment">
         <enum name="none" value="0" />

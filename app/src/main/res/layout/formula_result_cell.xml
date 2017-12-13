@@ -6,7 +6,7 @@
         style="@style/FormulaTextEditStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/formula_calculated_value_color"
+        android:textColor="?attr/colorFormulaCalculatedValue"
         micromath:calculatedValue="true"
         micromath:emptyEnabled="true"
         micromath:contextMenuCut="false"

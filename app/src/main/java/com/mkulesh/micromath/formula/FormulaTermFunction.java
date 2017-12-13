@@ -1324,7 +1324,7 @@ public class FormulaTermFunction extends FormulaTerm
     {
         if (functionTerm != null)
         {
-            functionTerm.setTextColor(CompatUtils.getColor(getContext(), R.color.formula_text_color));
+            functionTerm.setTextColor(CompatUtils.getThemeColorAttr(getContext(), R.attr.colorFormulaNormal));
         }
         if (parentField != null)
         {

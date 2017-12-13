@@ -10,12 +10,12 @@
         <item name="android:scrollHorizontally">false</item>
         <item name="android:imeOptions">flagNoExtractUi</item>
         <item name="android:privateImeOptions">nm</item>
-        <item name="android:textColor">@color/formula_text_color</item>
+        <item name="android:textColor">?attr/colorFormulaNormal</item>
         <item name="android:textStyle">normal</item>
         <item name="android:typeface">normal</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/formula_term</item>
-        <item name="android:textColorHighlight">@color/formula_selected_term_color</item>
+        <item name="android:textColorHighlight">?attr/colorFormulaSelected</item>
         <item name="android:textCursorDrawable">@drawable/cursor_drawable</item>
     </style>
     

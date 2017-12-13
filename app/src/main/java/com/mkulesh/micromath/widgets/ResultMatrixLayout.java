@@ -20,6 +20,7 @@
 package com.mkulesh.micromath.widgets;
 
 import android.content.Context;
+import android.support.annotation.AttrRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -171,13 +172,13 @@ public class ResultMatrixLayout extends TableLayout
         }
     }
 
-    public void updateTextColor(int normalDrawable, int selectedDrawable, int selectedColor)
+    public void updateTextColor(int normalDrawable, int selectedDrawable, @AttrRes int colorAttr)
     {
         for (CustomEditText field : fields)
         {
             if (field.isSelected())
             {
-                CompatUtils.updateBackground(getContext(), field, selectedDrawable, selectedColor);
+                CompatUtils.updateBackgroundAttr(getContext(), field, selectedDrawable, colorAttr);
             }
             else
             {

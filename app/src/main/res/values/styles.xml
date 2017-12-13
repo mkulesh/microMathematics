@@ -7,12 +7,18 @@
         <item name="colorPrimary">#3F51B5</item>
         <item name="colorPrimaryDark">#303F9F</item>
         <item name="colorAccent">#ffff8000</item>
-        <item name="android:textColor">@color/micromath_primary_text</item>
-        <item name="android:textColorSecondary">@color/micromath_secondary_text</item>
+        <item name="android:textColor">#212121</item>
+        <item name="android:textColorSecondary">#757575</item>
         <item name="colorMicroMathIcon">#FFFFFFFF</item>
         <item name="colorDialogTitle">?attr/colorAccent</item>
-        <item name="colorDialogContent">@color/micromath_primary_text</item>
-        <item name="colorDialogDisabledElement">@color/micromath_secondary_text</item>
+        <item name="colorDialogContent">?attr/android:textColor</item>
+        <item name="colorDialogDisabledElement">?attr/android:textColorSecondary</item>
+        <item name="colorFormulaNormal">?attr/android:textColor</item>
+        <item name="colorFormulaEmpty">#ffa0e2ef</item>
+        <item name="colorFormulaInvalid">#ffff0000</item>
+        <item name="colorFormulaSelected">#C5CAE9</item>
+        <item name="colorFormulaCalculatedValue">#ff787878</item>
+        <item name="colorFormulaTextFragment">#ff000066</item>
         <item name="actionModeBackground">?attr/colorPrimary</item>
     </style>
 
@@ -37,7 +43,7 @@
     </style>
 
     <style name="FormulaTextViewStyle" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@color/formula_text_color</item>
+        <item name="android:textColor">?attr/colorFormulaNormal</item>
         <item name="android:textStyle">normal</item>
         <item name="android:typeface">normal</item>
         <item name="android:gravity">center</item>
@@ -56,12 +62,12 @@
         <item name="android:scrollHorizontally">false</item>
         <item name="android:imeOptions">flagNoExtractUi</item>
         <item name="android:privateImeOptions">nm</item>
-        <item name="android:textColor">@color/formula_text_color</item>
+        <item name="android:textColor">?attr/colorFormulaNormal</item>
         <item name="android:textStyle">normal</item>
         <item name="android:typeface">normal</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/formula_term</item>
-        <item name="android:textColorHighlight">@color/formula_selected_term_color</item>
+        <item name="android:textColorHighlight">?attr/colorFormulaSelected</item>
     </style>
 
     <!-- Dialog styles -->

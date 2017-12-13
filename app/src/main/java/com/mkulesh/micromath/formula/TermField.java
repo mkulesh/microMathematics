@@ -725,20 +725,20 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         // text border
         if (text.isSelected())
         {
-            CompatUtils.updateBackground(getContext(), text,
-                    R.drawable.formula_term_background, R.color.formula_selected_term_color);
+            CompatUtils.updateBackgroundAttr(getContext(), text,
+                    R.drawable.formula_term_background, R.attr.colorFormulaSelected);
         }
         else if (errorDetected)
         {
-            CompatUtils.updateBackground(getContext(), text,
-                    R.drawable.formula_term_border, R.color.formula_invalid_content_color);
+            CompatUtils.updateBackgroundAttr(getContext(), text,
+                    R.drawable.formula_term_border, R.attr.colorFormulaInvalid);
         }
         else if (isEmpty())
         {
-            final int colorId = (text.isEmptyEnabled()) ?
-                    R.color.formula_enabled_empty_border_color : R.color.formula_invalid_content_color;
-            CompatUtils.updateBackground(getContext(), text,
-                    R.drawable.formula_term_border, colorId);
+            final int attrId = (text.isEmptyEnabled()) ?
+                    R.attr.colorFormulaEmpty : R.attr.colorFormulaInvalid;
+            CompatUtils.updateBackgroundAttr(getContext(), text,
+                    R.drawable.formula_term_border, attrId);
         }
         else
         {
@@ -747,21 +747,21 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
 
         // text color
         {
-            int resId = R.color.formula_text_color;
+            int resId = R.attr.colorFormulaNormal;
             if (!disableCalculation() && contentType == ContentType.INVALID
                     && errorNotification == ErrorNotification.COLOR)
             {
-                resId = R.color.formula_invalid_content_color;
+                resId = R.attr.colorFormulaInvalid;
             }
             else if (text.isCalculatedValue() || (!isEmpty() && isEmptyOrAutoContent()))
             {
-                resId = R.color.formula_calculated_value_color;
+                resId = R.attr.colorFormulaCalculatedValue;
             }
             else if (text.isTextFragment())
             {
-                resId = R.color.formula_text_fragment_color;
+                resId = R.attr.colorFormulaTextFragment;
             }
-            text.setTextColor(CompatUtils.getColor(getContext(), resId));
+            text.setTextColor(CompatUtils.getThemeColorAttr(getContext(), resId));
         }
 
         // update minimum width depending on content

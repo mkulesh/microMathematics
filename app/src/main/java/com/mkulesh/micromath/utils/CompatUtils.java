@@ -29,6 +29,7 @@ import android.os.Environment;
 import android.support.annotation.AttrRes;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.TypedValue;
@@ -150,23 +151,23 @@ public class CompatUtils
      * Procedure sets the background for given view as a drawable with given resource id
      */
     @SuppressWarnings("deprecation")
-    public static void updateBackground(Context c, View v, int resId, int color)
+    public static void updateBackgroundAttr(Context c, View v, @DrawableRes int drawableId, @AttrRes int colorAttrId)
     {
         Drawable bg = null;
 
-        if (resId >= 0)
+        if (drawableId >= 0)
         {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             {
-                bg = c.getResources().getDrawable(resId, c.getTheme());
+                bg = c.getResources().getDrawable(drawableId, c.getTheme());
             }
             else
             {
-                bg = c.getResources().getDrawable(resId);
+                bg = c.getResources().getDrawable(drawableId);
             }
         }
 
-        setDrawableColor(bg, getColor(c, color));
+        setDrawableColor(bg, getThemeColorAttr(c, colorAttrId));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
         {
