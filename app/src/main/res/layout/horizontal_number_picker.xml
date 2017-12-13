@@ -12,7 +12,7 @@
         android:textSize="@dimen/dialog_content_text_size"
         android:maxLines="9999" />
 
-    <ImageButton
+    <android.support.v7.widget.AppCompatImageButton
         style="@style/DialogImageButtonStyle"
         android:id="@+id/button_decrease"
         android:contentDescription="@string/dialog_button_decrease"
@@ -36,7 +36,7 @@
             android:textSize="@dimen/number_picker_number_size" />
     </LinearLayout>
 
-    <ImageButton
+    <android.support.v7.widget.AppCompatImageButton
         style="@style/DialogImageButtonStyle"
         android:id="@+id/button_increase"
         android:contentDescription="@string/dialog_button_increase"

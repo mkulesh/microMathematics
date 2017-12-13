@@ -79,7 +79,7 @@
         <item name="android:textSize">@dimen/dialog_content_text_size</item>
         <item name="android:paddingLeft">0dp</item>
         <item name="android:paddingRight">0dp</item>
-        <item name="android:background">@android:color/transparent</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
     <style name="CheckBoxStyle" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
@@ -90,7 +90,7 @@
         <item name="android:textSize">@dimen/dialog_content_text_size</item>
         <item name="android:paddingLeft">0dp</item>
         <item name="android:paddingRight">0dp</item>
-        <item name="android:background">@android:color/transparent</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
     </style>
     
     <style name="DialogImageButtonStyle" parent="@style/Widget.AppCompat.ImageButton">
@@ -106,8 +106,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
         <item name="android:padding">16dp</item>
-        <item name="android:background">?attr/selectableItemBackground</item>
         <item name="android:textColor">@color/dialog_content_color</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
     <style name="HorizontalDividerStyle">

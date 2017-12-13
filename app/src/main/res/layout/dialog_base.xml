@@ -60,7 +60,7 @@
                 android:gravity="center"
                 android:orientation="horizontal" >
 
-                <Button
+                <android.support.v7.widget.AppCompatButton
                     android:id="@+id/dialog_button_ok"
                     style="@style/DialogTextButtonStyle"
                     android:layout_marginBottom="@dimen/dialog_buttons_margin"
@@ -72,7 +72,7 @@
                     style="@style/VerticalDividerStyle"
                     android:layout_marginBottom="@dimen/dialog_buttons_margin" />
 
-                <Button
+                <android.support.v7.widget.AppCompatButton
                     android:id="@+id/dialog_button_cancel"
                     style="@style/DialogTextButtonStyle"
                     android:layout_marginBottom="@dimen/dialog_buttons_margin"

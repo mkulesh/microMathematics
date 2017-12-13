@@ -40,6 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingRight="10dp"
+                    android:background="?attr/selectableItemBackground"
                     micromath:symbol="HOR_LINE" />
 
                 <android.support.v7.widget.AppCompatRadioButton
@@ -53,6 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingRight="10dp"
+                    android:background="?attr/selectableItemBackground"
                     micromath:symbol="HOR_LINE" />
             </LinearLayout>
 
@@ -73,6 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingRight="10dp"
+                    android:background="?attr/selectableItemBackground"
                     micromath:symbol="HOR_LINE" />
 
                 <android.support.v7.widget.AppCompatRadioButton
@@ -86,6 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingRight="10dp"
+                    android:background="?attr/selectableItemBackground"
                     micromath:symbol="HOR_LINE" />
             </LinearLayout>
 
@@ -138,25 +142,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
-                <ImageButton
+                <android.support.v7.widget.AppCompatImageButton
                     android:id="@+id/dialog_plot_point_square"
                     style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_plot_point_square"
                     android:src="@drawable/ic_plot_point_square" />
 
-                <ImageButton
+                <android.support.v7.widget.AppCompatImageButton
                     android:id="@+id/dialog_plot_point_circle"
                     style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_plot_point_circle"
                     android:src="@drawable/ic_plot_point_circle" />
 
-                <ImageButton
+                <android.support.v7.widget.AppCompatImageButton
                     android:id="@+id/dialog_plot_point_diamond"
                     style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_plot_point_diamond"
                     android:src="@drawable/ic_plot_point_diamond" />
 
-                <ImageButton
+                <android.support.v7.widget.AppCompatImageButton
                     android:id="@+id/dialog_plot_point_cross"
                     style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_plot_point_cross"

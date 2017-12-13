@@ -43,7 +43,7 @@
                         android:inputType="textMultiLine"/>
                 </LinearLayout>
 
-                <ImageButton
+                <android.support.v7.widget.AppCompatImageButton
                     android:id="@+id/dialog_button_select_file"
                     style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_image_settings_select_file"

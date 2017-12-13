@@ -25,7 +25,7 @@
             android:textColor="@color/fman_path_color"
             android:textSize="@dimen/fman_path_size" />
 
-        <ImageButton
+        <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/fman_action_home"
             style="@style/DialogImageButtonStyle"
             android:contentDescription="@string/fman_home"
@@ -113,7 +113,7 @@
                 android:paddingRight="@dimen/dialog_content_padding"
                 android:text="@string/fman_file_type" />
 
-            <Button
+            <android.support.v7.widget.AppCompatButton
                 android:id="@+id/fman_file_type_button"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
