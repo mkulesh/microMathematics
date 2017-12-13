@@ -34,6 +34,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.Locale;
@@ -66,6 +67,10 @@ public class DialogBase extends Dialog implements OnClickListener
         final Button cancelButton = ((Button) findViewById(R.id.dialog_button_cancel));
         cancelButton.setOnClickListener(this);
         prepareTextStyle(cancelButton);
+
+        final View divider = findViewById(R.id.dialog_divider_view);
+        CompatUtils.setDrawableColor(divider.getBackground(),
+                CompatUtils.getThemeColorAttr(context, R.attr.colorDialogTitle));
 
         pref = PreferenceManager.getDefaultSharedPreferences(getContext());
     }

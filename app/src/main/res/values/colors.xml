@@ -12,7 +12,6 @@
     <color name="dialog_content_color">@color/micromath_primary_text</color>
     <color name="dialog_panel_color">#ffe6e6e6</color>
     <color name="dialog_panel_stroke_color">#ffbdbfc9</color>
-    <color name="dialog_title_color">@color/micromath_accent</color>
     <color name="dialog_edittext_color">@android:color/white</color>
     <color name="dialog_disabled_element_color">@color/micromath_secondary_text</color>
 

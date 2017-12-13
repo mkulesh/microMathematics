@@ -10,6 +10,7 @@
         <item name="android:textColor">@color/micromath_primary_text</item>
         <item name="android:textColorSecondary">@color/micromath_secondary_text</item>
         <item name="colorMicroMathIcon">#FFFFFFFF</item>
+        <item name="colorDialogTitle">@color/micromath_accent</item>
         <item name="actionModeBackground">?attr/colorPrimary</item>
     </style>
 

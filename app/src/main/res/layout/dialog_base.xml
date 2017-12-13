@@ -21,10 +21,11 @@
             android:gravity="center_vertical|left"
             android:paddingLeft="@dimen/dialog_content_padding"
             android:paddingRight="@dimen/dialog_content_padding"
-            android:textColor="@color/dialog_title_color"
+            android:textColor="?attr/colorDialogTitle"
             android:textSize="@dimen/dialog_title_text_size"/>
 
         <View
+            android:id="@+id/dialog_divider_view"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@drawable/dialog_divider" />

@@ -30,7 +30,6 @@ import android.support.annotation.AttrRes;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.TypedValue;
 import android.view.View;
@@ -117,19 +116,6 @@ public class CompatUtils
         }
     }
 
-    @SuppressWarnings("deprecation")
-    public static Drawable getDrawable(Context context, int icon)
-    {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-        {
-            return context.getResources().getDrawable(icon, context.getTheme());
-        }
-        else
-        {
-            return context.getResources().getDrawable(icon);
-        }
-    }
-
     /**
      * Procedure sets the background for given view as a drawable with given resource id
      */
@@ -211,14 +197,6 @@ public class CompatUtils
         else
         {
             asyncTask.execute(params);
-        }
-    }
-
-    public static void addOnMenuVisibilityListener(ActionBar actionBar, ActionBar.OnMenuVisibilityListener listener)
-    {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-        {
-            actionBar.addOnMenuVisibilityListener(listener);
         }
     }
 
