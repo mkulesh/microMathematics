@@ -10,7 +10,6 @@
         android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
-        android:background="@color/dialog_panel_color"
         android:ellipsize="end"
         android:paddingRight="@dimen/dialog_table_cell_padding"
         android:maxLines="1" />
@@ -23,7 +22,6 @@
         android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
-        android:background="@color/dialog_panel_color"
         android:ellipsize="end"
         android:paddingLeft="@dimen/dialog_table_cell_padding"
         android:maxLines="1" />

@@ -22,6 +22,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -53,7 +54,9 @@ public class DialogBase extends Dialog implements OnClickListener
         final LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(layoutId, (LinearLayout) findViewById(R.id.dialog_content_panel));
 
-        getWindow().getDecorView().setBackgroundResource(R.drawable.dialog_window);
+        TypedValue outValue = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.drawableDialogWindow, outValue, true);
+        getWindow().getDecorView().setBackgroundResource(outValue.resourceId);
         getWindow().getDecorView().setPadding(0, 0, 0, 0);
 
         title = (TextView) findViewById(R.id.dialog_title_text);

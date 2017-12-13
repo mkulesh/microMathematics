@@ -196,10 +196,8 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     @Override
     public void setSelected(boolean isSelected)
     {
-        final int selectionColor = (isSelected) ? CompatUtils.getColor(getContext(),
-                R.color.formula_selected_root_color) : CompatUtils.getColor(getContext(),
-                R.color.formula_background_color);
-        setBackgroundColor(selectionColor);
+        setBackgroundColor(CompatUtils.getThemeColorAttr(getContext(),
+                (isSelected)? R.attr.colorFormulaHighlighted : R.attr.colorFormulaBackground));
     }
 
     /*********************************************************

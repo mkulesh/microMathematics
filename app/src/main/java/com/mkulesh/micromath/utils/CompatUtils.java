@@ -28,13 +28,11 @@ import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.AttrRes;
 import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.TextView;
 
 import java.io.File;
 import java.text.DecimalFormat;
@@ -49,46 +47,6 @@ public class CompatUtils
     public static boolean isMarshMallowOrLater()
     {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
-    }
-
-    /**
-     * Sets the text color, size, style, hint color, and highlight color from the specified TextAppearance resource.
-     *
-     * This method was deprecated in API level 23.
-     */
-    @SuppressWarnings("deprecation")
-    public static final void setTextAppearance(Context context, TextView t, int resId)
-    {
-        if (isMarshMallowOrLater())
-        {
-            t.setTextAppearance(resId);
-        }
-        else
-        {
-            t.setTextAppearance(context, resId);
-        }
-    }
-
-    /**
-     * Returns a color associated with a particular resource ID.
-     *
-     * This method was deprecated in API level 23. Starting in M, the returned color will be styled for the specified
-     * Context's theme.
-     *
-     * Note: Starting from Android Support Library 23, a new getColor() method has been added to ContextCompat.
-     */
-    @SuppressWarnings("deprecation")
-    @ColorInt
-    public static final int getColor(Context context, @ColorRes int id)
-    {
-        if (isMarshMallowOrLater())
-        {
-            return context.getColor(id);
-        }
-        else
-        {
-            return context.getResources().getColor(id);
-        }
     }
 
     /**
@@ -121,19 +79,19 @@ public class CompatUtils
      * Procedure sets the background for given view as a drawable with given resource id
      */
     @SuppressWarnings("deprecation")
-    public static void updateBackground(Context c, View v, int resId)
+    public static void updateBackground(Context c, View v, @DrawableRes int drawableId)
     {
         Drawable bg = null;
 
-        if (resId >= 0)
+        if (drawableId >= 0)
         {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             {
-                bg = c.getResources().getDrawable(resId, c.getTheme());
+                bg = c.getResources().getDrawable(drawableId, c.getTheme());
             }
             else
             {
-                bg = c.getResources().getDrawable(resId);
+                bg = c.getResources().getDrawable(drawableId);
             }
         }
 

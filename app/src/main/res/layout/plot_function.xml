@@ -119,7 +119,7 @@
                 micromath:contextMenuCut="true"
                 micromath:contextMenuPaste="true"
                 micromath:contextMenuExpand="true"
-                micromath:gridLineColor="@color/plot_grid_line_color"
+                micromath:gridLineColor="?attr/colorPlotGridLine"
                 micromath:gridLineWidth="@dimen/plot_grid_line_width"
                 micromath:labelLineSize="@dimen/plot_label_line_size"
                 micromath:labelTextSize="@dimen/plot_label_text_size"

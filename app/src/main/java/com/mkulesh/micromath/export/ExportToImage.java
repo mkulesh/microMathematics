@@ -25,7 +25,7 @@ import android.net.Uri;
 import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.formula.FormulaListView;
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.utils.CompatUtils;
 
 import java.io.OutputStream;
 
@@ -46,7 +46,7 @@ public class ExportToImage
         {
             bitmap = Bitmap.createBitmap(f.getMeasuredWidth(), f.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
             final Canvas canvas = new Canvas(bitmap);
-            f.setBackgroundResource(R.color.micromath_background);
+            f.setBackgroundColor(CompatUtils.getThemeColorAttr(f.getContext(), android.R.attr.windowBackground));
             f.draw(canvas);
         }
         catch (OutOfMemoryError e)

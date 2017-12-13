@@ -24,7 +24,6 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.support.annotation.AttrRes;
-import android.support.annotation.ColorRes;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -169,22 +168,6 @@ public final class ViewUtils
     }
 
     /**
-     * Procedure checks duplicate elements
-     */
-    public static boolean checkDuplicate(String[] input)
-    {
-        Set<String> tempSet = new HashSet<String>();
-        for (String str : input)
-        {
-            if (!tempSet.add(str))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
      * Procedure rounds the given value to the given number of significant digits see
      * http://stackoverflow.com/questions/202302
      *
@@ -324,15 +307,8 @@ public final class ViewUtils
     }
 
     /**
-     * Procedure sets ImageButton color given by resource ID
+     * Procedure sets ImageButton color given by attribute ID
      */
-    public static void setImageButtonColorRes(Context context, ImageButton b, @ColorRes int color)
-    {
-        final int c = CompatUtils.getColor(context, color);
-        b.clearColorFilter();
-        b.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
-    }
-
     public static void setImageButtonColorAttr(Context context, ImageButton b, @AttrRes int resId)
     {
         final int c = CompatUtils.getThemeColorAttr(context, resId);

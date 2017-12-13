@@ -19,6 +19,7 @@
 package com.mkulesh.micromath.dialogs;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -160,9 +161,8 @@ public class DialogResultDetails extends DialogBase
 
             // To avoid a bug on some Android versions, set color to
             // TextView's instead of parent layout
-            final int selectionColor = (position % 2 == 0) ? CompatUtils.getColor(getContext(),
-                    R.color.formula_selected_root_color) : CompatUtils.getColor(getContext(),
-                    R.color.dialog_panel_color);
+            final int selectionColor = (position % 2 == 0) ? CompatUtils.getThemeColorAttr(getContext(),
+                    R.attr.colorDialogHighlighted) : Color.TRANSPARENT;
             tvArgument.setBackgroundColor(selectionColor);
             tvValue.setBackgroundColor(selectionColor);
 
