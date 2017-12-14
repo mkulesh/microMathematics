@@ -31,7 +31,6 @@
     </style>
 
     <style name="FormulaTextEditStyle" parent="@style/Widget.AppCompat.EditText">
-        <!-- This style is re-declared in values-v12 in order to define cursor properties. -->
         <item name="android:inputType">textNoSuggestions</item>
         <item name="android:maxLines">1</item>
         <item name="android:autoText">false</item>
@@ -121,7 +120,6 @@
     </style>
 
     <style name="DialogTextEditStyle" parent="@style/Widget.AppCompat.EditText">
-        <!-- This style is re-declared in values-v12 in order to define cursor properties. -->
         <item name="android:inputType">textNoSuggestions</item>
         <item name="android:maxLines">1</item>
         <item name="android:autoText">false</item>

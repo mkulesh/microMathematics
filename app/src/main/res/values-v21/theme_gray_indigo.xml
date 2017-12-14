@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Teal-Amber theme -->
+    <!-- Gray-Indigo theme -->
     <style name="MainThemeGrayIndigo" parent="BaseThemeGrayIndigo">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
