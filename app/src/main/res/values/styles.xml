@@ -4,6 +4,7 @@
     <style name="AppBaseThemeLight" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowBackground">@color/background_material_light</item>
+        <item name="themeMicroMathToolBar">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
     </style>
 
     <!-- Custom styles -->
