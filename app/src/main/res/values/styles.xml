@@ -5,6 +5,8 @@
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowBackground">@color/background_material_light</item>
         <item name="themeMicroMathToolBar">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="themeMicroMathPopup">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="colorMicroMathNavigator">@color/background_material_light</item>
     </style>
 
     <!-- Custom styles -->

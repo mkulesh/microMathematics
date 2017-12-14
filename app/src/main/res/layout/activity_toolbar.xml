@@ -12,6 +12,6 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:theme="?attr/themeMicroMathToolBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        app:popupTheme="?attr/themeMicroMathPopup" />
 
 </android.support.design.widget.AppBarLayout>

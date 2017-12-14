@@ -33,6 +33,7 @@ import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.AxisProperties;
 import com.mkulesh.micromath.properties.ColorMapProperties;
 import com.mkulesh.micromath.properties.PlotProperties;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.FormulaChangeIf;
 
@@ -107,6 +108,7 @@ public abstract class PlotView extends CustomTextView
     public void prepare(AppCompatActivity activity, FormulaChangeIf termChangeIf)
     {
         super.prepare(SymbolType.EMPTY, activity, termChangeIf);
+        getPaint().setColor(CompatUtils.getThemeColorAttr(activity, R.attr.colorFormulaNormal));
         plotParameters.initialize(getContext());
         if (colorMapView != null)
         {

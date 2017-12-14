@@ -2,6 +2,8 @@
 <resources>
 
     <attr name="themeMicroMathToolBar" format="reference" />
+    <attr name="themeMicroMathPopup" format="reference" />
+    <attr name="colorMicroMathNavigator" format="color" />
     <attr name="colorMicroMathIcon" format="color" />
     <attr name="drawableDialogWindow" format="reference" />
     <attr name="drawableDialogPanel" format="reference" />
