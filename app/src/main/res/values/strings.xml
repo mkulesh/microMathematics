@@ -97,6 +97,7 @@
         <item>Indigo and Orange</item>
         <item>Teal and Deep Orange</item>
         <item>Gray and Indigo</item>
+        <item>DOS Mathcad</item>
     </string-array>
     <!-- Non-Translatable parameters of themes -->
     <string name="pref_default_theme_code" translatable="false">indigo-orange</string>
@@ -104,16 +105,19 @@
         <item>indigo-orange</item>
         <item>teal-deep-orange</item>
         <item>gray-indigo</item>
+        <item>mathcad-dos</item>
     </string-array>
     <array name="main_themes" translatable="false">
         <item>@style/MainThemeIndigoOrange</item>
         <item>@style/MainThemeTealDeepOrange</item>
         <item>@style/MainThemeGrayIndigo</item>
+        <item>@style/MainThemeMathcadDos</item>
     </array>
     <array name="settings_themes" translatable="false">
         <item>@style/SettingsThemeIndigoOrange</item>
         <item>@style/SettingsThemeTealDeepOrange</item>
         <item>@style/SettingsThemeGrayIndigo</item>
+        <item>@style/SettingsThemeMathcadDos</item>
     </array>
 
     <!-- Dialogs -->

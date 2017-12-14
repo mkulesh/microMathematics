@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Classical DOS Mathcad theme -->
+    <color name="mathcad_dos_primary">#000054</color>
+
+    <style name="BaseThemeMathcadDos" parent="AppBaseThemeLight">
+        <item name="android:windowBackground">@color/mathcad_dos_primary</item>
+        <item name="colorMicroMathNavigator">#303030</item>
+        <item name="themeMicroMathPopup">@style/MainThemePopupDark</item>
+        <!-- see http://en.academic.ru/pictures/enwiki/77/Mathcad_252_screenshot.png -->
+        <item name="colorPrimary">#404040</item>
+        <item name="colorPrimaryDark">#303030</item>
+        <item name="colorAccent">#FF9800</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/darker_gray</item>
+        <item name="colorMicroMathIcon">@android:color/white</item>
+        <!-- Dialog style -->
+        <item name="drawableDialogWindow">@drawable/dialog_window_light</item>
+        <item name="drawableDialogPanel">@drawable/dialog_panel_light</item>
+        <item name="colorDialogTitle">?attr/colorAccent</item>
+        <item name="colorDialogContent">@android:color/black</item>
+        <item name="colorDialogDisabledElement">@android:color/darker_gray</item>
+        <item name="colorDialogEditText">@android:color/white</item>
+        <item name="colorDialogHighlighted">#ffdddddd</item>
+        <!-- Formula style -->
+        <item name="colorFormulaBackground">@android:color/transparent</item>
+        <item name="colorFormulaHighlighted">#1c1c54</item>
+        <item name="colorFormulaNormal">@android:color/white</item>
+        <item name="colorFormulaEmpty">#ffa0e2ef</item>
+        <item name="colorFormulaInvalid">#ffff0000</item>
+        <item name="colorFormulaSelected">#005f6f</item>
+        <item name="colorFormulaCalculatedValue">@android:color/darker_gray</item>
+        <item name="colorFormulaTextFragment">@android:color/white</item>
+        <item name="colorPlotGridLine">#efefef</item>
+        <!-- Other elements -->
+        <item name="actionModeBackground">?attr/colorPrimary</item>
+    </style>
+
+    <style name="MainThemePopupDark" parent="@style/ThemeOverlay.AppCompat.Dark">
+        <!-- No settings -->
+    </style>
+
+    <style name="MainThemeMathcadDos" parent="BaseThemeMathcadDos">
+        <!-- No settings -->
+    </style>
+
+    <style name="SettingsThemeMathcadDos" parent="BaseThemeMathcadDos">
+        <!-- For preference activity, de-activate overlay -->
+        <item name="windowActionModeOverlay">false</item>
+    </style>
+
+</resources>
