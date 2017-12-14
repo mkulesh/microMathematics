@@ -70,8 +70,18 @@
     <string name="context_paste">Paste</string>
 
     <!-- Application settings -->
-    <string name="pref_app_language">App language</string>
     <string name="pref_developer_mode">Developer options</string>
+
+    <!-- Application settings: Languages -->
+    <!-- Translatable list of languages -->
+    <string name="pref_app_language">App language</string>
+    <string-array name="pref_language_names">
+        <item>English</item>
+        <item>Russian</item>
+        <item>German</item>
+        <item>Brazilian Portuguese</item>
+    </string-array>
+    <!-- Non-Translatable parameters of languages -->
     <string name="pref_default_language_code" translatable="false">en</string>
     <string-array name="pref_language_codes" translatable="false">
         <item>en</item>
@@ -79,12 +89,28 @@
         <item>de</item>
         <item>pt-rBR</item>
     </string-array>
-    <string-array name="pref_language_names">
-        <item>English</item>
-        <item>Russian</item>
-        <item>German</item>
-        <item>Brazilian Portuguese</item>
+
+    <!-- Application settings: Themes -->
+    <!-- Translatable list of themes -->
+    <string name="pref_app_theme">App theme</string>
+    <string-array name="pref_theme_names">
+        <item>Indigo and Orange</item>
+        <item>Teal and Deep Orange</item>
     </string-array>
+    <!-- Non-Translatable parameters of themes -->
+    <string name="pref_default_theme_code" translatable="false">indigo-orange</string>
+    <string-array name="pref_theme_codes" translatable="false">
+        <item>indigo-orange</item>
+        <item>teal-deep-orange</item>
+    </string-array>
+    <array name="main_themes" translatable="false">
+        <item>@style/MainThemeIndigoOrange</item>
+        <item>@style/MainThemeTealDeepOrange</item>
+    </array>
+    <array name="settings_themes" translatable="false">
+        <item>@style/SettingsThemeIndigoOrange</item>
+        <item>@style/SettingsThemeTealDeepOrange</item>
+    </array>
 
     <!-- Dialogs -->
     <string name="dialog_navigation_accept">OK</string>

@@ -18,6 +18,11 @@
  ******************************************************************************/
 package com.mkulesh.micromath.utils;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.preference.PreferenceManager;
 import android.support.annotation.StyleRes;
 
 import com.mkulesh.micromath.plus.R;
@@ -27,6 +32,8 @@ import com.mkulesh.micromath.plus.R;
  *********************************************************/
 public final class AppTheme
 {
+    public static final String PREF_APP_THEME = "app_theme";
+
     public enum ThemeType
     {
         MAIN_THEME,
@@ -34,15 +41,37 @@ public final class AppTheme
     }
 
     @StyleRes
-    public static int getTheme(ThemeType type)
+    public static int getTheme(Context context, ThemeType type)
     {
+        final Resources res = context.getResources();
+        final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        final String themeCode = pref.getString(PREF_APP_THEME,
+                res.getString(R.string.pref_default_theme_code));
+
+        final CharSequence[] allThemes = context.getResources().getStringArray(R.array.pref_theme_codes);
+        int themeIndex = 0;
+        for (int i = 0; i < allThemes.length; i++)
+        {
+            if (allThemes[i].toString().equals(themeCode))
+            {
+                themeIndex = i;
+                break;
+            }
+        }
+
         if (type == ThemeType.MAIN_THEME)
         {
-            return R.style.MainThemeIndigoOrange;
+            TypedArray mainThemes = res.obtainTypedArray(R.array.main_themes);
+            final int resId = mainThemes.getResourceId(themeIndex, R.style.BaseThemeIndigoOrange);
+            mainThemes.recycle();
+            return resId;
         }
         else
         {
-            return R.style.SettingsThemeIndigoOrange;
+            TypedArray settingsThemes = res.obtainTypedArray(R.array.settings_themes);
+            final int resId = settingsThemes.getResourceId(themeIndex, R.style.SettingsThemeIndigoOrange);
+            settingsThemes.recycle();
+            return resId;
         }
     }
 }

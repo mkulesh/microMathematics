@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        setTheme(AppTheme.getTheme(AppTheme.ThemeType.MAIN_THEME));
+        setTheme(AppTheme.getTheme(this, AppTheme.ThemeType.MAIN_THEME));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

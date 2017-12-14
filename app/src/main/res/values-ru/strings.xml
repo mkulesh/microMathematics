@@ -70,13 +70,22 @@
     <string name="context_paste">Вставить</string>
 
     <!-- Application settings -->
-    <string name="pref_app_language">Язык приложения</string>
     <string name="pref_developer_mode">Режим разработчика</string>
+
+    <!-- Application settings: Languages -->
+    <string name="pref_app_language">Язык приложения</string>
     <string-array name="pref_language_names">
         <item>Английский</item>
         <item>Русский</item>
         <item>Немецкий</item>
         <item>Португальский (Бразилия)</item>
+    </string-array>
+
+    <!-- Application settings: Themes -->
+    <string name="pref_app_theme">Цветовые схемы</string>
+    <string-array name="pref_theme_names">
+        <item>Тёмно-синий и оранжевый</item>
+        <item>Зеленовато-голубой и тёмно-оранжевый</item>
     </string-array>
 
     <!-- Dialogs -->

@@ -70,13 +70,22 @@
     <string name="context_paste">Colar</string>
 
     <!-- Application settings -->
-    <string name="pref_app_language">Idioma do app</string>
     <string name="pref_developer_mode">Opções do desenvolvedor</string>
+
+    <!-- Application settings: Languages -->
+    <string name="pref_app_language">Idioma do app</string>
     <string-array name="pref_language_names">
-        <item>English</item>
-        <item>Russian</item>
-        <item>German</item>
-        <item>Brazilian Portuguese</item>
+        <item>Inglês</item>
+        <item>Russo</item>
+        <item>Alemão</item>
+        <item>Português brasileiro</item>
+    </string-array>
+
+    <!-- Application settings: Themes -->
+    <string name="pref_app_theme">Tema do app</string>
+    <string-array name="pref_theme_names">
+        <item>Azul escuro e laranja</item>
+        <item>Azul-verde e laranja escuro</item>
     </string-array>
 
     <!-- Dialogs -->
