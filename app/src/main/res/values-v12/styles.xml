@@ -16,7 +16,7 @@
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/formula_term</item>
         <item name="android:textColorHighlight">?attr/colorFormulaSelected</item>
-        <item name="android:textCursorDrawable">@drawable/cursor_drawable</item>
+        <item name="android:textCursorDrawable">@drawable/cursor_deep_teal</item>
     </style>
     
     <style name="DialogTextEditStyle" parent="@style/Widget.AppCompat.EditText">
@@ -37,7 +37,7 @@
         <item name="android:gravity">left</item>
         <item name="android:paddingLeft">5dp</item>
         <item name="android:paddingRight">5dp</item>
-        <item name="android:textCursorDrawable">@drawable/cursor_drawable</item>
+        <item name="android:textCursorDrawable">@drawable/cursor_deep_teal</item>
     </style>
 
 </resources>
