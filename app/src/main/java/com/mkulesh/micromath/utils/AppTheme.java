@@ -27,22 +27,22 @@ import com.mkulesh.micromath.plus.R;
  *********************************************************/
 public final class AppTheme
 {
-    public enum ActivityType
+    public enum ThemeType
     {
-        MAIN_ACTIVITY,
-        SETTINGS_ACTIVITY
+        MAIN_THEME,
+        SETTINGS_THEME
     }
 
     @StyleRes
-    public static int getTheme(ActivityType type)
+    public static int getTheme(ThemeType type)
     {
-        if (type == ActivityType.MAIN_ACTIVITY)
+        if (type == ThemeType.MAIN_THEME)
         {
-            return R.style.MicroMathThemeBlue;
+            return R.style.MainThemeIndigoOrange;
         }
         else
         {
-            return R.style.PreferenceScreenThemeBlue;
+            return R.style.SettingsThemeIndigoOrange;
         }
     }
 }

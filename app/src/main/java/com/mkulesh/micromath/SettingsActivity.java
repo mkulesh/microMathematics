@@ -42,7 +42,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity
     @SuppressWarnings("deprecation")
     protected void onCreate(Bundle savedInstanceState)
     {
-        setTheme(AppTheme.getTheme(AppTheme.ActivityType.SETTINGS_ACTIVITY));
+        setTheme(AppTheme.getTheme(AppTheme.ThemeType.SETTINGS_THEME));
         super.onCreate(savedInstanceState);
         setupActionBar();
         addPreferencesFromResource(R.xml.preferences);
