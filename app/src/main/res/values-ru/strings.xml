@@ -86,6 +86,7 @@
     <string-array name="pref_theme_names">
         <item>Тёмно-синий и оранжевый</item>
         <item>Зеленовато-голубой и тёмно-оранжевый</item>
+        <item>Серый и тёмно-синий</item>
     </string-array>
 
     <!-- Dialogs -->

@@ -86,6 +86,7 @@
     <string-array name="pref_theme_names">
         <item>Indigo und orange</item>
         <item>Aquamarin und dunkelorange</item>
+        <item>Grau und indigo</item>
     </string-array>
 
     <!-- Dialogs -->

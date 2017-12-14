@@ -86,6 +86,7 @@
     <string-array name="pref_theme_names">
         <item>Azul escuro e laranja</item>
         <item>Azul-verde e laranja escuro</item>
+        <item>Cinza e azul escuro</item>
     </string-array>
 
     <!-- Dialogs -->
