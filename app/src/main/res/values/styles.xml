@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="AppBaseThemeLight" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <!-- Theme definition used for all API levels -->
+
+    <style name="BaseThemeLight" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowBackground">@color/background_material_light</item>
         <item name="themeMicroMathToolBar">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="themeMicroMathPopup">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="colorMicroMathNavigator">@color/background_material_light</item>
+    </style>
+
+    <!-- Theme definition that is re-defined for API v.21 -->
+
+    <style name="AppBaseThemeLight" parent="BaseThemeLight">
+        <!-- see values-v21/styles -->
     </style>
 
     <!-- Custom styles -->
