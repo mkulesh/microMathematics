@@ -31,6 +31,7 @@ import com.mkulesh.micromath.plots.views.Palette.ColorType;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.ColorMapProperties;
 import com.mkulesh.micromath.properties.ColorMapProperties.ColorMap;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.FormulaChangeIf;
@@ -102,6 +103,7 @@ public class ColorMapView extends CustomTextView
     {
         this.prepare(null);
         super.prepare(SymbolType.EMPTY, activity, termChangeIf);
+        getPaint().setColor(CompatUtils.getThemeColorAttr(activity, R.attr.colorFormulaNormal));
     }
 
     private void preparePalette()
