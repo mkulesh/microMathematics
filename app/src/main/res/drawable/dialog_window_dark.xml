@@ -33,7 +33,7 @@
         android:left="1dp"
         android:right="1dp">
         <shape android:shape="rectangle" >
-            <solid android:color="#607D8B" />
+            <solid android:color="@color/material_grey_800" />
 
             <corners android:radius="@dimen/dialog_corner_radius" />
         </shape>

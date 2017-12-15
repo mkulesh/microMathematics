@@ -3,7 +3,7 @@
 
     <style name="AppBaseThemeLight" parent="BaseThemeLight">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
     </style>
 
     <style name="CustomProgressBarTheme" parent="Theme.AppCompat.Light">
