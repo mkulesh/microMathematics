@@ -110,14 +110,14 @@
 
     <style name="HorizontalDividerStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">2dp</item>
-        <item name="android:background">@drawable/divider_horizontal_light</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?attr/colorDialogDivider</item>
     </style>
 
     <style name="VerticalDividerStyle">
-        <item name="android:layout_width">2dp</item>
+        <item name="android:layout_width">1dp</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@drawable/divider_vertical_light</item>
+        <item name="android:background">?attr/colorDialogDivider</item>
     </style>
     
     <style name="DialogTextViewStyle" parent="@android:style/TextAppearance">

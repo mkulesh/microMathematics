@@ -37,7 +37,7 @@
         android:layout_marginBottom="@dimen/dialog_panel_vertical_padding"
         android:layout_weight="1"
         android:clickable="false"
-        android:divider="@drawable/divider_horizontal_light"
+        android:divider="?attr/colorDialogDivider"
         android:dividerHeight="1dp"
         android:drawSelectorOnTop="false"
         android:fastScrollEnabled="true"

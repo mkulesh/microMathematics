@@ -42,7 +42,7 @@
         android:clickable="true"
         android:drawSelectorOnTop="false"
         android:fastScrollEnabled="true"
-        android:divider="@drawable/divider_horizontal_light"
+        android:divider="?attr/colorDialogDivider"
         android:dividerHeight="1dp"
         android:longClickable="true" />
     

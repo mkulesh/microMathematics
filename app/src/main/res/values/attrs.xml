@@ -8,6 +8,7 @@
     <attr name="drawableDialogWindow" format="reference" />
     <attr name="drawableDialogPanel" format="reference" />
     <attr name="colorDialogTitle" format="color" />
+    <attr name="colorDialogDivider" format="color" />
     <attr name="colorDialogContent" format="color" />
     <attr name="colorDialogDisabledElement" format="color" />
     <attr name="colorDialogEditText" format="color" />
