@@ -105,7 +105,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity
             listPreference.setValueIndex(0);
         }
 
-        listPreference.setSummary(listPreference.getEntry().toString());
+        if (listPreference.getEntry() != null)
+        {
+            listPreference.setSummary(listPreference.getEntry().toString());
+        }
         listPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
         {
             @Override

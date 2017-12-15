@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Classical DOS Mathcad theme -->
-    <color name="mathcad_dos_primary">@color/background_material_dark</color>
-
-    <style name="BaseThemeMathcadDos" parent="AppBaseThemeLight">
-        <item name="android:windowBackground">@color/mathcad_dos_primary</item>
+    <!-- Dark theme with cyan accent -->
+    <style name="BaseThemeDarkCyan" parent="AppBaseThemeLight">
+        <item name="android:windowBackground">@color/background_material_dark</item>
         <item name="colorMicroMathNavigator">@color/background_material_dark</item>
         <item name="themeMicroMathPopup">@style/MainThemePopupDark</item>
-        <!-- see http://en.academic.ru/pictures/enwiki/77/Mathcad_252_screenshot.png -->
         <item name="colorPrimary">@color/material_grey_800</item>
         <item name="colorPrimaryDark">@color/background_material_dark</item>
         <item name="colorAccent">#00BCD4</item>
@@ -43,11 +40,11 @@
         <!-- No settings -->
     </style>
 
-    <style name="MainThemeMathcadDos" parent="BaseThemeMathcadDos">
+    <style name="MainThemeDarkCyan" parent="BaseThemeDarkCyan">
         <!-- No settings -->
     </style>
 
-    <style name="SettingsThemeMathcadDos" parent="BaseThemeMathcadDos">
+    <style name="SettingsThemeDarkCyan" parent="BaseThemeDarkCyan">
         <!-- For preference activity, de-activate overlay -->
         <item name="windowActionModeOverlay">false</item>
     </style>
