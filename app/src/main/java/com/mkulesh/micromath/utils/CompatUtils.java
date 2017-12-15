@@ -125,7 +125,7 @@ public class CompatUtils
             }
         }
 
-        setDrawableColor(bg, getThemeColorAttr(c, colorAttrId));
+        setDrawableColorAttr(c, bg, colorAttrId);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
         {
@@ -137,12 +137,12 @@ public class CompatUtils
         }
     }
 
-    public static void setDrawableColor(Drawable drawable, int c)
+    public static void setDrawableColorAttr(Context c, Drawable drawable, @AttrRes int resId)
     {
         if (drawable != null)
         {
             drawable.clearColorFilter();
-            drawable.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
+            drawable.setColorFilter(getThemeColorAttr(c, resId), PorterDuff.Mode.SRC_ATOP);
         }
     }
 

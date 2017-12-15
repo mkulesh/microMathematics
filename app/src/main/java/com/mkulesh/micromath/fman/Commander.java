@@ -144,6 +144,7 @@ public class Commander extends DialogBase implements CommanderIf
                     return ViewUtils.showButtonDescription(getContext(), v);
                 }
             });
+            prepareButtonImage(fileTypeButton);
             fileName.requestFocus();
             break;
         }

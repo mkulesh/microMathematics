@@ -21,6 +21,7 @@ package com.mkulesh.micromath.dialogs;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -66,14 +67,15 @@ public class DialogBase extends Dialog implements OnClickListener
         final Button okButton = ((Button) findViewById(R.id.dialog_button_ok));
         okButton.setOnClickListener(this);
         prepareTextStyle(okButton);
+        prepareButtonImage(okButton);
 
         final Button cancelButton = ((Button) findViewById(R.id.dialog_button_cancel));
         cancelButton.setOnClickListener(this);
         prepareTextStyle(cancelButton);
+        prepareButtonImage(cancelButton);
 
         final View divider = findViewById(R.id.dialog_divider_view);
-        CompatUtils.setDrawableColor(divider.getBackground(),
-                CompatUtils.getThemeColorAttr(context, R.attr.colorDialogTitle));
+        CompatUtils.setDrawableColorAttr(context, divider.getBackground(), R.attr.colorDialogTitle);
 
         pref = PreferenceManager.getDefaultSharedPreferences(getContext());
     }
@@ -132,4 +134,12 @@ public class DialogBase extends Dialog implements OnClickListener
                 b.isEnabled() ? R.attr.colorDialogContent : R.attr.colorDialogDisabledElement);
     }
 
+    protected void prepareButtonImage(Button b)
+    {
+        for (Drawable d : b.getCompoundDrawables())
+        {
+            CompatUtils.setDrawableColorAttr(getContext(), d,
+                    b.isEnabled() ? R.attr.colorDialogContent : R.attr.colorDialogDisabledElement);
+        }
+    }
 }

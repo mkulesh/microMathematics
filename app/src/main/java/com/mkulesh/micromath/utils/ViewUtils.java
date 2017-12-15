@@ -301,9 +301,8 @@ public final class ViewUtils
      */
     public static void updateMenuIconColor(Context context, MenuItem m)
     {
-        CompatUtils.setDrawableColor(m.getIcon(),
-                CompatUtils.getThemeColorAttr(context,
-                        m.isEnabled() ? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark));
+        CompatUtils.setDrawableColorAttr(context, m.getIcon(),
+                        m.isEnabled() ? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark);
     }
 
     /**
