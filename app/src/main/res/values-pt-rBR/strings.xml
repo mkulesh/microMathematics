@@ -74,20 +74,14 @@
 
     <!-- Application settings: Languages -->
     <string name="pref_app_language">Idioma do app</string>
-    <string-array name="pref_language_names">
-        <item>Inglês</item>
-        <item>Russo</item>
-        <item>Alemão</item>
-        <item>Português brasileiro</item>
-    </string-array>
 
     <!-- Application settings: Themes -->
     <string name="pref_app_theme">Tema do app</string>
     <string-array name="pref_theme_names">
-        <item>Azul escuro e laranja</item>
-        <item>Azul-verde e laranja escuro</item>
-        <item>Cinza e azul escuro</item>
-        <item>Escuro e ciano</item>
+        <item>Claro (Azul escuro e laranja)</item>
+        <item>Claro (Azul-verde e laranja escuro)</item>
+        <item>Claro (Cinza e azul escuro)</item>
+        <item>Escuro (Cinza e ciano)</item>
     </string-array>
 
     <!-- Dialogs -->

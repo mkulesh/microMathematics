@@ -75,11 +75,11 @@
     <!-- Application settings: Languages -->
     <!-- Translatable list of languages -->
     <string name="pref_app_language">App language</string>
-    <string-array name="pref_language_names">
+    <string-array name="pref_language_names" translatable="false">
         <item>English</item>
-        <item>Russian</item>
-        <item>German</item>
-        <item>Brazilian Portuguese</item>
+        <item>Русский</item>
+        <item>Deutsch</item>
+        <item>Português (Brasil)</item>
     </string-array>
     <!-- Non-Translatable parameters of languages -->
     <string name="pref_default_language_code" translatable="false">en</string>
@@ -94,10 +94,10 @@
     <!-- Translatable list of themes -->
     <string name="pref_app_theme">App theme</string>
     <string-array name="pref_theme_names">
-        <item>Indigo and Orange</item>
-        <item>Teal and Deep Orange</item>
-        <item>Gray and Indigo</item>
-        <item>Dark theme with cyan accent</item>
+        <item>Light (Indigo and Orange)</item>
+        <item>Light (Teal and Deep Orange)</item>
+        <item>Light (Blue Gray and Indigo)</item>
+        <item>Dark (Dim Gray and Cyan)</item>
     </string-array>
     <!-- Non-Translatable parameters of themes -->
     <string name="pref_default_theme_code" translatable="false">indigo-orange</string>

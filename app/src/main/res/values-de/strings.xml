@@ -74,20 +74,14 @@
 
     <!-- Application settings: Languages -->
     <string name="pref_app_language">Sprache</string>
-    <string-array name="pref_language_names">
-        <item>Englisch</item>
-        <item>Russisch</item>
-        <item>Deutsch</item>
-        <item>Brasilianisches Portugiesisch</item>
-    </string-array>
 
     <!-- Application settings: Themes -->
-    <string name="pref_app_theme">Theme</string>
+    <string name="pref_app_theme">Thema</string>
     <string-array name="pref_theme_names">
-        <item>Indigo und orange</item>
-        <item>Aquamarin und dunkelorange</item>
-        <item>Grau und indigo</item>
-        <item>Dunkel Theme mit blaugrün</item>
+        <item>Helles (Indigo und Orange)</item>
+        <item>Helles (Petrol und Dunkelorange)</item>
+        <item>Helles (Blaugrau und Indigo)</item>
+        <item>Dunkles (Dunkelgrau und Türkis)</item>
     </string-array>
 
     <!-- Dialogs -->

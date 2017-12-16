@@ -74,20 +74,14 @@
 
     <!-- Application settings: Languages -->
     <string name="pref_app_language">Язык приложения</string>
-    <string-array name="pref_language_names">
-        <item>Английский</item>
-        <item>Русский</item>
-        <item>Немецкий</item>
-        <item>Португальский (Бразилия)</item>
-    </string-array>
 
     <!-- Application settings: Themes -->
-    <string name="pref_app_theme">Цветовые схемы</string>
+    <string name="pref_app_theme">Цветовая схема</string>
     <string-array name="pref_theme_names">
-        <item>Тёмно-синий и оранжевый</item>
-        <item>Зеленовато-голубой и тёмно-оранжевый</item>
-        <item>Серый и тёмно-синий</item>
-        <item>Тёмная тема с сине-зелёный акцентом</item>
+        <item>Светлая (тёмно-синий и оранжевый)</item>
+        <item>Светлая (зеленовато-голубой и тёмно-оранжевый)</item>
+        <item>Светлая (серо-голубой и тёмно-синий</item>
+        <item>Тёмная (серый и сине-зелёный)</item>
     </string-array>
 
     <!-- Dialogs -->
