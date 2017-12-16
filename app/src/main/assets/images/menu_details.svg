@@ -89,7 +89,7 @@
      x="0"
      y="0"
      id="rect3644-5"
-     style="fill:#ff8000;fill-opacity:1;stroke:none" />
+     style="fill:#cdcdcd;fill-opacity:1;stroke:none" />
   <g
      transform="translate(443.97544,105.03371)"
      id="g4834">
@@ -101,7 +101,7 @@
     <path
        d="m 55,27.048306 a 27,27 0 0 1 -54.00000024,0 27,27 0 1 1 54.00000024,0 z"
        id="path2930-3"
-       style="fill:#ff8000;fill-opacity:0.70588235;stroke:none" />
+       style="fill:#cdcdcd;fill-opacity:0.70588235;stroke:none" />
     <g
        id="g3988"
        transform="matrix(0.01339286,0,0,-0.01704545,-11.013875,31.795114)">
@@ -361,7 +361,7 @@
     <path
        d="m 556.1445,414.63217 a 23.275862,23.275862 0 0 1 -46.55172,0 23.275862,23.275862 0 1 1 46.55172,0 z"
        id="path2930-3-8"
-       style="fill:#ff8000;fill-opacity:0.70588235;stroke:none" />
+       style="fill:#cdcdcd;fill-opacity:0.70588235;stroke:none" />
     <g
        transform="translate(504.86864,386.7458)"
        id="g3864">

@@ -2,10 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Dark theme with cyan accent -->
-    <style name="BaseThemeDarkCyan" parent="AppBaseThemeLight">
-        <item name="android:windowBackground">@color/background_material_dark</item>
-        <item name="colorMicroMathNavigator">@color/background_material_dark</item>
-        <item name="themeMicroMathPopup">@style/MainThemePopupDark</item>
+    <style name="BaseThemeDarkCyan" parent="AppBaseThemeDark">
         <item name="colorPrimary">@color/material_grey_800</item>
         <item name="colorPrimaryDark">@color/background_material_dark</item>
         <item name="colorAccent">#00BCD4</item>
@@ -34,10 +31,6 @@
         <item name="colorPlotGridLine">#efefef</item>
         <!-- Other elements -->
         <item name="actionModeBackground">?attr/colorPrimary</item>
-    </style>
-
-    <style name="MainThemePopupDark" parent="@style/ThemeOverlay.AppCompat.Dark">
-        <!-- No settings -->
     </style>
 
     <style name="MainThemeDarkCyan" parent="BaseThemeDarkCyan">
