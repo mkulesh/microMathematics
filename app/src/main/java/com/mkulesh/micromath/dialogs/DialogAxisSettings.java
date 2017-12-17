@@ -22,8 +22,6 @@ import android.app.Activity;
 import android.view.View;
 
 import com.larswerkman.holocolorpicker.ColorPicker;
-import com.larswerkman.holocolorpicker.OpacityBar;
-import com.larswerkman.holocolorpicker.ValueBar;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.AxisProperties;
 import com.mkulesh.micromath.properties.AxisPropertiesChangeIf;
@@ -48,11 +46,7 @@ public class DialogAxisSettings extends DialogBase
         yLabelsPicker.setValue(parameters.yLabelsNumber);
         yLabelsPicker.minValue = 0;
 
-        gridLineColor = (ColorPicker) findViewById(R.id.dialog_color_picker);
-        gridLineColor.addValueBar((ValueBar) findViewById(R.id.dialog_color_valuebar));
-        gridLineColor.addOpacityBar((OpacityBar) findViewById(R.id.dialog_color_opacity));
-        gridLineColor.setColor(parameters.gridLineColor);
-        gridLineColor.setOldCenterColor(parameters.gridLineColor);
+        gridLineColor = PrepareColorPicker(parameters.gridLineColor);
 
         this.changeIf = changeIf;
     }

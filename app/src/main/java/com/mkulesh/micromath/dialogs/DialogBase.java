@@ -35,6 +35,10 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.larswerkman.holocolorpicker.ColorPicker;
+import com.larswerkman.holocolorpicker.OpacityBar;
+import com.larswerkman.holocolorpicker.SaturationBar;
+import com.larswerkman.holocolorpicker.ValueBar;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
@@ -141,5 +145,31 @@ public class DialogBase extends Dialog implements OnClickListener
             CompatUtils.setDrawableColorAttr(getContext(), d,
                     b.isEnabled() ? R.attr.colorDialogContent : R.attr.colorDialogDisabledElement);
         }
+    }
+
+    protected ColorPicker PrepareColorPicker(int color)
+    {
+        ColorPicker cp = (ColorPicker) findViewById(R.id.dialog_colorpicker);
+        if (cp != null)
+        {
+            View v = findViewById(R.id.dialog_colorpicker_saturation_bar);
+            if (v != null && v instanceof SaturationBar)
+            {
+                cp.addSaturationBar((SaturationBar) v);
+            }
+            v = findViewById(R.id.dialog_colorpicker_value_bar);
+            if (v != null && v instanceof ValueBar)
+            {
+                cp.addValueBar((ValueBar) v);
+            }
+            v = findViewById(R.id.dialog_colorpicker_opacity_bar);
+            if (v != null && v instanceof OpacityBar)
+            {
+                cp.addOpacityBar((OpacityBar) v);
+            }
+            cp.setColor(color);
+            cp.setOldCenterColor(color);
+        }
+        return cp;
     }
 }

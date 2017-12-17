@@ -26,8 +26,6 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 
 import com.larswerkman.holocolorpicker.ColorPicker;
-import com.larswerkman.holocolorpicker.OpacityBar;
-import com.larswerkman.holocolorpicker.ValueBar;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.LineProperties;
 import com.mkulesh.micromath.properties.LinePropertiesChangeIf;
@@ -61,11 +59,7 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
         widthPicker.setValue(parameters.width);
         widthPicker.minValue = 1;
 
-        colorPicker = (ColorPicker) findViewById(R.id.dialog_color_picker);
-        colorPicker.addValueBar((ValueBar) findViewById(R.id.dialog_color_valuebar));
-        colorPicker.addOpacityBar((OpacityBar) findViewById(R.id.dialog_color_opacity));
-        colorPicker.setColor(parameters.color);
-        colorPicker.setOldCenterColor(parameters.color);
+        colorPicker = PrepareColorPicker(parameters.color);
 
         radioButtons = new RadioButton[4];
         radioButtons[0] = (RadioButton) findViewById(R.id.dialog_button_line_style_solid);
