@@ -222,6 +222,12 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     @Override
     public void onFocus(View v, boolean hasFocus)
     {
+        if (v instanceof CustomEditText)
+        {
+            // Its hard to edit document that could be zoomed if mistakenly touch screen by two
+            // fingers during editing. So, disable zooming in editing mode.
+            getFormulaList().getFormulaScrollView().setScaleDetectorActive(!hasFocus);
+        }
         if (hasFocus)
         {
             if (!(v instanceof CustomEditText))

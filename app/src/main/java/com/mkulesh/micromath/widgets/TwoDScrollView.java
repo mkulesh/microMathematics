@@ -84,6 +84,7 @@ public class TwoDScrollView extends FrameLayout
      */
     private View mChildToScrollTo = null;
 
+    private boolean scaleDetectorActive = true;
     private ScaleGestureDetector mScaleGestureDetector;
     private GestureDetectorCompat mGestureDetector;
 
@@ -289,10 +290,15 @@ public class TwoDScrollView extends FrameLayout
         return mGestureListener.isMoved;
     }
 
+    public void setScaleDetectorActive(boolean scaleDetectorActive)
+    {
+        this.scaleDetectorActive = scaleDetectorActive;
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
-        boolean retVal = mScaleGestureDetector.onTouchEvent(event);
+        boolean retVal = scaleDetectorActive && mScaleGestureDetector.onTouchEvent(event);
         retVal = mGestureDetector.onTouchEvent(event) || retVal;
 
         final int action = MotionEventCompat.getActionMasked(event);
