@@ -40,17 +40,18 @@
         <attr name="verticalTermPadding" format="boolean" />
         <attr name="specialAlignment"/>
         <attr name="symbolViewIndex" format="integer" />
-        <attr name="emptyEnabled" format="boolean" />
-        <attr name="intervalEnabled" format="boolean" />
-        <attr name="complexEnabled" format="boolean" />
-        <attr name="comparatorEnabled" format="boolean" />
         <attr name="textFragment" format="boolean" />
         <attr name="equationName" format="boolean" />
         <attr name="indexName" format="boolean" />
         <attr name="intermediateArgument" format="boolean" />
         <attr name="calculatedValue" format="boolean" />
-        <attr name="newTermEnabled" format="boolean" />
         <attr name="autoScrollMargins" format="dimension" />
+        <!-- custom content types -->
+        <attr name="emptyEnabled" format="boolean" />
+        <attr name="intervalEnabled" format="boolean" />
+        <attr name="complexEnabled" format="boolean" />
+        <attr name="comparatorEnabled" format="boolean" />
+        <attr name="newTermEnabled" format="boolean" />
     </declare-styleable>
     <declare-styleable name="PlotViewExtension">
         <attr name="gridLineColor" format="color" />

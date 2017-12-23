@@ -132,10 +132,49 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     }
 
     /*********************************************************
-     * FormulaTerm-specific methods
+     * Factory methods
      *********************************************************/
 
-    static public String getOperatorCode(Context contex, String code, boolean enableFunction)
+    public static void addToPalette(Context context, LinearLayout paletteLayout)
+    {
+        FormulaTermInterval.addToPalette(context, paletteLayout,
+                new PaletteButton.Category[]{ PaletteButton.Category.INTERVAL, PaletteButton.Category.CONVERSION });
+        FormulaTermOperator.addToPalette(context, paletteLayout,
+                new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
+        FormulaTermFunction.addToPalette(context, paletteLayout,
+                new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
+        FormulaTermLoop.addToPalette(context, paletteLayout,
+                new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
+        FormulaTermComparator.addToPalette(context, paletteLayout,
+                new PaletteButton.Category[]{ PaletteButton.Category.COMPARATOR });
+    }
+
+    public static TermType getTermType(Context context, CustomEditText text, String s, boolean enableFunction)
+    {
+        if (FormulaTermOperator.isOperator(context, s))
+        {
+            return TermType.OPERATOR;
+        }
+        else if (text.isComparatorEnabled() && FormulaTermComparator.isComparator(context, s))
+        {
+            return TermType.COMPARATOR;
+        }
+        else if (enableFunction && FormulaTermFunction.isFunction(context, s))
+        {
+            return TermType.FUNCTION;
+        }
+        else if (text.isIntervalEnabled() && FormulaTermInterval.isInterval(context, s))
+        {
+            return TermType.INTERVAL;
+        }
+        else if (FormulaTermLoop.isLoop(context, s))
+        {
+            return TermType.LOOP;
+        }
+        return null;
+    }
+
+    public static String getOperatorCode(Context contex, String code, boolean enableFunction)
     {
         FormulaTermOperator.OperatorType t1 = FormulaTermOperator.getOperatorType(contex, code);
         if (t1 != null)
@@ -184,7 +223,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         return null;
     }
 
-    static public String createOperatorCode(Context contex, String code, String prevText)
+    public static String createOperatorCode(Context contex, String code, String prevText)
     {
         String newValue = null;
         // operator
@@ -254,6 +293,10 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
         return newValue;
     }
+
+    /*********************************************************
+     * FormulaTerm-specific methods
+     *********************************************************/
 
     /**
      * Getter for main term

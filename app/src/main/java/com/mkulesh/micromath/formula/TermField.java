@@ -830,27 +830,8 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
      */
     protected FormulaTerm convertToTerm(String s, Parcelable p, boolean enableFunction)
     {
-        term = null;
-        if (FormulaTermOperator.isOperator(getContext(), s))
-        {
-            term = convertToTerm(FormulaTerm.TermType.OPERATOR, s);
-        }
-        else if (text.isComparatorEnabled() && FormulaTermComparator.isComparator(getContext(), s))
-        {
-            term = convertToTerm(FormulaTerm.TermType.COMPARATOR, s);
-        }
-        else if (enableFunction && FormulaTermFunction.isFunction(getContext(), s))
-        {
-            term = convertToTerm(FormulaTerm.TermType.FUNCTION, s);
-        }
-        else if (text.isIntervalEnabled() && FormulaTermInterval.isInterval(getContext(), s))
-        {
-            term = convertToTerm(FormulaTerm.TermType.INTERVAL, s);
-        }
-        else if (FormulaTermLoop.isLoop(getContext(), s))
-        {
-            term = convertToTerm(FormulaTerm.TermType.LOOP, s);
-        }
+        FormulaTerm.TermType targetType = FormulaTerm.getTermType(getContext(), text, s, enableFunction);
+        term = targetType == null ? null : convertToTerm(targetType, s);
         repairTermDepth(true);
         if (isTerm())
         {

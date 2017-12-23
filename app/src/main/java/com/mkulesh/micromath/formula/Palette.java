@@ -88,16 +88,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             }
         }
 
-        FormulaTermInterval.addToPalette(context, paletteLayout,
-                new Category[]{ Category.INTERVAL, Category.CONVERSION });
-        FormulaTermOperator.addToPalette(context, paletteLayout,
-                new Category[]{ Category.CONVERSION });
-        FormulaTermFunction.addToPalette(context, paletteLayout,
-                new Category[]{ Category.CONVERSION });
-        FormulaTermLoop.addToPalette(context, paletteLayout,
-                new Category[]{ Category.CONVERSION });
-        FormulaTermComparator.addToPalette(context, paletteLayout,
-                new Category[]{ Category.COMPARATOR });
+        FormulaTerm.addToPalette(context, paletteLayout);
 
         // prepare all buttons
         for (int i = 0; i < paletteLayout.getChildCount(); i++)

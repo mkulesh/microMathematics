@@ -49,17 +49,19 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     private boolean textWatcherActive = true;
 
     private boolean toBeDeleted = false;
-    private boolean emptyEnabled = false;
-    private boolean intervalEnabled = false;
-    private boolean complexEnabled = true;
-    private boolean comparatorEnabled = false;
     private boolean textFragment = false;
     private boolean equationName = false;
     private boolean indexName = false;
     private boolean intermediateArgument = false;
     private boolean calculatedValue = false;
-    private boolean newTermEnabled = false;
     private boolean requesFocusEnabled = true;
+
+    // custom content types
+    private boolean emptyEnabled = false;
+    private boolean intervalEnabled = false;
+    private boolean complexEnabled = true;
+    private boolean comparatorEnabled = false;
+    private boolean newTermEnabled = false;
 
     // context menu handling
     private ContextMenuHandler menuHandler = null;
@@ -92,16 +94,18 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         if (attrs != null)
         {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CustomViewExtension, 0, 0);
-            emptyEnabled = a.getBoolean(R.styleable.CustomViewExtension_emptyEnabled, false);
-            intervalEnabled = a.getBoolean(R.styleable.CustomViewExtension_intervalEnabled, false);
-            complexEnabled = a.getBoolean(R.styleable.CustomViewExtension_complexEnabled, true);
-            comparatorEnabled = a.getBoolean(R.styleable.CustomViewExtension_comparatorEnabled, false);
             textFragment = a.getBoolean(R.styleable.CustomViewExtension_textFragment, false);
             equationName = a.getBoolean(R.styleable.CustomViewExtension_equationName, false);
             indexName = a.getBoolean(R.styleable.CustomViewExtension_indexName, false);
             intermediateArgument = a.getBoolean(R.styleable.CustomViewExtension_intermediateArgument, false);
             calculatedValue = a.getBoolean(R.styleable.CustomViewExtension_calculatedValue, false);
+            // custom content types
+            emptyEnabled = a.getBoolean(R.styleable.CustomViewExtension_emptyEnabled, false);
+            intervalEnabled = a.getBoolean(R.styleable.CustomViewExtension_intervalEnabled, false);
+            complexEnabled = a.getBoolean(R.styleable.CustomViewExtension_complexEnabled, true);
+            comparatorEnabled = a.getBoolean(R.styleable.CustomViewExtension_comparatorEnabled, false);
             newTermEnabled = a.getBoolean(R.styleable.CustomViewExtension_newTermEnabled, false);
+            // menu
             menuHandler.initialize(a);
             a.recycle();
         }
@@ -120,7 +124,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     }
 
     /*********************************************************
-     * Interface
+     * Custom content types
      *********************************************************/
 
     public boolean isEmptyEnabled()
@@ -148,6 +152,15 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         this.comparatorEnabled = comparatorEnabled;
     }
 
+    public boolean isNewTermEnabled()
+    {
+        return newTermEnabled;
+    }
+
+    /*********************************************************
+     * Interface
+     *********************************************************/
+
     public boolean isTextFragment()
     {
         return textFragment;
@@ -171,11 +184,6 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     public boolean isCalculatedValue()
     {
         return calculatedValue;
-    }
-
-    public boolean isNewTermEnabled()
-    {
-        return newTermEnabled;
     }
 
     public boolean isConversionEnabled()
