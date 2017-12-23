@@ -19,17 +19,12 @@
 package com.mkulesh.micromath.plots;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.mkulesh.micromath.BaseFragment;
 import com.mkulesh.micromath.dialogs.DialogImageSettings;
-import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.FormulaBase;
 import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.plus.R;
@@ -277,11 +272,7 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         parameters.height = imageView.getOriginalHeight();
 
         // obtain parent document
-        parameters.parentDirectory = null;
-        final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getFormulaList().getActivity());
-        final String str = pref.getString(BaseFragment.OPENED_URI, null);
-        final Uri docUri = str == null ? null : Uri.parse(str);
-        parameters.parentDirectory = FileUtils.getParentUri(docUri);
+        parameters.parentDirectory = getFormulaList().getParentDirectory();
 
         updateTextSize();
     }

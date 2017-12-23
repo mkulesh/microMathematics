@@ -207,6 +207,7 @@
     <string name="math_function_max">Наибольшее значение из двух аргументов</string>
     <string name="math_function_min">Наименьшее значение из двух аргументов</string>
     <string name="math_function_hypot">Длина гипотенузы прямоугольного треугольника: sqrt(x^2+ y^2)</string>
+    <string name="math_file_read">Импортировать данные из ASCII файла</string>
     
     <!-- Errors -->
     <string name="error_max_layout_depth">К сожалению, достигнут предел глубины формулы для данной версии Android</string>

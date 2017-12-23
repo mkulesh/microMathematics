@@ -110,6 +110,12 @@ public class TermParser
             return;
         }
 
+        // For the file names, no additional check
+        if (editText.isFileName())
+        {
+            return;
+        }
+
         String text = inText.trim();
 
         // check for forbidden content

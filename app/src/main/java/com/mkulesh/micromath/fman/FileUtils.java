@@ -326,6 +326,11 @@ public final class FileUtils
 
     public static InputStream getInputStream(final Context c, final Uri u)
     {
+        return getInputStream(c, u, true);
+    }
+
+    public static InputStream getInputStream(final Context c, final Uri u, boolean showToastOnError)
+    {
         try
         {
             InputStream is = null;
@@ -351,7 +356,10 @@ public final class FileUtils
             final String error = String.format(c.getResources().getString(R.string.error_file_read),
                     u.getLastPathSegment());
             ViewUtils.Debug(c, error + ", " + e.getLocalizedMessage());
-            Toast.makeText(c, error, Toast.LENGTH_LONG).show();
+            if (showToastOnError)
+            {
+                Toast.makeText(c, error, Toast.LENGTH_LONG).show();
+            }
         }
         return null;
     }

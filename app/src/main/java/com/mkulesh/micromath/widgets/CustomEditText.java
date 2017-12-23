@@ -55,6 +55,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     private boolean intermediateArgument = false;
     private boolean calculatedValue = false;
     private boolean requesFocusEnabled = true;
+    private boolean fileName = false;
 
     // custom content types
     private boolean emptyEnabled = false;
@@ -62,6 +63,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     private boolean complexEnabled = true;
     private boolean comparatorEnabled = false;
     private boolean newTermEnabled = false;
+    private boolean fileOperationEnabled = false;
 
     // context menu handling
     private ContextMenuHandler menuHandler = null;
@@ -99,12 +101,14 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
             indexName = a.getBoolean(R.styleable.CustomViewExtension_indexName, false);
             intermediateArgument = a.getBoolean(R.styleable.CustomViewExtension_intermediateArgument, false);
             calculatedValue = a.getBoolean(R.styleable.CustomViewExtension_calculatedValue, false);
+            fileName = a.getBoolean(R.styleable.CustomViewExtension_fileName, false);
             // custom content types
             emptyEnabled = a.getBoolean(R.styleable.CustomViewExtension_emptyEnabled, false);
             intervalEnabled = a.getBoolean(R.styleable.CustomViewExtension_intervalEnabled, false);
             complexEnabled = a.getBoolean(R.styleable.CustomViewExtension_complexEnabled, true);
             comparatorEnabled = a.getBoolean(R.styleable.CustomViewExtension_comparatorEnabled, false);
             newTermEnabled = a.getBoolean(R.styleable.CustomViewExtension_newTermEnabled, false);
+            fileOperationEnabled = a.getBoolean(R.styleable.CustomViewExtension_fileOperationEnabled, false);
             // menu
             menuHandler.initialize(a);
             a.recycle();
@@ -157,6 +161,11 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         return newTermEnabled;
     }
 
+    public boolean isFileOperationEnabled()
+    {
+        return fileOperationEnabled;
+    }
+
     /*********************************************************
      * Interface
      *********************************************************/
@@ -189,7 +198,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     public boolean isConversionEnabled()
     {
         return !isEquationName() && !isIndexName() && !isIntermediateArgument() && !isTextFragment()
-                && !isCalculatedValue();
+                && !isCalculatedValue() && !isFileName();
     }
 
     public void updateTextSize(ScaledDimensions dimen, int termDepth, ScaledDimensions.Type paddingType)
@@ -213,6 +222,11 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     public boolean isRequestFocusEnabled()
     {
         return requesFocusEnabled;
+    }
+
+    public boolean isFileName()
+    {
+        return fileName;
     }
 
     /*********************************************************

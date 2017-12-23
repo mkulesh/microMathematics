@@ -46,12 +46,14 @@
         <attr name="intermediateArgument" format="boolean" />
         <attr name="calculatedValue" format="boolean" />
         <attr name="autoScrollMargins" format="dimension" />
+        <attr name="fileName" format="boolean" />
         <!-- custom content types -->
         <attr name="emptyEnabled" format="boolean" />
         <attr name="intervalEnabled" format="boolean" />
         <attr name="complexEnabled" format="boolean" />
         <attr name="comparatorEnabled" format="boolean" />
         <attr name="newTermEnabled" format="boolean" />
+        <attr name="fileOperationEnabled" format="boolean" />
     </declare-styleable>
     <declare-styleable name="PlotViewExtension">
         <attr name="gridLineColor" format="color" />

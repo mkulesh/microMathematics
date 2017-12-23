@@ -243,6 +243,7 @@
     <string name="math_function_max">The most positive (closest to positive infinity) of the two arguments</string>
     <string name="math_function_min">The most negative (closest to negative infinity) of the two arguments</string>
     <string name="math_function_hypot">The length of the hypotenuse of a right-angle triangle: sqrt(x^2 + y^2)</string>
+    <string name="math_file_read">Import data from ASCII file</string>
     
     <!-- Errors -->
     <string name="error_max_layout_depth">Reached layout depth limit for this Android version</string>

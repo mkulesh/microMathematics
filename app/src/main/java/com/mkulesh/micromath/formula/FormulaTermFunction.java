@@ -31,7 +31,6 @@ import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
-import com.mkulesh.micromath.widgets.CustomLayout;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
 
@@ -286,7 +285,6 @@ public class FormulaTermFunction extends FormulaTerm
      */
     private FunctionType functionType = null;
     private CustomTextView functionTerm = null;
-    private CustomLayout functionMainLayout = null;
     private String functionLinkName = "unknown";
     private Equation linkedFunction = null;
 
@@ -1143,14 +1141,7 @@ public class FormulaTermFunction extends FormulaTerm
             throw new Exception("argument list is empty");
         }
 
-        // store the main layout in order to show errors
-        final String functionMainTag = getContext().getResources().getString(R.string.function_main_layout);
-        final View functionMainView = layout.findViewWithTag(functionMainTag);
-        if (functionMainView != null)
-        {
-            functionMainLayout = (CustomLayout) functionMainView;
-            functionMainLayout.setTag("");
-        }
+        initializeMainLayout();
 
         // add additional arguments
         while (terms.size() < argNumber)

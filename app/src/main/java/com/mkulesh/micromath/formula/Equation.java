@@ -300,7 +300,25 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         {
             return;
         }
+        fileOperation(true);
         arrayResult.calculate(thread, getArguments());
+        fileOperation(false);
+    }
+
+    public void fileOperation(boolean status)
+    {
+        FormulaTerm t = rightTerm.getTerm();
+        if (t != null && t instanceof FormulaTermFileOperation)
+        {
+            if (status)
+            {
+                ((FormulaTermFileOperation) t).prepareFileOperation();
+            }
+            else
+            {
+                ((FormulaTermFileOperation) t).finishFileOperation();
+            }
+        }
     }
 
     @Override

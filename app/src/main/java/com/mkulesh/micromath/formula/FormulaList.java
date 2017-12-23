@@ -20,10 +20,12 @@ package com.mkulesh.micromath.formula;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Xml;
 import android.view.View;
@@ -1310,5 +1312,13 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
             ViewUtils.Debug(this, "request to hide keyboard");
             imm.hideSoftInputFromWindow(formulaListView.getList().getWindowToken(), 0);
         }
+    }
+
+    public Uri getParentDirectory()
+    {
+        final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        final String str = pref.getString(BaseFragment.OPENED_URI, null);
+        final Uri docUri = str == null ? null : Uri.parse(str);
+        return FileUtils.getParentUri(docUri);
     }
 }

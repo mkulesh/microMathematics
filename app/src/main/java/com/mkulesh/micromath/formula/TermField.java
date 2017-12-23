@@ -168,7 +168,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         errorNotification = ErrorNotification.COLOR;
         errorId = NO_ERROR_ID;
         linkedVariable = null;
-        if (text.isTextFragment() || text.isCalculatedValue())
+        if (text.isTextFragment() || text.isCalculatedValue() || text.isFileName())
         {
             contentType = ContentType.INFO_TEXT;
             updateViewColor();
@@ -898,7 +898,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         if (isTerm() && !term.getTerms().isEmpty() && savedState != null)
         {
             final TermField tf = term.getArgumentTerm();
-            if (tf != null)
+            if (tf != null && tf.getEditText() != null && tf.getEditText().isConversionEnabled())
             {
                 tf.readFromBundle(savedState, "savedState");
             }
@@ -1062,8 +1062,8 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         {
         case NEW_TERM:
             return parentFormula.isNewTermEnabled() && text.isNewTermEnabled();
-        case INTERVAL:
-            return text.isIntervalEnabled();
+        case TOP_LEVEL_TERM:
+            return text.isIntervalEnabled() || text.isFileOperationEnabled();
         case CONVERSION:
             return text.isConversionEnabled();
         case COMPARATOR:

@@ -26,6 +26,7 @@ import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
+import com.mkulesh.micromath.widgets.CustomLayout;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.FocusChangeIf;
 
@@ -35,6 +36,7 @@ import java.util.Locale;
 public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
 {
     private final FormulaBase formulaRoot;
+    protected CustomLayout functionMainLayout = null;
 
     enum TermType
     {
@@ -42,7 +44,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         COMPARATOR,
         FUNCTION,
         INTERVAL,
-        LOOP
+        LOOP,
+        FILE_OPERATION
     }
 
     /*********************************************************
@@ -138,11 +141,13 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     public static void addToPalette(Context context, LinearLayout paletteLayout)
     {
         FormulaTermInterval.addToPalette(context, paletteLayout,
-                new PaletteButton.Category[]{ PaletteButton.Category.INTERVAL, PaletteButton.Category.CONVERSION });
+                new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
         FormulaTermOperator.addToPalette(context, paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
         FormulaTermFunction.addToPalette(context, paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
+        FormulaTermFileOperation.addToPalette(context, paletteLayout,
+                new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
         FormulaTermLoop.addToPalette(context, paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
         FormulaTermComparator.addToPalette(context, paletteLayout,
@@ -170,6 +175,10 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         else if (FormulaTermLoop.isLoop(context, s))
         {
             return TermType.LOOP;
+        }
+        else if (text.isFileOperationEnabled() && FormulaTermFileOperation.isFileOperation(context, s))
+        {
+            return TermType.FILE_OPERATION;
         }
         return null;
     }
@@ -201,6 +210,11 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             return t5.toString().toLowerCase(Locale.ENGLISH);
         }
+        FormulaTermFileOperation.FileOperationType t6 = FormulaTermFileOperation.getFileOperationType(contex, code);
+        if (t6 != null)
+        {
+            return t6.toString().toLowerCase(Locale.ENGLISH);
+        }
         return null;
     }
 
@@ -219,6 +233,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             return new FormulaTermInterval(termField, layout, s, textIndex);
         case LOOP:
             return new FormulaTermLoop(termField, layout, s, textIndex);
+        case FILE_OPERATION:
+            return new FormulaTermFileOperation(termField, layout, s, textIndex);
         }
         return null;
     }
@@ -290,6 +306,13 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             {
                 newValue += prevText;
             }
+        }
+        // file operation
+        final FormulaTermFileOperation.FileOperationType t6 = FormulaTermFileOperation.getFileOperationType(contex, code);
+        if (newValue == null && t6 != null)
+        {
+            // for the file operation, we do not transfer previous text
+            newValue = t6.toString().toLowerCase(Locale.ENGLISH);
         }
         return newValue;
     }
@@ -521,5 +544,17 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             }
         }
         return false;
+    }
+
+    protected void initializeMainLayout()
+    {
+        // store the main layout in order to show errors
+        final String functionMainTag = getContext().getResources().getString(R.string.function_main_layout);
+        final View functionMainView = layout.findViewWithTag(functionMainTag);
+        if (functionMainView != null)
+        {
+            functionMainLayout = (CustomLayout) functionMainView;
+            functionMainLayout.setTag("");
+        }
     }
 }

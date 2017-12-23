@@ -34,7 +34,7 @@ public class PaletteButton extends AppCompatImageButton
     public enum Category
     {
         NEW_TERM,
-        INTERVAL,
+        TOP_LEVEL_TERM,
         CONVERSION,
         COMPARATOR
     }
