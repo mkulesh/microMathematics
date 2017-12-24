@@ -154,36 +154,39 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                 new PaletteButton.Category[]{ PaletteButton.Category.COMPARATOR });
     }
 
-    public static TermType getTermType(Context context, CustomEditText text, String s, boolean enableFunction)
+    public static TermType getTermType(Context context, CustomEditText text, String s, boolean ensureManualTrigger)
     {
-        if (FormulaTermOperator.isOperator(context, s))
+        if (FormulaTermOperator.getOperatorType(context, s) != null)
         {
             return TermType.OPERATOR;
         }
-        else if (text.isComparatorEnabled() && FormulaTermComparator.isComparator(context, s))
+        if (text.isComparatorEnabled() && FormulaTermComparator.getComparatorType(context, s) != null)
         {
             return TermType.COMPARATOR;
         }
-        else if (enableFunction && FormulaTermFunction.isFunction(context, s))
+        // TermFunction has manual trigger (like "(" or "["): is has to be checked
+        final boolean enableFunction = !ensureManualTrigger ||
+                (ensureManualTrigger && FormulaTermFunction.containsTrigger(context, s));
+        if (enableFunction && FormulaTermFunction.getFunctionType(context, s) != null)
         {
             return TermType.FUNCTION;
         }
-        else if (text.isIntervalEnabled() && FormulaTermInterval.isInterval(context, s))
+        if (text.isIntervalEnabled() && FormulaTermInterval.getIntervalType(context, s) != null)
         {
             return TermType.INTERVAL;
         }
-        else if (FormulaTermLoop.isLoop(context, s))
+        if (FormulaTermLoop.getLoopType(context, s) != null)
         {
             return TermType.LOOP;
         }
-        else if (text.isFileOperationEnabled() && FormulaTermFileOperation.isFileOperation(context, s))
+        if (text.isFileOperationEnabled() && FormulaTermFileOperation.getFileOperationType(context, s) != null)
         {
             return TermType.FILE_OPERATION;
         }
         return null;
     }
 
-    public static String getOperatorCode(Context contex, String code, boolean enableFunction)
+    public static String getOperatorCode(Context contex, String code, boolean ensureManualTrigger)
     {
         FormulaTermOperator.OperatorType t1 = FormulaTermOperator.getOperatorType(contex, code);
         if (t1 != null)
@@ -195,6 +198,9 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             return t2.toString().toLowerCase(Locale.ENGLISH);
         }
+        // TermFunction has manual trigger (like "(" or "["): is has to be checked
+        final boolean enableFunction = !ensureManualTrigger ||
+                (ensureManualTrigger && FormulaTermFunction.containsTrigger(contex, code));
         FormulaTermFunction.FunctionType t3 = FormulaTermFunction.getFunctionType(contex, code);
         if (t3 != null && enableFunction)
         {

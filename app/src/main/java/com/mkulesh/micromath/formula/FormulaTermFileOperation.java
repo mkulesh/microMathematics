@@ -91,11 +91,6 @@ public class FormulaTermFileOperation extends FormulaTerm
         return retValue;
     }
 
-    public static boolean isFileOperation(Context context, String s)
-    {
-        return getFileOperationType(context, s) != null;
-    }
-
     /**
      * Private attributes
      */

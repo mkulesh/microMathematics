@@ -98,11 +98,6 @@ public class FormulaTermComparator extends FormulaTerm
         return retValue;
     }
 
-    public static boolean isComparator(Context context, String s)
-    {
-        return getComparatorType(context, s) != null;
-    }
-
     /**
      * Private attributes
      */

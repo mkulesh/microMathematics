@@ -402,7 +402,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         }
         if (!isEmpty && text.isConversionEnabled())
         {
-            term = convertToTerm(s, null, FormulaTermFunction.isConversionEnabled(getContext(), s));
+            term = convertToTerm(s, null, /*ensureManualTrigger=*/ true);
             if (term != null)
             {
                 converted = true;
@@ -476,7 +476,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         final String termCode = bundle.getString(pref + STATE_CODE);
         if (termCode != null && termCode.length() > 0)
         {
-            term = convertToTerm(termCode, bundle.getParcelable(pref + STATE_INSTANCE), true);
+            term = convertToTerm(termCode, bundle.getParcelable(pref + STATE_INSTANCE), /*ensureManualTrigger=*/ false);
         }
     }
 
@@ -495,7 +495,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         }
         else
         {
-            term = convertToTerm(termCode, null, true);
+            term = convertToTerm(termCode, null, /*ensureManualTrigger=*/ false);
             if (isTerm())
             {
                 setText("");
@@ -769,33 +769,6 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     }
 
     /**
-     * Procedure converts this term field to the term with given type
-     */
-    protected FormulaTerm convertToTerm(FormulaTerm.TermType type, String s)
-    {
-        FormulaTerm t = null;
-        try
-        {
-            final int textIndex = ViewUtils.getViewIndex(layout, text); // store view index before it will be removed
-            text.setTextWatcher(false);
-            if (text.isFocused())
-            {
-                formulaRoot.getFormulaList().clearFocus();
-            }
-            layout.removeView(text);
-            t = FormulaTerm.createTerm(type, this, layout, s, textIndex);
-            t.updateTextSize();
-        }
-        catch (Exception ex)
-        {
-            ViewUtils.Debug(this, ex.getLocalizedMessage());
-            layout.addView(text);
-            text.setTextWatcher(true);
-        }
-        return t;
-    }
-
-    /**
      * Procedure check that the current formula depth has no conflicts with allowed formula depth
      */
     public boolean checkFormulaDepth()
@@ -826,12 +799,33 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     }
 
     /**
-     * Procedure converts this term field to an other term type
+     * Procedure converts this term field to an other term
      */
-    protected FormulaTerm convertToTerm(String s, Parcelable p, boolean enableFunction)
+    protected FormulaTerm convertToTerm(String s, Parcelable p, boolean ensureManualTrigger)
     {
-        FormulaTerm.TermType targetType = FormulaTerm.getTermType(getContext(), text, s, enableFunction);
-        term = targetType == null ? null : convertToTerm(targetType, s);
+        FormulaTerm.TermType targetType = FormulaTerm.getTermType(getContext(), text, s, ensureManualTrigger);
+        term = null;
+        if (targetType != null)
+        {
+            try
+            {
+                final int textIndex = ViewUtils.getViewIndex(layout, text); // store view index before it will be removed
+                text.setTextWatcher(false);
+                if (text.isFocused())
+                {
+                    formulaRoot.getFormulaList().clearFocus();
+                }
+                layout.removeView(text);
+                term = FormulaTerm.createTerm(targetType, this, layout, s, textIndex);
+                term.updateTextSize();
+            }
+            catch (Exception ex)
+            {
+                ViewUtils.Debug(this, ex.getLocalizedMessage());
+                layout.addView(text);
+                text.setTextWatcher(true);
+            }
+        }
         repairTermDepth(true);
         if (isTerm())
         {
@@ -862,7 +856,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             }
         }
 
-        if (FormulaTerm.getOperatorCode(getContext(), code, true) == null)
+        if (FormulaTerm.getOperatorCode(getContext(), code, /*ensureManualTrigger=*/ false) == null)
         {
             return;
         }
@@ -915,7 +909,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     {
         if (text.isConversionEnabled())
         {
-            term = convertToTerm(s.getSingleData().termCode, s.getSingleData().data, true);
+            term = convertToTerm(s.getSingleData().termCode, s.getSingleData().data, /*ensureManualTrigger=*/ false);
         }
         else if (showError)
         {
@@ -959,7 +953,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             if (remainingTerm.term != null)
             {
                 Parcelable p = remainingTerm.term.onSaveInstanceState();
-                term = convertToTerm(remainingTerm.term.getTermCode(), p, true);
+                term = convertToTerm(remainingTerm.term.getTermCode(), p, /*ensureManualTrigger=*/ false);
             }
         }
         else

@@ -217,7 +217,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
 
         final String termSep = context.getResources().getString(R.string.formula_term_separator);
         final String code = (termSep.equals(s)) ? FormulaBase.BaseType.TERM.toString() : FormulaTerm.getOperatorCode(
-                context, s, FormulaTermFunction.isConversionEnabled(context, s));
+                context, s, /*ensureManualTrigger=*/ true);
         if (code == null)
         {
             return;

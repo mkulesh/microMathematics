@@ -263,12 +263,7 @@ public class FormulaTermFunction extends FormulaTerm
         return t.isLink() ? t.getLinkObject() : t.toString().toLowerCase(Locale.ENGLISH);
     }
 
-    public static boolean isFunction(Context context, String s)
-    {
-        return getFunctionType(context, s) != null;
-    }
-
-    public static boolean isConversionEnabled(Context context, String s)
+    public static boolean containsTrigger(Context context, String s)
     {
         for (Trigger t : Trigger.values())
         {

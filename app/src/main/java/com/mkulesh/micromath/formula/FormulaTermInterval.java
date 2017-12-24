@@ -87,11 +87,6 @@ public class FormulaTermInterval extends FormulaTerm
         return retValue;
     }
 
-    public static boolean isInterval(Context context, String s)
-    {
-        return getIntervalType(context, s) != null;
-    }
-
     /**
      * Private attributes
      */

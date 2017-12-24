@@ -89,11 +89,6 @@ public class FormulaTermOperator extends FormulaTerm
         return retValue;
     }
 
-    public static boolean isOperator(Context context, String s)
-    {
-        return getOperatorType(context, s) != null;
-    }
-
     /**
      * Private attributes
      */

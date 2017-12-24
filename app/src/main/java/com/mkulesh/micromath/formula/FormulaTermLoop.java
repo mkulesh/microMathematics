@@ -92,11 +92,6 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         return retValue;
     }
 
-    public static boolean isLoop(Context context, String s)
-    {
-        return getLoopType(context, s) != null;
-    }
-
     private static final String SYMBOL_LAYOUT_TAG = "SYMBOL_LAYOUT_TAG";
     private static final String MIN_VALUE_LAYOUT_TAG = "MIN_VALUE_LAYOUT_TAG";
     private static final String MAX_VALUE_LAYOUT_TAG = "MAX_VALUE_LAYOUT_TAG";
