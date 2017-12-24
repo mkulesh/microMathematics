@@ -58,8 +58,8 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
 
         hiddenInput = (CustomEditText) paletteLayout.findViewById(R.id.hidden_edit_text);
         hiddenInput.setChangeIf(this, this);
-        hiddenInput.setVisibility(View.GONE);
         hiddenInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        enableHiddenInput(false);
 
         for (int i = 0; i < Category.values().length; i++)
         {
@@ -184,6 +184,8 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             hiddenInput.requestFocus();
             hiddenInput.setTextWatcher(true);
         }
+        final LinearLayout hiddenInputPanel = (LinearLayout)paletteLayout.findViewById(R.id.hidden_edit_text_panel);
+        hiddenInputPanel.setVisibility(hiddenInput.getVisibility());
     }
 
     @Override
