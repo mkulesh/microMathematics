@@ -66,6 +66,5 @@
     <string name="formula_interval_first_separator" translatable="false">,</string>
     <string name="formula_interval_second_separator" translatable="false"> .. </string>
     <string name="formula_term_separator" translatable="false">,</string>
-    <string name="formula_file_read" translatable="false">read</string>
-    
+
 </resources>

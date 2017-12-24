@@ -47,22 +47,17 @@ public class FormulaTermFileOperation extends FormulaTerm
      */
     public enum FileOperationType
     {
-        READ(R.string.formula_file_read, R.drawable.p_file_read, R.string.math_file_read);
+        READ(R.drawable.p_file_read, R.string.math_file_read);
 
-        private final int symbolId;
         private final int imageId;
         private final int descriptionId;
+        private final String lowerCaseName;
 
-        private FileOperationType(int symbolId, int imageId, int descriptionId)
+        private FileOperationType(int imageId, int descriptionId)
         {
-            this.symbolId = symbolId;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
-        }
-
-        public int getSymbolId()
-        {
-            return symbolId;
+            this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
         public int getImageId()
@@ -74,21 +69,38 @@ public class FormulaTermFileOperation extends FormulaTerm
         {
             return descriptionId;
         }
+
+        public String getLowerCaseName()
+        {
+            return lowerCaseName;
+        }
     }
 
     public static FileOperationType getFileOperationType(Context context, String s)
     {
-        FileOperationType retValue = null;
+        String fName = null;
+        final String startBracket = context.getResources().getString(R.string.formula_function_start_bracket);
+        if (s.contains(startBracket))
+        {
+            fName = s.substring(0, s.indexOf(startBracket)).trim();
+        }
         for (FileOperationType f : FileOperationType.values())
         {
-            if (s.equals(f.toString().toLowerCase(Locale.ENGLISH))
-                    || s.contains(context.getResources().getString(f.getSymbolId())))
+            if (s.equals(f.getLowerCaseName()))
             {
-                retValue = f;
-                break;
+                return f;
+            }
+            if (fName != null && fName.equals(f.getLowerCaseName()))
+            {
+                return f;
             }
         }
-        return retValue;
+        return null;
+    }
+
+    public static boolean containsTrigger(Context context, String s)
+    {
+        return s.contains(context.getResources().getString(R.string.formula_function_start_bracket));
     }
 
     /**
@@ -198,7 +210,7 @@ public class FormulaTermFileOperation extends FormulaTerm
     @Override
     public String getTermCode()
     {
-        return getFileOperationType().toString().toLowerCase(Locale.ENGLISH);
+        return getFileOperationType().getLowerCaseName();
     }
 
     @Override
@@ -396,7 +408,7 @@ public class FormulaTermFileOperation extends FormulaTerm
             {
                 PaletteButton p = new PaletteButton(context,
                         Palette.NO_BUTTON, t.getImageId(), t.getDescriptionId(),
-                        t.toString().toLowerCase(Locale.ENGLISH));
+                        t.getLowerCaseName());
                 paletteLayout.addView(p);
                 p.setCategories(categories);
             }

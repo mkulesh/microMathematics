@@ -42,10 +42,10 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     {
         OPERATOR,
         COMPARATOR,
+        FILE_OPERATION,
         FUNCTION,
         INTERVAL,
-        LOOP,
-        FILE_OPERATION
+        LOOP
     }
 
     /*********************************************************
@@ -164,6 +164,14 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             return TermType.COMPARATOR;
         }
+        // FileOperation has manual trigger ("("): is has to be checked
+        final boolean enableFileOperation = !ensureManualTrigger ||
+                (ensureManualTrigger && FormulaTermFileOperation.containsTrigger(context, s));
+        if (enableFileOperation && text.isFileOperationEnabled() &&
+                FormulaTermFileOperation.getFileOperationType(context, s) != null)
+        {
+            return TermType.FILE_OPERATION;
+        }
         // TermFunction has manual trigger (like "(" or "["): is has to be checked
         final boolean enableFunction = !ensureManualTrigger ||
                 (ensureManualTrigger && FormulaTermFunction.containsTrigger(context, s));
@@ -178,10 +186,6 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         if (FormulaTermLoop.getLoopType(context, s) != null)
         {
             return TermType.LOOP;
-        }
-        if (text.isFileOperationEnabled() && FormulaTermFileOperation.getFileOperationType(context, s) != null)
-        {
-            return TermType.FILE_OPERATION;
         }
         return null;
     }
@@ -198,11 +202,19 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             return t2.toString().toLowerCase(Locale.ENGLISH);
         }
+        // FileOperation has manual trigger ("("): is has to be checked
+        final boolean enableFileOperation = !ensureManualTrigger ||
+                (ensureManualTrigger && FormulaTermFileOperation.containsTrigger(contex, code));
+        FormulaTermFileOperation.FileOperationType t6 = FormulaTermFileOperation.getFileOperationType(contex, code);
+        if (enableFileOperation && t6 != null)
+        {
+            return t6.toString().toLowerCase(Locale.ENGLISH);
+        }
         // TermFunction has manual trigger (like "(" or "["): is has to be checked
         final boolean enableFunction = !ensureManualTrigger ||
                 (ensureManualTrigger && FormulaTermFunction.containsTrigger(contex, code));
         FormulaTermFunction.FunctionType t3 = FormulaTermFunction.getFunctionType(contex, code);
-        if (t3 != null && enableFunction)
+        if (enableFunction && t3 != null)
         {
             return t3.toString().toLowerCase(Locale.ENGLISH);
         }
@@ -216,11 +228,6 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             return t5.toString().toLowerCase(Locale.ENGLISH);
         }
-        FormulaTermFileOperation.FileOperationType t6 = FormulaTermFileOperation.getFileOperationType(contex, code);
-        if (t6 != null)
-        {
-            return t6.toString().toLowerCase(Locale.ENGLISH);
-        }
         return null;
     }
 
@@ -233,14 +240,14 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             return new FormulaTermOperator(termField, layout, s, textIndex);
         case COMPARATOR:
             return new FormulaTermComparator(termField, layout, s, textIndex);
+        case FILE_OPERATION:
+            return new FormulaTermFileOperation(termField, layout, s, textIndex);
         case FUNCTION:
             return new FormulaTermFunction(termField, layout, s, textIndex);
         case INTERVAL:
             return new FormulaTermInterval(termField, layout, s, textIndex);
         case LOOP:
             return new FormulaTermLoop(termField, layout, s, textIndex);
-        case FILE_OPERATION:
-            return new FormulaTermFileOperation(termField, layout, s, textIndex);
         }
         return null;
     }
@@ -271,6 +278,14 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             {
                 newValue = prevText + newValue;
             }
+        }
+        // file operation
+        final FormulaTermFileOperation.FileOperationType t6 = FormulaTermFileOperation.getFileOperationType(contex, code);
+        if (newValue == null && t6 != null)
+        {
+            // for the file operation, we do not transfer previous text
+            newValue = t6.toString().toLowerCase(Locale.ENGLISH) +
+                    contex.getResources().getString(R.string.formula_function_start_bracket);
         }
         // function
         final FormulaTermFunction.FunctionType t3 = FormulaTermFunction.getFunctionType(contex, code);
@@ -312,13 +327,6 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             {
                 newValue += prevText;
             }
-        }
-        // file operation
-        final FormulaTermFileOperation.FileOperationType t6 = FormulaTermFileOperation.getFileOperationType(contex, code);
-        if (newValue == null && t6 != null)
-        {
-            // for the file operation, we do not transfer previous text
-            newValue = t6.toString().toLowerCase(Locale.ENGLISH);
         }
         return newValue;
     }
