@@ -195,12 +195,12 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         FormulaTermOperator.OperatorType t1 = FormulaTermOperator.getOperatorType(contex, code);
         if (t1 != null)
         {
-            return t1.toString().toLowerCase(Locale.ENGLISH);
+            return t1.getLowerCaseName();
         }
         FormulaTermComparator.ComparatorType t2 = FormulaTermComparator.getComparatorType(contex, code);
         if (t2 != null)
         {
-            return t2.toString().toLowerCase(Locale.ENGLISH);
+            return t2.getLowerCaseName();
         }
         // FileOperation has manual trigger ("("): is has to be checked
         final boolean enableFileOperation = !ensureManualTrigger ||
@@ -208,7 +208,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         FormulaTermFileOperation.FileOperationType t6 = FormulaTermFileOperation.getFileOperationType(contex, code);
         if (enableFileOperation && t6 != null)
         {
-            return t6.toString().toLowerCase(Locale.ENGLISH);
+            return t6.getLowerCaseName();
         }
         // TermFunction has manual trigger (like "(" or "["): is has to be checked
         final boolean enableFunction = !ensureManualTrigger ||
@@ -216,17 +216,17 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         FormulaTermFunction.FunctionType t3 = FormulaTermFunction.getFunctionType(contex, code);
         if (enableFunction && t3 != null)
         {
-            return t3.toString().toLowerCase(Locale.ENGLISH);
+            return t3.getLowerCaseName();
         }
         FormulaTermInterval.IntervalType t4 = FormulaTermInterval.getIntervalType(contex, code);
         if (t4 != null)
         {
-            return t4.toString().toLowerCase(Locale.ENGLISH);
+            return t4.getLowerCaseName();
         }
         FormulaTermLoop.LoopType t5 = FormulaTermLoop.getLoopType(contex, code);
         if (t5 != null)
         {
-            return t5.toString().toLowerCase(Locale.ENGLISH);
+            return t5.getLowerCaseName();
         }
         return null;
     }
@@ -284,7 +284,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         if (newValue == null && t6 != null)
         {
             // for the file operation, we do not transfer previous text
-            newValue = t6.toString().toLowerCase(Locale.ENGLISH) +
+            newValue = t6.getLowerCaseName() +
                     contex.getResources().getString(R.string.formula_function_start_bracket);
         }
         // function
@@ -293,8 +293,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // for a function, we add operator code at the beginning of line in order to move
             // existing text in the function argument term
-            newValue = (t3 == FormulaTermFunction.FunctionType.FUNCTION_LINK) ? code : t3.toString().toLowerCase(
-                    Locale.ENGLISH);
+            newValue = (t3 == FormulaTermFunction.FunctionType.FUNCTION_LINK) ? code : t3.getLowerCaseName();
             if (prevText != null)
             {
                 if (t3 != FormulaTermFunction.FunctionType.FUNCTION_LINK)

@@ -59,12 +59,14 @@ public class FormulaTermComparator extends FormulaTerm
         private final int symbolId;
         private final int imageId;
         private final int descriptionId;
+        private final String lowerCaseName;
 
         private ComparatorType(int symbolId, int imageId, int descriptionId)
         {
             this.symbolId = symbolId;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
+            this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
         public int getSymbolId()
@@ -81,6 +83,11 @@ public class FormulaTermComparator extends FormulaTerm
         {
             return descriptionId;
         }
+
+        public String getLowerCaseName()
+        {
+            return lowerCaseName;
+        }
     }
 
     public static ComparatorType getComparatorType(Context context, String s)
@@ -88,7 +95,7 @@ public class FormulaTermComparator extends FormulaTerm
         ComparatorType retValue = null;
         for (ComparatorType f : ComparatorType.values())
         {
-            if (s.equals(f.toString().toLowerCase(Locale.ENGLISH))
+            if (s.equals(f.getLowerCaseName())
                     || s.contains(context.getResources().getString(f.getSymbolId())))
             {
                 retValue = f;
@@ -191,7 +198,7 @@ public class FormulaTermComparator extends FormulaTerm
     @Override
     public String getTermCode()
     {
-        return getComparatorType().toString().toLowerCase(Locale.ENGLISH);
+        return getComparatorType().getLowerCaseName();
     }
 
     @Override
@@ -388,7 +395,7 @@ public class FormulaTermComparator extends FormulaTerm
             final FormulaTermComparator.ComparatorType t = FormulaTermComparator.ComparatorType.values()[i];
             PaletteButton p = new PaletteButton(context,
                     t.getSymbolId(), t.getImageId(), t.getDescriptionId(),
-                    t.toString().toLowerCase(Locale.ENGLISH));
+                    t.getLowerCaseName());
             paletteLayout.addView(p);
             p.setCategories(categories);
         }

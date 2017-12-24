@@ -86,6 +86,7 @@ public class FormulaTermFunction extends FormulaTerm
         private final int imageId;
         private final int descriptionId;
         private final String linkObject;
+        private final String lowerCaseName;
 
         private FunctionType(int argNumber, int imageId, int descriptionId, String linkObject)
         {
@@ -93,6 +94,7 @@ public class FormulaTermFunction extends FormulaTerm
             this.imageId = imageId;
             this.descriptionId = descriptionId;
             this.linkObject = linkObject;
+            this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
         public int getArgNumber()
@@ -118,6 +120,11 @@ public class FormulaTermFunction extends FormulaTerm
         public boolean isLink()
         {
             return linkObject != null;
+        }
+
+        public String getLowerCaseName()
+        {
+            return lowerCaseName;
         }
     }
 
@@ -215,11 +222,11 @@ public class FormulaTermFunction extends FormulaTerm
             {
                 return f;
             }
-            if (s.equals(f.toString().toLowerCase(Locale.ENGLISH)))
+            if (s.equals(f.getLowerCaseName()))
             {
                 return f;
             }
-            if (fName != null && fName.equals(f.toString().toLowerCase(Locale.ENGLISH)))
+            if (fName != null && fName.equals(f.getLowerCaseName()))
             {
                 return f;
             }
@@ -260,7 +267,7 @@ public class FormulaTermFunction extends FormulaTerm
 
     public static String getFunctionString(Context context, FunctionType t)
     {
-        return t.isLink() ? t.getLinkObject() : t.toString().toLowerCase(Locale.ENGLISH);
+        return t.isLink() ? t.getLinkObject() : t.getLowerCaseName();
     }
 
     public static boolean containsTrigger(Context context, String s)
@@ -1224,7 +1231,7 @@ public class FormulaTermFunction extends FormulaTerm
                 }
                 return nameAndArgs;
             }
-            final String fName = f.toString().toLowerCase(Locale.ENGLISH)
+            final String fName = f.getLowerCaseName()
                     + res.getString(R.string.formula_function_start_bracket);
             if (s.contains(fName))
             {
@@ -1364,7 +1371,7 @@ public class FormulaTermFunction extends FormulaTerm
         case CONJUGATE_LAYOUT:
             return "";
         default:
-            return functionType.toString().toLowerCase(Locale.ENGLISH);
+            return functionType.getLowerCaseName();
         }
     }
 
@@ -1389,7 +1396,7 @@ public class FormulaTermFunction extends FormulaTerm
                 }
                 PaletteButton p = new PaletteButton(context,
                         shortCuId, t.getImageId(), t.getDescriptionId(),
-                        t.toString().toLowerCase(Locale.ENGLISH));
+                        t.getLowerCaseName());
                 paletteLayout.addView(p);
                 p.setCategories(categories);
             }

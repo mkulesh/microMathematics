@@ -53,12 +53,14 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         private final int symbolId;
         private final int imageId;
         private final int descriptionId;
+        private final String lowerCaseName;
 
         private LoopType(int symbolId, int imageId, int descriptionId)
         {
             this.symbolId = symbolId;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
+            this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
         public int getSymbolId()
@@ -75,6 +77,11 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         {
             return descriptionId;
         }
+
+        public String getLowerCaseName()
+        {
+            return lowerCaseName;
+        }
     }
 
     public static LoopType getLoopType(Context context, String s)
@@ -82,7 +89,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         LoopType retValue = null;
         for (LoopType f : LoopType.values())
         {
-            if (s.equals(f.toString().toLowerCase(Locale.ENGLISH))
+            if (s.equals(f.getLowerCaseName())
                     || s.contains(context.getResources().getString(f.getSymbolId())))
             {
                 retValue = f;
@@ -211,7 +218,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
     @Override
     public String getTermCode()
     {
-        return getLoopType().toString().toLowerCase(Locale.ENGLISH);
+        return getLoopType().getLowerCaseName();
     }
 
     @Override
@@ -900,7 +907,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
             final LoopType t = LoopType.values()[i];
             PaletteButton p = new PaletteButton(context,
                     t.getSymbolId(), t.getImageId(), t.getDescriptionId(),
-                    t.toString().toLowerCase(Locale.ENGLISH));
+                    t.getLowerCaseName());
             paletteLayout.addView(p);
             p.setCategories(categories);
         }
