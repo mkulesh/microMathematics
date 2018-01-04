@@ -298,7 +298,7 @@ public class TwoDScrollView extends FrameLayout
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
-        boolean retVal = scaleDetectorActive && mScaleGestureDetector.onTouchEvent(event);
+        boolean retVal = mScaleGestureDetector.onTouchEvent(event);
         retVal = mGestureDetector.onTouchEvent(event) || retVal;
 
         final int action = MotionEventCompat.getActionMasked(event);
@@ -417,19 +417,26 @@ public class TwoDScrollView extends FrameLayout
 
         public boolean onScaleBegin(ScaleGestureDetector detector)
         {
-            isScaled = true;
-            scale = 1.0f;
-            mEdgeGlowLeft.onRelease();
-            mEdgeGlowRight.onRelease();
-            mEdgeGlowTop.onRelease();
-            mEdgeGlowBottom.onRelease();
-            return true;
+            if (scaleDetectorActive)
+            {
+                isScaled = true;
+                scale = 1.0f;
+                mEdgeGlowLeft.onRelease();
+                mEdgeGlowRight.onRelease();
+                mEdgeGlowTop.onRelease();
+                mEdgeGlowBottom.onRelease();
+            }
+            else
+            {
+                isScaled = false;
+            }
+            return isScaled;
         }
 
         @Override
         public boolean onScale(ScaleGestureDetector detector)
         {
-            if (listChangeIf != null)
+            if (isScaled && listChangeIf != null)
             {
                 scale *= detector.getScaleFactor();
                 if (Build.VERSION.SDK_INT >= 11)
@@ -447,7 +454,7 @@ public class TwoDScrollView extends FrameLayout
 
         public void onScaleEnd(ScaleGestureDetector detector)
         {
-            if (Build.VERSION.SDK_INT >= 11)
+            if (isScaled && Build.VERSION.SDK_INT >= 11)
             {
                 scale *= detector.getScaleFactor();
                 if (listChangeIf != null)
@@ -787,7 +794,7 @@ public class TwoDScrollView extends FrameLayout
      * attempts to give the focus to a component visible in this area. If no component can be focused in the new visible
      * area, the focus is reclaimed by this scrollview.
      *
-     * @param direction the scroll direction: {@link android.view.View#FOCUS_UP} to go upward
+     * @param directionY the scroll direction: {@link android.view.View#FOCUS_UP} to go upward
      *                  {@link android.view.View#FOCUS_DOWN} to downward
      * @param top       the top offset of the new area to be made visible
      * @param bottom    the bottom offset of the new area to be made visible
