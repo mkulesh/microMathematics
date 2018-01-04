@@ -36,6 +36,7 @@
         <item>asset:/ta/ts_array_2d.xml</item>
         <item>asset:/ta/ts_random_const.xml</item>
         <item>asset:/ta/ts_result_view.xml</item>
+        <item>asset:/ta/ts_read.xml</item>
     </string-array>
     
     <string-array name="doc_export_scripts" translatable="false">
@@ -74,6 +75,7 @@
         <item>asset:/examples/polar_plot_2.mmt</item>
         <item>asset:/examples/simple_calculation.mmt</item>
         <item>asset:/examples/three_surfaces.mmt</item>
+        <item>asset:/examples/file_read.mmt</item>
     </string-array>
 
     <string-array name="asset_filter" translatable="false">
