@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/badge/license-GNU_GPLv3-orange.svg)](https://github.com/mkulesh/microMathematics/blob/master/LICENSE) [![Build Status](https://travis-ci.org/mkulesh/microMathematics.svg?branch=master)](https://travis-ci.org/mkulesh/microMathematics) [![Download unsigned APK from latest autobuild](https://img.shields.io/badge/APK-autobuild-blue.svg)](https://github.com/mkulesh/microMathematics/raw/autobuild/autobuild/microMathematics-v2.15.6.apk)
+[![License](https://img.shields.io/badge/license-GNU_GPLv3-orange.svg)](https://github.com/mkulesh/microMathematics/blob/master/LICENSE) [![Build Status](https://travis-ci.org/mkulesh/microMathematics.svg?branch=master)](https://travis-ci.org/mkulesh/microMathematics) [![Download unsigned APK from latest autobuild](https://img.shields.io/badge/APK-autobuild-blue.svg)](https://github.com/mkulesh/microMathematics/raw/autobuild/autobuild/microMathematics-v2.16.apk)
 
 # <img src="https://github.com/mkulesh/microMathematics/blob/master/images/icon.png" align="center" height="48" width="48"> "microMathematics Plus - Extended visual calculator"
 
@@ -18,6 +18,7 @@ Not only students, but also everybody who likes mathematics or needs more than j
 * Verification, validation, documentation and re-use of mathematical calculations
 * Works on smartphone or tablet in portrait and landscape mode
 * Supports all commonly used mathematical operations
+* Supports data import from ASCII files
 * Mathematical expressions are written in an intuitive and naturally readable form
 * Powerful mathematical touch-screen editor with undo function makes editing easier
 * You can do multiple calculations and subsequently correct or change all used formulas
@@ -26,6 +27,7 @@ Not only students, but also everybody who likes mathematics or needs more than j
 * You can store your document on SD card and export it into [LaTeX format](https://www.latex-project.org/) or an image (SD writing permission is needed)
 * SD card on Android 6+ is also supported
 * The app contains detailed "How to use" page and several examples
+* Supports different color themes
 
 ## Screenshots:
 
