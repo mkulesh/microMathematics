@@ -5,6 +5,57 @@
       <term key="text" text="Current release:" />
     </text_fragment>
     <text_fragment numbering="true">
+      <term key="text" text='Added new function "read" that allows us&#10;to import data from an ASCII file' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="k" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="1999" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="m" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="3" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="S[k,m]" />
+      <term key="rightTerm" code="read">
+        <term key="argTerm" text="asset:/examples/three_component_signal.dat" />
+      </term>
+    </equation>
+    <plot_function width="610" height="305" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FFE0E0E0" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FF0000FF" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.index.S:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="2" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" code="content:com.mkulesh.micromath.index.S:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="0" />
+      </term>
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <text_fragment numbering="true">
+      <term key="text" text='Added other color themes. To change a&#10;theme, open "App settings" from the&#10;main menu.' />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="It was hard to edit document that could &#10;be zoomed if mistakenly touch screen by&#10;two fingers during editing. To improve&#10;this behaviour, the zooming is now&#10;disabled in editing mode." />
+    </text_fragment>
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Previous releases:" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Version 2.15.5" />
+    </text_fragment>
+    <text_fragment numbering="true">
       <term key="text" text="Changed design of the main windows" />
     </text_fragment>
     <text_fragment numbering="true">
@@ -12,9 +63,6 @@
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text="Fixed some minor errors" />
-    </text_fragment>
-    <text_fragment textStyle="subsection">
-      <term key="text" text="Previous releases:" />
     </text_fragment>
     <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Version 2.15.4" />
