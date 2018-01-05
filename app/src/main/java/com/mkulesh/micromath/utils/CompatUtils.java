@@ -149,26 +149,12 @@ public class CompatUtils
     @SafeVarargs
     public static <T> void executeAsyncTask(AsyncTask<T, ?, ?> asyncTask, T... params)
     {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-        {
-            asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
-        }
-        else
-        {
-            asyncTask.execute(params);
-        }
+        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
     }
 
     public static boolean isExternalStorageEmulated()
     {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-        {
-            return Environment.isExternalStorageEmulated();
-        }
-        else
-        {
-            return false;
-        }
+        return Environment.isExternalStorageEmulated();
     }
 
     /**
@@ -179,10 +165,7 @@ public class CompatUtils
         DecimalFormat df = new DecimalFormat(format);
         DecimalFormatSymbols dfs = new DecimalFormatSymbols();
         dfs.setDecimalSeparator('.');
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD)
-        {
-            dfs.setExponentSeparator("e");
-        }
+        dfs.setExponentSeparator("e");
         df.setDecimalFormatSymbols(dfs);
         return df;
     }

@@ -398,12 +398,9 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
 
     public boolean isDeveloperMode()
     {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+        if (preferences.getBoolean(DEVELOPER_MODE, false))
         {
-            if (preferences.getBoolean(DEVELOPER_MODE, false))
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }

@@ -92,13 +92,9 @@ public class SurfacePlotView extends PlotView
         this.prepare(attrs);
     }
 
-    @SuppressLint("NewApi")
     private void prepare(AttributeSet attrs)
     {
-        if (android.os.Build.VERSION.SDK_INT >= 11)
-        {
-            setLayerType(View.LAYER_TYPE_NONE, null);
-        }
+        setLayerType(View.LAYER_TYPE_NONE, null);
         plotParameters.twoDPlotStyle = TwoDPlotStyle.SURFACE;
     }
 

@@ -409,7 +409,6 @@ public class TwoDScrollView extends FrameLayout
     /**
      * The scale listener, used for handling multi-finger scale gestures.
      */
-    @SuppressLint("NewApi")
     private class MyScaleListener implements ScaleGestureDetector.OnScaleGestureListener
     {
         public boolean isScaled = false;
@@ -439,22 +438,15 @@ public class TwoDScrollView extends FrameLayout
             if (isScaled && listChangeIf != null)
             {
                 scale *= detector.getScaleFactor();
-                if (Build.VERSION.SDK_INT >= 11)
-                {
-                    getMainLayout().setScaleX(scale);
-                    getMainLayout().setScaleY(scale);
-                }
-                else
-                {
-                    listChangeIf.onScale(detector.getScaleFactor());
-                }
+                getMainLayout().setScaleX(scale);
+                getMainLayout().setScaleY(scale);
             }
             return true;
         }
 
         public void onScaleEnd(ScaleGestureDetector detector)
         {
-            if (isScaled && Build.VERSION.SDK_INT >= 11)
+            if (isScaled)
             {
                 scale *= detector.getScaleFactor();
                 if (listChangeIf != null)

@@ -435,7 +435,6 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
      * Navigation
      *********************************************************/
 
-    @SuppressLint("NewApi")
     @Override
     public void onFocusChange(View v, boolean hasFocus)
     {
@@ -449,10 +448,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
             setNextFocusLeftId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_LEFT));
             setNextFocusRightId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_RIGHT));
             setNextFocusUpId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_UP));
-            if (Build.VERSION.SDK_INT >= 11)
-            {
-                setNextFocusForwardId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_RIGHT));
-            }
+            setNextFocusForwardId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_RIGHT));
         }
         if (formulaChangeIf != null)
         {

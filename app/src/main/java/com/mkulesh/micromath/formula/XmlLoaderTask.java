@@ -81,19 +81,7 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
         isAborted.set(false);
         try
         {
-            if (Build.VERSION.SDK_INT > 10)
-            {
-                // on android version < 11, the Xml.newPullParser() has a bug:
-                // it throws a UnsupportedOperationException at getting CDSECT
-                // using nextToken() method (see ImageFragment.onStartReadXmlTag() method)...
-                parser = Xml.newPullParser();
-            }
-            else
-            {
-                // ... Therefore, we use an other parser for Android versions 8-10.
-                parser = XmlPullParserFactory.newInstance().newPullParser();
-            }
-
+            parser = Xml.newPullParser();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(stream, null);
             parser.nextTag();
