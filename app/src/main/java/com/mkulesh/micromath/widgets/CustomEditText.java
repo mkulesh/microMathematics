@@ -18,10 +18,8 @@
  ******************************************************************************/
 package com.mkulesh.micromath.widgets;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
@@ -486,14 +484,6 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     @Override
     public boolean onTextContextMenuItem(int id)
     {
-        if (isTextFragment() && id == android.R.id.selectAll)
-        {
-            this.selectAll();
-            // null for input view means that we will start ActionMode without owner:
-            // the root formula will be selected instead of owner term
-            this.onLongClick(null);
-            return true;
-        }
         if (isTextFragment() && id == android.R.id.paste)
         {
             final String input = ClipboardManager.readFromClipboard(getContext(), true);
@@ -505,5 +495,20 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
             }
         }
         return super.onTextContextMenuItem(id);
+    }
+
+    @Override
+    protected void onSelectionChanged(int selStart, int selEnd)
+    {
+        super.onSelectionChanged(selEnd, selEnd);
+        if (isTextFragment() && hasSelection() && getText().length() > 0)
+        {
+            if (selEnd - selStart == getText().length())
+            {
+                // null for input view means that we will start ActionMode without owner:
+                // the root formula will be selected instead of owner term
+                this.onLongClick(null);
+            }
+        }
     }
 }
