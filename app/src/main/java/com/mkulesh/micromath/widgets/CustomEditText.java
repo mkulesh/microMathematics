@@ -37,6 +37,7 @@ import android.widget.Toast;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ClipboardManager;
+import com.mkulesh.micromath.utils.CompatUtils;
 
 public class CustomEditText extends AppCompatEditText implements OnLongClickListener, OnFocusChangeListener
 {
@@ -484,6 +485,14 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     @Override
     public boolean onTextContextMenuItem(int id)
     {
+        if (!CompatUtils.isMarshMallowOrLater() && isTextFragment() && id == android.R.id.selectAll)
+        {
+            this.selectAll();
+            // null for input view means that we will start ActionMode without owner:
+            // the root formula will be selected instead of owner term
+            this.onLongClick(null);
+            return true;
+        }
         if (isTextFragment() && id == android.R.id.paste)
         {
             final String input = ClipboardManager.readFromClipboard(getContext(), true);
@@ -501,14 +510,13 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     protected void onSelectionChanged(int selStart, int selEnd)
     {
         super.onSelectionChanged(selEnd, selEnd);
-        if (isTextFragment() && hasSelection() && getText().length() > 0)
+        if (CompatUtils.isMarshMallowOrLater() &&
+            isTextFragment() && getText().length() > 0 &&
+            hasSelection() && selEnd - selStart == getText().length())
         {
-            if (selEnd - selStart == getText().length())
-            {
-                // null for input view means that we will start ActionMode without owner:
-                // the root formula will be selected instead of owner term
-                this.onLongClick(null);
-            }
+            // null for input view means that we will start ActionMode without owner:
+            // the root formula will be selected instead of owner term
+            this.onLongClick(null);
         }
     }
 }
