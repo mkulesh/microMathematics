@@ -85,7 +85,8 @@
         <item>doc_de</item>
         <item>examples</item>
         <item>images</item>
-        <item>release_notes.xml</item>
+        <item>release_notes.mmt</item>
+        <item>functions_overview.mmt</item>
     </string-array>
         
 </resources>
