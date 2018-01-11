@@ -105,14 +105,20 @@ public class DialogBase extends Dialog implements OnClickListener
         return (root instanceof LinearLayout) ? (LinearLayout) root : null;
     }
 
-    protected void closeDialog()
+    protected void closeDialog(boolean hideKeyboard)
     {
         if (!ViewUtils.isHardwareKeyboardAvailable(getContext()))
         {
             InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            ViewUtils.Debug(this, "request to hide keyboard from dialog");
             imm.hideSoftInputFromWindow(title.getWindowToken(), 0);
         }
         dismiss();
+    }
+
+    protected void closeDialog()
+    {
+        closeDialog(/*hideKeyboard=*/ true);
     }
 
     protected void maximize()

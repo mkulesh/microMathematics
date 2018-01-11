@@ -60,7 +60,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuVisibilityListener
+public class MainActivity extends AppCompatActivity
 {
     /*
      * Constants used to save/restore the instance state.
@@ -659,16 +659,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         else if (requestCode == SETTINGS_ACTIVITY_REQID)
         {
             restartActivity();
-        }
-    }
-
-    @Override
-    public void onMenuVisibilityChanged(boolean state)
-    {
-        final BaseFragment f = getVisibleFragment();
-        if (state && f != null)
-        {
-            f.hideKeyboard();
         }
     }
 }

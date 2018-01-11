@@ -148,7 +148,7 @@ public class DialogNewFormula extends DialogBase implements OnLongClickListener
             }
             changeIf.onNewFormula(insertType, formulaType);
         }
-        closeDialog();
+        closeDialog(/*hideKeyboard=*/ false);
     }
 
     @Override
