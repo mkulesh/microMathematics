@@ -38,8 +38,7 @@ Not only students, but also everybody who likes mathematics or needs more than j
 For more screenshots, see directory images/screenshots.
 
 ## Documentation
-* [Functions overview](https://raw.githubusercontent.com/mkulesh/microMathematics/master/doc/functions_overview.html){:target="_blank"}
-
+* [Functions overview](http://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/functions_overview.html)
 
 ## Reviews and publications:
 
