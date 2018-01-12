@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>functions_overview</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<style>
+  td { margin: 0px; padding: 0px 10px 0px 10px; }
+</style>
+<style>
+  img { padding: 0px; display: block; max-width: 100%; }
+</style>
+</head><body>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td><img src="functions_overview_fig1.png"alt="Image"></td>
+  <td>Features of uMath+</td>
+</tr></table><br>
+
+<h4>1 Constants</h4>
+
+<p>Set a value</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$a := 10$$</td>
+  <td>$$b := 60$$</td>
+</tr></table><br>
+
+<p>Get value</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$a = 10.0$$</td>
+  <td>$$b = 60.0$$</td>
+</tr></table><br>
+
+<p>Build-in constants</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$e = 2.718282$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$${\pi} = 3.141593$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$pi = 3.141593$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$i = 0.0+1.0i$$</td>
+</tr></table><br>
+
+<h4>2 Operators</h4>
+
+<p>Addition ("+ +")</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$d := 10 + 70$$</td>
+  <td>$$d = 80.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$c := 1 + i$$</td>
+  <td>$$c = 1.0+1.0i$$</td>
+</tr></table><br>
+
+<p>Subsraction ("- -")</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$d := 10 - 70$$</td>
+  <td>$$d = -60.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$c := 1 - i$$</td>
+  <td>$$c = 1.0-1.0i$$</td>
+</tr></table><br>
+
+<p>Multiplication ("*")</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$d := 10 \cdot 70$$</td>
+  <td>$$d = 700.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$c := i \cdot i$$</td>
+  <td>$$c = -1.0$$</td>
+</tr></table><br>
+
+<p>Division ("/" or "÷")</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$d := a / b$$</td>
+  <td>or</td>
+  <td>$$d := \frac{a}{b}$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$c := i / 2$$</td>
+  <td>$$c = 0.0+0.5i$$</td>
+</tr></table><br>
+
+<p>Parenthesis</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$ \left( e\right)  = 2.718282$$</td>
+</tr></table><br>
+
+<p>Complex operators:</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$\left( a + b \right) \cdot \left( a - b \right) -  \left( a \cdot a - b \cdot b\right)  = 0.0$$</td>
+</tr></table><br>
+
+<h4>3 Functions</h4>
+
+<p>Raise to power ("^")</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$${100}^{0} = 1.0$$</td>
+  <td>$${2}^{2} = 4.0$$</td>
+</tr></table><br>
+
+<p>The square root of the argument ("#" or
+"sqrt")</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$\sqrt{25}  = 5.0$$</td>
+  <td>$$\sqrt{-1}  = 0.0+1.0i$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$sqrt \left( 10\right)  = 3.162278$$</td>
+</tr></table><br>
+
+<p>The n-th root of the argument ("$")</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$\sqrt[\leftroot{-3}\uproot{3}3]{125}  = 5.0$$</td>
+</tr></table><br>
+
+<p>The product of all positive integers less
+than or equal to the argument ("!")</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$5!  = 120.0$$</td>
+</tr></table><br>
+
+<p>The absolute value of the real or complex
+argument ("|")</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$ \left| 10 \right|  = 10.0$$</td>
+  <td>$$ \left| -10 \right|  = 10.0$$</td>
+  <td>$$ \left| i \right|  = 1.0$$</td>
+</tr></table><br>
+
+<p>The complex conjugate of the complex argument
+("~")</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$\overline{3+5i}  = 3.0-5.0i$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$\overline{1-2i}  = 1.0+2.0i$$</td>
+</tr></table><br>
+
+<p>The real and imaginary parts of the complex
+argument</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$\Re\left( 3+5i \right)  = 3.0$$</td>
+  <td>$$\Im\left( 3+5i \right)  = 5.0$$</td>
+</tr></table><br>
+
+<p>Trigonometric functions</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$sin \left( {\pi} / 2\right)  = 1.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$cos \left( {\pi}\right)  = -1.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$tan \left( 0\right)  = 0.0$$</td>
+</tr></table><br>
+
+<p>Inverse trigonometric functions</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$asin \left( 1\right)  = 1.570796$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$acos \left( -1\right)  = 3.141593$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$atan \left( 0\right)  = 0.0$$</td>
+</tr></table><br>
+
+<p>The arc tangent of y/x within the range
+[-pi..pi]</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$atan2 \left( 1,\, 5\right)  = 0.1973956$$</td>
+</tr></table><br>
+
+<p>Hyperbolic functions</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$sinh \left( 0\right)  = 0.0$$</td>
+  <td>$$cosh \left( 0\right)  = 1.0$$</td>
+  <td>$$tanh \left( 0\right)  = 0.0$$</td>
+</tr></table><br>
+
+<p>The raising 'e' to the power of the argument</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$exp \left( 3\right)  = 20.08554$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$${e}^{3} = 20.08554$$</td>
+</tr></table><br>
+
+<p>The natural logarithm of the argument</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$log \left( {e}^{5}\right)  = 5.0$$</td>
+</tr></table><br>
+
+<p>The base 10 logarithm of the argument</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$log10 \left( {10}^{5}\right)  = 5.0$$</td>
+</tr></table><br>
+
+<p>The most negative (closest to negative
+infinity) integer value greater than or
+equal to the argument</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$ceil \left( 1\right)  = 1.0$$</td>
+  <td>$$ceil \left( 1.25\right)  = 2.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$ceil \left( 1.75\right)  = 2.0$$</td>
+  <td>$$ceil \left( 2\right)  = 2.0$$</td>
+</tr></table><br>
+
+<p>The most positive (closest to positive
+infinity) integer value less than or equal
+to the argument</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$floor \left( 1\right)  = 1.0$$</td>
+  <td>$$floor \left( 1.25\right)  = 1.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$floor \left( 1.75\right)  = 1.0$$</td>
+  <td>$$floor \left( 2\right)  = 2.0$$</td>
+</tr></table><br>
+
+<p>The pseudo-random value between zero and the
+argument</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$rnd \left( 1\right)  = 0.2760627$$</td>
+  <td>$$rnd \left( 10\right)  = 3.840684$$</td>
+</tr></table><br>
+
+<p>The most positive (closest to positive
+infinity) of the two arguments</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$max \left( 1,\, 2\right)  = 2.0$$</td>
+  <td>$$max \left( 2,\, 1\right)  = 2.0$$</td>
+</tr></table><br>
+
+<p>The most negative (closest to negative
+infinity) of the two arguments</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$min \left( 1,\, 2\right)  = 1.0$$</td>
+  <td>$$min \left( 2,\, 1\right)  = 1.0$$</td>
+</tr></table><br>
+
+<h4>4 Processing of the sequence</h4>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>Summation</td>
+  <td>$$\displaystyle\sum_{k=1}^{10} k = 55.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>Product</td>
+  <td>$$\displaystyle\prod_{k=1}^{10} k = 3628800.0$$</td>
+</tr></table><br>
+
+<h4>5 Derivative of the function</h4>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$f1(x) := \frac{d}{dx} sin \left( x\right) $$</td>
+  <td>$$f1 \left( 0\right)  = 1.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$f2(x) := \frac{d}{dx} \frac{d}{dx} sin \left( x\right) $$</td>
+  <td>$$f2 \left( 0\right)  = 0.0$$</td>
+</tr></table><br>
+
+<h4>6 The definite integral of the function</h4>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$\displaystyle\int_{1}^{e}\frac{1}{0.5 \cdot x}\, dx = 2.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$G({\varphi},{\rho}) := \frac{3 \cdot cos \left( {\varphi}\right)  - 2 \cdot sin \left( {\varphi}\right) }{{\rho}}$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$\displaystyle\int_{-{\pi} / 2}^{0}\displaystyle\int_{2}^{3}{\rho} \cdot G \left( {\varphi},\, {\rho}\right) \, d{\rho}\, d{\varphi} = 5.0$$</td>
+</tr></table><br>
+
+<h4>7 IF-functions and logical operators</h4>
+
+<p>Select a term to be used depending on
+comparison result for two expressions</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$true := 1$$</td>
+  <td>$$false := 0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$if \left( 1 = 2,\, true,\, false\right)  = 0.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$if \left( 1 \neq 2,\, true,\, false\right)  = 1.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$if \left( 1 > 2,\, true,\, false\right)  = 0.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$if \left( 1 \ge 2,\, true,\, false\right)  = 0.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$if \left( 1 < 2,\, true,\, false\right)  = 1.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$if \left( 1 \le 2,\, true,\, false\right)  = 1.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$if \left( \left( 1 = 2 \right) or \left( 1 \neq 2 \right),\, true,\, false\right)  = 1.0$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$if \left( \left( 1 = 2 \right) and \left( 1 \neq 2 \right),\, true,\, false\right)  = 0.0$$</td>
+</tr></table><br>
+
+</body></html>

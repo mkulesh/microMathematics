@@ -70,7 +70,7 @@ public class ExportToMathJax extends ExportToLatex
         writer.append("  td { margin: 0px; padding: 0px 10px 0px 10px; }\n");
         writer.append("</style>\n");
         writer.append("<style>\n");
-        writer.append("  img { padding: 10px; display: block; max-width: 90%; }\n");
+        writer.append("  img { padding: 0px; display: block; max-width: 100%; }\n");
         writer.append("</style>\n");
         writer.append("</head><body>");
 
@@ -88,19 +88,27 @@ public class ExportToMathJax extends ExportToLatex
                 }
                 else
                 {
-                    writer.append("\n\n<table align=\"center\" border = \"0\" cellspacing=\"0\" cellpadding=\"0\"><tr>");
+                    writer.append("\n\n<table border = \"0\" cellspacing=\"0\" cellpadding=\"0\"><tr>");
                     for (int k = 0; k < row.size(); k++)
                     {
                         writer.append("\n  <td>");
                         writeFormulaBase(row.get(k), true);
                         writer.append("</td>");
                     }
-                    writer.append("\n</tr></table>");
+                    writer.append("\n</tr></table><br>");
                 }
+            }
+            else if (v instanceof TextFragment)
+            {
+                writeFormulaBase((FormulaBase) v, false);
             }
             else if (v instanceof FormulaBase)
             {
-                writeFormulaBase((FormulaBase) v, false);
+                writer.append("\n\n<table border = \"0\" cellspacing=\"0\" cellpadding=\"0\"><tr>");
+                writer.append("\n  <td>");
+                writeFormulaBase((FormulaBase) v, true);
+                writer.append("</td>");
+                writer.append("\n</tr></table><br>");
             }
         }
         writer.append("\n\n</body></html>\n");
