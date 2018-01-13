@@ -182,6 +182,9 @@
     <string name="dialog_text_style_numbering">Numbering</string>
     <string name="dialog_list_items">item (s)</string>
     <string name="dialog_function_selection">Function</string>
+    <string name="dialog_color_picker_saturation" translatable="false">S:</string>
+    <string name="dialog_color_picker_value" translatable="false">L:</string>
+    <string name="dialog_color_picker_opacity" translatable="false">A:</string>
 
     <!-- Mathematical elements -->
     <string name="math_new_element">New element</string>

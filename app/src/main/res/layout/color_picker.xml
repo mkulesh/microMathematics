@@ -24,7 +24,7 @@
                 style="@style/DialogTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="S:"/>
+                android:text="@string/dialog_color_picker_saturation"/>
             <com.larswerkman.holocolorpicker.SaturationBar
                 android:id="@+id/dialog_colorpicker_saturation_bar"
                 android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                 style="@style/DialogTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="L:"/>
+                android:text="@string/dialog_color_picker_value"/>
             <com.larswerkman.holocolorpicker.ValueBar
                 android:id="@+id/dialog_colorpicker_value_bar"
                 android:layout_width="match_parent"
@@ -56,7 +56,7 @@
                 style="@style/DialogTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="A:"/>
+                android:text="@string/dialog_color_picker_opacity"/>
             <com.larswerkman.holocolorpicker.OpacityBar
                 android:id="@+id/dialog_colorpicker_opacity_bar"
                 android:layout_width="match_parent"

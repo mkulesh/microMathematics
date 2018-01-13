@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <string-array name="take_screenshots_scripts" translatable="false">
+    <string-array name="take_screenshots_scripts" translatable="false" tools:ignore="InconsistentArrays">
         <item>asset:/examples/rayleigh_wave.mmt</item>
         <item>asset:/examples/valentine.mmt</item>
         <item>asset:/examples/wavelet_plot_2.mmt</item>
