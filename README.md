@@ -37,6 +37,10 @@ Not only students, but also everybody who likes mathematics or needs more than j
 
 For more screenshots, see directory images/screenshots.
 
+## Documentation
+* [Functions Overview](http://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/functions_overview.html)
+* [The latest PDF version of the User Manual](https://github.com/mkulesh/microMathematics/releases/download/v2.16/microMathematics-v2.16.pdf)
+
 ## Reviews and publications:
 
 * [Press Release: Introducing microMathematics: the First Spreadsheet Oriented Mathematical Calculator for Android](http://www.androidappsreview.com/2014/09/29/micro-mathematics-press-release/)
