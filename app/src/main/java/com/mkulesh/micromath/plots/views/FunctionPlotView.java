@@ -92,8 +92,12 @@ public class FunctionPlotView extends PlanePlotView
             }
         }
 
+        int outside = 0;
         for (int i = 0; i < n; i++)
         {
+            boolean startPoint = (i == 0);
+
+            // Prepare the function point
             double xv = xVal[i];
             {
                 xv = (Double.isNaN(xv) || xv > xmax) ? xmax : ((xv < xmin) ? xmin : xv);
@@ -103,8 +107,28 @@ public class FunctionPlotView extends PlanePlotView
                 yv = (Double.isNaN(yv) || yv > ymax) ? ymax : ((yv < ymin) ? ymin : yv);
             }
             tmpVec.set(xv, yv);
+
+            // Check whether the function point is inside if the plotting area
+            if (!area.isInside(tmpVec))
+            {
+                outside++;
+            }
+            else
+            {
+                outside = 0;
+            }
+
+            // For the 2-nd point outside the area, move point to the new position
+            // instead of the line
+            if (outside >= 2)
+            {
+                startPoint = true;
+            }
+
+            // Convert to screen coordinates
             area.toScreenPoint(tmpVec, rect, p1);
-            if (i == 0)
+
+            if (startPoint)
             {
                 path.moveTo(p1.x, p1.y);
             }
@@ -112,6 +136,8 @@ public class FunctionPlotView extends PlanePlotView
             {
                 path.lineTo(p1.x, p1.y);
             }
+
+            // plot a shape
             switch (f.getLineParameters().shapeType)
             {
             case CIRCLE:

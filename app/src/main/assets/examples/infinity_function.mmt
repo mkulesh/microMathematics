@@ -44,6 +44,46 @@
       <term key="xMaxValue" text="pi" />
     </plot_function>
     <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="250" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x1" />
+      <term key="rightTerm" text="-10" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x2" />
+      <term key="rightTerm" text="10" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="x1" />
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" text="x1" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" code="minus">
+              <term key="leftTerm" text="x2" />
+              <term key="rightTerm" text="x1" />
+            </term>
+            <term key="rightTerm" text="N" />
+          </term>
+        </term>
+        <term key="maxValue" text="x2" />
+      </term>
+    </equation>
+    <plot_function width="800" height="600" axes_style="crossed" xLabelsNumber="20" yLabelsNumber="20" gridLineColor="#7F000000" functionsNumber="1">
+      <term key="yMaxValue" text="10" />
+      <term key="yFunction" color="#FFDB0100" width="3" lineStyle="solid" shapeType="circle" shapeSize="300" code="divide_slash">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="-10" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <equation>
       <term key="leftTerm" text="F(x,y)" />
       <term key="rightTerm" code="divide">
         <term key="leftTerm" text="1" />
