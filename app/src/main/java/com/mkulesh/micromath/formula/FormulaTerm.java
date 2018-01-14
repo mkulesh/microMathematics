@@ -31,7 +31,6 @@ import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.FocusChangeIf;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
 {

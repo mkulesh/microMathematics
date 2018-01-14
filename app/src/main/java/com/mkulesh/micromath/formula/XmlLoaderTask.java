@@ -19,7 +19,6 @@
 package com.mkulesh.micromath.formula;
 
 import android.os.AsyncTask;
-import android.os.Build;
 import android.util.Xml;
 
 import com.mkulesh.micromath.fman.FileUtils;
@@ -31,7 +30,6 @@ import com.mkulesh.micromath.utils.XmlUtils;
 import com.mkulesh.micromath.widgets.ListChangeIf.Position;
 
 import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.InputStream;
 import java.util.Locale;
