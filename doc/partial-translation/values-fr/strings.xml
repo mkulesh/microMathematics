@@ -216,8 +216,7 @@
     <!--<string name="math_function_factorial">The product of all positive integers less than or equal to the argument</string>-->
     <string name="math_function_max">Le plus positif (le plus proche de l\'infini positif) des 2 arguments</string>
     <string name="math_function_min">Le plus négatif (le plus proche de l\'infini négatif) des deux arguments</string>
-    <string name="math_function_hypot">La longueur de l\'hypoténuse d\'un angle droit d\'un triangle : sqrt(x^2 + y^2)</string>
-    
+
     <!-- Errors -->
     <!--<string name="error_max_layout_depth">Reached layout depth limit for this Android version</string>
     <string name="error_brackets_not_completed">Brackets are not completed</string>-->

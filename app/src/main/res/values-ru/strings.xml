@@ -206,7 +206,6 @@
     <string name="math_function_factorial">Факториал: произведение всех позитивных целых чисел меньше или равных аргументу</string>
     <string name="math_function_max">Наибольшее значение из двух аргументов</string>
     <string name="math_function_min">Наименьшее значение из двух аргументов</string>
-    <string name="math_function_hypot">Длина гипотенузы прямоугольного треугольника: sqrt(x^2+ y^2)</string>
     <string name="math_file_read">Импортировать данные из ASCII файла</string>
     
     <!-- Errors -->

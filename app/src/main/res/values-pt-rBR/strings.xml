@@ -206,7 +206,6 @@
     <string name="math_function_factorial">O produto de todos os inteiros positivos menores ou iguais ao argumento</string>
     <string name="math_function_max">O mais positivo (mais próximo do infinito positivo) dos dois argumentos</string>
     <string name="math_function_min">O mais negativo (mais próximo ao infinito negativo) dos dois argumentos</string>
-    <string name="math_function_hypot">O comprimento da hipotenusa de um triângulo reto: sqrt(x^2 + y^2)</string>
     <string name="math_file_read">Leia o file</string>
     
     <!-- Errors -->

@@ -206,7 +206,6 @@
     <string name="math_function_factorial">Produkt aller natürlichen Zahlen kleiner und gleich des Arguments</string>
     <string name="math_function_max">Liefert den größeren von zwei übergebenen Werten</string>
     <string name="math_function_min">Liefert den kleineren von zwei übergebenen Werten</string>
-    <string name="math_function_hypot">Berechnet die Wurzel aus x^2 + y^2, also den euklidischen Abstand</string>
     <string name="math_file_read">Daten aus ASCII-Dateie importieren</string>
     
     <!-- Errors -->

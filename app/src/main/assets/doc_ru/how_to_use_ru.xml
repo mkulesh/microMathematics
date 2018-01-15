@@ -196,16 +196,31 @@
       </term>
     </equation>
     <equation>
+      <term key="leftTerm" text="H(x,y)" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" code="plus">
+          <term key="leftTerm" code="power">
+            <term key="leftTerm" text="x" />
+            <term key="rightTerm" text="2" />
+          </term>
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="y" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
       <term key="leftTerm" text="g(x,y)" />
       <term key="rightTerm" code="divide">
         <term key="leftTerm" code="sin">
-          <term key="argTerm" code="hypot">
+          <term key="argTerm" code="content:com.mkulesh.micromath.link.H:2">
             <term key="argTerm1" text="x" />
             <term key="argTerm2" text="y" />
           </term>
         </term>
         <term key="rightTerm" code="plus">
-          <term key="leftTerm" code="hypot">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.link.H:2">
             <term key="argTerm1" text="x" />
             <term key="argTerm2" code="divide_slash">
               <term key="leftTerm" text="y" />

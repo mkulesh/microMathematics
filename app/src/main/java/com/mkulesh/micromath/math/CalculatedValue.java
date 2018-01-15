@@ -544,18 +544,6 @@ public class CalculatedValue
         }
     }
 
-    public ValueType hypot(CalculatedValue f, CalculatedValue g)
-    {
-        if (f.isComplex() || g.isComplex())
-        {
-            return setComplexValue(f.getComplex().pow(2.0).add(g.getComplex().pow(2.0)).sqrt());
-        }
-        else
-        {
-            return setValue(FastMath.hypot(f.real, g.real));
-        }
-    }
-
     public ValueType nthRoot(CalculatedValue g, int n)
     {
         try

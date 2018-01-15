@@ -75,7 +75,6 @@ public class FormulaTermFunction extends FormulaTerm
         RND(1, R.drawable.p_function_rnd, R.string.math_function_rnd, null),
         MAX(2, R.drawable.p_function_max, R.string.math_function_max, null),
         MIN(2, R.drawable.p_function_min, R.string.math_function_min, null),
-        HYPOT(2, R.drawable.p_function_hypot, R.string.math_function_hypot, null),
         IF(3, R.drawable.p_function_if, R.string.math_function_if, null),
         SQRT(1, Palette.NO_BUTTON, Palette.NO_BUTTON, null),
         ABS(1, Palette.NO_BUTTON, Palette.NO_BUTTON, null),
@@ -412,8 +411,6 @@ public class FormulaTermFunction extends FormulaTerm
                         : FastMath.min(a0.getReal(), a1.getReal());
                 return outValue.setValue(res);
             }
-            case HYPOT:
-                return outValue.hypot(a0, argVal[1]);
 
             case IF:
                 if (a0.isComplex())
@@ -493,7 +490,6 @@ public class FormulaTermFunction extends FormulaTerm
         case ABS_LAYOUT:
         case RE:
         case IM:
-        case HYPOT:
             retValue = argsProp;
             break;
         // for this function, derivative depends on the function itself
@@ -676,17 +672,6 @@ public class FormulaTermFunction extends FormulaTerm
                 return outValue.setValue(a0derVal.getReal());
             case IM:
                 return outValue.setValue(a0derVal.isComplex() ? a0derVal.getImaginary() : 0.0);
-            case HYPOT: // (a0 * a0' + a1 * a1')/hypot(a0, a1)
-            {
-                final CalculatedValue a1 = argVal[1];
-                terms.get(1).getDerivativeValue(var, thread, a1derVal);
-                final CalculatedValue tmp = new CalculatedValue();
-                tmp.multiply(a1, a1derVal);
-                outValue.multiply(a0, a0derVal);
-                outValue.add(outValue, tmp);
-                tmp.hypot(a0, a1);
-                return outValue.divide(outValue, tmp);
-            }
             case FUNCTION_LINK:
                 if (linkedFunction != null && linkedFunction.setArgumentValues(argVal))
                 {
