@@ -78,7 +78,7 @@ public class FormulaTermFunction extends FormulaTerm
         IF(3, R.drawable.p_function_if, R.string.math_function_if, null),
         SQRT(1, Palette.NO_BUTTON, Palette.NO_BUTTON, null),
         ABS(1, Palette.NO_BUTTON, Palette.NO_BUTTON, null),
-        SIGNUM(1, Palette.NO_BUTTON, Palette.NO_BUTTON, null),
+        SIGN(1, Palette.NO_BUTTON, Palette.NO_BUTTON, null),
         FUNCTION_LINK(-1, Palette.NO_BUTTON, Palette.NO_BUTTON, "content:com.mkulesh.micromath.link");
 
         private final int argNumber;
@@ -419,7 +419,7 @@ public class FormulaTermFunction extends FormulaTerm
                 }
                 return outValue.assign((a0.getReal() > 0) ? argVal[1] : argVal[2]);
 
-            case SIGNUM:
+            case SIGN:
                 if (a0.isComplex())
                 {
                     return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
@@ -518,7 +518,7 @@ public class FormulaTermFunction extends FormulaTerm
         case MAX:
         case MIN:
         case IF:
-        case SIGNUM:
+        case SIGN:
         case FACTORIAL:
         case CONJUGATE_LAYOUT:
         case FUNCTION_INDEX:
@@ -703,7 +703,7 @@ public class FormulaTermFunction extends FormulaTerm
             case MAX:
             case MIN:
             case IF:
-            case SIGNUM:
+            case SIGN:
             case FACTORIAL:
             case CONJUGATE_LAYOUT:
             case FUNCTION_INDEX:

@@ -259,7 +259,7 @@
       <term key="rightTerm" />
     </result>
     <text_fragment>
-      <term key="text" text='The absolute value of the real or complex&#10;argument ("|")' />
+      <term key="text" text='The absolute value of the real or complex&#10;argument ("|" or "abs")' />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="abs_layout">
@@ -274,7 +274,7 @@
       <term key="rightTerm" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="abs_layout">
+      <term key="leftTerm" code="abs">
         <term key="argTerm" text="i" />
       </term>
       <term key="rightTerm" />
@@ -525,6 +525,27 @@
       <term key="leftTerm" code="min">
         <term key="argTerm1" text="2" />
         <term key="argTerm2" text="1" />
+      </term>
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Compute the signum of a number: -1 for&#10;negative numbers, +1 for positive numbers&#10;and 0 otherwise:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sign">
+        <term key="argTerm" text="-5" />
+      </term>
+      <term key="rightTerm" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sign">
+        <term key="argTerm" text="0" />
+      </term>
+      <term key="rightTerm" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sign">
+        <term key="argTerm" text="e" />
       </term>
       <term key="rightTerm" />
     </result>
