@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="60" significantDigits="6" scale="0.5" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="&lt;area&gt;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="a" />
+      <term key="rightTerm" text="25" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="b" />
+      <term key="rightTerm" text="-5" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="Nan" />
+      <term key="rightTerm" code="factorial">
+        <term key="argTerm" text="-1" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="10" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="l(x)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="2" />
+        <term key="rightTerm" text="x" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="r(x)" />
+      <term key="rightTerm" text="x" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;TC: &lt;Name&gt;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="power">
+        <term key="leftTerm" text="4" />
+        <term key="rightTerm" text="3" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="64" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="desired" />
+          <term key="rightTerm" text="result" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="Δ" />
+      <term key="rightTerm" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="Δ" />
+        <term key="rightTerm" text="error" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;Overall error" />
+    </text_fragment>
+    <result>
+      <term key="leftTerm" text="error" />
+      <term key="rightTerm" />
+    </result>
+  </formulaList>
+</micromath>
