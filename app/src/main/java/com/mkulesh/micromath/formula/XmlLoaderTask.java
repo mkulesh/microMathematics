@@ -23,6 +23,7 @@ import android.util.Xml;
 
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.properties.TextProperties;
 import com.mkulesh.micromath.utils.SynchronizedBoolean;
 import com.mkulesh.micromath.utils.ViewUtils;
@@ -111,6 +112,7 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
                 {
                     parser.require(XmlPullParser.START_TAG, FormulaList.XML_NS, FormulaList.XML_LIST_TAG);
                     list.getDocumentSettings().readFromXml(parser);
+                    ViewUtils.Debug(this, "Document version: " + DocumentProperties.getDocumentVersion());
                     while (true)
                     {
                         if (parser.next() == XmlPullParser.END_TAG)
@@ -219,6 +221,7 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
     protected void onPostExecute(Void par)
     {
         FileUtils.closeStream(stream);
+        DocumentProperties.setDocumentVersion(DocumentProperties.LATEST_DOCUMENT_VERSION);
         if (list.getSelectedFormulaId() == ViewUtils.INVALID_INDEX)
         {
             list.setSelectedFormula(firstFormulaId, false);

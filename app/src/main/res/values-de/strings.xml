@@ -198,11 +198,11 @@
     <string name="math_function_atan2">Arcus-Tangens des y/x im Interval [-pi..pi]</string>
     <string name="math_function_tanh">Hyperbeltangens des Arguments</string>
     <string name="math_function_exp">Liefert den Exponentialwert von x zur Basis \'e\'</string>
-    <string name="math_function_log">Berechnet den natürliche Logarithmus zur Basis \'e\'</string>
+    <string name="math_function_ln">Berechnet den natürliche Logarithmus zur Basis \'e\'</string>
     <string name="math_function_log10">Berechnet den Logarithmus zur Basis 10</string>
     <string name="math_function_ceil">Rundet auf die nächsthöhere Ganzzahl ab</string>
     <string name="math_function_floor">Rundet auf die nächstniedrigere Ganzzahl ab</string>
-    <string name="math_function_rnd">Zufallszahlen zwischen größer gleich 0,0 und echt kleiner als Argument</string>
+    <string name="math_function_random">Zufallszahlen zwischen größer gleich 0,0 und echt kleiner als Argument</string>
     <string name="math_function_factorial">Produkt aller natürlichen Zahlen kleiner und gleich des Arguments</string>
     <string name="math_function_max">Liefert den größeren von zwei übergebenen Werten</string>
     <string name="math_function_min">Liefert den kleineren von zwei übergebenen Werten</string>

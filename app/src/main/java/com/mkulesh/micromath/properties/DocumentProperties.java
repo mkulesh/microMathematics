@@ -36,6 +36,7 @@ public class DocumentProperties
     /**
      * Constants used to save/restore the instance state.
      */
+    private static final String STATE_DOCUMENT_VERSION = "document_version";
     private static final String STATE_DOCUMENT_REFORMAT = "document_reformat";
     private static final String STATE_DOCUMENT_TEXT_WIDTH = "document_text_width";
     private static final String STATE_DOCUMENT_SIGNIFICANT_DIGITS = "document_significant_digits";
@@ -45,14 +46,24 @@ public class DocumentProperties
     /**
      * Constants used to write/read the XML file.
      */
+    public static final String XML_PROP_VERSION = "documentVersion";
     public static final String XML_PROP_TEXT_WIDTH = "textWidth";
     public static final String XML_PROP_SIGNIFICANT_DIGITS = "significantDigits";
     public static final String XML_PROP_SCALE = "scale";
     public static final String XML_PROP_REDEFINE_ALLOWED = "redefineAllowed";
 
     /**
+     * Document versions
+     */
+    // Actual (the latest) document version
+    public static final int LATEST_DOCUMENT_VERSION = 2;
+    // Compatibility version: used in the read method if version is not presented in the file
+    public static final int DEFAULT_DOCUMENT_VERSION = 1;
+
+    /**
      * Class members.
      */
+    private static int documentVersion = LATEST_DOCUMENT_VERSION;
     public boolean reformat = false; // not saved in xml
     public int textWidth = 60;
     public int significantDigits = 6;
@@ -77,6 +88,7 @@ public class DocumentProperties
 
     public void readFromBundle(Bundle inState)
     {
+        documentVersion = inState.getInt(STATE_DOCUMENT_VERSION);
         reformat = inState.getBoolean(STATE_DOCUMENT_REFORMAT);
         textWidth = inState.getInt(STATE_DOCUMENT_TEXT_WIDTH);
         significantDigits = inState.getInt(STATE_DOCUMENT_SIGNIFICANT_DIGITS);
@@ -86,6 +98,7 @@ public class DocumentProperties
 
     public void writeToBundle(Bundle outState)
     {
+        outState.putInt(STATE_DOCUMENT_VERSION, documentVersion);
         outState.putBoolean(STATE_DOCUMENT_REFORMAT, reformat);
         outState.putInt(STATE_DOCUMENT_TEXT_WIDTH, textWidth);
         outState.putInt(STATE_DOCUMENT_SIGNIFICANT_DIGITS, significantDigits);
@@ -96,7 +109,9 @@ public class DocumentProperties
     public void readFromXml(XmlPullParser parser)
     {
         final DecimalFormat df = CompatUtils.getDecimalFormat("0.00000");
-        String attr = parser.getAttributeValue(null, XML_PROP_TEXT_WIDTH);
+        String attr = parser.getAttributeValue(null, XML_PROP_VERSION);
+        documentVersion = (attr != null)? Integer.parseInt(attr) : DEFAULT_DOCUMENT_VERSION;
+        attr = parser.getAttributeValue(null, XML_PROP_TEXT_WIDTH);
         if (attr != null)
         {
             textWidth = Integer.parseInt(attr);
@@ -128,9 +143,21 @@ public class DocumentProperties
     public void writeToXml(XmlSerializer serializer) throws Exception
     {
         final DecimalFormat df = CompatUtils.getDecimalFormat("0.00000");
+        serializer.attribute(FormulaList.XML_NS, XML_PROP_VERSION, String.valueOf(documentVersion));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_TEXT_WIDTH, String.valueOf(textWidth));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_SIGNIFICANT_DIGITS, String.valueOf(significantDigits));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_SCALE, df.format(scaledDimensions.getScaleFactor()));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_REDEFINE_ALLOWED, String.valueOf(redefineAllowed));
     }
+
+    public static void setDocumentVersion(int version)
+    {
+        documentVersion = version;
+    }
+
+    public static int getDocumentVersion()
+    {
+        return documentVersion;
+    }
+
 }

@@ -198,11 +198,11 @@
     <string name="math_function_atan2">O arco tangente de y/x no intervalo [-pi..pi]</string>
     <string name="math_function_tanh">A tangente hiperbólica do argumento</string>
     <string name="math_function_exp">Elevar \'e\' à potência dada pelo argumento</string>
-    <string name="math_function_log">O logaritmo natural do argumento</string>
+    <string name="math_function_ln">O logaritmo natural do argumento</string>
     <string name="math_function_log10">O logaritmo de base 10 do argumento</string>
     <string name="math_function_ceil">O mais negativo (mais próximo do infinito negativo) valor inteiro maior ou igual ao argumento</string>
     <string name="math_function_floor">O mais positivo (mais próximo do infinito positivo) valor inteiro menor ou igual ao argumento</string>
-    <string name="math_function_rnd">Um número pseudo-aleatório entre zero e o argumento</string>
+    <string name="math_function_random">Um número pseudo-aleatório entre zero e o argumento</string>
     <string name="math_function_factorial">O produto de todos os inteiros positivos menores ou iguais ao argumento</string>
     <string name="math_function_max">O mais positivo (mais próximo do infinito positivo) dos dois argumentos</string>
     <string name="math_function_min">O mais negativo (mais próximo ao infinito negativo) dos dois argumentos</string>

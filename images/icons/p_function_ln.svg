@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -17,20 +19,21 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="com.mkulesh.micromath" />
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <defs
      id="defs3" />
   <text
-     x="28.490978"
-     y="29.044575"
+     x="28.466442"
+     y="29.191788"
      transform="scale(0.84164713,1.1881464)"
      id="text3029"
      xml:space="preserve"
      style="font-size:25.12434006px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"><tspan
-       x="28.490978"
-       y="29.044575"
+       x="28.466442"
+       y="29.191788"
        id="tspan3031"
-       style="stroke:none">rnd</tspan></text>
+       style="stroke:none">ln</tspan></text>
 </svg>
