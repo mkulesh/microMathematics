@@ -613,7 +613,7 @@
       <term key="rightTerm" />
     </result>
     <text_fragment textStyle="subsubsection" numbering="true">
-      <term key="text" text="The definite integral of the function" />
+      <term key="text" text="The definite integral of a function" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="integral">
@@ -784,6 +784,196 @@
         </term>
         <term key="argTerm2" text="true" />
         <term key="argTerm3" text="false" />
+      </term>
+      <term key="rightTerm" />
+    </result>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Function plots" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="The first x-value:" />
+    </text_fragment>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x1" />
+      <term key="rightTerm" text="-10" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="The last x-value:" />
+    </text_fragment>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x2" />
+      <term key="rightTerm" text="10" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="The sampling step:" />
+    </text_fragment>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="dx" />
+      <term key="rightTerm" text="0.1" />
+    </equation>
+    <text_fragment>
+      <term key="text" text='X-values, interval (":")' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="x1" />
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" text="x1" />
+          <term key="rightTerm" text="dx" />
+        </term>
+        <term key="maxValue" text="x2" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Y-values, a function of X" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f(x)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="power">
+          <term key="leftTerm" text="e" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" text="-x" />
+            <term key="rightTerm" text="10" />
+          </term>
+        </term>
+        <term key="rightTerm" code="summation">
+          <term key="maxValue" text="20" />
+          <term key="index" text="n" />
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="mult">
+            <term key="leftTerm" code="divide">
+              <term key="leftTerm" code="power">
+                <term key="leftTerm" code="identity">
+                  <term key="argTerm" text="-1" />
+                </term>
+                <term key="rightTerm" text="n" />
+              </term>
+              <term key="rightTerm" code="factorial">
+                <term key="argTerm" code="mult">
+                  <term key="leftTerm" text="2" />
+                  <term key="rightTerm" text="n" />
+                </term>
+              </term>
+            </term>
+            <term key="rightTerm" code="power">
+              <term key="leftTerm" text="x" />
+              <term key="rightTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" text="n" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="A plot with automatically calculated&#10;boudaries:" />
+    </text_fragment>
+    <plot_function width="680" height="500" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FFFF2A36" width="4" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text="A plot with manually defined boundaries:" />
+    </text_fragment>
+    <plot_function width="680" height="500" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="1">
+      <term key="yMaxValue" text="1" />
+      <term key="yFunction" color="#FFFF2A36" width="4" lineStyle="dashed" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="0" />
+      <term key="xMinValue" text="0" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="8" />
+    </plot_function>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Arrays" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Define index range" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="100" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="n" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="1" />
+        <term key="nextValue" text="2" />
+        <term key="maxValue" text="N" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Define 1-D array" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="z[n]" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="x1" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" code="divide">
+            <term key="leftTerm" code="minus">
+              <term key="leftTerm" text="x2" />
+              <term key="rightTerm" text="x1" />
+            </term>
+            <term key="rightTerm" code="minus">
+              <term key="leftTerm" text="N" />
+              <term key="rightTerm" text="1" />
+            </term>
+          </term>
+          <term key="rightTerm" code="identity">
+            <term key="argTerm" code="minus">
+              <term key="leftTerm" text="n" />
+              <term key="rightTerm" text="1" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="G[n]" />
+      <term key="rightTerm" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.z">
+          <term key="argTerm" text="n" />
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Show elements of 1-D array" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.z">
+        <term key="argTerm" text="n" />
+      </term>
+      <term key="rightTerm" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.G">
+        <term key="argTerm" text="n" />
+      </term>
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text='Show values of single elements of array ("[")' />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.z">
+        <term key="argTerm" text="5" />
+      </term>
+      <term key="rightTerm" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.G">
+        <term key="argTerm" text="5" />
       </term>
       <term key="rightTerm" />
     </result>

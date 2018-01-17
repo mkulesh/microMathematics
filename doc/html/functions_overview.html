@@ -153,12 +153,12 @@ than or equal to the argument ("!")</p>
 </tr></table><br>
 
 <p>The absolute value of the real or complex
-argument ("|")</p>
+argument ("|" or "abs")</p>
 
 <table border = "0" cellspacing="0" cellpadding="0"><tr>
   <td>$$ \left| 10 \right|  = 10.0$$</td>
   <td>$$ \left| -10 \right|  = 10.0$$</td>
-  <td>$$ \left| i \right|  = 1.0$$</td>
+  <td>$$abs \left( i\right)  = 1.0$$</td>
 </tr></table><br>
 
 <p>The complex conjugate of the complex argument
@@ -236,7 +236,7 @@ argument</p>
 <p>The natural logarithm of the argument</p>
 
 <table border = "0" cellspacing="0" cellpadding="0"><tr>
-  <td>$$log \left( {e}^{5}\right)  = 5.0$$</td>
+  <td>$$ln \left( {e}^{5}\right)  = 5.0$$</td>
 </tr></table><br>
 
 <p>The base 10 logarithm of the argument</p>
@@ -277,8 +277,8 @@ to the argument</p>
 argument</p>
 
 <table border = "0" cellspacing="0" cellpadding="0"><tr>
-  <td>$$rnd \left( 1\right)  = 0.2760627$$</td>
-  <td>$$rnd \left( 10\right)  = 3.840684$$</td>
+  <td>$$random \left( 1\right)  = 0.3365768$$</td>
+  <td>$$random \left( 10\right)  = 1.359666$$</td>
 </tr></table><br>
 
 <p>The most positive (closest to positive
@@ -295,6 +295,16 @@ infinity) of the two arguments</p>
 <table border = "0" cellspacing="0" cellpadding="0"><tr>
   <td>$$min \left( 1,\, 2\right)  = 1.0$$</td>
   <td>$$min \left( 2,\, 1\right)  = 1.0$$</td>
+</tr></table><br>
+
+<p>Compute the signum of a number: -1 for
+negative numbers, +1 for positive numbers
+and 0 otherwise:</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$sign \left( -5\right)  = -1.0$$</td>
+  <td>$$sign \left( 0\right)  = 0.0$$</td>
+  <td>$$sign \left( e\right)  = 1.0$$</td>
 </tr></table><br>
 
 <h4>4 Processing of the sequence</h4>
@@ -321,7 +331,7 @@ infinity) of the two arguments</p>
   <td>$$f2 \left( 0\right)  = 0.0$$</td>
 </tr></table><br>
 
-<h4>6 The definite integral of the function</h4>
+<h4>6 The definite integral of a function</h4>
 
 <table border = "0" cellspacing="0" cellpadding="0"><tr>
   <td>$$\displaystyle\int_{1}^{e}\frac{1}{0.5 \cdot x}\, dx = 2.0$$</td>
@@ -375,6 +385,78 @@ comparison result for two expressions</p>
 
 <table border = "0" cellspacing="0" cellpadding="0"><tr>
   <td>$$if \left( \left( 1 = 2 \right) and \left( 1 \neq 2 \right),\, true,\, false\right)  = 0.0$$</td>
+</tr></table><br>
+
+<h4>8 Function plots</h4>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>The first x-value:</td>
+  <td>$$x1 := -10$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>The last x-value:</td>
+  <td>$$x2 := 10$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>The sampling step:</td>
+  <td>$$dx := 0.1$$</td>
+</tr></table><br>
+
+<p>X-values, interval (":")</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$x := \left[ x1,\, x1 + dx \,..\, x2 \right]$$</td>
+</tr></table><br>
+
+<p>Y-values, a function of X</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$f(x) := {e}^{-x / 10} \cdot \displaystyle\sum_{n=0}^{20} \frac{{ \left( -1\right) }^{n}}{\left( 2 \cdot n \right)! } \cdot {x}^{2 \cdot n}$$</td>
+</tr></table><br>
+
+<p>A plot with automatically calculated
+boudaries:</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td><img src="functions_overview_fig2.png"alt="Image"></td>
+</tr></table><br>
+
+<p>A plot with manually defined boundaries:</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td><img src="functions_overview_fig3.png"alt="Image"></td>
+</tr></table><br>
+
+<h4>9 Arrays</h4>
+
+<p>Define index range</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$N := 100$$</td>
+  <td>$$n := \left[ 1,\, 2 \,..\, N \right]$$</td>
+</tr></table><br>
+
+<p>Define 1-D array</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$z[n] := x1 + \frac{x2 - x1}{N - 1} \cdot  \left( n - 1\right) $$</td>
+  <td>$$G[n] := f \left( z_{n} \right) $$</td>
+</tr></table><br>
+
+<p>Show elements of 1-D array</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$z_{n}  = \begin{bmatrix}-10.0\\-9.79798\\-9.59596\\-9.393939\\-9.191919\\-8.989899\\\dots\\10.0\\\end{bmatrix}$$</td>
+  <td>$$G_{n}  = \begin{bmatrix}-2.280833\\-2.480547\\-2.572485\\-2.557214\\-2.439594\\-2.228414\\\dots\\-0.3086772\\\end{bmatrix}$$</td>
+</tr></table><br>
+
+<p>Show values of single elements of array ("[")</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$z_{5}  = -9.191919$$</td>
+  <td>$$G_{5}  = -2.439594$$</td>
 </tr></table><br>
 
 </body></html>
