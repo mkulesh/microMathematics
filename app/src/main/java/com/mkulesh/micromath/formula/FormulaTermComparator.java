@@ -36,7 +36,7 @@ public class FormulaTermComparator extends FormulaTerm
     /**
      * Supported comparators
      */
-    public enum ComparatorType
+    public enum ComparatorType implements FormulaTermTypeIf
     {
         EQUAL(R.string.formula_comparator_equal, R.drawable.p_comparator_equal, R.string.math_comparator_equal),
         NOT_EQUAL(
@@ -68,6 +68,8 @@ public class FormulaTermComparator extends FormulaTerm
             this.descriptionId = descriptionId;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
+
+        public Type getType() { return Type.COMPARATOR; }
 
         public int getSymbolId()
         {
@@ -190,9 +192,9 @@ public class FormulaTermComparator extends FormulaTerm
     }
 
     @Override
-    public TermType getTermType()
+    public FormulaTermTypeIf.Type getTermType()
     {
-        return TermType.COMPARATOR;
+        return FormulaTermTypeIf.Type.COMPARATOR;
     }
 
     @Override

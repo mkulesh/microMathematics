@@ -36,7 +36,7 @@ public class FormulaTermOperator extends FormulaTerm
     /**
      * Supported operators
      */
-    public enum OperatorType
+    public enum OperatorType implements FormulaTermTypeIf
     {
         PLUS(R.string.formula_operator_plus, R.drawable.p_operator_plus, R.string.math_operator_plus),
         MINUS(R.string.formula_operator_minus, R.drawable.p_operator_minus, R.string.math_operator_minus),
@@ -59,6 +59,8 @@ public class FormulaTermOperator extends FormulaTerm
             this.descriptionId = descriptionId;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
+
+        public Type getType() { return Type.OPERATOR; }
 
         public int getSymbolId()
         {
@@ -205,9 +207,9 @@ public class FormulaTermOperator extends FormulaTerm
     }
 
     @Override
-    public TermType getTermType()
+    public FormulaTermTypeIf.Type getTermType()
     {
-        return TermType.OPERATOR;
+        return FormulaTermTypeIf.Type.OPERATOR;
     }
 
     @Override

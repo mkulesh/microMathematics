@@ -43,7 +43,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
     /**
      * Supported loop types
      */
-    public enum LoopType
+    public enum LoopType implements FormulaTermTypeIf
     {
         SUMMATION(R.string.formula_loop_summation, R.drawable.p_loop_summation, R.string.math_loop_summation),
         PRODUCT(R.string.formula_loop_product, R.drawable.p_loop_product, R.string.math_loop_product),
@@ -62,6 +62,8 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
             this.descriptionId = descriptionId;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
+
+        public Type getType() { return Type.LOOP; }
 
         public int getSymbolId()
         {
@@ -210,9 +212,9 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
     }
 
     @Override
-    public TermType getTermType()
+    public FormulaTermTypeIf.Type getTermType()
     {
-        return TermType.LOOP;
+        return FormulaTermTypeIf.Type.LOOP;
     }
 
     @Override

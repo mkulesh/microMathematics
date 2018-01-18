@@ -38,7 +38,7 @@ public class FormulaTermInterval extends FormulaTerm
     /**
      * Supported functions
      */
-    enum IntervalType
+    enum IntervalType implements FormulaTermTypeIf
     {
         EQUIDISTANT_INTERVAL(
                 R.string.formula_quidistant_interval,
@@ -57,6 +57,8 @@ public class FormulaTermInterval extends FormulaTerm
             this.descriptionId = descriptionId;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
+
+        public Type getType() { return Type.INTERVAL; }
 
         public int getSymbolId()
         {
@@ -183,9 +185,9 @@ public class FormulaTermInterval extends FormulaTerm
     }
 
     @Override
-    public TermType getTermType()
+    public FormulaTermTypeIf.Type getTermType()
     {
-        return TermType.INTERVAL;
+        return FormulaTermTypeIf.Type.INTERVAL;
     }
 
     @Override

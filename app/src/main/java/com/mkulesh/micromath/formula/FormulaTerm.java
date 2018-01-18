@@ -37,16 +37,6 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     private final FormulaBase formulaRoot;
     protected CustomLayout functionMainLayout = null;
 
-    enum TermType
-    {
-        OPERATOR,
-        COMPARATOR,
-        FILE_OPERATION,
-        FUNCTION,
-        INTERVAL,
-        LOOP
-    }
-
     /*********************************************************
      * Constructors
      *********************************************************/
@@ -86,7 +76,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     /**
      * Procedure returns the type of this term formula
      */
-    public abstract TermType getTermType();
+    public abstract FormulaTermTypeIf.Type getTermType();
 
     /**
      * Procedure returns code of this term. The code must be unique for a given term type
@@ -153,15 +143,15 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                 new PaletteButton.Category[]{ PaletteButton.Category.COMPARATOR });
     }
 
-    public static TermType getTermType(Context context, CustomEditText text, String s, boolean ensureManualTrigger)
+    public static FormulaTermTypeIf.Type getTermType(Context context, CustomEditText text, String s, boolean ensureManualTrigger)
     {
         if (FormulaTermOperator.getOperatorType(context, s) != null)
         {
-            return TermType.OPERATOR;
+            return FormulaTermTypeIf.Type.OPERATOR;
         }
         if (text.isComparatorEnabled() && FormulaTermComparator.getComparatorType(context, s) != null)
         {
-            return TermType.COMPARATOR;
+            return FormulaTermTypeIf.Type.COMPARATOR;
         }
         // FileOperation has manual trigger ("("): is has to be checked
         final boolean enableFileOperation = !ensureManualTrigger ||
@@ -169,22 +159,22 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         if (enableFileOperation && text.isFileOperationEnabled() &&
                 FormulaTermFileOperation.getFileOperationType(context, s) != null)
         {
-            return TermType.FILE_OPERATION;
+            return FormulaTermTypeIf.Type.FILE_OPERATION;
         }
         // TermFunction has manual trigger (like "(" or "["): is has to be checked
         final boolean enableFunction = !ensureManualTrigger ||
                 (ensureManualTrigger && FormulaTermFunction.containsTrigger(context, s));
         if (enableFunction && FormulaTermFunction.getFunctionType(context, s) != null)
         {
-            return TermType.FUNCTION;
+            return FormulaTermTypeIf.Type.FUNCTION;
         }
         if (text.isIntervalEnabled() && FormulaTermInterval.getIntervalType(context, s) != null)
         {
-            return TermType.INTERVAL;
+            return FormulaTermTypeIf.Type.INTERVAL;
         }
         if (FormulaTermLoop.getLoopType(context, s) != null)
         {
-            return TermType.LOOP;
+            return FormulaTermTypeIf.Type.LOOP;
         }
         return null;
     }
@@ -230,7 +220,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         return null;
     }
 
-    public static FormulaTerm createTerm(TermType type, TermField termField, LinearLayout layout, String s,
+    public static FormulaTerm createTerm(FormulaTermTypeIf.Type type, TermField termField, LinearLayout layout, String s,
                                          int textIndex) throws Exception
     {
         switch (type)

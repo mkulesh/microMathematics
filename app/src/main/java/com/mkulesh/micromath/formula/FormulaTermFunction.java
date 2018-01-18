@@ -46,7 +46,7 @@ public class FormulaTermFunction extends FormulaTerm
     /**
      * Supported functions
      */
-    public enum FunctionType
+    public enum FunctionType implements FormulaTermTypeIf
     {
         IDENTITY(1, R.drawable.p_function_identity, R.string.math_function_identity, null),
         FUNCTION_INDEX(-1, R.drawable.p_function_index, R.string.math_function_index, "content:com.mkulesh.micromath.index"),
@@ -96,6 +96,10 @@ public class FormulaTermFunction extends FormulaTerm
             this.linkObject = linkObject;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
+
+        public Type getType() { return Type.FUNCTION; }
+
+        public int getSymbolId() { return Palette.NO_BUTTON; }
 
         public int getArgNumber()
         {
@@ -778,9 +782,9 @@ public class FormulaTermFunction extends FormulaTerm
     }
 
     @Override
-    public TermType getTermType()
+    public FormulaTermTypeIf.Type getTermType()
     {
-        return TermType.FUNCTION;
+        return FormulaTermTypeIf.Type.FUNCTION;
     }
 
     @Override

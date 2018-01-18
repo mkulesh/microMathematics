@@ -45,7 +45,7 @@ public class FormulaTermFileOperation extends FormulaTerm
     /**
      * Supported functions
      */
-    public enum FileOperationType
+    public enum FileOperationType implements FormulaTermTypeIf
     {
         READ(R.drawable.p_file_read, R.string.math_file_read);
 
@@ -59,6 +59,10 @@ public class FormulaTermFileOperation extends FormulaTerm
             this.descriptionId = descriptionId;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
+
+        public Type getType() { return Type.FILE_OPERATION; }
+
+        public int getSymbolId() { return Palette.NO_BUTTON; }
 
         public int getImageId()
         {
@@ -202,9 +206,9 @@ public class FormulaTermFileOperation extends FormulaTerm
     }
 
     @Override
-    public TermType getTermType()
+    public FormulaTermTypeIf.Type getTermType()
     {
-        return TermType.FILE_OPERATION;
+        return FormulaTermTypeIf.Type.FILE_OPERATION;
     }
 
     @Override
