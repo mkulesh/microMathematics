@@ -60,7 +60,7 @@ public class FormulaTermFileOperation extends FormulaTerm
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public Type getType() { return Type.FILE_OPERATION; }
+        public GroupType getGroupType() { return GroupType.FILE_OPERATION; }
 
         public int getSymbolId() { return Palette.NO_BUTTON; }
 

@@ -21,7 +21,7 @@ package com.mkulesh.micromath.formula;
 
 public interface FormulaTermTypeIf
 {
-    enum Type
+    enum GroupType
     {
         OPERATOR,
         COMPARATOR,
@@ -31,8 +31,8 @@ public interface FormulaTermTypeIf
         LOOP
     }
 
-    /* Returns term type of this object */
-    Type getType();
+    /* Returns group term type of this object */
+    GroupType getGroupType();
 
     /* Returns term name in lower case */
     String getLowerCaseName();

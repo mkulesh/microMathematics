@@ -188,7 +188,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         return (f != null)? f.getLowerCaseName() : null;
     }
 
-    public static FormulaTerm createTerm(FormulaTermTypeIf.Type type, TermField termField, LinearLayout layout, String s,
+    public static FormulaTerm createTerm(FormulaTermTypeIf.GroupType type, TermField termField, LinearLayout layout, String s,
                                          int textIndex) throws Exception
     {
         switch (type)

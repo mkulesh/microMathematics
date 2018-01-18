@@ -69,7 +69,7 @@ public class FormulaTermComparator extends FormulaTerm
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public Type getType() { return Type.COMPARATOR; }
+        public GroupType getGroupType() { return GroupType.COMPARATOR; }
 
         public int getSymbolId()
         {

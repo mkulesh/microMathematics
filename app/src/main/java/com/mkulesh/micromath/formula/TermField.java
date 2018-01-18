@@ -804,9 +804,9 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     protected FormulaTerm convertToTerm(String s, Parcelable p, boolean ensureManualTrigger)
     {
         final FormulaTermTypeIf f = FormulaTerm.getTermTypeIf(getContext(), text, s, ensureManualTrigger);
-        final FormulaTermTypeIf.Type targetType = (f != null)? f.getType() : null;
+        final FormulaTermTypeIf.GroupType groupType = (f != null)? f.getGroupType() : null;
         term = null;
-        if (targetType != null)
+        if (groupType != null)
         {
             try
             {
@@ -817,7 +817,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
                     formulaRoot.getFormulaList().clearFocus();
                 }
                 layout.removeView(text);
-                term = FormulaTerm.createTerm(targetType, this, layout, s, textIndex);
+                term = FormulaTerm.createTerm(groupType, this, layout, s, textIndex);
                 term.updateTextSize();
             }
             catch (Exception ex)

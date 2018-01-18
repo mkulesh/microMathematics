@@ -97,7 +97,7 @@ public class FormulaTermFunction extends FormulaTerm
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public Type getType() { return Type.FUNCTION; }
+        public GroupType getGroupType() { return GroupType.FUNCTION; }
 
         public int getSymbolId() { return Palette.NO_BUTTON; }
 

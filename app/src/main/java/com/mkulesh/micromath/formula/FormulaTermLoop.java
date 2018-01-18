@@ -63,7 +63,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public Type getType() { return Type.LOOP; }
+        public GroupType getGroupType() { return GroupType.LOOP; }
 
         public int getSymbolId()
         {

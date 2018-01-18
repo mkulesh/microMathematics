@@ -58,7 +58,7 @@ public class FormulaTermInterval extends FormulaTerm
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public Type getType() { return Type.INTERVAL; }
+        public GroupType getGroupType() { return GroupType.INTERVAL; }
 
         public int getSymbolId()
         {

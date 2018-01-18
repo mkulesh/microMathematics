@@ -60,7 +60,7 @@ public class FormulaTermOperator extends FormulaTerm
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public Type getType() { return Type.OPERATOR; }
+        public GroupType getGroupType() { return GroupType.OPERATOR; }
 
         public int getSymbolId()
         {
