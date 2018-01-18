@@ -206,12 +206,6 @@ public class FormulaTermFileOperation extends FormulaTerm
     }
 
     @Override
-    public FormulaTermTypeIf.Type getTermType()
-    {
-        return FormulaTermTypeIf.Type.FILE_OPERATION;
-    }
-
-    @Override
     public String getTermCode()
     {
         return getFileOperationType().getLowerCaseName();

@@ -207,12 +207,6 @@ public class FormulaTermOperator extends FormulaTerm
     }
 
     @Override
-    public FormulaTermTypeIf.Type getTermType()
-    {
-        return FormulaTermTypeIf.Type.OPERATOR;
-    }
-
-    @Override
     public String getTermCode()
     {
         return getOperatorType().getLowerCaseName();

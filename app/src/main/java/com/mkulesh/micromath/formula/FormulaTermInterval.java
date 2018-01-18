@@ -185,12 +185,6 @@ public class FormulaTermInterval extends FormulaTerm
     }
 
     @Override
-    public FormulaTermTypeIf.Type getTermType()
-    {
-        return FormulaTermTypeIf.Type.INTERVAL;
-    }
-
-    @Override
     public String getTermCode()
     {
         return getIntervalType().getLowerCaseName();

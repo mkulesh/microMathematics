@@ -782,12 +782,6 @@ public class FormulaTermFunction extends FormulaTerm
     }
 
     @Override
-    public FormulaTermTypeIf.Type getTermType()
-    {
-        return FormulaTermTypeIf.Type.FUNCTION;
-    }
-
-    @Override
     public String getTermCode()
     {
         String t = getFunctionString(getContext(), getFunctionType());

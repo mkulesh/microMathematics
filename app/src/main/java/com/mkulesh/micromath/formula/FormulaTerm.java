@@ -60,7 +60,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     @Override
     public String toString()
     {
-        return "Term " + getTermType().toString() + " " + getTermCode() + ", depth=" + termDepth;
+        return "Term " + getTermCode() + ", depth=" + termDepth;
     }
 
     @Override
@@ -72,11 +72,6 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     /*********************************************************
      * Methods to be Implemented in derived a class
      *********************************************************/
-
-    /**
-     * Procedure returns the type of this term formula
-     */
-    public abstract FormulaTermTypeIf.Type getTermType();
 
     /**
      * Procedure returns code of this term. The code must be unique for a given term type
@@ -143,81 +138,54 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                 new PaletteButton.Category[]{ PaletteButton.Category.COMPARATOR });
     }
 
-    public static FormulaTermTypeIf.Type getTermType(Context context, CustomEditText text, String s, boolean ensureManualTrigger)
+    public static <T extends FormulaTermTypeIf> T getTermTypeIf(Context context, CustomEditText text, String s, boolean ensureManualTrigger)
     {
-        if (FormulaTermOperator.getOperatorType(context, s) != null)
+        FormulaTermOperator.OperatorType t1 = FormulaTermOperator.getOperatorType(context, s);
+        if (t1 != null)
         {
-            return FormulaTermTypeIf.Type.OPERATOR;
+            return (T) t1;
         }
-        if (text.isComparatorEnabled() && FormulaTermComparator.getComparatorType(context, s) != null)
+        final boolean enableComparator = (text == null || text.isComparatorEnabled());
+        FormulaTermComparator.ComparatorType t2 = FormulaTermComparator.getComparatorType(context, s);
+        if (enableComparator && t2 != null)
         {
-            return FormulaTermTypeIf.Type.COMPARATOR;
+            return (T) t2;
         }
         // FileOperation has manual trigger ("("): is has to be checked
-        final boolean enableFileOperation = !ensureManualTrigger ||
-                (ensureManualTrigger && FormulaTermFileOperation.containsTrigger(context, s));
-        if (enableFileOperation && text.isFileOperationEnabled() &&
-                FormulaTermFileOperation.getFileOperationType(context, s) != null)
+        final boolean enableFileOperation = (!ensureManualTrigger ||
+                (ensureManualTrigger && FormulaTermFileOperation.containsTrigger(context, s))) &&
+                (text == null || text.isFileOperationEnabled());
+        FormulaTermFileOperation.FileOperationType t6 = FormulaTermFileOperation.getFileOperationType(context, s);
+        if (enableFileOperation && t6 != null)
         {
-            return FormulaTermTypeIf.Type.FILE_OPERATION;
+            return (T) t6;
         }
         // TermFunction has manual trigger (like "(" or "["): is has to be checked
         final boolean enableFunction = !ensureManualTrigger ||
                 (ensureManualTrigger && FormulaTermFunction.containsTrigger(context, s));
-        if (enableFunction && FormulaTermFunction.getFunctionType(context, s) != null)
+        FormulaTermFunction.FunctionType t3 = FormulaTermFunction.getFunctionType(context, s);
+        if (enableFunction && t3 != null)
         {
-            return FormulaTermTypeIf.Type.FUNCTION;
+            return (T) t3;
         }
-        if (text.isIntervalEnabled() && FormulaTermInterval.getIntervalType(context, s) != null)
+        final boolean enableInterval = (text == null || text.isIntervalEnabled());
+        FormulaTermInterval.IntervalType t4 = FormulaTermInterval.getIntervalType(context, s);
+        if (enableInterval && t4 != null)
         {
-            return FormulaTermTypeIf.Type.INTERVAL;
+            return (T) t4;
         }
-        if (FormulaTermLoop.getLoopType(context, s) != null)
+        FormulaTermLoop.LoopType t5 = FormulaTermLoop.getLoopType(context, s);
+        if (t5 != null)
         {
-            return FormulaTermTypeIf.Type.LOOP;
+            return (T) t5;
         }
         return null;
     }
 
-    public static String getOperatorCode(Context contex, String code, boolean ensureManualTrigger)
+    public static String getOperatorCode(Context context, String code, boolean ensureManualTrigger)
     {
-        FormulaTermOperator.OperatorType t1 = FormulaTermOperator.getOperatorType(contex, code);
-        if (t1 != null)
-        {
-            return t1.getLowerCaseName();
-        }
-        FormulaTermComparator.ComparatorType t2 = FormulaTermComparator.getComparatorType(contex, code);
-        if (t2 != null)
-        {
-            return t2.getLowerCaseName();
-        }
-        // FileOperation has manual trigger ("("): is has to be checked
-        final boolean enableFileOperation = !ensureManualTrigger ||
-                (ensureManualTrigger && FormulaTermFileOperation.containsTrigger(contex, code));
-        FormulaTermFileOperation.FileOperationType t6 = FormulaTermFileOperation.getFileOperationType(contex, code);
-        if (enableFileOperation && t6 != null)
-        {
-            return t6.getLowerCaseName();
-        }
-        // TermFunction has manual trigger (like "(" or "["): is has to be checked
-        final boolean enableFunction = !ensureManualTrigger ||
-                (ensureManualTrigger && FormulaTermFunction.containsTrigger(contex, code));
-        FormulaTermFunction.FunctionType t3 = FormulaTermFunction.getFunctionType(contex, code);
-        if (enableFunction && t3 != null)
-        {
-            return t3.getLowerCaseName();
-        }
-        FormulaTermInterval.IntervalType t4 = FormulaTermInterval.getIntervalType(contex, code);
-        if (t4 != null)
-        {
-            return t4.getLowerCaseName();
-        }
-        FormulaTermLoop.LoopType t5 = FormulaTermLoop.getLoopType(contex, code);
-        if (t5 != null)
-        {
-            return t5.getLowerCaseName();
-        }
-        return null;
+        final FormulaTermTypeIf f = getTermTypeIf(context, null, code, ensureManualTrigger);
+        return (f != null)? f.getLowerCaseName() : null;
     }
 
     public static FormulaTerm createTerm(FormulaTermTypeIf.Type type, TermField termField, LinearLayout layout, String s,

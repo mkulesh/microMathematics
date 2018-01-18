@@ -803,7 +803,8 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
      */
     protected FormulaTerm convertToTerm(String s, Parcelable p, boolean ensureManualTrigger)
     {
-        FormulaTermTypeIf.Type targetType = FormulaTerm.getTermType(getContext(), text, s, ensureManualTrigger);
+        final FormulaTermTypeIf f = FormulaTerm.getTermTypeIf(getContext(), text, s, ensureManualTrigger);
+        final FormulaTermTypeIf.Type targetType = (f != null)? f.getType() : null;
         term = null;
         if (targetType != null)
         {

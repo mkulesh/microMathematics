@@ -212,12 +212,6 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
     }
 
     @Override
-    public FormulaTermTypeIf.Type getTermType()
-    {
-        return FormulaTermTypeIf.Type.LOOP;
-    }
-
-    @Override
     public String getTermCode()
     {
         return getLoopType().getLowerCaseName();

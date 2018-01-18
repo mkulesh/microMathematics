@@ -192,12 +192,6 @@ public class FormulaTermComparator extends FormulaTerm
     }
 
     @Override
-    public FormulaTermTypeIf.Type getTermType()
-    {
-        return FormulaTermTypeIf.Type.COMPARATOR;
-    }
-
-    @Override
     public String getTermCode()
     {
         return getComparatorType().getLowerCaseName();
