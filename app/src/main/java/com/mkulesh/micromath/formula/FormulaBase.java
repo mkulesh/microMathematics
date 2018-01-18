@@ -666,6 +666,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
             serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_KEY, t.getTermKey());
             if (onStartWriteXmlTag(serializer, t.getTermKey()))
             {
+                serializer.endTag(FormulaList.XML_NS, FormulaList.XML_TERM_TAG);
                 continue;
             }
             if (t.isWritable)

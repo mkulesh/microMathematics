@@ -491,7 +491,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         boolean finishTag = true;
         if (termCode == null)
         {
-            setText(text == null ? "" : text);
+            setText(text == null || !isWritable ? "" : text);
         }
         else
         {

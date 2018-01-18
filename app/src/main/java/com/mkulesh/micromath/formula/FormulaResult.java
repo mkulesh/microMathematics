@@ -472,6 +472,13 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         {
             properties.writeToXml(serializer);
         }
+        // The calculation results shall be stored within *.mmt file as well.
+        if (FormulaList.XML_TERM_TAG.equalsIgnoreCase(serializer.getName()) &&
+                key != null && key.equalsIgnoreCase(constantResultField.getTermKey()))
+        {
+            serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_TEXT, fillResultString());
+            return true; // do not write everything for this term more
+        }
         return false;
     }
 
