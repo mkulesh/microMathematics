@@ -101,9 +101,8 @@ public class FormulaTermOperator extends FormulaTerm
     /**
      * Private attributes
      */
-    private OperatorType operatorType = null;
     private TermField leftTerm = null, rightTerm = null;
-    private boolean useBrackets = false;
+
 
     // Attention: this is not thread-safety declaration!
     private final CalculatedValue fVal = new CalculatedValue(), gVal = new CalculatedValue(),
@@ -135,17 +134,26 @@ public class FormulaTermOperator extends FormulaTerm
     }
 
     /*********************************************************
+     * Common getters
+     *********************************************************/
+
+    public OperatorType getOperatorType()
+    {
+        return (OperatorType) termType;
+    }
+
+    /*********************************************************
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
      *********************************************************/
 
     @Override
     public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
     {
-        if (operatorType != null && leftTerm != null && rightTerm != null)
+        if (termType != null && leftTerm != null && rightTerm != null)
         {
             leftTerm.getValue(thread, fVal);
             rightTerm.getValue(thread, gVal);
-            switch (operatorType)
+            switch (getOperatorType())
             {
             case PLUS:
                 return outValue.add(fVal, gVal);
@@ -172,11 +180,11 @@ public class FormulaTermOperator extends FormulaTerm
     public CalculatedValue.ValueType getDerivativeValue(String var, CalculaterTask thread, CalculatedValue outValue)
             throws CancelException
     {
-        if (operatorType != null && leftTerm != null && rightTerm != null)
+        if (termType != null && leftTerm != null && rightTerm != null)
         {
             leftTerm.getDerivativeValue(var, thread, fDer);
             rightTerm.getDerivativeValue(var, thread, gDer);
-            switch (operatorType)
+            switch (getOperatorType())
             {
             case PLUS:
                 return outValue.add(fDer, gDer);
@@ -207,12 +215,6 @@ public class FormulaTermOperator extends FormulaTerm
     }
 
     @Override
-    public String getTermCode()
-    {
-        return getOperatorType().getLowerCaseName();
-    }
-
-    @Override
     protected CustomTextView initializeSymbol(CustomTextView v)
     {
         if (v.getText() != null)
@@ -220,7 +222,7 @@ public class FormulaTermOperator extends FormulaTerm
             String t = v.getText().toString();
             if (t.equals(getContext().getResources().getString(R.string.formula_operator_key)))
             {
-                switch (operatorType)
+                switch (getOperatorType())
                 {
                 case PLUS:
                     v.prepare(CustomTextView.SymbolType.PLUS, getFormulaRoot().getFormulaList().getActivity(), this);
@@ -266,12 +268,12 @@ public class FormulaTermOperator extends FormulaTerm
         {
             if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_left_term_key)))
             {
-                final boolean addDepth = (operatorType == OperatorType.DIVIDE) ? true : false;
+                final boolean addDepth = (termType == OperatorType.DIVIDE) ? true : false;
                 leftTerm = addTerm(getFormulaRoot(), l, v, this, addDepth);
             }
             if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_right_term_key)))
             {
-                final int addDepth = (operatorType == OperatorType.DIVIDE) ? 1 : 0;
+                final int addDepth = (termType == OperatorType.DIVIDE) ? 1 : 0;
                 rightTerm = addTerm(getFormulaRoot(), l, -1, v, this, addDepth);
             }
         }
@@ -311,12 +313,12 @@ public class FormulaTermOperator extends FormulaTerm
         {
             throw new Exception("cannot create FormulaTermOperator for invalid insertion index " + idx);
         }
-        operatorType = getOperatorType(getContext(), s);
-        if (operatorType == null)
+        termType = getOperatorType(getContext(), s);
+        if (termType == null)
         {
             throw new Exception("cannot create FormulaTermOperator for unknown operator");
         }
-        switch (operatorType)
+        switch (getOperatorType())
         {
         case PLUS:
         case MINUS:
@@ -340,10 +342,10 @@ public class FormulaTermOperator extends FormulaTerm
             throw new Exception("cannot initialize operator terms");
         }
         // set texts for left and right parts
-        TermField.divideString(s, getContext().getResources().getString(operatorType.getSymbolId()), leftTerm,
+        TermField.divideString(s, getContext().getResources().getString(termType.getSymbolId()), leftTerm,
                 rightTerm);
         // disable brackets of child terms in some cases
-        switch (operatorType)
+        switch (getOperatorType())
         {
         case DIVIDE:
         case PLUS:
@@ -361,23 +363,6 @@ public class FormulaTermOperator extends FormulaTerm
             break;
         }
     }
-
-    /**
-     * Returns operator type
-     */
-    public OperatorType getOperatorType()
-    {
-        return operatorType;
-    }
-
-    /**
-     * Returns whether the brackets are used
-     */
-    public boolean isUseBrackets()
-    {
-        return useBrackets;
-    }
-
 
     /**
      * Add palette buttons for this term

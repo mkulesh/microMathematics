@@ -36,6 +36,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
 {
     private final FormulaBase formulaRoot;
     protected CustomLayout functionMainLayout = null;
+    protected FormulaTermTypeIf termType = null;
+    protected boolean useBrackets = false;
 
     /*********************************************************
      * Constructors
@@ -69,14 +71,25 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         return BaseType.TERM;
     }
 
-    /*********************************************************
-     * Methods to be Implemented in derived a class
-     *********************************************************/
-
     /**
      * Procedure returns code of this term. The code must be unique for a given term type
      */
-    public abstract String getTermCode();
+    public String getTermCode()
+    {
+        return termType == null? "" : termType.getLowerCaseName();
+    }
+
+    /**
+     * Returns whether the brackets are used
+     */
+    public boolean isUseBrackets()
+    {
+        return useBrackets;
+    }
+
+    /*********************************************************
+     * Methods to be Implemented in derived a class
+     *********************************************************/
 
     /**
      * Procedure will be called for a custom text view initialization
@@ -138,46 +151,58 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                 new PaletteButton.Category[]{ PaletteButton.Category.COMPARATOR });
     }
 
-    public static <T extends FormulaTermTypeIf> T getTermTypeIf(Context context, CustomEditText text, String s, boolean ensureManualTrigger)
+    public static FormulaTermTypeIf getTermTypeIf(Context context, CustomEditText text, String s, boolean ensureManualTrigger)
     {
-        FormulaTermOperator.OperatorType t1 = FormulaTermOperator.getOperatorType(context, s);
-        if (t1 != null)
         {
-            return (T) t1;
+            final FormulaTermOperator.OperatorType t = FormulaTermOperator.getOperatorType(context, s);
+            if (t != null)
+            {
+                return t;
+            }
         }
-        final boolean enableComparator = (text == null || text.isComparatorEnabled());
-        FormulaTermComparator.ComparatorType t2 = FormulaTermComparator.getComparatorType(context, s);
-        if (enableComparator && t2 != null)
         {
-            return (T) t2;
+            final boolean enableComparator = (text == null || text.isComparatorEnabled());
+            final FormulaTermComparator.ComparatorType t = FormulaTermComparator.getComparatorType(context, s);
+            if (enableComparator && t != null)
+            {
+                return t;
+            }
         }
-        // FileOperation has manual trigger ("("): is has to be checked
-        final boolean enableFileOperation = (!ensureManualTrigger ||
-                (ensureManualTrigger && FormulaTermFileOperation.containsTrigger(context, s))) &&
-                (text == null || text.isFileOperationEnabled());
-        FormulaTermFileOperation.FileOperationType t6 = FormulaTermFileOperation.getFileOperationType(context, s);
-        if (enableFileOperation && t6 != null)
         {
-            return (T) t6;
+            // FileOperation has manual trigger ("("): is has to be checked
+            final boolean enableFileOperation = (!ensureManualTrigger ||
+                    (ensureManualTrigger && FormulaTermFileOperation.containsTrigger(context, s))) &&
+                    (text == null || text.isFileOperationEnabled());
+            final FormulaTermFileOperation.FileOperationType t = FormulaTermFileOperation.getFileOperationType(context, s);
+            if (enableFileOperation && t != null)
+            {
+                return t;
+            }
         }
-        // TermFunction has manual trigger (like "(" or "["): is has to be checked
-        final boolean enableFunction = !ensureManualTrigger ||
-                (ensureManualTrigger && FormulaTermFunction.containsTrigger(context, s));
-        FormulaTermFunction.FunctionType t3 = FormulaTermFunction.getFunctionType(context, s);
-        if (enableFunction && t3 != null)
         {
-            return (T) t3;
+            // TermFunction has manual trigger (like "(" or "["): is has to be checked
+            final boolean enableFunction = !ensureManualTrigger ||
+                    (ensureManualTrigger && FormulaTermFunction.containsTrigger(context, s));
+            final FormulaTermFunction.FunctionType t = FormulaTermFunction.getFunctionType(context, s);
+            if (enableFunction && t != null)
+            {
+                return t;
+            }
         }
-        final boolean enableInterval = (text == null || text.isIntervalEnabled());
-        FormulaTermInterval.IntervalType t4 = FormulaTermInterval.getIntervalType(context, s);
-        if (enableInterval && t4 != null)
         {
-            return (T) t4;
+            final boolean enableInterval = (text == null || text.isIntervalEnabled());
+            final FormulaTermInterval.IntervalType t = FormulaTermInterval.getIntervalType(context, s);
+            if (enableInterval && t != null)
+            {
+                return t;
+            }
         }
-        FormulaTermLoop.LoopType t5 = FormulaTermLoop.getLoopType(context, s);
-        if (t5 != null)
         {
-            return (T) t5;
+            final FormulaTermLoop.LoopType t = FormulaTermLoop.getLoopType(context, s);
+            if (t != null)
+            {
+                return t;
+            }
         }
         return null;
     }
@@ -384,7 +409,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         int viewIndex = -1;
         if (startField.isTerm())
         {
-            ArrayList<View> list = new ArrayList<View>();
+            ArrayList<View> list = new ArrayList<>();
             startField.getTerm().collectElemets(expandableLayout, list);
             for (View l : list)
             {
@@ -402,7 +427,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
 
         // collect terms to be added
-        ArrayList<View> newTerms = new ArrayList<View>();
+        ArrayList<View> newTerms = new ArrayList<>();
         inflateElements(newTerms, argLayoutId, true);
         TermField newArg = null;
         for (View t : newTerms)

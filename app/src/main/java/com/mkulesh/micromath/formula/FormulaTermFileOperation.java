@@ -110,7 +110,6 @@ public class FormulaTermFileOperation extends FormulaTerm
     /**
      * Private attributes
      */
-    private FileOperationType fileOperationType = null;
     private TermField fileName = null;
     private final ArrayList<ArrayList<String>> fileBuffer = new ArrayList<>();
 
@@ -206,12 +205,6 @@ public class FormulaTermFileOperation extends FormulaTerm
     }
 
     @Override
-    public String getTermCode()
-    {
-        return getFileOperationType().getLowerCaseName();
-    }
-
-    @Override
     public boolean isContentValid(ValidationPassType type)
     {
         String errorMsg = null;
@@ -299,8 +292,8 @@ public class FormulaTermFileOperation extends FormulaTerm
         {
             throw new Exception("cannot create FormulaTermFileOperation for invalid insertion index " + idx);
         }
-        fileOperationType = getFileOperationType(getContext(), s);
-        if (fileOperationType == null)
+        termType = getFileOperationType(getContext(), s);
+        if (termType == null)
         {
             throw new Exception("cannot create FormulaTermFileOperation for unknown function");
         }
@@ -311,14 +304,6 @@ public class FormulaTermFileOperation extends FormulaTerm
         {
             throw new Exception("cannot initialize function terms");
         }
-    }
-
-    /**
-     * Returns function type
-     */
-    public FileOperationType getFileOperationType()
-    {
-        return fileOperationType;
     }
 
     private InputStream openFileStream(final String name)

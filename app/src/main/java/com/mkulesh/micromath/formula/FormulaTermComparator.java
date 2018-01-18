@@ -110,10 +110,8 @@ public class FormulaTermComparator extends FormulaTerm
     /**
      * Private attributes
      */
-    private ComparatorType comparatorType = null;
     private TermField leftTerm = null, rightTerm = null;
     private CustomTextView operatorKey = null;
-    private boolean useBrackets = false;
 
     // Attention: this is not thread-safety declaration!
     private final CalculatedValue leftTermValue = new CalculatedValue(), rightTermValue = new CalculatedValue();
@@ -144,18 +142,27 @@ public class FormulaTermComparator extends FormulaTerm
     }
 
     /*********************************************************
+     * Common getters
+     *********************************************************/
+
+    public ComparatorType getComparatorType()
+    {
+        return (ComparatorType) termType;
+    }
+
+    /*********************************************************
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
      *********************************************************/
 
     @Override
     public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
     {
-        if (comparatorType != null)
+        if (termType != null)
         {
             leftTerm.getValue(thread, leftTermValue);
             rightTerm.getValue(thread, rightTermValue);
             // Do not check invalid value since a comparator can handle it!
-            switch (comparatorType)
+            switch (getComparatorType())
             {
             case EQUAL:
                 return outValue.setValue((leftTermValue.getReal() == rightTermValue.getReal()) ? 1 : -1);
@@ -189,12 +196,6 @@ public class FormulaTermComparator extends FormulaTerm
             throws CancelException
     {
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
-    }
-
-    @Override
-    public String getTermCode()
-    {
-        return getComparatorType().getLowerCaseName();
     }
 
     @Override
@@ -274,8 +275,8 @@ public class FormulaTermComparator extends FormulaTerm
         {
             throw new Exception("cannot create FormulaTermComparator for invalid insertion index " + idx);
         }
-        comparatorType = getComparatorType(getContext(), s);
-        if (comparatorType == null)
+        termType = getComparatorType(getContext(), s);
+        if (termType == null)
         {
             throw new Exception("cannot create FormulaTermComparator for unknown comparator");
         }
@@ -287,10 +288,10 @@ public class FormulaTermComparator extends FormulaTerm
             throw new Exception("cannot initialize comparators terms");
         }
         // set texts for left and right parts
-        TermField.divideString(s, getContext().getResources().getString(comparatorType.getSymbolId()), leftTerm,
+        TermField.divideString(s, getContext().getResources().getString(termType.getSymbolId()), leftTerm,
                 rightTerm);
         // disable brackets of child terms in some cases
-        switch (comparatorType)
+        switch (getComparatorType())
         {
         case EQUAL:
         case NOT_EQUAL:
@@ -312,14 +313,6 @@ public class FormulaTermComparator extends FormulaTerm
     }
 
     /**
-     * Returns comparator type
-     */
-    public ComparatorType getComparatorType()
-    {
-        return comparatorType;
-    }
-
-    /**
      * If possible, changes the comparator type
      */
     public boolean changeComparatorType(ComparatorType newType)
@@ -329,11 +322,11 @@ public class FormulaTermComparator extends FormulaTerm
             return false;
         }
         if (newType == ComparatorType.COMPARATOR_AND || newType == ComparatorType.COMPARATOR_OR
-                || comparatorType == ComparatorType.COMPARATOR_AND || comparatorType == ComparatorType.COMPARATOR_OR)
+                || termType == ComparatorType.COMPARATOR_AND || termType == ComparatorType.COMPARATOR_OR)
         {
             return false;
         }
-        comparatorType = newType;
+        termType = newType;
         updateOperatorKey();
         return true;
     }
@@ -370,14 +363,6 @@ public class FormulaTermComparator extends FormulaTerm
             operatorKey.setText(R.string.math_comparator_or_text);
             break;
         }
-    }
-
-    /**
-     * Returns whether the brackets are used
-     */
-    public boolean isUseBrackets()
-    {
-        return useBrackets;
     }
 
     /**

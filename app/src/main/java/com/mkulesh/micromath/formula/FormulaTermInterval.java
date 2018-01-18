@@ -99,7 +99,6 @@ public class FormulaTermInterval extends FormulaTerm
     /**
      * Private attributes
      */
-    private IntervalType intervalType = null;
     private TermField minValueTerm, nextValueTerm, maxValueTerm = null;
 
     // Attention: this is not thread-safety declaration!
@@ -185,12 +184,6 @@ public class FormulaTermInterval extends FormulaTerm
     }
 
     @Override
-    public String getTermCode()
-    {
-        return getIntervalType().getLowerCaseName();
-    }
-
-    @Override
     protected CustomTextView initializeSymbol(CustomTextView v)
     {
         if (v.getText() != null)
@@ -261,8 +254,8 @@ public class FormulaTermInterval extends FormulaTerm
         {
             throw new Exception("cannot create FormulaFunction for invalid insertion index " + idx);
         }
-        intervalType = getIntervalType(getContext(), s);
-        if (intervalType == null)
+        termType = getIntervalType(getContext(), s);
+        if (termType == null)
         {
             throw new Exception("cannot create FormulaFunction for unknown function");
         }
@@ -272,14 +265,6 @@ public class FormulaTermInterval extends FormulaTerm
         {
             throw new Exception("cannot initialize function terms");
         }
-    }
-
-    /**
-     * Returns function type
-     */
-    public IntervalType getIntervalType()
-    {
-        return intervalType;
     }
 
     /**

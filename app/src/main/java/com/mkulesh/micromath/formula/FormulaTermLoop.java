@@ -108,10 +108,8 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
     /**
      * Private attributes
      */
-    private LoopType loopType = null;
     private TermField indexTerm = null, minValueTerm = null, maxValueTerm = null, argTerm = null;
     private LinearLayout symbolLayout = null, minValueLayout = null, maxValueLayout = null;
-    private boolean useBrackets = false;
 
     private final LoopCalculator loopCalculator = new LoopCalculator();
     private DifferentiableType differentiableType = null;
@@ -146,20 +144,45 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
     }
 
     /*********************************************************
+     * Common getters
+     *********************************************************/
+
+    public LoopType getLoopType()
+    {
+        return (LoopType) termType;
+    }
+
+    /**
+     * Returns the index name for this loop
+     */
+    public String getIndexName()
+    {
+        // Do not check here ContentType of indexTerm since this procedure itself is called
+        // from checkContentType for indexTerm where ContentType is not yet set
+        return indexTerm.getParser().getFunctionName();
+    }
+
+    @Override
+    public TermField getArgumentTerm()
+    {
+        return argTerm;
+    }
+
+    /*********************************************************
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
      *********************************************************/
 
     @Override
     public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
     {
-        if (loopType != null)
+        if (termType != null)
         {
             if (!calculateBoundaries(thread))
             {
                 return outValue.invalidate(CalculatedValue.ErrorType.NOT_A_REAL);
             }
             loopCalculator.setCalculaterTask(thread);
-            switch (loopType)
+            switch (getLoopType())
             {
             case SUMMATION:
                 return loopCalculator.summation(minValue.getInteger(), maxValue.getInteger(), outValue);
@@ -195,7 +218,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
                 return outValue.invalidate(CalculatedValue.ErrorType.NOT_A_REAL);
             }
             loopCalculator.setCalculaterTask(thread);
-            switch (loopType)
+            switch (getLoopType())
             {
             case SUMMATION:
                 return loopCalculator.summationDerivative(var, minValue.getInteger(), maxValue.getInteger(), outValue);
@@ -212,12 +235,6 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
     }
 
     @Override
-    public String getTermCode()
-    {
-        return getLoopType().getLowerCaseName();
-    }
-
-    @Override
     public boolean isContentValid(ValidationPassType type)
     {
         differentiableType = null;
@@ -227,7 +244,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         case VALIDATE_SINGLE_FORMULA:
             isValid = super.isContentValid(type);
             final String indexName = getIndexName();
-            if (isValid && loopType == LoopType.DERIVATIVE)
+            if (isValid && termType == LoopType.DERIVATIVE)
             {
                 differentiableType = argTerm.isDifferentiable(indexName);
                 isValid = differentiableType != null && differentiableType != DifferentiableType.NONE;
@@ -248,7 +265,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
             String t = v.getText().toString();
             if (t.equals(getContext().getResources().getString(R.string.formula_operator_key)))
             {
-                switch (loopType)
+                switch (getLoopType())
                 {
                 case SUMMATION:
                     v.prepare(CustomTextView.SymbolType.SUMMATION, getFormulaRoot().getFormulaList().getActivity(),
@@ -290,7 +307,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
     @Override
     protected CustomEditText initializeTerm(CustomEditText v, LinearLayout l)
     {
-        final int addDepth = (loopType == LoopType.INTEGRAL || loopType == LoopType.DERIVATIVE) ? 0 : 3;
+        final int addDepth = (termType == LoopType.INTEGRAL || termType == LoopType.DERIVATIVE) ? 0 : 3;
         if (v.getText() != null)
         {
             if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_max_value_key)))
@@ -321,17 +338,11 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         super.updateTextSize();
         final int padding = getFormulaList().getDimen().get(ScaledDimensions.Type.HOR_SYMBOL_PADDING);
         symbolLayout.setPadding(padding, 0, padding, 0);
-        if (loopType == LoopType.INTEGRAL && maxValueLayout != null && minValueLayout != null)
+        if (termType == LoopType.INTEGRAL && maxValueLayout != null && minValueLayout != null)
         {
             maxValueLayout.setPadding(4 * padding, 0, 0, 0);
             minValueLayout.setPadding(0, 0, 2 * padding, 0);
         }
-    }
-
-    @Override
-    public TermField getArgumentTerm()
-    {
-        return argTerm;
     }
 
     /*********************************************************
@@ -397,12 +408,12 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         {
             throw new Exception("cannot create FormulaTermLoop for invalid insertion index " + idx);
         }
-        loopType = getLoopType(getContext(), s);
-        if (loopType == null)
+        termType = getLoopType(getContext(), s);
+        if (termType == null)
         {
             throw new Exception("cannot create FormulaTermLoop for unknown loop type");
         }
-        switch (loopType)
+        switch (getLoopType())
         {
         case SUMMATION:
         case PRODUCT:
@@ -426,7 +437,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         {
             throw new Exception("cannot initialize loop terms");
         }
-        if (loopType != LoopType.DERIVATIVE)
+        if (termType != LoopType.DERIVATIVE)
         {
             minValueLayout = getLayoutWithTag(MIN_VALUE_LAYOUT_TAG);
             maxValueLayout = getLayoutWithTag(MAX_VALUE_LAYOUT_TAG);
@@ -440,7 +451,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         argTerm.bracketsType = BracketsType.IFNECESSARY;
 
         // restore the previous text
-        final String opCode = getContext().getResources().getString(loopType.getSymbolId());
+        final String opCode = getContext().getResources().getString(termType.getSymbolId());
         final int opPosition = s.indexOf(opCode);
         if (opPosition >= 0)
         {
@@ -468,34 +479,11 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
     }
 
     /**
-     * Returns loop type
-     */
-    public LoopType getLoopType()
-    {
-        return loopType;
-    }
-
-    /**
-     * Returns the index name for this loop
-     */
-    public String getIndexName()
-    {
-        // Do not check here ContentType of indexTerm since this procedure itself is called
-        // from checkContentType for indexTerm where ContentType is not yet set
-        return indexTerm.getParser().getFunctionName();
-    }
-
-    public boolean isUseBrackets()
-    {
-        return useBrackets;
-    }
-
-    /**
      * Procedure checks whether summation/product loop is analytically differentiable
      */
     private boolean isLoopDifferentiable(String var)
     {
-        if (loopType != LoopType.SUMMATION && loopType != LoopType.PRODUCT)
+        if (termType != LoopType.SUMMATION && termType != LoopType.PRODUCT)
         {
             return false;
         }
