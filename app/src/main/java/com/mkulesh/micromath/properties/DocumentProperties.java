@@ -37,6 +37,9 @@ public class DocumentProperties
      * Constants used to save/restore the instance state.
      */
     private static final String STATE_DOCUMENT_VERSION = "document_version";
+    private static final String STATE_DOCUMENT_AUTHOR = "document_author";
+    private static final String STATE_DOCUMENT_TITLE = "document_title";
+    private static final String STATE_DOCUMENT_DESCRIPTION = "document_description";
     private static final String STATE_DOCUMENT_REFORMAT = "document_reformat";
     private static final String STATE_DOCUMENT_TEXT_WIDTH = "document_text_width";
     private static final String STATE_DOCUMENT_SIGNIFICANT_DIGITS = "document_significant_digits";
@@ -46,7 +49,11 @@ public class DocumentProperties
     /**
      * Constants used to write/read the XML file.
      */
+    public static final String EMPTY_STRING = "";
     public static final String XML_PROP_VERSION = "documentVersion";
+    public static final String XML_PROP_AUTHOR = "author";
+    public static final String XML_PROP_TITLE = "title";
+    public static final String XML_PROP_DESCRIPTION = "description";
     public static final String XML_PROP_TEXT_WIDTH = "textWidth";
     public static final String XML_PROP_SIGNIFICANT_DIGITS = "significantDigits";
     public static final String XML_PROP_SCALE = "scale";
@@ -64,6 +71,9 @@ public class DocumentProperties
      * Class members.
      */
     private static int documentVersion = LATEST_DOCUMENT_VERSION;
+    public CharSequence author = EMPTY_STRING;
+    public CharSequence title = EMPTY_STRING;
+    public CharSequence description = EMPTY_STRING;
     public boolean reformat = false; // not saved in xml
     public int textWidth = 60;
     public int significantDigits = 6;
@@ -89,6 +99,10 @@ public class DocumentProperties
     public void readFromBundle(Bundle inState)
     {
         documentVersion = inState.getInt(STATE_DOCUMENT_VERSION);
+        author = inState.getCharSequence(STATE_DOCUMENT_AUTHOR);
+        title = inState.getCharSequence(STATE_DOCUMENT_TITLE);
+        description = inState.getCharSequence(STATE_DOCUMENT_DESCRIPTION);
+
         reformat = inState.getBoolean(STATE_DOCUMENT_REFORMAT);
         textWidth = inState.getInt(STATE_DOCUMENT_TEXT_WIDTH);
         significantDigits = inState.getInt(STATE_DOCUMENT_SIGNIFICANT_DIGITS);
@@ -99,6 +113,10 @@ public class DocumentProperties
     public void writeToBundle(Bundle outState)
     {
         outState.putInt(STATE_DOCUMENT_VERSION, documentVersion);
+        outState.putCharSequence(STATE_DOCUMENT_AUTHOR, author);
+        outState.putCharSequence(STATE_DOCUMENT_TITLE, title);
+        outState.putCharSequence(STATE_DOCUMENT_DESCRIPTION, description);
+
         outState.putBoolean(STATE_DOCUMENT_REFORMAT, reformat);
         outState.putInt(STATE_DOCUMENT_TEXT_WIDTH, textWidth);
         outState.putInt(STATE_DOCUMENT_SIGNIFICANT_DIGITS, significantDigits);
@@ -109,8 +127,16 @@ public class DocumentProperties
     public void readFromXml(XmlPullParser parser)
     {
         final DecimalFormat df = CompatUtils.getDecimalFormat("0.00000");
+
         String attr = parser.getAttributeValue(null, XML_PROP_VERSION);
         documentVersion = (attr != null)? Integer.parseInt(attr) : DEFAULT_DOCUMENT_VERSION;
+        attr = parser.getAttributeValue(null, XML_PROP_AUTHOR);
+        author = (attr == null) ? EMPTY_STRING : attr;
+        attr = parser.getAttributeValue(null, XML_PROP_TITLE);
+        title = (attr == null) ? EMPTY_STRING : attr;
+        attr = parser.getAttributeValue(null, XML_PROP_DESCRIPTION);
+        description = (attr == null) ? EMPTY_STRING : attr;
+
         attr = parser.getAttributeValue(null, XML_PROP_TEXT_WIDTH);
         if (attr != null)
         {
@@ -144,6 +170,10 @@ public class DocumentProperties
     {
         final DecimalFormat df = CompatUtils.getDecimalFormat("0.00000");
         serializer.attribute(FormulaList.XML_NS, XML_PROP_VERSION, String.valueOf(documentVersion));
+        serializer.attribute(FormulaList.XML_NS, XML_PROP_AUTHOR, author.toString());
+        serializer.attribute(FormulaList.XML_NS, XML_PROP_TITLE, title.toString());
+        serializer.attribute(FormulaList.XML_NS, XML_PROP_DESCRIPTION, description.toString());
+
         serializer.attribute(FormulaList.XML_NS, XML_PROP_TEXT_WIDTH, String.valueOf(textWidth));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_SIGNIFICANT_DIGITS, String.valueOf(significantDigits));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_SCALE, df.format(scaledDimensions.getScaleFactor()));

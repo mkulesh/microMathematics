@@ -28,11 +28,13 @@ import com.mkulesh.micromath.fman.AdapterIf;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.Equation;
 import com.mkulesh.micromath.formula.FormulaBase;
+import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.formula.FormulaListView;
 import com.mkulesh.micromath.formula.FormulaResult;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TextFragment;
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.io.OutputStream;
@@ -51,13 +53,16 @@ public class ExportToMathJax extends ExportToLatex
         super(context, stream, uri, adapter, null);
     }
 
-    public void write(FormulaListView formulaListView) throws Exception
+    public void write(FormulaList formulas) throws Exception
     {
+        final FormulaListView formulaListView = formulas.getFormulaListView();
+        final DocumentProperties docProp = formulas.getDocumentSettings();
+
         writer.append("<!DOCTYPE html>\n");
         writer.append("<html><head>\n");
         writer.append("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n");
         writer.append("<title>");
-        writer.append(fileName);
+        writer.append(isPropEmpty(docProp.title)? fileName : docProp.title);
         writer.append("</title>\n");
 
         writer.append("<script type=\"text/x-mathjax-config\">\n");
@@ -73,6 +78,16 @@ public class ExportToMathJax extends ExportToLatex
         writer.append("  img { padding: 0px; display: block; max-width: 100%; }\n");
         writer.append("</style>\n");
         writer.append("</head><body>");
+
+        if (!isPropEmpty(docProp.title))
+        {
+            writer.append("\n<h1>" + docProp.title + "</h1>");
+        }
+
+        if (!isPropEmpty(docProp.description))
+        {
+            writer.append("\n<em>" + docProp.description + "</em><br>");
+        }
 
         final int n = formulaListView.getList().getChildCount();
         for (int i = 0; i < n; i++)

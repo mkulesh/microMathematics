@@ -119,6 +119,9 @@
     <string name="dialog_surface_settings_elevation">Ângulo de elevação</string>
     <string name="dialog_colormap_settings_title">Configuração do mapa de cores</string>
     <string name="dialog_colormap_settings_zlabels">Número de rótulos-Z</string>
+    <string name="dialog_document_settings_author">Autor</string>
+    <string name="dialog_document_settings_document_title">Título</string>
+    <string name="dialog_document_settings_description">Descrição</string>
     <string name="dialog_document_settings_reformat">Formatar fragmento de texto</string>
     <string name="dialog_document_settings_width_size">Comprimento da linha</string>
     <string name="dialog_document_settings_significant_digits">Dígitos significativos no resultado</string>

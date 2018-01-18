@@ -155,6 +155,9 @@
     <string name="dialog_surface_settings_elevation">Elevation angle</string>
     <string name="dialog_colormap_settings_title">Color map settings</string>
     <string name="dialog_colormap_settings_zlabels">Number of Z-labels</string>
+    <string name="dialog_document_settings_author">Author</string>
+    <string name="dialog_document_settings_document_title">Title</string>
+    <string name="dialog_document_settings_description">Description</string>
     <string name="dialog_document_settings_reformat">Format text fragment</string>
     <string name="dialog_document_settings_width_size">Line length</string>
     <string name="dialog_document_settings_significant_digits">Significant digits in result</string>

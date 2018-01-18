@@ -119,6 +119,9 @@
     <string name="dialog_surface_settings_elevation">Neigung</string>
     <string name="dialog_colormap_settings_title">Farbtabellen Einstellungen</string>
     <string name="dialog_colormap_settings_zlabels">Anzahl von Z-Bezeichnungen</string>
+    <string name="dialog_document_settings_author">Autor</string>
+    <string name="dialog_document_settings_document_title">Titel</string>
+    <string name="dialog_document_settings_description">Beschreibung</string>
     <string name="dialog_document_settings_reformat">Text formatieren</string>
     <string name="dialog_document_settings_width_size">Zeilenlänge</string>
     <string name="dialog_document_settings_significant_digits">Signifikante Ziffern im Ergebnis</string>

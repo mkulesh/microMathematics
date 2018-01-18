@@ -31,6 +31,7 @@ import com.mkulesh.micromath.fman.AdapterIf;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.Equation;
 import com.mkulesh.micromath.formula.FormulaBase;
+import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.formula.FormulaListView;
 import com.mkulesh.micromath.formula.FormulaResult;
 import com.mkulesh.micromath.formula.FormulaTerm;
@@ -160,8 +161,10 @@ public class ExportToLatex
         return exportParameters != null ? exportParameters.imageDirectory : "";
     }
 
-    public void write(FormulaListView formulaListView) throws Exception
+    public void write(FormulaList formulas) throws Exception
     {
+        final FormulaListView formulaListView = formulas.getFormulaListView();
+
         writer.append("% This is auto-generated file: do not edit!\n");
         try
         {
@@ -726,5 +729,10 @@ public class ExportToLatex
             }
         }
         writer.append(outStr);
+    }
+
+    protected boolean isPropEmpty(CharSequence prop)
+    {
+        return prop == null || prop.length() == 0;
     }
 }

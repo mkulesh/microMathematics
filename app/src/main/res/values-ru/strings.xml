@@ -119,6 +119,9 @@
     <string name="dialog_surface_settings_elevation">Угол наклона</string>
     <string name="dialog_colormap_settings_title">Цветовая схема</string>
     <string name="dialog_colormap_settings_zlabels">Количество по Z</string>
+    <string name="dialog_document_settings_author">Автор</string>
+    <string name="dialog_document_settings_document_title">Заголовок</string>
+    <string name="dialog_document_settings_description">Описание</string>
     <string name="dialog_document_settings_reformat">Форматировать текст</string>
     <string name="dialog_document_settings_width_size">Длина строки</string>
     <string name="dialog_document_settings_significant_digits">Значимые цифры в результате</string>

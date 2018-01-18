@@ -73,13 +73,13 @@ public class Exporter
                 {
                     final ExportToLatex ex = new ExportToLatex(formulas.getActivity(), stream, uri, adapter,
                             exportParameters);
-                    ex.write(formulas.getFormulaListView());
+                    ex.write(formulas);
                     break;
                 }
                 case MATHJAX:
                 {
                     final ExportToMathJax ex = new ExportToMathJax(formulas.getActivity(), stream, uri, adapter);
-                    ex.write(formulas.getFormulaListView());
+                    ex.write(formulas);
                     break;
                 }
                 }

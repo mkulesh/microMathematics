@@ -15,19 +15,62 @@
             android:gravity="left"
             android:orientation="vertical" >
 
-            <android.support.v7.widget.AppCompatCheckBox
-                style="@style/CheckBoxStyle"
-                android:id="@+id/dialog_checkbox_reformat"
-                android:text="@string/dialog_document_settings_reformat"
-                android:checked="false" />
-            
-            <com.mkulesh.micromath.widgets.HorizontalNumberPicker
-                android:id="@+id/dialog_text_width_picker"
+            <TextView
+                style="@style/DialogTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="5dp"
-                micromath:label="@string/dialog_document_settings_width_size" />
+                android:layout_gravity="left"
+                android:text="@string/dialog_document_settings_author" />
+            <LinearLayout
+                style="@style/DialogTextEditBackgroundStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/dialog_text_document_author"
+                    style="@style/DialogTextEditStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="9999"
+                    android:inputType="textMultiLine"/>
+            </LinearLayout>
+
+            <TextView
+                style="@style/DialogTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="@string/dialog_document_settings_document_title" />
+            <LinearLayout
+                style="@style/DialogTextEditBackgroundStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/dialog_text_document_title"
+                    style="@style/DialogTextEditStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="9999"
+                    android:inputType="textMultiLine"/>
+            </LinearLayout>
+
+            <TextView
+                style="@style/DialogTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="@string/dialog_document_settings_description" />
+            <LinearLayout
+                style="@style/DialogTextEditBackgroundStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/dialog_text_document_description"
+                    style="@style/DialogTextEditStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="9999"
+                    android:inputType="textMultiLine"/>
+            </LinearLayout>
 
             <View
                 style="@style/HorizontalDividerStyle"
@@ -52,7 +95,21 @@
                 android:id="@+id/dialog_checkbox_redefine_allowed"
                 android:text="@string/dialog_document_settings_redefine_allowed"
                 android:checked="false" />
-            
+
+            <android.support.v7.widget.AppCompatCheckBox
+                style="@style/CheckBoxStyle"
+                android:id="@+id/dialog_checkbox_reformat"
+                android:text="@string/dialog_document_settings_reformat"
+                android:checked="false" />
+
+            <com.mkulesh.micromath.widgets.HorizontalNumberPicker
+                android:id="@+id/dialog_text_width_picker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="5dp"
+                micromath:label="@string/dialog_document_settings_width_size" />
+
         </LinearLayout>
     </ScrollView>
 

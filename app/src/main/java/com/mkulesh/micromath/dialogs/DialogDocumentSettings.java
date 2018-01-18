@@ -19,6 +19,7 @@
 package com.mkulesh.micromath.dialogs;
 
 import android.app.Activity;
+import android.support.v7.widget.AppCompatEditText;
 import android.view.View;
 import android.widget.CheckBox;
 
@@ -31,6 +32,7 @@ public class DialogDocumentSettings extends DialogBase
 {
     private final DocumentPropertiesChangeIf changeIf;
     private final DocumentProperties documentSettings;
+    private final AppCompatEditText author, title, description;
     private final HorizontalNumberPicker textWidthPicker, significantDigitsPicker;
     private final CheckBox reformatBox, redefineAllowed;
 
@@ -42,16 +44,23 @@ public class DialogDocumentSettings extends DialogBase
         this.changeIf = changeIf;
         this.documentSettings = documentSettings;
 
-        reformatBox = ((CheckBox) findViewById(R.id.dialog_checkbox_reformat));
+        author = findViewById(R.id.dialog_text_document_author);
+        author.setText(documentSettings.author);
+        title = findViewById(R.id.dialog_text_document_title);
+        title.setText(documentSettings.title);
+        description = findViewById(R.id.dialog_text_document_description);
+        description.setText(documentSettings.description);
+
+        reformatBox = findViewById(R.id.dialog_checkbox_reformat);
         reformatBox.setOnClickListener(this);
         reformatBox.setChecked(documentSettings.reformat);
 
-        textWidthPicker = (HorizontalNumberPicker) findViewById(R.id.dialog_text_width_picker);
+        textWidthPicker = findViewById(R.id.dialog_text_width_picker);
         textWidthPicker.setValue(documentSettings.textWidth);
         textWidthPicker.minValue = 1;
         textWidthPicker.setEnabled(reformatBox.isChecked());
 
-        significantDigitsPicker = (HorizontalNumberPicker) findViewById(R.id.dialog_text_significant_digits);
+        significantDigitsPicker = findViewById(R.id.dialog_text_significant_digits);
         significantDigitsPicker.setValue(documentSettings.significantDigits);
         final int[] significantDigitsLimit = context.getResources().getIntArray(R.array.significant_digits_limit);
         if (significantDigitsLimit.length > 1)
@@ -60,7 +69,7 @@ public class DialogDocumentSettings extends DialogBase
             significantDigitsPicker.maxValue = significantDigitsLimit[1];
         }
 
-        redefineAllowed = ((CheckBox) findViewById(R.id.dialog_checkbox_redefine_allowed));
+        redefineAllowed = findViewById(R.id.dialog_checkbox_redefine_allowed);
         redefineAllowed.setChecked(documentSettings.redefineAllowed);
     }
 
@@ -80,6 +89,9 @@ public class DialogDocumentSettings extends DialogBase
             if (changeIf != null && documentSettings != null)
             {
                 boolean isChanged = false;
+                documentSettings.author = author.getText().toString();
+                documentSettings.title = title.getText().toString();
+                documentSettings.description = description.getText().toString();
                 if (documentSettings.reformat != reformatBox.isChecked())
                 {
                     documentSettings.reformat = reformatBox.isChecked();
