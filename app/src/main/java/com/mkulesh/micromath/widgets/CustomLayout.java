@@ -26,7 +26,6 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Rect;
-import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -239,7 +238,7 @@ public class CustomLayout extends LinearLayout
             }
             // Measure the child.
             measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, 0);
-            childState = childState | ViewCompat.getMeasuredState(child);
+            childState = childState | child.getMeasuredState();
         }
 
         // The second pass: compute new size
@@ -301,8 +300,8 @@ public class CustomLayout extends LinearLayout
         maxWidth = Math.max(maxWidth + getPaddingLeft() + getPaddingRight(), getSuggestedMinimumWidth());
 
         // Report our final dimensions.
-        setMeasuredDimension(ViewCompat.resolveSizeAndState(maxWidth, widthMeasureSpec, childState),
-                ViewCompat.resolveSizeAndState(maxHeight, heightMeasureSpec, childState << ViewCompat.MEASURED_HEIGHT_STATE_SHIFT));
+        setMeasuredDimension(resolveSizeAndState(maxWidth, widthMeasureSpec, childState),
+                resolveSizeAndState(maxHeight, heightMeasureSpec, childState << MEASURED_HEIGHT_STATE_SHIFT));
 
         // The third pass: resize element if necessary
         if (isAllignBelowTheNext)
