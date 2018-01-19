@@ -7,8 +7,8 @@ android {
         applicationId "com.mkulesh.micromath.plus"
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 305
-        versionName "2.16"
+        versionCode 306
+        versionName "2.16.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
