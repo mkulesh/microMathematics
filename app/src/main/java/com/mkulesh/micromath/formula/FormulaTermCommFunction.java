@@ -63,6 +63,7 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
                 R.string.formula_function_conjugate_layout),
         RE(1, R.drawable.p_function_re, R.string.math_function_re),
         IM(1, R.drawable.p_function_im, R.string.math_function_im),
+        IF(3, R.drawable.p_function_if, R.string.math_function_if),
         SIN(1, R.drawable.p_function_sin, R.string.math_function_sin),
         ASIN(1, R.drawable.p_function_asin, R.string.math_function_asin),
         SINH(1, R.drawable.p_function_sinh, R.string.math_function_sinh),
@@ -81,7 +82,6 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
         RANDOM(1, R.drawable.p_function_random, R.string.math_function_random),
         MAX(2, R.drawable.p_function_max, R.string.math_function_max),
         MIN(2, R.drawable.p_function_min, R.string.math_function_min),
-        IF(3, R.drawable.p_function_if, R.string.math_function_if),
         SQRT(1, Palette.NO_BUTTON, Palette.NO_BUTTON),
         ABS(1, Palette.NO_BUTTON, Palette.NO_BUTTON),
         SIGN(1, Palette.NO_BUTTON, Palette.NO_BUTTON);
@@ -211,14 +211,10 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
         final Resources res = context.getResources();
 
         // cat the function name
-        for (int id : BracketParser.START_BRACKET_IDS)
+        final String startBracket = res.getString(R.string.formula_function_start_bracket);
+        if (s.contains(startBracket))
         {
-            final String startBracket = res.getString(id);
-            if (s.contains(startBracket))
-            {
-                fName = s.substring(0, s.indexOf(startBracket)).trim();
-                break;
-            }
+            fName = s.substring(0, s.indexOf(startBracket)).trim();
         }
 
         // search the function name in the types array
