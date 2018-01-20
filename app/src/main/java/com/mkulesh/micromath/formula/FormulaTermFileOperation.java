@@ -80,7 +80,7 @@ public class FormulaTermFileOperation extends FormulaTermFunctionBase
         }
     }
 
-    public static FunctionType getFileOperationType(Context context, String s)
+    public static FunctionType getFunctionType(Context context, String s)
     {
         String fName = null;
         final String startBracket = context.getResources().getString(R.string.formula_function_start_bracket);
@@ -291,7 +291,7 @@ public class FormulaTermFileOperation extends FormulaTermFunctionBase
         {
             throw new Exception("cannot create FormulaTermFileOperation for invalid insertion index " + idx);
         }
-        termType = getFileOperationType(getContext(), s);
+        termType = getFunctionType(getContext(), s);
         if (termType == null)
         {
             throw new Exception("cannot create FormulaTermFileOperation for unknown function");

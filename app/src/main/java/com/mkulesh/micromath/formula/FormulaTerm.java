@@ -173,7 +173,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             final boolean enableFileOperation = (!ensureManualTrigger ||
                     (ensureManualTrigger && FormulaTermFileOperation.containsTrigger(context, s))) &&
                     (text == null || text.isFileOperationEnabled());
-            final FormulaTermFileOperation.FunctionType t = FormulaTermFileOperation.getFileOperationType(context, s);
+            final FormulaTermFileOperation.FunctionType t = FormulaTermFileOperation.getFunctionType(context, s);
             if (enableFileOperation && t != null)
             {
                 return t;
@@ -262,7 +262,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             }
         }
         // file operation
-        final FormulaTermFileOperation.FunctionType t6 = FormulaTermFileOperation.getFileOperationType(contex, code);
+        final FormulaTermFileOperation.FunctionType t6 = FormulaTermFileOperation.getFunctionType(contex, code);
         if (newValue == null && t6 != null)
         {
             // for the file operation, we do not transfer previous text
