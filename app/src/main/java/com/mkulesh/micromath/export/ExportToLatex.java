@@ -36,8 +36,8 @@ import com.mkulesh.micromath.formula.FormulaListView;
 import com.mkulesh.micromath.formula.FormulaResult;
 import com.mkulesh.micromath.formula.FormulaTerm;
 import com.mkulesh.micromath.formula.FormulaTermComparator;
-import com.mkulesh.micromath.formula.FormulaTermFunction;
-import com.mkulesh.micromath.formula.FormulaTermFunction.FunctionType;
+import com.mkulesh.micromath.formula.FormulaTermUserFunction;
+import com.mkulesh.micromath.formula.FormulaTermUserFunction.FunctionType;
 import com.mkulesh.micromath.formula.FormulaTermInterval;
 import com.mkulesh.micromath.formula.FormulaTermLoop;
 import com.mkulesh.micromath.formula.FormulaTermOperator;
@@ -445,9 +445,9 @@ public class ExportToLatex
             {
                 writeTermComparator((FormulaTermComparator) ft);
             }
-            else if (ft instanceof FormulaTermFunction)
+            else if (ft instanceof FormulaTermUserFunction)
             {
-                writeTermFunction((FormulaTermFunction) ft);
+                writeTermFunction((FormulaTermUserFunction) ft);
             }
             else if (ft instanceof FormulaTermInterval)
             {
@@ -543,9 +543,9 @@ public class ExportToLatex
         }
     }
 
-    private void writeTermFunction(FormulaTermFunction f)
+    private void writeTermFunction(FormulaTermUserFunction f)
     {
-        FormulaTermFunction.FunctionType functionType = f.getFunctionType();
+        FormulaTermUserFunction.FunctionType functionType = f.getFunctionType();
         final ArrayList<TermField> terms = f.getTerms();
         switch (functionType)
         {

@@ -39,7 +39,7 @@ import org.apache.commons.math3.util.FastMath;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class FormulaTermFunction extends FormulaTermFunctionBase
+public class FormulaTermCommFunction extends FormulaTermFunctionBase
 {
     /**
      * Supported functions
@@ -115,7 +115,7 @@ public class FormulaTermFunction extends FormulaTermFunctionBase
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.FUNCTION; }
+        public GroupType getGroupType() { return GroupType.USER_FUNCTION; }
 
         public int getShortCutId() { return shortCutId; }
 
@@ -338,7 +338,7 @@ public class FormulaTermFunction extends FormulaTermFunctionBase
      * Constructors
      *********************************************************/
 
-    public FormulaTermFunction(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public FormulaTermCommFunction(TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         onCreate(s, idx);
@@ -348,12 +348,12 @@ public class FormulaTermFunction extends FormulaTermFunctionBase
      * GUI constructors to avoid lint warning
      *********************************************************/
 
-    public FormulaTermFunction(Context context)
+    public FormulaTermCommFunction(Context context)
     {
         super();
     }
 
-    public FormulaTermFunction(Context context, AttributeSet attrs)
+    public FormulaTermCommFunction(Context context, AttributeSet attrs)
     {
         super();
     }
@@ -1013,7 +1013,7 @@ public class FormulaTermFunction extends FormulaTermFunctionBase
     @Override
     protected boolean isRemainingTermOnDelete()
     {
-        return termType == FormulaTermFunction.FunctionType.NTHRT_LAYOUT || terms.size() <= 1 || !isNewTermEnabled();
+        return termType == FormulaTermCommFunction.FunctionType.NTHRT_LAYOUT || terms.size() <= 1 || !isNewTermEnabled();
     }
 
     @Override

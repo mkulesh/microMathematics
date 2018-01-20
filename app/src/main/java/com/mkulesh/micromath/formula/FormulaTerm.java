@@ -157,7 +157,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                 new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
         addToPalette(context, FormulaTermOperator.OperatorType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, FormulaTermFunction.FunctionType.values(), paletteLayout,
+        addToPalette(context, FormulaTermUserFunction.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
         addToPalette(context, FormulaTermFileOperation.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
@@ -198,8 +198,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // TermFunction has manual trigger (like "(" or "["): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && FormulaTermFunction.containsTrigger(context, s));
-            final FormulaTermFunction.FunctionType t = FormulaTermFunction.getFunctionType(context, s);
+                    (ensureManualTrigger && FormulaTermUserFunction.containsTrigger(context, s));
+            final FormulaTermUserFunction.FunctionType t = FormulaTermUserFunction.getFunctionType(context, s);
             if (enableFunction && t != null)
             {
                 return t;
@@ -240,8 +240,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             return new FormulaTermComparator(termField, layout, s, textIndex);
         case FILE_OPERATION:
             return new FormulaTermFileOperation(termField, layout, s, textIndex);
-        case FUNCTION:
-            return new FormulaTermFunction(termField, layout, s, textIndex);
+        case USER_FUNCTION:
+            return new FormulaTermUserFunction(termField, layout, s, textIndex);
         case INTERVAL:
             return new FormulaTermInterval(termField, layout, s, textIndex);
         case LOOP:
@@ -281,14 +281,14 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                 newValue = f.getLowerCaseName() +
                         contex.getResources().getString(R.string.formula_function_start_bracket);
                 break;
-            case FUNCTION:
+            case USER_FUNCTION:
                 // for a function, we add operator code at the beginning of line in order to move
                 // existing text in the function argument term
-                final FormulaTermFunction.FunctionType t3 = (FormulaTermFunction.FunctionType)f;
-                newValue = (t3 == FormulaTermFunction.FunctionType.FUNCTION_LINK) ? code : f.getLowerCaseName();
+                final FormulaTermUserFunction.FunctionType t3 = (FormulaTermUserFunction.FunctionType)f;
+                newValue = (t3 == FormulaTermUserFunction.FunctionType.FUNCTION_LINK) ? code : f.getLowerCaseName();
                 if (prevText != null)
                 {
-                    if (t3 != FormulaTermFunction.FunctionType.FUNCTION_LINK)
+                    if (t3 != FormulaTermUserFunction.FunctionType.FUNCTION_LINK)
                     {
                         newValue += contex.getResources().getString(R.string.formula_function_start_bracket);
                     }
