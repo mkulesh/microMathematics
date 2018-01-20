@@ -187,7 +187,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // FileOperation has manual trigger ("("): is has to be checked
             final boolean enableFileOperation = (!ensureManualTrigger ||
-                    (ensureManualTrigger && FormulaTermFileOperation.containsTrigger(context, s))) &&
+                    (ensureManualTrigger && FormulaTermFunctionBase.containsGeneralTrigger(context, s))) &&
                     (text == null || text.isFileOperationEnabled());
             final FormulaTermFileOperation.FunctionType t = FormulaTermFileOperation.getFunctionType(context, s);
             if (enableFileOperation && t != null)

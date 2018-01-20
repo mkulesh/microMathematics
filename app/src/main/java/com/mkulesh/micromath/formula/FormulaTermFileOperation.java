@@ -19,7 +19,6 @@
 package com.mkulesh.micromath.formula;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
@@ -29,7 +28,6 @@ import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.widgets.CustomEditText;
-import com.mkulesh.micromath.widgets.CustomTextView;
 
 import org.apache.commons.math3.complex.Complex;
 
@@ -100,11 +98,6 @@ public class FormulaTermFileOperation extends FormulaTermFunctionBase
             }
         }
         return null;
-    }
-
-    public static boolean containsTrigger(Context context, String s)
-    {
-        return s.contains(context.getResources().getString(R.string.formula_function_start_bracket));
     }
 
     /**
@@ -232,35 +225,6 @@ public class FormulaTermFileOperation extends FormulaTermFunctionBase
         }
 
         return errorMsg == null;
-    }
-
-    @Override
-    protected CustomTextView initializeSymbol(CustomTextView v)
-    {
-        final Resources res = getContext().getResources();
-        if (v.getText() != null)
-        {
-            String t = v.getText().toString();
-            if (t.equals(res.getString(R.string.formula_operator_key)))
-            {
-                v.prepare(CustomTextView.SymbolType.TEXT,
-                        getFormulaRoot().getFormulaList().getActivity(), this);
-                v.setText(getTermCode());
-            }
-            else if (t.equals(res.getString(R.string.formula_left_bracket_key)))
-            {
-                v.prepare(CustomTextView.SymbolType.LEFT_BRACKET,
-                        getFormulaRoot().getFormulaList().getActivity(), this);
-                v.setText("."); // this text defines view width/height
-            }
-            else if (t.equals(res.getString(R.string.formula_right_bracket_key)))
-            {
-                v.prepare(CustomTextView.SymbolType.RIGHT_BRACKET,
-                        getFormulaRoot().getFormulaList().getActivity(), this);
-                v.setText("."); // this text defines view width/height
-            }
-        }
-        return v;
     }
 
     @Override
