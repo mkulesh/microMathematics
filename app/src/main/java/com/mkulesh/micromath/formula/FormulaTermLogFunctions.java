@@ -21,18 +21,13 @@ package com.mkulesh.micromath.formula;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.DocumentProperties;
-import com.mkulesh.micromath.widgets.CustomEditText;
-import com.mkulesh.micromath.widgets.CustomTextView;
-import com.mkulesh.micromath.widgets.ScaledDimensions;
 
-import org.apache.commons.math3.util.CombinatoricsUtils;
 import org.apache.commons.math3.util.FastMath;
 
 import java.util.Locale;
@@ -49,36 +44,19 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
      */
     public enum FunctionType implements FormulaTermTypeIf
     {
-        POWER(2, R.drawable.p_function_power, R.string.math_function_power,
-                R.string.formula_function_power),
-        SQRT_LAYOUT(1, R.drawable.p_function_sqrt, R.string.math_function_sqrt,
-                R.string.formula_function_sqrt_layout),
-        NTHRT_LAYOUT(2, R.drawable.p_function_nthrt, R.string.math_function_nthrt,
-                R.string.formula_function_nthrt_layout),
-        FACTORIAL(1, R.drawable.p_function_factorial, R.string.math_function_factorial,
-                R.string.formula_function_factorial_layout),
-        ABS_LAYOUT(1, R.drawable.p_function_abs, R.string.math_function_abs,
-                R.string.formula_function_abs_layout),
-        CONJUGATE_LAYOUT(1, R.drawable.p_function_conjugate, R.string.math_function_conjugate,
-                R.string.formula_function_conjugate_layout),
-        RE(1, R.drawable.p_function_re, R.string.math_function_re),
-        IM(1, R.drawable.p_function_im, R.string.math_function_im),
-        IF(3, R.drawable.p_function_if, R.string.math_function_if),
         SIN(1, R.drawable.p_function_sin, R.string.math_function_sin),
         ASIN(1, R.drawable.p_function_asin, R.string.math_function_asin),
-        SINH(1, R.drawable.p_function_sinh, R.string.math_function_sinh),
         COS(1, R.drawable.p_function_cos, R.string.math_function_cos),
         ACOS(1, R.drawable.p_function_acos, R.string.math_function_acos),
-        COSH(1, R.drawable.p_function_cosh, R.string.math_function_cosh),
         TAN(1, R.drawable.p_function_tan, R.string.math_function_tan),
         ATAN(1, R.drawable.p_function_atan, R.string.math_function_atan),
         ATAN2(2, R.drawable.p_function_atan2, R.string.math_function_atan2),
-        TANH(1, R.drawable.p_function_tanh, R.string.math_function_tanh),
         EXP(1, R.drawable.p_function_exp, R.string.math_function_exp),
         LN(1, R.drawable.p_function_ln, R.string.math_function_ln),
         LOG10(1, R.drawable.p_function_log10, R.string.math_function_log10),
-        SQRT(1, Palette.NO_BUTTON, Palette.NO_BUTTON),
-        ABS(1, Palette.NO_BUTTON, Palette.NO_BUTTON);
+        SINH(1, R.drawable.p_function_sinh, R.string.math_function_sinh),
+        COSH(1, R.drawable.p_function_cosh, R.string.math_function_cosh),
+        TANH(1, R.drawable.p_function_tanh, R.string.math_function_tanh);
 
         private final int argNumber;
         private final int imageId;
@@ -100,7 +78,7 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.COMM_FUNCTION; }
+        public GroupType getGroupType() { return GroupType.LOG_FUNCTION; }
 
         public int getShortCutId() { return shortCutId; }
 
@@ -122,44 +100,6 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
         public String getLowerCaseName()
         {
             return lowerCaseName;
-        }
-    }
-
-    /**
-     * Some functions can be triggered from keyboard. This enumeration defines these triggers
-     */
-    private enum Trigger
-    {
-        GENERAL(null, true),
-        ABS(FunctionType.ABS_LAYOUT, true),
-        SQRT(FunctionType.SQRT_LAYOUT, true),
-        POWER(FunctionType.POWER, false),
-        NTHRT(FunctionType.NTHRT_LAYOUT, true),
-        FACTORIAL(FunctionType.FACTORIAL, false),
-        CONJUGATE(FunctionType.CONJUGATE_LAYOUT, false);
-
-        private final FunctionType functionType;
-        private final boolean isBeforeText;
-
-        Trigger(FunctionType functionType, boolean isBeforeText)
-        {
-            this.functionType = functionType;
-            this.isBeforeText = isBeforeText;
-        }
-
-        public int getCodeId()
-        {
-            return functionType != null? functionType.getShortCutId() : R.string.formula_function_start_bracket;
-        }
-
-        public FunctionType getFunctionType()
-        {
-            return functionType;
-        }
-
-        public boolean isBeforeText()
-        {
-            return isBeforeText;
         }
     }
 
@@ -235,35 +175,14 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
             }
         }
 
-        // if function is not yet found, check the trigger
-        for (Trigger t : Trigger.values())
-        {
-            if (t.getFunctionType() != null && s.contains(res.getString(t.getCodeId())))
-            {
-                return t.getFunctionType();
-            }
-        }
-
         return null;
-    }
-
-    public static boolean containsTrigger(Context context, String s)
-    {
-        for (Trigger t : Trigger.values())
-        {
-            if (s.contains(context.getResources().getString(t.getCodeId())))
-            {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
      * Private attributes
      */
     // Attention: this is not thread-safety declaration!
-    private final CalculatedValue a0derVal = new CalculatedValue(), a1derVal = new CalculatedValue();
+    private final CalculatedValue a0derVal = new CalculatedValue();
 
     /*********************************************************
      * Constructors
@@ -305,18 +224,7 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
     @Override
     protected String getFunctionLabel()
     {
-        switch (getFunctionType())
-        {
-        case POWER:
-        case SQRT_LAYOUT:
-        case NTHRT_LAYOUT:
-        case FACTORIAL:
-        case ABS_LAYOUT:
-        case CONJUGATE_LAYOUT:
-            return "";
-        default:
-            return termType.getLowerCaseName();
-        }
+        return termType.getLowerCaseName();
     }
 
     @Override
@@ -332,8 +240,6 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
             final CalculatedValue a0 = argVal[0];
             switch (getFunctionType())
             {
-            case POWER:
-                return outValue.pow(a0, argVal[1]);
             case SIN:
                 return outValue.sin(a0);
             case ASIN:
@@ -370,43 +276,6 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
                 return outValue.log(a0);
             case LOG10:
                 return outValue.log10(a0);
-
-            case SQRT:
-            case SQRT_LAYOUT:
-                return outValue.sqrt(a0);
-            case NTHRT_LAYOUT:
-                return outValue.nthRoot(argVal[1], a0.getInteger());
-
-            case ABS:
-            case ABS_LAYOUT:
-                return outValue.abs(a0);
-            case CONJUGATE_LAYOUT:
-                return outValue.conj(a0);
-            case RE:
-                return outValue.setValue(a0.getReal());
-            case IM:
-                return outValue.setValue(a0.isComplex() ? a0.getImaginary() : 0.0);
-
-            case IF:
-                if (a0.isComplex())
-                {
-                    return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
-                }
-                return outValue.assign((a0.getReal() > 0) ? argVal[1] : argVal[2]);
-
-            case FACTORIAL:
-                if (a0.isComplex())
-                {
-                    return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
-                }
-                try
-                {
-                    return outValue.setValue(CombinatoricsUtils.factorialDouble((int) a0.getReal()));
-                }
-                catch (Exception e)
-                {
-                    return outValue.invalidate(CalculatedValue.ErrorType.NOT_A_NUMBER);
-                }
             }
         }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
@@ -430,7 +299,6 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
         switch (getFunctionType())
         {
         // for these functions, derivative can be calculated analytically
-        case POWER:
         case SIN:
         case ASIN:
         case SINH:
@@ -443,30 +311,10 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
         case EXP:
         case LN:
         case LOG10:
-        case SQRT:
-        case SQRT_LAYOUT:
-        case ABS:
-        case ABS_LAYOUT:
-        case RE:
-        case IM:
             retValue = argsProp;
-            break;
-        // for this function, derivative depends on the function itself
-        case NTHRT_LAYOUT:
-            // n-th root is only differentiable if the power does not depend on the given argument
-            retValue = argsProp;
-            if (retValue != DifferentiableType.INDEPENDENT)
-            {
-                final DifferentiableType powValue = DifferentiableType.values()[terms.get(0).isDifferentiable(var)
-                        .ordinal()];
-                retValue = (powValue == DifferentiableType.INDEPENDENT) ? retValue : DifferentiableType.NONE;
-            }
             break;
         // these functions are not differentiable if contain the given argument
         case ATAN2:
-        case IF:
-        case FACTORIAL:
-        case CONJUGATE_LAYOUT:
             retValue = (argsProp == DifferentiableType.INDEPENDENT) ? DifferentiableType.INDEPENDENT
                     : DifferentiableType.NONE;
             break;
@@ -496,47 +344,6 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
             terms.get(0).getDerivativeValue(var, thread, a0derVal);
             switch (getFunctionType())
             {
-            // for these functions, derivative can be calculated analytically
-            case POWER:
-            {
-                final CalculatedValue a1 = argVal[1];
-                terms.get(1).getDerivativeValue(var, thread, a1derVal);
-                if (a0derVal.isZero() && a1derVal.isZero())
-                {
-                    // the case a^a
-                    return outValue.setValue(0.0);
-                }
-                else if (!a0derVal.isZero() && a1derVal.isZero())
-                {
-                    // the case f^a: result = g * f^(g-1) * a0derVal;
-                    CalculatedValue tmp = new CalculatedValue();
-                    tmp.subtract(a1, CalculatedValue.ONE);
-                    tmp.pow(a0, tmp);
-                    outValue.multiply(a1, tmp);
-                    return outValue.multiply(outValue, a0derVal);
-                }
-                else if (a0derVal.isZero() && !a1derVal.isZero())
-                {
-                    // the case a^g: result = f^g * log(f) * a1derVal;
-                    CalculatedValue tmp = new CalculatedValue();
-                    tmp.log(a0);
-                    outValue.pow(a0, a1);
-                    outValue.multiply(outValue, tmp);
-                    return outValue.multiply(outValue, a1derVal);
-                }
-                else
-                {
-                    // case f^g: result = f^g * {a0derVal * g / f  +  a1derVal * log(f)}
-                    CalculatedValue tmp1 = new CalculatedValue(), tmp2 = new CalculatedValue();
-                    tmp1.multiply(a0derVal, a1);
-                    tmp1.divide(tmp1, a0);
-                    tmp2.log(a0);
-                    tmp2.multiply(a1derVal, tmp2);
-                    tmp1.add(tmp1, tmp2);
-                    outValue.pow(a0, a1);
-                    return outValue.multiply(outValue, tmp1);
-                }
-            }
             case SIN: // cos(a0) * a0'
                 outValue.cos(a0);
                 return outValue.multiply(outValue, a0derVal);
@@ -588,39 +395,8 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
                 outValue.multiply(FastMath.log(10.0));
                 outValue.divide(CalculatedValue.ONE, outValue);
                 return outValue.multiply(outValue, a0derVal);
-            case SQRT:
-            case SQRT_LAYOUT: // (1.0 / (2.0 * √a0)) * a0'
-                outValue.sqrt(a0);
-                outValue.multiply(2.0);
-                outValue.divide(CalculatedValue.ONE, outValue);
-                return outValue.multiply(outValue, a0derVal);
-            case NTHRT_LAYOUT: // ( n√ a1 )' = 1 / ( n n√ a1^(n-1) ) * a1'
-            {
-                final int n = a0.getInteger();
-                terms.get(1).getDerivativeValue(var, thread, a1derVal);
-                outValue.setValue(n - 1);
-                outValue.pow(argVal[1], outValue);
-                outValue.nthRoot(outValue, n);
-                outValue.multiply((double) n);
-                return outValue.divide(a1derVal, outValue);
-            }
-            case ABS:
-            case ABS_LAYOUT: // not defined for complex number
-                if (a0.isComplex())
-                {
-                    return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
-                }
-                return outValue.setValue((a0.getReal() >= 0 ? 1.0 : -1.0) * a0derVal.getReal());
-            case RE:
-                return outValue.setValue(a0derVal.getReal());
-            case IM:
-                return outValue.setValue(a0derVal.isComplex() ? a0derVal.getImaginary() : 0.0);
-
             // these functions are not differentiable if contain the given argument
             case ATAN2:
-            case IF:
-            case FACTORIAL:
-            case CONJUGATE_LAYOUT:
                 DifferentiableType argsProp = DifferentiableType.INDEPENDENT;
                 for (int i = 0; i < terms.size(); i++)
                 {
@@ -640,143 +416,6 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
     }
 
-    @Override
-    protected CustomTextView initializeSymbol(CustomTextView v)
-    {
-        final Resources res = getContext().getResources();
-        if (v.getText() != null)
-        {
-            String t = v.getText().toString();
-            if (t.equals(res.getString(R.string.formula_operator_key)))
-            {
-                v.prepare(CustomTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
-                switch (getFunctionType())
-                {
-                case POWER:
-                    v.setText("_");
-                    break;
-                case FACTORIAL:
-                    v.setText(res.getString(R.string.formula_function_factorial_layout));
-                    break;
-                case CONJUGATE_LAYOUT:
-                    v.prepare(CustomTextView.SymbolType.HOR_LINE, getFormulaRoot().getFormulaList().getActivity(), this);
-                    v.setText("_");
-                    break;
-                default:
-                    v.setText(getFunctionLabel());
-                    break;
-                }
-                functionTerm = v;
-            }
-            else if (t.equals(res.getString(R.string.formula_left_bracket_key)))
-            {
-                CustomTextView.SymbolType s = (termType == FunctionType.ABS_LAYOUT) ? CustomTextView.SymbolType.VERT_LINE
-                        : CustomTextView.SymbolType.LEFT_BRACKET;
-                v.prepare(s, getFormulaRoot().getFormulaList().getActivity(), this);
-                v.setText("."); // this text defines view width/height
-            }
-            else if (t.equals(res.getString(R.string.formula_right_bracket_key)))
-            {
-                CustomTextView.SymbolType s = (termType == FunctionType.ABS_LAYOUT) ? CustomTextView.SymbolType.VERT_LINE
-                        : CustomTextView.SymbolType.RIGHT_BRACKET;
-                v.prepare(s, getFormulaRoot().getFormulaList().getActivity(), this);
-                v.setText("."); // this text defines view width/height
-            }
-        }
-        return v;
-    }
-
-    @Override
-    protected CustomEditText initializeTerm(CustomEditText v, LinearLayout l)
-    {
-        if (v.getText() != null)
-        {
-            final String val = v.getText().toString();
-            if (val.equals(getContext().getResources().getString(R.string.formula_arg_term_key)))
-            {
-                final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 0);
-                t.bracketsType = (termType == FunctionType.FACTORIAL || termType == FunctionType.CONJUGATE_LAYOUT) ? TermField.BracketsType.ALWAYS
-                        : TermField.BracketsType.NEVER;
-            }
-            else if (termType == FunctionType.NTHRT_LAYOUT
-                    && val.equals(getContext().getResources().getString(R.string.formula_left_term_key)))
-            {
-                final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 3);
-                t.bracketsType = TermField.BracketsType.NEVER;
-            }
-            else if (termType == FunctionType.NTHRT_LAYOUT
-                    && val.equals(getContext().getResources().getString(R.string.formula_right_term_key)))
-            {
-                final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 0);
-                t.bracketsType = TermField.BracketsType.NEVER;
-            }
-            else if (termType == FunctionType.POWER
-                    && val.equals(getContext().getResources().getString(R.string.formula_left_term_key)))
-            {
-                final TermField t = addTerm(getFormulaRoot(), l, v, this, false);
-                t.bracketsType = TermField.BracketsType.ALWAYS;
-            }
-            else if (termType == FunctionType.POWER
-                    && val.equals(getContext().getResources().getString(R.string.formula_right_term_key)))
-            {
-                final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 3);
-                t.bracketsType = TermField.BracketsType.NEVER;
-            }
-        }
-        return v;
-    }
-
-    @Override
-    public void updateTextSize()
-    {
-        super.updateTextSize();
-        final int hsp = getFormulaList().getDimen().get(ScaledDimensions.Type.HOR_SYMBOL_PADDING);
-        if (functionTerm != null)
-        {
-            if (termType == FunctionType.SQRT_LAYOUT || termType == FunctionType.NTHRT_LAYOUT)
-            {
-                functionTerm.setWidth(getFormulaList().getDimen().get(ScaledDimensions.Type.SMALL_SYMBOL_SIZE));
-                functionTerm.setPadding(0, 0, 0, 0);
-            }
-            else if (termType == FunctionType.CONJUGATE_LAYOUT)
-            {
-                functionTerm.setPadding(hsp, 0, hsp, 0);
-            }
-            else
-            {
-                functionTerm.setPadding(0, 0, hsp, 0);
-            }
-        }
-        if (termType == FunctionType.NTHRT_LAYOUT)
-        {
-            View nthrtPoverLayout = layout.findViewById(R.id.nthrt_power_layout);
-            if (nthrtPoverLayout != null)
-            {
-                nthrtPoverLayout.setPadding(hsp, 0, hsp, 0);
-            }
-        }
-    }
-
-    @Override
-    public TermField getArgumentTerm()
-    {
-        if (termType == FunctionType.NTHRT_LAYOUT)
-        {
-            return terms.get(1);
-        }
-        return super.getArgumentTerm();
-    }
-
-    /*********************************************************
-     * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
-
-    @Override
-    protected boolean isRemainingTermOnDelete()
-    {
-        return termType == FormulaTermLogFunctions.FunctionType.NTHRT_LAYOUT || terms.size() <= 1 || !isNewTermEnabled();
-    }
-
     /*********************************************************
      * FormulaTermFunction-specific methods
      *********************************************************/
@@ -788,101 +427,13 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
     {
         if (idx < 0 || idx > layout.getChildCount())
         {
-            throw new Exception("cannot create CommFunction for invalid insertion index " + idx);
+            throw new Exception("cannot create LogFunction for invalid insertion index " + idx);
         }
         termType = getFunctionType(getContext(), s);
         if (termType == null)
         {
-            throw new Exception("cannot create CommFunction for unknown function");
+            throw new Exception("cannot create LogFunction for unknown function");
         }
-        int argNumber = getFunctionType().getArgNumber();
-        switch (getFunctionType())
-        {
-        case SQRT_LAYOUT:
-            inflateElements(R.layout.formula_function_sqrt, true);
-            break;
-        case NTHRT_LAYOUT:
-            inflateElements(R.layout.formula_function_nthrt, true);
-            break;
-        case FACTORIAL:
-            inflateElements(R.layout.formula_function_factorial, true);
-            break;
-        case CONJUGATE_LAYOUT:
-            inflateElements(R.layout.formula_function_conjugate, true);
-            break;
-        case ABS_LAYOUT:
-            inflateElements(R.layout.formula_function_noname, true);
-            break;
-        case POWER:
-            inflateElements(R.layout.formula_function_pow, true);
-            break;
-        default:
-            inflateElements(R.layout.formula_function_named, true);
-            break;
-        }
-        initializeElements(idx);
-        if (terms.isEmpty())
-        {
-            throw new Exception("argument list is empty");
-        }
-
-        initializeMainLayout();
-
-        // add additional arguments
-        while (terms.size() < argNumber)
-        {
-            TermField newTerm = addArgument(terms.get(terms.size() - 1), R.layout.formula_function_add_arg, 0);
-            if (newTerm == null)
-            {
-                break;
-            }
-        }
-        if (getFunctionType().getArgNumber() > 0 && terms.size() != getFunctionType().getArgNumber())
-        {
-            throw new Exception("invalid size for argument list");
-        }
-
-        // special text properties
-        if (termType == FunctionType.IF)
-        {
-            terms.get(0).getEditText().setComparatorEnabled(true);
-        }
-
-        // set texts for left and right parts (in editing mode only)
-        for (int brIdx = 0; brIdx < BracketParser.START_BRACKET_IDS.length; brIdx++)
-        {
-            final String startBracket = getContext().getResources().getString(BracketParser.START_BRACKET_IDS[brIdx]);
-            final String endBracket = getContext().getResources().getString(BracketParser.END_BRACKET_IDS[brIdx]);
-            if (s.contains(startBracket) && s.endsWith(endBracket))
-            {
-                s = s.substring(0, s.indexOf(endBracket)).trim();
-            }
-        }
-        for (Trigger t : Trigger.values())
-        {
-            String opCode = getContext().getResources().getString(t.getCodeId());
-            final int opPosition = s.indexOf(opCode);
-            final TermField term = getArgumentTerm();
-            if (opPosition >= 0 && term != null)
-            {
-                try
-                {
-                    if (t.isBeforeText())
-                    {
-                        term.setText(s.subSequence(opPosition + opCode.length(), s.length()));
-                    }
-                    else
-                    {
-                        term.setText(s.subSequence(0, opPosition));
-                    }
-                    isContentValid(ValidationPassType.VALIDATE_SINGLE_FORMULA);
-                }
-                catch (Exception ex)
-                {
-                    // nothing to do
-                }
-                break;
-            }
-        }
+        createGeneralFunction(R.layout.formula_function_named, s, getFunctionType().getArgNumber(), idx);
     }
 }

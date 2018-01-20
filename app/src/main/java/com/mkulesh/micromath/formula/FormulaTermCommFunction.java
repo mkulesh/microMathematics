@@ -27,13 +27,11 @@ import android.widget.LinearLayout;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
-import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
 
 import org.apache.commons.math3.util.CombinatoricsUtils;
-import org.apache.commons.math3.util.FastMath;
 
 import java.util.Locale;
 
@@ -64,19 +62,6 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
         RE(1, R.drawable.p_function_re, R.string.math_function_re),
         IM(1, R.drawable.p_function_im, R.string.math_function_im),
         IF(3, R.drawable.p_function_if, R.string.math_function_if),
-        SIN(1, R.drawable.p_function_sin, R.string.math_function_sin),
-        ASIN(1, R.drawable.p_function_asin, R.string.math_function_asin),
-        SINH(1, R.drawable.p_function_sinh, R.string.math_function_sinh),
-        COS(1, R.drawable.p_function_cos, R.string.math_function_cos),
-        ACOS(1, R.drawable.p_function_acos, R.string.math_function_acos),
-        COSH(1, R.drawable.p_function_cosh, R.string.math_function_cosh),
-        TAN(1, R.drawable.p_function_tan, R.string.math_function_tan),
-        ATAN(1, R.drawable.p_function_atan, R.string.math_function_atan),
-        ATAN2(2, R.drawable.p_function_atan2, R.string.math_function_atan2),
-        TANH(1, R.drawable.p_function_tanh, R.string.math_function_tanh),
-        EXP(1, R.drawable.p_function_exp, R.string.math_function_exp),
-        LN(1, R.drawable.p_function_ln, R.string.math_function_ln),
-        LOG10(1, R.drawable.p_function_log10, R.string.math_function_log10),
         SQRT(1, Palette.NO_BUTTON, Palette.NO_BUTTON),
         ABS(1, Palette.NO_BUTTON, Palette.NO_BUTTON);
 
@@ -163,40 +148,6 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
         }
     }
 
-    /**
-     * Some functions are obsolete. This enumeration defines its back-compatibility
-     */
-    private enum ObsoleteCodes
-    {
-        LOG(1, FunctionType.LN);
-
-        private final int lastDocumentVersion;
-        private final FunctionType functionType;
-        private final String lowerCaseName;
-
-        ObsoleteCodes(int lastDocumentVersion, FunctionType functionType)
-        {
-            this.lastDocumentVersion = lastDocumentVersion;
-            this.functionType = functionType;
-            this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
-        }
-
-        public int getLastDocumentVersion()
-        {
-            return lastDocumentVersion;
-        }
-
-        public FunctionType getFunctionType()
-        {
-            return functionType;
-        }
-
-        public String getLowerCaseName()
-        {
-            return lowerCaseName;
-        }
-    }
-
     public static FunctionType getFunctionType(Context context, String s)
     {
         String fName = null;
@@ -219,19 +170,6 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
             if (fName != null && fName.equals(f.getLowerCaseName()))
             {
                 return f;
-            }
-        }
-
-        // Compatibility mode: search the function name in the array of obsolete functions
-        if (DocumentProperties.getDocumentVersion() != DocumentProperties.LATEST_DOCUMENT_VERSION)
-        {
-            for (ObsoleteCodes obs : ObsoleteCodes.values())
-            {
-                if (DocumentProperties.getDocumentVersion() <= obs.getLastDocumentVersion() &&
-                        s.equals(obs.getLowerCaseName()))
-                {
-                    return obs.getFunctionType();
-                }
             }
         }
 
@@ -334,42 +272,6 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
             {
             case POWER:
                 return outValue.pow(a0, argVal[1]);
-            case SIN:
-                return outValue.sin(a0);
-            case ASIN:
-                return outValue.asin(a0);
-            case SINH:
-                return outValue.sinh(a0);
-
-            case COS:
-                return outValue.cos(a0);
-            case ACOS:
-                return outValue.acos(a0);
-            case COSH:
-                return outValue.cosh(a0);
-
-            case TAN:
-                return outValue.tan(a0);
-            case ATAN:
-                return outValue.atan(a0);
-            case ATAN2:
-            {
-                final CalculatedValue a1 = argVal[1];
-                if (a0.isComplex() || a1.isComplex())
-                {
-                    return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
-                }
-                return outValue.setValue(FastMath.atan2(a0.getReal(), a1.getReal()));
-            }
-            case TANH:
-                return outValue.tanh(a0);
-
-            case EXP:
-                return outValue.exp(a0);
-            case LN:
-                return outValue.log(a0);
-            case LOG10:
-                return outValue.log10(a0);
 
             case SQRT:
             case SQRT_LAYOUT:
@@ -431,18 +333,6 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
         {
         // for these functions, derivative can be calculated analytically
         case POWER:
-        case SIN:
-        case ASIN:
-        case SINH:
-        case COS:
-        case ACOS:
-        case COSH:
-        case TAN:
-        case ATAN:
-        case TANH:
-        case EXP:
-        case LN:
-        case LOG10:
         case SQRT:
         case SQRT_LAYOUT:
         case ABS:
@@ -463,7 +353,6 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
             }
             break;
         // these functions are not differentiable if contain the given argument
-        case ATAN2:
         case IF:
         case FACTORIAL:
         case CONJUGATE_LAYOUT:
@@ -537,57 +426,7 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
                     return outValue.multiply(outValue, tmp1);
                 }
             }
-            case SIN: // cos(a0) * a0'
-                outValue.cos(a0);
-                return outValue.multiply(outValue, a0derVal);
-            case ASIN: // (1.0 / sqrt(1.0 - a0 * a0)) * a0'
-                outValue.multiply(a0, a0);
-                outValue.subtract(CalculatedValue.ONE, outValue);
-                outValue.sqrt(outValue);
-                outValue.divide(CalculatedValue.ONE, outValue);
-                return outValue.multiply(outValue, a0derVal);
-            case SINH: // cosh(a0) * a0'
-                outValue.cosh(a0);
-                return outValue.multiply(outValue, a0derVal);
-            case COS: // -1 * sin(a0) * a0'
-                outValue.sin(a0);
-                outValue.multiply(-1.0);
-                return outValue.multiply(outValue, a0derVal);
-            case ACOS: // (-1.0 / sqrt(1.0 - a0 * a0)) * a0'
-                outValue.multiply(a0, a0);
-                outValue.subtract(CalculatedValue.ONE, outValue);
-                outValue.sqrt(outValue);
-                outValue.divide(CalculatedValue.MINUS_ONE, outValue);
-                return outValue.multiply(outValue, a0derVal);
-            case COSH: // sinh(a0) * a0'
-                outValue.sinh(a0);
-                return outValue.multiply(outValue, a0derVal);
-            case TAN: // (1.0 + tan(a0) * tan(a0)) * a0'
-                outValue.tan(a0);
-                outValue.multiply(outValue, outValue);
-                outValue.add(CalculatedValue.ONE, outValue);
-                return outValue.multiply(outValue, a0derVal);
-            case ATAN: // (1.0 / (1.0 + a0 * a0)) * a0'
-                outValue.multiply(a0, a0);
-                outValue.add(CalculatedValue.ONE, outValue);
-                outValue.divide(CalculatedValue.ONE, outValue);
-                return outValue.multiply(outValue, a0derVal);
-            case TANH: // (1.0 / (cosh(a0) * cosh(a0))) * a0'
-                outValue.cosh(a0);
-                outValue.multiply(outValue, outValue);
-                outValue.divide(CalculatedValue.ONE, outValue);
-                return outValue.multiply(outValue, a0derVal);
-            case EXP: // exp(a0) * a0'
-                outValue.exp(a0);
-                return outValue.multiply(outValue, a0derVal);
-            case LN: // (1.0 / a0) * a0'
-                outValue.divide(CalculatedValue.ONE, a0);
-                return outValue.multiply(outValue, a0derVal);
-            case LOG10: // (1.0 / (a0 * FastMath.log(10.0))) * a0'
-                outValue.assign(a0);
-                outValue.multiply(FastMath.log(10.0));
-                outValue.divide(CalculatedValue.ONE, outValue);
-                return outValue.multiply(outValue, a0derVal);
+
             case SQRT:
             case SQRT_LAYOUT: // (1.0 / (2.0 * √a0)) * a0'
                 outValue.sqrt(a0);
@@ -617,7 +456,6 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
                 return outValue.setValue(a0derVal.isComplex() ? a0derVal.getImaginary() : 0.0);
 
             // these functions are not differentiable if contain the given argument
-            case ATAN2:
             case IF:
             case FACTORIAL:
             case CONJUGATE_LAYOUT:

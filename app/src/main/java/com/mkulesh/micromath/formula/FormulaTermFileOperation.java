@@ -27,7 +27,6 @@ import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
-import com.mkulesh.micromath.widgets.CustomEditText;
 
 import org.apache.commons.math3.complex.Complex;
 
