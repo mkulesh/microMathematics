@@ -166,6 +166,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
         addToPalette(context, FormulaTermCommFunction.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
+        addToPalette(context, FormulaTermNumberFunctions.FunctionType.values(), paletteLayout,
+                new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
         addToPalette(context, FormulaTermFileOperation.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
         addToPalette(context, FormulaTermLoop.LoopType.values(), paletteLayout,
@@ -192,7 +194,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             }
         }
         {
-            // FileOperation has manual trigger ("("): is has to be checked
+            // This function group has manual trigger ("("): is has to be checked
             final boolean enableFileOperation = (!ensureManualTrigger ||
                     (ensureManualTrigger && FormulaTermFunctionBase.containsGeneralTrigger(context, s))) &&
                     (text == null || text.isFileOperationEnabled());
@@ -203,7 +205,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             }
         }
         {
-            // CommFunction has manual trigger (like "("): is has to be checked
+            // This function group has manual trigger (like "("): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
                     (ensureManualTrigger && FormulaTermCommFunction.containsTrigger(context, s));
             final FormulaTermCommFunction.FunctionType t = FormulaTermCommFunction.getFunctionType(context, s);
@@ -213,7 +215,17 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             }
         }
         {
-            // UserFunction has manual trigger (like "(" or "["): is has to be checked
+            // This function group has manual trigger ("("): is has to be checked
+            final boolean enableFunction = !ensureManualTrigger ||
+                    (ensureManualTrigger && FormulaTermFunctionBase.containsGeneralTrigger(context, s));
+            final FormulaTermNumberFunctions.FunctionType t = FormulaTermNumberFunctions.getFunctionType(context, s);
+            if (enableFunction && t != null)
+            {
+                return t;
+            }
+        }
+        {
+            // This function group has manual trigger (like "(" or "["): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
                     (ensureManualTrigger && FormulaTermUserFunction.containsTrigger(context, s));
             final FormulaTermUserFunction.FunctionType t = FormulaTermUserFunction.getFunctionType(context, s);
@@ -259,6 +271,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             return new FormulaTermFileOperation(termField, layout, s, textIndex);
         case COMM_FUNCTION:
             return new FormulaTermCommFunction(termField, layout, s, textIndex);
+        case NUMBER_FUNCTION:
+            return new FormulaTermNumberFunctions(termField, layout, s, textIndex);
         case USER_FUNCTION:
             return new FormulaTermUserFunction(termField, layout, s, textIndex);
         case INTERVAL:
@@ -301,6 +315,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                         contex.getResources().getString(R.string.formula_function_start_bracket);
                 break;
             case COMM_FUNCTION:
+            case NUMBER_FUNCTION:
                 // for a function, we add operator code at the beginning of line in order to move
                 // existing text in the function argument term
                 newValue = f.getLowerCaseName();

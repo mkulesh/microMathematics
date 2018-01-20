@@ -633,12 +633,12 @@ public class FormulaTermUserFunction extends FormulaTermFunctionBase
     {
         if (idx < 0 || idx > layout.getChildCount())
         {
-            throw new Exception("cannot create FormulaFunction for invalid insertion index " + idx);
+            throw new Exception("cannot create UserFunction for invalid insertion index " + idx);
         }
         termType = getFunctionType(getContext(), s);
         if (termType == null)
         {
-            throw new Exception("cannot create FormulaFunction for unknown function");
+            throw new Exception("cannot create UserFunction for unknown function");
         }
         int argNumber = getFunctionType().getArgNumber();
         switch (getFunctionType())
@@ -648,7 +648,7 @@ public class FormulaTermUserFunction extends FormulaTermFunctionBase
                     R.string.formula_function_start_bracket);
             if (functionLinkName == null)
             {
-                throw new Exception("cannot create FormulaFunction(FUNCTION_LINK) since function name is invalid");
+                throw new Exception("cannot create UserFunction(FUNCTION_LINK) since function name is invalid");
             }
             inflateElements(R.layout.formula_function_named, true);
             argNumber = getArgNumber(s, functionLinkName);
@@ -658,7 +658,7 @@ public class FormulaTermUserFunction extends FormulaTermFunctionBase
                     R.string.formula_function_start_index);
             if (functionLinkName == null)
             {
-                throw new Exception("cannot create FormulaFunction(INDEX) since function name is invalid");
+                throw new Exception("cannot create UserFunction(INDEX) since function name is invalid");
             }
             s = functionLinkName +
                     getContext().getResources().getString(R.string.formula_function_start_index);

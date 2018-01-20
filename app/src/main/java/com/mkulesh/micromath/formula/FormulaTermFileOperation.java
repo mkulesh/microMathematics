@@ -238,21 +238,6 @@ public class FormulaTermFileOperation extends FormulaTermFunctionBase
         return errorMsg == null;
     }
 
-    @Override
-    protected CustomEditText initializeTerm(CustomEditText v, LinearLayout l)
-    {
-        if (v.getText() != null)
-        {
-            final String t = v.getText().toString();
-            if (t.equals(getContext().getResources().getString(R.string.formula_arg_term_key)))
-            {
-                fileName = addTerm(getFormulaRoot(), l, -1, v, this, 0);
-                fileName.bracketsType = TermField.BracketsType.NEVER;
-            }
-        }
-        return v;
-    }
-
     /*********************************************************
      * FormulaTermFileOperation-specific methods
      *********************************************************/
@@ -264,16 +249,17 @@ public class FormulaTermFileOperation extends FormulaTermFunctionBase
     {
         if (idx < 0 || idx > layout.getChildCount())
         {
-            throw new Exception("cannot create FormulaTermFileOperation for invalid insertion index " + idx);
+            throw new Exception("cannot create FileOperation for invalid insertion index " + idx);
         }
         termType = getFunctionType(getContext(), s);
         if (termType == null)
         {
-            throw new Exception("cannot create FormulaTermFileOperation for unknown function");
+            throw new Exception("cannot create FileOperation for unknown function");
         }
-        inflateElements(R.layout.formula_file_operation, true);
-        initializeElements(idx);
-        initializeMainLayout();
+
+        createGeneralFunction(R.layout.formula_file_operation, s, 1, idx);
+
+        fileName = terms.get(0);
         if (fileName == null)
         {
             throw new Exception("cannot initialize function terms");

@@ -169,6 +169,21 @@ public abstract class FormulaTermFunctionBase extends FormulaTerm
         return v;
     }
 
+    @Override
+    protected CustomEditText initializeTerm(CustomEditText v, LinearLayout l)
+    {
+        if (v.getText() != null)
+        {
+            final String val = v.getText().toString();
+            if (val.equals(getContext().getResources().getString(R.string.formula_arg_term_key)))
+            {
+                final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 0);
+                t.bracketsType = TermField.BracketsType.NEVER;
+            }
+        }
+        return v;
+    }
+
     protected boolean isRemainingTermOnDelete()
     {
         return terms.size() <= 1;
@@ -233,6 +248,58 @@ public abstract class FormulaTermFunctionBase extends FormulaTerm
             if (prevTerm != null)
             {
                 prevTerm.requestFocus();
+            }
+        }
+    }
+
+    protected void createGeneralFunction(int layoutId, String s, int argNumber, int idx) throws Exception
+    {
+        inflateElements(layoutId, true);
+        initializeElements(idx);
+        if (terms.isEmpty())
+        {
+            throw new Exception("argument list is empty");
+        }
+
+        initializeMainLayout();
+
+        // add additional arguments
+        while (terms.size() < argNumber)
+        {
+            TermField newTerm = addArgument(terms.get(terms.size() - 1), R.layout.formula_function_add_arg, 0);
+            if (newTerm == null)
+            {
+                break;
+            }
+        }
+        if (argNumber > 0 && terms.size() != argNumber)
+        {
+            throw new Exception("invalid size for argument list");
+        }
+
+        // set texts for left and right parts (in editing mode only)
+        {
+            final String startBracket = getContext().getResources().getString(
+                    BracketParser.START_BRACKET_IDS[BracketParser.FUNCTION_BRACKETS]);
+            final String endBracket = getContext().getResources().getString(
+                    BracketParser.END_BRACKET_IDS[BracketParser.FUNCTION_BRACKETS]);
+            if (s.contains(startBracket) && s.endsWith(endBracket))
+            {
+                s = s.substring(0, s.indexOf(endBracket)).trim();
+            }
+            final int opPosition = s.indexOf(startBracket);
+            final TermField term = getArgumentTerm();
+            if (opPosition >= 0 && term != null)
+            {
+                try
+                {
+                    term.setText(s.subSequence(opPosition + startBracket.length(), s.length()));
+                    isContentValid(ValidationPassType.VALIDATE_SINGLE_FORMULA);
+                }
+                catch (Exception ex)
+                {
+                    // nothing to do
+                }
             }
         }
     }

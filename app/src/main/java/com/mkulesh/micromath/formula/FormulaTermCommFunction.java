@@ -77,14 +77,8 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
         EXP(1, R.drawable.p_function_exp, R.string.math_function_exp),
         LN(1, R.drawable.p_function_ln, R.string.math_function_ln),
         LOG10(1, R.drawable.p_function_log10, R.string.math_function_log10),
-        CEIL(1, R.drawable.p_function_ceil, R.string.math_function_ceil),
-        FLOOR(1, R.drawable.p_function_floor, R.string.math_function_floor),
-        RANDOM(1, R.drawable.p_function_random, R.string.math_function_random),
-        MAX(2, R.drawable.p_function_max, R.string.math_function_max),
-        MIN(2, R.drawable.p_function_min, R.string.math_function_min),
         SQRT(1, Palette.NO_BUTTON, Palette.NO_BUTTON),
-        ABS(1, Palette.NO_BUTTON, Palette.NO_BUTTON),
-        SIGN(1, Palette.NO_BUTTON, Palette.NO_BUTTON);
+        ABS(1, Palette.NO_BUTTON, Palette.NO_BUTTON);
 
         private final int argNumber;
         private final int imageId;
@@ -174,9 +168,7 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
      */
     private enum ObsoleteCodes
     {
-        LOG(1, FunctionType.LN),
-        RND(1, FunctionType.RANDOM),
-        SIGNUM(1, FunctionType.SIGN);
+        LOG(1, FunctionType.LN);
 
         private final int lastDocumentVersion;
         private final FunctionType functionType;
@@ -395,39 +387,12 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
             case IM:
                 return outValue.setValue(a0.isComplex() ? a0.getImaginary() : 0.0);
 
-            case CEIL:
-                return outValue.ceil(a0);
-            case FLOOR:
-                return outValue.floor(a0);
-            case RANDOM:
-                return outValue.random(a0);
-
-            case MAX:
-            case MIN:
-            {
-                final CalculatedValue a1 = argVal[1];
-                if (a0.isComplex() || a1.isComplex())
-                {
-                    return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
-                }
-                final double res = (termType == FunctionType.MAX) ? FastMath.max(a0.getReal(), a1.getReal())
-                        : FastMath.min(a0.getReal(), a1.getReal());
-                return outValue.setValue(res);
-            }
-
             case IF:
                 if (a0.isComplex())
                 {
                     return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
                 }
                 return outValue.assign((a0.getReal() > 0) ? argVal[1] : argVal[2]);
-
-            case SIGN:
-                if (a0.isComplex())
-                {
-                    return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
-                }
-                return outValue.setValue(FastMath.signum(a0.getReal()));
 
             case FACTORIAL:
                 if (a0.isComplex())
@@ -499,13 +464,7 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
             break;
         // these functions are not differentiable if contain the given argument
         case ATAN2:
-        case CEIL:
-        case FLOOR:
-        case RANDOM:
-        case MAX:
-        case MIN:
         case IF:
-        case SIGN:
         case FACTORIAL:
         case CONJUGATE_LAYOUT:
             retValue = (argsProp == DifferentiableType.INDEPENDENT) ? DifferentiableType.INDEPENDENT
@@ -659,13 +618,7 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
 
             // these functions are not differentiable if contain the given argument
             case ATAN2:
-            case CEIL:
-            case FLOOR:
-            case RANDOM:
-            case MAX:
-            case MIN:
             case IF:
-            case SIGN:
             case FACTORIAL:
             case CONJUGATE_LAYOUT:
                 DifferentiableType argsProp = DifferentiableType.INDEPENDENT;
@@ -824,12 +777,6 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
         return termType == FormulaTermCommFunction.FunctionType.NTHRT_LAYOUT || terms.size() <= 1 || !isNewTermEnabled();
     }
 
-    @Override
-    public boolean isNewTermEnabled()
-    {
-        return false;
-    }
-
     /*********************************************************
      * FormulaTermFunction-specific methods
      *********************************************************/
@@ -841,12 +788,12 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
     {
         if (idx < 0 || idx > layout.getChildCount())
         {
-            throw new Exception("cannot create FormulaFunction for invalid insertion index " + idx);
+            throw new Exception("cannot create CommFunction for invalid insertion index " + idx);
         }
         termType = getFunctionType(getContext(), s);
         if (termType == null)
         {
-            throw new Exception("cannot create FormulaFunction for unknown function");
+            throw new Exception("cannot create CommFunction for unknown function");
         }
         int argNumber = getFunctionType().getArgNumber();
         switch (getFunctionType())
