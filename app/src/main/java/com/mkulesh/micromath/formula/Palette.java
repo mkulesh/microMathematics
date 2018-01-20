@@ -225,7 +225,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             return;
         }
 
-        if (FormulaTermUserFunction.FunctionType.FUNCTION_LINK.toString().equalsIgnoreCase(code))
+        if (FormulaTermUserFunctions.FunctionType.FUNCTION_LINK.toString().equalsIgnoreCase(code))
         {
             hiddenInput.setTextWatcher(false);
             listChangeIf.onPalettePressed(s);

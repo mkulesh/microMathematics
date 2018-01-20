@@ -35,7 +35,7 @@ import org.apache.commons.math3.util.CombinatoricsUtils;
 
 import java.util.Locale;
 
-public class FormulaTermCommFunction extends FormulaTermFunctionBase
+public class FormulaTermCommFunctions extends FormulaTermFunctionBase
 {
     public FormulaTermTypeIf.GroupType getGroupType()
     {
@@ -207,7 +207,7 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
      * Constructors
      *********************************************************/
 
-    public FormulaTermCommFunction(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public FormulaTermCommFunctions(TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         onCreate(s, idx);
@@ -217,12 +217,12 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
      * GUI constructors to avoid lint warning
      *********************************************************/
 
-    public FormulaTermCommFunction(Context context)
+    public FormulaTermCommFunctions(Context context)
     {
         super();
     }
 
-    public FormulaTermCommFunction(Context context, AttributeSet attrs)
+    public FormulaTermCommFunctions(Context context, AttributeSet attrs)
     {
         super();
     }
@@ -612,7 +612,7 @@ public class FormulaTermCommFunction extends FormulaTermFunctionBase
     @Override
     protected boolean isRemainingTermOnDelete()
     {
-        return termType == FormulaTermCommFunction.FunctionType.NTHRT_LAYOUT || terms.size() <= 1 || !isNewTermEnabled();
+        return termType == FunctionType.NTHRT_LAYOUT || terms.size() <= 1 || !isNewTermEnabled();
     }
 
     /*********************************************************

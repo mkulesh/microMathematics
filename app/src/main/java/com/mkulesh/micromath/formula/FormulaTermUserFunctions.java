@@ -34,7 +34,7 @@ import com.mkulesh.micromath.widgets.ScaledDimensions;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class FormulaTermUserFunction extends FormulaTermFunctionBase
+public class FormulaTermUserFunctions extends FormulaTermFunctionBase
 {
     public FormulaTermTypeIf.GroupType getGroupType()
     {
@@ -242,7 +242,7 @@ public class FormulaTermUserFunction extends FormulaTermFunctionBase
      * Constructors
      *********************************************************/
 
-    public FormulaTermUserFunction(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public FormulaTermUserFunctions(TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         onCreate(s, idx);
@@ -252,12 +252,12 @@ public class FormulaTermUserFunction extends FormulaTermFunctionBase
      * GUI constructors to avoid lint warning
      *********************************************************/
 
-    public FormulaTermUserFunction(Context context)
+    public FormulaTermUserFunctions(Context context)
     {
         super();
     }
 
-    public FormulaTermUserFunction(Context context, AttributeSet attrs)
+    public FormulaTermUserFunctions(Context context, AttributeSet attrs)
     {
         super();
     }

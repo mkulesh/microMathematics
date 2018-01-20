@@ -35,15 +35,15 @@ import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.formula.FormulaListView;
 import com.mkulesh.micromath.formula.FormulaResult;
 import com.mkulesh.micromath.formula.FormulaTerm;
-import com.mkulesh.micromath.formula.FormulaTermCommFunction;
+import com.mkulesh.micromath.formula.FormulaTermCommFunctions;
 import com.mkulesh.micromath.formula.FormulaTermComparator;
 import com.mkulesh.micromath.formula.FormulaTermFunctionBase;
 import com.mkulesh.micromath.formula.FormulaTermInterval;
 import com.mkulesh.micromath.formula.FormulaTermLoop;
 import com.mkulesh.micromath.formula.FormulaTermOperator;
 import com.mkulesh.micromath.formula.FormulaTermOperator.OperatorType;
-import com.mkulesh.micromath.formula.FormulaTermUserFunction;
-import com.mkulesh.micromath.formula.FormulaTermUserFunction.FunctionType;
+import com.mkulesh.micromath.formula.FormulaTermUserFunctions;
+import com.mkulesh.micromath.formula.FormulaTermUserFunctions.FunctionType;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TextFragment;
 import com.mkulesh.micromath.plots.ImageFragment;
@@ -453,10 +453,10 @@ public class ExportToLatex
                 writeTermFunctionBase((FormulaTermFunctionBase) term);
                 break;
             case COMM_FUNCTION:
-                writeTermFunction((FormulaTermCommFunction) term);
+                writeTermFunction((FormulaTermCommFunctions) term);
                 break;
             case USER_FUNCTION:
-                writeTermFunction((FormulaTermUserFunction) term);
+                writeTermFunction((FormulaTermUserFunctions) term);
                 break;
             case INTERVAL:
                 writeTermInterval((FormulaTermInterval) term);
@@ -570,9 +570,9 @@ public class ExportToLatex
         writer.append("\\right) ");
     }
 
-    private void writeTermFunction(FormulaTermCommFunction f)
+    private void writeTermFunction(FormulaTermCommFunctions f)
     {
-        FormulaTermCommFunction.FunctionType functionType = f.getFunctionType();
+        FormulaTermCommFunctions.FunctionType functionType = f.getFunctionType();
         final ArrayList<TermField> terms = f.getTerms();
         switch (functionType)
         {
@@ -628,9 +628,9 @@ public class ExportToLatex
         }
     }
 
-    private void writeTermFunction(FormulaTermUserFunction f)
+    private void writeTermFunction(FormulaTermUserFunctions f)
     {
-        FormulaTermUserFunction.FunctionType functionType = f.getFunctionType();
+        FormulaTermUserFunctions.FunctionType functionType = f.getFunctionType();
         final ArrayList<TermField> terms = f.getTerms();
         if (f.getFunctionTerm() != null)
         {

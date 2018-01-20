@@ -162,9 +162,9 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                 new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
         addToPalette(context, FormulaTermOperator.OperatorType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, FormulaTermUserFunction.FunctionType.values(), paletteLayout,
+        addToPalette(context, FormulaTermUserFunctions.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, FormulaTermCommFunction.FunctionType.values(), paletteLayout,
+        addToPalette(context, FormulaTermCommFunctions.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
         addToPalette(context, FormulaTermLogFunctions.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
@@ -209,8 +209,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // This function group has manual trigger (like "("): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && FormulaTermCommFunction.containsTrigger(context, s));
-            final FormulaTermCommFunction.FunctionType t = FormulaTermCommFunction.getFunctionType(context, s);
+                    (ensureManualTrigger && FormulaTermCommFunctions.containsTrigger(context, s));
+            final FormulaTermCommFunctions.FunctionType t = FormulaTermCommFunctions.getFunctionType(context, s);
             if (enableFunction && t != null)
             {
                 return t;
@@ -239,8 +239,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // This function group has manual trigger (like "(" or "["): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && FormulaTermUserFunction.containsTrigger(context, s));
-            final FormulaTermUserFunction.FunctionType t = FormulaTermUserFunction.getFunctionType(context, s);
+                    (ensureManualTrigger && FormulaTermUserFunctions.containsTrigger(context, s));
+            final FormulaTermUserFunctions.FunctionType t = FormulaTermUserFunctions.getFunctionType(context, s);
             if (enableFunction && t != null)
             {
                 return t;
@@ -282,13 +282,13 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         case FILE_OPERATION:
             return new FormulaTermFileOperation(termField, layout, s, textIndex);
         case COMM_FUNCTION:
-            return new FormulaTermCommFunction(termField, layout, s, textIndex);
+            return new FormulaTermCommFunctions(termField, layout, s, textIndex);
         case LOG_FUNCTION:
             return new FormulaTermLogFunctions(termField, layout, s, textIndex);
         case NUMBER_FUNCTION:
             return new FormulaTermNumberFunctions(termField, layout, s, textIndex);
         case USER_FUNCTION:
-            return new FormulaTermUserFunction(termField, layout, s, textIndex);
+            return new FormulaTermUserFunctions(termField, layout, s, textIndex);
         case INTERVAL:
             return new FormulaTermInterval(termField, layout, s, textIndex);
         case LOOP:
@@ -343,11 +343,11 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             case USER_FUNCTION:
                 // for a function, we add operator code at the beginning of line in order to move
                 // existing text in the function argument term
-                final FormulaTermUserFunction.FunctionType t1 = (FormulaTermUserFunction.FunctionType)f;
-                newValue = (t1 == FormulaTermUserFunction.FunctionType.FUNCTION_LINK) ? code : f.getLowerCaseName();
+                final FormulaTermUserFunctions.FunctionType t1 = (FormulaTermUserFunctions.FunctionType)f;
+                newValue = (t1 == FormulaTermUserFunctions.FunctionType.FUNCTION_LINK) ? code : f.getLowerCaseName();
                 if (prevText != null)
                 {
-                    if (t1 != FormulaTermUserFunction.FunctionType.FUNCTION_LINK)
+                    if (t1 != FormulaTermUserFunctions.FunctionType.FUNCTION_LINK)
                     {
                         newValue += contex.getResources().getString(R.string.formula_function_start_bracket);
                     }
