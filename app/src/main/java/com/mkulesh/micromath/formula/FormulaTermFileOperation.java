@@ -53,7 +53,7 @@ public class FormulaTermFileOperation extends FormulaTermFunctionBase
         private final int descriptionId;
         private final String lowerCaseName;
 
-        private FunctionType(int imageId, int descriptionId)
+        FunctionType(int imageId, int descriptionId)
         {
             this.imageId = imageId;
             this.descriptionId = descriptionId;

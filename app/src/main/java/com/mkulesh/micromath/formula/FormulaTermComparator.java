@@ -61,7 +61,7 @@ public class FormulaTermComparator extends FormulaTerm
         private final int descriptionId;
         private final String lowerCaseName;
 
-        private ComparatorType(int symbolId, int imageId, int descriptionId)
+        ComparatorType(int symbolId, int imageId, int descriptionId)
         {
             this.symbolId = symbolId;
             this.imageId = imageId;

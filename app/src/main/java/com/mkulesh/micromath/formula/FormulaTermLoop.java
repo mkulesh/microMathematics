@@ -55,7 +55,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         private final int descriptionId;
         private final String lowerCaseName;
 
-        private LoopType(int symbolId, int imageId, int descriptionId)
+        LoopType(int symbolId, int imageId, int descriptionId)
         {
             this.symbolId = symbolId;
             this.imageId = imageId;

@@ -52,7 +52,7 @@ public class FormulaTermOperator extends FormulaTerm
         private final int descriptionId;
         private final String lowerCaseName;
 
-        private OperatorType(int symbolId, int imageId, int descriptionId)
+        OperatorType(int symbolId, int imageId, int descriptionId)
         {
             this.symbolId = symbolId;
             this.imageId = imageId;
