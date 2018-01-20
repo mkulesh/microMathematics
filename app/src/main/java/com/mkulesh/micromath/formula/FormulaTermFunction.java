@@ -41,7 +41,7 @@ import org.apache.commons.math3.util.FastMath;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class FormulaTermFunction extends FormulaTerm
+public class FormulaTermFunction extends FormulaTermFunctionBase
 {
     /**
      * Supported functions
@@ -353,8 +353,7 @@ public class FormulaTermFunction extends FormulaTerm
 
     public FormulaTermFunction(TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
-        super(owner.getFormulaRoot(), layout, owner.termDepth);
-        setParentField(owner);
+        super(owner, layout);
         onCreate(s, idx);
     }
 

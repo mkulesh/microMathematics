@@ -40,7 +40,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class FormulaTermFileOperation extends FormulaTerm
+public class FormulaTermFileOperation extends FormulaTermFunctionBase
 {
     /**
      * Supported functions
@@ -119,8 +119,7 @@ public class FormulaTermFileOperation extends FormulaTerm
 
     public FormulaTermFileOperation(TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
-        super(owner.getFormulaRoot(), layout, owner.termDepth);
-        setParentField(owner);
+        super(owner, layout);
         onCreate(s, idx);
     }
 
