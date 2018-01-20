@@ -42,7 +42,7 @@ public class FormulaTermNumberFunctions extends FormulaTermFunctionBase
     /**
      * Supported functions
      */
-    public enum FunctionType implements FormulaTermTypeIf
+    private enum FunctionType implements FormulaTermTypeIf
     {
         CEIL(1, R.drawable.p_function_ceil, R.string.math_function_ceil),
         FLOOR(1, R.drawable.p_function_floor, R.string.math_function_floor),
@@ -303,7 +303,6 @@ public class FormulaTermNumberFunctions extends FormulaTermFunctionBase
             {
                 terms.get(i).getValue(thread, argVal[i]);
             }
-            final CalculatedValue a0 = argVal[0];
             terms.get(0).getDerivativeValue(var, thread, a0derVal);
             DifferentiableType argsProp = DifferentiableType.INDEPENDENT;
             for (int i = 0; i < terms.size(); i++)
