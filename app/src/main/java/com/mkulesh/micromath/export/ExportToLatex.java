@@ -448,6 +448,7 @@ public class ExportToLatex
                 writeTermComparator((FormulaTermComparator) term);
                 break;
             case FILE_OPERATION:
+            case TRIG_FUNCTION:
             case LOG_FUNCTION:
             case NUMBER_FUNCTION:
                 writeTermFunctionBase((FormulaTermFunctionBase) term);

@@ -166,6 +166,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
         addToPalette(context, FormulaTermCommFunctions.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
+        addToPalette(context, FormulaTermTrigFunctions.FunctionType.values(), paletteLayout,
+                new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
         addToPalette(context, FormulaTermLogFunctions.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
         addToPalette(context, FormulaTermNumberFunctions.FunctionType.values(), paletteLayout,
@@ -211,6 +213,16 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             final boolean enableFunction = !ensureManualTrigger ||
                     (ensureManualTrigger && FormulaTermCommFunctions.containsTrigger(context, s));
             final FormulaTermCommFunctions.FunctionType t = FormulaTermCommFunctions.getFunctionType(context, s);
+            if (enableFunction && t != null)
+            {
+                return t;
+            }
+        }
+        {
+            // This function group has manual trigger ("("): is has to be checked
+            final boolean enableFunction = !ensureManualTrigger ||
+                    (ensureManualTrigger && FormulaTermFunctionBase.containsGeneralTrigger(context, s));
+            final FormulaTermTrigFunctions.FunctionType t = FormulaTermTrigFunctions.getFunctionType(context, s);
             if (enableFunction && t != null)
             {
                 return t;
@@ -283,6 +295,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             return new FormulaTermFileOperation(termField, layout, s, textIndex);
         case COMM_FUNCTION:
             return new FormulaTermCommFunctions(termField, layout, s, textIndex);
+        case TRIG_FUNCTION:
+            return new FormulaTermTrigFunctions(termField, layout, s, textIndex);
         case LOG_FUNCTION:
             return new FormulaTermLogFunctions(termField, layout, s, textIndex);
         case NUMBER_FUNCTION:
@@ -329,6 +343,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                         contex.getResources().getString(R.string.formula_function_start_bracket);
                 break;
             case COMM_FUNCTION:
+            case TRIG_FUNCTION:
             case LOG_FUNCTION:
             case NUMBER_FUNCTION:
                 // for a function, we add operator code at the beginning of line in order to move

@@ -44,13 +44,6 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
      */
     public enum FunctionType implements FormulaTermTypeIf
     {
-        SIN(1, R.drawable.p_function_sin, R.string.math_function_sin),
-        ASIN(1, R.drawable.p_function_asin, R.string.math_function_asin),
-        COS(1, R.drawable.p_function_cos, R.string.math_function_cos),
-        ACOS(1, R.drawable.p_function_acos, R.string.math_function_acos),
-        TAN(1, R.drawable.p_function_tan, R.string.math_function_tan),
-        ATAN(1, R.drawable.p_function_atan, R.string.math_function_atan),
-        ATAN2(2, R.drawable.p_function_atan2, R.string.math_function_atan2),
         EXP(1, R.drawable.p_function_exp, R.string.math_function_exp),
         LN(1, R.drawable.p_function_ln, R.string.math_function_ln),
         LOG10(1, R.drawable.p_function_log10, R.string.math_function_log10),
@@ -240,33 +233,10 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
             final CalculatedValue a0 = argVal[0];
             switch (getFunctionType())
             {
-            case SIN:
-                return outValue.sin(a0);
-            case ASIN:
-                return outValue.asin(a0);
             case SINH:
                 return outValue.sinh(a0);
-
-            case COS:
-                return outValue.cos(a0);
-            case ACOS:
-                return outValue.acos(a0);
             case COSH:
                 return outValue.cosh(a0);
-
-            case TAN:
-                return outValue.tan(a0);
-            case ATAN:
-                return outValue.atan(a0);
-            case ATAN2:
-            {
-                final CalculatedValue a1 = argVal[1];
-                if (a0.isComplex() || a1.isComplex())
-                {
-                    return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
-                }
-                return outValue.setValue(FastMath.atan2(a0.getReal(), a1.getReal()));
-            }
             case TANH:
                 return outValue.tanh(a0);
 
@@ -295,30 +265,8 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
             argsProp = DifferentiableType.values()[dGrad];
         }
 
-        DifferentiableType retValue = DifferentiableType.NONE;
-        switch (getFunctionType())
-        {
-        // for these functions, derivative can be calculated analytically
-        case SIN:
-        case ASIN:
-        case SINH:
-        case COS:
-        case ACOS:
-        case COSH:
-        case TAN:
-        case ATAN:
-        case TANH:
-        case EXP:
-        case LN:
-        case LOG10:
-            retValue = argsProp;
-            break;
-        // these functions are not differentiable if contain the given argument
-        case ATAN2:
-            retValue = (argsProp == DifferentiableType.INDEPENDENT) ? DifferentiableType.INDEPENDENT
-                    : DifferentiableType.NONE;
-            break;
-        }
+        DifferentiableType retValue = argsProp;
+
         // set the error code to be displayed
         ErrorCode errorCode = ErrorCode.NO_ERROR;
         if (retValue == DifferentiableType.NONE)
@@ -344,40 +292,11 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
             terms.get(0).getDerivativeValue(var, thread, a0derVal);
             switch (getFunctionType())
             {
-            case SIN: // cos(a0) * a0'
-                outValue.cos(a0);
-                return outValue.multiply(outValue, a0derVal);
-            case ASIN: // (1.0 / sqrt(1.0 - a0 * a0)) * a0'
-                outValue.multiply(a0, a0);
-                outValue.subtract(CalculatedValue.ONE, outValue);
-                outValue.sqrt(outValue);
-                outValue.divide(CalculatedValue.ONE, outValue);
-                return outValue.multiply(outValue, a0derVal);
             case SINH: // cosh(a0) * a0'
                 outValue.cosh(a0);
                 return outValue.multiply(outValue, a0derVal);
-            case COS: // -1 * sin(a0) * a0'
-                outValue.sin(a0);
-                outValue.multiply(-1.0);
-                return outValue.multiply(outValue, a0derVal);
-            case ACOS: // (-1.0 / sqrt(1.0 - a0 * a0)) * a0'
-                outValue.multiply(a0, a0);
-                outValue.subtract(CalculatedValue.ONE, outValue);
-                outValue.sqrt(outValue);
-                outValue.divide(CalculatedValue.MINUS_ONE, outValue);
-                return outValue.multiply(outValue, a0derVal);
             case COSH: // sinh(a0) * a0'
                 outValue.sinh(a0);
-                return outValue.multiply(outValue, a0derVal);
-            case TAN: // (1.0 + tan(a0) * tan(a0)) * a0'
-                outValue.tan(a0);
-                outValue.multiply(outValue, outValue);
-                outValue.add(CalculatedValue.ONE, outValue);
-                return outValue.multiply(outValue, a0derVal);
-            case ATAN: // (1.0 / (1.0 + a0 * a0)) * a0'
-                outValue.multiply(a0, a0);
-                outValue.add(CalculatedValue.ONE, outValue);
-                outValue.divide(CalculatedValue.ONE, outValue);
                 return outValue.multiply(outValue, a0derVal);
             case TANH: // (1.0 / (cosh(a0) * cosh(a0))) * a0'
                 outValue.cosh(a0);
@@ -395,22 +314,6 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
                 outValue.multiply(FastMath.log(10.0));
                 outValue.divide(CalculatedValue.ONE, outValue);
                 return outValue.multiply(outValue, a0derVal);
-            // these functions are not differentiable if contain the given argument
-            case ATAN2:
-                DifferentiableType argsProp = DifferentiableType.INDEPENDENT;
-                for (int i = 0; i < terms.size(); i++)
-                {
-                    final int dGrad = Math.min(argsProp.ordinal(), terms.get(i).isDifferentiable(var).ordinal());
-                    argsProp = DifferentiableType.values()[dGrad];
-                }
-                if (argsProp == DifferentiableType.INDEPENDENT)
-                {
-                    return outValue.setValue(0.0);
-                }
-                else
-                {
-                    return outValue.invalidate(CalculatedValue.ErrorType.NOT_A_NUMBER);
-                }
             }
         }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);

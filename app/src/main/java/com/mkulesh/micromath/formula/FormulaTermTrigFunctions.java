@@ -50,13 +50,7 @@ public class FormulaTermTrigFunctions extends FormulaTermFunctionBase
         ACOS(1, R.drawable.p_function_acos, R.string.math_function_acos),
         TAN(1, R.drawable.p_function_tan, R.string.math_function_tan),
         ATAN(1, R.drawable.p_function_atan, R.string.math_function_atan),
-        ATAN2(2, R.drawable.p_function_atan2, R.string.math_function_atan2),
-        EXP(1, R.drawable.p_function_exp, R.string.math_function_exp),
-        LN(1, R.drawable.p_function_ln, R.string.math_function_ln),
-        LOG10(1, R.drawable.p_function_log10, R.string.math_function_log10),
-        SINH(1, R.drawable.p_function_sinh, R.string.math_function_sinh),
-        COSH(1, R.drawable.p_function_cosh, R.string.math_function_cosh),
-        TANH(1, R.drawable.p_function_tanh, R.string.math_function_tanh);
+        ATAN2(2, R.drawable.p_function_atan2, R.string.math_function_atan2);
 
         private final int argNumber;
         private final int imageId;
@@ -103,40 +97,6 @@ public class FormulaTermTrigFunctions extends FormulaTermFunctionBase
         }
     }
 
-    /**
-     * Some functions are obsolete. This enumeration defines its back-compatibility
-     */
-    private enum ObsoleteCodes
-    {
-        LOG(1, FunctionType.LN);
-
-        private final int lastDocumentVersion;
-        private final FunctionType functionType;
-        private final String lowerCaseName;
-
-        ObsoleteCodes(int lastDocumentVersion, FunctionType functionType)
-        {
-            this.lastDocumentVersion = lastDocumentVersion;
-            this.functionType = functionType;
-            this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
-        }
-
-        public int getLastDocumentVersion()
-        {
-            return lastDocumentVersion;
-        }
-
-        public FunctionType getFunctionType()
-        {
-            return functionType;
-        }
-
-        public String getLowerCaseName()
-        {
-            return lowerCaseName;
-        }
-    }
-
     public static FunctionType getFunctionType(Context context, String s)
     {
         String fName = null;
@@ -159,19 +119,6 @@ public class FormulaTermTrigFunctions extends FormulaTermFunctionBase
             if (fName != null && fName.equals(f.getLowerCaseName()))
             {
                 return f;
-            }
-        }
-
-        // Compatibility mode: search the function name in the array of obsolete functions
-        if (DocumentProperties.getDocumentVersion() != DocumentProperties.LATEST_DOCUMENT_VERSION)
-        {
-            for (ObsoleteCodes obs : ObsoleteCodes.values())
-            {
-                if (DocumentProperties.getDocumentVersion() <= obs.getLastDocumentVersion() &&
-                        s.equals(obs.getLowerCaseName()))
-                {
-                    return obs.getFunctionType();
-                }
             }
         }
 
@@ -244,15 +191,11 @@ public class FormulaTermTrigFunctions extends FormulaTermFunctionBase
                 return outValue.sin(a0);
             case ASIN:
                 return outValue.asin(a0);
-            case SINH:
-                return outValue.sinh(a0);
 
             case COS:
                 return outValue.cos(a0);
             case ACOS:
                 return outValue.acos(a0);
-            case COSH:
-                return outValue.cosh(a0);
 
             case TAN:
                 return outValue.tan(a0);
@@ -267,15 +210,6 @@ public class FormulaTermTrigFunctions extends FormulaTermFunctionBase
                 }
                 return outValue.setValue(FastMath.atan2(a0.getReal(), a1.getReal()));
             }
-            case TANH:
-                return outValue.tanh(a0);
-
-            case EXP:
-                return outValue.exp(a0);
-            case LN:
-                return outValue.log(a0);
-            case LOG10:
-                return outValue.log10(a0);
             }
         }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
@@ -301,16 +235,10 @@ public class FormulaTermTrigFunctions extends FormulaTermFunctionBase
         // for these functions, derivative can be calculated analytically
         case SIN:
         case ASIN:
-        case SINH:
         case COS:
         case ACOS:
-        case COSH:
         case TAN:
         case ATAN:
-        case TANH:
-        case EXP:
-        case LN:
-        case LOG10:
             retValue = argsProp;
             break;
         // these functions are not differentiable if contain the given argument
@@ -353,9 +281,6 @@ public class FormulaTermTrigFunctions extends FormulaTermFunctionBase
                 outValue.sqrt(outValue);
                 outValue.divide(CalculatedValue.ONE, outValue);
                 return outValue.multiply(outValue, a0derVal);
-            case SINH: // cosh(a0) * a0'
-                outValue.cosh(a0);
-                return outValue.multiply(outValue, a0derVal);
             case COS: // -1 * sin(a0) * a0'
                 outValue.sin(a0);
                 outValue.multiply(-1.0);
@@ -366,9 +291,6 @@ public class FormulaTermTrigFunctions extends FormulaTermFunctionBase
                 outValue.sqrt(outValue);
                 outValue.divide(CalculatedValue.MINUS_ONE, outValue);
                 return outValue.multiply(outValue, a0derVal);
-            case COSH: // sinh(a0) * a0'
-                outValue.sinh(a0);
-                return outValue.multiply(outValue, a0derVal);
             case TAN: // (1.0 + tan(a0) * tan(a0)) * a0'
                 outValue.tan(a0);
                 outValue.multiply(outValue, outValue);
@@ -377,22 +299,6 @@ public class FormulaTermTrigFunctions extends FormulaTermFunctionBase
             case ATAN: // (1.0 / (1.0 + a0 * a0)) * a0'
                 outValue.multiply(a0, a0);
                 outValue.add(CalculatedValue.ONE, outValue);
-                outValue.divide(CalculatedValue.ONE, outValue);
-                return outValue.multiply(outValue, a0derVal);
-            case TANH: // (1.0 / (cosh(a0) * cosh(a0))) * a0'
-                outValue.cosh(a0);
-                outValue.multiply(outValue, outValue);
-                outValue.divide(CalculatedValue.ONE, outValue);
-                return outValue.multiply(outValue, a0derVal);
-            case EXP: // exp(a0) * a0'
-                outValue.exp(a0);
-                return outValue.multiply(outValue, a0derVal);
-            case LN: // (1.0 / a0) * a0'
-                outValue.divide(CalculatedValue.ONE, a0);
-                return outValue.multiply(outValue, a0derVal);
-            case LOG10: // (1.0 / (a0 * FastMath.log(10.0))) * a0'
-                outValue.assign(a0);
-                outValue.multiply(FastMath.log(10.0));
                 outValue.divide(CalculatedValue.ONE, outValue);
                 return outValue.multiply(outValue, a0derVal);
             // these functions are not differentiable if contain the given argument
