@@ -25,11 +25,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
-import com.mkulesh.micromath.formula.TermField.ErrorNotification;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.DocumentProperties;
-import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
@@ -48,58 +46,78 @@ public class FormulaTermFunction extends FormulaTermFunctionBase
      */
     public enum FunctionType implements FormulaTermTypeIf
     {
-        IDENTITY(1, R.drawable.p_function_identity, R.string.math_function_identity, null),
-        FUNCTION_INDEX(-1, R.drawable.p_function_index, R.string.math_function_index, "content:com.mkulesh.micromath.index"),
-        POWER(2, R.drawable.p_function_power, R.string.math_function_power, null),
-        SQRT_LAYOUT(1, R.drawable.p_function_sqrt, R.string.math_function_sqrt, null),
-        NTHRT_LAYOUT(2, R.drawable.p_function_nthrt, R.string.math_function_nthrt, null),
-        FACTORIAL(1, R.drawable.p_function_factorial, R.string.math_function_factorial, null),
-        ABS_LAYOUT(1, R.drawable.p_function_abs, R.string.math_function_abs, null),
-        CONJUGATE_LAYOUT(1, R.drawable.p_function_conjugate, R.string.math_function_conjugate, null),
-        RE(1, R.drawable.p_function_re, R.string.math_function_re, null),
-        IM(1, R.drawable.p_function_im, R.string.math_function_im, null),
-        SIN(1, R.drawable.p_function_sin, R.string.math_function_sin, null),
-        ASIN(1, R.drawable.p_function_asin, R.string.math_function_asin, null),
-        SINH(1, R.drawable.p_function_sinh, R.string.math_function_sinh, null),
-        COS(1, R.drawable.p_function_cos, R.string.math_function_cos, null),
-        ACOS(1, R.drawable.p_function_acos, R.string.math_function_acos, null),
-        COSH(1, R.drawable.p_function_cosh, R.string.math_function_cosh, null),
-        TAN(1, R.drawable.p_function_tan, R.string.math_function_tan, null),
-        ATAN(1, R.drawable.p_function_atan, R.string.math_function_atan, null),
-        ATAN2(2, R.drawable.p_function_atan2, R.string.math_function_atan2, null),
-        TANH(1, R.drawable.p_function_tanh, R.string.math_function_tanh, null),
-        EXP(1, R.drawable.p_function_exp, R.string.math_function_exp, null),
-        LN(1, R.drawable.p_function_ln, R.string.math_function_ln, null),
-        LOG10(1, R.drawable.p_function_log10, R.string.math_function_log10, null),
-        CEIL(1, R.drawable.p_function_ceil, R.string.math_function_ceil, null),
-        FLOOR(1, R.drawable.p_function_floor, R.string.math_function_floor, null),
-        RANDOM(1, R.drawable.p_function_random, R.string.math_function_random, null),
-        MAX(2, R.drawable.p_function_max, R.string.math_function_max, null),
-        MIN(2, R.drawable.p_function_min, R.string.math_function_min, null),
-        IF(3, R.drawable.p_function_if, R.string.math_function_if, null),
-        SQRT(1, Palette.NO_BUTTON, Palette.NO_BUTTON, null),
-        ABS(1, Palette.NO_BUTTON, Palette.NO_BUTTON, null),
-        SIGN(1, Palette.NO_BUTTON, Palette.NO_BUTTON, null),
-        FUNCTION_LINK(-1, Palette.NO_BUTTON, Palette.NO_BUTTON, "content:com.mkulesh.micromath.link");
+        IDENTITY(1, R.drawable.p_function_identity, R.string.math_function_identity),
+        FUNCTION_INDEX(-1, R.drawable.p_function_index, R.string.math_function_index,
+                R.string.formula_function_start_index, "content:com.mkulesh.micromath.index"),
+        POWER(2, R.drawable.p_function_power, R.string.math_function_power,
+                R.string.formula_function_power),
+        SQRT_LAYOUT(1, R.drawable.p_function_sqrt, R.string.math_function_sqrt,
+                R.string.formula_function_sqrt_layout),
+        NTHRT_LAYOUT(2, R.drawable.p_function_nthrt, R.string.math_function_nthrt,
+                R.string.formula_function_nthrt_layout),
+        FACTORIAL(1, R.drawable.p_function_factorial, R.string.math_function_factorial,
+                R.string.formula_function_factorial_layout),
+        ABS_LAYOUT(1, R.drawable.p_function_abs, R.string.math_function_abs,
+                R.string.formula_function_abs_layout),
+        CONJUGATE_LAYOUT(1, R.drawable.p_function_conjugate, R.string.math_function_conjugate,
+                R.string.formula_function_conjugate_layout),
+        RE(1, R.drawable.p_function_re, R.string.math_function_re),
+        IM(1, R.drawable.p_function_im, R.string.math_function_im),
+        SIN(1, R.drawable.p_function_sin, R.string.math_function_sin),
+        ASIN(1, R.drawable.p_function_asin, R.string.math_function_asin),
+        SINH(1, R.drawable.p_function_sinh, R.string.math_function_sinh),
+        COS(1, R.drawable.p_function_cos, R.string.math_function_cos),
+        ACOS(1, R.drawable.p_function_acos, R.string.math_function_acos),
+        COSH(1, R.drawable.p_function_cosh, R.string.math_function_cosh),
+        TAN(1, R.drawable.p_function_tan, R.string.math_function_tan),
+        ATAN(1, R.drawable.p_function_atan, R.string.math_function_atan),
+        ATAN2(2, R.drawable.p_function_atan2, R.string.math_function_atan2),
+        TANH(1, R.drawable.p_function_tanh, R.string.math_function_tanh),
+        EXP(1, R.drawable.p_function_exp, R.string.math_function_exp),
+        LN(1, R.drawable.p_function_ln, R.string.math_function_ln),
+        LOG10(1, R.drawable.p_function_log10, R.string.math_function_log10),
+        CEIL(1, R.drawable.p_function_ceil, R.string.math_function_ceil),
+        FLOOR(1, R.drawable.p_function_floor, R.string.math_function_floor),
+        RANDOM(1, R.drawable.p_function_random, R.string.math_function_random),
+        MAX(2, R.drawable.p_function_max, R.string.math_function_max),
+        MIN(2, R.drawable.p_function_min, R.string.math_function_min),
+        IF(3, R.drawable.p_function_if, R.string.math_function_if),
+        SQRT(1, Palette.NO_BUTTON, Palette.NO_BUTTON),
+        ABS(1, Palette.NO_BUTTON, Palette.NO_BUTTON),
+        SIGN(1, Palette.NO_BUTTON, Palette.NO_BUTTON),
+        FUNCTION_LINK(-1, Palette.NO_BUTTON, Palette.NO_BUTTON,
+                Palette.NO_BUTTON, "content:com.mkulesh.micromath.link");
 
         private final int argNumber;
         private final int imageId;
         private final int descriptionId;
+        private final int symbolId;
         private final String linkObject;
         private final String lowerCaseName;
 
-        FunctionType(int argNumber, int imageId, int descriptionId, String linkObject)
+        FunctionType(int argNumber, int imageId, int descriptionId)
+        {
+            this(argNumber, imageId, descriptionId, Palette.NO_BUTTON, null);
+        }
+
+        FunctionType(int argNumber, int imageId, int descriptionId, int symbolId)
+        {
+            this(argNumber, imageId, descriptionId, symbolId, null);
+        }
+
+        FunctionType(int argNumber, int imageId, int descriptionId, int symbolId, String linkObject)
         {
             this.argNumber = argNumber;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
+            this.symbolId = symbolId;
             this.linkObject = linkObject;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
         public GroupType getGroupType() { return GroupType.FUNCTION; }
 
-        public int getSymbolId() { return Palette.NO_BUTTON; }
+        public int getSymbolId() { return symbolId; }
 
         public int getArgNumber()
         {
@@ -137,29 +155,27 @@ public class FormulaTermFunction extends FormulaTermFunctionBase
      */
     enum Trigger
     {
-        GENERAL(R.string.formula_function_start_bracket, null, true),
-        INDEX(R.string.formula_function_start_index, FunctionType.FUNCTION_INDEX, true),
-        ABS(R.string.formula_function_abs_layout, FunctionType.ABS_LAYOUT, true),
-        SQRT(R.string.formula_function_sqrt_layout, FunctionType.SQRT_LAYOUT, true),
-        POWER(R.string.formula_function_power, FunctionType.POWER, false),
-        NTHRT(R.string.formula_function_nthrt_layout, FunctionType.NTHRT_LAYOUT, true),
-        FACTORIAL(R.string.formula_function_factorial_layout, FunctionType.FACTORIAL, false),
-        CONJUGATE(R.string.formula_function_conjugate_layout, FunctionType.CONJUGATE_LAYOUT, false);
+        GENERAL(null, true),
+        INDEX(FunctionType.FUNCTION_INDEX, true),
+        ABS(FunctionType.ABS_LAYOUT, true),
+        SQRT(FunctionType.SQRT_LAYOUT, true),
+        POWER(FunctionType.POWER, false),
+        NTHRT(FunctionType.NTHRT_LAYOUT, true),
+        FACTORIAL(FunctionType.FACTORIAL, false),
+        CONJUGATE(FunctionType.CONJUGATE_LAYOUT, false);
 
-        private final int codeId;
         private final FunctionType functionType;
         private final boolean isBeforeText;
 
-        Trigger(int codeId, FunctionType functionType, boolean isBeforeText)
+        Trigger(FunctionType functionType, boolean isBeforeText)
         {
-            this.codeId = codeId;
             this.functionType = functionType;
             this.isBeforeText = isBeforeText;
         }
 
         public int getCodeId()
         {
-            return codeId;
+            return functionType != null? functionType.getSymbolId() : R.string.formula_function_start_bracket;
         }
 
         public FunctionType getFunctionType()
@@ -1340,16 +1356,8 @@ public class FormulaTermFunction extends FormulaTermFunctionBase
             final FunctionType t = FunctionType.values()[i];
             if (t.getImageId() != Palette.NO_BUTTON)
             {
-                int shortCuId = Palette.NO_BUTTON;
-                for (Trigger trigger : Trigger.values())
-                {
-                    if (trigger.getFunctionType() == t)
-                    {
-                        shortCuId = trigger.getCodeId();
-                    }
-                }
                 PaletteButton p = new PaletteButton(context,
-                        shortCuId, t.getImageId(), t.getDescriptionId(),
+                        t.getSymbolId(), t.getImageId(), t.getDescriptionId(),
                         t.getLowerCaseName());
                 paletteLayout.addView(p);
                 p.setCategories(categories);
