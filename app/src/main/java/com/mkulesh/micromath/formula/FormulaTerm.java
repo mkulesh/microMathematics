@@ -253,76 +253,66 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     public static String createOperatorCode(Context contex, String code, String prevText)
     {
         String newValue = null;
-        // operator
-        final FormulaTermOperator.OperatorType t1 = FormulaTermOperator.getOperatorType(contex, code);
-        if (t1 != null)
+        final FormulaTermTypeIf f = getTermTypeIf(contex, null, code, false);
+        if (f != null)
         {
-            // for an operator, we add operator code to the end of line in order to move
-            // existing text in the first term
-            newValue = contex.getResources().getString(t1.getShortCutId());
-            if (prevText != null)
+            switch (f.getGroupType())
             {
-                newValue = prevText + newValue;
-            }
-        }
-        // comparator
-        final FormulaTermComparator.ComparatorType t2 = FormulaTermComparator.getComparatorType(contex, code);
-        if (newValue == null && t2 != null)
-        {
-            // for a comparator, we add operator code to the end of line in order to move
-            // existing text in the first term
-            newValue = contex.getResources().getString(t2.getShortCutId());
-            if (prevText != null)
-            {
-                newValue = prevText + newValue;
-            }
-        }
-        // file operation
-        final FormulaTermFileOperation.FunctionType t6 = FormulaTermFileOperation.getFunctionType(contex, code);
-        if (newValue == null && t6 != null)
-        {
-            // for the file operation, we do not transfer previous text
-            newValue = t6.getLowerCaseName() +
-                    contex.getResources().getString(R.string.formula_function_start_bracket);
-        }
-        // function
-        final FormulaTermFunction.FunctionType t3 = FormulaTermFunction.getFunctionType(contex, code);
-        if (newValue == null && t3 != null)
-        {
-            // for a function, we add operator code at the beginning of line in order to move
-            // existing text in the function argument term
-            newValue = (t3 == FormulaTermFunction.FunctionType.FUNCTION_LINK) ? code : t3.getLowerCaseName();
-            if (prevText != null)
-            {
-                if (t3 != FormulaTermFunction.FunctionType.FUNCTION_LINK)
+            case OPERATOR:
+                // for an operator, we add operator code to the end of line in order to move
+                // existing text in the first term
+                newValue = contex.getResources().getString(f.getShortCutId());
+                if (prevText != null)
                 {
-                    newValue += contex.getResources().getString(R.string.formula_function_start_bracket);
+                    newValue = prevText + newValue;
                 }
-                newValue += prevText;
-            }
-        }
-        // interval
-        final FormulaTermInterval.IntervalType t4 = FormulaTermInterval.getIntervalType(contex, code);
-        if (newValue == null && t4 != null)
-        {
-            // for an interval, we add operator code at the beginning of line in order to move
-            // existing text in the function argument term
-            newValue = contex.getResources().getString(t4.getShortCutId());
-            if (prevText != null)
-            {
-                newValue += prevText;
-            }
-        }
-        // loop
-        final FormulaTermLoop.LoopType t5 = FormulaTermLoop.getLoopType(contex, code);
-        if (newValue == null && t5 != null)
-        {
-            // for a loop, we add operator code at the beginning of line in order to move
-            // existing text in the function argument term
-            newValue = contex.getResources().getString(t5.getShortCutId());
-            if (prevText != null)
-            {
-                newValue += prevText;
+                break;
+            case COMPARATOR:
+                // for a comparator, we add operator code to the end of line in order to move
+                // existing text in the first term
+                newValue = contex.getResources().getString(f.getShortCutId());
+                if (prevText != null)
+                {
+                    newValue = prevText + newValue;
+                }
+                break;
+            case FILE_OPERATION:
+                // for the file operation, we do not transfer previous text
+                newValue = f.getLowerCaseName() +
+                        contex.getResources().getString(R.string.formula_function_start_bracket);
+                break;
+            case FUNCTION:
+                // for a function, we add operator code at the beginning of line in order to move
+                // existing text in the function argument term
+                final FormulaTermFunction.FunctionType t3 = (FormulaTermFunction.FunctionType)f;
+                newValue = (t3 == FormulaTermFunction.FunctionType.FUNCTION_LINK) ? code : f.getLowerCaseName();
+                if (prevText != null)
+                {
+                    if (t3 != FormulaTermFunction.FunctionType.FUNCTION_LINK)
+                    {
+                        newValue += contex.getResources().getString(R.string.formula_function_start_bracket);
+                    }
+                    newValue += prevText;
+                }
+                break;
+            case INTERVAL:
+                // for an interval, we add operator code at the beginning of line in order to move
+                // existing text in the function argument term
+                newValue = contex.getResources().getString(f.getShortCutId());
+                if (prevText != null)
+                {
+                    newValue += prevText;
+                }
+                break;
+            case LOOP:
+                // for a loop, we add operator code at the beginning of line in order to move
+                // existing text in the function argument term
+                newValue = contex.getResources().getString(f.getShortCutId());
+                if (prevText != null)
+                {
+                    newValue += prevText;
+                }
+                break;
             }
         }
         return newValue;
