@@ -45,14 +45,14 @@ public class FormulaTermInterval extends FormulaTerm
                 R.drawable.p_equidistant_interval,
                 R.string.math_equidistant_interval);
 
-        private final int symbolId;
+        private final int shortCutId;
         private final int imageId;
         private final int descriptionId;
         private final String lowerCaseName;
 
-        IntervalType(int symbolId, int imageId, int descriptionId)
+        IntervalType(int shortCutId, int imageId, int descriptionId)
         {
-            this.symbolId = symbolId;
+            this.shortCutId = shortCutId;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
@@ -60,9 +60,9 @@ public class FormulaTermInterval extends FormulaTerm
 
         public GroupType getGroupType() { return GroupType.INTERVAL; }
 
-        public int getSymbolId()
+        public int getShortCutId()
         {
-            return symbolId;
+            return shortCutId;
         }
 
         public int getImageId()
@@ -87,7 +87,7 @@ public class FormulaTermInterval extends FormulaTerm
         for (IntervalType f : IntervalType.values())
         {
             if (s.equals(f.getLowerCaseName())
-                    || s.contains(context.getResources().getString(f.getSymbolId())))
+                    || s.contains(context.getResources().getString(f.getShortCutId())))
             {
                 retValue = f;
                 break;

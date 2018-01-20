@@ -60,7 +60,7 @@ public class FormulaTermFileOperation extends FormulaTermFunctionBase
 
         public GroupType getGroupType() { return GroupType.FILE_OPERATION; }
 
-        public int getSymbolId() { return Palette.NO_BUTTON; }
+        public int getShortCutId() { return Palette.NO_BUTTON; }
 
         public int getImageId()
         {

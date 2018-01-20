@@ -47,14 +47,14 @@ public class FormulaTermOperator extends FormulaTerm
                 R.drawable.p_operator_divide_slash,
                 R.string.math_operator_divide_slash);
 
-        private final int symbolId;
+        private final int shortCutId;
         private final int imageId;
         private final int descriptionId;
         private final String lowerCaseName;
 
-        OperatorType(int symbolId, int imageId, int descriptionId)
+        OperatorType(int shortCutId, int imageId, int descriptionId)
         {
-            this.symbolId = symbolId;
+            this.shortCutId = shortCutId;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
@@ -62,9 +62,9 @@ public class FormulaTermOperator extends FormulaTerm
 
         public GroupType getGroupType() { return GroupType.OPERATOR; }
 
-        public int getSymbolId()
+        public int getShortCutId()
         {
-            return symbolId;
+            return shortCutId;
         }
 
         public int getImageId()
@@ -89,7 +89,7 @@ public class FormulaTermOperator extends FormulaTerm
         for (OperatorType f : OperatorType.values())
         {
             if (s.equals(f.getLowerCaseName())
-                    || s.contains(context.getResources().getString(f.getSymbolId())))
+                    || s.contains(context.getResources().getString(f.getShortCutId())))
             {
                 retValue = f;
                 break;
@@ -342,7 +342,7 @@ public class FormulaTermOperator extends FormulaTerm
             throw new Exception("cannot initialize operator terms");
         }
         // set texts for left and right parts
-        TermField.divideString(s, getContext().getResources().getString(termType.getSymbolId()), leftTerm,
+        TermField.divideString(s, getContext().getResources().getString(termType.getShortCutId()), leftTerm,
                 rightTerm);
         // disable brackets of child terms in some cases
         switch (getOperatorType())

@@ -91,7 +91,7 @@ public class FormulaTermFunction extends FormulaTermFunctionBase
         private final int argNumber;
         private final int imageId;
         private final int descriptionId;
-        private final int symbolId;
+        private final int shortCutId;
         private final String linkObject;
         private final String lowerCaseName;
 
@@ -100,24 +100,24 @@ public class FormulaTermFunction extends FormulaTermFunctionBase
             this(argNumber, imageId, descriptionId, Palette.NO_BUTTON, null);
         }
 
-        FunctionType(int argNumber, int imageId, int descriptionId, int symbolId)
+        FunctionType(int argNumber, int imageId, int descriptionId, int shortCutId)
         {
-            this(argNumber, imageId, descriptionId, symbolId, null);
+            this(argNumber, imageId, descriptionId, shortCutId, null);
         }
 
-        FunctionType(int argNumber, int imageId, int descriptionId, int symbolId, String linkObject)
+        FunctionType(int argNumber, int imageId, int descriptionId, int shortCutId, String linkObject)
         {
             this.argNumber = argNumber;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
-            this.symbolId = symbolId;
+            this.shortCutId = shortCutId;
             this.linkObject = linkObject;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
         public GroupType getGroupType() { return GroupType.FUNCTION; }
 
-        public int getSymbolId() { return symbolId; }
+        public int getShortCutId() { return shortCutId; }
 
         public int getArgNumber()
         {
@@ -175,7 +175,7 @@ public class FormulaTermFunction extends FormulaTermFunctionBase
 
         public int getCodeId()
         {
-            return functionType != null? functionType.getSymbolId() : R.string.formula_function_start_bracket;
+            return functionType != null? functionType.getShortCutId() : R.string.formula_function_start_bracket;
         }
 
         public FunctionType getFunctionType()

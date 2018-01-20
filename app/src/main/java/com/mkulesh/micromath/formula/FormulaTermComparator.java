@@ -56,14 +56,14 @@ public class FormulaTermComparator extends FormulaTerm
         COMPARATOR_AND(R.string.formula_comparator_and, R.drawable.p_comparator_and, R.string.math_comparator_and),
         COMPARATOR_OR(R.string.formula_comparator_or, R.drawable.p_comparator_or, R.string.math_comparator_or);
 
-        private final int symbolId;
+        private final int shortCutId;
         private final int imageId;
         private final int descriptionId;
         private final String lowerCaseName;
 
-        ComparatorType(int symbolId, int imageId, int descriptionId)
+        ComparatorType(int shortCutId, int imageId, int descriptionId)
         {
-            this.symbolId = symbolId;
+            this.shortCutId = shortCutId;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
@@ -71,9 +71,9 @@ public class FormulaTermComparator extends FormulaTerm
 
         public GroupType getGroupType() { return GroupType.COMPARATOR; }
 
-        public int getSymbolId()
+        public int getShortCutId()
         {
-            return symbolId;
+            return shortCutId;
         }
 
         public int getImageId()
@@ -98,7 +98,7 @@ public class FormulaTermComparator extends FormulaTerm
         for (ComparatorType f : ComparatorType.values())
         {
             if (s.equals(f.getLowerCaseName())
-                    || s.contains(context.getResources().getString(f.getSymbolId())))
+                    || s.contains(context.getResources().getString(f.getShortCutId())))
             {
                 retValue = f;
                 break;
@@ -288,7 +288,7 @@ public class FormulaTermComparator extends FormulaTerm
             throw new Exception("cannot initialize comparators terms");
         }
         // set texts for left and right parts
-        TermField.divideString(s, getContext().getResources().getString(termType.getSymbolId()), leftTerm,
+        TermField.divideString(s, getContext().getResources().getString(termType.getShortCutId()), leftTerm,
                 rightTerm);
         // disable brackets of child terms in some cases
         switch (getComparatorType())

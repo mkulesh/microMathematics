@@ -44,5 +44,5 @@ public interface FormulaTermTypeIf
     int getDescriptionId();
 
     /* Returns resource ID of the string short-cut */
-    int getSymbolId();
+    int getShortCutId();
 }

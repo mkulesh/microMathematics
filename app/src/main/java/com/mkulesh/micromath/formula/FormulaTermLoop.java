@@ -50,14 +50,14 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         INTEGRAL(R.string.formula_loop_integral, R.drawable.p_loop_integral, R.string.math_loop_integral),
         DERIVATIVE(R.string.formula_loop_derivative, R.drawable.p_loop_derivative, R.string.math_loop_derivative);
 
-        private final int symbolId;
+        private final int shortCutId;
         private final int imageId;
         private final int descriptionId;
         private final String lowerCaseName;
 
-        LoopType(int symbolId, int imageId, int descriptionId)
+        LoopType(int shortCutId, int imageId, int descriptionId)
         {
-            this.symbolId = symbolId;
+            this.shortCutId = shortCutId;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
@@ -65,9 +65,9 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
 
         public GroupType getGroupType() { return GroupType.LOOP; }
 
-        public int getSymbolId()
+        public int getShortCutId()
         {
-            return symbolId;
+            return shortCutId;
         }
 
         public int getImageId()
@@ -92,7 +92,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         for (LoopType f : LoopType.values())
         {
             if (s.equals(f.getLowerCaseName())
-                    || s.contains(context.getResources().getString(f.getSymbolId())))
+                    || s.contains(context.getResources().getString(f.getShortCutId())))
             {
                 retValue = f;
                 break;
@@ -451,7 +451,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
         argTerm.bracketsType = BracketsType.IFNECESSARY;
 
         // restore the previous text
-        final String opCode = getContext().getResources().getString(termType.getSymbolId());
+        final String opCode = getContext().getResources().getString(termType.getShortCutId());
         final int opPosition = s.indexOf(opCode);
         if (opPosition >= 0)
         {

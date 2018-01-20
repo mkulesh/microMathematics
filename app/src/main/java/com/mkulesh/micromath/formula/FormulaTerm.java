@@ -259,7 +259,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // for an operator, we add operator code to the end of line in order to move
             // existing text in the first term
-            newValue = contex.getResources().getString(t1.getSymbolId());
+            newValue = contex.getResources().getString(t1.getShortCutId());
             if (prevText != null)
             {
                 newValue = prevText + newValue;
@@ -271,7 +271,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // for a comparator, we add operator code to the end of line in order to move
             // existing text in the first term
-            newValue = contex.getResources().getString(t2.getSymbolId());
+            newValue = contex.getResources().getString(t2.getShortCutId());
             if (prevText != null)
             {
                 newValue = prevText + newValue;
@@ -307,7 +307,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // for an interval, we add operator code at the beginning of line in order to move
             // existing text in the function argument term
-            newValue = contex.getResources().getString(t4.getSymbolId());
+            newValue = contex.getResources().getString(t4.getShortCutId());
             if (prevText != null)
             {
                 newValue += prevText;
@@ -319,7 +319,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // for a loop, we add operator code at the beginning of line in order to move
             // existing text in the function argument term
-            newValue = contex.getResources().getString(t5.getSymbolId());
+            newValue = contex.getResources().getString(t5.getShortCutId());
             if (prevText != null)
             {
                 newValue += prevText;
@@ -561,7 +561,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             if (b.getImageId() != Palette.NO_BUTTON)
             {
                 PaletteButton p = new PaletteButton(context,
-                        b.getSymbolId(), b.getImageId(), b.getDescriptionId(),
+                        b.getShortCutId(), b.getImageId(), b.getDescriptionId(),
                         b.getLowerCaseName());
                 paletteLayout.addView(p);
                 p.setCategories(categories);
