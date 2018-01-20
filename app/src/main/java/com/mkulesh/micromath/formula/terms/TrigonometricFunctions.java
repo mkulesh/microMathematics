@@ -16,27 +16,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package com.mkulesh.micromath.formula;
+package com.mkulesh.micromath.formula.terms;
 
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
+import com.mkulesh.micromath.formula.CalculatableIf;
+import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
+import com.mkulesh.micromath.formula.FormulaTermTypeIf;
+import com.mkulesh.micromath.formula.Palette;
+import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
-import com.mkulesh.micromath.properties.DocumentProperties;
 
 import org.apache.commons.math3.util.FastMath;
 
 import java.util.Locale;
 
-public class FormulaTermLogFunctions extends FormulaTermFunctionBase
+public class TrigonometricFunctions extends FunctionBase
 {
     public FormulaTermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.LOG_FUNCTION;
+        return FormulaTermTypeIf.GroupType.TRIGONOMETRIC_FUNCTIONS;
     }
 
     /**
@@ -44,12 +48,13 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
      */
     public enum FunctionType implements FormulaTermTypeIf
     {
-        EXP(1, R.drawable.p_function_exp, R.string.math_function_exp),
-        LN(1, R.drawable.p_function_ln, R.string.math_function_ln),
-        LOG10(1, R.drawable.p_function_log10, R.string.math_function_log10),
-        SINH(1, R.drawable.p_function_sinh, R.string.math_function_sinh),
-        COSH(1, R.drawable.p_function_cosh, R.string.math_function_cosh),
-        TANH(1, R.drawable.p_function_tanh, R.string.math_function_tanh);
+        SIN(1, R.drawable.p_function_sin, R.string.math_function_sin),
+        ASIN(1, R.drawable.p_function_asin, R.string.math_function_asin),
+        COS(1, R.drawable.p_function_cos, R.string.math_function_cos),
+        ACOS(1, R.drawable.p_function_acos, R.string.math_function_acos),
+        TAN(1, R.drawable.p_function_tan, R.string.math_function_tan),
+        ATAN(1, R.drawable.p_function_atan, R.string.math_function_atan),
+        ATAN2(2, R.drawable.p_function_atan2, R.string.math_function_atan2);
 
         private final int argNumber;
         private final int imageId;
@@ -71,7 +76,7 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.LOG_FUNCTION; }
+        public GroupType getGroupType() { return GroupType.TRIGONOMETRIC_FUNCTIONS; }
 
         public int getShortCutId() { return shortCutId; }
 
@@ -88,40 +93,6 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
         public int getDescriptionId()
         {
             return descriptionId;
-        }
-
-        public String getLowerCaseName()
-        {
-            return lowerCaseName;
-        }
-    }
-
-    /**
-     * Some functions are obsolete. This enumeration defines its back-compatibility
-     */
-    private enum ObsoleteCodes
-    {
-        LOG(1, FunctionType.LN);
-
-        private final int lastDocumentVersion;
-        private final FunctionType functionType;
-        private final String lowerCaseName;
-
-        ObsoleteCodes(int lastDocumentVersion, FunctionType functionType)
-        {
-            this.lastDocumentVersion = lastDocumentVersion;
-            this.functionType = functionType;
-            this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
-        }
-
-        public int getLastDocumentVersion()
-        {
-            return lastDocumentVersion;
-        }
-
-        public FunctionType getFunctionType()
-        {
-            return functionType;
         }
 
         public String getLowerCaseName()
@@ -155,19 +126,6 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
             }
         }
 
-        // Compatibility mode: search the function name in the array of obsolete functions
-        if (DocumentProperties.getDocumentVersion() != DocumentProperties.LATEST_DOCUMENT_VERSION)
-        {
-            for (ObsoleteCodes obs : ObsoleteCodes.values())
-            {
-                if (DocumentProperties.getDocumentVersion() <= obs.getLastDocumentVersion() &&
-                        s.equals(obs.getLowerCaseName()))
-                {
-                    return obs.getFunctionType();
-                }
-            }
-        }
-
         return null;
     }
 
@@ -181,7 +139,7 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
      * Constructors
      *********************************************************/
 
-    public FormulaTermLogFunctions(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public TrigonometricFunctions(TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         onCreate(s, idx);
@@ -191,12 +149,12 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
      * GUI constructors to avoid lint warning
      *********************************************************/
 
-    public FormulaTermLogFunctions(Context context)
+    public TrigonometricFunctions(Context context)
     {
         super();
     }
 
-    public FormulaTermLogFunctions(Context context, AttributeSet attrs)
+    public TrigonometricFunctions(Context context, AttributeSet attrs)
     {
         super();
     }
@@ -233,43 +191,69 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
             final CalculatedValue a0 = argVal[0];
             switch (getFunctionType())
             {
-            case SINH:
-                return outValue.sinh(a0);
-            case COSH:
-                return outValue.cosh(a0);
-            case TANH:
-                return outValue.tanh(a0);
+            case SIN:
+                return outValue.sin(a0);
+            case ASIN:
+                return outValue.asin(a0);
 
-            case EXP:
-                return outValue.exp(a0);
-            case LN:
-                return outValue.log(a0);
-            case LOG10:
-                return outValue.log10(a0);
+            case COS:
+                return outValue.cos(a0);
+            case ACOS:
+                return outValue.acos(a0);
+
+            case TAN:
+                return outValue.tan(a0);
+            case ATAN:
+                return outValue.atan(a0);
+            case ATAN2:
+            {
+                final CalculatedValue a1 = argVal[1];
+                if (a0.isComplex() || a1.isComplex())
+                {
+                    return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
+                }
+                return outValue.setValue(FastMath.atan2(a0.getReal(), a1.getReal()));
+            }
             }
         }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
     }
 
     @Override
-    public DifferentiableType isDifferentiable(String var)
+    public CalculatableIf.DifferentiableType isDifferentiable(String var)
     {
         if (termType == null)
         {
-            return DifferentiableType.NONE;
+            return CalculatableIf.DifferentiableType.NONE;
         }
-        DifferentiableType argsProp = DifferentiableType.INDEPENDENT;
+        CalculatableIf.DifferentiableType argsProp = CalculatableIf.DifferentiableType.INDEPENDENT;
         for (int i = 0; i < terms.size(); i++)
         {
             final int dGrad = Math.min(argsProp.ordinal(), terms.get(i).isDifferentiable(var).ordinal());
-            argsProp = DifferentiableType.values()[dGrad];
+            argsProp = CalculatableIf.DifferentiableType.values()[dGrad];
         }
 
-        DifferentiableType retValue = argsProp;
-
+        CalculatableIf.DifferentiableType retValue = CalculatableIf.DifferentiableType.NONE;
+        switch (getFunctionType())
+        {
+        // for these functions, derivative can be calculated analytically
+        case SIN:
+        case ASIN:
+        case COS:
+        case ACOS:
+        case TAN:
+        case ATAN:
+            retValue = argsProp;
+            break;
+        // these functions are not differentiable if contain the given argument
+        case ATAN2:
+            retValue = (argsProp == CalculatableIf.DifferentiableType.INDEPENDENT) ? CalculatableIf.DifferentiableType.INDEPENDENT
+                    : CalculatableIf.DifferentiableType.NONE;
+            break;
+        }
         // set the error code to be displayed
         ErrorCode errorCode = ErrorCode.NO_ERROR;
-        if (retValue == DifferentiableType.NONE)
+        if (retValue == CalculatableIf.DifferentiableType.NONE)
         {
             errorCode = ErrorCode.NOT_DIFFERENTIABLE;
         }
@@ -292,28 +276,51 @@ public class FormulaTermLogFunctions extends FormulaTermFunctionBase
             terms.get(0).getDerivativeValue(var, thread, a0derVal);
             switch (getFunctionType())
             {
-            case SINH: // cosh(a0) * a0'
-                outValue.cosh(a0);
+            case SIN: // cos(a0) * a0'
+                outValue.cos(a0);
                 return outValue.multiply(outValue, a0derVal);
-            case COSH: // sinh(a0) * a0'
-                outValue.sinh(a0);
+            case ASIN: // (1.0 / sqrt(1.0 - a0 * a0)) * a0'
+                outValue.multiply(a0, a0);
+                outValue.subtract(CalculatedValue.ONE, outValue);
+                outValue.sqrt(outValue);
+                outValue.divide(CalculatedValue.ONE, outValue);
                 return outValue.multiply(outValue, a0derVal);
-            case TANH: // (1.0 / (cosh(a0) * cosh(a0))) * a0'
-                outValue.cosh(a0);
+            case COS: // -1 * sin(a0) * a0'
+                outValue.sin(a0);
+                outValue.multiply(-1.0);
+                return outValue.multiply(outValue, a0derVal);
+            case ACOS: // (-1.0 / sqrt(1.0 - a0 * a0)) * a0'
+                outValue.multiply(a0, a0);
+                outValue.subtract(CalculatedValue.ONE, outValue);
+                outValue.sqrt(outValue);
+                outValue.divide(CalculatedValue.MINUS_ONE, outValue);
+                return outValue.multiply(outValue, a0derVal);
+            case TAN: // (1.0 + tan(a0) * tan(a0)) * a0'
+                outValue.tan(a0);
                 outValue.multiply(outValue, outValue);
+                outValue.add(CalculatedValue.ONE, outValue);
+                return outValue.multiply(outValue, a0derVal);
+            case ATAN: // (1.0 / (1.0 + a0 * a0)) * a0'
+                outValue.multiply(a0, a0);
+                outValue.add(CalculatedValue.ONE, outValue);
                 outValue.divide(CalculatedValue.ONE, outValue);
                 return outValue.multiply(outValue, a0derVal);
-            case EXP: // exp(a0) * a0'
-                outValue.exp(a0);
-                return outValue.multiply(outValue, a0derVal);
-            case LN: // (1.0 / a0) * a0'
-                outValue.divide(CalculatedValue.ONE, a0);
-                return outValue.multiply(outValue, a0derVal);
-            case LOG10: // (1.0 / (a0 * FastMath.log(10.0))) * a0'
-                outValue.assign(a0);
-                outValue.multiply(FastMath.log(10.0));
-                outValue.divide(CalculatedValue.ONE, outValue);
-                return outValue.multiply(outValue, a0derVal);
+            // these functions are not differentiable if contain the given argument
+            case ATAN2:
+                CalculatableIf.DifferentiableType argsProp = CalculatableIf.DifferentiableType.INDEPENDENT;
+                for (int i = 0; i < terms.size(); i++)
+                {
+                    final int dGrad = Math.min(argsProp.ordinal(), terms.get(i).isDifferentiable(var).ordinal());
+                    argsProp = CalculatableIf.DifferentiableType.values()[dGrad];
+                }
+                if (argsProp == CalculatableIf.DifferentiableType.INDEPENDENT)
+                {
+                    return outValue.setValue(0.0);
+                }
+                else
+                {
+                    return outValue.invalidate(CalculatedValue.ErrorType.NOT_A_NUMBER);
+                }
             }
         }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);

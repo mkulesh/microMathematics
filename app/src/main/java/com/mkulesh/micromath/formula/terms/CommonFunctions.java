@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package com.mkulesh.micromath.formula;
+package com.mkulesh.micromath.formula.terms;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -24,7 +24,14 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.mkulesh.micromath.formula.BracketParser;
+import com.mkulesh.micromath.formula.CalculatableIf;
+import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
+import com.mkulesh.micromath.formula.FormulaBase;
+import com.mkulesh.micromath.formula.FormulaTermTypeIf;
+import com.mkulesh.micromath.formula.Palette;
+import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.widgets.CustomEditText;
@@ -35,11 +42,11 @@ import org.apache.commons.math3.util.CombinatoricsUtils;
 
 import java.util.Locale;
 
-public class FormulaTermCommFunctions extends FormulaTermFunctionBase
+public class CommonFunctions extends FunctionBase
 {
     public FormulaTermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.COMM_FUNCTION;
+        return FormulaTermTypeIf.GroupType.COMMON_FUNCTIONS;
     }
 
     /**
@@ -85,7 +92,7 @@ public class FormulaTermCommFunctions extends FormulaTermFunctionBase
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.COMM_FUNCTION; }
+        public GroupType getGroupType() { return GroupType.COMMON_FUNCTIONS; }
 
         public int getShortCutId() { return shortCutId; }
 
@@ -207,7 +214,7 @@ public class FormulaTermCommFunctions extends FormulaTermFunctionBase
      * Constructors
      *********************************************************/
 
-    public FormulaTermCommFunctions(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public CommonFunctions(TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         onCreate(s, idx);
@@ -217,12 +224,12 @@ public class FormulaTermCommFunctions extends FormulaTermFunctionBase
      * GUI constructors to avoid lint warning
      *********************************************************/
 
-    public FormulaTermCommFunctions(Context context)
+    public CommonFunctions(Context context)
     {
         super();
     }
 
-    public FormulaTermCommFunctions(Context context, AttributeSet attrs)
+    public CommonFunctions(Context context, AttributeSet attrs)
     {
         super();
     }
@@ -315,20 +322,20 @@ public class FormulaTermCommFunctions extends FormulaTermFunctionBase
     }
 
     @Override
-    public DifferentiableType isDifferentiable(String var)
+    public CalculatableIf.DifferentiableType isDifferentiable(String var)
     {
         if (termType == null)
         {
-            return DifferentiableType.NONE;
+            return CalculatableIf.DifferentiableType.NONE;
         }
-        DifferentiableType argsProp = DifferentiableType.INDEPENDENT;
+        CalculatableIf.DifferentiableType argsProp = CalculatableIf.DifferentiableType.INDEPENDENT;
         for (int i = 0; i < terms.size(); i++)
         {
             final int dGrad = Math.min(argsProp.ordinal(), terms.get(i).isDifferentiable(var).ordinal());
-            argsProp = DifferentiableType.values()[dGrad];
+            argsProp = CalculatableIf.DifferentiableType.values()[dGrad];
         }
 
-        DifferentiableType retValue = DifferentiableType.NONE;
+        CalculatableIf.DifferentiableType retValue = CalculatableIf.DifferentiableType.NONE;
         switch (getFunctionType())
         {
         // for these functions, derivative can be calculated analytically
@@ -345,24 +352,24 @@ public class FormulaTermCommFunctions extends FormulaTermFunctionBase
         case NTHRT_LAYOUT:
             // n-th root is only differentiable if the power does not depend on the given argument
             retValue = argsProp;
-            if (retValue != DifferentiableType.INDEPENDENT)
+            if (retValue != CalculatableIf.DifferentiableType.INDEPENDENT)
             {
-                final DifferentiableType powValue = DifferentiableType.values()[terms.get(0).isDifferentiable(var)
+                final CalculatableIf.DifferentiableType powValue = CalculatableIf.DifferentiableType.values()[terms.get(0).isDifferentiable(var)
                         .ordinal()];
-                retValue = (powValue == DifferentiableType.INDEPENDENT) ? retValue : DifferentiableType.NONE;
+                retValue = (powValue == CalculatableIf.DifferentiableType.INDEPENDENT) ? retValue : CalculatableIf.DifferentiableType.NONE;
             }
             break;
         // these functions are not differentiable if contain the given argument
         case IF:
         case FACTORIAL:
         case CONJUGATE_LAYOUT:
-            retValue = (argsProp == DifferentiableType.INDEPENDENT) ? DifferentiableType.INDEPENDENT
-                    : DifferentiableType.NONE;
+            retValue = (argsProp == CalculatableIf.DifferentiableType.INDEPENDENT) ? CalculatableIf.DifferentiableType.INDEPENDENT
+                    : CalculatableIf.DifferentiableType.NONE;
             break;
         }
         // set the error code to be displayed
         ErrorCode errorCode = ErrorCode.NO_ERROR;
-        if (retValue == DifferentiableType.NONE)
+        if (retValue == CalculatableIf.DifferentiableType.NONE)
         {
             errorCode = ErrorCode.NOT_DIFFERENTIABLE;
         }
@@ -459,13 +466,13 @@ public class FormulaTermCommFunctions extends FormulaTermFunctionBase
             case IF:
             case FACTORIAL:
             case CONJUGATE_LAYOUT:
-                DifferentiableType argsProp = DifferentiableType.INDEPENDENT;
+                CalculatableIf.DifferentiableType argsProp = CalculatableIf.DifferentiableType.INDEPENDENT;
                 for (int i = 0; i < terms.size(); i++)
                 {
                     final int dGrad = Math.min(argsProp.ordinal(), terms.get(i).isDifferentiable(var).ordinal());
-                    argsProp = DifferentiableType.values()[dGrad];
+                    argsProp = CalculatableIf.DifferentiableType.values()[dGrad];
                 }
-                if (argsProp == DifferentiableType.INDEPENDENT)
+                if (argsProp == CalculatableIf.DifferentiableType.INDEPENDENT)
                 {
                     return outValue.setValue(0.0);
                 }
@@ -713,7 +720,7 @@ public class FormulaTermCommFunctions extends FormulaTermFunctionBase
                     {
                         term.setText(s.subSequence(0, opPosition));
                     }
-                    isContentValid(ValidationPassType.VALIDATE_SINGLE_FORMULA);
+                    isContentValid(FormulaBase.ValidationPassType.VALIDATE_SINGLE_FORMULA);
                 }
                 catch (Exception ex)
                 {

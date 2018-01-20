@@ -16,13 +16,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package com.mkulesh.micromath.formula;
+package com.mkulesh.micromath.formula.terms;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
+import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
+import com.mkulesh.micromath.formula.FormulaTerm;
+import com.mkulesh.micromath.formula.FormulaTermTypeIf;
+import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TermField.BracketsType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
@@ -31,33 +35,42 @@ import com.mkulesh.micromath.widgets.CustomTextView;
 
 import java.util.Locale;
 
-public class FormulaTermOperator extends FormulaTerm
+public class Comparators extends FormulaTerm
 {
     public FormulaTermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.OPERATOR;
+        return FormulaTermTypeIf.GroupType.COMPARATORS;
     }
 
     /**
-     * Supported operators
+     * Supported comparators
      */
-    public enum OperatorType implements FormulaTermTypeIf
+    public enum ComparatorType implements FormulaTermTypeIf
     {
-        PLUS(R.string.formula_operator_plus, R.drawable.p_operator_plus, R.string.math_operator_plus),
-        MINUS(R.string.formula_operator_minus, R.drawable.p_operator_minus, R.string.math_operator_minus),
-        MULT(R.string.formula_operator_mult, R.drawable.p_operator_mult, R.string.math_operator_mult),
-        DIVIDE(R.string.formula_operator_divide, R.drawable.p_operator_divide, R.string.math_operator_divide),
-        DIVIDE_SLASH(
-                R.string.formula_operator_divide_slash,
-                R.drawable.p_operator_divide_slash,
-                R.string.math_operator_divide_slash);
+        EQUAL(R.string.formula_comparator_equal, R.drawable.p_comparator_equal, R.string.math_comparator_equal),
+        NOT_EQUAL(
+                R.string.formula_comparator_not_equal,
+                R.drawable.p_comparator_not_equal,
+                R.string.math_comparator_not_equal),
+        LESS(R.string.formula_comparator_less, R.drawable.p_comparator_less, R.string.math_comparator_less),
+        LESS_EQUAL(
+                R.string.formula_comparator_less_eq,
+                R.drawable.p_comparator_less_eq,
+                R.string.math_comparator_less_eq),
+        GREATER(R.string.formula_comparator_greater, R.drawable.p_comparator_greater, R.string.math_comparator_greater),
+        GREATER_EQUAL(
+                R.string.formula_comparator_greater_eq,
+                R.drawable.p_comparator_greater_eq,
+                R.string.math_comparator_greater_eq),
+        COMPARATOR_AND(R.string.formula_comparator_and, R.drawable.p_comparator_and, R.string.math_comparator_and),
+        COMPARATOR_OR(R.string.formula_comparator_or, R.drawable.p_comparator_or, R.string.math_comparator_or);
 
         private final int shortCutId;
         private final int imageId;
         private final int descriptionId;
         private final String lowerCaseName;
 
-        OperatorType(int shortCutId, int imageId, int descriptionId)
+        ComparatorType(int shortCutId, int imageId, int descriptionId)
         {
             this.shortCutId = shortCutId;
             this.imageId = imageId;
@@ -65,7 +78,7 @@ public class FormulaTermOperator extends FormulaTerm
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.OPERATOR; }
+        public GroupType getGroupType() { return GroupType.COMPARATORS; }
 
         public int getShortCutId()
         {
@@ -88,10 +101,10 @@ public class FormulaTermOperator extends FormulaTerm
         }
     }
 
-    public static OperatorType getOperatorType(Context context, String s)
+    public static ComparatorType getComparatorType(Context context, String s)
     {
-        OperatorType retValue = null;
-        for (OperatorType f : OperatorType.values())
+        ComparatorType retValue = null;
+        for (ComparatorType f : ComparatorType.values())
         {
             if (s.equals(f.getLowerCaseName())
                     || s.contains(context.getResources().getString(f.getShortCutId())))
@@ -107,17 +120,16 @@ public class FormulaTermOperator extends FormulaTerm
      * Private attributes
      */
     private TermField leftTerm = null, rightTerm = null;
-
+    private CustomTextView operatorKey = null;
 
     // Attention: this is not thread-safety declaration!
-    private final CalculatedValue fVal = new CalculatedValue(), gVal = new CalculatedValue(),
-            fDer = new CalculatedValue(), gDer = new CalculatedValue();
+    private final CalculatedValue leftTermValue = new CalculatedValue(), rightTermValue = new CalculatedValue();
 
     /*********************************************************
      * Constructors
      *********************************************************/
 
-    public FormulaTermOperator(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public Comparators(TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner.getFormulaRoot(), layout, owner.termDepth);
         setParentField(owner);
@@ -128,12 +140,12 @@ public class FormulaTermOperator extends FormulaTerm
      * GUI constructors to avoid lint warning
      *********************************************************/
 
-    public FormulaTermOperator(Context context)
+    public Comparators(Context context)
     {
         super();
     }
 
-    public FormulaTermOperator(Context context, AttributeSet attrs)
+    public Comparators(Context context, AttributeSet attrs)
     {
         super();
     }
@@ -142,9 +154,9 @@ public class FormulaTermOperator extends FormulaTerm
      * Common getters
      *********************************************************/
 
-    public OperatorType getOperatorType()
+    public ComparatorType getComparatorType()
     {
-        return (OperatorType) termType;
+        return (ComparatorType) termType;
     }
 
     /*********************************************************
@@ -154,21 +166,29 @@ public class FormulaTermOperator extends FormulaTerm
     @Override
     public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
     {
-        if (termType != null && leftTerm != null && rightTerm != null)
+        if (termType != null)
         {
-            leftTerm.getValue(thread, fVal);
-            rightTerm.getValue(thread, gVal);
-            switch (getOperatorType())
+            leftTerm.getValue(thread, leftTermValue);
+            rightTerm.getValue(thread, rightTermValue);
+            // Do not check invalid value since a comparator can handle it!
+            switch (getComparatorType())
             {
-            case PLUS:
-                return outValue.add(fVal, gVal);
-            case MINUS:
-                return outValue.subtract(fVal, gVal);
-            case MULT:
-                return outValue.multiply(fVal, gVal);
-            case DIVIDE:
-            case DIVIDE_SLASH:
-                return outValue.divide(fVal, gVal);
+            case EQUAL:
+                return outValue.setValue((leftTermValue.getReal() == rightTermValue.getReal()) ? 1 : -1);
+            case NOT_EQUAL:
+                return outValue.setValue((leftTermValue.getReal() != rightTermValue.getReal()) ? 1 : -1);
+            case LESS:
+                return outValue.setValue((leftTermValue.getReal() < rightTermValue.getReal()) ? 1 : -1);
+            case LESS_EQUAL:
+                return outValue.setValue((leftTermValue.getReal() <= rightTermValue.getReal()) ? 1 : -1);
+            case GREATER:
+                return outValue.setValue((leftTermValue.getReal() > rightTermValue.getReal()) ? 1 : -1);
+            case GREATER_EQUAL:
+                return outValue.setValue((leftTermValue.getReal() >= rightTermValue.getReal()) ? 1 : -1);
+            case COMPARATOR_AND:
+                return outValue.setValue((leftTermValue.getReal() > 0 && rightTermValue.getReal() > 0) ? 1 : -1);
+            case COMPARATOR_OR:
+                return outValue.setValue((leftTermValue.getReal() > 0 || rightTermValue.getReal() > 0) ? 1 : -1);
             }
         }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
@@ -177,45 +197,13 @@ public class FormulaTermOperator extends FormulaTerm
     @Override
     public DifferentiableType isDifferentiable(String var)
     {
-        final int dGrad = Math.min(leftTerm.isDifferentiable(var).ordinal(), rightTerm.isDifferentiable(var).ordinal());
-        return DifferentiableType.values()[dGrad];
+        return DifferentiableType.NONE;
     }
 
     @Override
     public CalculatedValue.ValueType getDerivativeValue(String var, CalculaterTask thread, CalculatedValue outValue)
             throws CancelException
     {
-        if (termType != null && leftTerm != null && rightTerm != null)
-        {
-            leftTerm.getDerivativeValue(var, thread, fDer);
-            rightTerm.getDerivativeValue(var, thread, gDer);
-            switch (getOperatorType())
-            {
-            case PLUS:
-                return outValue.add(fDer, gDer);
-            case MINUS:
-                return outValue.subtract(fDer, gDer);
-            case MULT:
-            {
-                leftTerm.getValue(thread, fVal);
-                rightTerm.getValue(thread, gVal);
-                fDer.multiply(fDer, gVal);
-                fVal.multiply(fVal, gDer);
-                return outValue.add(fDer, fVal);
-            }
-            case DIVIDE:
-            case DIVIDE_SLASH:
-            {
-                leftTerm.getValue(thread, fVal);
-                rightTerm.getValue(thread, gVal);
-                fDer.multiply(fDer, gVal);
-                fVal.multiply(fVal, gDer);
-                gDer.subtract(fDer, fVal);
-                fDer.multiply(gVal, gVal);
-                return outValue.divide(gDer, fDer);
-            }
-            }
-        }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
     }
 
@@ -227,29 +215,9 @@ public class FormulaTermOperator extends FormulaTerm
             String t = v.getText().toString();
             if (t.equals(getContext().getResources().getString(R.string.formula_operator_key)))
             {
-                switch (getOperatorType())
-                {
-                case PLUS:
-                    v.prepare(CustomTextView.SymbolType.PLUS, getFormulaRoot().getFormulaList().getActivity(), this);
-                    v.setText("..");
-                    break;
-                case MINUS:
-                    v.prepare(CustomTextView.SymbolType.MINUS, getFormulaRoot().getFormulaList().getActivity(), this);
-                    v.setText("..");
-                    break;
-                case MULT:
-                    v.prepare(CustomTextView.SymbolType.MULT, getFormulaRoot().getFormulaList().getActivity(), this);
-                    v.setText(".");
-                    break;
-                case DIVIDE:
-                    v.prepare(CustomTextView.SymbolType.HOR_LINE, getFormulaRoot().getFormulaList().getActivity(), this);
-                    v.setText("_");
-                    break;
-                case DIVIDE_SLASH:
-                    v.prepare(CustomTextView.SymbolType.SLASH, getFormulaRoot().getFormulaList().getActivity(), this);
-                    v.setText("_");
-                    break;
-                }
+                operatorKey = v;
+                v.prepare(CustomTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
+                updateOperatorKey();
             }
             else if (t.equals(getContext().getResources().getString(R.string.formula_left_bracket_key)))
             {
@@ -273,13 +241,11 @@ public class FormulaTermOperator extends FormulaTerm
         {
             if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_left_term_key)))
             {
-                final boolean addDepth = (termType == OperatorType.DIVIDE) ? true : false;
-                leftTerm = addTerm(getFormulaRoot(), l, v, this, addDepth);
+                leftTerm = addTerm(getFormulaRoot(), l, v, this, false);
             }
             if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_right_term_key)))
             {
-                final int addDepth = (termType == OperatorType.DIVIDE) ? 1 : 0;
-                rightTerm = addTerm(getFormulaRoot(), l, -1, v, this, addDepth);
+                rightTerm = addTerm(getFormulaRoot(), l, v, this, false);
             }
         }
         return v;
@@ -306,7 +272,7 @@ public class FormulaTermOperator extends FormulaTerm
     }
 
     /*********************************************************
-     * FormulaTermOperator-specific methods
+     * FormulaTermComparator-specific methods
      *********************************************************/
 
     /**
@@ -316,55 +282,94 @@ public class FormulaTermOperator extends FormulaTerm
     {
         if (idx < 0 || idx > layout.getChildCount())
         {
-            throw new Exception("cannot create FormulaTermOperator for invalid insertion index " + idx);
+            throw new Exception("cannot create FormulaTermComparator for invalid insertion index " + idx);
         }
-        termType = getOperatorType(getContext(), s);
+        termType = getComparatorType(getContext(), s);
         if (termType == null)
         {
-            throw new Exception("cannot create FormulaTermOperator for unknown operator");
+            throw new Exception("cannot create FormulaTermComparator for unknown comparator");
         }
-        switch (getOperatorType())
-        {
-        case PLUS:
-        case MINUS:
-            useBrackets = bracketsType != BracketsType.NEVER;
-            inflateElements(useBrackets ? R.layout.formula_operator_hor_brackets : R.layout.formula_operator_hor, true);
-            break;
-        case MULT:
-        case DIVIDE_SLASH:
-            useBrackets = bracketsType == BracketsType.ALWAYS;
-            inflateElements(useBrackets ? R.layout.formula_operator_hor_brackets : R.layout.formula_operator_hor, true);
-            break;
-        case DIVIDE:
-            useBrackets = bracketsType == BracketsType.ALWAYS;
-            inflateElements(useBrackets ? R.layout.formula_operator_vert_brackets : R.layout.formula_operator_vert,
-                    true);
-            break;
-        }
+        useBrackets = bracketsType != BracketsType.NEVER;
+        inflateElements(useBrackets ? R.layout.formula_operator_hor_brackets : R.layout.formula_operator_hor, true);
         initializeElements(idx);
         if (leftTerm == null || rightTerm == null)
         {
-            throw new Exception("cannot initialize operator terms");
+            throw new Exception("cannot initialize comparators terms");
         }
         // set texts for left and right parts
         TermField.divideString(s, getContext().getResources().getString(termType.getShortCutId()), leftTerm,
                 rightTerm);
         // disable brackets of child terms in some cases
-        switch (getOperatorType())
+        switch (getComparatorType())
         {
-        case DIVIDE:
-        case PLUS:
+        case EQUAL:
+        case NOT_EQUAL:
+        case GREATER:
+        case GREATER_EQUAL:
+        case LESS:
+        case LESS_EQUAL:
             leftTerm.bracketsType = BracketsType.NEVER;
             rightTerm.bracketsType = BracketsType.NEVER;
             break;
-        case DIVIDE_SLASH:
-        case MULT:
+        case COMPARATOR_AND:
+        case COMPARATOR_OR:
             leftTerm.bracketsType = BracketsType.IFNECESSARY;
+            leftTerm.getEditText().setComparatorEnabled(true);
             rightTerm.bracketsType = BracketsType.IFNECESSARY;
+            rightTerm.getEditText().setComparatorEnabled(true);
             break;
-        case MINUS:
-            leftTerm.bracketsType = BracketsType.NEVER;
-            rightTerm.bracketsType = BracketsType.IFNECESSARY;
+        }
+    }
+
+    /**
+     * If possible, changes the comparator type
+     */
+    public boolean changeComparatorType(ComparatorType newType)
+    {
+        if (operatorKey == null)
+        {
+            return false;
+        }
+        if (newType == ComparatorType.COMPARATOR_AND || newType == ComparatorType.COMPARATOR_OR
+                || termType == ComparatorType.COMPARATOR_AND || termType == ComparatorType.COMPARATOR_OR)
+        {
+            return false;
+        }
+        termType = newType;
+        updateOperatorKey();
+        return true;
+    }
+
+    /**
+     * Procedure sets the operator text depends on the current comparator type
+     */
+    private void updateOperatorKey()
+    {
+        switch (getComparatorType())
+        {
+        case EQUAL:
+            operatorKey.setText("=");
+            break;
+        case NOT_EQUAL:
+            operatorKey.setText("\u2260");
+            break;
+        case LESS:
+            operatorKey.setText("<");
+            break;
+        case LESS_EQUAL:
+            operatorKey.setText("\u2264");
+            break;
+        case GREATER:
+            operatorKey.setText(">");
+            break;
+        case GREATER_EQUAL:
+            operatorKey.setText("\u2265");
+            break;
+        case COMPARATOR_AND:
+            operatorKey.setText(R.string.math_comparator_and_text);
+            break;
+        case COMPARATOR_OR:
+            operatorKey.setText(R.string.math_comparator_or_text);
             break;
         }
     }

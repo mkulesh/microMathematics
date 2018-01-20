@@ -16,13 +16,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package com.mkulesh.micromath.formula;
+package com.mkulesh.micromath.formula.terms;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
+import com.mkulesh.micromath.formula.ArgumentHolderIf;
+import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
+import com.mkulesh.micromath.formula.FormulaTerm;
+import com.mkulesh.micromath.formula.FormulaTermTypeIf;
+import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TermField.BracketsType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.math.CalculatedValue.ValueType;
@@ -38,11 +43,11 @@ import org.apache.commons.math3.util.FastMath;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
+public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
 {
     public FormulaTermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.LOOP;
+        return FormulaTermTypeIf.GroupType.SERIES_INTEGRALS;
     }
 
     /**
@@ -68,7 +73,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.LOOP; }
+        public GroupType getGroupType() { return GroupType.SERIES_INTEGRALS; }
 
         public int getShortCutId()
         {
@@ -127,7 +132,7 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
      * Constructors
      *********************************************************/
 
-    public FormulaTermLoop(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public SeriesIntegrals(TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner.getFormulaRoot(), layout, owner.termDepth);
         setParentField(owner);
@@ -138,12 +143,12 @@ public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
      * GUI constructors to avoid lint warning
      *********************************************************/
 
-    public FormulaTermLoop(Context context)
+    public SeriesIntegrals(Context context)
     {
         super();
     }
 
-    public FormulaTermLoop(Context context, AttributeSet attrs)
+    public SeriesIntegrals(Context context, AttributeSet attrs)
     {
         super();
     }

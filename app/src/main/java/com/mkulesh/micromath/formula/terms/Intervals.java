@@ -16,13 +16,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package com.mkulesh.micromath.formula;
+package com.mkulesh.micromath.formula.terms;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
+import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
+import com.mkulesh.micromath.formula.Equation;
+import com.mkulesh.micromath.formula.FormulaTerm;
+import com.mkulesh.micromath.formula.FormulaTermTypeIf;
+import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.widgets.CustomEditText;
@@ -33,17 +38,17 @@ import org.apache.commons.math3.util.FastMath;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class FormulaTermInterval extends FormulaTerm
+public class Intervals extends FormulaTerm
 {
     public FormulaTermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.INTERVAL;
+        return FormulaTermTypeIf.GroupType.INTERVALS;
     }
 
     /**
      * Supported functions
      */
-    enum IntervalType implements FormulaTermTypeIf
+    public enum IntervalType implements FormulaTermTypeIf
     {
         EQUIDISTANT_INTERVAL(
                 R.string.formula_quidistant_interval,
@@ -63,7 +68,7 @@ public class FormulaTermInterval extends FormulaTerm
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.INTERVAL; }
+        public GroupType getGroupType() { return GroupType.INTERVALS; }
 
         public int getShortCutId()
         {
@@ -114,7 +119,7 @@ public class FormulaTermInterval extends FormulaTerm
      * Constructors
      *********************************************************/
 
-    public FormulaTermInterval(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public Intervals(TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner.getFormulaRoot(), layout, owner.termDepth);
         setParentField(owner);
@@ -125,12 +130,12 @@ public class FormulaTermInterval extends FormulaTerm
      * GUI constructors to avoid lint warning
      *********************************************************/
 
-    public FormulaTermInterval(Context context)
+    public Intervals(Context context)
     {
         super();
     }
 
-    public FormulaTermInterval(Context context, AttributeSet attrs)
+    public Intervals(Context context, AttributeSet attrs)
     {
         super();
     }

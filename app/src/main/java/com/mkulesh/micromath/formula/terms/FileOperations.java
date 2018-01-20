@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package com.mkulesh.micromath.formula;
+package com.mkulesh.micromath.formula.terms;
 
 import android.content.Context;
 import android.net.Uri;
@@ -24,7 +24,15 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.fman.FileUtils;
+import com.mkulesh.micromath.formula.CalculatableIf;
+import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
+import com.mkulesh.micromath.formula.Equation;
+import com.mkulesh.micromath.formula.FormulaBase;
+import com.mkulesh.micromath.formula.FormulaTermTypeIf;
+import com.mkulesh.micromath.formula.Palette;
+import com.mkulesh.micromath.formula.TermField;
+import com.mkulesh.micromath.formula.TermParser;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 
@@ -37,11 +45,11 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class FormulaTermFileOperation extends FormulaTermFunctionBase
+public class FileOperations extends FunctionBase
 {
     public FormulaTermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.FILE_OPERATION;
+        return FormulaTermTypeIf.GroupType.FILE_OPERATIONS;
     }
 
     /**
@@ -62,7 +70,7 @@ public class FormulaTermFileOperation extends FormulaTermFunctionBase
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.FILE_OPERATION; }
+        public GroupType getGroupType() { return GroupType.FILE_OPERATIONS; }
 
         public int getShortCutId() { return Palette.NO_BUTTON; }
 
@@ -114,7 +122,7 @@ public class FormulaTermFileOperation extends FormulaTermFunctionBase
      * Constructors
      *********************************************************/
 
-    public FormulaTermFileOperation(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public FileOperations(TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         onCreate(s, idx);
@@ -124,12 +132,12 @@ public class FormulaTermFileOperation extends FormulaTermFunctionBase
      * GUI constructors to avoid lint warning
      *********************************************************/
 
-    public FormulaTermFileOperation(Context context)
+    public FileOperations(Context context)
     {
         super();
     }
 
-    public FormulaTermFileOperation(Context context, AttributeSet attrs)
+    public FileOperations(Context context, AttributeSet attrs)
     {
         super();
     }
@@ -194,9 +202,9 @@ public class FormulaTermFileOperation extends FormulaTermFunctionBase
     }
 
     @Override
-    public DifferentiableType isDifferentiable(String var)
+    public CalculatableIf.DifferentiableType isDifferentiable(String var)
     {
-        return DifferentiableType.NONE;
+        return CalculatableIf.DifferentiableType.NONE;
     }
 
     @Override
@@ -207,7 +215,7 @@ public class FormulaTermFileOperation extends FormulaTermFunctionBase
     }
 
     @Override
-    public boolean isContentValid(ValidationPassType type)
+    public boolean isContentValid(FormulaBase.ValidationPassType type)
     {
         String errorMsg = null;
         switch (type)

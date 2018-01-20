@@ -22,6 +22,17 @@ import android.content.Context;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.mkulesh.micromath.formula.terms.CommonFunctions;
+import com.mkulesh.micromath.formula.terms.Comparators;
+import com.mkulesh.micromath.formula.terms.FileOperations;
+import com.mkulesh.micromath.formula.terms.FunctionBase;
+import com.mkulesh.micromath.formula.terms.Intervals;
+import com.mkulesh.micromath.formula.terms.LogFunctions;
+import com.mkulesh.micromath.formula.terms.SeriesIntegrals;
+import com.mkulesh.micromath.formula.terms.NumberFunctions;
+import com.mkulesh.micromath.formula.terms.Operators;
+import com.mkulesh.micromath.formula.terms.TrigonometricFunctions;
+import com.mkulesh.micromath.formula.terms.UserFunctions;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
@@ -158,32 +169,32 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
 
     public static void addToPalette(Context context, LinearLayout paletteLayout)
     {
-        addToPalette(context, FormulaTermInterval.IntervalType.values(), paletteLayout,
+        addToPalette(context, Intervals.IntervalType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
-        addToPalette(context, FormulaTermOperator.OperatorType.values(), paletteLayout,
+        addToPalette(context, Operators.OperatorType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, FormulaTermUserFunctions.FunctionType.values(), paletteLayout,
+        addToPalette(context, UserFunctions.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, FormulaTermCommFunctions.FunctionType.values(), paletteLayout,
+        addToPalette(context, CommonFunctions.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, FormulaTermTrigFunctions.FunctionType.values(), paletteLayout,
+        addToPalette(context, TrigonometricFunctions.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, FormulaTermLogFunctions.FunctionType.values(), paletteLayout,
+        addToPalette(context, LogFunctions.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, FormulaTermNumberFunctions.FunctionType.values(), paletteLayout,
+        addToPalette(context, NumberFunctions.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, FormulaTermFileOperation.FunctionType.values(), paletteLayout,
+        addToPalette(context, FileOperations.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
-        addToPalette(context, FormulaTermLoop.LoopType.values(), paletteLayout,
+        addToPalette(context, SeriesIntegrals.LoopType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, FormulaTermComparator.ComparatorType.values(), paletteLayout,
+        addToPalette(context, Comparators.ComparatorType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.COMPARATOR });
     }
 
     public static FormulaTermTypeIf getTermTypeIf(Context context, CustomEditText text, String s, boolean ensureManualTrigger)
     {
         {
-            final FormulaTermOperator.OperatorType t = FormulaTermOperator.getOperatorType(context, s);
+            final Operators.OperatorType t = Operators.getOperatorType(context, s);
             if (t != null)
             {
                 return t;
@@ -191,7 +202,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
         {
             final boolean enableComparator = (text == null || text.isComparatorEnabled());
-            final FormulaTermComparator.ComparatorType t = FormulaTermComparator.getComparatorType(context, s);
+            final Comparators.ComparatorType t = Comparators.getComparatorType(context, s);
             if (enableComparator && t != null)
             {
                 return t;
@@ -200,9 +211,9 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // This function group has manual trigger ("("): is has to be checked
             final boolean enableFileOperation = (!ensureManualTrigger ||
-                    (ensureManualTrigger && FormulaTermFunctionBase.containsGeneralTrigger(context, s))) &&
+                    (ensureManualTrigger && FunctionBase.containsGeneralTrigger(context, s))) &&
                     (text == null || text.isFileOperationEnabled());
-            final FormulaTermFileOperation.FunctionType t = FormulaTermFileOperation.getFunctionType(context, s);
+            final FileOperations.FunctionType t = FileOperations.getFunctionType(context, s);
             if (enableFileOperation && t != null)
             {
                 return t;
@@ -211,8 +222,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // This function group has manual trigger (like "("): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && FormulaTermCommFunctions.containsTrigger(context, s));
-            final FormulaTermCommFunctions.FunctionType t = FormulaTermCommFunctions.getFunctionType(context, s);
+                    (ensureManualTrigger && CommonFunctions.containsTrigger(context, s));
+            final CommonFunctions.FunctionType t = CommonFunctions.getFunctionType(context, s);
             if (enableFunction && t != null)
             {
                 return t;
@@ -221,8 +232,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // This function group has manual trigger ("("): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && FormulaTermFunctionBase.containsGeneralTrigger(context, s));
-            final FormulaTermTrigFunctions.FunctionType t = FormulaTermTrigFunctions.getFunctionType(context, s);
+                    (ensureManualTrigger && FunctionBase.containsGeneralTrigger(context, s));
+            final TrigonometricFunctions.FunctionType t = TrigonometricFunctions.getFunctionType(context, s);
             if (enableFunction && t != null)
             {
                 return t;
@@ -231,8 +242,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // This function group has manual trigger ("("): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && FormulaTermFunctionBase.containsGeneralTrigger(context, s));
-            final FormulaTermLogFunctions.FunctionType t = FormulaTermLogFunctions.getFunctionType(context, s);
+                    (ensureManualTrigger && FunctionBase.containsGeneralTrigger(context, s));
+            final LogFunctions.FunctionType t = LogFunctions.getFunctionType(context, s);
             if (enableFunction && t != null)
             {
                 return t;
@@ -241,8 +252,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // This function group has manual trigger ("("): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && FormulaTermFunctionBase.containsGeneralTrigger(context, s));
-            final FormulaTermNumberFunctions.FunctionType t = FormulaTermNumberFunctions.getFunctionType(context, s);
+                    (ensureManualTrigger && FunctionBase.containsGeneralTrigger(context, s));
+            final NumberFunctions.FunctionType t = NumberFunctions.getFunctionType(context, s);
             if (enableFunction && t != null)
             {
                 return t;
@@ -251,8 +262,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // This function group has manual trigger (like "(" or "["): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && FormulaTermUserFunctions.containsTrigger(context, s));
-            final FormulaTermUserFunctions.FunctionType t = FormulaTermUserFunctions.getFunctionType(context, s);
+                    (ensureManualTrigger && UserFunctions.containsTrigger(context, s));
+            final UserFunctions.FunctionType t = UserFunctions.getFunctionType(context, s);
             if (enableFunction && t != null)
             {
                 return t;
@@ -260,14 +271,14 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
         {
             final boolean enableInterval = (text == null || text.isIntervalEnabled());
-            final FormulaTermInterval.IntervalType t = FormulaTermInterval.getIntervalType(context, s);
+            final Intervals.IntervalType t = Intervals.getIntervalType(context, s);
             if (enableInterval && t != null)
             {
                 return t;
             }
         }
         {
-            final FormulaTermLoop.LoopType t = FormulaTermLoop.getLoopType(context, s);
+            final SeriesIntegrals.LoopType t = SeriesIntegrals.getLoopType(context, s);
             if (t != null)
             {
                 return t;
@@ -287,26 +298,26 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     {
         switch (type)
         {
-        case OPERATOR:
-            return new FormulaTermOperator(termField, layout, s, textIndex);
-        case COMPARATOR:
-            return new FormulaTermComparator(termField, layout, s, textIndex);
-        case FILE_OPERATION:
-            return new FormulaTermFileOperation(termField, layout, s, textIndex);
-        case COMM_FUNCTION:
-            return new FormulaTermCommFunctions(termField, layout, s, textIndex);
-        case TRIG_FUNCTION:
-            return new FormulaTermTrigFunctions(termField, layout, s, textIndex);
-        case LOG_FUNCTION:
-            return new FormulaTermLogFunctions(termField, layout, s, textIndex);
-        case NUMBER_FUNCTION:
-            return new FormulaTermNumberFunctions(termField, layout, s, textIndex);
-        case USER_FUNCTION:
-            return new FormulaTermUserFunctions(termField, layout, s, textIndex);
-        case INTERVAL:
-            return new FormulaTermInterval(termField, layout, s, textIndex);
-        case LOOP:
-            return new FormulaTermLoop(termField, layout, s, textIndex);
+        case OPERATORS:
+            return new Operators(termField, layout, s, textIndex);
+        case COMPARATORS:
+            return new Comparators(termField, layout, s, textIndex);
+        case FILE_OPERATIONS:
+            return new FileOperations(termField, layout, s, textIndex);
+        case COMMON_FUNCTIONS:
+            return new CommonFunctions(termField, layout, s, textIndex);
+        case TRIGONOMETRIC_FUNCTIONS:
+            return new TrigonometricFunctions(termField, layout, s, textIndex);
+        case LOG_FUNCTIONS:
+            return new LogFunctions(termField, layout, s, textIndex);
+        case NUMBER_FUNCTIONS:
+            return new NumberFunctions(termField, layout, s, textIndex);
+        case USER_FUNCTIONS:
+            return new UserFunctions(termField, layout, s, textIndex);
+        case INTERVALS:
+            return new Intervals(termField, layout, s, textIndex);
+        case SERIES_INTEGRALS:
+            return new SeriesIntegrals(termField, layout, s, textIndex);
         }
         return null;
     }
@@ -319,7 +330,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             switch (f.getGroupType())
             {
-            case OPERATOR:
+            case OPERATORS:
                 // for an operator, we add operator code to the end of line in order to move
                 // existing text in the first term
                 newValue = contex.getResources().getString(f.getShortCutId());
@@ -328,7 +339,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                     newValue = prevText + newValue;
                 }
                 break;
-            case COMPARATOR:
+            case COMPARATORS:
                 // for a comparator, we add operator code to the end of line in order to move
                 // existing text in the first term
                 newValue = contex.getResources().getString(f.getShortCutId());
@@ -337,15 +348,15 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                     newValue = prevText + newValue;
                 }
                 break;
-            case FILE_OPERATION:
+            case FILE_OPERATIONS:
                 // for the file operation, we do not transfer previous text
                 newValue = f.getLowerCaseName() +
                         contex.getResources().getString(R.string.formula_function_start_bracket);
                 break;
-            case COMM_FUNCTION:
-            case TRIG_FUNCTION:
-            case LOG_FUNCTION:
-            case NUMBER_FUNCTION:
+            case COMMON_FUNCTIONS:
+            case TRIGONOMETRIC_FUNCTIONS:
+            case LOG_FUNCTIONS:
+            case NUMBER_FUNCTIONS:
                 // for a function, we add operator code at the beginning of line in order to move
                 // existing text in the function argument term
                 newValue = f.getLowerCaseName();
@@ -355,21 +366,21 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                     newValue += prevText;
                 }
                 break;
-            case USER_FUNCTION:
+            case USER_FUNCTIONS:
                 // for a function, we add operator code at the beginning of line in order to move
                 // existing text in the function argument term
-                final FormulaTermUserFunctions.FunctionType t1 = (FormulaTermUserFunctions.FunctionType)f;
-                newValue = (t1 == FormulaTermUserFunctions.FunctionType.FUNCTION_LINK) ? code : f.getLowerCaseName();
+                final UserFunctions.FunctionType t1 = (UserFunctions.FunctionType)f;
+                newValue = (t1 == UserFunctions.FunctionType.FUNCTION_LINK) ? code : f.getLowerCaseName();
                 if (prevText != null)
                 {
-                    if (t1 != FormulaTermUserFunctions.FunctionType.FUNCTION_LINK)
+                    if (t1 != UserFunctions.FunctionType.FUNCTION_LINK)
                     {
                         newValue += contex.getResources().getString(R.string.formula_function_start_bracket);
                     }
                     newValue += prevText;
                 }
                 break;
-            case INTERVAL:
+            case INTERVALS:
                 // for an interval, we add operator code at the beginning of line in order to move
                 // existing text in the function argument term
                 newValue = contex.getResources().getString(f.getShortCutId());
@@ -378,7 +389,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                     newValue += prevText;
                 }
                 break;
-            case LOOP:
+            case SERIES_INTEGRALS:
                 // for a loop, we add operator code at the beginning of line in order to move
                 // existing text in the function argument term
                 newValue = contex.getResources().getString(f.getShortCutId());

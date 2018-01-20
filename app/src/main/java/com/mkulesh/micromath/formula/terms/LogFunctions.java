@@ -16,14 +16,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package com.mkulesh.micromath.formula;
+package com.mkulesh.micromath.formula.terms;
 
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
+import com.mkulesh.micromath.formula.CalculatableIf;
+import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
+import com.mkulesh.micromath.formula.FormulaTermTypeIf;
+import com.mkulesh.micromath.formula.Palette;
+import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.DocumentProperties;
@@ -32,24 +37,24 @@ import org.apache.commons.math3.util.FastMath;
 
 import java.util.Locale;
 
-public class FormulaTermNumberFunctions extends FormulaTermFunctionBase
+public class LogFunctions extends FunctionBase
 {
     public FormulaTermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.NUMBER_FUNCTION;
+        return FormulaTermTypeIf.GroupType.LOG_FUNCTIONS;
     }
 
     /**
      * Supported functions
      */
-    enum FunctionType implements FormulaTermTypeIf
+    public enum FunctionType implements FormulaTermTypeIf
     {
-        CEIL(1, R.drawable.p_function_ceil, R.string.math_function_ceil),
-        FLOOR(1, R.drawable.p_function_floor, R.string.math_function_floor),
-        RANDOM(1, R.drawable.p_function_random, R.string.math_function_random),
-        MAX(2, R.drawable.p_function_max, R.string.math_function_max),
-        MIN(2, R.drawable.p_function_min, R.string.math_function_min),
-        SIGN(1, Palette.NO_BUTTON, Palette.NO_BUTTON);
+        EXP(1, R.drawable.p_function_exp, R.string.math_function_exp),
+        LN(1, R.drawable.p_function_ln, R.string.math_function_ln),
+        LOG10(1, R.drawable.p_function_log10, R.string.math_function_log10),
+        SINH(1, R.drawable.p_function_sinh, R.string.math_function_sinh),
+        COSH(1, R.drawable.p_function_cosh, R.string.math_function_cosh),
+        TANH(1, R.drawable.p_function_tanh, R.string.math_function_tanh);
 
         private final int argNumber;
         private final int imageId;
@@ -71,7 +76,7 @@ public class FormulaTermNumberFunctions extends FormulaTermFunctionBase
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.NUMBER_FUNCTION; }
+        public GroupType getGroupType() { return GroupType.LOG_FUNCTIONS; }
 
         public int getShortCutId() { return shortCutId; }
 
@@ -101,8 +106,7 @@ public class FormulaTermNumberFunctions extends FormulaTermFunctionBase
      */
     private enum ObsoleteCodes
     {
-        RND(1, FunctionType.RANDOM),
-        SIGNUM(1, FunctionType.SIGN);
+        LOG(1, FunctionType.LN);
 
         private final int lastDocumentVersion;
         private final FunctionType functionType;
@@ -182,7 +186,7 @@ public class FormulaTermNumberFunctions extends FormulaTermFunctionBase
      * Constructors
      *********************************************************/
 
-    public FormulaTermNumberFunctions(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public LogFunctions(TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         onCreate(s, idx);
@@ -192,12 +196,12 @@ public class FormulaTermNumberFunctions extends FormulaTermFunctionBase
      * GUI constructors to avoid lint warning
      *********************************************************/
 
-    public FormulaTermNumberFunctions(Context context)
+    public LogFunctions(Context context)
     {
         super();
     }
 
-    public FormulaTermNumberFunctions(Context context, AttributeSet attrs)
+    public LogFunctions(Context context, AttributeSet attrs)
     {
         super();
     }
@@ -234,57 +238,43 @@ public class FormulaTermNumberFunctions extends FormulaTermFunctionBase
             final CalculatedValue a0 = argVal[0];
             switch (getFunctionType())
             {
-            case CEIL:
-                return outValue.ceil(a0);
-            case FLOOR:
-                return outValue.floor(a0);
-            case RANDOM:
-                return outValue.random(a0);
+            case SINH:
+                return outValue.sinh(a0);
+            case COSH:
+                return outValue.cosh(a0);
+            case TANH:
+                return outValue.tanh(a0);
 
-            case MAX:
-            case MIN:
-            {
-                final CalculatedValue a1 = argVal[1];
-                if (a0.isComplex() || a1.isComplex())
-                {
-                    return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
-                }
-                final double res = (termType == FunctionType.MAX) ? FastMath.max(a0.getReal(), a1.getReal())
-                        : FastMath.min(a0.getReal(), a1.getReal());
-                return outValue.setValue(res);
-            }
-
-            case SIGN:
-                if (a0.isComplex())
-                {
-                    return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
-                }
-                return outValue.setValue(FastMath.signum(a0.getReal()));
+            case EXP:
+                return outValue.exp(a0);
+            case LN:
+                return outValue.log(a0);
+            case LOG10:
+                return outValue.log10(a0);
             }
         }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
     }
 
     @Override
-    public DifferentiableType isDifferentiable(String var)
+    public CalculatableIf.DifferentiableType isDifferentiable(String var)
     {
         if (termType == null)
         {
-            return DifferentiableType.NONE;
+            return CalculatableIf.DifferentiableType.NONE;
         }
-        DifferentiableType argsProp = DifferentiableType.INDEPENDENT;
+        CalculatableIf.DifferentiableType argsProp = CalculatableIf.DifferentiableType.INDEPENDENT;
         for (int i = 0; i < terms.size(); i++)
         {
             final int dGrad = Math.min(argsProp.ordinal(), terms.get(i).isDifferentiable(var).ordinal());
-            argsProp = DifferentiableType.values()[dGrad];
+            argsProp = CalculatableIf.DifferentiableType.values()[dGrad];
         }
 
-        DifferentiableType retValue = (argsProp == DifferentiableType.INDEPENDENT) ? DifferentiableType.INDEPENDENT
-                    : DifferentiableType.NONE;
+        CalculatableIf.DifferentiableType retValue = argsProp;
 
         // set the error code to be displayed
         ErrorCode errorCode = ErrorCode.NO_ERROR;
-        if (retValue == DifferentiableType.NONE)
+        if (retValue == CalculatableIf.DifferentiableType.NONE)
         {
             errorCode = ErrorCode.NOT_DIFFERENTIABLE;
         }
@@ -303,20 +293,32 @@ public class FormulaTermNumberFunctions extends FormulaTermFunctionBase
             {
                 terms.get(i).getValue(thread, argVal[i]);
             }
+            final CalculatedValue a0 = argVal[0];
             terms.get(0).getDerivativeValue(var, thread, a0derVal);
-            DifferentiableType argsProp = DifferentiableType.INDEPENDENT;
-            for (int i = 0; i < terms.size(); i++)
+            switch (getFunctionType())
             {
-                final int dGrad = Math.min(argsProp.ordinal(), terms.get(i).isDifferentiable(var).ordinal());
-                argsProp = DifferentiableType.values()[dGrad];
-            }
-            if (argsProp == DifferentiableType.INDEPENDENT)
-            {
-                return outValue.setValue(0.0);
-            }
-            else
-            {
-                return outValue.invalidate(CalculatedValue.ErrorType.NOT_A_NUMBER);
+            case SINH: // cosh(a0) * a0'
+                outValue.cosh(a0);
+                return outValue.multiply(outValue, a0derVal);
+            case COSH: // sinh(a0) * a0'
+                outValue.sinh(a0);
+                return outValue.multiply(outValue, a0derVal);
+            case TANH: // (1.0 / (cosh(a0) * cosh(a0))) * a0'
+                outValue.cosh(a0);
+                outValue.multiply(outValue, outValue);
+                outValue.divide(CalculatedValue.ONE, outValue);
+                return outValue.multiply(outValue, a0derVal);
+            case EXP: // exp(a0) * a0'
+                outValue.exp(a0);
+                return outValue.multiply(outValue, a0derVal);
+            case LN: // (1.0 / a0) * a0'
+                outValue.divide(CalculatedValue.ONE, a0);
+                return outValue.multiply(outValue, a0derVal);
+            case LOG10: // (1.0 / (a0 * FastMath.log(10.0))) * a0'
+                outValue.assign(a0);
+                outValue.multiply(FastMath.log(10.0));
+                outValue.divide(CalculatedValue.ONE, outValue);
+                return outValue.multiply(outValue, a0derVal);
             }
         }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
@@ -333,12 +335,12 @@ public class FormulaTermNumberFunctions extends FormulaTermFunctionBase
     {
         if (idx < 0 || idx > layout.getChildCount())
         {
-            throw new Exception("cannot create NumberFunction for invalid insertion index " + idx);
+            throw new Exception("cannot create LogFunction for invalid insertion index " + idx);
         }
         termType = getFunctionType(getContext(), s);
         if (termType == null)
         {
-            throw new Exception("cannot create NumberFunction for unknown function");
+            throw new Exception("cannot create LogFunction for unknown function");
         }
         createGeneralFunction(R.layout.formula_function_named, s, getFunctionType().getArgNumber(), idx);
     }

@@ -29,6 +29,8 @@ import android.widget.Toast;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.FormulaBase.FocusType;
 import com.mkulesh.micromath.formula.PaletteButton.Category;
+import com.mkulesh.micromath.formula.terms.Comparators;
+import com.mkulesh.micromath.formula.terms.Intervals;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.undo.FormulaState;
@@ -865,12 +867,12 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         formulaRoot.getFormulaList().getUndoState().addEntry(getState());
 
         // comparator change
-        FormulaTermComparator.ComparatorType t2 = FormulaTermComparator.getComparatorType(getContext(), code);
+        Comparators.ComparatorType t2 = Comparators.getComparatorType(getContext(), code);
         if (isTerm() && t2 != null)
         {
-            if (getTerm() instanceof FormulaTermComparator)
+            if (getTerm() instanceof Comparators)
             {
-                if (((FormulaTermComparator) getTerm()).changeComparatorType(t2))
+                if (((Comparators) getTerm()).changeComparatorType(t2))
                 {
                     return;
                 }
@@ -1049,7 +1051,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
      */
     public boolean isEnabledInPalette(Category pt)
     {
-        if (isTerm() && term instanceof FormulaTermInterval && pt != Category.NEW_TERM)
+        if (isTerm() && term instanceof Intervals && pt != Category.NEW_TERM)
         {
             return false;
         }

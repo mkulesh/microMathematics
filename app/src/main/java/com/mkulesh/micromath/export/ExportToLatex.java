@@ -35,15 +35,15 @@ import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.formula.FormulaListView;
 import com.mkulesh.micromath.formula.FormulaResult;
 import com.mkulesh.micromath.formula.FormulaTerm;
-import com.mkulesh.micromath.formula.FormulaTermCommFunctions;
-import com.mkulesh.micromath.formula.FormulaTermComparator;
-import com.mkulesh.micromath.formula.FormulaTermFunctionBase;
-import com.mkulesh.micromath.formula.FormulaTermInterval;
-import com.mkulesh.micromath.formula.FormulaTermLoop;
-import com.mkulesh.micromath.formula.FormulaTermOperator;
-import com.mkulesh.micromath.formula.FormulaTermOperator.OperatorType;
-import com.mkulesh.micromath.formula.FormulaTermUserFunctions;
-import com.mkulesh.micromath.formula.FormulaTermUserFunctions.FunctionType;
+import com.mkulesh.micromath.formula.terms.CommonFunctions;
+import com.mkulesh.micromath.formula.terms.Comparators;
+import com.mkulesh.micromath.formula.terms.FunctionBase;
+import com.mkulesh.micromath.formula.terms.Intervals;
+import com.mkulesh.micromath.formula.terms.SeriesIntegrals;
+import com.mkulesh.micromath.formula.terms.Operators;
+import com.mkulesh.micromath.formula.terms.Operators.OperatorType;
+import com.mkulesh.micromath.formula.terms.UserFunctions;
+import com.mkulesh.micromath.formula.terms.UserFunctions.FunctionType;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TextFragment;
 import com.mkulesh.micromath.plots.ImageFragment;
@@ -441,37 +441,37 @@ public class ExportToLatex
             final FormulaTerm term = t.getTerm();
             switch (term.getGroupType())
             {
-            case OPERATOR:
-                writeTermOperator((FormulaTermOperator) term);
+            case OPERATORS:
+                writeTermOperator((Operators) term);
                 break;
-            case COMPARATOR:
-                writeTermComparator((FormulaTermComparator) term);
+            case COMPARATORS:
+                writeTermComparator((Comparators) term);
                 break;
-            case FILE_OPERATION:
-            case TRIG_FUNCTION:
-            case LOG_FUNCTION:
-            case NUMBER_FUNCTION:
-                writeTermFunctionBase((FormulaTermFunctionBase) term);
+            case FILE_OPERATIONS:
+            case TRIGONOMETRIC_FUNCTIONS:
+            case LOG_FUNCTIONS:
+            case NUMBER_FUNCTIONS:
+                writeTermFunctionBase((FunctionBase) term);
                 break;
-            case COMM_FUNCTION:
-                writeTermFunction((FormulaTermCommFunctions) term);
+            case COMMON_FUNCTIONS:
+                writeTermFunction((CommonFunctions) term);
                 break;
-            case USER_FUNCTION:
-                writeTermFunction((FormulaTermUserFunctions) term);
+            case USER_FUNCTIONS:
+                writeTermFunction((UserFunctions) term);
                 break;
-            case INTERVAL:
-                writeTermInterval((FormulaTermInterval) term);
+            case INTERVALS:
+                writeTermInterval((Intervals) term);
                 break;
-            case LOOP:
-                writeTermLoop((FormulaTermLoop) term);
+            case SERIES_INTEGRALS:
+                writeTermLoop((SeriesIntegrals) term);
                 break;
             }
         }
     }
 
-    private void writeTermOperator(FormulaTermOperator f)
+    private void writeTermOperator(Operators f)
     {
-        FormulaTermOperator.OperatorType operatorType = f.getOperatorType();
+        Operators.OperatorType operatorType = f.getOperatorType();
         if (f.isUseBrackets())
         {
             writer.append("\\left( ");
@@ -510,9 +510,9 @@ public class ExportToLatex
         }
     }
 
-    private void writeTermComparator(FormulaTermComparator f)
+    private void writeTermComparator(Comparators f)
     {
-        FormulaTermComparator.ComparatorType comparatorType = f.getComparatorType();
+        Comparators.ComparatorType comparatorType = f.getComparatorType();
         if (f.isUseBrackets())
         {
             writer.append("\\left( ");
@@ -552,7 +552,7 @@ public class ExportToLatex
         }
     }
 
-    private void writeTermFunctionBase(FormulaTermFunctionBase f)
+    private void writeTermFunctionBase(FunctionBase f)
     {
         final ArrayList<TermField> terms = f.getTerms();
         if (f.getFunctionTerm() != null)
@@ -571,9 +571,9 @@ public class ExportToLatex
         writer.append("\\right) ");
     }
 
-    private void writeTermFunction(FormulaTermCommFunctions f)
+    private void writeTermFunction(CommonFunctions f)
     {
-        FormulaTermCommFunctions.FunctionType functionType = f.getFunctionType();
+        CommonFunctions.FunctionType functionType = f.getFunctionType();
         final ArrayList<TermField> terms = f.getTerms();
         switch (functionType)
         {
@@ -629,9 +629,9 @@ public class ExportToLatex
         }
     }
 
-    private void writeTermFunction(FormulaTermUserFunctions f)
+    private void writeTermFunction(UserFunctions f)
     {
-        FormulaTermUserFunctions.FunctionType functionType = f.getFunctionType();
+        UserFunctions.FunctionType functionType = f.getFunctionType();
         final ArrayList<TermField> terms = f.getTerms();
         if (f.getFunctionTerm() != null)
         {
@@ -663,7 +663,7 @@ public class ExportToLatex
         }
     }
 
-    private void writeTermInterval(FormulaTermInterval f)
+    private void writeTermInterval(Intervals f)
     {
         writer.append("\\left[ ");
         writeTermField(f.findTermWithKey(R.string.formula_min_value_key));
@@ -674,13 +674,13 @@ public class ExportToLatex
         writer.append(" \\right]");
     }
 
-    private void writeTermLoop(FormulaTermLoop f)
+    private void writeTermLoop(SeriesIntegrals f)
     {
         if (f.isUseBrackets())
         {
             writer.append("\\left( ");
         }
-        FormulaTermLoop.LoopType loopType = f.getLoopType();
+        SeriesIntegrals.LoopType loopType = f.getLoopType();
         final TermField minValueTerm = f.findTermWithKey(R.string.formula_min_value_key);
         final TermField maxValueTerm = f.findTermWithKey(R.string.formula_max_value_key);
         switch (loopType)

@@ -23,16 +23,16 @@ public interface FormulaTermTypeIf
 {
     enum GroupType
     {
-        OPERATOR,
-        COMPARATOR,
-        FILE_OPERATION,
-        COMM_FUNCTION,
-        TRIG_FUNCTION,
-        LOG_FUNCTION,
-        NUMBER_FUNCTION,
-        USER_FUNCTION,
-        INTERVAL,
-        LOOP
+        OPERATORS,
+        COMPARATORS,
+        FILE_OPERATIONS,
+        COMMON_FUNCTIONS,
+        TRIGONOMETRIC_FUNCTIONS,
+        LOG_FUNCTIONS,
+        NUMBER_FUNCTIONS,
+        USER_FUNCTIONS,
+        INTERVALS,
+        SERIES_INTEGRALS
     }
 
     /* Returns group term type of this object */

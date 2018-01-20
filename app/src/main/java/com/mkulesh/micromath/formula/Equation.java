@@ -26,6 +26,8 @@ import android.view.View;
 import com.mkulesh.micromath.dialogs.DialogResultDetails;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.TermField.ErrorNotification;
+import com.mkulesh.micromath.formula.terms.FileOperations;
+import com.mkulesh.micromath.formula.terms.Intervals;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.math.EquationArrayResult;
 import com.mkulesh.micromath.plus.R;
@@ -308,15 +310,15 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     public void fileOperation(boolean status)
     {
         FormulaTerm t = rightTerm.getTerm();
-        if (t != null && t instanceof FormulaTermFileOperation)
+        if (t != null && t instanceof FileOperations)
         {
             if (status)
             {
-                ((FormulaTermFileOperation) t).prepareFileOperation();
+                ((FileOperations) t).prepareFileOperation();
             }
             else
             {
-                ((FormulaTermFileOperation) t).finishFileOperation();
+                ((FileOperations) t).finishFileOperation();
             }
         }
     }
@@ -396,7 +398,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     public boolean isInterval()
     {
         FormulaTerm t = rightTerm.getTerm();
-        return (t != null && t instanceof FormulaTermInterval);
+        return (t != null && t instanceof Intervals);
     }
 
     /**
@@ -413,9 +415,9 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     public ArrayList<Double> getInterval(CalculaterTask thread) throws CancelException
     {
         FormulaTerm t = rightTerm.getTerm();
-        if (t != null && t instanceof FormulaTermInterval)
+        if (t != null && t instanceof Intervals)
         {
-            return ((FormulaTermInterval) t).getInterval(thread);
+            return ((Intervals) t).getInterval(thread);
         }
         return null;
     }

@@ -26,6 +26,7 @@ import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.formula.PaletteButton.Category;
+import com.mkulesh.micromath.formula.terms.UserFunctions;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
@@ -41,7 +42,7 @@ import java.util.ArrayList;
  *********************************************************/
 public class Palette implements OnClickListener, OnLongClickListener, TextChangeIf, FocusChangeIf
 {
-    static final int NO_BUTTON = -1;
+    public static final int NO_BUTTON = -1;
 
     private final Context context;
     private final ListChangeIf listChangeIf;
@@ -225,7 +226,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             return;
         }
 
-        if (FormulaTermUserFunctions.FunctionType.FUNCTION_LINK.toString().equalsIgnoreCase(code))
+        if (UserFunctions.FunctionType.FUNCTION_LINK.toString().equalsIgnoreCase(code))
         {
             hiddenInput.setTextWatcher(false);
             listChangeIf.onPalettePressed(s);
