@@ -25,6 +25,7 @@ import android.widget.LinearLayout;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.CompatUtils;
+import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
 
 public abstract class FormulaTermFunctionBase extends FormulaTerm
@@ -72,6 +73,15 @@ public abstract class FormulaTermFunctionBase extends FormulaTerm
     {
         super();
     }
+
+    /*********************************************************
+     * Methods to be Implemented in derived a class
+     *********************************************************/
+
+    /**
+     * Returns function label to be used if function is deleted
+     */
+    protected abstract String getFunctionLabel();
 
     /*********************************************************
      * Helper methods used by derived class
@@ -159,4 +169,71 @@ public abstract class FormulaTermFunctionBase extends FormulaTerm
         return v;
     }
 
+    protected boolean isRemainingTermOnDelete()
+    {
+        return terms.size() <= 1;
+    }
+
+    @Override
+    public void onDelete(CustomEditText owner)
+    {
+        final TermField ownerTerm = findTerm(owner);
+
+        if (owner == null || isRemainingTermOnDelete())
+        {
+            // search remaining text or term
+            TermField remainingTerm = null;
+            CharSequence remainingText = "";
+            if (ownerTerm != null)
+            {
+                if (functionTerm != null)
+                {
+                    remainingText = getFunctionLabel();
+                }
+                for (TermField t : terms)
+                {
+                    if (t == ownerTerm)
+                    {
+                        continue;
+                    }
+                    if (t.isTerm())
+                    {
+                        remainingTerm = t;
+                    }
+                    else if (!t.isEmpty())
+                    {
+                        remainingText = t.getText();
+                    }
+                }
+            }
+            if (parentField != null && remainingTerm != null)
+            {
+                parentField.onTermDelete(removeElements(), remainingTerm);
+            }
+            else if (parentField != null)
+            {
+                parentField.onTermDeleteWithText(removeElements(), remainingText);
+            }
+            else
+            {
+                super.onDelete(null);
+            }
+        }
+        else if (isNewTermEnabled())
+        {
+            if (parentField == null || ownerTerm == null)
+            {
+                return;
+            }
+
+            TermField prevTerm = deleteArgument(ownerTerm,
+                    getContext().getResources().getString(R.string.formula_term_separator), /*storeUndoState=*/true);
+
+            getFormulaRoot().getFormulaList().onManualInput();
+            if (prevTerm != null)
+            {
+                prevTerm.requestFocus();
+            }
+        }
+    }
 }

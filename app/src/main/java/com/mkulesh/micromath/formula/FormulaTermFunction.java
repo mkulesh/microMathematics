@@ -372,6 +372,27 @@ public class FormulaTermFunction extends FormulaTermFunctionBase
      *********************************************************/
 
     @Override
+    protected String getFunctionLabel()
+    {
+        switch (getFunctionType())
+        {
+        case FUNCTION_LINK:
+        case FUNCTION_INDEX:
+            return functionLinkName;
+        case IDENTITY:
+        case POWER:
+        case SQRT_LAYOUT:
+        case NTHRT_LAYOUT:
+        case FACTORIAL:
+        case ABS_LAYOUT:
+        case CONJUGATE_LAYOUT:
+            return "";
+        default:
+            return termType.getLowerCaseName();
+        }
+    }
+
+    @Override
     public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
     {
         if (termType != null && terms.size() > 0)
@@ -990,66 +1011,9 @@ public class FormulaTermFunction extends FormulaTermFunctionBase
      *********************************************************/
 
     @Override
-    public void onDelete(CustomEditText owner)
+    protected boolean isRemainingTermOnDelete()
     {
-        final TermField ownerTerm = findTerm(owner);
-
-        if (termType == FunctionType.NTHRT_LAYOUT || owner == null || terms.size() <= 1 || !isNewTermEnabled())
-        {
-            // search remaining text or term
-            TermField remainingTerm = null;
-            CharSequence remainingText = "";
-            if (ownerTerm != null)
-            {
-                if (functionTerm != null)
-                {
-                    remainingText = getFunctionLabel();
-                }
-                for (TermField t : terms)
-                {
-                    if (t == ownerTerm)
-                    {
-                        continue;
-                    }
-                    if (t.isTerm())
-                    {
-                        remainingTerm = t;
-                    }
-                    else if (!t.isEmpty())
-                    {
-                        remainingText = t.getText();
-                    }
-                }
-            }
-            if (parentField != null && remainingTerm != null)
-            {
-                parentField.onTermDelete(removeElements(), remainingTerm);
-            }
-            else if (parentField != null)
-            {
-                parentField.onTermDeleteWithText(removeElements(), remainingText);
-            }
-            else
-            {
-                super.onDelete(null);
-            }
-        }
-        else if (isNewTermEnabled())
-        {
-            if (parentField == null || ownerTerm == null)
-            {
-                return;
-            }
-
-            TermField prevTerm = deleteArgument(ownerTerm,
-                    getContext().getResources().getString(R.string.formula_term_separator), /*storeUndoState=*/true);
-
-            getFormulaRoot().getFormulaList().onManualInput();
-            if (prevTerm != null)
-            {
-                prevTerm.requestFocus();
-            }
-        }
+        return termType == FormulaTermFunction.FunctionType.NTHRT_LAYOUT || terms.size() <= 1 || !isNewTermEnabled();
     }
 
     @Override
@@ -1323,25 +1287,5 @@ public class FormulaTermFunction extends FormulaTermFunctionBase
             // nothing to do
         }
         return 1;
-    }
-
-    private String getFunctionLabel()
-    {
-        switch (getFunctionType())
-        {
-        case FUNCTION_LINK:
-        case FUNCTION_INDEX:
-            return functionLinkName;
-        case IDENTITY:
-        case POWER:
-        case SQRT_LAYOUT:
-        case NTHRT_LAYOUT:
-        case FACTORIAL:
-        case ABS_LAYOUT:
-        case CONJUGATE_LAYOUT:
-            return "";
-        default:
-            return termType.getLowerCaseName();
-        }
     }
 }

@@ -135,6 +135,12 @@ public class FormulaTermFileOperation extends FormulaTermFunctionBase
      *********************************************************/
 
     @Override
+    protected String getFunctionLabel()
+    {
+        return termType.getLowerCaseName();
+    }
+
+    @Override
     public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
     {
         if (getFormulaRoot() instanceof Equation)
