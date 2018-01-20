@@ -42,7 +42,7 @@ public class FormulaTermNumberFunctions extends FormulaTermFunctionBase
     /**
      * Supported functions
      */
-    private enum FunctionType implements FormulaTermTypeIf
+    public enum FunctionType implements FormulaTermTypeIf
     {
         CEIL(1, R.drawable.p_function_ceil, R.string.math_function_ceil),
         FLOOR(1, R.drawable.p_function_floor, R.string.math_function_floor),
