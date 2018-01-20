@@ -108,6 +108,11 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
      *********************************************************/
 
     /**
+     * Returns term type
+     */
+    public abstract FormulaTermTypeIf.GroupType getGroupType();
+
+    /**
      * Procedure will be called for a custom text view initialization
      */
     protected abstract CustomTextView initializeSymbol(CustomTextView v);

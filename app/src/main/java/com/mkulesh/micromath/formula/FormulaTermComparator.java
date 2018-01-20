@@ -33,6 +33,11 @@ import java.util.Locale;
 
 public class FormulaTermComparator extends FormulaTerm
 {
+    public FormulaTermTypeIf.GroupType getGroupType()
+    {
+        return FormulaTermTypeIf.GroupType.COMPARATOR;
+    }
+
     /**
      * Supported comparators
      */

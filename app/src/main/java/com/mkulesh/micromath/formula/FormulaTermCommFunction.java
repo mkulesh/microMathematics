@@ -39,6 +39,11 @@ import java.util.Locale;
 
 public class FormulaTermCommFunction extends FormulaTermFunctionBase
 {
+    public FormulaTermTypeIf.GroupType getGroupType()
+    {
+        return FormulaTermTypeIf.GroupType.COMM_FUNCTION;
+    }
+
     /**
      * Supported functions
      */

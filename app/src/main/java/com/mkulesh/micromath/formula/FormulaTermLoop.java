@@ -40,6 +40,11 @@ import java.util.Locale;
 
 public class FormulaTermLoop extends FormulaTerm implements ArgumentHolderIf
 {
+    public FormulaTermTypeIf.GroupType getGroupType()
+    {
+        return FormulaTermTypeIf.GroupType.LOOP;
+    }
+
     /**
      * Supported loop types
      */

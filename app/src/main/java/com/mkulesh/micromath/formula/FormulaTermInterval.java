@@ -35,6 +35,11 @@ import java.util.Locale;
 
 public class FormulaTermInterval extends FormulaTerm
 {
+    public FormulaTermTypeIf.GroupType getGroupType()
+    {
+        return FormulaTermTypeIf.GroupType.INTERVAL;
+    }
+
     /**
      * Supported functions
      */

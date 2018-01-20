@@ -40,6 +40,11 @@ import java.util.Locale;
 
 public class FormulaTermFileOperation extends FormulaTermFunctionBase
 {
+    public FormulaTermTypeIf.GroupType getGroupType()
+    {
+        return FormulaTermTypeIf.GroupType.FILE_OPERATION;
+    }
+
     /**
      * Supported functions
      */

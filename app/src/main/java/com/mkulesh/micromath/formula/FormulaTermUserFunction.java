@@ -36,6 +36,11 @@ import java.util.Locale;
 
 public class FormulaTermUserFunction extends FormulaTermFunctionBase
 {
+    public FormulaTermTypeIf.GroupType getGroupType()
+    {
+        return FormulaTermTypeIf.GroupType.USER_FUNCTION;
+    }
+
     /**
      * Supported functions
      */

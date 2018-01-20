@@ -436,32 +436,32 @@ public class ExportToLatex
                 writeText(t.getText(), true);
             }
         }
-        else
+        else if (t.getTerm() != null)
         {
-            FormulaTerm ft = t.getTerm();
-            if (ft instanceof FormulaTermOperator)
+            final FormulaTerm term = t.getTerm();
+            switch (term.getGroupType())
             {
-                writeTermOperator((FormulaTermOperator) ft);
-            }
-            else if (ft instanceof FormulaTermComparator)
-            {
-                writeTermComparator((FormulaTermComparator) ft);
-            }
-            else if (ft instanceof FormulaTermCommFunction)
-            {
-                writeTermFunction((FormulaTermCommFunction) ft);
-            }
-            else if (ft instanceof FormulaTermUserFunction)
-            {
-                writeTermFunction((FormulaTermUserFunction) ft);
-            }
-            else if (ft instanceof FormulaTermInterval)
-            {
-                writeTermInterval((FormulaTermInterval) ft);
-            }
-            else if (ft instanceof FormulaTermLoop)
-            {
-                writeTermLoop((FormulaTermLoop) ft);
+            case OPERATOR:
+                writeTermOperator((FormulaTermOperator) term);
+                break;
+            case COMPARATOR:
+                writeTermComparator((FormulaTermComparator) term);
+                break;
+            case FILE_OPERATION:
+                writeTermFunctionBase((FormulaTermFunctionBase) term);
+                break;
+            case COMM_FUNCTION:
+                writeTermFunction((FormulaTermCommFunction) term);
+                break;
+            case USER_FUNCTION:
+                writeTermFunction((FormulaTermUserFunction) term);
+                break;
+            case INTERVAL:
+                writeTermInterval((FormulaTermInterval) term);
+                break;
+            case LOOP:
+                writeTermLoop((FormulaTermLoop) term);
+                break;
             }
         }
     }

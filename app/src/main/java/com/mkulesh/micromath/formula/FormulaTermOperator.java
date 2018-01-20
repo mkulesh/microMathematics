@@ -33,6 +33,11 @@ import java.util.Locale;
 
 public class FormulaTermOperator extends FormulaTerm
 {
+    public FormulaTermTypeIf.GroupType getGroupType()
+    {
+        return FormulaTermTypeIf.GroupType.OPERATOR;
+    }
+
     /**
      * Supported operators
      */
