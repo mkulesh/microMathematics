@@ -45,7 +45,7 @@ public class FormulaTermFileOperation extends FormulaTerm
     /**
      * Supported functions
      */
-    public enum FileOperationType implements FormulaTermTypeIf
+    public enum FunctionType implements FormulaTermTypeIf
     {
         READ(R.drawable.p_file_read, R.string.math_file_read);
 
@@ -53,7 +53,7 @@ public class FormulaTermFileOperation extends FormulaTerm
         private final int descriptionId;
         private final String lowerCaseName;
 
-        private FileOperationType(int imageId, int descriptionId)
+        private FunctionType(int imageId, int descriptionId)
         {
             this.imageId = imageId;
             this.descriptionId = descriptionId;
@@ -80,7 +80,7 @@ public class FormulaTermFileOperation extends FormulaTerm
         }
     }
 
-    public static FileOperationType getFileOperationType(Context context, String s)
+    public static FunctionType getFileOperationType(Context context, String s)
     {
         String fName = null;
         final String startBracket = context.getResources().getString(R.string.formula_function_start_bracket);
@@ -88,7 +88,7 @@ public class FormulaTermFileOperation extends FormulaTerm
         {
             fName = s.substring(0, s.indexOf(startBracket)).trim();
         }
-        for (FileOperationType f : FileOperationType.values())
+        for (FunctionType f : FunctionType.values())
         {
             if (s.equals(f.getLowerCaseName()))
             {
@@ -384,9 +384,9 @@ public class FormulaTermFileOperation extends FormulaTerm
     public static void addToPalette(Context context, LinearLayout paletteLayout,
                                     PaletteButton.Category[] categories)
     {
-        for (int i = 0; i < FileOperationType.values().length; i++)
+        for (int i = 0; i < FunctionType.values().length; i++)
         {
-            final FileOperationType t = FileOperationType.values()[i];
+            final FunctionType t = FunctionType.values()[i];
             if (t.getImageId() != Palette.NO_BUTTON)
             {
                 PaletteButton p = new PaletteButton(context,
