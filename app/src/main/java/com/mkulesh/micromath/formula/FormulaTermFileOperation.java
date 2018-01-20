@@ -376,24 +376,4 @@ public class FormulaTermFileOperation extends FormulaTermFunctionBase
     {
         fileBuffer.clear();
     }
-
-    /**
-     * Add palette buttons for this term
-     */
-    public static void addToPalette(Context context, LinearLayout paletteLayout,
-                                    PaletteButton.Category[] categories)
-    {
-        for (int i = 0; i < FunctionType.values().length; i++)
-        {
-            final FunctionType t = FunctionType.values()[i];
-            if (t.getImageId() != Palette.NO_BUTTON)
-            {
-                PaletteButton p = new PaletteButton(context,
-                        Palette.NO_BUTTON, t.getImageId(), t.getDescriptionId(),
-                        t.getLowerCaseName());
-                paletteLayout.addView(p);
-                p.setCategories(categories);
-            }
-        }
-    }
 }

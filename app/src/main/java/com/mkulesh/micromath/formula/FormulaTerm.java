@@ -56,7 +56,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     }
 
     /*********************************************************
-     * Re-implementation for methods for Object superclass
+     * Common getters
      *********************************************************/
 
     @Override
@@ -72,11 +72,27 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     }
 
     /**
-     * Procedure returns code of this term. The code must be unique for a given term type
+     * Returns code of this term. The code must be unique for a given term type
      */
     public String getTermCode()
     {
         return termType == null? "" : termType.getLowerCaseName();
+    }
+
+    /**
+     * Returns the first term, if present
+     */
+    public TermField getArgumentTerm()
+    {
+        return getTerms().size() > 0 ? getTerms().get(0) : null;
+    }
+
+    /**
+     * Returns the parent root formula
+     */
+    public FormulaBase getFormulaRoot()
+    {
+        return formulaRoot;
     }
 
     /**
@@ -137,17 +153,17 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
 
     public static void addToPalette(Context context, LinearLayout paletteLayout)
     {
-        FormulaTermInterval.addToPalette(context, paletteLayout,
+        addToPalette(context, FormulaTermInterval.IntervalType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
-        FormulaTermOperator.addToPalette(context, paletteLayout,
+        addToPalette(context, FormulaTermOperator.OperatorType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        FormulaTermFunction.addToPalette(context, paletteLayout,
+        addToPalette(context, FormulaTermFunction.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        FormulaTermFileOperation.addToPalette(context, paletteLayout,
+        addToPalette(context, FormulaTermFileOperation.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
-        FormulaTermLoop.addToPalette(context, paletteLayout,
+        addToPalette(context, FormulaTermLoop.LoopType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        FormulaTermComparator.addToPalette(context, paletteLayout,
+        addToPalette(context, FormulaTermComparator.ComparatorType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.COMPARATOR });
     }
 
@@ -315,22 +331,6 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     /*********************************************************
      * FormulaTerm-specific methods
      *********************************************************/
-
-    /**
-     * Getter for main term
-     */
-    public TermField getArgumentTerm()
-    {
-        return getTerms().size() > 0 ? getTerms().get(0) : null;
-    }
-
-    /**
-     * Getter for parent root formula
-     */
-    public FormulaBase getFormulaRoot()
-    {
-        return formulaRoot;
-    }
 
     /**
      * This procedure shall be called in order to prepare all visual elements
@@ -550,6 +550,22 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             functionMainLayout = (CustomLayout) functionMainView;
             functionMainLayout.setTag("");
+        }
+    }
+
+    private static <T extends FormulaTermTypeIf> void addToPalette(
+            Context context, T[] buttons, LinearLayout paletteLayout, PaletteButton.Category[] categories)
+    {
+        for (final FormulaTermTypeIf b : buttons)
+        {
+            if (b.getImageId() != Palette.NO_BUTTON)
+            {
+                PaletteButton p = new PaletteButton(context,
+                        b.getSymbolId(), b.getImageId(), b.getDescriptionId(),
+                        b.getLowerCaseName());
+                paletteLayout.addView(p);
+                p.setCategories(categories);
+            }
         }
     }
 }

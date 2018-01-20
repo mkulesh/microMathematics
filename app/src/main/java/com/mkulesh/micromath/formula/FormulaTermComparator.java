@@ -364,21 +364,4 @@ public class FormulaTermComparator extends FormulaTerm
             break;
         }
     }
-
-    /**
-     * Add palette buttons for this term
-     */
-    public static void addToPalette(Context context, LinearLayout paletteLayout,
-                                    PaletteButton.Category[] categories)
-    {
-        for (int i = 0; i < FormulaTermComparator.ComparatorType.values().length; i++)
-        {
-            final FormulaTermComparator.ComparatorType t = FormulaTermComparator.ComparatorType.values()[i];
-            PaletteButton p = new PaletteButton(context,
-                    t.getSymbolId(), t.getImageId(), t.getDescriptionId(),
-                    t.getLowerCaseName());
-            paletteLayout.addView(p);
-            p.setCategories(categories);
-        }
-    }
 }
