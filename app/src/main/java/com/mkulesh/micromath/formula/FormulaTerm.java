@@ -159,6 +159,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
         addToPalette(context, FormulaTermUserFunction.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
+        addToPalette(context, FormulaTermCommFunction.FunctionType.values(), paletteLayout,
+                new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
         addToPalette(context, FormulaTermFileOperation.FunctionType.values(), paletteLayout,
                 new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
         addToPalette(context, FormulaTermLoop.LoopType.values(), paletteLayout,
@@ -196,7 +198,17 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             }
         }
         {
-            // TermFunction has manual trigger (like "(" or "["): is has to be checked
+            // CommFunction has manual trigger (like "("): is has to be checked
+            final boolean enableFunction = !ensureManualTrigger ||
+                    (ensureManualTrigger && FormulaTermCommFunction.containsTrigger(context, s));
+            final FormulaTermCommFunction.FunctionType t = FormulaTermCommFunction.getFunctionType(context, s);
+            if (enableFunction && t != null)
+            {
+                return t;
+            }
+        }
+        {
+            // UserFunction has manual trigger (like "(" or "["): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
                     (ensureManualTrigger && FormulaTermUserFunction.containsTrigger(context, s));
             final FormulaTermUserFunction.FunctionType t = FormulaTermUserFunction.getFunctionType(context, s);
@@ -240,6 +252,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             return new FormulaTermComparator(termField, layout, s, textIndex);
         case FILE_OPERATION:
             return new FormulaTermFileOperation(termField, layout, s, textIndex);
+        case COMM_FUNCTION:
+            return new FormulaTermCommFunction(termField, layout, s, textIndex);
         case USER_FUNCTION:
             return new FormulaTermUserFunction(termField, layout, s, textIndex);
         case INTERVAL:
@@ -281,14 +295,24 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                 newValue = f.getLowerCaseName() +
                         contex.getResources().getString(R.string.formula_function_start_bracket);
                 break;
+            case COMM_FUNCTION:
+                // for a function, we add operator code at the beginning of line in order to move
+                // existing text in the function argument term
+                newValue = f.getLowerCaseName();
+                if (prevText != null)
+                {
+                    newValue += contex.getResources().getString(R.string.formula_function_start_bracket);
+                    newValue += prevText;
+                }
+                break;
             case USER_FUNCTION:
                 // for a function, we add operator code at the beginning of line in order to move
                 // existing text in the function argument term
-                final FormulaTermUserFunction.FunctionType t3 = (FormulaTermUserFunction.FunctionType)f;
-                newValue = (t3 == FormulaTermUserFunction.FunctionType.FUNCTION_LINK) ? code : f.getLowerCaseName();
+                final FormulaTermUserFunction.FunctionType t1 = (FormulaTermUserFunction.FunctionType)f;
+                newValue = (t1 == FormulaTermUserFunction.FunctionType.FUNCTION_LINK) ? code : f.getLowerCaseName();
                 if (prevText != null)
                 {
-                    if (t3 != FormulaTermUserFunction.FunctionType.FUNCTION_LINK)
+                    if (t1 != FormulaTermUserFunction.FunctionType.FUNCTION_LINK)
                     {
                         newValue += contex.getResources().getString(R.string.formula_function_start_bracket);
                     }

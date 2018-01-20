@@ -26,6 +26,7 @@ public interface FormulaTermTypeIf
         OPERATOR,
         COMPARATOR,
         FILE_OPERATION,
+        COMM_FUNCTION,
         USER_FUNCTION,
         INTERVAL,
         LOOP

@@ -35,13 +35,15 @@ import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.formula.FormulaListView;
 import com.mkulesh.micromath.formula.FormulaResult;
 import com.mkulesh.micromath.formula.FormulaTerm;
+import com.mkulesh.micromath.formula.FormulaTermCommFunction;
 import com.mkulesh.micromath.formula.FormulaTermComparator;
-import com.mkulesh.micromath.formula.FormulaTermUserFunction;
-import com.mkulesh.micromath.formula.FormulaTermUserFunction.FunctionType;
+import com.mkulesh.micromath.formula.FormulaTermFunctionBase;
 import com.mkulesh.micromath.formula.FormulaTermInterval;
 import com.mkulesh.micromath.formula.FormulaTermLoop;
 import com.mkulesh.micromath.formula.FormulaTermOperator;
 import com.mkulesh.micromath.formula.FormulaTermOperator.OperatorType;
+import com.mkulesh.micromath.formula.FormulaTermUserFunction;
+import com.mkulesh.micromath.formula.FormulaTermUserFunction.FunctionType;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TextFragment;
 import com.mkulesh.micromath.plots.ImageFragment;
@@ -445,6 +447,10 @@ public class ExportToLatex
             {
                 writeTermComparator((FormulaTermComparator) ft);
             }
+            else if (ft instanceof FormulaTermCommFunction)
+            {
+                writeTermFunction((FormulaTermCommFunction) ft);
+            }
             else if (ft instanceof FormulaTermUserFunction)
             {
                 writeTermFunction((FormulaTermUserFunction) ft);
@@ -543,9 +549,28 @@ public class ExportToLatex
         }
     }
 
-    private void writeTermFunction(FormulaTermUserFunction f)
+    private void writeTermFunctionBase(FormulaTermFunctionBase f)
     {
-        FormulaTermUserFunction.FunctionType functionType = f.getFunctionType();
+        final ArrayList<TermField> terms = f.getTerms();
+        if (f.getFunctionTerm() != null)
+        {
+            writeText(f.getFunctionTerm().getText(), true);
+        }
+        writer.append(" \\left( ");
+        for (int i = 0; i < terms.size(); i++)
+        {
+            if (i > 0)
+            {
+                writer.append(",\\, ");
+            }
+            writeTermField(terms.get(i));
+        }
+        writer.append("\\right) ");
+    }
+
+    private void writeTermFunction(FormulaTermCommFunction f)
+    {
+        FormulaTermCommFunction.FunctionType functionType = f.getFunctionType();
         final ArrayList<TermField> terms = f.getTerms();
         switch (functionType)
         {
@@ -596,35 +621,42 @@ public class ExportToLatex
             writer.append("}");
             break;
         default:
-            if (f.getFunctionTerm() != null)
-            {
-                writeText(f.getFunctionTerm().getText(), true);
-            }
-            if (functionType == FunctionType.FUNCTION_INDEX)
-            {
-                writer.append("_{");
-            }
-            else
-            {
-                writer.append(" \\left( ");
-            }
-            for (int i = 0; i < terms.size(); i++)
-            {
-                if (i > 0)
-                {
-                    writer.append(",\\, ");
-                }
-                writeTermField(terms.get(i));
-            }
-            if (functionType == FunctionType.FUNCTION_INDEX)
-            {
-                writer.append("} ");
-            }
-            else
-            {
-                writer.append("\\right) ");
-            }
+            writeTermFunctionBase(f);
             break;
+        }
+    }
+
+    private void writeTermFunction(FormulaTermUserFunction f)
+    {
+        FormulaTermUserFunction.FunctionType functionType = f.getFunctionType();
+        final ArrayList<TermField> terms = f.getTerms();
+        if (f.getFunctionTerm() != null)
+        {
+            writeText(f.getFunctionTerm().getText(), true);
+        }
+        if (functionType == FunctionType.FUNCTION_INDEX)
+        {
+            writer.append("_{");
+        }
+        else
+        {
+            writer.append(" \\left( ");
+        }
+        for (int i = 0; i < terms.size(); i++)
+        {
+            if (i > 0)
+            {
+                writer.append(",\\, ");
+            }
+            writeTermField(terms.get(i));
+        }
+        if (functionType == FunctionType.FUNCTION_INDEX)
+        {
+            writer.append("} ");
+        }
+        else
+        {
+            writer.append("\\right) ");
         }
     }
 
