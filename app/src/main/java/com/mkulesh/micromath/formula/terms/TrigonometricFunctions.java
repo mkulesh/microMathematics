@@ -139,10 +139,15 @@ public class TrigonometricFunctions extends FunctionBase
      * Constructors
      *********************************************************/
 
-    public TrigonometricFunctions(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public TrigonometricFunctions(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
-        onCreate(s, idx);
+        termType = (type instanceof FunctionType)? (FunctionType) type : null;
+        if (termType == null)
+        {
+            throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");
+        }
+        createGeneralFunction(R.layout.formula_function_named, s, getFunctionType().getArgNumber(), idx);
     }
 
     /*********************************************************
@@ -324,26 +329,5 @@ public class TrigonometricFunctions extends FunctionBase
             }
         }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
-    }
-
-    /*********************************************************
-     * FormulaTermFunction-specific methods
-     *********************************************************/
-
-    /**
-     * Procedure creates the formula layout
-     */
-    private void onCreate(String s, int idx) throws Exception
-    {
-        if (idx < 0 || idx > layout.getChildCount())
-        {
-            throw new Exception("cannot create LogFunction for invalid insertion index " + idx);
-        }
-        termType = getFunctionType(getContext(), s);
-        if (termType == null)
-        {
-            throw new Exception("cannot create LogFunction for unknown function");
-        }
-        createGeneralFunction(R.layout.formula_function_named, s, getFunctionType().getArgNumber(), idx);
     }
 }

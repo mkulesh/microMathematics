@@ -214,9 +214,14 @@ public class CommonFunctions extends FunctionBase
      * Constructors
      *********************************************************/
 
-    public CommonFunctions(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public CommonFunctions(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
+        termType = (type instanceof FunctionType)? (FunctionType) type : null;
+        if (termType == null)
+        {
+            throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");
+        }
         onCreate(s, idx);
     }
 
@@ -631,15 +636,6 @@ public class CommonFunctions extends FunctionBase
      */
     private void onCreate(String s, int idx) throws Exception
     {
-        if (idx < 0 || idx > layout.getChildCount())
-        {
-            throw new Exception("cannot create CommFunction for invalid insertion index " + idx);
-        }
-        termType = getFunctionType(getContext(), s);
-        if (termType == null)
-        {
-            throw new Exception("cannot create CommFunction for unknown function");
-        }
         int argNumber = getFunctionType().getArgNumber();
         switch (getFunctionType())
         {

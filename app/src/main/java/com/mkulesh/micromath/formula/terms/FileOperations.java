@@ -122,10 +122,20 @@ public class FileOperations extends FunctionBase
      * Constructors
      *********************************************************/
 
-    public FileOperations(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public FileOperations(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
-        onCreate(s, idx);
+        termType = (type instanceof FunctionType)? (FunctionType) type : null;
+        if (termType == null)
+        {
+            throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");
+        }
+        createGeneralFunction(R.layout.formula_file_operation, s, 1, idx);
+        fileName = terms.get(0);
+        if (fileName == null)
+        {
+            throw new Exception("cannot initialize function terms");
+        }
     }
 
     /*********************************************************
@@ -248,30 +258,6 @@ public class FileOperations extends FunctionBase
     /*********************************************************
      * FormulaTermFileOperation-specific methods
      *********************************************************/
-
-    /**
-     * Procedure creates the formula layout
-     */
-    private void onCreate(String s, int idx) throws Exception
-    {
-        if (idx < 0 || idx > layout.getChildCount())
-        {
-            throw new Exception("cannot create FileOperation for invalid insertion index " + idx);
-        }
-        termType = getFunctionType(getContext(), s);
-        if (termType == null)
-        {
-            throw new Exception("cannot create FileOperation for unknown function");
-        }
-
-        createGeneralFunction(R.layout.formula_file_operation, s, 1, idx);
-
-        fileName = terms.get(0);
-        if (fileName == null)
-        {
-            throw new Exception("cannot initialize function terms");
-        }
-    }
 
     private InputStream openFileStream(final String name)
     {

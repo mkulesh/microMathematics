@@ -54,10 +54,11 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
      * Constructors
      *********************************************************/
 
-    public FormulaTerm(FormulaBase formulaRoot, LinearLayout layout, int termDepth)
+    public FormulaTerm(TermField owner, LinearLayout layout) throws Exception
     {
-        super(formulaRoot.getFormulaList(), layout, termDepth);
-        this.formulaRoot = formulaRoot;
+        super(owner.getFormulaRoot().getFormulaList(), layout, owner.termDepth);
+        this.formulaRoot = owner.getFormulaRoot();
+        setParentField(owner);
     }
 
     public FormulaTerm()
@@ -293,31 +294,35 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         return (f != null)? f.getLowerCaseName() : null;
     }
 
-    public static FormulaTerm createTerm(FormulaTermTypeIf.GroupType type, TermField termField, LinearLayout layout, String s,
+    public static FormulaTerm createTerm(FormulaTermTypeIf type, TermField termField, LinearLayout layout, String s,
                                          int textIndex) throws Exception
     {
-        switch (type)
+        if (textIndex < 0 || textIndex > layout.getChildCount())
+        {
+            throw new Exception("cannot create " + type.toString() + " for invalid insertion index " + textIndex);
+        }
+        switch (type.getGroupType())
         {
         case OPERATORS:
-            return new Operators(termField, layout, s, textIndex);
+            return new Operators(type, termField, layout, s, textIndex);
         case COMPARATORS:
-            return new Comparators(termField, layout, s, textIndex);
+            return new Comparators(type, termField, layout, s, textIndex);
         case FILE_OPERATIONS:
-            return new FileOperations(termField, layout, s, textIndex);
+            return new FileOperations(type, termField, layout, s, textIndex);
         case COMMON_FUNCTIONS:
-            return new CommonFunctions(termField, layout, s, textIndex);
+            return new CommonFunctions(type, termField, layout, s, textIndex);
         case TRIGONOMETRIC_FUNCTIONS:
-            return new TrigonometricFunctions(termField, layout, s, textIndex);
+            return new TrigonometricFunctions(type, termField, layout, s, textIndex);
         case LOG_FUNCTIONS:
-            return new LogFunctions(termField, layout, s, textIndex);
+            return new LogFunctions(type, termField, layout, s, textIndex);
         case NUMBER_FUNCTIONS:
-            return new NumberFunctions(termField, layout, s, textIndex);
+            return new NumberFunctions(type, termField, layout, s, textIndex);
         case USER_FUNCTIONS:
-            return new UserFunctions(termField, layout, s, textIndex);
+            return new UserFunctions(type, termField, layout, s, textIndex);
         case INTERVALS:
-            return new Intervals(termField, layout, s, textIndex);
+            return new Intervals(type, termField, layout, s, textIndex);
         case SERIES_INTEGRALS:
-            return new SeriesIntegrals(termField, layout, s, textIndex);
+            return new SeriesIntegrals(type, termField, layout, s, textIndex);
         }
         return null;
     }

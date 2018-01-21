@@ -121,10 +121,14 @@ public class Operators extends FormulaTerm
      * Constructors
      *********************************************************/
 
-    public Operators(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public Operators(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
-        super(owner.getFormulaRoot(), layout, owner.termDepth);
-        setParentField(owner);
+        super(owner, layout);
+        termType = (type instanceof OperatorType)? (OperatorType) type : null;
+        if (termType == null)
+        {
+            throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");
+        }
         onCreate(s, idx, owner.bracketsType);
     }
 
@@ -318,15 +322,6 @@ public class Operators extends FormulaTerm
      */
     private void onCreate(String s, int idx, BracketsType bracketsType) throws Exception
     {
-        if (idx < 0 || idx > layout.getChildCount())
-        {
-            throw new Exception("cannot create FormulaTermOperator for invalid insertion index " + idx);
-        }
-        termType = getOperatorType(getContext(), s);
-        if (termType == null)
-        {
-            throw new Exception("cannot create FormulaTermOperator for unknown operator");
-        }
         switch (getOperatorType())
         {
         case PLUS:

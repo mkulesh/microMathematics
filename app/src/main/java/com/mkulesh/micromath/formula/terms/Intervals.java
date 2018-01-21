@@ -119,11 +119,20 @@ public class Intervals extends FormulaTerm
      * Constructors
      *********************************************************/
 
-    public Intervals(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public Intervals(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
-        super(owner.getFormulaRoot(), layout, owner.termDepth);
-        setParentField(owner);
-        onCreate(s, idx);
+        super(owner, layout);
+        termType = (type instanceof IntervalType)? (IntervalType) type : null;
+        if (termType == null)
+        {
+            throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");
+        }
+        inflateElements(R.layout.formula_interval, true);
+        initializeElements(idx);
+        if (minValueTerm == null || nextValueTerm == null || maxValueTerm == null)
+        {
+            throw new Exception("cannot initialize function terms");
+        }
     }
 
     /*********************************************************
@@ -254,28 +263,6 @@ public class Intervals extends FormulaTerm
     /*********************************************************
      * FormulaTermInterval-specific methods
      *********************************************************/
-
-    /**
-     * Procedure creates the formula layout
-     */
-    private void onCreate(String s, int idx) throws Exception
-    {
-        if (idx < 0 || idx > layout.getChildCount())
-        {
-            throw new Exception("cannot create FormulaFunction for invalid insertion index " + idx);
-        }
-        termType = getIntervalType(getContext(), s);
-        if (termType == null)
-        {
-            throw new Exception("cannot create FormulaFunction for unknown function");
-        }
-        inflateElements(R.layout.formula_interval, true);
-        initializeElements(idx);
-        if (minValueTerm == null || nextValueTerm == null || maxValueTerm == null)
-        {
-            throw new Exception("cannot initialize function terms");
-        }
-    }
 
     /**
      * Procedure returns declared interval if this root formula represents an interval

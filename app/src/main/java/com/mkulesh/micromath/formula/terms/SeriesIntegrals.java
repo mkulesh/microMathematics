@@ -132,10 +132,14 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
      * Constructors
      *********************************************************/
 
-    public SeriesIntegrals(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public SeriesIntegrals(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
-        super(owner.getFormulaRoot(), layout, owner.termDepth);
-        setParentField(owner);
+        super(owner, layout);
+        termType = (type instanceof LoopType)? (LoopType) type : null;
+        if (termType == null)
+        {
+            throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");
+        }
         onCreate(s, idx, owner.bracketsType);
     }
 
@@ -414,15 +418,6 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
      */
     private void onCreate(String s, int idx, BracketsType bracketsType) throws Exception
     {
-        if (idx < 0 || idx > layout.getChildCount())
-        {
-            throw new Exception("cannot create FormulaTermLoop for invalid insertion index " + idx);
-        }
-        termType = getLoopType(getContext(), s);
-        if (termType == null)
-        {
-            throw new Exception("cannot create FormulaTermLoop for unknown loop type");
-        }
         switch (getLoopType())
         {
         case SUMMATION:

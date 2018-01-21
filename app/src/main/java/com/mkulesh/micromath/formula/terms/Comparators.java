@@ -129,10 +129,14 @@ public class Comparators extends FormulaTerm
      * Constructors
      *********************************************************/
 
-    public Comparators(TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public Comparators(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
-        super(owner.getFormulaRoot(), layout, owner.termDepth);
-        setParentField(owner);
+        super(owner, layout);
+        termType = (type instanceof ComparatorType)? (ComparatorType) type : null;
+        if (termType == null)
+        {
+            throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");
+        }
         onCreate(s, idx, owner.bracketsType);
     }
 
@@ -280,15 +284,6 @@ public class Comparators extends FormulaTerm
      */
     private void onCreate(String s, int idx, BracketsType bracketsType) throws Exception
     {
-        if (idx < 0 || idx > layout.getChildCount())
-        {
-            throw new Exception("cannot create FormulaTermComparator for invalid insertion index " + idx);
-        }
-        termType = getComparatorType(getContext(), s);
-        if (termType == null)
-        {
-            throw new Exception("cannot create FormulaTermComparator for unknown comparator");
-        }
         useBrackets = bracketsType != BracketsType.NEVER;
         inflateElements(useBrackets ? R.layout.formula_operator_hor_brackets : R.layout.formula_operator_hor, true);
         initializeElements(idx);

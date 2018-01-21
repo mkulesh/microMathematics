@@ -68,8 +68,7 @@ public abstract class FunctionBase extends FormulaTerm
 
     public FunctionBase(TermField owner, LinearLayout layout) throws Exception
     {
-        super(owner.getFormulaRoot(), layout, owner.termDepth);
-        setParentField(owner);
+        super(owner, layout);
     }
 
     public FunctionBase()
