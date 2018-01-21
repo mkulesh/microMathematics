@@ -28,6 +28,7 @@ Not only students, but also everybody who likes mathematics or needs more than j
 * SD card on Android 6+ is also supported
 * The app contains detailed "How to use" page and several examples
 * Supports different color themes
+* Integration with [SMath Studio](https://en.smath.info): SMath Studio is able to open workshets stored in microMathematics, see [this document](https://github.com/mkulesh/microMathematics/wiki/Integration-with-SMath-Studio) for details
 
 ## Screenshots:
 
@@ -39,7 +40,7 @@ For more screenshots, see directory images/screenshots.
 
 ## Documentation
 * [Functions Overview](http://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/functions_overview.html)
-* [The latest PDF version of the User Manual](https://github.com/mkulesh/microMathematics/releases/download/v2.16/microMathematics-v2.16.pdf)
+* [The latest PDF version of the User Manual](https://github.com/mkulesh/microMathematics/releases/download/v2.16.1/microMathematics-v2.16.1.pdf)
 
 ## Reviews and publications:
 
