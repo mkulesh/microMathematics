@@ -76,9 +76,15 @@ public class LogFunctions extends FunctionBase
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.LOG_FUNCTIONS; }
+        public GroupType getGroupType()
+        {
+            return GroupType.LOG_FUNCTIONS;
+        }
 
-        public int getShortCutId() { return shortCutId; }
+        public int getShortCutId()
+        {
+            return shortCutId;
+        }
 
         public int getArgNumber()
         {

@@ -76,9 +76,15 @@ public class TrigonometricFunctions extends FunctionBase
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.TRIGONOMETRIC_FUNCTIONS; }
+        public GroupType getGroupType()
+        {
+            return GroupType.TRIGONOMETRIC_FUNCTIONS;
+        }
 
-        public int getShortCutId() { return shortCutId; }
+        public int getShortCutId()
+        {
+            return shortCutId;
+        }
 
         public int getArgNumber()
         {

@@ -92,9 +92,15 @@ public class CommonFunctions extends FunctionBase
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.COMMON_FUNCTIONS; }
+        public GroupType getGroupType()
+        {
+            return GroupType.COMMON_FUNCTIONS;
+        }
 
-        public int getShortCutId() { return shortCutId; }
+        public int getShortCutId()
+        {
+            return shortCutId;
+        }
 
         public int getArgNumber()
         {

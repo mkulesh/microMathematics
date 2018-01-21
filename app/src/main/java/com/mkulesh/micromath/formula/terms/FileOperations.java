@@ -70,9 +70,15 @@ public class FileOperations extends FunctionBase
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.FILE_OPERATIONS; }
+        public GroupType getGroupType()
+        {
+            return GroupType.FILE_OPERATIONS;
+        }
 
-        public int getShortCutId() { return Palette.NO_BUTTON; }
+        public int getShortCutId()
+        {
+            return Palette.NO_BUTTON;
+        }
 
         public int getImageId()
         {

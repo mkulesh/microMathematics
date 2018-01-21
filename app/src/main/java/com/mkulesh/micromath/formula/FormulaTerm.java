@@ -42,6 +42,10 @@ import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.FocusChangeIf;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
 {
@@ -88,7 +92,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
      */
     public String getTermCode()
     {
-        return termType == null? "" : termType.getLowerCaseName();
+        return termType == null ? "" : termType.getLowerCaseName();
     }
 
     /**
@@ -168,28 +172,51 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
      * Factory methods
      *********************************************************/
 
-    public static void addToPalette(Context context, LinearLayout paletteLayout)
+    public static void addToPalette(Context context, LinearLayout paletteLayout, FormulaTermTypeIf.GroupType gType)
     {
-        addToPalette(context, Intervals.IntervalType.values(), paletteLayout,
-                new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
-        addToPalette(context, Operators.OperatorType.values(), paletteLayout,
-                new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, UserFunctions.FunctionType.values(), paletteLayout,
-                new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, CommonFunctions.FunctionType.values(), paletteLayout,
-                new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, TrigonometricFunctions.FunctionType.values(), paletteLayout,
-                new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, LogFunctions.FunctionType.values(), paletteLayout,
-                new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, NumberFunctions.FunctionType.values(), paletteLayout,
-                new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, FileOperations.FunctionType.values(), paletteLayout,
-                new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
-        addToPalette(context, SeriesIntegrals.LoopType.values(), paletteLayout,
-                new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
-        addToPalette(context, Comparators.ComparatorType.values(), paletteLayout,
-                new PaletteButton.Category[]{ PaletteButton.Category.COMPARATOR });
+        switch (gType)
+        {
+        case OPERATORS:
+            addToPalette(context, Operators.OperatorType.values(), paletteLayout,
+                    new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
+            break;
+        case COMPARATORS:
+            addToPalette(context, Comparators.ComparatorType.values(), paletteLayout,
+                    new PaletteButton.Category[]{ PaletteButton.Category.COMPARATOR });
+            break;
+        case FILE_OPERATIONS:
+            addToPalette(context, FileOperations.FunctionType.values(), paletteLayout,
+                    new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
+            break;
+        case COMMON_FUNCTIONS:
+            addToPalette(context, CommonFunctions.FunctionType.values(), paletteLayout,
+                    new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
+            break;
+        case TRIGONOMETRIC_FUNCTIONS:
+            addToPalette(context, TrigonometricFunctions.FunctionType.values(), paletteLayout,
+                    new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
+            break;
+        case LOG_FUNCTIONS:
+            addToPalette(context, LogFunctions.FunctionType.values(), paletteLayout,
+                    new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
+            break;
+        case NUMBER_FUNCTIONS:
+            addToPalette(context, NumberFunctions.FunctionType.values(), paletteLayout,
+                    new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
+            break;
+        case USER_FUNCTIONS:
+            addToPalette(context, UserFunctions.FunctionType.values(), paletteLayout,
+                    new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
+            break;
+        case INTERVALS:
+            addToPalette(context, Intervals.IntervalType.values(), paletteLayout,
+                    new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
+            break;
+        case SERIES_INTEGRALS:
+            addToPalette(context, SeriesIntegrals.LoopType.values(), paletteLayout,
+                    new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
+            break;
+        }
     }
 
     public static FormulaTermTypeIf getTermTypeIf(Context context, CustomEditText text, String s, boolean ensureManualTrigger)
@@ -291,7 +318,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     public static String getOperatorCode(Context context, String code, boolean ensureManualTrigger)
     {
         final FormulaTermTypeIf f = getTermTypeIf(context, null, code, ensureManualTrigger);
-        return (f != null)? f.getLowerCaseName() : null;
+        return (f != null) ? f.getLowerCaseName() : null;
     }
 
     public static FormulaTerm createTerm(FormulaTermTypeIf type, TermField termField, LinearLayout layout, String s,
@@ -374,7 +401,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             case USER_FUNCTIONS:
                 // for a function, we add operator code at the beginning of line in order to move
                 // existing text in the function argument term
-                final UserFunctions.FunctionType t1 = (UserFunctions.FunctionType)f;
+                final UserFunctions.FunctionType t1 = (UserFunctions.FunctionType) f;
                 newValue = (t1 == UserFunctions.FunctionType.FUNCTION_LINK) ? code : f.getLowerCaseName();
                 if (prevText != null)
                 {
@@ -647,5 +674,21 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                 p.setCategories(categories);
             }
         }
+    }
+
+    public static List<FormulaTermTypeIf.GroupType> collectPaletteGroups()
+    {
+        final List<FormulaTermTypeIf.GroupType> gTypes =
+                Arrays.asList(FormulaTermTypeIf.GroupType.values());
+        Collections.sort(gTypes, new Comparator<FormulaTermTypeIf.GroupType>()
+        {
+            @Override
+            public int compare(FormulaTermTypeIf.GroupType lhs, FormulaTermTypeIf.GroupType rhs)
+            {
+                return lhs.getPaletteOrder() > rhs.getPaletteOrder() ? 1 :
+                        (lhs.getPaletteOrder() < rhs.getPaletteOrder()) ? -1 : 0;
+            }
+        });
+        return gTypes;
     }
 }

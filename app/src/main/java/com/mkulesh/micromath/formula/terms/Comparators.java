@@ -78,7 +78,10 @@ public class Comparators extends FormulaTerm
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.COMPARATORS; }
+        public GroupType getGroupType()
+        {
+            return GroupType.COMPARATORS;
+        }
 
         public int getShortCutId()
         {

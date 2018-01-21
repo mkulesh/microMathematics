@@ -188,6 +188,7 @@
     <string name="dialog_color_picker_saturation" translatable="false">S:</string>
     <string name="dialog_color_picker_value" translatable="false">L:</string>
     <string name="dialog_color_picker_opacity" translatable="false">A:</string>
+    <string name="dialog_palette_settings_title">Tool bar settings</string>
 
     <!-- Mathematical elements -->
     <string name="math_new_element">New element</string>

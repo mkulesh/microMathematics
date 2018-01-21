@@ -54,7 +54,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
+                android:paddingLeft="@dimen/activity_palette_horizontal_padding"
+                android:paddingRight="@dimen/activity_palette_horizontal_padding"
                 android:orientation="horizontal" >
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/palette_settings_button"
+                    style="@style/DialogImageButtonStyle"
+                    android:contentDescription="@string/dialog_palette_settings_title"
+                    android:longClickable="true"
+                    android:src="@drawable/palette_settings" />
 
                 <LinearLayout
                     android:id="@+id/hidden_edit_text_panel"

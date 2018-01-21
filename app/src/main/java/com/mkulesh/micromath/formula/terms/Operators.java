@@ -69,7 +69,10 @@ public class Operators extends FormulaTerm
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.OPERATORS; }
+        public GroupType getGroupType()
+        {
+            return GroupType.OPERATORS;
+        }
 
         public int getShortCutId()
         {

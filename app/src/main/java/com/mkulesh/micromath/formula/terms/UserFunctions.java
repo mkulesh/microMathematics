@@ -83,9 +83,15 @@ public class UserFunctions extends FunctionBase
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.USER_FUNCTIONS; }
+        public GroupType getGroupType()
+        {
+            return GroupType.USER_FUNCTIONS;
+        }
 
-        public int getShortCutId() { return shortCutId; }
+        public int getShortCutId()
+        {
+            return shortCutId;
+        }
 
         public int getArgNumber()
         {

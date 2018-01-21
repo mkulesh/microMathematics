@@ -46,7 +46,7 @@ public interface ListChangeIf
     /**
      * Procedure deletes the formula with given ID
      */
-    public void onDiscardFormula(int id);
+    void onDiscardFormula(int id);
 
     /**
      * Procedure will be called if a scale event happens
@@ -72,4 +72,9 @@ public interface ListChangeIf
      * Procedure is called on manual input
      */
     void onManualInput();
+
+    /**
+     * Procedure is called if palette update is required
+     */
+    void updatePalette();
 }

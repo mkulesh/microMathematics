@@ -149,6 +149,7 @@
     <string name="dialog_text_style_numbering">Numerierung</string>
     <string name="dialog_list_items">element (e)</string>
     <string name="dialog_function_selection">Funktion</string>
+    <string name="dialog_palette_settings_title">Einstellungen der Werkzeugleiste</string>
     
     <!-- Mathematical elements -->
     <string name="math_new_element">Neu</string>

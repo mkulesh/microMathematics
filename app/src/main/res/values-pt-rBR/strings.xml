@@ -149,6 +149,7 @@
     <string name="dialog_text_style_numbering">Numeração</string>
     <string name="dialog_list_items">item (ns)</string>
     <string name="dialog_function_selection">Função</string>
+    <string name="dialog_palette_settings_title">Configuração da barra</string>
 
     <!-- Mathematical elements -->
     <string name="math_new_element">Novo elemento</string>

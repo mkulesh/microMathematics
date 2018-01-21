@@ -1132,4 +1132,31 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         }
         return R.id.main_list_view;
     }
+
+    public static void addToPalette(Context context, LinearLayout paletteLayout)
+    {
+        for (int i = 0; i < BaseType.values().length; i++)
+        {
+            final BaseType t = BaseType.values()[i];
+            if (t.getImageId() != Palette.NO_BUTTON)
+            {
+                if (t == BaseType.TERM)
+                {
+                    PaletteButton p = new PaletteButton(context,
+                            R.string.formula_term_separator, t.getImageId(), t.getDescriptionId(),
+                            t.toString());
+                    p.setCategories(new PaletteButton.Category[]
+                            { PaletteButton.Category.NEW_TERM, PaletteButton.Category.CONVERSION });
+                    paletteLayout.addView(p);
+                }
+                else
+                {
+                    PaletteButton p = new PaletteButton(context,
+                            Palette.NO_BUTTON, t.getImageId(), t.getDescriptionId(),
+                            t.toString());
+                    paletteLayout.addView(p);
+                }
+            }
+        }
+    }
 }

@@ -76,9 +76,15 @@ public class NumberFunctions extends FunctionBase
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.NUMBER_FUNCTIONS; }
+        public GroupType getGroupType()
+        {
+            return GroupType.NUMBER_FUNCTIONS;
+        }
 
-        public int getShortCutId() { return shortCutId; }
+        public int getShortCutId()
+        {
+            return shortCutId;
+        }
 
         public int getArgNumber()
         {
@@ -290,7 +296,7 @@ public class NumberFunctions extends FunctionBase
         }
 
         CalculatableIf.DifferentiableType retValue = (argsProp == CalculatableIf.DifferentiableType.INDEPENDENT) ? CalculatableIf.DifferentiableType.INDEPENDENT
-                    : CalculatableIf.DifferentiableType.NONE;
+                : CalculatableIf.DifferentiableType.NONE;
 
         // set the error code to be displayed
         ErrorCode errorCode = ErrorCode.NO_ERROR;

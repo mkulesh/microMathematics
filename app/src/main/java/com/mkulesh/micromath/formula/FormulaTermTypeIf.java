@@ -23,16 +23,28 @@ public interface FormulaTermTypeIf
 {
     enum GroupType
     {
-        OPERATORS,
-        COMPARATORS,
-        FILE_OPERATIONS,
-        COMMON_FUNCTIONS,
-        TRIGONOMETRIC_FUNCTIONS,
-        LOG_FUNCTIONS,
-        NUMBER_FUNCTIONS,
-        USER_FUNCTIONS,
-        INTERVALS,
-        SERIES_INTEGRALS
+        OPERATORS(10),
+        COMPARATORS(90),
+        FILE_OPERATIONS(70),
+        COMMON_FUNCTIONS(30),
+        TRIGONOMETRIC_FUNCTIONS(40),
+        LOG_FUNCTIONS(50),
+        NUMBER_FUNCTIONS(60),
+        USER_FUNCTIONS(20),
+        INTERVALS(0),
+        SERIES_INTEGRALS(80);
+
+        private final int paletteOrder;
+
+        GroupType(int paletteOrder)
+        {
+            this.paletteOrder = paletteOrder;
+        }
+
+        public int getPaletteOrder()
+        {
+            return paletteOrder;
+        }
     }
 
     /* Returns group term type of this object */

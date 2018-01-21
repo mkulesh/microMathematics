@@ -68,7 +68,10 @@ public class Intervals extends FormulaTerm
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.INTERVALS; }
+        public GroupType getGroupType()
+        {
+            return GroupType.INTERVALS;
+        }
 
         public int getShortCutId()
         {

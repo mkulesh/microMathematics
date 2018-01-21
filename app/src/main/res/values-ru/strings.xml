@@ -149,6 +149,7 @@
     <string name="dialog_text_style_numbering">Нумеровать</string>
     <string name="dialog_list_items">элемент (ов)</string>
     <string name="dialog_function_selection">Функция</string>
+    <string name="dialog_palette_settings_title">Настройка панели инструментов</string>
     
     <!-- Mathematical elements -->
     <string name="math_new_element">Вставить</string>

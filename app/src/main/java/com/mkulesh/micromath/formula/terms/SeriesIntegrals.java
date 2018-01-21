@@ -73,7 +73,10 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
-        public GroupType getGroupType() { return GroupType.SERIES_INTEGRALS; }
+        public GroupType getGroupType()
+        {
+            return GroupType.SERIES_INTEGRALS;
+        }
 
         public int getShortCutId()
         {

@@ -1222,6 +1222,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     /**
      * This procedure is used to enable/disable palette buttons related to current mode/selection
      */
+    @Override
     public void updatePalette()
     {
         FormulaBase s = formulas.get(selectedFormulaId);
