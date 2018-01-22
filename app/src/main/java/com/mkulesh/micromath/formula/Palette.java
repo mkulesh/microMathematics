@@ -19,6 +19,8 @@
 package com.mkulesh.micromath.formula;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.AppCompatImageButton;
 import android.text.InputType;
 import android.view.View;
@@ -47,6 +49,7 @@ import java.util.List;
 public class Palette implements OnClickListener, OnLongClickListener, TextChangeIf, FocusChangeIf, PaletteSettingsChangeIf
 {
     public static final int NO_BUTTON = -1;
+    public static final String VISIBLE_PALETTE_GROUPS = "visible_palette_groups";
 
     private final Context context;
     private final ListChangeIf listChangeIf;
@@ -55,7 +58,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
     private final CustomEditText hiddenInput;
     private String lastHiddenInput = "";
     private final AppCompatImageButton paletteSettingsButton;
-    List<String> visibleGroups = new ArrayList<>();
+    private List<String> visibleGroups = new ArrayList<>();
 
     public Palette(Context context, LinearLayout paletteLayout, ListChangeIf listChangeIf)
     {
@@ -73,10 +76,19 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         hiddenInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         enableHiddenInput(false);
 
-        visibleGroups.add(FormulaBase.class.getSimpleName());
+        final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        final String visibleGroupsStr = pref.getString(VISIBLE_PALETTE_GROUPS, "");
+        ViewUtils.Debug(this, "Default visible palette groups: " + visibleGroupsStr);
+        if (visibleGroupsStr.isEmpty() || visibleGroupsStr.contains(FormulaBase.class.getSimpleName()))
+        {
+            visibleGroups.add(FormulaBase.class.getSimpleName());
+        }
         for (FormulaTermTypeIf.GroupType g : FormulaTerm.collectPaletteGroups())
         {
-            visibleGroups.add(g.toString());
+            if ((visibleGroupsStr.isEmpty() && g.isShowByDefault()) || visibleGroupsStr.contains(g.toString()))
+            {
+                visibleGroups.add(g.toString());
+            }
         }
         addButtonsToPalette();
     }
@@ -135,7 +147,11 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
     @Override
     public void onPaletteVisibleChange(List<String> visibleGroups)
     {
-        ViewUtils.Debug(this, "Visible palette: " + visibleGroups.toString());
+        ViewUtils.Debug(this, "Visible palette groups: " + visibleGroups.toString());
+        final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor prefEditor = pref.edit();
+        prefEditor.putString(VISIBLE_PALETTE_GROUPS, visibleGroups.toString());
+        prefEditor.commit();
         this.visibleGroups = visibleGroups;
         addButtonsToPalette();
         if (listChangeIf != null)

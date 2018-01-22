@@ -23,27 +23,40 @@ public interface FormulaTermTypeIf
 {
     enum GroupType
     {
-        OPERATORS(10),
-        COMPARATORS(90),
-        FILE_OPERATIONS(70),
-        COMMON_FUNCTIONS(30),
-        TRIGONOMETRIC_FUNCTIONS(40),
-        LOG_FUNCTIONS(50),
-        NUMBER_FUNCTIONS(60),
-        USER_FUNCTIONS(20),
-        INTERVALS(0),
-        SERIES_INTEGRALS(80);
+        OPERATORS(10, true),
+        COMPARATORS(90, true),
+        FILE_OPERATIONS(70, false),
+        COMMON_FUNCTIONS(30, true),
+        TRIGONOMETRIC_FUNCTIONS(40, false),
+        LOG_FUNCTIONS(50, false),
+        NUMBER_FUNCTIONS(60, false),
+        USER_FUNCTIONS(20, true),
+        INTERVALS(0, true),
+        SERIES_INTEGRALS(80, true);
 
         private final int paletteOrder;
+        private final boolean showByDefault;
 
-        GroupType(int paletteOrder)
+        GroupType(int paletteOrder, boolean showByDefault)
         {
             this.paletteOrder = paletteOrder;
+            this.showByDefault = showByDefault;
         }
 
+        /**
+         * Returns the order of the group in the toolbar
+         */
         public int getPaletteOrder()
         {
             return paletteOrder;
+        }
+
+        /**
+         * Returns whether this group shall be sown in the toolbar by default
+         */
+        public boolean isShowByDefault()
+        {
+            return showByDefault;
         }
     }
 
