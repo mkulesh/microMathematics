@@ -211,7 +211,12 @@
     <string name="math_function_max">Liefert den größeren von zwei übergebenen Werten</string>
     <string name="math_function_min">Liefert den kleineren von zwei übergebenen Werten</string>
     <string name="math_file_read">Daten aus ASCII-Dateie importieren</string>
-    
+    <string name="math_function_mod">Berechnet den verbleibenden Rest bei der Division zweier Zahlen</string>
+    <string name="math_function_perc">Berechnet einen Prozentsatz</string>
+    <string name="math_function_round">Rundet einen Dezimalwert auf die angegebene Anzahl von Nachkommastellen</string>
+    <string name="math_function_trunc">Berechnet den ganzzahligen Teil einer angegebenen Zahl</string>
+    <string name="math_function_sign">Gibt eine ganze Zahl zurück, die das Vorzeichen einer Zahl angibt</string>
+
     <!-- Errors -->
     <string name="error_max_layout_depth">Der Grenzwert für die Layouttiefe für diese Android Version ist erreicht</string>
     <string name="error_brackets_not_completed">Klammern sind nicht geschlossen</string>

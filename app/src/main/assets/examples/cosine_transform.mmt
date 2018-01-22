@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="60" significantDigits="6" scale="0.34462" redefineAllowed="false">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Discrete cosine transform" description="Calculation of DCT and inverse DCT for a synthetic signal" textWidth="60" significantDigits="6" scale="0.34806" redefineAllowed="false">
     <equation>
       <term key="leftTerm" text="σ" />
       <term key="rightTerm" text="1.8" />
@@ -20,12 +20,9 @@
     <equation inRightOfPrevious="true">
       <term key="leftTerm" text="k" />
       <term key="rightTerm" code="equidistant_interval">
-        <term key="minValue" text="0" />
-        <term key="nextValue" text="1" />
-        <term key="maxValue" code="minus">
-          <term key="leftTerm" text="N" />
-          <term key="rightTerm" text="1" />
-        </term>
+        <term key="minValue" text="1" />
+        <term key="nextValue" text="2" />
+        <term key="maxValue" text="N" />
       </term>
     </equation>
     <equation>
@@ -74,7 +71,10 @@
               <term key="rightTerm" code="divide_slash">
                 <term key="leftTerm" code="mult">
                   <term key="leftTerm" text="20" />
-                  <term key="rightTerm" text="k" />
+                  <term key="rightTerm" code="minus">
+                    <term key="leftTerm" text="k" />
+                    <term key="rightTerm" text="1" />
+                  </term>
                 </term>
                 <term key="rightTerm" code="minus">
                   <term key="leftTerm" text="N" />
@@ -92,7 +92,7 @@
       <term key="rightTerm" code="if">
         <term key="argTerm1" code="equal">
           <term key="leftTerm" text="k" />
-          <term key="rightTerm" text="0" />
+          <term key="rightTerm" text="1" />
         </term>
         <term key="argTerm2" code="sqrt_layout">
           <term key="argTerm" code="divide_slash">
@@ -115,12 +115,9 @@
           <term key="argTerm" text="k" />
         </term>
         <term key="rightTerm" code="summation">
-          <term key="maxValue" code="minus">
-            <term key="leftTerm" text="N" />
-            <term key="rightTerm" text="1" />
-          </term>
+          <term key="maxValue" text="N" />
           <term key="index" text="n" />
-          <term key="minValue" text="0" />
+          <term key="minValue" text="1" />
           <term key="argTerm" code="mult">
             <term key="leftTerm" code="content:com.mkulesh.micromath.index.G">
               <term key="argTerm" text="n" />
@@ -131,7 +128,7 @@
                   <term key="leftTerm" code="mult">
                     <term key="leftTerm" text="π" />
                     <term key="rightTerm" code="identity">
-                      <term key="argTerm" code="plus">
+                      <term key="argTerm" code="minus">
                         <term key="leftTerm" code="mult">
                           <term key="leftTerm" text="2" />
                           <term key="rightTerm" text="n" />
@@ -140,7 +137,10 @@
                       </term>
                     </term>
                   </term>
-                  <term key="rightTerm" text="k" />
+                  <term key="rightTerm" code="minus">
+                    <term key="leftTerm" text="k" />
+                    <term key="rightTerm" text="1" />
+                  </term>
                 </term>
                 <term key="rightTerm" code="mult">
                   <term key="leftTerm" text="2" />
@@ -152,34 +152,31 @@
         </term>
       </term>
     </equation>
-    <plot_function width="600" height="400" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="1">
-      <term key="yMaxValue" text="" />
+    <plot_function width="667" height="400" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="1">
+      <term key="yMaxValue" text="3.5" />
       <term key="yFunction" color="#FF00CE19" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="abs_layout">
         <term key="argTerm" code="content:com.mkulesh.micromath.index.C">
           <term key="argTerm" text="k" />
         </term>
       </term>
-      <term key="yMinValue" text="" />
-      <term key="xMinValue" text="" />
+      <term key="yMinValue" text="0" />
+      <term key="xMinValue" text="1" />
       <term key="xFunction" text="k" />
-      <term key="xMaxValue" text="100.0" />
+      <term key="xMaxValue" text="100" />
     </plot_function>
     <equation>
       <term key="leftTerm" text="F[k]" />
       <term key="rightTerm" code="summation">
-        <term key="maxValue" code="minus">
-          <term key="leftTerm" text="N" />
-          <term key="rightTerm" text="1" />
-        </term>
-        <term key="index" text="u" />
-        <term key="minValue" text="0" />
+        <term key="maxValue" text="N" />
+        <term key="index" text="n" />
+        <term key="minValue" text="1" />
         <term key="argTerm" code="mult">
           <term key="leftTerm" code="mult">
             <term key="leftTerm" code="content:com.mkulesh.micromath.index.a">
-              <term key="argTerm" text="u" />
+              <term key="argTerm" text="n" />
             </term>
             <term key="rightTerm" code="content:com.mkulesh.micromath.index.C">
-              <term key="argTerm" text="u" />
+              <term key="argTerm" text="n" />
             </term>
           </term>
           <term key="rightTerm" code="cos">
@@ -188,7 +185,7 @@
                 <term key="leftTerm" code="mult">
                   <term key="leftTerm" text="π" />
                   <term key="rightTerm" code="identity">
-                    <term key="argTerm" code="plus">
+                    <term key="argTerm" code="minus">
                       <term key="leftTerm" code="mult">
                         <term key="leftTerm" text="2" />
                         <term key="rightTerm" text="k" />
@@ -197,7 +194,10 @@
                     </term>
                   </term>
                 </term>
-                <term key="rightTerm" text="u" />
+                <term key="rightTerm" code="minus">
+                  <term key="leftTerm" text="n" />
+                  <term key="rightTerm" text="1" />
+                </term>
               </term>
               <term key="rightTerm" code="mult">
                 <term key="leftTerm" text="2" />
@@ -209,18 +209,18 @@
       </term>
     </equation>
     <plot_function width="900" height="400" axes_style="crossed" xLabelsNumber="7" yLabelsNumber="7" gridLineColor="#72000000" functionsNumber="2">
-      <term key="yMaxValue" text="" />
+      <term key="yMaxValue" text="1" />
       <term key="yFunction1" color="#FF0021B8" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.index.G">
         <term key="argTerm" text="k" />
       </term>
       <term key="yFunction2" color="#FFFF00AF" width="6" lineStyle="dashed" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.index.F">
         <term key="argTerm" text="k" />
       </term>
-      <term key="yMinValue" text="" />
-      <term key="xMinValue" text="" />
+      <term key="yMinValue" text="-1" />
+      <term key="xMinValue" text="1" />
       <term key="xFunction1" text="k" />
       <term key="xFunction2" text="k" />
-      <term key="xMaxValue" text="" />
+      <term key="xMaxValue" text="500" />
     </plot_function>
   </formulaList>
 </micromath>

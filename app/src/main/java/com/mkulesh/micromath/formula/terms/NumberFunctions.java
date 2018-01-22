@@ -34,6 +34,7 @@ import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.DocumentProperties;
 
 import org.apache.commons.math3.util.FastMath;
+import org.apache.commons.math3.util.Precision;
 
 import java.util.Locale;
 
@@ -49,31 +50,39 @@ public class NumberFunctions extends FunctionBase
      */
     public enum FunctionType implements FormulaTermTypeIf
     {
-        CEIL(1, R.drawable.p_function_ceil, R.string.math_function_ceil),
-        FLOOR(1, R.drawable.p_function_floor, R.string.math_function_floor),
-        RANDOM(1, R.drawable.p_function_random, R.string.math_function_random),
         MAX(2, R.drawable.p_function_max, R.string.math_function_max),
         MIN(2, R.drawable.p_function_min, R.string.math_function_min),
-        SIGN(1, Palette.NO_BUTTON, Palette.NO_BUTTON);
+        MOD(2, R.drawable.p_function_mod, R.string.math_function_mod),
+        PERC(2, R.drawable.p_function_perc, R.string.math_function_perc),
+        RANDOM(1, R.drawable.p_function_random, R.string.math_function_random, 1, "RND"),
+        CEIL(1, R.drawable.p_function_ceil, R.string.math_function_ceil),
+        FLOOR(1, R.drawable.p_function_floor, R.string.math_function_floor),
+        ROUND(2, R.drawable.p_function_round, R.string.math_function_round),
+        TRUNC(1, R.drawable.p_function_trunc, R.string.math_function_trunc),
+        SIGN(1, R.drawable.p_function_sign, R.string.math_function_sign, 1, "SIGNUM");
 
         private final int argNumber;
         private final int imageId;
         private final int descriptionId;
         private final int shortCutId;
         private final String lowerCaseName;
+        private final int obsoleteVersion;
+        private final String obsoleteCode;
 
         FunctionType(int argNumber, int imageId, int descriptionId)
         {
-            this(argNumber, imageId, descriptionId, Palette.NO_BUTTON);
+            this(argNumber, imageId, descriptionId, Integer.MIN_VALUE, null);
         }
 
-        FunctionType(int argNumber, int imageId, int descriptionId, int shortCutId)
+        FunctionType(int argNumber, int imageId, int descriptionId, int obsoleteVersion, String obsoleteCode)
         {
             this.argNumber = argNumber;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
-            this.shortCutId = shortCutId;
+            this.shortCutId = Palette.NO_BUTTON;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
+            this.obsoleteVersion = obsoleteVersion;
+            this.obsoleteCode = obsoleteCode == null? null : obsoleteCode.toLowerCase(Locale.ENGLISH);
         }
 
         public GroupType getGroupType()
@@ -105,40 +114,15 @@ public class NumberFunctions extends FunctionBase
         {
             return lowerCaseName;
         }
-    }
 
-    /**
-     * Some functions are obsolete. This enumeration defines its back-compatibility
-     */
-    private enum ObsoleteCodes
-    {
-        RND(1, FunctionType.RANDOM),
-        SIGNUM(1, FunctionType.SIGN);
-
-        private final int lastDocumentVersion;
-        private final FunctionType functionType;
-        private final String lowerCaseName;
-
-        ObsoleteCodes(int lastDocumentVersion, FunctionType functionType)
+        public int getObsoleteVersion()
         {
-            this.lastDocumentVersion = lastDocumentVersion;
-            this.functionType = functionType;
-            this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
+            return obsoleteVersion;
         }
 
-        public int getLastDocumentVersion()
+        public String getObsoleteCode()
         {
-            return lastDocumentVersion;
-        }
-
-        public FunctionType getFunctionType()
-        {
-            return functionType;
-        }
-
-        public String getLowerCaseName()
-        {
-            return lowerCaseName;
+            return obsoleteCode;
         }
     }
 
@@ -165,18 +149,13 @@ public class NumberFunctions extends FunctionBase
             {
                 return f;
             }
-        }
-
-        // Compatibility mode: search the function name in the array of obsolete functions
-        if (DocumentProperties.getDocumentVersion() != DocumentProperties.LATEST_DOCUMENT_VERSION)
-        {
-            for (ObsoleteCodes obs : ObsoleteCodes.values())
+            // Compatibility mode: search the function name in the array of obsolete functions
+            if (DocumentProperties.getDocumentVersion() != DocumentProperties.LATEST_DOCUMENT_VERSION &&
+                DocumentProperties.getDocumentVersion() <= f.getObsoleteVersion() &&
+                f.getObsoleteCode() != null &&
+                s.equals(f.getObsoleteCode()))
             {
-                if (DocumentProperties.getDocumentVersion() <= obs.getLastDocumentVersion() &&
-                        s.equals(obs.getLowerCaseName()))
-                {
-                    return obs.getFunctionType();
-                }
+                return f;
             }
         }
 
@@ -187,7 +166,7 @@ public class NumberFunctions extends FunctionBase
      * Private attributes
      */
     // Attention: this is not thread-safety declaration!
-    private final CalculatedValue a0derVal = new CalculatedValue();
+    private final CalculatedValue tmpVal = new CalculatedValue();
 
     /*********************************************************
      * Constructors
@@ -254,6 +233,24 @@ public class NumberFunctions extends FunctionBase
                 return outValue.ceil(a0);
             case FLOOR:
                 return outValue.floor(a0);
+            case ROUND:
+            {
+                final CalculatedValue a1 = argVal[1];
+                if (a0.isComplex() || a1.isComplex())
+                {
+                    return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
+                }
+                return outValue.setValue(Precision.round(a0.getReal(), a1.getInteger()));
+            }
+            case TRUNC:
+            {
+                if (a0.isComplex())
+                {
+                    return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
+                }
+                return outValue.setValue(a0.getInteger());
+            }
+
             case RANDOM:
                 return outValue.random(a0);
 
@@ -276,6 +273,24 @@ public class NumberFunctions extends FunctionBase
                     return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
                 }
                 return outValue.setValue(FastMath.signum(a0.getReal()));
+
+            case MOD:
+            {
+                final CalculatedValue a1 = argVal[1];
+                if (a0.isComplex() || a1.isComplex())
+                {
+                    return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
+                }
+                return outValue.setValue(a0.getReal() % a1.getReal());
+            }
+
+            case PERC:
+            {
+                tmpVal.assign(argVal[1]);
+                tmpVal.multiply(0.01);
+                return outValue.multiply(tmpVal, a0);
+            }
+
             }
         }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
@@ -295,8 +310,8 @@ public class NumberFunctions extends FunctionBase
             argsProp = CalculatableIf.DifferentiableType.values()[dGrad];
         }
 
-        CalculatableIf.DifferentiableType retValue = (argsProp == CalculatableIf.DifferentiableType.INDEPENDENT) ? CalculatableIf.DifferentiableType.INDEPENDENT
-                : CalculatableIf.DifferentiableType.NONE;
+        CalculatableIf.DifferentiableType retValue = (argsProp == CalculatableIf.DifferentiableType.INDEPENDENT) ?
+                CalculatableIf.DifferentiableType.INDEPENDENT : CalculatableIf.DifferentiableType.NONE;
 
         // set the error code to be displayed
         ErrorCode errorCode = ErrorCode.NO_ERROR;
@@ -319,7 +334,7 @@ public class NumberFunctions extends FunctionBase
             {
                 terms.get(i).getValue(thread, argVal[i]);
             }
-            terms.get(0).getDerivativeValue(var, thread, a0derVal);
+            terms.get(0).getDerivativeValue(var, thread, tmpVal);
             CalculatableIf.DifferentiableType argsProp = CalculatableIf.DifferentiableType.INDEPENDENT;
             for (int i = 0; i < terms.size(); i++)
             {

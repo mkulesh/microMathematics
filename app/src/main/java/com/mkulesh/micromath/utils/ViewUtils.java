@@ -38,11 +38,6 @@ import com.mkulesh.micromath.formula.FormulaBase;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.widgets.TwoDScrollView;
 
-import org.apache.commons.math3.util.FastMath;
-
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -165,61 +160,6 @@ public final class ViewUtils
             }
         }
         return strValues;
-    }
-
-    /**
-     * Procedure rounds the given value to the given number of significant digits see
-     * http://stackoverflow.com/questions/202302
-     *
-     * Note: The maximum double value in Java is on the order of 10^308, while the minimum value is on the order of
-     * 10^-324. Therefore, you can run into trouble when applying the function roundToSignificantFigures to something
-     * that's within a few powers of ten of Double.MIN_VALUE.
-     *
-     * Consequently, the variable magnitude may become Infinity, and it's all garbage from then on out. Fortunately,
-     * this is not an insurmountable problem: it is only the factor magnitude that's overflowing. What really matters is
-     * the product num * magnitude, and that does not overflow. One way of resolving this is by breaking up the
-     * multiplication by the factor magintude into two steps.
-     */
-    public static double roundToNumberOfSignificantDigits(double num, int n)
-    {
-        final double maxPowerOfTen = FastMath.floor(FastMath.log10(Double.MAX_VALUE));
-
-        if (num == 0)
-        {
-            return 0;
-        }
-
-        try
-        {
-            return new BigDecimal(num).round(new MathContext(n, RoundingMode.HALF_EVEN)).doubleValue();
-        }
-        catch (ArithmeticException ex)
-        {
-            // nothing to do
-        }
-
-        final double d = FastMath.ceil(FastMath.log10(num < 0 ? -num : num));
-        final int power = n - (int) d;
-
-        double firstMagnitudeFactor = 1.0;
-        double secondMagnitudeFactor = 1.0;
-        if (power > maxPowerOfTen)
-        {
-            firstMagnitudeFactor = FastMath.pow(10.0, maxPowerOfTen);
-            secondMagnitudeFactor = FastMath.pow(10.0, (double) power - maxPowerOfTen);
-        }
-        else
-        {
-            firstMagnitudeFactor = FastMath.pow(10.0, (double) power);
-        }
-
-        double toBeRounded = num * firstMagnitudeFactor;
-        toBeRounded *= secondMagnitudeFactor;
-
-        final long shifted = FastMath.round(toBeRounded);
-        double rounded = ((double) shifted) / firstMagnitudeFactor;
-        rounded /= secondMagnitudeFactor;
-        return rounded;
     }
 
     /**

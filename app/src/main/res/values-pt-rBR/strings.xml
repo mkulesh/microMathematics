@@ -210,7 +210,14 @@
     <string name="math_function_factorial">O produto de todos os inteiros positivos menores ou iguais ao argumento</string>
     <string name="math_function_max">O mais positivo (mais próximo do infinito positivo) dos dois argumentos</string>
     <string name="math_function_min">O mais negativo (mais próximo ao infinito negativo) dos dois argumentos</string>
-    <string name="math_file_read">Leia o file</string>
+
+    <!-- TODO: to be translated -->
+    <string name="math_file_read">Import data from ASCII file</string>
+    <string name="math_function_mod">Returns the remainder on dividing the first argument by the second</string>
+    <string name="math_function_perc">Calculates percentage</string>
+    <string name="math_function_round">Rounds the real number x to n places</string>
+    <string name="math_function_trunc">Returns the integer part of a real number by removing the fractional part</string>
+    <string name="math_function_sign">Returns 0 if x=0, 1 if x>0, and -1 otherwise</string>
     
     <!-- Errors -->
     <string name="error_max_layout_depth">Chegou ao limite da profundidade do layout para esta versão do Android</string>

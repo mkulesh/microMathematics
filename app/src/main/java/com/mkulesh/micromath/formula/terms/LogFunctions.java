@@ -50,7 +50,7 @@ public class LogFunctions extends FunctionBase
     public enum FunctionType implements FormulaTermTypeIf
     {
         EXP(1, R.drawable.p_function_exp, R.string.math_function_exp),
-        LN(1, R.drawable.p_function_ln, R.string.math_function_ln),
+        LN(1, R.drawable.p_function_ln, R.string.math_function_ln, 1, "LOG"),
         LOG10(1, R.drawable.p_function_log10, R.string.math_function_log10),
         SINH(1, R.drawable.p_function_sinh, R.string.math_function_sinh),
         COSH(1, R.drawable.p_function_cosh, R.string.math_function_cosh),
@@ -61,19 +61,23 @@ public class LogFunctions extends FunctionBase
         private final int descriptionId;
         private final int shortCutId;
         private final String lowerCaseName;
+        private final int obsoleteVersion;
+        private final String obsoleteCode;
 
         FunctionType(int argNumber, int imageId, int descriptionId)
         {
-            this(argNumber, imageId, descriptionId, Palette.NO_BUTTON);
+            this(argNumber, imageId, descriptionId, Integer.MIN_VALUE, null);
         }
 
-        FunctionType(int argNumber, int imageId, int descriptionId, int shortCutId)
+        FunctionType(int argNumber, int imageId, int descriptionId, int obsoleteVersion, String obsoleteCode)
         {
             this.argNumber = argNumber;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
-            this.shortCutId = shortCutId;
+            this.shortCutId = Palette.NO_BUTTON;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
+            this.obsoleteVersion = obsoleteVersion;
+            this.obsoleteCode = obsoleteCode == null? null : obsoleteCode.toLowerCase(Locale.ENGLISH);
         }
 
         public GroupType getGroupType()
@@ -105,39 +109,15 @@ public class LogFunctions extends FunctionBase
         {
             return lowerCaseName;
         }
-    }
 
-    /**
-     * Some functions are obsolete. This enumeration defines its back-compatibility
-     */
-    private enum ObsoleteCodes
-    {
-        LOG(1, FunctionType.LN);
-
-        private final int lastDocumentVersion;
-        private final FunctionType functionType;
-        private final String lowerCaseName;
-
-        ObsoleteCodes(int lastDocumentVersion, FunctionType functionType)
+        public int getObsoleteVersion()
         {
-            this.lastDocumentVersion = lastDocumentVersion;
-            this.functionType = functionType;
-            this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
+            return obsoleteVersion;
         }
 
-        public int getLastDocumentVersion()
+        public String getObsoleteCode()
         {
-            return lastDocumentVersion;
-        }
-
-        public FunctionType getFunctionType()
-        {
-            return functionType;
-        }
-
-        public String getLowerCaseName()
-        {
-            return lowerCaseName;
+            return obsoleteCode;
         }
     }
 
@@ -164,18 +144,13 @@ public class LogFunctions extends FunctionBase
             {
                 return f;
             }
-        }
-
-        // Compatibility mode: search the function name in the array of obsolete functions
-        if (DocumentProperties.getDocumentVersion() != DocumentProperties.LATEST_DOCUMENT_VERSION)
-        {
-            for (ObsoleteCodes obs : ObsoleteCodes.values())
+            // Compatibility mode: search the function name in the array of obsolete functions
+            if (DocumentProperties.getDocumentVersion() != DocumentProperties.LATEST_DOCUMENT_VERSION &&
+                    DocumentProperties.getDocumentVersion() <= f.getObsoleteVersion() &&
+                    f.getObsoleteCode() != null &&
+                    s.equals(f.getObsoleteCode()))
             {
-                if (DocumentProperties.getDocumentVersion() <= obs.getLastDocumentVersion() &&
-                        s.equals(obs.getLowerCaseName()))
-                {
-                    return obs.getFunctionType();
-                }
+                return f;
             }
         }
 

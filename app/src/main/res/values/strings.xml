@@ -250,7 +250,12 @@
     <string name="math_function_max">The most positive (closest to positive infinity) of the two arguments</string>
     <string name="math_function_min">The most negative (closest to negative infinity) of the two arguments</string>
     <string name="math_file_read">Import data from ASCII file</string>
-    
+    <string name="math_function_mod">Returns the remainder on dividing the first argument by the second</string>
+    <string name="math_function_perc">Calculates percentage</string>
+    <string name="math_function_round">Rounds the real number x to n places</string>
+    <string name="math_function_trunc">Returns the integer part of a real number by removing the fractional part</string>
+    <string name="math_function_sign">Returns 0 if x=0, 1 if x>0, and -1 otherwise</string>
+
     <!-- Errors -->
     <string name="error_max_layout_depth">Reached layout depth limit for this Android version</string>
     <string name="error_brackets_not_completed">Brackets are not completed</string>
