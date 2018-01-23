@@ -183,12 +183,22 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         {
             final String scriptName = (String) scripts[script];
             testScript.setScriptContent(scriptName);
-            if (mode == Mode.TEST_SCRIPS && formulas.getFormulaListView().getList().getChildCount() > 0)
+            if (mode == Mode.TEST_SCRIPS)
             {
-                final View v = formulas.getFormulaListView().getList().getChildAt(0);
-                if (v instanceof TextFragment)
+                final CharSequence docTitle = formulas.getDocumentSettings().title;
+                if (docTitle != null && docTitle.length() > 0)
                 {
-                    testScript.setScriptContent(((TextFragment) v).getTerms().get(0).getText());
+                    // first, try to use document title
+                    testScript.setScriptContent(docTitle.toString());
+                }
+                else if (formulas.getFormulaListView().getList().getChildCount() > 0)
+                {
+                    // fallback to the first text area
+                    final View v = formulas.getFormulaListView().getList().getChildAt(0);
+                    if (v instanceof TextFragment)
+                    {
+                        testScript.setScriptContent(((TextFragment) v).getTerms().get(0).getText());
+                    }
                 }
             }
             ViewUtils.Debug(this, "Calculating test script: " + scriptName);
