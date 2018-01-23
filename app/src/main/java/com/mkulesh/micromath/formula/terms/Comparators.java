@@ -103,21 +103,6 @@ public class Comparators extends FormulaTerm
         }
     }
 
-    public static ComparatorType getComparatorType(Context context, String s)
-    {
-        ComparatorType retValue = null;
-        for (ComparatorType f : ComparatorType.values())
-        {
-            if (s.equals(f.getLowerCaseName())
-                    || s.contains(context.getResources().getString(f.getShortCutId())))
-            {
-                retValue = f;
-                break;
-            }
-        }
-        return retValue;
-    }
-
     /**
      * Private attributes
      */

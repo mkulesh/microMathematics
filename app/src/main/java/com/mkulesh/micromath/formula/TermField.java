@@ -859,7 +859,9 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             }
         }
 
-        if (FormulaTerm.getOperatorCode(getContext(), code, /*ensureManualTrigger=*/ false) == null)
+        final TermTypeIf termType = FormulaTerm.getTermTypeIf(
+                getContext(), null, code, /*ensureManualTrigger=*/ false);
+        if (termType == null)
         {
             return;
         }
@@ -867,15 +869,12 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         formulaRoot.getFormulaList().getUndoState().addEntry(getState());
 
         // comparator change
-        Comparators.ComparatorType t2 = Comparators.getComparatorType(getContext(), code);
-        if (isTerm() && t2 != null)
+        if (isTerm() && getTerm() instanceof Comparators && termType instanceof Comparators.ComparatorType)
         {
-            if (getTerm() instanceof Comparators)
+            final Comparators.ComparatorType t2 = (Comparators.ComparatorType)termType;
+            if (((Comparators) getTerm()).changeComparatorType(t2))
             {
-                if (((Comparators) getTerm()).changeComparatorType(t2))
-                {
-                    return;
-                }
+                return;
             }
         }
 

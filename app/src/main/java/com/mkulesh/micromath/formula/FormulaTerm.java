@@ -224,8 +224,10 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
 
     public static TermTypeIf getTermTypeIf(Context context, CustomEditText text, String s, boolean ensureManualTrigger)
     {
+        final boolean ensureBracket = !ensureManualTrigger || (ensureManualTrigger &&
+                s.contains(context.getResources().getString(R.string.formula_function_start_bracket)));
         {
-            final Operators.OperatorType t = Operators.getOperatorType(context, s);
+            final TermTypeIf t = getGeneralFunctionType(context, s, Operators.OperatorType.values());
             if (t != null)
             {
                 return t;
@@ -233,7 +235,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
         {
             final boolean enableComparator = (text == null || text.isComparatorEnabled());
-            final Comparators.ComparatorType t = Comparators.getComparatorType(context, s);
+            final TermTypeIf t = getGeneralFunctionType(context, s, Comparators.ComparatorType.values());
             if (enableComparator && t != null)
             {
                 return t;
@@ -241,9 +243,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
         {
             // This function group has manual trigger ("("): is has to be checked
-            final boolean enableFileOperation = (!ensureManualTrigger ||
-                    (ensureManualTrigger && containsGeneralTrigger(context, s))) &&
-                    (text == null || text.isFileOperationEnabled());
+            final boolean enableFileOperation = (ensureBracket) && (text == null || text.isFileOperationEnabled());
             final TermTypeIf t = getGeneralFunctionType(context, s, FileOperations.FunctionType.values());
             if (enableFileOperation && t != null)
             {
@@ -262,30 +262,24 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
         {
             // This function group has manual trigger ("("): is has to be checked
-            final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && containsGeneralTrigger(context, s));
             final TermTypeIf t = getGeneralFunctionType(context, s, TrigonometricFunctions.FunctionType.values());
-            if (enableFunction && t != null)
+            if (ensureBracket && t != null)
             {
                 return t;
             }
         }
         {
             // This function group has manual trigger ("("): is has to be checked
-            final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && containsGeneralTrigger(context, s));
             final TermTypeIf t = getGeneralFunctionType(context, s, LogFunctions.FunctionType.values());
-            if (enableFunction && t != null)
+            if (ensureBracket && t != null)
             {
                 return t;
             }
         }
         {
             // This function group has manual trigger ("("): is has to be checked
-            final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && containsGeneralTrigger(context, s));
             final TermTypeIf t = getGeneralFunctionType(context, s, NumberFunctions.FunctionType.values());
-            if (enableFunction && t != null)
+            if (ensureBracket && t != null)
             {
                 return t;
             }
@@ -302,14 +296,14 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
         {
             final boolean enableInterval = (text == null || text.isIntervalEnabled());
-            final Intervals.IntervalType t = Intervals.getIntervalType(context, s);
+            final TermTypeIf t = getGeneralFunctionType(context, s, Intervals.IntervalType.values());
             if (enableInterval && t != null)
             {
                 return t;
             }
         }
         {
-            final SeriesIntegrals.LoopType t = SeriesIntegrals.getLoopType(context, s);
+            final TermTypeIf t = getGeneralFunctionType(context, s, SeriesIntegrals.LoopType.values());
             if (t != null)
             {
                 return t;
@@ -695,22 +689,13 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         return gTypes;
     }
 
-    private static boolean containsGeneralTrigger(Context context, String s)
-    {
-        return s.contains(context.getResources().getString(R.string.formula_function_start_bracket));
-    }
-
     private static <T extends TermTypeIf> TermTypeIf getGeneralFunctionType(Context context, String s, T[] items)
     {
-        String fName = null;
         final Resources res = context.getResources();
 
         // cat the function name
         final String startBracket = res.getString(R.string.formula_function_start_bracket);
-        if (s.contains(startBracket))
-        {
-            fName = s.substring(0, s.indexOf(startBracket)).trim();
-        }
+        final String fName = s.contains(startBracket)? s.substring(0, s.indexOf(startBracket)).trim() : null;
 
         // search the function name in the types array
         for (TermTypeIf f : items)

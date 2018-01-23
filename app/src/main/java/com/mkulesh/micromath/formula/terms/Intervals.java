@@ -93,21 +93,6 @@ public class Intervals extends FormulaTerm
         }
     }
 
-    public static IntervalType getIntervalType(Context context, String s)
-    {
-        IntervalType retValue = null;
-        for (IntervalType f : IntervalType.values())
-        {
-            if (s.equals(f.getLowerCaseName())
-                    || s.contains(context.getResources().getString(f.getShortCutId())))
-            {
-                retValue = f;
-                break;
-            }
-        }
-        return retValue;
-    }
-
     /**
      * Private attributes
      */

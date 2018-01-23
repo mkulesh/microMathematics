@@ -98,21 +98,6 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         }
     }
 
-    public static LoopType getLoopType(Context context, String s)
-    {
-        LoopType retValue = null;
-        for (LoopType f : LoopType.values())
-        {
-            if (s.equals(f.getLowerCaseName())
-                    || s.contains(context.getResources().getString(f.getShortCutId())))
-            {
-                retValue = f;
-                break;
-            }
-        }
-        return retValue;
-    }
-
     private static final String SYMBOL_LAYOUT_TAG = "SYMBOL_LAYOUT_TAG";
     private static final String MIN_VALUE_LAYOUT_TAG = "MIN_VALUE_LAYOUT_TAG";
     private static final String MAX_VALUE_LAYOUT_TAG = "MAX_VALUE_LAYOUT_TAG";

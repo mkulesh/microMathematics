@@ -94,21 +94,6 @@ public class Operators extends FormulaTerm
         }
     }
 
-    public static OperatorType getOperatorType(Context context, String s)
-    {
-        OperatorType retValue = null;
-        for (OperatorType f : OperatorType.values())
-        {
-            if (s.equals(f.getLowerCaseName())
-                    || s.contains(context.getResources().getString(f.getShortCutId())))
-            {
-                retValue = f;
-                break;
-            }
-        }
-        return retValue;
-    }
-
     /**
      * Private attributes
      */
