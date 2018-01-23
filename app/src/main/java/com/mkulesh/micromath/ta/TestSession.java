@@ -72,6 +72,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
     private final ArrayList<TestScript> testScripts = new ArrayList<TestScript>();
     private final Mode mode;
     private TestScript testScript = null;
+    private long readingStartTime;
 
     public TestSession(FormulaList formulas, Mode mode)
     {
@@ -174,6 +175,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         {
         case STEP_READ:
         {
+            readingStartTime = System.currentTimeMillis();
             final String scriptName = (String) scripts[script];
             formulas.clear();
             formulas.readFromResource(Uri.parse(scriptName), XmlLoaderTask.PostAction.NONE);
@@ -183,6 +185,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         {
             final String scriptName = (String) scripts[script];
             testScript.setScriptContent(scriptName);
+            testScript.setReadingDuration(System.currentTimeMillis() - readingStartTime);
             if (mode == Mode.TEST_SCRIPS)
             {
                 final CharSequence docTitle = formulas.getDocumentSettings().title;

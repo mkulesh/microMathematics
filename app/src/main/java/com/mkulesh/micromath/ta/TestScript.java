@@ -69,6 +69,7 @@ public class TestScript
     private final SynchronizedState state = new SynchronizedState();
     private final ArrayList<TestCase> testCases = new ArrayList<TestCase>();
     private TestCase testCase = null;
+    private long readingDuration;
 
     public TestScript(String scriptName)
     {
@@ -88,6 +89,11 @@ public class TestScript
     public void setScriptContent(String content)
     {
         this.scriptContent = content;
+    }
+
+    public void setReadingDuration(long readingDuration)
+    {
+        this.readingDuration = readingDuration;
     }
 
     public void setResult(String name, String value)
@@ -189,6 +195,7 @@ public class TestScript
         writer.append("\n\n<h1>" + scriptContent + "</h1>\n");
         writer.append("<p><b>Name</b>: " + scriptName + "</p>\n");
         writer.append("<p><b>Number of test cases</b>: " + getTestCaseNumber(NumberType.TOTAL) + "</p>\n");
+        writer.append("<p><b>Reading duration</b>: " + readingDuration + "ms</p>\n");
         writer.append("<table border = \"1\" cellspacing=\"0\" cellpadding=\"5\">\n");
         String title = "    <tr>";
         for (String t : TestCase.PARAMETERS)
