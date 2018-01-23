@@ -19,21 +19,23 @@
 package com.mkulesh.micromath.formula;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.formula.terms.CommonFunctions;
 import com.mkulesh.micromath.formula.terms.Comparators;
 import com.mkulesh.micromath.formula.terms.FileOperations;
-import com.mkulesh.micromath.formula.terms.FunctionBase;
 import com.mkulesh.micromath.formula.terms.Intervals;
 import com.mkulesh.micromath.formula.terms.LogFunctions;
 import com.mkulesh.micromath.formula.terms.NumberFunctions;
+import com.mkulesh.micromath.formula.terms.ObsoleteFunctionIf;
 import com.mkulesh.micromath.formula.terms.Operators;
 import com.mkulesh.micromath.formula.terms.SeriesIntegrals;
 import com.mkulesh.micromath.formula.terms.TrigonometricFunctions;
 import com.mkulesh.micromath.formula.terms.UserFunctions;
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
@@ -239,9 +241,9 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // This function group has manual trigger ("("): is has to be checked
             final boolean enableFileOperation = (!ensureManualTrigger ||
-                    (ensureManualTrigger && FunctionBase.containsGeneralTrigger(context, s))) &&
+                    (ensureManualTrigger && containsGeneralTrigger(context, s))) &&
                     (text == null || text.isFileOperationEnabled());
-            final FileOperations.FunctionType t = FileOperations.getFunctionType(context, s);
+            final FormulaTermTypeIf t = getGeneralFunctionType(context, s, FileOperations.FunctionType.values());
             if (enableFileOperation && t != null)
             {
                 return t;
@@ -251,7 +253,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             // This function group has manual trigger (like "("): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
                     (ensureManualTrigger && CommonFunctions.containsTrigger(context, s));
-            final CommonFunctions.FunctionType t = CommonFunctions.getFunctionType(context, s);
+            final FormulaTermTypeIf t = getGeneralFunctionType(context, s, CommonFunctions.FunctionType.values());
             if (enableFunction && t != null)
             {
                 return t;
@@ -260,8 +262,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // This function group has manual trigger ("("): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && FunctionBase.containsGeneralTrigger(context, s));
-            final TrigonometricFunctions.FunctionType t = TrigonometricFunctions.getFunctionType(context, s);
+                    (ensureManualTrigger && containsGeneralTrigger(context, s));
+            final FormulaTermTypeIf t = getGeneralFunctionType(context, s, TrigonometricFunctions.FunctionType.values());
             if (enableFunction && t != null)
             {
                 return t;
@@ -270,8 +272,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // This function group has manual trigger ("("): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && FunctionBase.containsGeneralTrigger(context, s));
-            final LogFunctions.FunctionType t = LogFunctions.getFunctionType(context, s);
+                    (ensureManualTrigger && containsGeneralTrigger(context, s));
+            final FormulaTermTypeIf t = getGeneralFunctionType(context, s, LogFunctions.FunctionType.values());
             if (enableFunction && t != null)
             {
                 return t;
@@ -280,8 +282,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // This function group has manual trigger ("("): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && FunctionBase.containsGeneralTrigger(context, s));
-            final NumberFunctions.FunctionType t = NumberFunctions.getFunctionType(context, s);
+                    (ensureManualTrigger && containsGeneralTrigger(context, s));
+            final FormulaTermTypeIf t = getGeneralFunctionType(context, s, NumberFunctions.FunctionType.values());
             if (enableFunction && t != null)
             {
                 return t;
@@ -690,5 +692,59 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             }
         });
         return gTypes;
+    }
+
+    private static boolean containsGeneralTrigger(Context context, String s)
+    {
+        return s.contains(context.getResources().getString(R.string.formula_function_start_bracket));
+    }
+
+    private static <T extends FormulaTermTypeIf> FormulaTermTypeIf getGeneralFunctionType(Context context, String s, T[] items)
+    {
+        String fName = null;
+        final Resources res = context.getResources();
+
+        // cat the function name
+        final String startBracket = res.getString(R.string.formula_function_start_bracket);
+        if (s.contains(startBracket))
+        {
+            fName = s.substring(0, s.indexOf(startBracket)).trim();
+        }
+
+        // search the function name in the types array
+        for (FormulaTermTypeIf f : items)
+        {
+            if (s.equals(f.getLowerCaseName()))
+            {
+                return f;
+            }
+            if (fName != null && fName.equals(f.getLowerCaseName()))
+            {
+                return f;
+            }
+            // Compatibility mode: search the function name in the array of obsolete functions
+            if (DocumentProperties.getDocumentVersion() != DocumentProperties.LATEST_DOCUMENT_VERSION &&
+                    f instanceof ObsoleteFunctionIf)
+            {
+                final ObsoleteFunctionIf of = (ObsoleteFunctionIf) f;
+                if (DocumentProperties.getDocumentVersion() <= of.getObsoleteVersion() &&
+                        of.getObsoleteCode() != null &&
+                        s.equals(of.getObsoleteCode()))
+                {
+                    return f;
+                }
+            }
+        }
+
+        // if function is not yet found, check the short-cuts
+        for (FormulaTermTypeIf f : items)
+        {
+            if (f.getShortCutId() != Palette.NO_BUTTON && s.contains(res.getString(f.getShortCutId())))
+            {
+                return f;
+            }
+        }
+
+        return null;
     }
 }

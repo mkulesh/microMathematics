@@ -216,6 +216,9 @@
     <string name="math_function_round">Rundet einen Dezimalwert auf die angegebene Anzahl von Nachkommastellen</string>
     <string name="math_function_trunc">Berechnet den ganzzahligen Teil einer angegebenen Zahl</string>
     <string name="math_function_sign">Gibt eine ganze Zahl zurück, die das Vorzeichen einer Zahl angibt</string>
+    <string name="math_function_csc">Kosekansfunktion des Arguments (Kehrwert des Sinus)</string>
+    <string name="math_function_sec">Sekansfunktion des Arguments (Kehrwert des Kosinus)</string>
+    <string name="math_function_cot">Kotangensfunktion des Arguments (Kehrwert des Tangens)</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Der Grenzwert für die Layouttiefe für diese Android Version ist erreicht</string>

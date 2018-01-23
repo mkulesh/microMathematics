@@ -19,7 +19,6 @@
 package com.mkulesh.micromath.formula.terms;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
@@ -31,7 +30,6 @@ import com.mkulesh.micromath.formula.Palette;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
-import com.mkulesh.micromath.properties.DocumentProperties;
 
 import org.apache.commons.math3.util.FastMath;
 
@@ -47,7 +45,7 @@ public class LogFunctions extends FunctionBase
     /**
      * Supported functions
      */
-    public enum FunctionType implements FormulaTermTypeIf
+    public enum FunctionType implements ObsoleteFunctionIf
     {
         EXP(1, R.drawable.p_function_exp, R.string.math_function_exp),
         LN(1, R.drawable.p_function_ln, R.string.math_function_ln, 1, "LOG"),
@@ -59,7 +57,6 @@ public class LogFunctions extends FunctionBase
         private final int argNumber;
         private final int imageId;
         private final int descriptionId;
-        private final int shortCutId;
         private final String lowerCaseName;
         private final int obsoleteVersion;
         private final String obsoleteCode;
@@ -74,10 +71,9 @@ public class LogFunctions extends FunctionBase
             this.argNumber = argNumber;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
-            this.shortCutId = Palette.NO_BUTTON;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
             this.obsoleteVersion = obsoleteVersion;
-            this.obsoleteCode = obsoleteCode == null? null : obsoleteCode.toLowerCase(Locale.ENGLISH);
+            this.obsoleteCode = obsoleteCode == null ? null : obsoleteCode.toLowerCase(Locale.ENGLISH);
         }
 
         public GroupType getGroupType()
@@ -87,7 +83,7 @@ public class LogFunctions extends FunctionBase
 
         public int getShortCutId()
         {
-            return shortCutId;
+            return Palette.NO_BUTTON;
         }
 
         public int getArgNumber()
@@ -121,42 +117,6 @@ public class LogFunctions extends FunctionBase
         }
     }
 
-    public static FunctionType getFunctionType(Context context, String s)
-    {
-        String fName = null;
-        final Resources res = context.getResources();
-
-        // cat the function name
-        final String startBracket = res.getString(R.string.formula_function_start_bracket);
-        if (s.contains(startBracket))
-        {
-            fName = s.substring(0, s.indexOf(startBracket)).trim();
-        }
-
-        // search the function name in the types array
-        for (FunctionType f : FunctionType.values())
-        {
-            if (s.equals(f.getLowerCaseName()))
-            {
-                return f;
-            }
-            if (fName != null && fName.equals(f.getLowerCaseName()))
-            {
-                return f;
-            }
-            // Compatibility mode: search the function name in the array of obsolete functions
-            if (DocumentProperties.getDocumentVersion() != DocumentProperties.LATEST_DOCUMENT_VERSION &&
-                    DocumentProperties.getDocumentVersion() <= f.getObsoleteVersion() &&
-                    f.getObsoleteCode() != null &&
-                    s.equals(f.getObsoleteCode()))
-            {
-                return f;
-            }
-        }
-
-        return null;
-    }
-
     /**
      * Private attributes
      */
@@ -170,7 +130,7 @@ public class LogFunctions extends FunctionBase
     public LogFunctions(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
-        termType = (type instanceof FunctionType)? (FunctionType) type : null;
+        termType = (type instanceof FunctionType) ? (FunctionType) type : null;
         if (termType == null)
         {
             throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");

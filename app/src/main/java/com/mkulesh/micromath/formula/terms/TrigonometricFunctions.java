@@ -19,7 +19,6 @@
 package com.mkulesh.micromath.formula.terms;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
@@ -49,30 +48,26 @@ public class TrigonometricFunctions extends FunctionBase
     public enum FunctionType implements FormulaTermTypeIf
     {
         SIN(1, R.drawable.p_function_sin, R.string.math_function_sin),
-        ASIN(1, R.drawable.p_function_asin, R.string.math_function_asin),
         COS(1, R.drawable.p_function_cos, R.string.math_function_cos),
-        ACOS(1, R.drawable.p_function_acos, R.string.math_function_acos),
         TAN(1, R.drawable.p_function_tan, R.string.math_function_tan),
+        CSC(1, R.drawable.p_function_csc, R.string.math_function_csc),
+        SEC(1, R.drawable.p_function_sec, R.string.math_function_sec),
+        COT(1, R.drawable.p_function_cot, R.string.math_function_cot),
+        ASIN(1, R.drawable.p_function_asin, R.string.math_function_asin),
+        ACOS(1, R.drawable.p_function_acos, R.string.math_function_acos),
         ATAN(1, R.drawable.p_function_atan, R.string.math_function_atan),
         ATAN2(2, R.drawable.p_function_atan2, R.string.math_function_atan2);
 
         private final int argNumber;
         private final int imageId;
         private final int descriptionId;
-        private final int shortCutId;
         private final String lowerCaseName;
 
         FunctionType(int argNumber, int imageId, int descriptionId)
         {
-            this(argNumber, imageId, descriptionId, Palette.NO_BUTTON);
-        }
-
-        FunctionType(int argNumber, int imageId, int descriptionId, int shortCutId)
-        {
             this.argNumber = argNumber;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
-            this.shortCutId = shortCutId;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
@@ -83,7 +78,7 @@ public class TrigonometricFunctions extends FunctionBase
 
         public int getShortCutId()
         {
-            return shortCutId;
+            return Palette.NO_BUTTON;
         }
 
         public int getArgNumber()
@@ -107,39 +102,11 @@ public class TrigonometricFunctions extends FunctionBase
         }
     }
 
-    public static FunctionType getFunctionType(Context context, String s)
-    {
-        String fName = null;
-        final Resources res = context.getResources();
-
-        // cat the function name
-        final String startBracket = res.getString(R.string.formula_function_start_bracket);
-        if (s.contains(startBracket))
-        {
-            fName = s.substring(0, s.indexOf(startBracket)).trim();
-        }
-
-        // search the function name in the types array
-        for (FunctionType f : FunctionType.values())
-        {
-            if (s.equals(f.getLowerCaseName()))
-            {
-                return f;
-            }
-            if (fName != null && fName.equals(f.getLowerCaseName()))
-            {
-                return f;
-            }
-        }
-
-        return null;
-    }
-
     /**
      * Private attributes
      */
     // Attention: this is not thread-safety declaration!
-    private final CalculatedValue a0derVal = new CalculatedValue();
+    private final CalculatedValue a0derVal = new CalculatedValue(), tmpVal = new CalculatedValue();
 
     /*********************************************************
      * Constructors
@@ -148,7 +115,7 @@ public class TrigonometricFunctions extends FunctionBase
     public TrigonometricFunctions(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
-        termType = (type instanceof FunctionType)? (FunctionType) type : null;
+        termType = (type instanceof FunctionType) ? (FunctionType) type : null;
         if (termType == null)
         {
             throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");
@@ -204,16 +171,22 @@ public class TrigonometricFunctions extends FunctionBase
             {
             case SIN:
                 return outValue.sin(a0);
+            case CSC:
+                return outValue.csc(a0);
             case ASIN:
                 return outValue.asin(a0);
 
             case COS:
                 return outValue.cos(a0);
+            case SEC:
+                return outValue.sec(a0);
             case ACOS:
                 return outValue.acos(a0);
 
             case TAN:
                 return outValue.tan(a0);
+            case COT:
+                return outValue.cot(a0);
             case ATAN:
                 return outValue.atan(a0);
             case ATAN2:
@@ -249,10 +222,13 @@ public class TrigonometricFunctions extends FunctionBase
         {
         // for these functions, derivative can be calculated analytically
         case SIN:
+        case CSC:
         case ASIN:
         case COS:
+        case SEC:
         case ACOS:
         case TAN:
+        case COT:
         case ATAN:
             retValue = argsProp;
             break;
@@ -290,6 +266,12 @@ public class TrigonometricFunctions extends FunctionBase
             case SIN: // cos(a0) * a0'
                 outValue.cos(a0);
                 return outValue.multiply(outValue, a0derVal);
+            case CSC: // -csc(a0) * cot(a0) * a0'
+                outValue.csc(a0);
+                tmpVal.cot(a0);
+                outValue.multiply(outValue, tmpVal);
+                outValue.multiply(-1.0);
+                return outValue.multiply(outValue, a0derVal);
             case ASIN: // (1.0 / sqrt(1.0 - a0 * a0)) * a0'
                 outValue.multiply(a0, a0);
                 outValue.subtract(CalculatedValue.ONE, outValue);
@@ -299,6 +281,11 @@ public class TrigonometricFunctions extends FunctionBase
             case COS: // -1 * sin(a0) * a0'
                 outValue.sin(a0);
                 outValue.multiply(-1.0);
+                return outValue.multiply(outValue, a0derVal);
+            case SEC: // sec(a0) * tan(a0) * a0'
+                outValue.sec(a0);
+                tmpVal.tan(a0);
+                outValue.multiply(outValue, tmpVal);
                 return outValue.multiply(outValue, a0derVal);
             case ACOS: // (-1.0 / sqrt(1.0 - a0 * a0)) * a0'
                 outValue.multiply(a0, a0);
@@ -310,6 +297,12 @@ public class TrigonometricFunctions extends FunctionBase
                 outValue.tan(a0);
                 outValue.multiply(outValue, outValue);
                 outValue.add(CalculatedValue.ONE, outValue);
+                return outValue.multiply(outValue, a0derVal);
+            case COT: // - csc^2(a0) * a0
+                outValue.csc(a0);
+                tmpVal.csc(a0);
+                outValue.multiply(outValue, tmpVal);
+                outValue.multiply(-1.0);
                 return outValue.multiply(outValue, a0derVal);
             case ATAN: // (1.0 / (1.0 + a0 * a0)) * a0'
                 outValue.multiply(a0, a0);

@@ -85,15 +85,6 @@ public abstract class FunctionBase extends FormulaTerm
      */
     protected abstract String getFunctionLabel();
 
-    /*********************************************************
-     * Helper methods used by derived class
-     *********************************************************/
-
-    public static boolean containsGeneralTrigger(Context context, String s)
-    {
-        return s.contains(context.getResources().getString(R.string.formula_function_start_bracket));
-    }
-
     public CustomTextView getFunctionTerm()
     {
         return functionTerm;

@@ -378,6 +378,19 @@ public class CalculatedValue
         }
     }
 
+    public ValueType csc(CalculatedValue g)
+    {
+        if (g.isComplex())
+        {
+            return setComplexValue(g.getComplex().sin().reciprocal());
+        }
+        else
+        {
+            return setValue(1.0f/FastMath.sin(g.real));
+        }
+
+    }
+
     public ValueType asin(CalculatedValue g)
     {
         if (g.isComplex())
@@ -414,6 +427,18 @@ public class CalculatedValue
         }
     }
 
+    public ValueType sec(CalculatedValue g)
+    {
+        if (g.isComplex())
+        {
+            return setComplexValue(g.getComplex().cos().reciprocal());
+        }
+        else
+        {
+            return setValue(1.0f/FastMath.cos(g.real));
+        }
+    }
+
     public ValueType acos(CalculatedValue g)
     {
         if (g.isComplex())
@@ -447,6 +472,18 @@ public class CalculatedValue
         else
         {
             return setValue(FastMath.tan(g.real));
+        }
+    }
+
+    public ValueType cot(CalculatedValue g)
+    {
+        if (g.isComplex())
+        {
+            return setComplexValue(g.getComplex().tan().reciprocal());
+        }
+        else
+        {
+            return setValue(1.0f/FastMath.tan(g.real));
         }
     }
 

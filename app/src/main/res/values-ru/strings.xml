@@ -216,6 +216,9 @@
     <string name="math_function_round">Округляет первый аргумент до указанного числа дробных разрядов</string>
     <string name="math_function_trunc">Вычисляет целую часть аргумента</string>
     <string name="math_function_sign">Возвращает целое число, указывающее знак аргумента</string>
+    <string name="math_function_csc">Косеканс аргумента</string>
+    <string name="math_function_sec">Секанс аргумента</string>
+    <string name="math_function_cot">Котангенс аргумента</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">К сожалению, достигнут предел глубины формулы для данной версии Android</string>

@@ -96,28 +96,6 @@ public class FileOperations extends FunctionBase
         }
     }
 
-    public static FunctionType getFunctionType(Context context, String s)
-    {
-        String fName = null;
-        final String startBracket = context.getResources().getString(R.string.formula_function_start_bracket);
-        if (s.contains(startBracket))
-        {
-            fName = s.substring(0, s.indexOf(startBracket)).trim();
-        }
-        for (FunctionType f : FunctionType.values())
-        {
-            if (s.equals(f.getLowerCaseName()))
-            {
-                return f;
-            }
-            if (fName != null && fName.equals(f.getLowerCaseName()))
-            {
-                return f;
-            }
-        }
-        return null;
-    }
-
     /**
      * Private attributes
      */
@@ -131,7 +109,7 @@ public class FileOperations extends FunctionBase
     public FileOperations(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
-        termType = (type instanceof FunctionType)? (FunctionType) type : null;
+        termType = (type instanceof FunctionType) ? (FunctionType) type : null;
         if (termType == null)
         {
             throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");

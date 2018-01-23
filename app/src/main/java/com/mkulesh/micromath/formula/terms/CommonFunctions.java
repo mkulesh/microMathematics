@@ -147,55 +147,13 @@ public class CommonFunctions extends FunctionBase
 
         public int getCodeId()
         {
-            return functionType != null? functionType.getShortCutId() : R.string.formula_function_start_bracket;
-        }
-
-        public FunctionType getFunctionType()
-        {
-            return functionType;
+            return functionType != null ? functionType.getShortCutId() : R.string.formula_function_start_bracket;
         }
 
         public boolean isBeforeText()
         {
             return isBeforeText;
         }
-    }
-
-    public static FunctionType getFunctionType(Context context, String s)
-    {
-        String fName = null;
-        final Resources res = context.getResources();
-
-        // cat the function name
-        final String startBracket = res.getString(R.string.formula_function_start_bracket);
-        if (s.contains(startBracket))
-        {
-            fName = s.substring(0, s.indexOf(startBracket)).trim();
-        }
-
-        // search the function name in the types array
-        for (FunctionType f : FunctionType.values())
-        {
-            if (s.equals(f.getLowerCaseName()))
-            {
-                return f;
-            }
-            if (fName != null && fName.equals(f.getLowerCaseName()))
-            {
-                return f;
-            }
-        }
-
-        // if function is not yet found, check the trigger
-        for (Trigger t : Trigger.values())
-        {
-            if (t.getFunctionType() != null && s.contains(res.getString(t.getCodeId())))
-            {
-                return t.getFunctionType();
-            }
-        }
-
-        return null;
     }
 
     public static boolean containsTrigger(Context context, String s)
@@ -223,7 +181,7 @@ public class CommonFunctions extends FunctionBase
     public CommonFunctions(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
-        termType = (type instanceof FunctionType)? (FunctionType) type : null;
+        termType = (type instanceof FunctionType) ? (FunctionType) type : null;
         if (termType == null)
         {
             throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");
