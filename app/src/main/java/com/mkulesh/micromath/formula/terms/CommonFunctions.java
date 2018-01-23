@@ -29,7 +29,6 @@ import com.mkulesh.micromath.formula.CalculatableIf;
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.FormulaBase;
-import com.mkulesh.micromath.formula.FormulaTermTypeIf;
 import com.mkulesh.micromath.formula.Palette;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
@@ -44,15 +43,15 @@ import java.util.Locale;
 
 public class CommonFunctions extends FunctionBase
 {
-    public FormulaTermTypeIf.GroupType getGroupType()
+    public TermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.COMMON_FUNCTIONS;
+        return TermTypeIf.GroupType.COMMON_FUNCTIONS;
     }
 
     /**
      * Supported functions
      */
-    public enum FunctionType implements FormulaTermTypeIf
+    public enum FunctionType implements TermTypeIf
     {
         POWER(2, R.drawable.p_function_power, R.string.math_function_power,
                 R.string.formula_function_power),
@@ -178,7 +177,7 @@ public class CommonFunctions extends FunctionBase
      * Constructors
      *********************************************************/
 
-    public CommonFunctions(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public CommonFunctions(TermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         termType = (type instanceof FunctionType) ? (FunctionType) type : null;

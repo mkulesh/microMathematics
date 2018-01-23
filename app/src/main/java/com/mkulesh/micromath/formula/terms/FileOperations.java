@@ -29,7 +29,6 @@ import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.Equation;
 import com.mkulesh.micromath.formula.FormulaBase;
-import com.mkulesh.micromath.formula.FormulaTermTypeIf;
 import com.mkulesh.micromath.formula.Palette;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TermParser;
@@ -47,15 +46,15 @@ import java.util.Locale;
 
 public class FileOperations extends FunctionBase
 {
-    public FormulaTermTypeIf.GroupType getGroupType()
+    public TermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.FILE_OPERATIONS;
+        return TermTypeIf.GroupType.FILE_OPERATIONS;
     }
 
     /**
      * Supported functions
      */
-    public enum FunctionType implements FormulaTermTypeIf
+    public enum FunctionType implements TermTypeIf
     {
         READ(R.drawable.p_file_read, R.string.math_file_read);
 
@@ -106,7 +105,7 @@ public class FileOperations extends FunctionBase
      * Constructors
      *********************************************************/
 
-    public FileOperations(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public FileOperations(TermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         termType = (type instanceof FunctionType) ? (FunctionType) type : null;

@@ -26,7 +26,6 @@ import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.Equation;
 import com.mkulesh.micromath.formula.FormulaTerm;
-import com.mkulesh.micromath.formula.FormulaTermTypeIf;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
@@ -40,15 +39,15 @@ import java.util.Locale;
 
 public class Intervals extends FormulaTerm
 {
-    public FormulaTermTypeIf.GroupType getGroupType()
+    public TermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.INTERVALS;
+        return TermTypeIf.GroupType.INTERVALS;
     }
 
     /**
      * Supported functions
      */
-    public enum IntervalType implements FormulaTermTypeIf
+    public enum IntervalType implements TermTypeIf
     {
         EQUIDISTANT_INTERVAL(
                 R.string.formula_quidistant_interval,
@@ -122,7 +121,7 @@ public class Intervals extends FormulaTerm
      * Constructors
      *********************************************************/
 
-    public Intervals(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public Intervals(TermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         termType = (type instanceof IntervalType)? (IntervalType) type : null;

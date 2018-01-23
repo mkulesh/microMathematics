@@ -30,6 +30,7 @@ import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.dialogs.DialogPaletteSettings;
 import com.mkulesh.micromath.formula.PaletteButton.Category;
+import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.formula.terms.UserFunctions;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.PaletteSettingsChangeIf;
@@ -83,7 +84,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         {
             visibleGroups.add(FormulaBase.class.getSimpleName());
         }
-        for (FormulaTermTypeIf.GroupType g : FormulaTerm.collectPaletteGroups())
+        for (TermTypeIf.GroupType g : FormulaTerm.collectPaletteGroups())
         {
             if ((visibleGroupsStr.isEmpty() && g.isShowByDefault()) || visibleGroupsStr.contains(g.toString()))
             {
@@ -112,7 +113,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         }
 
         // Add term elements
-        for (FormulaTermTypeIf.GroupType g : FormulaTerm.collectPaletteGroups())
+        for (TermTypeIf.GroupType g : FormulaTerm.collectPaletteGroups())
         {
             if (visibleGroups.contains(g.toString()))
             {

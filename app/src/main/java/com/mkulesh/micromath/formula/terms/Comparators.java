@@ -25,7 +25,6 @@ import android.widget.LinearLayout;
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.FormulaTerm;
-import com.mkulesh.micromath.formula.FormulaTermTypeIf;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TermField.BracketsType;
 import com.mkulesh.micromath.math.CalculatedValue;
@@ -37,15 +36,15 @@ import java.util.Locale;
 
 public class Comparators extends FormulaTerm
 {
-    public FormulaTermTypeIf.GroupType getGroupType()
+    public TermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.COMPARATORS;
+        return TermTypeIf.GroupType.COMPARATORS;
     }
 
     /**
      * Supported comparators
      */
-    public enum ComparatorType implements FormulaTermTypeIf
+    public enum ComparatorType implements TermTypeIf
     {
         EQUAL(R.string.formula_comparator_equal, R.drawable.p_comparator_equal, R.string.math_comparator_equal),
         NOT_EQUAL(
@@ -132,7 +131,7 @@ public class Comparators extends FormulaTerm
      * Constructors
      *********************************************************/
 
-    public Comparators(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public Comparators(TermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         termType = (type instanceof ComparatorType)? (ComparatorType) type : null;

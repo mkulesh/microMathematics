@@ -30,6 +30,7 @@ import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.FormulaBase.FocusType;
 import com.mkulesh.micromath.formula.PaletteButton.Category;
 import com.mkulesh.micromath.formula.terms.Comparators;
+import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.formula.terms.Intervals;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
@@ -805,7 +806,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
      */
     protected FormulaTerm convertToTerm(String s, Parcelable p, boolean ensureManualTrigger)
     {
-        final FormulaTermTypeIf f = FormulaTerm.getTermTypeIf(getContext(), text, s, ensureManualTrigger);
+        final TermTypeIf f = FormulaTerm.getTermTypeIf(getContext(), text, s, ensureManualTrigger);
         term = null;
         if (f != null)
         {

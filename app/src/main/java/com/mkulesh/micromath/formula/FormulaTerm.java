@@ -26,6 +26,7 @@ import android.widget.LinearLayout;
 import com.mkulesh.micromath.formula.terms.CommonFunctions;
 import com.mkulesh.micromath.formula.terms.Comparators;
 import com.mkulesh.micromath.formula.terms.FileOperations;
+import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.formula.terms.Intervals;
 import com.mkulesh.micromath.formula.terms.LogFunctions;
 import com.mkulesh.micromath.formula.terms.NumberFunctions;
@@ -53,7 +54,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
 {
     private final FormulaBase formulaRoot;
     protected CustomLayout functionMainLayout = null;
-    protected FormulaTermTypeIf termType = null;
+    protected TermTypeIf termType = null;
     protected boolean useBrackets = false;
 
     /*********************************************************
@@ -128,7 +129,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     /**
      * Returns term type
      */
-    public abstract FormulaTermTypeIf.GroupType getGroupType();
+    public abstract TermTypeIf.GroupType getGroupType();
 
     /**
      * Procedure will be called for a custom text view initialization
@@ -174,7 +175,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
      * Factory methods
      *********************************************************/
 
-    public static void addToPalette(Context context, LinearLayout paletteLayout, FormulaTermTypeIf.GroupType gType)
+    public static void addToPalette(Context context, LinearLayout paletteLayout, TermTypeIf.GroupType gType)
     {
         switch (gType)
         {
@@ -221,7 +222,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
     }
 
-    public static FormulaTermTypeIf getTermTypeIf(Context context, CustomEditText text, String s, boolean ensureManualTrigger)
+    public static TermTypeIf getTermTypeIf(Context context, CustomEditText text, String s, boolean ensureManualTrigger)
     {
         {
             final Operators.OperatorType t = Operators.getOperatorType(context, s);
@@ -243,7 +244,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             final boolean enableFileOperation = (!ensureManualTrigger ||
                     (ensureManualTrigger && containsGeneralTrigger(context, s))) &&
                     (text == null || text.isFileOperationEnabled());
-            final FormulaTermTypeIf t = getGeneralFunctionType(context, s, FileOperations.FunctionType.values());
+            final TermTypeIf t = getGeneralFunctionType(context, s, FileOperations.FunctionType.values());
             if (enableFileOperation && t != null)
             {
                 return t;
@@ -253,7 +254,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             // This function group has manual trigger (like "("): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
                     (ensureManualTrigger && CommonFunctions.containsTrigger(context, s));
-            final FormulaTermTypeIf t = getGeneralFunctionType(context, s, CommonFunctions.FunctionType.values());
+            final TermTypeIf t = getGeneralFunctionType(context, s, CommonFunctions.FunctionType.values());
             if (enableFunction && t != null)
             {
                 return t;
@@ -263,7 +264,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             // This function group has manual trigger ("("): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
                     (ensureManualTrigger && containsGeneralTrigger(context, s));
-            final FormulaTermTypeIf t = getGeneralFunctionType(context, s, TrigonometricFunctions.FunctionType.values());
+            final TermTypeIf t = getGeneralFunctionType(context, s, TrigonometricFunctions.FunctionType.values());
             if (enableFunction && t != null)
             {
                 return t;
@@ -273,7 +274,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             // This function group has manual trigger ("("): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
                     (ensureManualTrigger && containsGeneralTrigger(context, s));
-            final FormulaTermTypeIf t = getGeneralFunctionType(context, s, LogFunctions.FunctionType.values());
+            final TermTypeIf t = getGeneralFunctionType(context, s, LogFunctions.FunctionType.values());
             if (enableFunction && t != null)
             {
                 return t;
@@ -283,7 +284,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             // This function group has manual trigger ("("): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
                     (ensureManualTrigger && containsGeneralTrigger(context, s));
-            final FormulaTermTypeIf t = getGeneralFunctionType(context, s, NumberFunctions.FunctionType.values());
+            final TermTypeIf t = getGeneralFunctionType(context, s, NumberFunctions.FunctionType.values());
             if (enableFunction && t != null)
             {
                 return t;
@@ -319,11 +320,11 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
 
     public static String getOperatorCode(Context context, String code, boolean ensureManualTrigger)
     {
-        final FormulaTermTypeIf f = getTermTypeIf(context, null, code, ensureManualTrigger);
+        final TermTypeIf f = getTermTypeIf(context, null, code, ensureManualTrigger);
         return (f != null) ? f.getLowerCaseName() : null;
     }
 
-    public static FormulaTerm createTerm(FormulaTermTypeIf type, TermField termField, LinearLayout layout, String s,
+    public static FormulaTerm createTerm(TermTypeIf type, TermField termField, LinearLayout layout, String s,
                                          int textIndex) throws Exception
     {
         if (textIndex < 0 || textIndex > layout.getChildCount())
@@ -359,7 +360,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     public static String createOperatorCode(Context contex, String code, String prevText)
     {
         String newValue = null;
-        final FormulaTermTypeIf f = getTermTypeIf(contex, null, code, false);
+        final TermTypeIf f = getTermTypeIf(contex, null, code, false);
         if (f != null)
         {
             switch (f.getGroupType())
@@ -662,10 +663,10 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
     }
 
-    private static <T extends FormulaTermTypeIf> void addToPalette(
+    private static <T extends TermTypeIf> void addToPalette(
             Context context, T[] buttons, LinearLayout paletteLayout, PaletteButton.Category[] categories)
     {
-        for (final FormulaTermTypeIf b : buttons)
+        for (final TermTypeIf b : buttons)
         {
             if (b.getImageId() != Palette.NO_BUTTON)
             {
@@ -678,14 +679,14 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
     }
 
-    public static List<FormulaTermTypeIf.GroupType> collectPaletteGroups()
+    public static List<TermTypeIf.GroupType> collectPaletteGroups()
     {
-        final List<FormulaTermTypeIf.GroupType> gTypes =
-                Arrays.asList(FormulaTermTypeIf.GroupType.values());
-        Collections.sort(gTypes, new Comparator<FormulaTermTypeIf.GroupType>()
+        final List<TermTypeIf.GroupType> gTypes =
+                Arrays.asList(TermTypeIf.GroupType.values());
+        Collections.sort(gTypes, new Comparator<TermTypeIf.GroupType>()
         {
             @Override
-            public int compare(FormulaTermTypeIf.GroupType lhs, FormulaTermTypeIf.GroupType rhs)
+            public int compare(TermTypeIf.GroupType lhs, TermTypeIf.GroupType rhs)
             {
                 return lhs.getPaletteOrder() > rhs.getPaletteOrder() ? 1 :
                         (lhs.getPaletteOrder() < rhs.getPaletteOrder()) ? -1 : 0;
@@ -699,7 +700,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         return s.contains(context.getResources().getString(R.string.formula_function_start_bracket));
     }
 
-    private static <T extends FormulaTermTypeIf> FormulaTermTypeIf getGeneralFunctionType(Context context, String s, T[] items)
+    private static <T extends TermTypeIf> TermTypeIf getGeneralFunctionType(Context context, String s, T[] items)
     {
         String fName = null;
         final Resources res = context.getResources();
@@ -712,7 +713,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
 
         // search the function name in the types array
-        for (FormulaTermTypeIf f : items)
+        for (TermTypeIf f : items)
         {
             if (s.equals(f.getLowerCaseName()))
             {
@@ -737,7 +738,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
 
         // if function is not yet found, check the short-cuts
-        for (FormulaTermTypeIf f : items)
+        for (TermTypeIf f : items)
         {
             if (f.getShortCutId() != Palette.NO_BUTTON && s.contains(res.getString(f.getShortCutId())))
             {

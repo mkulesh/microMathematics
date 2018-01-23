@@ -25,7 +25,6 @@ import android.widget.LinearLayout;
 import com.mkulesh.micromath.formula.CalculatableIf;
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
-import com.mkulesh.micromath.formula.FormulaTermTypeIf;
 import com.mkulesh.micromath.formula.Palette;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
@@ -37,9 +36,9 @@ import java.util.Locale;
 
 public class LogFunctions extends FunctionBase
 {
-    public FormulaTermTypeIf.GroupType getGroupType()
+    public TermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.LOG_FUNCTIONS;
+        return TermTypeIf.GroupType.LOG_FUNCTIONS;
     }
 
     /**
@@ -127,7 +126,7 @@ public class LogFunctions extends FunctionBase
      * Constructors
      *********************************************************/
 
-    public LogFunctions(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public LogFunctions(TermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         termType = (type instanceof FunctionType) ? (FunctionType) type : null;

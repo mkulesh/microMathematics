@@ -19,9 +19,7 @@
 
 package com.mkulesh.micromath.formula.terms;
 
-import com.mkulesh.micromath.formula.FormulaTermTypeIf;
-
-public interface ObsoleteFunctionIf extends FormulaTermTypeIf
+public interface ObsoleteFunctionIf extends TermTypeIf
 {
     /* Returns the document version where a function is obsolete */
     int getObsoleteVersion();

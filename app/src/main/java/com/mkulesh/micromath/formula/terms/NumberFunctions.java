@@ -25,7 +25,6 @@ import android.widget.LinearLayout;
 import com.mkulesh.micromath.formula.CalculatableIf;
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
-import com.mkulesh.micromath.formula.FormulaTermTypeIf;
 import com.mkulesh.micromath.formula.Palette;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
@@ -38,9 +37,9 @@ import java.util.Locale;
 
 public class NumberFunctions extends FunctionBase
 {
-    public FormulaTermTypeIf.GroupType getGroupType()
+    public TermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.NUMBER_FUNCTIONS;
+        return TermTypeIf.GroupType.NUMBER_FUNCTIONS;
     }
 
     /**
@@ -132,7 +131,7 @@ public class NumberFunctions extends FunctionBase
      * Constructors
      *********************************************************/
 
-    public NumberFunctions(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public NumberFunctions(TermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         termType = (type instanceof FunctionType) ? (FunctionType) type : null;

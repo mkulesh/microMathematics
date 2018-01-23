@@ -29,7 +29,6 @@ import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.Equation;
 import com.mkulesh.micromath.formula.FormulaBase;
-import com.mkulesh.micromath.formula.FormulaTermTypeIf;
 import com.mkulesh.micromath.formula.LinkHolder;
 import com.mkulesh.micromath.formula.Palette;
 import com.mkulesh.micromath.formula.TermField;
@@ -45,15 +44,15 @@ import java.util.Locale;
 
 public class UserFunctions extends FunctionBase
 {
-    public FormulaTermTypeIf.GroupType getGroupType()
+    public TermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.USER_FUNCTIONS;
+        return TermTypeIf.GroupType.USER_FUNCTIONS;
     }
 
     /**
      * Supported functions
      */
-    public enum FunctionType implements FormulaTermTypeIf
+    public enum FunctionType implements TermTypeIf
     {
         IDENTITY(1, R.drawable.p_function_identity, R.string.math_function_identity),
         FUNCTION_INDEX(-1, R.drawable.p_function_index, R.string.math_function_index,
@@ -257,7 +256,7 @@ public class UserFunctions extends FunctionBase
      * Constructors
      *********************************************************/
 
-    public UserFunctions(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public UserFunctions(TermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         termType = (type instanceof FunctionType)? (FunctionType) type : null;

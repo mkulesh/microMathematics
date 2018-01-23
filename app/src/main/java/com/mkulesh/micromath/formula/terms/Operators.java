@@ -25,7 +25,6 @@ import android.widget.LinearLayout;
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.FormulaTerm;
-import com.mkulesh.micromath.formula.FormulaTermTypeIf;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TermField.BracketsType;
 import com.mkulesh.micromath.math.CalculatedValue;
@@ -37,15 +36,15 @@ import java.util.Locale;
 
 public class Operators extends FormulaTerm
 {
-    public FormulaTermTypeIf.GroupType getGroupType()
+    public TermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.OPERATORS;
+        return TermTypeIf.GroupType.OPERATORS;
     }
 
     /**
      * Supported operators
      */
-    public enum OperatorType implements FormulaTermTypeIf
+    public enum OperatorType implements TermTypeIf
     {
         PLUS(R.string.formula_operator_plus, R.drawable.p_operator_plus, R.string.math_operator_plus),
         MINUS(R.string.formula_operator_minus, R.drawable.p_operator_minus, R.string.math_operator_minus),
@@ -124,7 +123,7 @@ public class Operators extends FormulaTerm
      * Constructors
      *********************************************************/
 
-    public Operators(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public Operators(TermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         termType = (type instanceof OperatorType)? (OperatorType) type : null;

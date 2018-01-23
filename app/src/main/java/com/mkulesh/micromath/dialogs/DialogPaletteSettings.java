@@ -27,7 +27,7 @@ import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.formula.FormulaBase;
 import com.mkulesh.micromath.formula.FormulaTerm;
-import com.mkulesh.micromath.formula.FormulaTermTypeIf;
+import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.PaletteSettingsChangeIf;
 import com.mkulesh.micromath.utils.ViewUtils;
@@ -38,7 +38,7 @@ import java.util.List;
 public class DialogPaletteSettings extends DialogBase implements View.OnLongClickListener
 {
     final PaletteSettingsChangeIf changeIf;
-    final List<FormulaTermTypeIf.GroupType> groups;
+    final List<TermTypeIf.GroupType> groups;
     final LinearLayout paletteView;
 
     public DialogPaletteSettings(Context context, PaletteSettingsChangeIf changeIf, List<String> visibleGroups)
@@ -60,7 +60,7 @@ public class DialogPaletteSettings extends DialogBase implements View.OnLongClic
         }
 
         // Term elements
-        for (FormulaTermTypeIf.GroupType g : groups)
+        for (TermTypeIf.GroupType g : groups)
         {
             inflater.inflate(R.layout.dialog_palette_settings_item, paletteView);
             final LinearLayout itemLayout = (LinearLayout) paletteView.getChildAt(paletteView.getChildCount() - 1);

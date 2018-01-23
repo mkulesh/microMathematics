@@ -26,7 +26,6 @@ import com.mkulesh.micromath.formula.ArgumentHolderIf;
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.FormulaTerm;
-import com.mkulesh.micromath.formula.FormulaTermTypeIf;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TermField.BracketsType;
 import com.mkulesh.micromath.math.CalculatedValue;
@@ -45,15 +44,15 @@ import java.util.Locale;
 
 public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
 {
-    public FormulaTermTypeIf.GroupType getGroupType()
+    public TermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.SERIES_INTEGRALS;
+        return TermTypeIf.GroupType.SERIES_INTEGRALS;
     }
 
     /**
      * Supported loop types
      */
-    public enum LoopType implements FormulaTermTypeIf
+    public enum LoopType implements TermTypeIf
     {
         SUMMATION(R.string.formula_loop_summation, R.drawable.p_loop_summation, R.string.math_loop_summation),
         PRODUCT(R.string.formula_loop_product, R.drawable.p_loop_product, R.string.math_loop_product),
@@ -135,7 +134,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
      * Constructors
      *********************************************************/
 
-    public SeriesIntegrals(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public SeriesIntegrals(TermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         termType = (type instanceof LoopType)? (LoopType) type : null;

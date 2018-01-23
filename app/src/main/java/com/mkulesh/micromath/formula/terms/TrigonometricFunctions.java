@@ -25,7 +25,6 @@ import android.widget.LinearLayout;
 import com.mkulesh.micromath.formula.CalculatableIf;
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
-import com.mkulesh.micromath.formula.FormulaTermTypeIf;
 import com.mkulesh.micromath.formula.Palette;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
@@ -37,15 +36,15 @@ import java.util.Locale;
 
 public class TrigonometricFunctions extends FunctionBase
 {
-    public FormulaTermTypeIf.GroupType getGroupType()
+    public TermTypeIf.GroupType getGroupType()
     {
-        return FormulaTermTypeIf.GroupType.TRIGONOMETRIC_FUNCTIONS;
+        return TermTypeIf.GroupType.TRIGONOMETRIC_FUNCTIONS;
     }
 
     /**
      * Supported functions
      */
-    public enum FunctionType implements FormulaTermTypeIf
+    public enum FunctionType implements TermTypeIf
     {
         SIN(1, R.drawable.p_function_sin, R.string.math_function_sin),
         COS(1, R.drawable.p_function_cos, R.string.math_function_cos),
@@ -112,7 +111,7 @@ public class TrigonometricFunctions extends FunctionBase
      * Constructors
      *********************************************************/
 
-    public TrigonometricFunctions(FormulaTermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    public TrigonometricFunctions(TermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         termType = (type instanceof FunctionType) ? (FunctionType) type : null;
