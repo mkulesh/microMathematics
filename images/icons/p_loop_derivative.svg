@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   width="48"
+   id="svg8173"
    height="48"
-   id="svg8173">
+   width="48"
+   version="1.1">
   <metadata
      id="metadata3038">
     <rdf:RDF>
@@ -23,40 +23,40 @@
   <defs
      id="defs8175" />
   <g
-     transform="translate(-3.7649442e-8,1.2878446e-6)"
-     id="g3822">
+     id="g3822"
+     transform="translate(-3.7649442e-8,1.2878446e-6)">
     <text
-       x="3.3771038"
-       y="61.677898"
-       transform="scale(2.0318538,0.4921614)"
+       style="font-size:46.75076675px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"
        id="text8206"
-       xml:space="preserve"
-       style="font-size:46.75076675px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><tspan
-         x="3.3771038"
-         y="61.677898"
+       transform="scale(2.0318538,0.4921614)"
+       y="61.677898"
+       x="3.3771038"><tspan
+         style="fill:#000000;fill-opacity:1"
          id="tspan8208"
-         style="fill:#000000;fill-opacity:1">-</tspan></text>
+         y="61.677898"
+         x="3.3771038">-</tspan></text>
     <text
-       x="27.311842"
-       y="19.909689"
-       transform="scale(0.88856885,1.1254052)"
+       style="font-size:23.79762459px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"
+       xml:space="preserve"
        id="text3029"
-       xml:space="preserve"
-       style="font-size:23.79762459px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"><tspan
-         x="27.311842"
-         y="19.909689"
+       transform="scale(0.88856885,1.1254052)"
+       y="19.909689"
+       x="27.311842"><tspan
+         style="stroke:none"
          id="tspan3031"
-         style="stroke:none">d</tspan></text>
+         y="19.909689"
+         x="27.311842">d</tspan></text>
     <text
-       x="26.477936"
-       y="39.960846"
-       transform="scale(0.89315674,1.1196243)"
-       id="text3029-9"
+       style="font-size:23.67538452px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"
        xml:space="preserve"
-       style="font-size:23.67538452px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"><tspan
-         x="26.477936"
-         y="39.960846"
+       id="text3029-9"
+       transform="scale(0.89315674,1.1196243)"
+       y="39.960846"
+       x="26.477936"><tspan
+         style="stroke:none"
          id="tspan3031-5"
-         style="stroke:none">dx</tspan></text>
+         y="39.960846"
+         x="26.477936">dx</tspan></text>
   </g>
 </svg>

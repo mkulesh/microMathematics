@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   width="48"
+   id="svg8173"
    height="48"
-   id="svg8173">
+   width="48"
+   version="1.1">
   <metadata
      id="metadata11">
     <rdf:RDF>
@@ -23,35 +23,35 @@
   <defs
      id="defs8175" />
   <g
-     transform="translate(0,-1004.3622)"
-     id="layer1">
+     id="layer1"
+     transform="translate(0,-1004.3622)">
     <text
-       x="415.91254"
-       y="724.46667"
-       transform="matrix(0.69394909,0,-0.37639059,1.4410279,0,0)"
-       id="text8206"
+       style="font-size:34.06207275px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        xml:space="preserve"
-       style="font-size:34.06207275px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><tspan
-         x="415.91254"
+       id="text8206"
+       transform="matrix(0.69394909,0,-0.37639059,1.4410279,0,0)"
+       y="724.46667"
+       x="415.91254"><tspan
+         id="tspan8208"
          y="724.46667"
-         id="tspan8208">/</tspan></text>
+         x="415.91254">/</tspan></text>
     <rect
-       width="13.95173"
-       height="29.493656"
-       rx="1.899653"
-       ry="1.9622538"
-       x="33.738419"
-       y="1013.6154"
+       style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.50634402;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8"
        id="rect11518-5"
-       style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.50634402;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
-    <rect
-       width="13.95173"
-       height="29.493656"
-       rx="1.899653"
-       ry="1.9622538"
-       x="0.43484846"
        y="1013.6154"
+       x="33.738419"
+       ry="1.9622538"
+       rx="1.899653"
+       height="29.493656"
+       width="13.95173" />
+    <rect
+       style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.50634402;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8"
        id="rect11518-5-1"
-       style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.50634402;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
+       y="1013.6154"
+       x="0.43484846"
+       ry="1.9622538"
+       rx="1.899653"
+       height="29.493656"
+       width="13.95173" />
   </g>
 </svg>

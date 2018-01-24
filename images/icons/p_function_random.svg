@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   width="48"
+   id="svg11300"
    height="48"
-   id="svg11300">
+   width="48"
+   version="1.1">
   <metadata
      id="metadata8">
     <rdf:RDF>
@@ -26,25 +24,25 @@
   <defs
      id="defs3" />
   <text
-     x="22.945688"
-     y="16.551693"
-     transform="scale(0.84164713,1.1881464)"
+     style="font-size:25.12434006px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:0%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"
+     xml:space="preserve"
      id="text3029"
-     xml:space="preserve"
-     style="font-size:25.12434006px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:0%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"><tspan
-       x="22.945688"
-       y="16.551693"
-       id="tspan3031"
-       style="font-size:24px;line-height:0%;stroke:none">ran-</tspan></text>
-  <text
-     x="31.431021"
-     y="35.909576"
      transform="scale(0.84164713,1.1881464)"
-     id="text3029-1"
+     y="16.551693"
+     x="22.945688"><tspan
+       style="font-size:24px;line-height:0%;stroke:none"
+       id="tspan3031"
+       y="16.551693"
+       x="22.945688">ran-</tspan></text>
+  <text
+     style="font-size:25.12434006px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:0%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"
      xml:space="preserve"
-     style="font-size:25.12434006px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:0%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"><tspan
-       x="31.431021"
-       y="35.909576"
+     id="text3029-1"
+     transform="scale(0.84164713,1.1881464)"
+     y="35.909576"
+     x="31.431021"><tspan
+       style="font-size:24px;line-height:0%;stroke:none"
        id="tspan3031-4"
-       style="font-size:24px;line-height:0%;stroke:none">dom</tspan></text>
+       y="35.909576"
+       x="31.431021">dom</tspan></text>
 </svg>

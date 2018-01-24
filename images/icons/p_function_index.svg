@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   width="48"
+   id="svg8173"
    height="48"
-   id="svg8173">
+   width="48"
+   version="1.1">
   <metadata
      id="metadata9">
     <rdf:RDF>
@@ -24,25 +24,25 @@
   <defs
      id="defs8175" />
   <g
-     transform="matrix(1,0,0,-0.97796005,-0.46486164,1030.0023)"
-     id="layer1">
+     id="layer1"
+     transform="matrix(1,0,0,-0.97796005,-0.46486164,1030.0023)">
     <rect
-       width="14.023452"
-       height="21.61895"
-       rx="1.9094185"
-       ry="1.7954814"
-       x="29.416843"
-       y="1007.4188"
+       style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.43462241;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8"
        id="rect11518-5"
-       style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.43462241;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
+       y="1007.4188"
+       x="29.416843"
+       ry="1.7954814"
+       rx="1.9094185"
+       height="21.61895"
+       width="14.023452" />
     <rect
-       width="21.94002"
-       height="30.249804"
-       rx="2.3625958"
-       ry="2.0125613"
-       x="5.5924888"
-       y="1019.5767"
+       style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.64305353;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8"
        id="rect11518-5-1"
-       style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.64305353;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
+       y="1019.5767"
+       x="5.5924888"
+       ry="2.0125613"
+       rx="2.3625958"
+       height="30.249804"
+       width="21.94002" />
   </g>
 </svg>

@@ -17,20 +17,21 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="com.mkulesh.micromath" />
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <defs
      id="defs3" />
   <text
-     x="30.355064"
-     y="27.426603"
-     transform="scale(0.79476185,1.2582386)"
+     x="30.602577"
+     y="27.180891"
+     transform="scale(0.78885236,1.2676643)"
      id="text3029"
      xml:space="preserve"
-     style="font-size:23.72474861px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"><tspan
-       x="30.355064"
-       y="27.426603"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:23.43180275px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.93727213"><tspan
+       x="30.602577"
+       y="27.180891"
        id="tspan3031"
-       style="stroke:none">atan2</tspan></text>
+       style="stroke:none;stroke-width:0.93727213">atan2</tspan></text>
 </svg>

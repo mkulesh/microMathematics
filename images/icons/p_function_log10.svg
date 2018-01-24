@@ -17,22 +17,23 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="com.mkulesh.micromath" />
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <defs
      id="defs3" />
   <text
-     x="19.347704"
-     y="29.044575"
-     transform="scale(0.84164713,1.1881464)"
+     x="18.930483"
+     y="28.481115"
+     transform="scale(0.82658792,1.2097927)"
      id="text3029"
      xml:space="preserve"
-     style="font-size:25.12434006px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"><tspan
-       x="19.347704"
-       y="29.044575"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24.55268669px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.98210746"><tspan
+       x="18.930483"
+       y="28.481115"
        id="tspan3031"
-       style="stroke:none">log</tspan></text>
+       style="stroke:none;stroke-width:0.98210746">log</tspan></text>
   <text
      x="46.585438"
      y="34.327393"

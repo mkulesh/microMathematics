@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   width="48"
+   id="svg11300"
    height="48"
-   id="svg11300">
+   width="48"
+   version="1.1">
   <metadata
      id="metadata8">
     <rdf:RDF>
@@ -24,14 +24,14 @@
   <defs
      id="defs3" />
   <text
-     x="27.626102"
-     y="29.044575"
-     transform="scale(0.84164713,1.1881464)"
-     id="text3029"
+     style="font-size:25px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"
      xml:space="preserve"
-     style="font-size:25.12434006px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"><tspan
-       x="27.626102"
-       y="29.044575"
+     id="text3029"
+     transform="scale(0.84164713,1.1881464)"
+     y="29.0"
+     x="28.7"><tspan
+       style="stroke:none"
        id="tspan3031"
-       style="stroke:none">if</tspan></text>
+       y="29.0"
+       x="28.7">if</tspan></text>
 </svg>

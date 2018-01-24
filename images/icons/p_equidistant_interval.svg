@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   width="48"
+   id="svg11300"
    height="48"
-   id="svg11300">
+   width="48"
+   version="1.1">
   <metadata
      id="metadata8">
     <rdf:RDF>
@@ -23,13 +23,13 @@
   <defs
      id="defs3" />
   <text
-     x="-1.9407928"
-     y="32.209019"
-     transform="scale(0.91651628,1.0910881)"
-     id="text3080"
+     style="font-size:37.63205338px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"
      xml:space="preserve"
-     style="font-size:37.63205338px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"><tspan
-       x="-1.9407928"
+     id="text3080"
+     transform="scale(0.91651628,1.0910881)"
+     y="32.209019"
+     x="-1.9407928"><tspan
+       id="tspan3082"
        y="32.209019"
-       id="tspan3082">[...]</tspan></text>
+       x="-1.9407928">[...]</tspan></text>
 </svg>

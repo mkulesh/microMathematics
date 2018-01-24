@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   width="48"
+   id="svg11300"
    height="48"
-   id="svg11300">
+   width="48"
+   version="1.1">
   <metadata
      id="metadata11">
     <rdf:RDF>
@@ -23,34 +23,34 @@
   <defs
      id="defs3" />
   <path
-     d="m 8.691241,38.796592 c 3.08657,-8.797149 8.390318,-14.274475 10.802984,-14.295367 3.530004,-0.0308 5.144279,6.59786 9.259699,6.59786 3.710053,0 7.201988,-12.096077 8.230843,-20.893225"
+     style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:0.8;stroke-dasharray:none"
      id="path9990"
-     style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:0.8;stroke-dasharray:none" />
+     d="m 8.691241,38.796592 c 3.08657,-8.797149 8.390318,-14.274475 10.802984,-14.295367 3.530004,-0.0308 5.144279,6.59786 9.259699,6.59786 3.710053,0 7.201988,-12.096077 8.230843,-20.893225" />
   <g
      id="g3057">
     <g
-       transform="matrix(1.0199911,0,0,0.93223723,-13.388936,2.2848528)"
-       id="g3228">
+       id="g3228"
+       transform="matrix(1.0199911,0,0,0.93223723,-13.388936,2.2848528)">
       <path
-         d="m 22.577093,8.3396859 c 0,34.3762021 0,34.3762021 0,34.3762021"
+         style="fill:none;stroke:#000000;stroke-width:3.8858192;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.8;stroke-dasharray:none"
          id="path3032"
-         style="fill:none;stroke:#000000;stroke-width:3.8858192;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.8;stroke-dasharray:none" />
+         d="m 22.577093,8.3396859 c 0,34.3762021 0,34.3762021 0,34.3762021" />
       <path
-         d="M 22.532944,1.8389831 18.662091,8.4244601 26.492095,8.3877521 22.532944,1.838985"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd"
          id="path9994-5"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd" />
+         d="M 22.532944,1.8389831 18.662091,8.4244601 26.492095,8.3877521 22.532944,1.838985" />
     </g>
     <g
-       transform="matrix(0,1.0200318,-0.93220006,0,45.714319,14.947659)"
-       id="g3228-1">
+       id="g3228-1"
+       transform="matrix(0,1.0200318,-0.93220006,0,45.714319,14.947659)">
       <path
-         d="m 22.577093,8.3396859 c 0,34.3762021 0,34.3762021 0,34.3762021"
+         style="fill:none;stroke:#000000;stroke-width:3.8858192;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.8;stroke-dasharray:none"
          id="path3032-1"
-         style="fill:none;stroke:#000000;stroke-width:3.8858192;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.8;stroke-dasharray:none" />
+         d="m 22.577093,8.3396859 c 0,34.3762021 0,34.3762021 0,34.3762021" />
       <path
-         d="M 22.532944,1.8389831 18.662091,8.4244601 26.492095,8.3877521 22.532944,1.838985"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd"
          id="path9994-5-0"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd" />
+         d="M 22.532944,1.8389831 18.662091,8.4244601 26.492095,8.3877521 22.532944,1.838985" />
     </g>
   </g>
 </svg>

@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   width="48"
+   id="svg11300"
    height="48"
-   id="svg11300">
+   width="48"
+   version="1.1">
   <metadata
      id="metadata8">
     <rdf:RDF>
@@ -23,22 +23,22 @@
   <defs
      id="defs3" />
   <text
-     x="0.44160676"
-     y="31.846848"
-     transform="scale(0.9567352,1.0452213)"
-     id="text3080"
+     style="font-size:35.36811829px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"
      xml:space="preserve"
-     style="font-size:35.36811829px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"><tspan
-       x="0.44160676"
+     id="text3080"
+     transform="scale(0.9567352,1.0452213)"
+     y="31.846848"
+     x="0.44160676"><tspan
+       id="tspan3082"
        y="31.846848"
-       id="tspan3082">|   |</tspan></text>
+       x="0.44160676">|   |</tspan></text>
   <rect
-     width="13.95173"
-     height="29.493656"
-     rx="1.899653"
-     ry="1.9622538"
-     x="17.024136"
-     y="9.2531719"
+     style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.50634402;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8"
      id="rect11518-5-1"
-     style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.50634402;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:0.8" />
+     y="9.2531719"
+     x="17.024136"
+     ry="1.9622538"
+     rx="1.899653"
+     height="29.493656"
+     width="13.95173" />
 </svg>
