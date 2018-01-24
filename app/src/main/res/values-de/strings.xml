@@ -219,6 +219,9 @@
     <string name="math_function_csc">Kosekansfunktion des Arguments (Kehrwert des Sinus)</string>
     <string name="math_function_sec">Sekansfunktion des Arguments (Kehrwert des Kosinus)</string>
     <string name="math_function_cot">Kotangensfunktion des Arguments (Kehrwert des Tangens)</string>
+    <string name="math_function_acsc">Arcus-Kosekansfunktion des Arguments</string>
+    <string name="math_function_asec">Arcus-Sekansfunktion des Arguments</string>
+    <string name="math_function_acot">Arcus-Kotangensfunktion des Arguments</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Der Grenzwert für die Layouttiefe für diese Android Version ist erreicht</string>

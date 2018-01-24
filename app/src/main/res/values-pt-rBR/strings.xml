@@ -221,6 +221,9 @@
     <string name="math_function_csc">The cosecant (the reciprocal of sin) of the argument</string>
     <string name="math_function_sec">The secant (the reciprocal of cos) of the argument</string>
     <string name="math_function_cot">The cotangent (the reciprocal of tan) of the argument</string>
+    <string name="math_function_acsc">The arc cosecant of the argument</string>
+    <string name="math_function_asec">The arc secant of the argument</string>
+    <string name="math_function_acot">The arc cotangent of the argument</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Chegou ao limite da profundidade do layout para esta versão do Android</string>

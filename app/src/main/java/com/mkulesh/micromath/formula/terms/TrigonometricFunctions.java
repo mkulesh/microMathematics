@@ -55,7 +55,10 @@ public class TrigonometricFunctions extends FunctionBase
         ASIN(1, R.drawable.p_function_asin, R.string.math_function_asin),
         ACOS(1, R.drawable.p_function_acos, R.string.math_function_acos),
         ATAN(1, R.drawable.p_function_atan, R.string.math_function_atan),
-        ATAN2(2, R.drawable.p_function_atan2, R.string.math_function_atan2);
+        ATAN2(2, R.drawable.p_function_atan2, R.string.math_function_atan2),
+        ACSC(1, R.drawable.p_function_acsc, R.string.math_function_acsc),
+        ASEC(1, R.drawable.p_function_asec, R.string.math_function_asec),
+        ACOT(1, R.drawable.p_function_acot, R.string.math_function_acot);
 
         private final int argNumber;
         private final int imageId;
@@ -174,6 +177,11 @@ public class TrigonometricFunctions extends FunctionBase
                 return outValue.csc(a0);
             case ASIN:
                 return outValue.asin(a0);
+            case ACSC:
+            {
+                outValue.divide(CalculatedValue.ONE, a0);
+                return outValue.asin(outValue);
+            }
 
             case COS:
                 return outValue.cos(a0);
@@ -181,6 +189,11 @@ public class TrigonometricFunctions extends FunctionBase
                 return outValue.sec(a0);
             case ACOS:
                 return outValue.acos(a0);
+            case ASEC:
+            {
+                outValue.divide(CalculatedValue.ONE, a0);
+                return outValue.acos(outValue);
+            }
 
             case TAN:
                 return outValue.tan(a0);
@@ -196,6 +209,11 @@ public class TrigonometricFunctions extends FunctionBase
                     return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
                 }
                 return outValue.setValue(FastMath.atan2(a0.getReal(), a1.getReal()));
+            }
+            case ACOT:
+            {
+                outValue.divide(CalculatedValue.ONE, a0);
+                return outValue.atan(outValue);
             }
             }
         }
@@ -223,12 +241,15 @@ public class TrigonometricFunctions extends FunctionBase
         case SIN:
         case CSC:
         case ASIN:
+        case ACSC:
         case COS:
         case SEC:
         case ACOS:
+        case ASEC:
         case TAN:
         case COT:
         case ATAN:
+        case ACOT:
             retValue = argsProp;
             break;
         // these functions are not differentiable if contain the given argument
@@ -277,6 +298,16 @@ public class TrigonometricFunctions extends FunctionBase
                 outValue.sqrt(outValue);
                 outValue.divide(CalculatedValue.ONE, outValue);
                 return outValue.multiply(outValue, a0derVal);
+            case ACSC: // -1/(z^2 * sqrt(1 - 1/z^2))
+                outValue.multiply(a0, a0);
+                outValue.divide(CalculatedValue.ONE, outValue);
+                outValue.subtract(CalculatedValue.ONE, outValue);
+                outValue.sqrt(outValue);
+                outValue.multiply(outValue, a0);
+                outValue.multiply(outValue, a0);
+                outValue.divide(CalculatedValue.ONE, outValue);
+                outValue.multiply(-1.0);
+                return outValue.multiply(outValue, a0derVal);
             case COS: // -1 * sin(a0) * a0'
                 outValue.sin(a0);
                 outValue.multiply(-1.0);
@@ -291,6 +322,15 @@ public class TrigonometricFunctions extends FunctionBase
                 outValue.subtract(CalculatedValue.ONE, outValue);
                 outValue.sqrt(outValue);
                 outValue.divide(CalculatedValue.MINUS_ONE, outValue);
+                return outValue.multiply(outValue, a0derVal);
+            case ASEC: // +1/(z^2 * sqrt(1 - 1/z^2))
+                outValue.multiply(a0, a0);
+                outValue.divide(CalculatedValue.ONE, outValue);
+                outValue.subtract(CalculatedValue.ONE, outValue);
+                outValue.sqrt(outValue);
+                outValue.multiply(outValue, a0);
+                outValue.multiply(outValue, a0);
+                outValue.divide(CalculatedValue.ONE, outValue);
                 return outValue.multiply(outValue, a0derVal);
             case TAN: // (1.0 + tan(a0) * tan(a0)) * a0'
                 outValue.tan(a0);
@@ -307,6 +347,12 @@ public class TrigonometricFunctions extends FunctionBase
                 outValue.multiply(a0, a0);
                 outValue.add(CalculatedValue.ONE, outValue);
                 outValue.divide(CalculatedValue.ONE, outValue);
+                return outValue.multiply(outValue, a0derVal);
+            case ACOT: // (-1.0 / (1.0 + a0 * a0)) * a0'
+                outValue.multiply(a0, a0);
+                outValue.add(CalculatedValue.ONE, outValue);
+                outValue.divide(CalculatedValue.ONE, outValue);
+                outValue.multiply(-1.0);
                 return outValue.multiply(outValue, a0derVal);
             // these functions are not differentiable if contain the given argument
             case ATAN2:
