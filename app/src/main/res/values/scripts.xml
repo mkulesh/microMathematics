@@ -19,7 +19,15 @@
         <item>asset:/ta/ts_functions_exp.mmt</item>
         <item>asset:/ta/ts_functions_sqrt.mmt</item>
         <item>asset:/ta/ts_functions_log.mmt</item>
-        <item>asset:/ta/ts_functions_trigonometric.mmt</item>
+        <item>asset:/ta/ts_functions_sin_cos.mmt</item>
+        <item>asset:/ta/ts_functions_tan.mmt</item>
+        <item>asset:/ta/ts_functions_csc.mmt</item>
+        <item>asset:/ta/ts_functions_sec.mmt</item>
+        <item>asset:/ta/ts_functions_cot.mmt</item>
+        <item>asset:/ta/ts_functions_asin.mmt</item>
+        <item>asset:/ta/ts_functions_acos.mmt</item>
+        <item>asset:/ta/ts_functions_atan.mmt</item>
+        <item>asset:/ta/ts_functions_sinh_cosh.mmt</item>
         <item>asset:/ta/ts_functions_hyperbolic.mmt</item>
         <item>asset:/ta/ts_functions_ceil_floor.mmt</item>
         <item>asset:/ta/ts_functions_round.mmt</item>
