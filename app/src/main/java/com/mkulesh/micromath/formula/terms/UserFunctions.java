@@ -231,18 +231,6 @@ public class UserFunctions extends FunctionBase
         return t.isLink() ? t.getLinkObject() : t.getLowerCaseName();
     }
 
-    public static boolean containsTrigger(Context context, String s)
-    {
-        for (Trigger t : Trigger.values())
-        {
-            if (s.contains(context.getResources().getString(t.getCodeId())))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     /**
      * Private attributes
      */

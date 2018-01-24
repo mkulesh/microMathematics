@@ -224,8 +224,9 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
 
     public static TermTypeIf getTermTypeIf(Context context, CustomEditText text, String s, boolean ensureManualTrigger)
     {
-        final boolean ensureBracket = !ensureManualTrigger || (ensureManualTrigger &&
-                s.contains(context.getResources().getString(R.string.formula_function_start_bracket)));
+        final boolean containsBracket = s.contains(
+                context.getResources().getString(R.string.formula_function_start_bracket));
+        final boolean ensureBracket = !ensureManualTrigger || (ensureManualTrigger && containsBracket);
         {
             final TermTypeIf t = getGeneralFunctionType(context, s, Operators.OperatorType.values());
             if (t != null)
@@ -253,7 +254,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // This function group has manual trigger (like "("): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && CommonFunctions.containsTrigger(context, s));
+                    (ensureManualTrigger && (containsBracket ||
+                            containsTermTrigger(context, s, CommonFunctions.FunctionType.values())));
             final TermTypeIf t = getGeneralFunctionType(context, s, CommonFunctions.FunctionType.values());
             if (enableFunction && t != null)
             {
@@ -287,7 +289,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             // This function group has manual trigger (like "(" or "["): is has to be checked
             final boolean enableFunction = !ensureManualTrigger ||
-                    (ensureManualTrigger && UserFunctions.containsTrigger(context, s));
+                    (ensureManualTrigger && (containsBracket ||
+                            containsTermTrigger(context, s, UserFunctions.FunctionType.values())));
             final UserFunctions.FunctionType t = UserFunctions.getFunctionType(context, s);
             if (enableFunction && t != null)
             {
@@ -732,5 +735,18 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
 
         return null;
+    }
+
+    public static <T extends TermTypeIf> boolean containsTermTrigger(Context context, String s, T[] items)
+    {
+        for (TermTypeIf f : items)
+        {
+            if (f.getShortCutId() != Palette.NO_BUTTON &&
+                    s.contains(context.getResources().getString(f.getShortCutId())))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

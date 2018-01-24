@@ -155,18 +155,6 @@ public class CommonFunctions extends FunctionBase
         }
     }
 
-    public static boolean containsTrigger(Context context, String s)
-    {
-        for (Trigger t : Trigger.values())
-        {
-            if (s.contains(context.getResources().getString(t.getCodeId())))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     /**
      * Private attributes
      */
