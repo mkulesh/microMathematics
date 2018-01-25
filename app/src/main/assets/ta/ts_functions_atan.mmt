@@ -10,17 +10,33 @@
       <term key="rightTerm" text="100" />
     </equation>
     <equation>
+      <term key="leftTerm" text="x1" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="-2" />
+        <term key="rightTerm" text="pi" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x2" />
+      <term key="rightTerm" text="-x1" />
+    </equation>
+    <equation>
       <term key="leftTerm" text="x" />
       <term key="rightTerm" code="equidistant_interval">
-        <term key="minValue" text="-1" />
+        <term key="minValue" text="x1" />
         <term key="nextValue" code="plus">
-          <term key="leftTerm" text="-1" />
+          <term key="leftTerm" text="x1" />
           <term key="rightTerm" code="divide_slash">
-            <term key="leftTerm" text="2" />
+            <term key="leftTerm" code="identity">
+              <term key="argTerm" code="minus">
+                <term key="leftTerm" text="x2" />
+                <term key="rightTerm" text="x1" />
+              </term>
+            </term>
             <term key="rightTerm" text="N" />
           </term>
         </term>
-        <term key="maxValue" text="1" />
+        <term key="maxValue" text="x2" />
       </term>
     </equation>
     <equation inRightOfPrevious="true">
@@ -66,20 +82,20 @@
         </term>
       </term>
     </equation>
-    <plot_function width="600" height="300" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="1">
-      <term key="yMaxValue" text="" />
-      <term key="yFunction" color="#FFFF2B00" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="re">
-        <term key="argTerm" code="content:com.mkulesh.micromath.link.z">
-          <term key="argTerm" text="t" />
-        </term>
+    <plot_function width="600" height="400" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="1">
+      <term key="yMaxValue" code="divide_slash">
+        <term key="leftTerm" text="pi" />
+        <term key="rightTerm" text="2" />
       </term>
-      <term key="yMinValue" text="" />
+      <term key="yFunction" color="#FFFF2B00" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="atan">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" code="divide_slash">
+        <term key="leftTerm" text="-pi" />
+        <term key="rightTerm" text="2" />
+      </term>
       <term key="xMinValue" text="" />
-      <term key="xFunction" code="im">
-        <term key="argTerm" code="content:com.mkulesh.micromath.link.z">
-          <term key="argTerm" text="t" />
-        </term>
-      </term>
+      <term key="xFunction" text="x" />
       <term key="xMaxValue" text="" />
     </plot_function>
     <text_fragment numbering="true">
@@ -132,12 +148,12 @@
         <term key="argTerm" code="abs_layout">
           <term key="argTerm" code="minus">
             <term key="leftTerm" code="content:com.mkulesh.micromath.link.f1">
-              <term key="argTerm" code="content:com.mkulesh.micromath.link.x">
+              <term key="argTerm" code="content:com.mkulesh.micromath.index.x">
                 <term key="argTerm" text="k" />
               </term>
             </term>
             <term key="rightTerm" code="content:com.mkulesh.micromath.link.f2">
-              <term key="argTerm" code="content:com.mkulesh.micromath.link.x">
+              <term key="argTerm" code="content:com.mkulesh.micromath.index.x">
                 <term key="argTerm" text="k" />
               </term>
             </term>
