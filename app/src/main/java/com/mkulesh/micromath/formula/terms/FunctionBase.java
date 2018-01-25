@@ -179,7 +179,7 @@ public abstract class FunctionBase extends FormulaTerm
 
     protected boolean isRemainingTermOnDelete()
     {
-        return terms.size() <= 1;
+        return terms.size() <= 1 || !isNewTermEnabled();
     }
 
     @Override

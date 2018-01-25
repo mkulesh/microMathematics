@@ -577,12 +577,6 @@ public class UserFunctions extends FunctionBase
      *********************************************************/
 
     @Override
-    protected boolean isRemainingTermOnDelete()
-    {
-        return terms.size() <= 1 || !isNewTermEnabled();
-    }
-
-    @Override
     public boolean isNewTermEnabled()
     {
         return getFunctionType().isLink();
