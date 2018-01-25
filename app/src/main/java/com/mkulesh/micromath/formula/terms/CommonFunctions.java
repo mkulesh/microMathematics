@@ -24,11 +24,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.mkulesh.micromath.formula.BracketParser;
 import com.mkulesh.micromath.formula.CalculatableIf;
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
-import com.mkulesh.micromath.formula.FormulaBase;
 import com.mkulesh.micromath.formula.Palette;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
@@ -54,17 +52,17 @@ public class CommonFunctions extends FunctionBase
     public enum FunctionType implements TermTypeIf
     {
         POWER(2, R.drawable.p_function_power, R.string.math_function_power,
-                R.string.formula_function_power),
+                R.string.formula_function_power, R.layout.formula_function_pow),
         SQRT_LAYOUT(1, R.drawable.p_function_sqrt, R.string.math_function_sqrt,
-                R.string.formula_function_sqrt_layout),
+                R.string.formula_function_sqrt_layout, R.layout.formula_function_sqrt),
         NTHRT_LAYOUT(2, R.drawable.p_function_nthrt, R.string.math_function_nthrt,
-                R.string.formula_function_nthrt_layout),
+                R.string.formula_function_nthrt_layout, R.layout.formula_function_nthrt),
         FACTORIAL(1, R.drawable.p_function_factorial, R.string.math_function_factorial,
-                R.string.formula_function_factorial_layout),
+                R.string.formula_function_factorial_layout, R.layout.formula_function_factorial),
         ABS_LAYOUT(1, R.drawable.p_function_abs, R.string.math_function_abs,
-                R.string.formula_function_abs_layout),
+                R.string.formula_function_abs_layout, R.layout.formula_function_noname),
         CONJUGATE_LAYOUT(1, R.drawable.p_function_conjugate, R.string.math_function_conjugate,
-                R.string.formula_function_conjugate_layout),
+                R.string.formula_function_conjugate_layout, R.layout.formula_function_conjugate),
         RE(1, R.drawable.p_function_re, R.string.math_function_re),
         IM(1, R.drawable.p_function_im, R.string.math_function_im),
         IF(3, R.drawable.p_function_if, R.string.math_function_if),
@@ -75,20 +73,22 @@ public class CommonFunctions extends FunctionBase
         private final int imageId;
         private final int descriptionId;
         private final int shortCutId;
+        private final int layoutId;
         private final String lowerCaseName;
 
         FunctionType(int argNumber, int imageId, int descriptionId)
         {
-            this(argNumber, imageId, descriptionId, Palette.NO_BUTTON);
+            this(argNumber, imageId, descriptionId, Palette.NO_BUTTON, R.layout.formula_function_named);
         }
 
-        FunctionType(int argNumber, int imageId, int descriptionId, int shortCutId)
+        FunctionType(int argNumber, int imageId, int descriptionId, int shortCutId, int layoutId)
         {
             this.argNumber = argNumber;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
             this.shortCutId = shortCutId;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
+            this.layoutId = layoutId;
         }
 
         public GroupType getGroupType()
@@ -120,38 +120,10 @@ public class CommonFunctions extends FunctionBase
         {
             return lowerCaseName;
         }
-    }
 
-    /**
-     * Some functions can be triggered from keyboard. This enumeration defines these triggers
-     */
-    private enum Trigger
-    {
-        GENERAL(null, true),
-        ABS(FunctionType.ABS_LAYOUT, true),
-        SQRT(FunctionType.SQRT_LAYOUT, true),
-        POWER(FunctionType.POWER, false),
-        NTHRT(FunctionType.NTHRT_LAYOUT, true),
-        FACTORIAL(FunctionType.FACTORIAL, false),
-        CONJUGATE(FunctionType.CONJUGATE_LAYOUT, false);
-
-        private final FunctionType functionType;
-        private final boolean isBeforeText;
-
-        Trigger(FunctionType functionType, boolean isBeforeText)
+        public int getLayoutId()
         {
-            this.functionType = functionType;
-            this.isBeforeText = isBeforeText;
-        }
-
-        public int getCodeId()
-        {
-            return functionType != null ? functionType.getShortCutId() : R.string.formula_function_start_bracket;
-        }
-
-        public boolean isBeforeText()
-        {
-            return isBeforeText;
+            return layoutId;
         }
     }
 
@@ -173,7 +145,7 @@ public class CommonFunctions extends FunctionBase
         {
             throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");
         }
-        onCreate(s, idx);
+        createGeneralFunction(getFunctionType().getLayoutId(), s, getFunctionType().getArgNumber(), idx);
     }
 
     /*********************************************************
@@ -498,6 +470,10 @@ public class CommonFunctions extends FunctionBase
                 final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 0);
                 t.bracketsType = (termType == FunctionType.FACTORIAL || termType == FunctionType.CONJUGATE_LAYOUT) ? TermField.BracketsType.ALWAYS
                         : TermField.BracketsType.NEVER;
+                if (termType == FunctionType.IF && terms.size() == 1)
+                {
+                    t.getEditText().setComparatorEnabled(true);
+                }
             }
             else if (termType == FunctionType.NTHRT_LAYOUT
                     && val.equals(getContext().getResources().getString(R.string.formula_left_term_key)))
@@ -576,105 +552,5 @@ public class CommonFunctions extends FunctionBase
     protected boolean isRemainingTermOnDelete()
     {
         return termType == FunctionType.NTHRT_LAYOUT || terms.size() <= 1 || !isNewTermEnabled();
-    }
-
-    /*********************************************************
-     * FormulaTermFunction-specific methods
-     *********************************************************/
-
-    /**
-     * Procedure creates the formula layout
-     */
-    private void onCreate(String s, int idx) throws Exception
-    {
-        int argNumber = getFunctionType().getArgNumber();
-        switch (getFunctionType())
-        {
-        case SQRT_LAYOUT:
-            inflateElements(R.layout.formula_function_sqrt, true);
-            break;
-        case NTHRT_LAYOUT:
-            inflateElements(R.layout.formula_function_nthrt, true);
-            break;
-        case FACTORIAL:
-            inflateElements(R.layout.formula_function_factorial, true);
-            break;
-        case CONJUGATE_LAYOUT:
-            inflateElements(R.layout.formula_function_conjugate, true);
-            break;
-        case ABS_LAYOUT:
-            inflateElements(R.layout.formula_function_noname, true);
-            break;
-        case POWER:
-            inflateElements(R.layout.formula_function_pow, true);
-            break;
-        default:
-            inflateElements(R.layout.formula_function_named, true);
-            break;
-        }
-        initializeElements(idx);
-        if (terms.isEmpty())
-        {
-            throw new Exception("argument list is empty");
-        }
-
-        initializeMainLayout();
-
-        // add additional arguments
-        while (terms.size() < argNumber)
-        {
-            TermField newTerm = addArgument(terms.get(terms.size() - 1), R.layout.formula_function_add_arg, 0);
-            if (newTerm == null)
-            {
-                break;
-            }
-        }
-        if (getFunctionType().getArgNumber() > 0 && terms.size() != getFunctionType().getArgNumber())
-        {
-            throw new Exception("invalid size for argument list");
-        }
-
-        // special text properties
-        if (termType == FunctionType.IF)
-        {
-            terms.get(0).getEditText().setComparatorEnabled(true);
-        }
-
-        // set texts for left and right parts (in editing mode only)
-        for (int brIdx = 0; brIdx < BracketParser.START_BRACKET_IDS.length; brIdx++)
-        {
-            final String startBracket = getContext().getResources().getString(BracketParser.START_BRACKET_IDS[brIdx]);
-            final String endBracket = getContext().getResources().getString(BracketParser.END_BRACKET_IDS[brIdx]);
-            if (s.contains(startBracket) && s.endsWith(endBracket))
-            {
-                s = s.substring(0, s.indexOf(endBracket)).trim();
-            }
-        }
-        for (Trigger t : Trigger.values())
-        {
-            String opCode = getContext().getResources().getString(t.getCodeId());
-            final int opPosition = s.indexOf(opCode);
-            final TermField term = getArgumentTerm();
-            if (opPosition >= 0 && term != null)
-            {
-                try
-                {
-                    if (t.isBeforeText())
-                    {
-                        term.setText(s.subSequence(opPosition + opCode.length(), s.length()));
-                    }
-                    else
-                    {
-                        term.setText(s.subSequence(0, opPosition));
-                    }
-                    isContentValid(FormulaBase.ValidationPassType.VALIDATE_SINGLE_FORMULA);
-                }
-                catch (Exception ex)
-                {
-                    // nothing to do
-                }
-                break;
-            }
-        }
     }
 }

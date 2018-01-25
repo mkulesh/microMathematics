@@ -271,29 +271,10 @@ public abstract class FunctionBase extends FormulaTerm
         }
 
         // set texts for left and right parts (in editing mode only)
+        final String arg = BracketParser.removeBrackets(getContext(), s, BracketParser.FUNCTION_BRACKETS);
+        if (splitIntoTerms(arg, termType))
         {
-            final String startBracket = getContext().getResources().getString(
-                    BracketParser.START_BRACKET_IDS[BracketParser.FUNCTION_BRACKETS]);
-            final String endBracket = getContext().getResources().getString(
-                    BracketParser.END_BRACKET_IDS[BracketParser.FUNCTION_BRACKETS]);
-            if (s.contains(startBracket) && s.endsWith(endBracket))
-            {
-                s = s.substring(0, s.indexOf(endBracket)).trim();
-            }
-            final int opPosition = s.indexOf(startBracket);
-            final TermField term = getArgumentTerm();
-            if (opPosition >= 0 && term != null)
-            {
-                try
-                {
-                    term.setText(s.subSequence(opPosition + startBracket.length(), s.length()));
-                    isContentValid(ValidationPassType.VALIDATE_SINGLE_FORMULA);
-                }
-                catch (Exception ex)
-                {
-                    // nothing to do
-                }
-            }
+            isContentValid(ValidationPassType.VALIDATE_SINGLE_FORMULA);
         }
     }
 }

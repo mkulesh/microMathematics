@@ -26,13 +26,13 @@ import android.widget.LinearLayout;
 import com.mkulesh.micromath.formula.terms.CommonFunctions;
 import com.mkulesh.micromath.formula.terms.Comparators;
 import com.mkulesh.micromath.formula.terms.FileOperations;
-import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.formula.terms.Intervals;
 import com.mkulesh.micromath.formula.terms.LogFunctions;
 import com.mkulesh.micromath.formula.terms.NumberFunctions;
 import com.mkulesh.micromath.formula.terms.ObsoleteFunctionIf;
 import com.mkulesh.micromath.formula.terms.Operators;
 import com.mkulesh.micromath.formula.terms.SeriesIntegrals;
+import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.formula.terms.TrigonometricFunctions;
 import com.mkulesh.micromath.formula.terms.UserFunctions;
 import com.mkulesh.micromath.plus.R;
@@ -49,6 +49,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
 {
@@ -228,8 +229,10 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
                 context.getResources().getString(R.string.formula_function_start_bracket));
         final boolean ensureBracket = !ensureManualTrigger || (ensureManualTrigger && containsBracket);
         {
+            final boolean enableOperator = !ensureManualTrigger || (ensureManualTrigger &&
+                    containsTermTrigger(context, s, Operators.OperatorType.values()));
             final TermTypeIf t = getGeneralFunctionType(context, s, Operators.OperatorType.values());
-            if (t != null)
+            if (enableOperator && t != null)
             {
                 return t;
             }
@@ -746,6 +749,58 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             {
                 return true;
             }
+        }
+        return false;
+    }
+
+    protected boolean splitIntoTerms(final String src, final TermTypeIf t)
+    {
+        if (src == null || src.isEmpty() || (t != null && t.getLowerCaseName().equals(src.toLowerCase(Locale.ENGLISH))))
+        {
+            return false;
+        }
+        try
+        {
+            int sepPosition = -1, sepLength = 0;
+            if (t != null && t.getShortCutId() != Palette.NO_BUTTON)
+            {
+                final String sep = getContext().getResources().getString(t.getShortCutId());
+                sepPosition = src.indexOf(sep);
+                sepLength = sep.length();
+            }
+            if (sepPosition < 0)
+            {
+                // no separator found: put whole text into the first term
+                final TermField term = getArgumentTerm();
+                if (term != null)
+                {
+                    term.setText(src);
+                    return true;
+                }
+            }
+            else
+            {
+                final String [] args = { src.substring(0, sepPosition),
+                        src.substring(sepPosition + sepLength, src.length()) };
+                boolean isChanged = false;
+                for (int i = 0, j = 0; i < args.length && j < terms.size(); i++, j++)
+                {
+                    if (args[i] != null && args[i].length() > 0)
+                    {
+                        terms.get(j).setText(args[i]);
+                        isChanged = true;
+                    }
+                    else if (terms.size() < args.length)
+                    {
+                        j--;
+                    }
+                }
+                return isChanged;
+            }
+        }
+        catch (Exception ex)
+        {
+            // nothing to do
         }
         return false;
     }

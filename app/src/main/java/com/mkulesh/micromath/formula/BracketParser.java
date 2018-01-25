@@ -18,6 +18,7 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
+import android.content.Context;
 import android.content.res.Resources;
 
 import com.mkulesh.micromath.plus.R;
@@ -192,5 +193,24 @@ public class BracketParser
             }
         }
         return true;
+    }
+
+    public static String removeBrackets(Context context, String s, int brIdx)
+    {
+        if (s != null)
+        {
+            final Resources res = context.getResources();
+            final String endBracket = res.getString(BracketParser.END_BRACKET_IDS[brIdx]);
+            if (s.contains(endBracket))
+            {
+                s = s.substring(0, s.lastIndexOf(endBracket)).trim();
+            }
+            final String startBracket = res.getString(BracketParser.START_BRACKET_IDS[brIdx]);
+            if (s.contains(startBracket))
+            {
+                s = s.substring(s.indexOf(startBracket) + startBracket.length(), s.length());
+            }
+        }
+        return s;
     }
 }

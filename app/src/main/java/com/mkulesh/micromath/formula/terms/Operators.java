@@ -333,8 +333,7 @@ public class Operators extends FormulaTerm
             throw new Exception("cannot initialize operator terms");
         }
         // set texts for left and right parts
-        TermField.divideString(s, getContext().getResources().getString(termType.getShortCutId()), leftTerm,
-                rightTerm);
+        splitIntoTerms(s, termType);
         // disable brackets of child terms in some cases
         switch (getOperatorType())
         {
