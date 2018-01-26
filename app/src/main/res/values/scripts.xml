@@ -27,7 +27,9 @@
         <item>asset:/ta/ts_functions_asin.mmt</item>
         <item>asset:/ta/ts_functions_acos.mmt</item>
         <item>asset:/ta/ts_functions_atan.mmt</item>
+        <item>asset:/ta/ts_functions_acsc.mmt</item>
         <item>asset:/ta/ts_functions_asec.mmt</item>
+        <item>asset:/ta/ts_functions_acot.mmt</item>
         <item>asset:/ta/ts_functions_sinh_cosh.mmt</item>
         <item>asset:/ta/ts_functions_hyperbolic.mmt</item>
         <item>asset:/ta/ts_functions_ceil_floor.mmt</item>

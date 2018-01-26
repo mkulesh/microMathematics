@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Test of function: asec" description="Automated only" textWidth="60" significantDigits="11" scale="0.50000" redefineAllowed="true">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Test of function: acsc" description="Automated only" textWidth="60" significantDigits="11" scale="0.50000" redefineAllowed="true">
     <equation>
       <term key="leftTerm" text="begin" />
       <term key="rightTerm" text="0" />
@@ -102,18 +102,24 @@
         </term>
       </term>
     </equation>
-    <plot_function width="600" height="400" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="3" gridLineColor="#FF787878" functionsNumber="1">
-      <term key="yMaxValue" text="pi" />
-      <term key="yFunction" color="#FFFF2B00" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="asec">
+    <plot_function width="600" height="400" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="1">
+      <term key="yMaxValue" code="divide_slash">
+        <term key="leftTerm" text="pi" />
+        <term key="rightTerm" text="2" />
+      </term>
+      <term key="yFunction" color="#FFFF2B00" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="acsc">
         <term key="argTerm" text="y" />
       </term>
-      <term key="yMinValue" text="0" />
+      <term key="yMinValue" code="divide_slash">
+        <term key="leftTerm" text="-pi" />
+        <term key="rightTerm" text="2" />
+      </term>
       <term key="xMinValue" text="" />
       <term key="xFunction" text="y" />
       <term key="xMaxValue" text="" />
     </plot_function>
     <text_fragment numbering="true">
-      <term key="text" text="TC: sin from asec" />
+      <term key="text" text="TC: sin from acsc" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -129,7 +135,96 @@
     <equation>
       <term key="leftTerm" text="f1(x)" />
       <term key="rightTerm" code="sin">
-        <term key="argTerm" code="asec">
+        <term key="argTerm" code="acsc">
+          <term key="argTerm" text="x" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="f2(x)" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="x" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="S" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" code="minus">
+          <term key="leftTerm" text="N" />
+          <term key="rightTerm" text="1" />
+        </term>
+        <term key="index" text="k" />
+        <term key="minValue" text="1" />
+        <term key="argTerm" code="abs_layout">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.link.f1">
+              <term key="argTerm" code="content:com.mkulesh.micromath.index.x">
+                <term key="argTerm" text="k" />
+              </term>
+            </term>
+            <term key="rightTerm" code="content:com.mkulesh.micromath.link.f2">
+              <term key="argTerm" code="content:com.mkulesh.micromath.index.x">
+                <term key="argTerm" text="k" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="S" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="less">
+          <term key="leftTerm" text="S" />
+          <term key="rightTerm" text="4E-16" />
+        </term>
+        <term key="argTerm2" text="0" />
+        <term key="argTerm3" text="S" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: cos from acsc" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="f1(x)" />
+      <term key="rightTerm" code="cos">
+        <term key="argTerm" code="acsc">
           <term key="argTerm" text="x" />
         </term>
       </term>
@@ -210,7 +305,7 @@
       <term key="rightTerm" text="" />
     </result>
     <text_fragment numbering="true">
-      <term key="text" text="TC: cos from asec" />
+      <term key="text" text="TC: acsc calculated using asin" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -225,102 +320,13 @@
     </result>
     <equation>
       <term key="leftTerm" text="f1(x)" />
-      <term key="rightTerm" code="cos">
-        <term key="argTerm" code="asec">
-          <term key="argTerm" text="x" />
-        </term>
-      </term>
-    </equation>
-    <equation>
-      <term key="leftTerm" text="f2(x)" />
-      <term key="rightTerm" code="divide">
-        <term key="leftTerm" text="1" />
-        <term key="rightTerm" text="x" />
-      </term>
-    </equation>
-    <equation>
-      <term key="leftTerm" text="S" />
-      <term key="rightTerm" code="summation">
-        <term key="maxValue" code="minus">
-          <term key="leftTerm" text="N" />
-          <term key="rightTerm" text="1" />
-        </term>
-        <term key="index" text="k" />
-        <term key="minValue" text="1" />
-        <term key="argTerm" code="abs_layout">
-          <term key="argTerm" code="minus">
-            <term key="leftTerm" code="content:com.mkulesh.micromath.link.f1">
-              <term key="argTerm" code="content:com.mkulesh.micromath.index.x">
-                <term key="argTerm" text="k" />
-              </term>
-            </term>
-            <term key="rightTerm" code="content:com.mkulesh.micromath.link.f2">
-              <term key="argTerm" code="content:com.mkulesh.micromath.index.x">
-                <term key="argTerm" text="k" />
-              </term>
-            </term>
-          </term>
-        </term>
-      </term>
-    </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" text="S" />
-      <term key="rightTerm" text="" />
-    </result>
-    <equation>
-      <term key="leftTerm" text="result" />
-      <term key="rightTerm" code="if">
-        <term key="argTerm1" code="less">
-          <term key="leftTerm" text="S" />
-          <term key="rightTerm" text="5E-15" />
-        </term>
-        <term key="argTerm2" text="0" />
-        <term key="argTerm3" text="S" />
-      </term>
-    </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" text="result" />
-      <term key="rightTerm" text="" />
-    </result>
-    <equation>
-      <term key="leftTerm" text="desired" />
-      <term key="rightTerm" text="0" />
-    </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" text="desired" />
-      <term key="rightTerm" text="" />
-    </result>
-    <equation>
-      <term key="leftTerm" text="end" />
-      <term key="rightTerm" text="begin" />
-    </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" text="end" />
-      <term key="rightTerm" text="" />
-    </result>
-    <text_fragment numbering="true">
-      <term key="text" text="TC: asec calculated using acos" />
-    </text_fragment>
-    <equation>
-      <term key="leftTerm" text="begin" />
-      <term key="rightTerm" code="plus">
-        <term key="leftTerm" text="1" />
-        <term key="rightTerm" text="begin" />
-      </term>
-    </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" text="begin" />
-      <term key="rightTerm" text="" />
-    </result>
-    <equation>
-      <term key="leftTerm" text="f1(x)" />
-      <term key="rightTerm" code="asec">
+      <term key="rightTerm" code="acsc">
         <term key="argTerm" text="x" />
       </term>
     </equation>
     <equation>
       <term key="leftTerm" text="f2(x)" />
-      <term key="rightTerm" code="acos">
+      <term key="rightTerm" code="asin">
         <term key="argTerm" code="divide_slash">
           <term key="leftTerm" text="1" />
           <term key="rightTerm" text="x" />
@@ -370,7 +376,7 @@
       <term key="rightTerm" text="" />
     </result>
     <text_fragment numbering="true">
-      <term key="text" text="TC: asec calculated using ln" />
+      <term key="text" text="TC: acsc calculated using asec" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -385,41 +391,24 @@
     </result>
     <equation>
       <term key="leftTerm" text="f1(x)" />
-      <term key="rightTerm" code="asec">
+      <term key="rightTerm" code="acsc">
         <term key="argTerm" text="x" />
       </term>
     </equation>
     <equation>
       <term key="leftTerm" text="f2(x)" />
-      <term key="rightTerm" code="mult">
-        <term key="leftTerm" text="-i" />
-        <term key="rightTerm" code="ln">
-          <term key="argTerm" code="plus">
-            <term key="leftTerm" code="divide">
-              <term key="leftTerm" text="1" />
-              <term key="rightTerm" text="x" />
-            </term>
-            <term key="rightTerm" code="mult">
-              <term key="leftTerm" text="i" />
-              <term key="rightTerm" code="sqrt_layout">
-                <term key="argTerm" code="minus">
-                  <term key="leftTerm" text="1" />
-                  <term key="rightTerm" code="divide">
-                    <term key="leftTerm" text="1" />
-                    <term key="rightTerm" code="mult">
-                      <term key="leftTerm" text="x" />
-                      <term key="rightTerm" text="x" />
-                    </term>
-                  </term>
-                </term>
-              </term>
-            </term>
-          </term>
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" code="divide">
+          <term key="leftTerm" text="pi" />
+          <term key="rightTerm" text="2" />
+        </term>
+        <term key="rightTerm" code="asec">
+          <term key="argTerm" text="x" />
         </term>
       </term>
     </equation>
     <equation>
-      <term key="leftTerm" text="result" />
+      <term key="leftTerm" text="2result" />
       <term key="rightTerm" code="summation">
         <term key="maxValue" text="N" />
         <term key="index" text="k" />
@@ -461,7 +450,7 @@
       <term key="rightTerm" text="" />
     </result>
     <text_fragment numbering="true">
-      <term key="text" text="TC: asec`(x) for real argument" />
+      <term key="text" text="TC: acsc`(x) for real argument" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -478,7 +467,7 @@
       <term key="leftTerm" text="f1(x)" />
       <term key="rightTerm" code="derivative">
         <term key="index" text="x" />
-        <term key="argTerm" code="asec">
+        <term key="argTerm" code="acsc">
           <term key="argTerm" text="x" />
         </term>
       </term>
@@ -486,7 +475,7 @@
     <equation>
       <term key="leftTerm" text="f2(x)" />
       <term key="rightTerm" code="divide">
-        <term key="leftTerm" text="1" />
+        <term key="leftTerm" text="-1" />
         <term key="rightTerm" code="mult">
           <term key="leftTerm" code="power">
             <term key="leftTerm" text="x" />
@@ -552,14 +541,14 @@
       <term key="rightTerm" text="" />
     </result>
     <plot_function width="600" height="300" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="2">
-      <term key="yMaxValue" text="pi" />
+      <term key="yMaxValue" text="0" />
       <term key="yFunction1" color="#FF0000FF" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f1">
         <term key="argTerm" text="x" />
       </term>
       <term key="yFunction2" color="#FFFF2400" width="3" lineStyle="dashed" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f2">
         <term key="argTerm" text="x" />
       </term>
-      <term key="yMinValue" text="0" />
+      <term key="yMinValue" text="-pi" />
       <term key="xMinValue" text="" />
       <term key="xFunction1" text="x" />
       <term key="xFunction2" text="x" />
@@ -582,7 +571,7 @@
       <term key="rightTerm" text="" />
     </result>
     <text_fragment numbering="true">
-      <term key="text" text="TC: asec`(x) for complex argument" />
+      <term key="text" text="TC: acsc`(x) for complex argument" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
