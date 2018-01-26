@@ -212,8 +212,9 @@ public class TrigonometricFunctions extends FunctionBase
             }
             case ACOT:
             {
-                outValue.divide(CalculatedValue.ONE, a0);
-                return outValue.atan(outValue);
+                outValue.atan(a0);
+                tmpVal.setValue(FastMath.PI/2.0f);
+                return outValue.subtract(tmpVal, outValue);
             }
             }
         }
