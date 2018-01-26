@@ -525,7 +525,7 @@ public class CalculatedValue
 
     public ValueType log(CalculatedValue g)
     {
-        if (g.isComplex())
+        if (g.isComplex() || g.real <= 0.0)
         {
             return setComplexValue(g.getComplex().log());
         }
@@ -537,7 +537,7 @@ public class CalculatedValue
 
     public ValueType log10(CalculatedValue g)
     {
-        if (g.isComplex())
+        if (g.isComplex() || g.real <= 0.0)
         {
             return setComplexValue(g.getComplex().log().divide(FastMath.log(10.0)));
         }

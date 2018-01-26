@@ -203,6 +203,7 @@
     <string name="math_function_tanh">Hyperbeltangens des Arguments</string>
     <string name="math_function_exp">Liefert den Exponentialwert von x zur Basis \'e\'</string>
     <string name="math_function_ln">Berechnet den natürliche Logarithmus zur Basis \'e\'</string>
+    <string name="math_function_log">Der Logarithmus einer Zahl zur given Basis</string>
     <string name="math_function_log10">Berechnet den Logarithmus zur Basis 10</string>
     <string name="math_function_ceil">Rundet auf die nächsthöhere Ganzzahl ab</string>
     <string name="math_function_floor">Rundet auf die nächstniedrigere Ganzzahl ab</string>

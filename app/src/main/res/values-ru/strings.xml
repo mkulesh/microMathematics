@@ -203,6 +203,7 @@
     <string name="math_function_tanh">Гиперболический тангенс аргумента</string>
     <string name="math_function_exp">Возведение \'e\' в степень аргумента</string>
     <string name="math_function_ln">Натуральный логарифм аргумента</string>
+    <string name="math_function_log">Логарифм аргумента по произвольному основанию</string>
     <string name="math_function_log10">Десятичный логарифм аргумента</string>
     <string name="math_function_ceil">Ближайшее (справа) целое значение, которое больше или равно значению аргумента</string>
     <string name="math_function_floor">Ближайшее (слева) целое значение, которое меньше или равно значению аргумента</string>
@@ -222,6 +223,7 @@
     <string name="math_function_acsc">Обратный косеканс аргумента</string>
     <string name="math_function_asec">Обратный секанс аргумента</string>
     <string name="math_function_acot">Обратный котангенс аргумента</string>
+
     <!-- Errors -->
     <string name="error_max_layout_depth">К сожалению, достигнут предел глубины формулы для данной версии Android</string>
     <string name="error_brackets_not_completed">Скобки не закрыты</string>

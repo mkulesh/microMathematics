@@ -242,6 +242,7 @@
     <string name="math_function_tanh">The hyperbolic tangent of the argument</string>
     <string name="math_function_exp">The raising \'e\' to the power of the argument</string>
     <string name="math_function_ln">The natural logarithm of the argument</string>
+    <string name="math_function_log">Logarithm of number to the specified base</string>
     <string name="math_function_log10">The base 10 logarithm of the argument</string>
     <string name="math_function_ceil">The most negative (closest to negative infinity) integer value greater than or equal to the argument</string>
     <string name="math_function_floor">The most positive (closest to positive infinity) integer value less than or equal to the argument</string>
