@@ -24,6 +24,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.ViewGroup;
 
+import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 
@@ -39,8 +40,9 @@ public class PaletteButton extends AppCompatImageButton
         COMPARATOR
     }
 
+    private String group = "";
     private String code = null;
-    private String shortCut = null;
+    private int imageId = Palette.NO_BUTTON;
     private Category[] categories = null;
     private final boolean[] enabled = new boolean[Category.values().length];
 
@@ -56,7 +58,13 @@ public class PaletteButton extends AppCompatImageButton
         enableAll();
     }
 
-    public PaletteButton(Context context, int shortCutId, int imageId, int descriptionId, String code)
+    public PaletteButton(Context context, TermTypeIf b)
+    {
+        this(context, b.getGroupType().toString(), b.getLowerCaseName(),
+                b.getImageId(), b.getDescriptionId(), b.getShortCutId());
+    }
+
+    public PaletteButton(Context context, String group, String code, int imageId, int descriptionId, int shortCutId)
     {
         super(context);
         final int buttonSize = context.getResources().getDimensionPixelSize(R.dimen.activity_toolbar_height) - 2
@@ -67,7 +75,15 @@ public class PaletteButton extends AppCompatImageButton
         context.getTheme().resolveAttribute(R.attr.selectableItemBackground, outValue, true);
         setBackgroundResource(outValue.resourceId);
 
-        setImageResource(imageId);
+        this.group = group;
+        this.code = code;
+        this.imageId = imageId;
+        if (hasImage())
+        {
+            setImageResource(imageId);
+        }
+
+        String shortCut = null;
         if (shortCutId != Palette.NO_BUTTON)
         {
             shortCut = context.getResources().getString(shortCutId);
@@ -84,10 +100,14 @@ public class PaletteButton extends AppCompatImageButton
             setContentDescription(description);
             setLongClickable(true);
         }
-        this.code = code;
         enableAll();
         ViewUtils.setImageButtonColorAttr(getContext(), this,
                 isEnabled() ? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark);
+    }
+
+    public String getGroup()
+    {
+        return group;
     }
 
     public String getCode()
@@ -95,9 +115,9 @@ public class PaletteButton extends AppCompatImageButton
         return code;
     }
 
-    public String getShortCut()
+    public boolean hasImage()
     {
-        return shortCut;
+        return imageId != Palette.NO_BUTTON;
     }
 
     public Category[] getCategories()

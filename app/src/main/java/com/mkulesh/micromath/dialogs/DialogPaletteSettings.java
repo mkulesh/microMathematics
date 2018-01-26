@@ -27,6 +27,7 @@ import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.formula.FormulaBase;
 import com.mkulesh.micromath.formula.FormulaTerm;
+import com.mkulesh.micromath.formula.PaletteButton;
 import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.PaletteSettingsChangeIf;
@@ -55,7 +56,12 @@ public class DialogPaletteSettings extends DialogBase implements View.OnLongClic
             inflater.inflate(R.layout.dialog_palette_settings_item, paletteView);
             final LinearLayout itemLayout = (LinearLayout) paletteView.getChildAt(paletteView.getChildCount() - 1);
             final LinearLayout buttonLayout = itemLayout.findViewById(R.id.dialog_palette_settings_buttons);
-            FormulaBase.addToPalette(context, buttonLayout);
+            final List<PaletteButton> termButtons = new ArrayList<>();
+            FormulaBase.addToPalette(context, termButtons);
+            for (PaletteButton b : termButtons)
+            {
+                buttonLayout.addView(b);
+            }
             prepareGroup(context, itemLayout, FormulaBase.class.getSimpleName(), visibleGroups);
         }
 
@@ -65,7 +71,12 @@ public class DialogPaletteSettings extends DialogBase implements View.OnLongClic
             inflater.inflate(R.layout.dialog_palette_settings_item, paletteView);
             final LinearLayout itemLayout = (LinearLayout) paletteView.getChildAt(paletteView.getChildCount() - 1);
             final LinearLayout buttonLayout = itemLayout.findViewById(R.id.dialog_palette_settings_buttons);
-            FormulaTerm.addToPalette(context, buttonLayout, g);
+            final List<PaletteButton> termButtons = new ArrayList<>();
+            FormulaTerm.addToPalette(context, termButtons, true, g);
+            for (PaletteButton b : termButtons)
+            {
+                buttonLayout.addView(b);
+            }
             prepareGroup(context, itemLayout, g.toString(), visibleGroups);
         }
     }

@@ -176,48 +176,49 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
      * Factory methods
      *********************************************************/
 
-    public static void addToPalette(Context context, LinearLayout paletteLayout, TermTypeIf.GroupType gType)
+    public static void addToPalette(Context context, List<PaletteButton> paletteLayout,
+                                    boolean ensureImageId, TermTypeIf.GroupType gType)
     {
         switch (gType)
         {
         case OPERATORS:
-            addToPalette(context, Operators.OperatorType.values(), paletteLayout,
+            addToPalette(context, Operators.OperatorType.values(), paletteLayout, ensureImageId,
                     new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
             break;
         case COMPARATORS:
-            addToPalette(context, Comparators.ComparatorType.values(), paletteLayout,
+            addToPalette(context, Comparators.ComparatorType.values(), paletteLayout, ensureImageId,
                     new PaletteButton.Category[]{ PaletteButton.Category.COMPARATOR });
             break;
         case FILE_OPERATIONS:
-            addToPalette(context, FileOperations.FunctionType.values(), paletteLayout,
+            addToPalette(context, FileOperations.FunctionType.values(), paletteLayout, ensureImageId,
                     new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
             break;
         case COMMON_FUNCTIONS:
-            addToPalette(context, CommonFunctions.FunctionType.values(), paletteLayout,
+            addToPalette(context, CommonFunctions.FunctionType.values(), paletteLayout, ensureImageId,
                     new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
             break;
         case TRIGONOMETRIC_FUNCTIONS:
-            addToPalette(context, TrigonometricFunctions.FunctionType.values(), paletteLayout,
+            addToPalette(context, TrigonometricFunctions.FunctionType.values(), paletteLayout, ensureImageId,
                     new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
             break;
         case LOG_FUNCTIONS:
-            addToPalette(context, LogFunctions.FunctionType.values(), paletteLayout,
+            addToPalette(context, LogFunctions.FunctionType.values(), paletteLayout, ensureImageId,
                     new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
             break;
         case NUMBER_FUNCTIONS:
-            addToPalette(context, NumberFunctions.FunctionType.values(), paletteLayout,
+            addToPalette(context, NumberFunctions.FunctionType.values(), paletteLayout, ensureImageId,
                     new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
             break;
         case USER_FUNCTIONS:
-            addToPalette(context, UserFunctions.FunctionType.values(), paletteLayout,
+            addToPalette(context, UserFunctions.FunctionType.values(), paletteLayout, ensureImageId,
                     new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
             break;
         case INTERVALS:
-            addToPalette(context, Intervals.IntervalType.values(), paletteLayout,
+            addToPalette(context, Intervals.IntervalType.values(), paletteLayout, ensureImageId,
                     new PaletteButton.Category[]{ PaletteButton.Category.TOP_LEVEL_TERM });
             break;
         case SERIES_INTEGRALS:
-            addToPalette(context, SeriesIntegrals.LoopType.values(), paletteLayout,
+            addToPalette(context, SeriesIntegrals.LoopType.values(), paletteLayout, ensureImageId,
                     new PaletteButton.Category[]{ PaletteButton.Category.CONVERSION });
             break;
         }
@@ -316,12 +317,6 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             }
         }
         return null;
-    }
-
-    public static String getOperatorCode(Context context, String code, boolean ensureManualTrigger)
-    {
-        final TermTypeIf f = getTermTypeIf(context, null, code, ensureManualTrigger);
-        return (f != null) ? f.getLowerCaseName() : null;
     }
 
     public static FormulaTerm createTerm(TermTypeIf type, TermField termField, LinearLayout layout, String s,
@@ -664,18 +659,18 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     }
 
     private static <T extends TermTypeIf> void addToPalette(
-            Context context, T[] buttons, LinearLayout paletteLayout, PaletteButton.Category[] categories)
+            Context context, T[] buttons, List<PaletteButton> paletteLayout,
+            boolean ensureImageId, PaletteButton.Category[] categories)
     {
         for (final TermTypeIf b : buttons)
         {
-            if (b.getImageId() != Palette.NO_BUTTON)
+            if (ensureImageId && b.getImageId() == Palette.NO_BUTTON)
             {
-                PaletteButton p = new PaletteButton(context,
-                        b.getShortCutId(), b.getImageId(), b.getDescriptionId(),
-                        b.getLowerCaseName());
-                paletteLayout.addView(p);
-                p.setCategories(categories);
+                continue;
             }
+            PaletteButton p = new PaletteButton(context, b);
+            p.setCategories(categories);
+            paletteLayout.add(p);
         }
     }
 

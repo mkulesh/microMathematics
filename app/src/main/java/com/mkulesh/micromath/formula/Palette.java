@@ -55,6 +55,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
     private final Context context;
     private final ListChangeIf listChangeIf;
     private final ArrayList<ArrayList<PaletteButton>> paletteBlock = new ArrayList<>();
+    private final List<PaletteButton> termButtons = new ArrayList<>();
     private final LinearLayout paletteLayout;
     private final CustomEditText hiddenInput;
     private String lastHiddenInput = "";
@@ -97,6 +98,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
     private void addButtonsToPalette()
     {
         // clear previous state
+        termButtons.clear();
         paletteBlock.clear();
         for (int i = paletteLayout.getChildCount() - 1; i > 0; i--)
         {
@@ -106,19 +108,11 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             }
         }
 
-        // Add base elements
-        if (visibleGroups.contains(FormulaBase.class.getSimpleName()))
-        {
-            FormulaBase.addToPalette(context, paletteLayout);
-        }
-
-        // Add term elements
+        // Add elements
+        FormulaBase.addToPalette(context, termButtons);
         for (TermTypeIf.GroupType g : FormulaTerm.collectPaletteGroups())
         {
-            if (visibleGroups.contains(g.toString()))
-            {
-                FormulaTerm.addToPalette(context, paletteLayout, g);
-            }
+            FormulaTerm.addToPalette(context, termButtons, false, g);
         }
 
         // prepare all buttons
@@ -126,21 +120,20 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         {
             paletteBlock.add(new ArrayList<PaletteButton>());
         }
-        for (int i = 0; i < paletteLayout.getChildCount(); i++)
+        for (PaletteButton pb : termButtons)
         {
-            View b = paletteLayout.getChildAt(i);
-            if (b instanceof PaletteButton)
+            if (pb.getCategories() != null)
             {
-                final PaletteButton pb = (PaletteButton) b;
-                if (pb.getCategories() != null)
+                for (Category cat : pb.getCategories())
                 {
-                    for (Category cat : pb.getCategories())
-                    {
-                        paletteBlock.get(cat.ordinal()).add(pb);
-                    }
+                    paletteBlock.get(cat.ordinal()).add(pb);
                 }
+            }
+            if (pb.hasImage() && visibleGroups.contains(pb.getGroup()))
+            {
                 pb.setOnLongClickListener(this);
                 pb.setOnClickListener(this);
+                paletteLayout.addView(pb);
             }
         }
     }
@@ -187,13 +180,8 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
      */
     private void updateButtonsColor()
     {
-        for (int i = 0; i < paletteLayout.getChildCount(); i++)
+        for (PaletteButton b : termButtons)
         {
-            if (!(paletteLayout.getChildAt(i) instanceof PaletteButton))
-            {
-                continue;
-            }
-            PaletteButton b = (PaletteButton) paletteLayout.getChildAt(i);
             final boolean isEnabled = b.isEnabled() && paletteLayout.isEnabled();
             ViewUtils.setImageButtonColorAttr(context, b,
                     isEnabled ? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark);
@@ -277,8 +265,9 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         }
 
         final String termSep = context.getResources().getString(R.string.formula_term_separator);
-        final String code = (termSep.equals(s)) ? FormulaBase.BaseType.TERM.toString() : FormulaTerm.getOperatorCode(
-                context, s, /*ensureManualTrigger=*/ true);
+        final TermTypeIf term = FormulaTerm.getTermTypeIf(context, null, s, /*ensureManualTrigger=*/ true);
+        final String code = (termSep.equals(s)) ? FormulaBase.BaseType.TERM.toString() :
+                ((term != null) ? term.getLowerCaseName() : null);
         if (code == null)
         {
             return;
@@ -291,17 +280,13 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             return;
         }
 
-        for (int i = 0; i < paletteLayout.getChildCount(); i++)
+        for (PaletteButton b : termButtons)
         {
-            if (paletteLayout.getChildAt(i) instanceof PaletteButton)
+            if (b.isEnabled() && b.getCode() != null && b.getCode().equalsIgnoreCase(code))
             {
-                PaletteButton b = (PaletteButton) paletteLayout.getChildAt(i);
-                if (b.isEnabled() && b.getCode() != null && b.getCode().equalsIgnoreCase(code))
-                {
-                    hiddenInput.setTextWatcher(false);
-                    listChangeIf.onPalettePressed(b.getCode());
-                    break;
-                }
+                hiddenInput.setTextWatcher(false);
+                listChangeIf.onPalettePressed(b.getCode());
+                break;
             }
         }
     }

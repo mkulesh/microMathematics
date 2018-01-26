@@ -48,6 +48,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class FormulaBase extends CustomLayout implements FormulaChangeIf
 {
@@ -1133,7 +1134,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         return R.id.main_list_view;
     }
 
-    public static void addToPalette(Context context, LinearLayout paletteLayout)
+    public static void addToPalette(Context context, List<PaletteButton> paletteLayout)
     {
         for (int i = 0; i < BaseType.values().length; i++)
         {
@@ -1143,18 +1144,18 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
                 if (t == BaseType.TERM)
                 {
                     PaletteButton p = new PaletteButton(context,
-                            R.string.formula_term_separator, t.getImageId(), t.getDescriptionId(),
-                            t.toString());
+                            FormulaBase.class.getSimpleName(), t.toString(),
+                            t.getImageId(), t.getDescriptionId(), R.string.formula_term_separator);
                     p.setCategories(new PaletteButton.Category[]
                             { PaletteButton.Category.NEW_TERM, PaletteButton.Category.CONVERSION });
-                    paletteLayout.addView(p);
+                    paletteLayout.add(p);
                 }
                 else
                 {
                     PaletteButton p = new PaletteButton(context,
-                            Palette.NO_BUTTON, t.getImageId(), t.getDescriptionId(),
-                            t.toString());
-                    paletteLayout.addView(p);
+                            FormulaBase.class.getSimpleName(), t.toString(),
+                            t.getImageId(), t.getDescriptionId(), Palette.NO_BUTTON);
+                    paletteLayout.add(p);
                 }
             }
         }
