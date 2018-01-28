@@ -415,6 +415,18 @@ public class CalculatedValue
         }
     }
 
+    public ValueType csch(CalculatedValue g)
+    {
+        if (g.isComplex())
+        {
+            return setComplexValue(g.getComplex().sinh().reciprocal());
+        }
+        else
+        {
+            return setValue(1.0f/FastMath.sinh(g.real));
+        }
+    }
+
     public ValueType cos(CalculatedValue g)
     {
         if (g.isComplex())
@@ -463,6 +475,18 @@ public class CalculatedValue
         }
     }
 
+    public ValueType sech(CalculatedValue g)
+    {
+        if (g.isComplex())
+        {
+            return setComplexValue(g.getComplex().cosh().reciprocal());
+        }
+        else
+        {
+            return setValue(1.0f/FastMath.cosh(g.real));
+        }
+    }
+
     public ValueType tan(CalculatedValue g)
     {
         if (g.isComplex())
@@ -508,6 +532,18 @@ public class CalculatedValue
         else
         {
             return setValue(FastMath.tanh(g.real));
+        }
+    }
+
+    public ValueType coth(CalculatedValue g)
+    {
+        if (g.isComplex())
+        {
+            return setComplexValue(g.getComplex().tanh().reciprocal());
+        }
+        else
+        {
+            return setValue(1.0f/FastMath.tanh(g.real));
         }
     }
 

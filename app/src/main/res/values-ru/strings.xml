@@ -223,6 +223,9 @@
     <string name="math_function_acsc">Обратный косеканс аргумента</string>
     <string name="math_function_asec">Обратный секанс аргумента</string>
     <string name="math_function_acot">Обратный котангенс аргумента</string>
+    <string name="math_function_csch">Гиперболический косеканс аргумента</string>
+    <string name="math_function_sech">Гиперболический секанс аргумента</string>
+    <string name="math_function_coth">Гиперболический котангенс аргумента</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">К сожалению, достигнут предел глубины формулы для данной версии Android</string>

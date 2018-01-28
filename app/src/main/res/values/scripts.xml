@@ -30,8 +30,8 @@
         <item>asset:/ta/ts_functions_acsc.mmt</item>
         <item>asset:/ta/ts_functions_asec.mmt</item>
         <item>asset:/ta/ts_functions_acot.mmt</item>
-        <item>asset:/ta/ts_functions_sinh_cosh.mmt</item>
-        <item>asset:/ta/ts_functions_hyperbolic.mmt</item>
+        <item>asset:/ta/ts_functions_hyperbolic1.mmt</item>
+        <item>asset:/ta/ts_functions_hyperbolic2.mmt</item>
         <item>asset:/ta/ts_functions_ceil_floor.mmt</item>
         <item>asset:/ta/ts_functions_round.mmt</item>
         <item>asset:/ta/ts_functions_utils.mmt</item>

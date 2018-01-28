@@ -52,7 +52,10 @@ public class LogFunctions extends FunctionBase
         LOG10(1, R.drawable.p_function_log10, R.string.math_function_log10),
         SINH(1, R.drawable.p_function_sinh, R.string.math_function_sinh),
         COSH(1, R.drawable.p_function_cosh, R.string.math_function_cosh),
-        TANH(1, R.drawable.p_function_tanh, R.string.math_function_tanh);
+        TANH(1, R.drawable.p_function_tanh, R.string.math_function_tanh),
+        CSCH(1, R.drawable.p_function_csch, R.string.math_function_csch),
+        SECH(1, R.drawable.p_function_sech, R.string.math_function_sech),
+        COTH(1, R.drawable.p_function_coth, R.string.math_function_coth);
 
         private final int argNumber;
         private final int imageId;
@@ -191,6 +194,13 @@ public class LogFunctions extends FunctionBase
             case TANH:
                 return outValue.tanh(a0);
 
+            case CSCH:
+                return outValue.csch(a0);
+            case SECH:
+                return outValue.sech(a0);
+            case COTH:
+                return outValue.coth(a0);
+
             case EXP:
                 return outValue.exp(a0);
             case LN:
@@ -276,6 +286,25 @@ public class LogFunctions extends FunctionBase
                 outValue.multiply(outValue, outValue);
                 outValue.divide(CalculatedValue.ONE, outValue);
                 return outValue.multiply(outValue, a0derVal);
+
+            case CSCH: // -1.0 * coth(a0) * csch(a0) * a0'
+                outValue.coth(a0);
+                tmpVal.csch(a0);
+                outValue.multiply(outValue, tmpVal);
+                outValue.multiply(CalculatedValue.MINUS_ONE, outValue);
+                return outValue.multiply(outValue, a0derVal);
+            case SECH: // -1.0 * tanh(a0) * sech(a0) * a0'
+                outValue.tanh(a0);
+                tmpVal.sech(a0);
+                outValue.multiply(outValue, tmpVal);
+                outValue.multiply(CalculatedValue.MINUS_ONE, outValue);
+                return outValue.multiply(outValue, a0derVal);
+            case COTH: // (-1.0 / (sinh(a0) * sinh(a0))) * a0'
+                outValue.sinh(a0);
+                outValue.multiply(outValue, outValue);
+                outValue.divide(CalculatedValue.MINUS_ONE, outValue);
+                return outValue.multiply(outValue, a0derVal);
+
             case EXP: // exp(a0) * a0'
                 outValue.exp(a0);
                 return outValue.multiply(outValue, a0derVal);

@@ -224,6 +224,9 @@
     <string name="math_function_acsc">The arc cosecant of the argument</string>
     <string name="math_function_asec">The arc secant of the argument</string>
     <string name="math_function_acot">The arc cotangent of the argument</string>
+    <string name="math_function_csch">The hyperbolic cosecant of the argument</string>
+    <string name="math_function_sech">The hyperbolic secant of the argument</string>
+    <string name="math_function_coth">The hyperbolic cotangent of the argument</string>
     <string name="math_function_log">Logarithm of number to the specified base</string>
 
     <!-- Errors -->

@@ -223,6 +223,9 @@
     <string name="math_function_acsc">Arcus-Kosekansfunktion des Arguments</string>
     <string name="math_function_asec">Arcus-Sekansfunktion des Arguments</string>
     <string name="math_function_acot">Arcus-Kotangensfunktion des Arguments</string>
+    <string name="math_function_csch">Hyperbelkosekans des Arguments</string>
+    <string name="math_function_sech">Hyperbelsekans des Arguments</string>
+    <string name="math_function_coth">Hyperbelkotangens des Arguments</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Der Grenzwert für die Layouttiefe für diese Android Version ist erreicht</string>
