@@ -194,7 +194,7 @@
       <term key="rightTerm" text="0.0" />
     </result>
     <text_fragment textStyle="subsubsection" numbering="true">
-      <term key="text" text="Functions" />
+      <term key="text" text="Common functions" />
     </text_fragment>
     <text_fragment>
       <term key="text" text='Raise to power ("^")' />
@@ -304,8 +304,11 @@
       </term>
       <term key="rightTerm" text="5.0" />
     </result>
-    <text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Trigonometric functions" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Sine, cosine, tangent" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="sin">
@@ -316,20 +319,47 @@
       </term>
       <term key="rightTerm" text="1.0" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="cos">
         <term key="argTerm" text="π" />
       </term>
       <term key="rightTerm" text="-1.0" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="tan">
         <term key="argTerm" text="0" />
       </term>
       <term key="rightTerm" text="0.0" />
     </result>
     <text_fragment>
-      <term key="text" text="Inverse trigonometric functions" />
+      <term key="text" text="Cosecant, secant, cotangent" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="csc">
+        <term key="argTerm" code="divide_slash">
+          <term key="leftTerm" text="π" />
+          <term key="rightTerm" text="2" />
+        </term>
+      </term>
+      <term key="rightTerm" text="1.0" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sec">
+        <term key="argTerm" text="-π" />
+      </term>
+      <term key="rightTerm" text="-1.0" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="cot">
+        <term key="argTerm" code="divide_slash">
+          <term key="leftTerm" text="π" />
+          <term key="rightTerm" text="4" />
+        </term>
+      </term>
+      <term key="rightTerm" text="1.0" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Inverse sine, cosine, tangent" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="asin">
@@ -350,6 +380,27 @@
       <term key="rightTerm" text="0.0" />
     </result>
     <text_fragment>
+      <term key="text" text="Inverse cosecant, secant, cotangent" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="acsc">
+        <term key="argTerm" text="1" />
+      </term>
+      <term key="rightTerm" text="1.5708" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="asec">
+        <term key="argTerm" text="-1" />
+      </term>
+      <term key="rightTerm" text="3.14159" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="acot">
+        <term key="argTerm" text="1" />
+      </term>
+      <term key="rightTerm" text="0.785398" />
+    </result>
+    <text_fragment>
       <term key="text" text="The arc tangent of y/x within the range&#10;[-pi..pi]" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
@@ -359,27 +410,9 @@
       </term>
       <term key="rightTerm" text="0.197396" />
     </result>
-    <text_fragment>
-      <term key="text" text="Hyperbolic functions" />
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Hyperbolic functions and logarithms" />
     </text_fragment>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="sinh">
-        <term key="argTerm" text="0" />
-      </term>
-      <term key="rightTerm" text="0.0" />
-    </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="cosh">
-        <term key="argTerm" text="0" />
-      </term>
-      <term key="rightTerm" text="1.0" />
-    </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="tanh">
-        <term key="argTerm" text="0" />
-      </term>
-      <term key="rightTerm" text="0.0" />
-    </result>
     <text_fragment>
       <term key="text" text="The raising 'e' to the power of the argument" />
     </text_fragment>
@@ -409,6 +442,16 @@
       <term key="rightTerm" text="5.0" />
     </result>
     <text_fragment>
+      <term key="text" text="Logarithm of number to the specified base" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="log">
+        <term key="argTerm1" text="256" />
+        <term key="argTerm2" text="2" />
+      </term>
+      <term key="rightTerm" text="8.0" />
+    </result>
+    <text_fragment>
       <term key="text" text="The base 10 logarithm of the argument" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
@@ -419,6 +462,127 @@
         </term>
       </term>
       <term key="rightTerm" text="5.0" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Hyperbolic sine, cosine, tangent" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sinh">
+        <term key="argTerm" text="0" />
+      </term>
+      <term key="rightTerm" text="0.0" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="cosh">
+        <term key="argTerm" text="0" />
+      </term>
+      <term key="rightTerm" text="1.0" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="tanh">
+        <term key="argTerm" text="0" />
+      </term>
+      <term key="rightTerm" text="0.0" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Hyperbolic cosecant, secant, cotangent" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="csch">
+        <term key="argTerm" text="1" />
+      </term>
+      <term key="rightTerm" text="0.850918" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sech">
+        <term key="argTerm" text="0" />
+      </term>
+      <term key="rightTerm" text="1.0" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="coth">
+        <term key="argTerm" text="1" />
+      </term>
+      <term key="rightTerm" text="1.31304" />
+    </result>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Functions for real numbers" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="The most positive (closest to positive&#10;infinity) of the two arguments" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="max">
+        <term key="argTerm1" text="1" />
+        <term key="argTerm2" text="2" />
+      </term>
+      <term key="rightTerm" text="2.0" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="max">
+        <term key="argTerm1" text="2" />
+        <term key="argTerm2" text="1" />
+      </term>
+      <term key="rightTerm" text="2.0" />
+    </result>
+    <text_fragment>
+      <term key="text" text="The most negative (closest to negative&#10;infinity) of the two arguments" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="min">
+        <term key="argTerm1" text="1" />
+        <term key="argTerm2" text="2" />
+      </term>
+      <term key="rightTerm" text="1.0" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="min">
+        <term key="argTerm1" text="2" />
+        <term key="argTerm2" text="1" />
+      </term>
+      <term key="rightTerm" text="1.0" />
+    </result>
+    <text_fragment>
+      <term key="text" text="The remainder on dividing the first argument&#10;by the second" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="mod">
+        <term key="argTerm1" text="11" />
+        <term key="argTerm2" text="2" />
+      </term>
+      <term key="rightTerm" text="1.0" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="mod">
+        <term key="argTerm1" text="e" />
+        <term key="argTerm2" text="2" />
+      </term>
+      <term key="rightTerm" text="0.718282" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Calculates percentage (for example, 5% of 20)" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="perc">
+        <term key="argTerm1" text="20" />
+        <term key="argTerm2" text="5" />
+      </term>
+      <term key="rightTerm" text="1.0" />
+    </result>
+    <text_fragment>
+      <term key="text" text="The pseudo-random value between zero and the&#10;argument" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="random">
+        <term key="argTerm" text="1" />
+      </term>
+      <term key="rightTerm" text="0.202562" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="random">
+        <term key="argTerm" text="10" />
+      </term>
+      <term key="rightTerm" text="4.6316" />
     </result>
     <text_fragment>
       <term key="text" text="The most negative (closest to negative&#10;infinity) integer value greater than or&#10;equal to the argument" />
@@ -475,53 +639,23 @@
       <term key="rightTerm" text="2.0" />
     </result>
     <text_fragment>
-      <term key="text" text="The pseudo-random value between zero and the&#10;argument" />
+      <term key="text" text="Rounds the real number x to n places" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="random">
-        <term key="argTerm" text="1" />
-      </term>
-      <term key="rightTerm" text="0.105525" />
-    </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="random">
-        <term key="argTerm" text="10" />
-      </term>
-      <term key="rightTerm" text="2.59282" />
-    </result>
-    <text_fragment>
-      <term key="text" text="The most positive (closest to positive&#10;infinity) of the two arguments" />
-    </text_fragment>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="max">
-        <term key="argTerm1" text="1" />
+      <term key="leftTerm" code="round">
+        <term key="argTerm1" text="π" />
         <term key="argTerm2" text="2" />
       </term>
-      <term key="rightTerm" text="2.0" />
-    </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="max">
-        <term key="argTerm1" text="2" />
-        <term key="argTerm2" text="1" />
-      </term>
-      <term key="rightTerm" text="2.0" />
+      <term key="rightTerm" text="3.14" />
     </result>
     <text_fragment>
-      <term key="text" text="The most negative (closest to negative&#10;infinity) of the two arguments" />
+      <term key="text" text="Returns the integer part of a real number by&#10;removing the fractional part" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="min">
-        <term key="argTerm1" text="1" />
-        <term key="argTerm2" text="2" />
+      <term key="leftTerm" code="trunc">
+        <term key="argTerm" text="π" />
       </term>
-      <term key="rightTerm" text="1.0" />
-    </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="min">
-        <term key="argTerm1" text="2" />
-        <term key="argTerm2" text="1" />
-      </term>
-      <term key="rightTerm" text="1.0" />
+      <term key="rightTerm" text="3.0" />
     </result>
     <text_fragment>
       <term key="text" text="Compute the signum of a number: -1 for&#10;negative numbers, +1 for positive numbers&#10;and 0 otherwise:" />
@@ -669,7 +803,7 @@
       <term key="rightTerm" text="5.0" />
     </result>
     <text_fragment textStyle="subsubsection" numbering="true">
-      <term key="text" text="IF-functions and logical operators" />
+      <term key="text" text="IF-function and logical operators" />
     </text_fragment>
     <text_fragment>
       <term key="text" text="Select a term to be used depending on&#10;comparison result for two expressions" />
