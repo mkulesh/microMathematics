@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/badge/license-GNU_GPLv3-orange.svg)](https://github.com/mkulesh/microMathematics/blob/master/LICENSE) [![Build Status](https://travis-ci.org/mkulesh/microMathematics.svg?branch=master)](https://travis-ci.org/mkulesh/microMathematics) [![Download unsigned APK from latest autobuild](https://img.shields.io/badge/APK-autobuild-blue.svg)](https://github.com/mkulesh/microMathematics/raw/autobuild/autobuild/microMathematics-v2.16.1.apk)
+[![License](https://img.shields.io/badge/license-GNU_GPLv3-orange.svg)](https://github.com/mkulesh/microMathematics/blob/master/LICENSE) [![Build Status](https://travis-ci.org/mkulesh/microMathematics.svg?branch=master)](https://travis-ci.org/mkulesh/microMathematics) [![Download unsigned APK from latest autobuild](https://img.shields.io/badge/APK-autobuild-blue.svg)](https://github.com/mkulesh/microMathematics/raw/autobuild/autobuild/microMathematics-v2.16.2.apk)
 
 # <img src="https://github.com/mkulesh/microMathematics/blob/master/images/icon.png" align="center" height="48" width="48"> "microMathematics Plus - Extended visual calculator"
 
@@ -40,7 +40,7 @@ For more screenshots, see directory images/screenshots.
 
 ## Documentation
 * [Functions Overview](http://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/functions_overview.html)
-* [The latest PDF version of the User Manual](https://github.com/mkulesh/microMathematics/releases/download/v2.16.1/microMathematics-v2.16.1.pdf)
+* [The latest PDF version of the User Manual](https://github.com/mkulesh/microMathematics/releases/download/v2.16.2/microMathematics-v2.16.2.pdf)
 
 ## Reviews and publications:
 
