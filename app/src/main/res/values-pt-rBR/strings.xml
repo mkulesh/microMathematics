@@ -36,7 +36,7 @@
         <item>asset:/doc_br/three_d_plot_br.xml</item>
         <item>asset:/doc_br/series_and_integrals_br.xml</item>
         <item>asset:/doc_br/about_micromath_br.xml</item>
-        <item>https://github.com/mkulesh/microMathematics/releases/download/v2.16.1/microMathematics-v2.16.1-br.pdf</item>
+        <item>https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.16.1-br.pdf</item>
     </string-array>
     <string name="activity_example">Exemplo</string>
     <string name="activity_welcome">asset:/doc_br/welcome.xml</string>
