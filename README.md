@@ -1,4 +1,4 @@
-This branch contains relased PDF documentation that can be downloaded from microMathematics app.
+This branch contains released PDF documentation that can be downloaded from microMathematics app.
 
 ## License
 
