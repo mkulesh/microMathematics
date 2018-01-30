@@ -40,7 +40,7 @@ For more screenshots, see directory images/screenshots.
 
 ## Documentation
 * [Functions Overview](http://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/functions_overview.html)
-* [The latest PDF version of the User Manual](http://nbviewer.jupyter.org/github/mkulesh/microMathematics/blob/supplement/doc/microMathematics-v2.16.1.pdf)
+* [The latest PDF version of the User Manual](https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.16.1.pdf)
 
 ## Reviews and publications:
 
