@@ -34,7 +34,7 @@
     <dimen name="formula_text_size">@dimen/abc_text_size_display_1_material</dimen>
     <dimen name="formula_text_minwidth">25dp</dimen>
     <dimen name="formula_hor_text_padding">3dp</dimen>
-    <dimen name="formula_big_symbol_size">@dimen/abc_text_size_display_3_material</dimen>
+    <dimen name="formula_big_symbol_size">52sp</dimen>
     <dimen name="formula_small_symbol_size">18dp</dimen>
     <dimen name="formula_hor_symbol_padding">4dp</dimen>
     <dimen name="formula_hor_bracket_padding">0dp</dimen>
