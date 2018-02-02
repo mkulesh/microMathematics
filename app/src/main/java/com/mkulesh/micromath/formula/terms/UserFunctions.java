@@ -29,8 +29,10 @@ import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.Equation;
 import com.mkulesh.micromath.formula.FormulaBase;
+import com.mkulesh.micromath.formula.FormulaTerm;
 import com.mkulesh.micromath.formula.LinkHolder;
 import com.mkulesh.micromath.formula.Palette;
+import com.mkulesh.micromath.formula.PaletteButton;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
@@ -52,13 +54,14 @@ public class UserFunctions extends FunctionBase
     /**
      * Supported functions
      */
-    public enum FunctionType implements TermTypeIf
+    public enum FunctionType implements UserFunctionIf
     {
-        IDENTITY(1, R.drawable.p_function_identity, R.string.math_function_identity),
+        IDENTITY(1, R.drawable.p_function_identity, R.string.math_function_identity,
+                R.string.formula_function_start_bracket, null),
         FUNCTION_INDEX(-1, R.drawable.p_function_index, R.string.math_function_index,
                 R.string.formula_function_start_index, "content:com.mkulesh.micromath.index"),
         FUNCTION_LINK(-1, Palette.NO_BUTTON, Palette.NO_BUTTON,
-                Palette.NO_BUTTON, "content:com.mkulesh.micromath.link");
+                R.string.formula_function_start_bracket, "content:com.mkulesh.micromath.link");
 
         private final int argNumber;
         private final int imageId;
@@ -66,11 +69,6 @@ public class UserFunctions extends FunctionBase
         private final int shortCutId;
         private final String linkObject;
         private final String lowerCaseName;
-
-        FunctionType(int argNumber, int imageId, int descriptionId)
-        {
-            this(argNumber, imageId, descriptionId, Palette.NO_BUTTON, null);
-        }
 
         FunctionType(int argNumber, int imageId, int descriptionId, int shortCutId, String linkObject)
         {
@@ -121,6 +119,27 @@ public class UserFunctions extends FunctionBase
         {
             return lowerCaseName;
         }
+
+        public int getBracketId()
+        {
+            return R.string.formula_function_start_bracket;
+        }
+
+        public boolean isEnabled(CustomEditText field)
+        {
+            return true;
+        }
+
+        public PaletteButton.Category getPaletteCategory()
+        {
+            return PaletteButton.Category.CONVERSION;
+        }
+
+        public FormulaTerm createTerm(
+                TermField termField, LinearLayout layout, String s, int textIndex) throws Exception
+        {
+            return new UserFunctions(this, termField, layout, s, textIndex);
+        }
     }
 
     /**
@@ -142,12 +161,7 @@ public class UserFunctions extends FunctionBase
 
         public int getCodeId()
         {
-            return functionType != null? functionType.getShortCutId() : R.string.formula_function_start_bracket;
-        }
-
-        public FunctionType getFunctionType()
-        {
-            return functionType;
+            return functionType != null ? functionType.getShortCutId() : R.string.formula_function_start_bracket;
         }
 
         public boolean isBeforeText()
@@ -157,74 +171,6 @@ public class UserFunctions extends FunctionBase
     }
 
     public static final String FUNCTION_ARGS_MARKER = ":";
-
-    public static FunctionType getFunctionType(Context context, String s)
-    {
-        String fName = null;
-        final Resources res = context.getResources();
-
-        // cat the function name
-        int bracketId = ViewUtils.INVALID_INDEX;
-        for (int id : BracketParser.START_BRACKET_IDS)
-        {
-            final String startBracket = res.getString(id);
-            if (s.contains(startBracket))
-            {
-                fName = s.substring(0, s.indexOf(startBracket)).trim();
-                bracketId = id;
-                break;
-            }
-        }
-
-        // search the function name in the types array
-        for (FunctionType f : FunctionType.values())
-        {
-            if (f.isLink() && s.contains(f.getLinkObject()))
-            {
-                return f;
-            }
-            if (s.equals(f.getLowerCaseName()))
-            {
-                return f;
-            }
-            if (fName != null && fName.equals(f.getLowerCaseName()))
-            {
-                return f;
-            }
-        }
-
-        // special case (just brackets)
-        if (fName != null && fName.length() == 0 && bracketId != ViewUtils.INVALID_INDEX)
-        {
-            if (bracketId == BracketParser.START_BRACKET_IDS[BracketParser.FUNCTION_BRACKETS])
-            {
-                // an identity function (just brackets) is a special case of a function
-                return FunctionType.IDENTITY;
-            }
-            else
-            {
-                // index only valid if fName not empty
-                return null;
-            }
-        }
-
-        // if function is not yet found, check the trigger
-        for (Trigger t : Trigger.values())
-        {
-            if (t.getFunctionType() != null && s.contains(res.getString(t.getCodeId())))
-            {
-                return t.getFunctionType();
-            }
-        }
-
-        // default case: function link
-        if (fName != null)
-        {
-            return FunctionType.FUNCTION_LINK;
-        }
-
-        return null;
-    }
 
     public static String getFunctionString(FunctionType t)
     {
@@ -244,14 +190,10 @@ public class UserFunctions extends FunctionBase
      * Constructors
      *********************************************************/
 
-    public UserFunctions(TermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    private UserFunctions(FunctionType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
-        termType = (type instanceof FunctionType)? (FunctionType) type : null;
-        if (termType == null)
-        {
-            throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");
-        }
+        termType = type;
         onCreate(s, idx);
     }
 

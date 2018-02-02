@@ -19,6 +19,13 @@
 
 package com.mkulesh.micromath.formula.terms;
 
+import android.widget.LinearLayout;
+
+import com.mkulesh.micromath.formula.FormulaTerm;
+import com.mkulesh.micromath.formula.PaletteButton;
+import com.mkulesh.micromath.formula.TermField;
+import com.mkulesh.micromath.widgets.CustomEditText;
+
 public interface TermTypeIf
 {
     enum GroupType
@@ -74,4 +81,16 @@ public interface TermTypeIf
 
     /* Returns resource ID of the string short-cut */
     int getShortCutId();
+
+    /* Returns bracket IDs related to this term or Palette.NO_BUTTON if no brackets are associated */
+    int getBracketId();
+
+    /* Checks whether this term is allowed for given edit field  */
+    boolean isEnabled(CustomEditText field);
+
+    /* Returns the palette category for this term  */
+    PaletteButton.Category getPaletteCategory();
+
+    /* Creates and returns associated view for this term  */
+    FormulaTerm createTerm(TermField termField, LinearLayout layout, String s, int textIndex) throws Exception;
 }

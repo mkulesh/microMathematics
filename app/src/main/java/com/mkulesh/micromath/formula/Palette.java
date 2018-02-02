@@ -30,6 +30,7 @@ import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.dialogs.DialogPaletteSettings;
 import com.mkulesh.micromath.formula.PaletteButton.Category;
+import com.mkulesh.micromath.formula.terms.TermFactory;
 import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.formula.terms.UserFunctions;
 import com.mkulesh.micromath.plus.R;
@@ -85,7 +86,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         {
             visibleGroups.add(FormulaBase.class.getSimpleName());
         }
-        for (TermTypeIf.GroupType g : FormulaTerm.collectPaletteGroups())
+        for (TermTypeIf.GroupType g : TermFactory.collectPaletteGroups())
         {
             if ((visibleGroupsStr.isEmpty() && g.isShowByDefault()) || visibleGroupsStr.contains(g.toString()))
             {
@@ -110,9 +111,9 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
 
         // Add elements
         FormulaBase.addToPalette(context, termButtons);
-        for (TermTypeIf.GroupType g : FormulaTerm.collectPaletteGroups())
+        for (TermTypeIf.GroupType g : TermFactory.collectPaletteGroups())
         {
-            FormulaTerm.addToPalette(context, termButtons, false, g);
+            TermFactory.addToPalette(context, termButtons, false, g);
         }
 
         // prepare all buttons
@@ -265,7 +266,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         }
 
         final String termSep = context.getResources().getString(R.string.formula_term_separator);
-        final TermTypeIf term = FormulaTerm.getTermTypeIf(context, null, s, /*ensureManualTrigger=*/ true);
+        final TermTypeIf term = TermFactory.findTerm(context, null, s, /*ensureManualTrigger=*/ true);
         final String code = (termSep.equals(s)) ? FormulaBase.BaseType.TERM.toString() :
                 ((term != null) ? term.getLowerCaseName() : null);
         if (code == null)

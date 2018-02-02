@@ -38,6 +38,7 @@ import com.mkulesh.micromath.BaseFragment;
 import com.mkulesh.micromath.MainActivity;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.StoredFormula.StoredTerm;
+import com.mkulesh.micromath.formula.terms.TermFactory;
 import com.mkulesh.micromath.plots.ImageFragment;
 import com.mkulesh.micromath.plots.PlotContour;
 import com.mkulesh.micromath.plots.PlotFunction;
@@ -141,13 +142,15 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         this.fragment = fragment;
         this.activity = (AppCompatActivity) fragment.getActivity();
 
-        formulaScrollView = (TwoDScrollView) rootView.findViewById(R.id.main_scroll_view);
+        TermFactory.prepare();
+
+        formulaScrollView = rootView.findViewById(R.id.main_scroll_view);
         formulaScrollView.setScaleListener(activity, this);
         formulaScrollView.setSaveEnabled(false);
         formulaScrollView.setScaleDetectorActive(true);
         formulaListView = new FormulaListView(fragment.getActivity(), formulaScrollView.getMainLayout());
 
-        LinearLayout paletteView = (LinearLayout) rootView.findViewById(R.id.main_palette_view);
+        LinearLayout paletteView = rootView.findViewById(R.id.main_palette_view);
         palette = new Palette(getContext(), paletteView, this);
         updatePalette();
 

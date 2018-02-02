@@ -26,6 +26,8 @@ import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.Equation;
 import com.mkulesh.micromath.formula.FormulaTerm;
+import com.mkulesh.micromath.formula.Palette;
+import com.mkulesh.micromath.formula.PaletteButton;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
@@ -91,6 +93,27 @@ public class Intervals extends FormulaTerm
         {
             return lowerCaseName;
         }
+
+        public int getBracketId()
+        {
+            return Palette.NO_BUTTON;
+        }
+
+        public boolean isEnabled(CustomEditText field)
+        {
+            return field.isIntervalEnabled();
+        }
+
+        public PaletteButton.Category getPaletteCategory()
+        {
+            return PaletteButton.Category.TOP_LEVEL_TERM;
+        }
+
+        public FormulaTerm createTerm(
+                TermField termField, LinearLayout layout, String s, int textIndex) throws Exception
+        {
+            return new Intervals(this, termField, layout, s, textIndex);
+        }
     }
 
     /**
@@ -106,14 +129,10 @@ public class Intervals extends FormulaTerm
      * Constructors
      *********************************************************/
 
-    public Intervals(TermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    private Intervals(IntervalType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
-        termType = (type instanceof IntervalType)? (IntervalType) type : null;
-        if (termType == null)
-        {
-            throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");
-        }
+        termType = type;
         inflateElements(R.layout.formula_interval, true);
         initializeElements(idx);
         if (minValueTerm == null || nextValueTerm == null || maxValueTerm == null)

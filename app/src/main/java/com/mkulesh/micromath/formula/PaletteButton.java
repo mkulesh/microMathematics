@@ -62,6 +62,8 @@ public class PaletteButton extends AppCompatImageButton
     {
         this(context, b.getGroupType().toString(), b.getLowerCaseName(),
                 b.getImageId(), b.getDescriptionId(), b.getShortCutId());
+        this.categories = new Category[1];
+        this.categories[0] = b.getPaletteCategory();
     }
 
     public PaletteButton(Context context, String group, String code, int imageId, int descriptionId, int shortCutId)

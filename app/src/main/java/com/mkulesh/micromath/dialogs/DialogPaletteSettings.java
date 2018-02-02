@@ -26,8 +26,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.formula.FormulaBase;
-import com.mkulesh.micromath.formula.FormulaTerm;
 import com.mkulesh.micromath.formula.PaletteButton;
+import com.mkulesh.micromath.formula.terms.TermFactory;
 import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.PaletteSettingsChangeIf;
@@ -46,7 +46,7 @@ public class DialogPaletteSettings extends DialogBase implements View.OnLongClic
     {
         super(context, R.layout.dialog_palette_settings, R.string.dialog_palette_settings_title);
         this.changeIf = changeIf;
-        this.groups = FormulaTerm.collectPaletteGroups();
+        this.groups = TermFactory.collectPaletteGroups();
 
         final LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         paletteView = getRootLayout().findViewById(R.id.dialog_palette_view);
@@ -72,7 +72,7 @@ public class DialogPaletteSettings extends DialogBase implements View.OnLongClic
             final LinearLayout itemLayout = (LinearLayout) paletteView.getChildAt(paletteView.getChildCount() - 1);
             final LinearLayout buttonLayout = itemLayout.findViewById(R.id.dialog_palette_settings_buttons);
             final List<PaletteButton> termButtons = new ArrayList<>();
-            FormulaTerm.addToPalette(context, termButtons, true, g);
+            TermFactory.addToPalette(context, termButtons, true, g);
             for (PaletteButton b : termButtons)
             {
                 buttonLayout.addView(b);

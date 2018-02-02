@@ -25,6 +25,8 @@ import android.widget.LinearLayout;
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.FormulaTerm;
+import com.mkulesh.micromath.formula.Palette;
+import com.mkulesh.micromath.formula.PaletteButton;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TermField.BracketsType;
 import com.mkulesh.micromath.math.CalculatedValue;
@@ -92,6 +94,27 @@ public class Operators extends FormulaTerm
         {
             return lowerCaseName;
         }
+
+        public int getBracketId()
+        {
+            return Palette.NO_BUTTON;
+        }
+
+        public boolean isEnabled(CustomEditText field)
+        {
+            return true;
+        }
+
+        public PaletteButton.Category getPaletteCategory()
+        {
+            return PaletteButton.Category.CONVERSION;
+        }
+
+        public FormulaTerm createTerm(
+                TermField termField, LinearLayout layout, String s, int textIndex) throws Exception
+        {
+            return new Operators(this, termField, layout, s, textIndex);
+        }
     }
 
     /**
@@ -108,14 +131,10 @@ public class Operators extends FormulaTerm
      * Constructors
      *********************************************************/
 
-    public Operators(TermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    private Operators(OperatorType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
-        termType = (type instanceof OperatorType)? (OperatorType) type : null;
-        if (termType == null)
-        {
-            throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");
-        }
+        termType = type;
         onCreate(s, idx, owner.bracketsType);
     }
 

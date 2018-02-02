@@ -30,8 +30,9 @@ import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.FormulaBase.FocusType;
 import com.mkulesh.micromath.formula.PaletteButton.Category;
 import com.mkulesh.micromath.formula.terms.Comparators;
-import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.formula.terms.Intervals;
+import com.mkulesh.micromath.formula.terms.TermFactory;
+import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.undo.FormulaState;
@@ -806,7 +807,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
      */
     protected FormulaTerm convertToTerm(String s, Parcelable p, boolean ensureManualTrigger)
     {
-        final TermTypeIf f = FormulaTerm.getTermTypeIf(getContext(), text, s, ensureManualTrigger);
+        final TermTypeIf f = TermFactory.findTerm(getContext(), text, s, ensureManualTrigger);
         term = null;
         if (f != null)
         {
@@ -819,7 +820,11 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
                     formulaRoot.getFormulaList().clearFocus();
                 }
                 layout.removeView(text);
-                term = FormulaTerm.createTerm(f, this, layout, s, textIndex);
+                if (textIndex < 0 || textIndex > layout.getChildCount())
+                {
+                    throw new Exception("cannot create " + f.toString() + " for invalid insertion index " + textIndex);
+                }
+                term = f.createTerm(this, layout, s, textIndex);
                 term.updateTextSize();
             }
             catch (Exception ex)
@@ -859,7 +864,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             }
         }
 
-        final TermTypeIf termType = FormulaTerm.getTermTypeIf(
+        final TermTypeIf termType = TermFactory.findTerm(
                 getContext(), null, code, /*ensureManualTrigger=*/ false);
         if (termType == null)
         {
@@ -871,7 +876,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         // comparator change
         if (isTerm() && getTerm() instanceof Comparators && termType instanceof Comparators.ComparatorType)
         {
-            final Comparators.ComparatorType t2 = (Comparators.ComparatorType)termType;
+            final Comparators.ComparatorType t2 = (Comparators.ComparatorType) termType;
             if (((Comparators) getTerm()).changeComparatorType(t2))
             {
                 return;
@@ -886,7 +891,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             writeToBundle(savedState, "savedState");
             clear();
         }
-        String newValue = FormulaTerm.createOperatorCode(getContext(), code, getText());
+        String newValue = TermFactory.createOperatorCode(getContext(), code, getText());
         if (newValue != null)
         {
             onTextChanged(newValue, false);

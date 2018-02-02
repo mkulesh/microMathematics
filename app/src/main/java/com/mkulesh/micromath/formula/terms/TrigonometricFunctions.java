@@ -25,10 +25,13 @@ import android.widget.LinearLayout;
 import com.mkulesh.micromath.formula.CalculatableIf;
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
+import com.mkulesh.micromath.formula.FormulaTerm;
 import com.mkulesh.micromath.formula.Palette;
+import com.mkulesh.micromath.formula.PaletteButton;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.widgets.CustomEditText;
 
 import org.apache.commons.math3.util.FastMath;
 
@@ -102,6 +105,27 @@ public class TrigonometricFunctions extends FunctionBase
         {
             return lowerCaseName;
         }
+
+        public int getBracketId()
+        {
+            return R.string.formula_function_start_bracket;
+        }
+
+        public boolean isEnabled(CustomEditText field)
+        {
+            return true;
+        }
+
+        public PaletteButton.Category getPaletteCategory()
+        {
+            return PaletteButton.Category.CONVERSION;
+        }
+
+        public FormulaTerm createTerm(
+                TermField termField, LinearLayout layout, String s, int textIndex) throws Exception
+        {
+            return new TrigonometricFunctions(this, termField, layout, s, textIndex);
+        }
     }
 
     /**
@@ -114,14 +138,10 @@ public class TrigonometricFunctions extends FunctionBase
      * Constructors
      *********************************************************/
 
-    public TrigonometricFunctions(TermTypeIf type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    private TrigonometricFunctions(FunctionType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
-        termType = (type instanceof FunctionType) ? (FunctionType) type : null;
-        if (termType == null)
-        {
-            throw new Exception("cannot create " + getGroupType().toString() + " for unknown type");
-        }
+        termType = type;
         createGeneralFunction(R.layout.formula_function_named, s, getFunctionType().getArgNumber(), idx);
     }
 
@@ -213,7 +233,7 @@ public class TrigonometricFunctions extends FunctionBase
             case ACOT:
             {
                 outValue.atan(a0);
-                tmpVal.setValue(FastMath.PI/2.0f);
+                tmpVal.setValue(FastMath.PI / 2.0f);
                 return outValue.subtract(tmpVal, outValue);
             }
             }
