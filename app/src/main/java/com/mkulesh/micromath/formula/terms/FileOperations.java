@@ -134,7 +134,6 @@ public class FileOperations extends FunctionBase
         super(owner, layout);
         termType = type;
         createGeneralFunction(R.layout.formula_file_operation, s, 1, idx);
-        fileName = terms.get(0);
         if (fileName == null)
         {
             throw new Exception("cannot initialize function terms");
@@ -235,15 +234,18 @@ public class FileOperations extends FunctionBase
         {
         case VALIDATE_SINGLE_FORMULA:
             fileBuffer.clear();
-            final InputStream fileStream = openFileStream(fileName.getText());
-            if (fileStream == null)
+            if (fileName != null)
             {
-                errorMsg = String.format(getContext().getResources().getString(R.string.error_file_read),
-                        fileName.getText());
-            }
-            else
-            {
-                FileUtils.closeStream(fileStream);
+                final InputStream fileStream = openFileStream(fileName.getText());
+                if (fileStream == null)
+                {
+                    errorMsg = String.format(getContext().getResources().getString(R.string.error_file_read),
+                            fileName.getText());
+                }
+                else
+                {
+                    FileUtils.closeStream(fileStream);
+                }
             }
             break;
         case VALIDATE_LINKS:
@@ -256,6 +258,21 @@ public class FileOperations extends FunctionBase
         }
 
         return errorMsg == null;
+    }
+
+    @Override
+    protected CustomEditText initializeTerm(CustomEditText v, LinearLayout l)
+    {
+        if (v.getText() != null)
+        {
+            final String val = v.getText().toString();
+            if (val.equals(getContext().getResources().getString(R.string.formula_arg_term_key)))
+            {
+                fileName = addTerm(getFormulaRoot(), l, -1, v, this, 0);
+                fileName.bracketsType = TermField.BracketsType.NEVER;
+            }
+        }
+        return v;
     }
 
     /*********************************************************

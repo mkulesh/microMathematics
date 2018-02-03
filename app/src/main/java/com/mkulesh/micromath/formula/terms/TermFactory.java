@@ -23,7 +23,6 @@ import android.content.res.Resources;
 
 import com.mkulesh.micromath.formula.Palette;
 import com.mkulesh.micromath.formula.PaletteButton;
-import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
@@ -61,87 +60,6 @@ public class TermFactory
         allTerms.addAll(Arrays.asList(SeriesIntegrals.LoopType.values()));
 
         ViewUtils.Debug(allTerms, "There are " + allTerms.size() + " terms");
-    }
-
-    public static String createOperatorCode(Context context, String code, String prevText)
-    {
-        String newValue = null;
-        final TermTypeIf f = findTerm(context, null, code, false);
-        if (f != null)
-        {
-            switch (f.getGroupType())
-            {
-            case OPERATORS:
-                // for an operator, we add operator code to the end of line in order to move
-                // existing text in the first term
-                newValue = context.getResources().getString(f.getShortCutId());
-                if (prevText != null)
-                {
-                    newValue = prevText + newValue;
-                }
-                break;
-            case COMPARATORS:
-                // for a comparator, we add operator code to the end of line in order to move
-                // existing text in the first term
-                newValue = context.getResources().getString(f.getShortCutId());
-                if (prevText != null)
-                {
-                    newValue = prevText + newValue;
-                }
-                break;
-            case FILE_OPERATIONS:
-                // for the file operation, we do not transfer previous text
-                newValue = f.getLowerCaseName() +
-                        context.getResources().getString(R.string.formula_function_start_bracket);
-                break;
-            case COMMON_FUNCTIONS:
-            case TRIGONOMETRIC_FUNCTIONS:
-            case LOG_FUNCTIONS:
-            case NUMBER_FUNCTIONS:
-                // for a function, we add operator code at the beginning of line in order to move
-                // existing text in the function argument term
-                newValue = f.getLowerCaseName();
-                if (prevText != null)
-                {
-                    newValue += context.getResources().getString(R.string.formula_function_start_bracket);
-                    newValue += prevText;
-                }
-                break;
-            case USER_FUNCTIONS:
-                // for a function, we add operator code at the beginning of line in order to move
-                // existing text in the function argument term
-                final UserFunctions.FunctionType t1 = (UserFunctions.FunctionType) f;
-                newValue = (t1 == UserFunctions.FunctionType.FUNCTION_LINK) ? code : f.getLowerCaseName();
-                if (prevText != null)
-                {
-                    if (t1 != UserFunctions.FunctionType.FUNCTION_LINK)
-                    {
-                        newValue += context.getResources().getString(R.string.formula_function_start_bracket);
-                    }
-                    newValue += prevText;
-                }
-                break;
-            case INTERVALS:
-                // for an interval, we add operator code at the beginning of line in order to move
-                // existing text in the function argument term
-                newValue = context.getResources().getString(f.getShortCutId());
-                if (prevText != null)
-                {
-                    newValue += prevText;
-                }
-                break;
-            case SERIES_INTEGRALS:
-                // for a loop, we add operator code at the beginning of line in order to move
-                // existing text in the function argument term
-                newValue = context.getResources().getString(f.getShortCutId());
-                if (prevText != null)
-                {
-                    newValue += prevText;
-                }
-                break;
-            }
-        }
-        return newValue;
     }
 
     /*********************************************************
@@ -192,16 +110,9 @@ public class TermFactory
                 final String operator = res.getString(f.getBracketId());
                 if (s.contains(operator))
                 {
-                    final int position = s.indexOf(operator);
-                    final String fName = s.substring(0, position).trim();
-                    final String fArg = s.substring(position + operator.length(), s.length()).trim();
+                    final String fName = s.substring(0, s.indexOf(operator)).trim();
                     if (fName.equals(f.getLowerCaseName()))
                     {
-                        if (uf != null && f == UserFunctions.FunctionType.FUNCTION_INDEX && fArg.length() == 0)
-                        {
-                            // for a link object, we need a valid argument
-                            return null;
-                        }
                         return f;
                     }
                 }
@@ -225,8 +136,7 @@ public class TermFactory
                 final String operator = res.getString(f.getShortCutId());
                 if (s.contains(operator))
                 {
-                    final int position = s.indexOf(operator);
-                    final String fName = s.substring(0, position).trim();
+                    final String fName = s.substring(0, s.indexOf(operator)).trim();
                     if (f == UserFunctions.FunctionType.IDENTITY && fName.length() > 0)
                     {
                         continue;

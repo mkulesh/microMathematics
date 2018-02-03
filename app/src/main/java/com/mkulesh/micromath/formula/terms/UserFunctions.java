@@ -142,34 +142,6 @@ public class UserFunctions extends FunctionBase
         }
     }
 
-    /**
-     * Some functions can be triggered from keyboard. This enumeration defines these triggers
-     */
-    private enum Trigger
-    {
-        GENERAL(null, true),
-        INDEX(FunctionType.FUNCTION_INDEX, true);
-
-        private final FunctionType functionType;
-        private final boolean isBeforeText;
-
-        Trigger(FunctionType functionType, boolean isBeforeText)
-        {
-            this.functionType = functionType;
-            this.isBeforeText = isBeforeText;
-        }
-
-        public int getCodeId()
-        {
-            return functionType != null ? functionType.getShortCutId() : R.string.formula_function_start_bracket;
-        }
-
-        public boolean isBeforeText()
-        {
-            return isBeforeText;
-        }
-    }
-
     public static final String FUNCTION_ARGS_MARKER = ":";
 
     public static String getFunctionString(FunctionType t)
@@ -582,7 +554,7 @@ public class UserFunctions extends FunctionBase
                     R.string.formula_function_start_bracket);
             if (functionLinkName == null)
             {
-                throw new Exception("cannot create UserFunction(FUNCTION_LINK) since function name is invalid");
+                throw new Exception("cannot create " + getFunctionType().toString() + " since function name is invalid");
             }
             inflateElements(R.layout.formula_function_named, true);
             argNumber = getArgNumber(s, functionLinkName);
@@ -592,12 +564,16 @@ public class UserFunctions extends FunctionBase
                     R.string.formula_function_start_index);
             if (functionLinkName == null)
             {
-                throw new Exception("cannot create UserFunction(INDEX) since function name is invalid");
+                throw new Exception("cannot create " + getFunctionType().toString() + " since function name is invalid");
             }
-            s = functionLinkName +
-                    getContext().getResources().getString(R.string.formula_function_start_index);
             inflateElements(R.layout.formula_function_index, true);
             argNumber = getArgNumber(s, functionLinkName);
+            s = BracketParser.removeBrackets(getContext(), s, BracketParser.ARRAY_BRACKETS);
+            s = BracketParser.removeBrackets(getContext(), s, BracketParser.FUNCTION_BRACKETS);
+            if (functionLinkName.equals(s))
+            {
+                s = "";
+            }
             break;
         case IDENTITY:
             inflateElements(R.layout.formula_function_noname, true);
@@ -626,41 +602,10 @@ public class UserFunctions extends FunctionBase
             throw new Exception("invalid size for argument list");
         }
 
-        // set texts for left and right parts (in editing mode only)
-        for (int brIdx = 0; brIdx < BracketParser.START_BRACKET_IDS.length; brIdx++)
+        final String arg = BracketParser.removeBrackets(getContext(), s, BracketParser.FUNCTION_BRACKETS);
+        if (splitIntoTerms(arg, termType))
         {
-            final String startBracket = getContext().getResources().getString(BracketParser.START_BRACKET_IDS[brIdx]);
-            final String endBracket = getContext().getResources().getString(BracketParser.END_BRACKET_IDS[brIdx]);
-            if (s.contains(startBracket) && s.endsWith(endBracket))
-            {
-                s = s.substring(0, s.indexOf(endBracket)).trim();
-            }
-        }
-        for (Trigger t : Trigger.values())
-        {
-            String opCode = getContext().getResources().getString(t.getCodeId());
-            final int opPosition = s.indexOf(opCode);
-            final TermField term = getArgumentTerm();
-            if (opPosition >= 0 && term != null)
-            {
-                try
-                {
-                    if (t.isBeforeText())
-                    {
-                        term.setText(s.subSequence(opPosition + opCode.length(), s.length()));
-                    }
-                    else
-                    {
-                        term.setText(s.subSequence(0, opPosition));
-                    }
-                    isContentValid(FormulaBase.ValidationPassType.VALIDATE_SINGLE_FORMULA);
-                }
-                catch (Exception ex)
-                {
-                    // nothing to do
-                }
-                break;
-            }
+            isContentValid(ValidationPassType.VALIDATE_SINGLE_FORMULA);
         }
     }
 

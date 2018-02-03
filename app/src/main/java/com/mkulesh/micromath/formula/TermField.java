@@ -33,6 +33,7 @@ import com.mkulesh.micromath.formula.terms.Comparators;
 import com.mkulesh.micromath.formula.terms.Intervals;
 import com.mkulesh.micromath.formula.terms.TermFactory;
 import com.mkulesh.micromath.formula.terms.TermTypeIf;
+import com.mkulesh.micromath.formula.terms.UserFunctions;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.undo.FormulaState;
@@ -808,6 +809,11 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     protected FormulaTerm convertToTerm(String s, Parcelable p, boolean ensureManualTrigger)
     {
         final TermTypeIf f = TermFactory.findTerm(getContext(), text, s, ensureManualTrigger);
+        return convertToTerm(f, s, p);
+    }
+
+    private FormulaTerm convertToTerm(final TermTypeIf f, String s, Parcelable p)
+    {
         term = null;
         if (f != null)
         {
@@ -883,6 +889,22 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             }
         }
 
+        final String prevText = getText();
+        String newText = prevText;
+        if (termType instanceof UserFunctions.FunctionType)
+        {
+            final UserFunctions.FunctionType t1 = (UserFunctions.FunctionType) termType;
+            newText = (t1 == UserFunctions.FunctionType.FUNCTION_LINK) ? code : t1.getLowerCaseName();
+            if (prevText != null)
+            {
+                if (t1 != UserFunctions.FunctionType.FUNCTION_LINK)
+                {
+                    newText += getContext().getResources().getString(R.string.formula_function_start_bracket);
+                }
+                newText += prevText;
+            }
+        }
+
         text.setRequestFocusEnabled(false);
         Bundle savedState = null;
         if (isTerm())
@@ -891,11 +913,8 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             writeToBundle(savedState, "savedState");
             clear();
         }
-        String newValue = TermFactory.createOperatorCode(getContext(), code, getText());
-        if (newValue != null)
-        {
-            onTextChanged(newValue, false);
-        }
+        convertToTerm(termType, newText, null);
+
         if (isTerm() && !term.getTerms().isEmpty() && savedState != null)
         {
             final TermField tf = term.getArgumentTerm();
