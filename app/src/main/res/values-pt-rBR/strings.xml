@@ -212,7 +212,7 @@
     <string name="math_function_min">O mais negativo (mais próximo ao infinito negativo) dos dois argumentos</string>
 
     <!-- TODO: to be translated -->
-    <string name="math_file_read">Import data from ASCII file</string>
+    <string name="math_function_read">Import data from ASCII file</string>
     <string name="math_function_mod">Returns the remainder on dividing the first argument by the second</string>
     <string name="math_function_perc">Calculates percentage</string>
     <string name="math_function_round">Rounds the real number x to n places</string>

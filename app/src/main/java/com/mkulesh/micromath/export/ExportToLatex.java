@@ -447,7 +447,7 @@ public class ExportToLatex
             case COMPARATORS:
                 writeTermComparator((Comparators) term);
                 break;
-            case FILE_OPERATIONS:
+            case ARRAY_FUNCTIONS:
             case TRIGONOMETRIC_FUNCTIONS:
             case LOG_FUNCTIONS:
             case NUMBER_FUNCTIONS:

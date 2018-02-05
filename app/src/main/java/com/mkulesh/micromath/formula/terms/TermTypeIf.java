@@ -32,7 +32,7 @@ public interface TermTypeIf
     {
         OPERATORS(10, true),
         COMPARATORS(90, true),
-        FILE_OPERATIONS(70, false),
+        ARRAY_FUNCTIONS(70, false),
         COMMON_FUNCTIONS(30, true),
         TRIGONOMETRIC_FUNCTIONS(40, false),
         LOG_FUNCTIONS(50, false),

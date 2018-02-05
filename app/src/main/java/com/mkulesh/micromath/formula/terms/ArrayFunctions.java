@@ -47,11 +47,11 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class FileOperations extends FunctionBase
+public class ArrayFunctions extends FunctionBase
 {
     public TermTypeIf.GroupType getGroupType()
     {
-        return TermTypeIf.GroupType.FILE_OPERATIONS;
+        return TermTypeIf.GroupType.ARRAY_FUNCTIONS;
     }
 
     /**
@@ -59,7 +59,7 @@ public class FileOperations extends FunctionBase
      */
     public enum FunctionType implements TermTypeIf
     {
-        READ(R.drawable.p_file_read, R.string.math_file_read);
+        READ(R.drawable.p_function_read, R.string.math_function_read);
 
         private final int imageId;
         private final int descriptionId;
@@ -74,7 +74,7 @@ public class FileOperations extends FunctionBase
 
         public GroupType getGroupType()
         {
-            return GroupType.FILE_OPERATIONS;
+            return GroupType.ARRAY_FUNCTIONS;
         }
 
         public int getShortCutId()
@@ -115,7 +115,7 @@ public class FileOperations extends FunctionBase
         public FormulaTerm createTerm(
                 TermField termField, LinearLayout layout, String s, int textIndex) throws Exception
         {
-            return new FileOperations(this, termField, layout, s, textIndex);
+            return new ArrayFunctions(this, termField, layout, s, textIndex);
         }
     }
 
@@ -129,7 +129,7 @@ public class FileOperations extends FunctionBase
      * Constructors
      *********************************************************/
 
-    private FileOperations(FunctionType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    private ArrayFunctions(FunctionType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
         super(owner, layout);
         termType = type;
@@ -144,12 +144,12 @@ public class FileOperations extends FunctionBase
      * GUI constructors to avoid lint warning
      *********************************************************/
 
-    public FileOperations(Context context)
+    public ArrayFunctions(Context context)
     {
         super();
     }
 
-    public FileOperations(Context context, AttributeSet attrs)
+    public ArrayFunctions(Context context, AttributeSet attrs)
     {
         super();
     }

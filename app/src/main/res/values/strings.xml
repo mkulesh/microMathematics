@@ -250,7 +250,7 @@
     <string name="math_function_factorial">The product of all positive integers less than or equal to the argument</string>
     <string name="math_function_max">The most positive (closest to positive infinity) of the two arguments</string>
     <string name="math_function_min">The most negative (closest to negative infinity) of the two arguments</string>
-    <string name="math_file_read">Import data from ASCII file</string>
+    <string name="math_function_read">Import data from ASCII file</string>
     <string name="math_function_mod">Returns the remainder on dividing the first argument by the second</string>
     <string name="math_function_perc">Calculates percentage</string>
     <string name="math_function_round">Rounds the real number x to n places</string>

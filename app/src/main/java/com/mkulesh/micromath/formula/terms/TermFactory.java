@@ -50,7 +50,7 @@ public class TermFactory
 
         allTerms.addAll(Arrays.asList(Operators.OperatorType.values()));
         allTerms.addAll(Arrays.asList(Comparators.ComparatorType.values()));
-        allTerms.addAll(Arrays.asList(FileOperations.FunctionType.values()));
+        allTerms.addAll(Arrays.asList(ArrayFunctions.FunctionType.values()));
         allTerms.addAll(Arrays.asList(CommonFunctions.FunctionType.values()));
         allTerms.addAll(Arrays.asList(TrigonometricFunctions.FunctionType.values()));
         allTerms.addAll(Arrays.asList(LogFunctions.FunctionType.values()));

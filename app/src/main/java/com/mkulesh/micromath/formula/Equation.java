@@ -26,7 +26,7 @@ import android.view.View;
 import com.mkulesh.micromath.dialogs.DialogResultDetails;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.TermField.ErrorNotification;
-import com.mkulesh.micromath.formula.terms.FileOperations;
+import com.mkulesh.micromath.formula.terms.ArrayFunctions;
 import com.mkulesh.micromath.formula.terms.Intervals;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.math.EquationArrayResult;
@@ -310,15 +310,15 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     public void fileOperation(boolean status)
     {
         FormulaTerm t = rightTerm.getTerm();
-        if (t != null && t instanceof FileOperations)
+        if (t != null && t instanceof ArrayFunctions)
         {
             if (status)
             {
-                ((FileOperations) t).prepareFileOperation();
+                ((ArrayFunctions) t).prepareFileOperation();
             }
             else
             {
-                ((FileOperations) t).finishFileOperation();
+                ((ArrayFunctions) t).finishFileOperation();
             }
         }
     }
