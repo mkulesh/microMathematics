@@ -133,7 +133,7 @@ public class ArrayFunctions extends FunctionBase
     {
         super(owner, layout);
         termType = type;
-        createGeneralFunction(R.layout.formula_file_operation, s, 1, idx);
+        createGeneralFunction(R.layout.formula_function_read, s, 1, idx);
         if (fileName == null)
         {
             throw new Exception("cannot initialize function terms");
