@@ -36,7 +36,6 @@ import com.mkulesh.micromath.formula.PaletteButton;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
-import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.ScaledDimensions;

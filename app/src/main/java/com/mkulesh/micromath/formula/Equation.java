@@ -415,6 +415,11 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         return leftTerm.getParser().isArray();
     }
 
+    public int[] getArrayDimensions()
+    {
+        return arrayResult != null ? arrayResult.getDimensions() : null;
+    }
+
     /**
      * Procedure returns declared interval if this root formula represents an interval
      */

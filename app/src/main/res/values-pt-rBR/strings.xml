@@ -213,6 +213,8 @@
 
     <!-- TODO: to be translated -->
     <string name="math_function_read">Import data from ASCII file</string>
+    <string name="math_function_rows">Returns the number of rows of the matrix/vector</string>
+    <string name="math_function_cols">Returns the number of columns of the matrix/vector</string>
     <string name="math_function_mod">Returns the remainder on dividing the first argument by the second</string>
     <string name="math_function_perc">Calculates percentage</string>
     <string name="math_function_round">Rounds the real number x to n places</string>

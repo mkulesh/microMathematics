@@ -212,6 +212,8 @@
     <string name="math_function_max">Наибольшее значение из двух аргументов</string>
     <string name="math_function_min">Наименьшее значение из двух аргументов</string>
     <string name="math_function_read">Импортировать данные из ASCII файла</string>
+    <string name="math_function_rows">Количество строк матрицы или вектора</string>
+    <string name="math_function_cols">Количество колонок матрицы или вектора</string>
     <string name="math_function_mod">Врзвращает остаток от деления первого аргумента на второй</string>
     <string name="math_function_perc">Вычисляет процент (заданный вторым аргументом) от первого аргумента</string>
     <string name="math_function_round">Округляет первый аргумент до указанного числа дробных разрядов</string>

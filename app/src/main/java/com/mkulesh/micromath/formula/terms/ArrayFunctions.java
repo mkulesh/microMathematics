@@ -19,7 +19,6 @@
 package com.mkulesh.micromath.formula.terms;
 
 import android.content.Context;
-import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
@@ -33,18 +32,11 @@ import com.mkulesh.micromath.formula.FormulaTerm;
 import com.mkulesh.micromath.formula.Palette;
 import com.mkulesh.micromath.formula.PaletteButton;
 import com.mkulesh.micromath.formula.TermField;
-import com.mkulesh.micromath.formula.TermParser;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.widgets.CustomEditText;
 
-import org.apache.commons.math3.complex.Complex;
-
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Locale;
 
 public class ArrayFunctions extends FunctionBase
@@ -59,16 +51,22 @@ public class ArrayFunctions extends FunctionBase
      */
     public enum FunctionType implements TermTypeIf
     {
-        READ(R.drawable.p_function_read, R.string.math_function_read);
+        READ(1, R.drawable.p_function_read, R.string.math_function_read, R.layout.formula_function_read),
+        ROWS(1, R.drawable.p_function_rows, R.string.math_function_rows, R.layout.formula_function_array),
+        COLS(1, R.drawable.p_function_cols, R.string.math_function_cols, R.layout.formula_function_array);
 
+        private final int argNumber;
         private final int imageId;
         private final int descriptionId;
+        private final int layoutId;
         private final String lowerCaseName;
 
-        FunctionType(int imageId, int descriptionId)
+        FunctionType(int argNumber, int imageId, int descriptionId, int layoutId)
         {
+            this.argNumber = argNumber;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
+            this.layoutId = layoutId;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
         }
 
@@ -82,6 +80,11 @@ public class ArrayFunctions extends FunctionBase
             return Palette.NO_BUTTON;
         }
 
+        public int getArgNumber()
+        {
+            return argNumber;
+        }
+
         public int getImageId()
         {
             return imageId;
@@ -90,6 +93,11 @@ public class ArrayFunctions extends FunctionBase
         public int getDescriptionId()
         {
             return descriptionId;
+        }
+
+        public int getLayoutId()
+        {
+            return layoutId;
         }
 
         public String getLowerCaseName()
@@ -104,12 +112,12 @@ public class ArrayFunctions extends FunctionBase
 
         public boolean isEnabled(CustomEditText field)
         {
-            return field.isFileOperationEnabled();
+            return this == READ ? field.isFileOperationEnabled() : true;
         }
 
         public PaletteButton.Category getPaletteCategory()
         {
-            return PaletteButton.Category.TOP_LEVEL_TERM;
+            return this == READ ? PaletteButton.Category.TOP_LEVEL_TERM : PaletteButton.Category.CONVERSION;
         }
 
         public FormulaTerm createTerm(
@@ -122,8 +130,9 @@ public class ArrayFunctions extends FunctionBase
     /**
      * Private attributes
      */
-    private TermField fileName = null;
-    private final ArrayList<ArrayList<String>> fileBuffer = new ArrayList<>();
+    private TermField argTerm = null;
+    private FileReader fileReader = null;
+    private Equation linkedArray = null;
 
     /*********************************************************
      * Constructors
@@ -133,8 +142,8 @@ public class ArrayFunctions extends FunctionBase
     {
         super(owner, layout);
         termType = type;
-        createGeneralFunction(R.layout.formula_function_read, s, 1, idx);
-        if (fileName == null)
+        createGeneralFunction(getFunctionType().getLayoutId(), s, getFunctionType().getArgNumber(), idx);
+        if (argTerm == null)
         {
             throw new Exception("cannot initialize function terms");
         }
@@ -155,6 +164,15 @@ public class ArrayFunctions extends FunctionBase
     }
 
     /*********************************************************
+     * Common getters
+     *********************************************************/
+
+    public FunctionType getFunctionType()
+    {
+        return (FunctionType) termType;
+    }
+
+    /*********************************************************
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
      *********************************************************/
 
@@ -167,48 +185,34 @@ public class ArrayFunctions extends FunctionBase
     @Override
     public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
     {
-        if (getFormulaRoot() instanceof Equation)
+        switch (getFunctionType())
         {
-            Equation eq = (Equation) getFormulaRoot();
-            final int argNumber = eq.getArguments() != null ? eq.getArguments().size() : 0;
-            String strValue = null;
-            if (argNumber == 1 || argNumber == 2)
+        case READ:
+            if (fileReader != null)
             {
-                final int a0 = eq.getArgumentValue(0).getInteger();
-                if (a0 < fileBuffer.size())
+                return fileReader.getFileElement(outValue);
+            }
+            break;
+        case ROWS:
+        case COLS:
+            if (linkedArray != null)
+            {
+                final int[] dim = linkedArray.getArrayDimensions();
+                if (dim != null)
                 {
-                    final ArrayList<String> line = fileBuffer.get(a0);
-                    final int a1 = (argNumber == 1) ? 0 : eq.getArgumentValue(1).getInteger();
-                    if (a1 < line.size())
+                    if (dim.length == 1)
                     {
-                        strValue = line.get(a1);
+                        // linked array is a vector
+                        return outValue.setValue((getFunctionType() == FunctionType.ROWS) ? dim[0] : 1);
+                    }
+                    else if (dim.length == 2)
+                    {
+                        // linked array is a matrix
+                        return outValue.setValue((getFunctionType() == FunctionType.ROWS) ? dim[0] : dim[1]);
                     }
                 }
             }
-            if (strValue != null)
-            {
-                try
-                {
-                    return outValue.setValue(Double.parseDouble(strValue));
-                }
-                catch (Exception ex)
-                {
-                    // nothing to do: we will try to convert it to complex
-                }
-                Complex cmplValue = TermParser.complexValueOf(strValue);
-                if (cmplValue != null)
-                {
-                    if (cmplValue.getImaginary() != 0.0)
-                    {
-                        return outValue.setComplexValue(cmplValue.getReal(), cmplValue.getImaginary());
-                    }
-                    else
-                    {
-                        return outValue.setValue(cmplValue.getReal());
-                    }
-                }
-            }
-            return outValue.invalidate(CalculatedValue.ErrorType.NOT_A_NUMBER);
+            break;
         }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
     }
@@ -233,18 +237,38 @@ public class ArrayFunctions extends FunctionBase
         switch (type)
         {
         case VALIDATE_SINGLE_FORMULA:
-            fileBuffer.clear();
-            if (fileName != null)
+            linkedArray = null;
+            if (getFunctionType() == FunctionType.READ)
             {
-                final InputStream fileStream = openFileStream(fileName.getText());
+                if (fileReader == null)
+                {
+                    fileReader = new FileReader(getContext(), getFormulaRoot());
+                }
+                fileReader.clear();
+                final InputStream fileStream = fileReader.openStream(argTerm.getText());
                 if (fileStream == null)
                 {
                     errorMsg = String.format(getContext().getResources().getString(R.string.error_file_read),
-                            fileName.getText());
+                            argTerm.getText());
                 }
                 else
                 {
+                    // ok
                     FileUtils.closeStream(fileStream);
+                }
+            }
+            else
+            {
+                final Equation eq = searchLinkedEquation(argTerm.getText(), Equation.ARG_NUMBER_ARRAY);
+                if (eq == null || !eq.isArray())
+                {
+                    errorMsg = String.format(getContext().getResources().getString(R.string.error_unknown_array),
+                            argTerm.getText());
+                }
+                else
+                {
+                    // ok
+                    linkedArray = eq;
                 }
             }
             break;
@@ -268,86 +292,31 @@ public class ArrayFunctions extends FunctionBase
             final String val = v.getText().toString();
             if (val.equals(getContext().getResources().getString(R.string.formula_arg_term_key)))
             {
-                fileName = addTerm(getFormulaRoot(), l, -1, v, this, 0);
-                fileName.bracketsType = TermField.BracketsType.NEVER;
+                argTerm = addTerm(getFormulaRoot(), l, -1, v, this, 0);
+                argTerm.bracketsType = TermField.BracketsType.NEVER;
             }
         }
         return v;
     }
 
     /*********************************************************
-     * FormulaTermFileOperation-specific methods
+     * Methods related to file operation
      *********************************************************/
-
-    private InputStream openFileStream(final String name)
-    {
-        if (name == null || name.length() == 0)
-        {
-            return null;
-        }
-
-        Uri imageUri = null;
-        if (name.contains(FileUtils.ASSET_RESOURCE_PREFIX))
-        {
-            imageUri = Uri.parse(name);
-        }
-        else
-        {
-            imageUri = FileUtils.catUri(getContext(), getFormulaList().getParentDirectory(), name);
-        }
-
-        if (imageUri == null)
-        {
-            return null;
-        }
-
-        return FileUtils.getInputStream(getContext(), imageUri, false);
-    }
 
     public void prepareFileOperation()
     {
-        fileBuffer.clear();
-        final InputStream fileStream = openFileStream(fileName.getText());
-        if (fileStream == null)
+        if (getFunctionType() == FunctionType.READ && fileReader != null)
         {
-            return;
+            fileReader.prepare(argTerm.getText());
         }
-
-        try
-        {
-            BufferedReader r = new BufferedReader(new InputStreamReader(fileStream));
-            String line;
-            while ((line = r.readLine()) != null)
-            {
-                // ignore empty strings
-                final String trimmedString = line.trim();
-                if (trimmedString.isEmpty())
-                {
-                    continue;
-                }
-                final String[] tokens = trimmedString.split("\\s+");
-                final ArrayList<String> tokenList = new ArrayList<>(tokens.length);
-                for (String s : tokens)
-                {
-                    final String s1 = s.trim();
-                    if (!s1.isEmpty())
-                    {
-                        tokenList.add(s1);
-                    }
-                }
-                fileBuffer.add(tokenList);
-            }
-        }
-        catch (IOException e)
-        {
-            // nothing to do
-        }
-
-        FileUtils.closeStream(fileStream);
     }
 
     public void finishFileOperation()
     {
-        fileBuffer.clear();
+        if (getFunctionType() == FunctionType.READ && fileReader != null)
+        {
+            fileReader.clear();
+        }
     }
+
 }

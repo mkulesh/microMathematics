@@ -1168,6 +1168,6 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         {
             return null;
         }
-        return (f instanceof Equation)? (Equation)f : null;
+        return (f instanceof Equation) ? (Equation) f : null;
     }
 }

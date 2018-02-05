@@ -1,9 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="60" significantDigits="6" scale="0.50000" redefineAllowed="true">
-    <text_fragment>
-      <term key="text" text="The use of 2D arrays" />
-    </text_fragment>
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="2D arrays: creation, access, and size " description="Automated only" textWidth="60" significantDigits="8" scale="0.55341" redefineAllowed="true">
     <equation>
       <term key="leftTerm" text="begin" />
       <term key="rightTerm" text="0" />
@@ -89,8 +86,8 @@
         </term>
       </term>
     </equation>
-    <text_fragment>
-      <term key="text" text="&#10;TC: access to filled element " />
+    <text_fragment numbering="true">
+      <term key="text" text="TC: number of rows" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -101,7 +98,96 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="begin" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="rows">
+        <term key="argTerm" text="M" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" text="N" />
+        </term>
+        <term key="rightTerm" text="1" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: number of colums" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="cols">
+        <term key="argTerm" text="M" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="N" />
+        <term key="rightTerm" text="1" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: access to filled element " />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="result" />
@@ -112,7 +198,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="result" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="desired" />
@@ -142,7 +228,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="desired" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="end" />
@@ -150,10 +236,10 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="end" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
-    <text_fragment>
-      <term key="text" text="&#10;TC: access to non-filled element " />
+    <text_fragment numbering="true">
+      <term key="text" text="TC: access to non-filled element " />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -164,7 +250,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="begin" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="result" />
@@ -175,7 +261,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="result" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="desired" />
@@ -183,7 +269,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="desired" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="end" />
@@ -191,10 +277,10 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="end" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
-    <text_fragment>
-      <term key="text" text="&#10;TC: out of range " />
+    <text_fragment numbering="true">
+      <term key="text" text="TC: out of range " />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -205,7 +291,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="begin" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="result" />
@@ -216,7 +302,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="result" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="desired" />
@@ -226,7 +312,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="desired" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="end" />
@@ -234,10 +320,10 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="end" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
-    <text_fragment>
-      <term key="text" text="&#10;TC: calculation of absolute error " />
+    <text_fragment numbering="true">
+      <term key="text" text="TC: calculation of absolute error " />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -248,7 +334,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="begin" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="result" />
@@ -272,7 +358,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="result" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="desired" />
@@ -280,7 +366,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="desired" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="end" />
@@ -288,10 +374,10 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="end" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
-    <text_fragment>
-      <term key="text" text="&#10;TC: check non-filled elements" />
+    <text_fragment numbering="true">
+      <term key="text" text="TC: check non-filled elements" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -302,7 +388,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="begin" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="result" />
@@ -334,7 +420,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="result" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="desired" />
@@ -366,7 +452,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="desired" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="end" />
@@ -374,9 +460,9 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="end" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
-    <text_fragment>
+    <text_fragment numbering="true">
       <term key="text" text="&#10;Preparation for the next steps" />
     </text_fragment>
     <equation>
@@ -427,8 +513,8 @@
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" text="0" />
     </equation>
-    <text_fragment>
-      <term key="text" text="&#10;TC: Surface using arrays" />
+    <text_fragment numbering="true">
+      <term key="text" text="TC: Surface using arrays" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -439,7 +525,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="begin" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="x[n]" />
@@ -607,11 +693,11 @@
     </plot_contour>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="result" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="desired" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="end" />
@@ -619,10 +705,10 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="end" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
-    <text_fragment>
-      <term key="text" text="&#10;TC: Surface using arrays (the 2nd use)" />
+    <text_fragment numbering="true">
+      <term key="text" text="TC: Surface using arrays (the 2nd use)" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -633,7 +719,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="begin" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <plot_contour plotStyle="surface" width="500" height="500" axes_style="boxed" meshLines="false" meshFill="true" meshOpacity="155" rotation="35" elevation="20" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#85242400" zLabelsNumber="7" colorMap="coldhot">
       <term key="yMaxValue" text="M" />
@@ -647,11 +733,11 @@
     </plot_contour>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="result" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="desired" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="end" />
@@ -659,10 +745,10 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="end" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
-    <text_fragment>
-      <term key="text" text="&#10;TC: Surface using functions" />
+    <text_fragment numbering="true">
+      <term key="text" text="TC: Surface using functions" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="begin" />
@@ -673,7 +759,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="begin" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="x1" />
@@ -815,11 +901,11 @@
     </plot_contour>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="result" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="desired" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="end" />
@@ -827,7 +913,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="end" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
   </formulaList>
 </micromath>
