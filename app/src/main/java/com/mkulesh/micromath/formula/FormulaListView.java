@@ -402,6 +402,10 @@ public class FormulaListView
      */
     public FormulaBase getFormula(String name, int argNumber, int rootId, boolean excludeRoot, boolean searchAll)
     {
+        if (name == null)
+        {
+            return null;
+        }
         int idx = getRowIndex(rootId);
         if (idx == ViewUtils.INVALID_INDEX || searchAll)
         {

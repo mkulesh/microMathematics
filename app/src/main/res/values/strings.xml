@@ -292,6 +292,7 @@
     <string name="error_forbidden_arguments">Arguments are not allowed for this identifier</string>
     <string name="error_forbidden_complex">Complex number is not allowed for this field</string>
     <string name="error_forbidden_imaginary_unit">Symbol \'i\' is reserved for the imaginary unit that is not allowed in this context</string>
+    <string name="error_forbidden_array">Array is not allowed for this field</string>
     <string name="error_nan_value">Field contains value that is not a number</string>
     <string name="error_unknown_file_format">Format of the file %s is unknown</string>
     <string name="error_file_read">Can not open file %s</string>

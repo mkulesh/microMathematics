@@ -31,6 +31,12 @@
         <enum name="below_the_previous" value="4" />
     </attr>
 
+    <attr name="arrayType">
+        <enum name="disabled" value="0" />
+        <enum name="optional" value="1" />
+        <enum name="mandatory" value="2" />
+    </attr>
+
     <declare-styleable name="CustomViewExtension">
         <attr name="contextMenuExpand" format="boolean" />
         <attr name="contextMenuCut" format="boolean" />
@@ -54,6 +60,7 @@
         <attr name="comparatorEnabled" format="boolean" />
         <attr name="newTermEnabled" format="boolean" />
         <attr name="fileOperationEnabled" format="boolean" />
+        <attr name="arrayType"/>
     </declare-styleable>
     <declare-styleable name="PlotViewExtension">
         <attr name="gridLineColor" format="color" />

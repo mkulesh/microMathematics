@@ -1160,4 +1160,14 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
             }
         }
     }
+
+    public Equation searchLinkedEquation(String name, int argNumber)
+    {
+        final FormulaBase f = getFormulaList().getFormula(name, argNumber, getId(), true);
+        if (f == null)
+        {
+            return null;
+        }
+        return (f instanceof Equation)? (Equation)f : null;
+    }
 }

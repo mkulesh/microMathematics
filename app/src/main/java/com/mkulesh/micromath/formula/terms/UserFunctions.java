@@ -683,11 +683,10 @@ public class UserFunctions extends FunctionBase
             }
             else if (!s.contains(getContext().getResources().getString(R.string.formula_term_separator)))
             {
-                FormulaBase f = getFormulaRoot().getFormulaList().getFormula(functionName, ViewUtils.INVALID_INDEX,
-                        getFormulaRoot().getId(), true);
-                if (f != null && f instanceof Equation)
+                final Equation f = getFormulaRoot().searchLinkedEquation(functionName, Equation.ARG_NUMBER_ANY);
+                if (f != null)
                 {
-                    ArrayList<String> args = ((Equation) f).getArguments();
+                    ArrayList<String> args = f.getArguments();
                     if (args != null && !args.isEmpty())
                     {
                         return args.size();

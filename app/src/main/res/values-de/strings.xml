@@ -253,6 +253,7 @@
     <string name="error_forbidden_arguments">Argumente sind hier nicht erlaubt</string>
     <string name="error_forbidden_complex">Eine komplexe Zahl ist hier nicht erlaubt</string>
     <string name="error_forbidden_imaginary_unit">Zeichen \'i\' ist als die imaginäre Einheit reserviert</string>
+    <string name="error_forbidden_array">Das Array ist hier nicht erlaubt</string>
     <string name="error_nan_value">Term erhält einen Wert, der keine Zahl ist</string>
     <string name="error_unknown_file_format">Das Format der Datei %s ist unbekannt</string>
     <string name="error_file_read">Die Datei %s kann nicht geöffnet werden</string>

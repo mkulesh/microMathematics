@@ -977,11 +977,8 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
      */
     public FormulaBase getFormula(String name, int argNumber, int rootId, boolean excludeRoot)
     {
-        if (name == null)
-        {
-            return null;
-        }
-        return getFormulaListView().getFormula(name, argNumber, rootId, excludeRoot, !documentSettings.redefineAllowed);
+        return getFormulaListView().getFormula(
+                name, argNumber, rootId, excludeRoot, !documentSettings.redefineAllowed);
     }
 
     /**

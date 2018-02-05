@@ -234,8 +234,7 @@ public class TermParser
             // check for equation name
             if (editText.isEquationName())
             {
-                final FormulaBase fb = formulaRoot.getFormulaList().getFormula(functionName, ViewUtils.INVALID_INDEX,
-                        formulaRoot.getId(), true);
+                final Equation fb = formulaRoot.searchLinkedEquation(functionName, Equation.ARG_NUMBER_ANY);
                 if (fb != null && !formulaRoot.getFormulaList().getDocumentSettings().redefineAllowed)
                 {
                     // error: we found an other equation with the same name as this equation definition:
@@ -250,13 +249,33 @@ public class TermParser
             }
 
             // check the link to a variable
-            final FormulaBase fb = formulaRoot.getFormulaList().getFormula(functionName, 0, formulaRoot.getId(), true);
-            if (fb != null && fb instanceof Equation)
+            final Equation fVar = formulaRoot.searchLinkedEquation(functionName, Equation.ARG_NUMBER_CONSTANT);
+            if (fVar != null)
             {
-                ArrayList<String> args = ((Equation) fb).getArguments();
+                ArrayList<String> args = fVar.getArguments();
                 if (args == null || args.isEmpty())
                 {
-                    linkedVariableId = fb.getId();
+                    linkedVariableId = fVar.getId();
+                    if (linkedVariableId >= 0)
+                    {
+                        // we found a link to the valid constant
+                        return;
+                    }
+                }
+            }
+
+            // check the link to an array
+            final Equation fArr = formulaRoot.searchLinkedEquation(functionName, Equation.ARG_NUMBER_ARRAY);
+            if (fArr != null && fArr.isArray())
+            {
+                if (editText.getArrayType() == CustomEditText.ArrayType.DISABLED)
+                {
+                    errorId = R.string.error_forbidden_array;
+                    return;
+                }
+                else
+                {
+                    linkedVariableId = fArr.getId();
                     if (linkedVariableId >= 0)
                     {
                         // we found a link to the valid constant

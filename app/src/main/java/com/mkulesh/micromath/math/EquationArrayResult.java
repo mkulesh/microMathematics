@@ -21,7 +21,6 @@ package com.mkulesh.micromath.math;
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.Equation;
-import com.mkulesh.micromath.formula.FormulaBase;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.utils.ViewUtils;
 
@@ -102,12 +101,12 @@ public class EquationArrayResult
         final CalculatedValue[] argValues = new CalculatedValue[dimNumber];
         for (int dim = 0; dim < dimNumber; dim++)
         {
-            final FormulaBase f = equation.getFormulaList().getFormula(arguments.get(dim), 0, equation.getId(), true);
-            if (f == null || !(f instanceof Equation) || !((Equation) f).isInterval())
+            final Equation e = equation.searchLinkedEquation(
+                    arguments.get(dim), Equation.ARG_NUMBER_INTERVAL);
+            if (e == null || !e.isInterval())
             {
                 return;
             }
-            final Equation e = (Equation) f;
             ArrayList<Double> interval = e.getInterval(thread);
             if (interval == null || interval.isEmpty())
             {

@@ -41,6 +41,13 @@ import com.mkulesh.micromath.utils.CompatUtils;
 
 public class CustomEditText extends AppCompatEditText implements OnLongClickListener, OnFocusChangeListener
 {
+    public enum ArrayType
+    {
+        DISABLED,
+        OPTIONAL,
+        MANDATORY
+    }
+
     private AppCompatActivity activity = null;
     private TextChangeIf textChangeIf = null;
     private FocusChangeIf focusChangeIf = null;
@@ -63,6 +70,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     private boolean comparatorEnabled = false;
     private boolean newTermEnabled = false;
     private boolean fileOperationEnabled = false;
+    private ArrayType arrayType = ArrayType.DISABLED;
 
     // context menu handling
     private ContextMenuHandler menuHandler = null;
@@ -108,6 +116,12 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
             comparatorEnabled = a.getBoolean(R.styleable.CustomViewExtension_comparatorEnabled, false);
             newTermEnabled = a.getBoolean(R.styleable.CustomViewExtension_newTermEnabled, false);
             fileOperationEnabled = a.getBoolean(R.styleable.CustomViewExtension_fileOperationEnabled, false);
+            final int arrayTypeInt = a.getInteger(R.styleable.CustomViewExtension_arrayType, -1);
+            if (arrayTypeInt >= 0 && arrayTypeInt < ArrayType.values().length)
+            {
+                arrayType = ArrayType.values()[arrayTypeInt];
+            }
+
             // menu
             menuHandler.initialize(a);
             a.recycle();
@@ -163,6 +177,11 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     public boolean isFileOperationEnabled()
     {
         return fileOperationEnabled;
+    }
+
+    public ArrayType getArrayType()
+    {
+        return arrayType;
     }
 
     /*********************************************************

@@ -39,6 +39,11 @@ import java.util.ArrayList;
 
 public class Equation extends CalculationResult implements ArgumentHolderIf, CalculatableIf
 {
+    public static final int ARG_NUMBER_ANY = -1;
+    public static final int ARG_NUMBER_CONSTANT = 0;
+    public static final int ARG_NUMBER_INTERVAL = 1;
+    public static final int ARG_NUMBER_ARRAY = Integer.MAX_VALUE;
+
     private TermField leftTerm = null;
     private TermField rightTerm = null;
     private CalculatedValue[] argumentValues = null;
@@ -196,7 +201,8 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         if (arguments.size() > EquationArrayResult.MAX_DIMENSION)
         {
             // error: invalid array dimension
-            return String.format(res.getString(R.string.error_invalid_array_dimension), Integer.toString(200));
+            return String.format(res.getString(R.string.error_invalid_array_dimension),
+                    Integer.toString(arguments.size()));
         }
 
         // Linked intervals are not allowed since all indexed variables in the right part
@@ -214,8 +220,8 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         // check that all arguments are valid intervals
         for (String s : arguments)
         {
-            FormulaBase f = getFormulaList().getFormula(s, 0, getId(), true);
-            if (f == null || !(f instanceof Equation) || !((Equation) f).isInterval())
+            final Equation f = searchLinkedEquation(s, ARG_NUMBER_INTERVAL);
+            if (f == null || !f.isInterval())
             {
                 // error: index not an interval
                 return String.format(res.getString(R.string.error_invalid_array_index), s);
@@ -485,7 +491,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
             return false;
         }
         // argument number does not matter
-        if (argNumber == ViewUtils.INVALID_INDEX)
+        if (argNumber == ARG_NUMBER_ANY)
         {
             return true;
         }
@@ -495,14 +501,19 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
             // normal function with arguments
             return true;
         }
-        else if (getArguments() == null && argNumber == 0)
+        else if (getArguments() == null && argNumber == ARG_NUMBER_CONSTANT)
         {
             // a constant
             return true;
         }
-        else if (isInterval() && argNumber == 1)
+        else if (isInterval() && argNumber == ARG_NUMBER_INTERVAL)
         {
             // an interval
+            return true;
+        }
+        else if (isArray() && argNumber == ARG_NUMBER_ARRAY)
+        {
+            // an array
             return true;
         }
         return false;

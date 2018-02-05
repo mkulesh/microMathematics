@@ -253,6 +253,7 @@
     <string name="error_forbidden_arguments">Данный идентификатор не может содержать аргументы</string>
     <string name="error_forbidden_complex">Это поле не может содержать комплексное число</string>
     <string name="error_forbidden_imaginary_unit">Символ \'i\' зарезервирован для обозначения комплексных чисел</string>
+    <string name="error_forbidden_array">Аргумент типа массив не разрешен для данной функции</string>
     <string name="error_nan_value">Поле содержит значение, которое не является числом</string>
     <string name="error_unknown_file_format">Неизвестный формат файла %s</string>
     <string name="error_file_read">Ошибка чтения файла %s</string>

@@ -67,6 +67,7 @@
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/formula_term</item>
         <item name="android:textColorHighlight">?attr/colorFormulaSelected</item>
+        <item name="com.mkulesh.micromath.plus:arrayType">disabled</item>
     </style>
 
     <!-- Dialog styles -->
