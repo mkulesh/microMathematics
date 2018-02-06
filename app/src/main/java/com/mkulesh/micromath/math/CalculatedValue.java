@@ -18,6 +18,8 @@
  ******************************************************************************/
 package com.mkulesh.micromath.math;
 
+import android.support.annotation.NonNull;
+
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.TermField;
@@ -32,6 +34,10 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.List;
 
+import javax.measure.DecimalMeasure;
+import javax.measure.Measure;
+import javax.measure.unit.Unit;
+
 public class CalculatedValue
 {
     public enum ErrorType
@@ -40,7 +46,8 @@ public class CalculatedValue
         INVALID_ARGUMENT,
         NOT_A_NUMBER,
         NOT_A_REAL,
-        PASSED_COMPLEX
+        PASSED_COMPLEX,
+        INCOMPATIBLE_UNIT
     }
 
     public enum ValueType
@@ -63,6 +70,7 @@ public class CalculatedValue
     private ValueType valueType = ValueType.INVALID;
     private double real = Double.NaN;
     private double imaginary = 0.0;
+    private Unit unit = null;
 
     /*********************************************************
      * Common methods
@@ -85,7 +93,43 @@ public class CalculatedValue
         valueType = c.valueType;
         real = c.real;
         imaginary = c.imaginary;
+        unit = c.unit;
         return valueType;
+    }
+
+    public Unit getUnit()
+    {
+        return unit;
+    }
+
+    public void convertUnit(@NonNull Unit sourceUnit, @NonNull Unit targetUnit)
+    {
+        if (valueType == ValueType.INVALID)
+        {
+            return;
+        }
+        if (sourceUnit.isCompatible(targetUnit))
+        {
+            try
+            {
+                final Measure realV = DecimalMeasure.valueOf(real, sourceUnit);
+                real = realV.doubleValue(targetUnit);
+                if (isComplex())
+                {
+                    final Measure imaginaryV = DecimalMeasure.valueOf(imaginary, sourceUnit);
+                    imaginary = imaginaryV.doubleValue(targetUnit);
+                }
+                unit = targetUnit;
+            }
+            catch (Exception ex)
+            {
+                invalidate(ErrorType.INCOMPATIBLE_UNIT);
+            }
+        }
+        else
+        {
+            invalidate(ErrorType.INCOMPATIBLE_UNIT);
+        }
     }
 
     public ValueType invalidate(ErrorType errorType)
@@ -93,6 +137,7 @@ public class CalculatedValue
         valueType = ValueType.INVALID;
         real = Double.NaN;
         imaginary = 0.0;
+        unit = null;
         return valueType;
     }
 
@@ -195,6 +240,11 @@ public class CalculatedValue
         return type == PartType.RE ? real : imaginary;
     }
 
+    private boolean unitExists(CalculatedValue f, CalculatedValue g)
+    {
+        return f.unit != null || g.unit != null;
+    }
+
     /*********************************************************
      * Conversion methods
      *********************************************************/
@@ -206,6 +256,7 @@ public class CalculatedValue
 
     public String getResultDescription(DocumentProperties doc)
     {
+        String val;
         switch (valueType)
         {
         case INVALID:
@@ -215,13 +266,23 @@ public class CalculatedValue
             {
                 return TermParser.CONST_NAN;
             }
-            return formatValue(real, doc, false);
+            val = formatValue(real, doc, false);
+            if (unit != null)
+            {
+                val += " " + unit.toString();
+            }
+            return val;
         case COMPLEX:
             if (Double.isNaN(real) || Double.isNaN(imaginary))
             {
                 return TermParser.CONST_NAN;
             }
-            return formatValue(real, doc, false) + formatValue(imaginary, doc, true) + "i";
+            val = formatValue(real, doc, false) + formatValue(imaginary, doc, true) + "i";
+            if (unit != null)
+            {
+                val += " " + unit.toString();
+            }
+            return val;
         }
         return "";
     }
@@ -268,6 +329,14 @@ public class CalculatedValue
 
     public ValueType add(CalculatedValue f, CalculatedValue g)
     {
+        if (unitExists(f,g))
+        {
+            if (f.unit == null || g.unit == null || !f.unit.isCompatible(g.unit))
+            {
+                return invalidate(ErrorType.INCOMPATIBLE_UNIT);
+            }
+            unit = f.unit;
+        }
         if (f.isComplex() || g.isComplex())
         {
             return setComplexValue(f.real + g.real, f.imaginary + g.imaginary);
@@ -280,6 +349,14 @@ public class CalculatedValue
 
     public ValueType subtract(CalculatedValue f, CalculatedValue g)
     {
+        if (unitExists(f,g))
+        {
+            if (f.unit == null || g.unit == null || !f.unit.isCompatible(g.unit))
+            {
+                return invalidate(ErrorType.INCOMPATIBLE_UNIT);
+            }
+            unit = f.unit;
+        }
         if (f.isComplex() || g.isComplex())
         {
             return setComplexValue(f.real - g.real, f.imaginary - g.imaginary);
@@ -292,6 +369,21 @@ public class CalculatedValue
 
     public ValueType multiply(CalculatedValue f, CalculatedValue g)
     {
+        if (unitExists(f,g))
+        {
+            if (f.unit == null)
+            {
+                unit = g.unit;
+            }
+            else if (g.unit == null)
+            {
+                unit = f.unit;
+            }
+            else
+            {
+                unit = f.unit.times(g.unit);
+            }
+        }
         if (f.isComplex() || g.isComplex())
         {
             return setComplexValue(f.real * g.real - f.imaginary * g.imaginary, f.real * g.imaginary + f.imaginary
@@ -312,6 +404,25 @@ public class CalculatedValue
 
     public ValueType divide(CalculatedValue f, CalculatedValue g)
     {
+        if (unitExists(f,g))
+        {
+            if (f.unit == null)
+            {
+                unit = g.unit;
+            }
+            else if (g.unit == null)
+            {
+                unit = f.unit;
+            }
+            else if (f.unit.equals(g.unit))
+            {
+                unit = null;
+            }
+            else
+            {
+                unit = f.unit.divide(g.unit);
+            }
+        }
         if (f.isComplex() || g.isComplex())
         {
             final double c = g.real;
@@ -341,16 +452,33 @@ public class CalculatedValue
     {
         if (f.isComplex() || g.isComplex())
         {
+            if (f.unit != null)
+            {
+                invalidate(ErrorType.INCOMPATIBLE_UNIT);
+            }
             return setComplexValue(f.getComplex().pow(g.getComplex()));
         }
         else
         {
+            if (f.unit != null)
+            {
+                final int n = (int)g.real;
+                if ((double)n != g.real)
+                {
+                    invalidate(ErrorType.INCOMPATIBLE_UNIT);
+                }
+                else
+                {
+                    unit = f.unit.pow(n);
+                }
+            }
             return setValue(FastMath.pow(f.real, g.real));
         }
     }
 
     public ValueType abs(CalculatedValue g)
     {
+        unit = g.unit;
         return setValue(g.isComplex() ? FastMath.hypot(g.real, g.imaginary) : FastMath.abs(g.real));
     }
 
@@ -358,10 +486,18 @@ public class CalculatedValue
     {
         if (g.isComplex() || (g.isReal() && g.real < 0))
         {
+            if (g.unit != null)
+            {
+                invalidate(ErrorType.INCOMPATIBLE_UNIT);
+            }
             return setComplexValue(g.getComplex().sqrt());
         }
         else
         {
+            if (g.unit != null)
+            {
+                unit = g.unit.root(2);
+            }
             return setValue(FastMath.sqrt(g.real));
         }
     }
@@ -623,6 +759,10 @@ public class CalculatedValue
     {
         try
         {
+            if (g.unit != null)
+            {
+                unit = g.unit.root(n);
+            }
             final List<Complex> roots = g.getComplex().nthRoot(n);
             for (Complex root : roots)
             {

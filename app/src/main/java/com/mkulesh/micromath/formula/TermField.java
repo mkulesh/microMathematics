@@ -258,7 +258,12 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             switch (contentType)
             {
             case NUMBER:
-                return outValue.assign(parser.getValue());
+                outValue.assign(parser.getValue());
+                if (parser.getUnit() != null)
+                {
+                    outValue.convertUnit(parser.getUnit(), parser.getUnit().getStandardUnit());
+                }
+                return outValue.getValueType();
             case ARGUMENT:
                 outValue.assign(parser.getArgumentHolder().getArgumentValue(parser.getArgumentIndex()));
                 return outValue.multiply(parser.getSign());
@@ -270,6 +275,12 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
                 else
                 {
                     linkedVariable.getValue(thread, outValue);
+                }
+                if (parser.getUnit() != null)
+                {
+                    outValue.convertUnit(
+                            (outValue.getUnit() != null)? outValue.getUnit() : parser.getUnit(),
+                            parser.getUnit().getStandardUnit());
                 }
                 return outValue.multiply(parser.getSign());
             default:

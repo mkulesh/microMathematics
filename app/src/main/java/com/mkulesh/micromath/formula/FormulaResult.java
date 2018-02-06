@@ -47,6 +47,8 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.ArrayList;
 
+import javax.measure.unit.Unit;
+
 public class FormulaResult extends CalculationResult implements ResultPropertiesChangeIf, FocusChangeIf
 {
     private static final String STATE_RESULT_PROPERTIES = "result_properties";
@@ -253,6 +255,12 @@ public class FormulaResult extends CalculationResult implements ResultProperties
             resultType = ResultType.CONSTANT;
             constantResult = new CalculatedValue();
             leftTerm.getValue(thread, constantResult);
+            final Unit sourceUnit = constantResult.getUnit();
+            final Unit targetUnit = leftTerm.getParser().getUnit();
+            if (sourceUnit != null && targetUnit != null && !sourceUnit.equals(targetUnit))
+            {
+                constantResult.convertUnit(sourceUnit, targetUnit);
+            }
         }
         else if (linkedIntervals.size() == 1)
         {

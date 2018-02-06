@@ -27,6 +27,10 @@ import org.apache.commons.math3.complex.Complex;
 
 import java.util.ArrayList;
 
+import javax.measure.DecimalMeasure;
+import javax.measure.Measure;
+import javax.measure.unit.Unit;
+
 public class TermParser
 {
     private CalculatedValue value = null;
@@ -36,6 +40,7 @@ public class TermParser
     private int argumentIndex = ViewUtils.INVALID_INDEX, linkedVariableId = -1;
     private double sign = 1.0;
     private boolean isArray = false;
+    private Unit unit = null;
 
     public int errorId = TermField.NO_ERROR_ID;
 
@@ -47,6 +52,7 @@ public class TermParser
     public static final String IMAGINARY_UNIT = "i";
     public static final String POSITIVE_SIGN = "+";
     public static final String NEGATIVE_SIGN = "-";
+    public static final String UNIT_SEPARATOR = " ";
 
     public TermParser()
     {
@@ -93,6 +99,11 @@ public class TermParser
         return isArray;
     }
 
+    public Unit getUnit()
+    {
+        return unit;
+    }
+
     public void setText(TermField owner, FormulaBase formulaRoot, CustomEditText editText)
     {
         String inText = editText.getText().toString();
@@ -104,6 +115,7 @@ public class TermParser
         linkedVariableId = -1;
         sign = 1.0;
         isArray = false;
+        unit = null;
         errorId = TermField.NO_ERROR_ID;
         if (inText == null || inText.length() == 0)
         {
@@ -128,6 +140,13 @@ public class TermParser
         {
             errorId = R.string.error_forbidden_imaginary_unit;
             return;
+        }
+
+        // check units
+        unit = parseUnits(text);
+        if (unit != null)
+        {
+            text = text.replace(unit.toString(), "").trim();
         }
 
         // check if is a valid double value
@@ -285,7 +304,42 @@ public class TermParser
             }
         }
 
+        // try to convert term as a pure unit
+        {
+            final String tmpUnit = "1" + UNIT_SEPARATOR + text;
+            unit = parseUnits(tmpUnit);
+            if (unit != null)
+            {
+                value = new CalculatedValue(CalculatedValue.ValueType.REAL, 1.0, 0.0);
+                return;
+            }
+        }
+
         errorId = R.string.error_unknown_variable;
+    }
+
+    private Unit parseUnits(final String text)
+    {
+        if (text == null || !text.contains(UNIT_SEPARATOR))
+        {
+            return null;
+        }
+        try
+        {
+            final String unitPart = text.substring(
+                    text.indexOf(UNIT_SEPARATOR) + UNIT_SEPARATOR.length(), text.length()).trim();
+            final String tmpUnit = "1" + UNIT_SEPARATOR + unitPart;
+            final Measure conv = DecimalMeasure.valueOf(tmpUnit);
+            if (conv != null && conv.getUnit() != null)
+            {
+                return conv.getUnit();
+            }
+        }
+        catch (Exception ex)
+        {
+            // nothing to do
+        }
+        return null;
     }
 
     private boolean checkArgumentIndex(TermField owner, CustomEditText editText)
