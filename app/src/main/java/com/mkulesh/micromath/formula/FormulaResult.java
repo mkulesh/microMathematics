@@ -47,6 +47,7 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.ArrayList;
 
+import javax.measure.unit.SI;
 import javax.measure.unit.Unit;
 
 public class FormulaResult extends CalculationResult implements ResultPropertiesChangeIf, FocusChangeIf
@@ -608,10 +609,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                     }
                 }
                 final CalculatedValue value = arrayResult.getValue2D(dataRowIdx, dataColIdx);
-                if (value.getUnit() != null && targetUnit != null)
-                {
-                    value.convertUnit(value.getUnit(), targetUnit);
-                }
+                convertUnits(value, targetUnit, /*toBase=*/ false);
                 arrayResultMatrix.setText(r, c,
                         value.getResultDescription(getFormulaList().getDocumentSettings()));
             }
@@ -671,14 +669,48 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                     }
                 }
                 final CalculatedValue value = arrayResult.getValue2D(dataRowIdx, dataColIdx);
-                if (value.getUnit() != null && targetUnit != null)
-                {
-                    value.convertUnit(value.getUnit(), targetUnit);
-                }
+                convertUnits(value, targetUnit, /*toBase=*/ false);
                 res.get(r).add(value.getResultDescription(getFormulaList().getDocumentSettings()));
             }
         }
         return res;
+    }
+
+    private void convertUnits(final CalculatedValue value, final Unit targetUnit, boolean toBase)
+    {
+        final Unit sourceUnit = value.getUnit();
+        if (sourceUnit == null)
+        {
+            return;
+        }
+        Unit newUnit = targetUnit;
+        if (newUnit == null && toBase)
+        {
+            ArrayList<Unit> ul = new ArrayList<>();
+            for (Unit u : SI.getInstance().getUnits())
+            {
+                if (sourceUnit.isCompatible(u))
+                {
+                    ul.add(u);
+                }
+            }
+            int minLen = Integer.MAX_VALUE;
+            for (Unit u : ul)
+            {
+                if (sourceUnit.getStandardUnit().toString().equals(u.toString()))
+                {
+                    newUnit = u;
+                    break;
+                }
+                if (newUnit == null || u.toString().length() < minLen)
+                {
+                    newUnit = u;
+                    minLen = u.toString().length();
+                }
+            }
+        }
+        value.convertUnit(value.getUnit(),
+                newUnit == null ? sourceUnit.getStandardUnit() : newUnit);
     }
 
     private String fillResultString()
@@ -690,11 +722,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
 
         if (resultType == ResultType.CONSTANT)
         {
-            final Unit targetUnit = TermParser.parseUnits(TermParser.prepareUnitString(properties.units));
-            if (constantResult.getUnit() != null && targetUnit != null)
-            {
-                constantResult.convertUnit(constantResult.getUnit(), targetUnit);
-            }
+            convertUnits(constantResult, TermParser.parseUnits(
+                    TermParser.prepareUnitString(properties.units)), /*toBase=*/ true);
             return constantResult.getResultDescription(getFormulaList().getDocumentSettings());
         }
 

@@ -63,15 +63,15 @@ public class TermParser
     public String toString()
     {
         StringBuilder info = new StringBuilder();
-        info.append("value=").append(value == null? "empty" : value.toString())
-            .append(", functionName=").append(functionName == null? "empty" : functionName)
-            .append(", functionArgs=").append(functionArgs == null? "empty" : functionArgs.toString())
-            .append(", argumentHolder=").append(argumentHolder == null? "empty" : argumentHolder.toString())
-            .append(", argumentIndex=").append(argumentIndex)
-            .append(", linkedVariableId=").append(linkedVariableId)
-            .append(", sign=").append(sign)
-            .append(", isArray=").append(isArray)
-            .append(", unit=").append(unit == null? "empty" : unit.toString());
+        info.append("value=").append(value == null ? "empty" : value.toString())
+                .append(", functionName=").append(functionName == null ? "empty" : functionName)
+                .append(", functionArgs=").append(functionArgs == null ? "empty" : functionArgs.toString())
+                .append(", argumentHolder=").append(argumentHolder == null ? "empty" : argumentHolder.toString())
+                .append(", argumentIndex=").append(argumentIndex)
+                .append(", linkedVariableId=").append(linkedVariableId)
+                .append(", sign=").append(sign)
+                .append(", isArray=").append(isArray)
+                .append(", unit=").append(unit == null ? "empty" : unit.toString());
         return info.toString();
     }
 
@@ -338,7 +338,7 @@ public class TermParser
 
     public static String prepareUnitString(String text)
     {
-        return text == null || text.isEmpty()? null : "1" + UNIT_SEPARATOR + text;
+        return text == null || text.isEmpty() ? null : "1" + UNIT_SEPARATOR + text;
     }
 
     public static Unit parseUnits(final String text)

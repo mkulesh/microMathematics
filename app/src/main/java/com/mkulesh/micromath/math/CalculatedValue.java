@@ -329,7 +329,7 @@ public class CalculatedValue
 
     public ValueType add(CalculatedValue f, CalculatedValue g)
     {
-        if (unitExists(f,g))
+        if (unitExists(f, g))
         {
             if (f.unit == null || g.unit == null || !f.unit.isCompatible(g.unit))
             {
@@ -349,7 +349,7 @@ public class CalculatedValue
 
     public ValueType subtract(CalculatedValue f, CalculatedValue g)
     {
-        if (unitExists(f,g))
+        if (unitExists(f, g))
         {
             if (f.unit == null || g.unit == null || !f.unit.isCompatible(g.unit))
             {
@@ -369,7 +369,7 @@ public class CalculatedValue
 
     public ValueType multiply(CalculatedValue f, CalculatedValue g)
     {
-        if (unitExists(f,g))
+        if (unitExists(f, g))
         {
             if (f.unit == null)
             {
@@ -404,11 +404,11 @@ public class CalculatedValue
 
     public ValueType divide(CalculatedValue f, CalculatedValue g)
     {
-        if (unitExists(f,g))
+        if (unitExists(f, g))
         {
             if (f.unit == null)
             {
-                unit = g.unit;
+                unit = g.unit.inverse();
             }
             else if (g.unit == null)
             {
@@ -462,8 +462,8 @@ public class CalculatedValue
         {
             if (f.unit != null)
             {
-                final int n = (int)g.real;
-                if ((double)n != g.real)
+                final int n = (int) g.real;
+                if ((double) n != g.real)
                 {
                     invalidate(ErrorType.INCOMPATIBLE_UNIT);
                 }
@@ -522,7 +522,7 @@ public class CalculatedValue
         }
         else
         {
-            return setValue(1.0f/FastMath.sin(g.real));
+            return setValue(1.0f / FastMath.sin(g.real));
         }
 
     }
@@ -559,7 +559,7 @@ public class CalculatedValue
         }
         else
         {
-            return setValue(1.0f/FastMath.sinh(g.real));
+            return setValue(1.0f / FastMath.sinh(g.real));
         }
     }
 
@@ -583,7 +583,7 @@ public class CalculatedValue
         }
         else
         {
-            return setValue(1.0f/FastMath.cos(g.real));
+            return setValue(1.0f / FastMath.cos(g.real));
         }
     }
 
@@ -619,7 +619,7 @@ public class CalculatedValue
         }
         else
         {
-            return setValue(1.0f/FastMath.cosh(g.real));
+            return setValue(1.0f / FastMath.cosh(g.real));
         }
     }
 
@@ -643,7 +643,7 @@ public class CalculatedValue
         }
         else
         {
-            return setValue(1.0f/FastMath.tan(g.real));
+            return setValue(1.0f / FastMath.tan(g.real));
         }
     }
 
@@ -679,7 +679,7 @@ public class CalculatedValue
         }
         else
         {
-            return setValue(1.0f/FastMath.tanh(g.real));
+            return setValue(1.0f / FastMath.tanh(g.real));
         }
     }
 

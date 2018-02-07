@@ -100,6 +100,7 @@
         <item>release_notes.mmt</item>
         <item>functions_overview.mmt</item>
         <item>error_messages.mmt</item>
+        <item>units_overview.mmt</item>
     </string-array>
         
 </resources>
