@@ -140,6 +140,7 @@
     <string name="dialog_result_disable_calculation">Не вычислять</string>
     <string name="dialog_result_hide_result_field">Скрыть поле с результатом</string>
     <string name="dialog_result_array_length">Количество значений</string>
+    <string name="dialog_result_units">Единицы измерений</string>
     <string name="dialog_text_settings_title">Свойства текста</string>
     <string name="dialog_text_style_chapter">Часть</string>
     <string name="dialog_text_style_section">Раздел</string>

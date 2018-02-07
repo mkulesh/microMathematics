@@ -59,6 +59,22 @@ public class TermParser
         // empty
     }
 
+    @Override
+    public String toString()
+    {
+        StringBuilder info = new StringBuilder();
+        info.append("value=").append(value == null? "empty" : value.toString())
+            .append(", functionName=").append(functionName == null? "empty" : functionName)
+            .append(", functionArgs=").append(functionArgs == null? "empty" : functionArgs.toString())
+            .append(", argumentHolder=").append(argumentHolder == null? "empty" : argumentHolder.toString())
+            .append(", argumentIndex=").append(argumentIndex)
+            .append(", linkedVariableId=").append(linkedVariableId)
+            .append(", sign=").append(sign)
+            .append(", isArray=").append(isArray)
+            .append(", unit=").append(unit == null? "empty" : unit.toString());
+        return info.toString();
+    }
+
     public CalculatedValue getValue()
     {
         return value;
@@ -143,10 +159,13 @@ public class TermParser
         }
 
         // check units
-        unit = parseUnits(text);
-        if (unit != null)
+        if (text.contains(UNIT_SEPARATOR))
         {
-            text = text.replace(unit.toString(), "").trim();
+            unit = parseUnits(text);
+            if (unit != null)
+            {
+                text = text.substring(0, text.indexOf(UNIT_SEPARATOR)).trim();
+            }
         }
 
         // check if is a valid double value
@@ -306,8 +325,7 @@ public class TermParser
 
         // try to convert term as a pure unit
         {
-            final String tmpUnit = "1" + UNIT_SEPARATOR + text;
-            unit = parseUnits(tmpUnit);
+            unit = parseUnits(prepareUnitString(text));
             if (unit != null)
             {
                 value = new CalculatedValue(CalculatedValue.ValueType.REAL, 1.0, 0.0);
@@ -318,7 +336,12 @@ public class TermParser
         errorId = R.string.error_unknown_variable;
     }
 
-    private Unit parseUnits(final String text)
+    public static String prepareUnitString(String text)
+    {
+        return text == null || text.isEmpty()? null : "1" + UNIT_SEPARATOR + text;
+    }
+
+    public static Unit parseUnits(final String text)
     {
         if (text == null || !text.contains(UNIT_SEPARATOR))
         {
@@ -328,8 +351,7 @@ public class TermParser
         {
             final String unitPart = text.substring(
                     text.indexOf(UNIT_SEPARATOR) + UNIT_SEPARATOR.length(), text.length()).trim();
-            final String tmpUnit = "1" + UNIT_SEPARATOR + unitPart;
-            final Measure conv = DecimalMeasure.valueOf(tmpUnit);
+            final Measure conv = DecimalMeasure.valueOf(prepareUnitString(unitPart));
             if (conv != null && conv.getUnit() != null)
             {
                 return conv.getUnit();

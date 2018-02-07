@@ -31,6 +31,7 @@ public class ResultProperties implements Parcelable
     public static final String XML_PROP_DISABLE_CALCULATION = "disableCalculation";
     public static final String XML_PROP_HIDE_RESULT_FIELD = "hideResultField";
     public static final String XML_PROP_ARRAY_LENGTH = "arrayLength";
+    public static final String XML_PROP_UNITS = "units";
 
     /**
      * Class members.
@@ -38,11 +39,12 @@ public class ResultProperties implements Parcelable
     public boolean disableCalculation = false;
     public boolean hideResultField = false;
     public int arrayLength = 7;
+    public String units = "";
 
     /**
      * Temporary attributes that are not a part of state
      */
-    public boolean showArrayLenght = false;
+    public boolean showArrayLength = false;
 
     /**
      * Parcelable interface
@@ -65,6 +67,7 @@ public class ResultProperties implements Parcelable
         dest.writeString(String.valueOf(disableCalculation));
         dest.writeString(String.valueOf(hideResultField));
         dest.writeInt(arrayLength);
+        dest.writeString(units);
     }
 
     public void readFromParcel(Parcel in)
@@ -72,6 +75,7 @@ public class ResultProperties implements Parcelable
         disableCalculation = Boolean.valueOf(in.readString());
         hideResultField = Boolean.valueOf(in.readString());
         arrayLength = in.readInt();
+        units = in.readString();
     }
 
     public static final Parcelable.Creator<ResultProperties> CREATOR = new Parcelable.Creator<ResultProperties>()
@@ -102,6 +106,7 @@ public class ResultProperties implements Parcelable
         disableCalculation = a.disableCalculation;
         hideResultField = a.hideResultField;
         arrayLength = a.arrayLength;
+        units = a.units;
     }
 
     public void readFromXml(XmlPullParser parser)
@@ -121,6 +126,11 @@ public class ResultProperties implements Parcelable
         {
             arrayLength = Integer.parseInt(attr);
         }
+        attr = parser.getAttributeValue(null, XML_PROP_UNITS);
+        if (attr != null)
+        {
+            units = attr;
+        }
     }
 
     public void writeToXml(XmlSerializer serializer) throws Exception
@@ -128,5 +138,6 @@ public class ResultProperties implements Parcelable
         serializer.attribute(FormulaList.XML_NS, XML_PROP_DISABLE_CALCULATION, String.valueOf(disableCalculation));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_HIDE_RESULT_FIELD, String.valueOf(hideResultField));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_ARRAY_LENGTH, String.valueOf(arrayLength));
+        serializer.attribute(FormulaList.XML_NS, XML_PROP_UNITS, units);
     }
 }

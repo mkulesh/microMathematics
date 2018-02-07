@@ -82,7 +82,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginLeft="5dp"
                 micromath:label="@string/dialog_document_settings_significant_digits" />
             
             <View
@@ -107,7 +106,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginLeft="5dp"
                 micromath:label="@string/dialog_document_settings_width_size" />
 
         </LinearLayout>

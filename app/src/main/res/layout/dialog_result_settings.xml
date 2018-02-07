@@ -15,6 +15,30 @@
             android:paddingBottom="@dimen/dialog_content_padding"
             android:paddingTop="@dimen/dialog_content_padding" >
 
+            <TextView
+                style="@style/DialogTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="@string/dialog_result_units" />
+            <LinearLayout
+                style="@style/DialogTextEditBackgroundStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/dialog_result_units_field"
+                    style="@style/DialogTextEditStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:inputType="text"/>
+            </LinearLayout>
+
+            <View
+                style="@style/HorizontalDividerStyle"
+                android:layout_marginBottom="@dimen/dialog_content_padding"
+                android:layout_marginTop="@dimen/dialog_content_padding" />
+
             <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/dialog_result_disable_calculation"
                 style="@style/CheckBoxStyle"
@@ -31,7 +55,6 @@
                 android:id="@+id/dialog_result_array_length_picker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
                 android:orientation="horizontal"
                 android:visibility="gone"
                 micromath:label="@string/dialog_result_array_length" />

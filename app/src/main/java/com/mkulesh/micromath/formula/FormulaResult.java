@@ -255,12 +255,6 @@ public class FormulaResult extends CalculationResult implements ResultProperties
             resultType = ResultType.CONSTANT;
             constantResult = new CalculatedValue();
             leftTerm.getValue(thread, constantResult);
-            final Unit sourceUnit = constantResult.getUnit();
-            final Unit targetUnit = leftTerm.getParser().getUnit();
-            if (sourceUnit != null && targetUnit != null && !sourceUnit.equals(targetUnit))
-            {
-                constantResult.convertUnit(sourceUnit, targetUnit);
-            }
         }
         else if (linkedIntervals.size() == 1)
         {
@@ -384,7 +378,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     {
         if (owner == this)
         {
-            properties.showArrayLenght = isArrayResult();
+            properties.showArrayLength = isArrayResult();
             DialogResultSettings d = new DialogResultSettings(getFormulaList().getActivity(), this, properties);
             formulaState = getState();
             d.show();
@@ -573,6 +567,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         final int yValuesNumber = arrayResult.getDimensions()[1];
         final int colsNumber = Math.min(yValuesNumber, properties.arrayLength + 1);
 
+        final Unit targetUnit = TermParser.parseUnits(TermParser.prepareUnitString(properties.units));
+
         arrayResultMatrix.resize(rowsNumber, colsNumber, R.layout.formula_result_cell);
         for (int r = 0; r < rowsNumber; r++)
         {
@@ -611,9 +607,13 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                         dataColIdx = yValuesNumber - 1;
                     }
                 }
-                String resultStr = arrayResult.getValue2D(dataRowIdx, dataColIdx).getResultDescription(
-                        getFormulaList().getDocumentSettings());
-                arrayResultMatrix.setText(r, c, resultStr);
+                final CalculatedValue value = arrayResult.getValue2D(dataRowIdx, dataColIdx);
+                if (value.getUnit() != null && targetUnit != null)
+                {
+                    value.convertUnit(value.getUnit(), targetUnit);
+                }
+                arrayResultMatrix.setText(r, c,
+                        value.getResultDescription(getFormulaList().getDocumentSettings()));
             }
         }
     }
@@ -628,6 +628,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         final int rowsNumber = Math.min(xValuesNumber, properties.arrayLength + 1);
         final int yValuesNumber = arrayResult.getDimensions()[1];
         final int colsNumber = Math.min(yValuesNumber, properties.arrayLength + 1);
+
+        final Unit targetUnit = TermParser.parseUnits(TermParser.prepareUnitString(properties.units));
 
         ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>(rowsNumber);
         for (int r = 0; r < rowsNumber; r++)
@@ -668,8 +670,12 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                         dataColIdx = yValuesNumber - 1;
                     }
                 }
-                res.get(r).add(arrayResult.getValue2D(dataRowIdx, dataColIdx).getResultDescription(
-                        getFormulaList().getDocumentSettings()));
+                final CalculatedValue value = arrayResult.getValue2D(dataRowIdx, dataColIdx);
+                if (value.getUnit() != null && targetUnit != null)
+                {
+                    value.convertUnit(value.getUnit(), targetUnit);
+                }
+                res.get(r).add(value.getResultDescription(getFormulaList().getDocumentSettings()));
             }
         }
         return res;
@@ -684,6 +690,11 @@ public class FormulaResult extends CalculationResult implements ResultProperties
 
         if (resultType == ResultType.CONSTANT)
         {
+            final Unit targetUnit = TermParser.parseUnits(TermParser.prepareUnitString(properties.units));
+            if (constantResult.getUnit() != null && targetUnit != null)
+            {
+                constantResult.convertUnit(constantResult.getUnit(), targetUnit);
+            }
             return constantResult.getResultDescription(getFormulaList().getDocumentSettings());
         }
 
