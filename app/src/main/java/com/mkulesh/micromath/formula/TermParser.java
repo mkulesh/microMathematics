@@ -24,6 +24,7 @@ import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 
 import org.apache.commons.math3.complex.Complex;
+import org.apache.commons.math3.util.Pair;
 
 import java.util.ArrayList;
 
@@ -41,6 +42,7 @@ public class TermParser
     private double sign = 1.0;
     private boolean isArray = false;
     private Unit unit = null;
+    private Pair<String, String> unitTags = null;
 
     public int errorId = TermField.NO_ERROR_ID;
 
@@ -120,6 +122,11 @@ public class TermParser
         return unit;
     }
 
+    public Pair<String, String> getUnitTags()
+    {
+        return unitTags;
+    }
+
     public void setText(TermField owner, FormulaBase formulaRoot, CustomEditText editText)
     {
         String inText = editText.getText().toString();
@@ -132,6 +139,7 @@ public class TermParser
         sign = 1.0;
         isArray = false;
         unit = null;
+        unitTags = null;
         errorId = TermField.NO_ERROR_ID;
         if (inText == null || inText.length() == 0)
         {
@@ -161,10 +169,14 @@ public class TermParser
         // check units
         if (text.contains(UNIT_SEPARATOR))
         {
-            unit = parseUnits(text);
+            final int sepPos = text.indexOf(UNIT_SEPARATOR);
+            final String valuePart = text.substring(0, sepPos).trim();
+            final String unitPart = text.substring(sepPos + UNIT_SEPARATOR.length(), text.length()).trim();
+            unit = parseUnits(unitPart);
             if (unit != null)
             {
-                text = text.substring(0, text.indexOf(UNIT_SEPARATOR)).trim();
+                unitTags = new Pair<>(valuePart, unitPart);
+                text = valuePart;
             }
         }
 
@@ -325,9 +337,10 @@ public class TermParser
 
         // try to convert term as a pure unit
         {
-            unit = parseUnits(prepareUnitString(text));
+            unit = parseUnits(text);
             if (unit != null)
             {
+                unitTags = new Pair<>("", text);
                 value = new CalculatedValue(CalculatedValue.ValueType.REAL, 1.0, 0.0);
                 return;
             }
@@ -336,22 +349,18 @@ public class TermParser
         errorId = R.string.error_unknown_variable;
     }
 
-    public static String prepareUnitString(String text)
-    {
-        return text == null || text.isEmpty() ? null : "1" + UNIT_SEPARATOR + text;
-    }
-
     public static Unit parseUnits(final String text)
     {
-        if (text == null || !text.contains(UNIT_SEPARATOR))
+        if (text == null || text.isEmpty())
         {
             return null;
         }
         try
         {
-            final String unitPart = text.substring(
-                    text.indexOf(UNIT_SEPARATOR) + UNIT_SEPARATOR.length(), text.length()).trim();
-            final Measure conv = DecimalMeasure.valueOf(prepareUnitString(unitPart));
+            // There are two different symbols μ: standard and from greek keyboard.
+            // Replace keyboard symbol by the standard one:
+            final String unitText = text.replace(/*from Greek Small Letter Mu*/ 'μ', /*to Micro sign*/ 'µ');
+            final Measure conv = DecimalMeasure.valueOf("1" + UNIT_SEPARATOR + unitText);
             if (conv != null && conv.getUnit() != null)
             {
                 return conv.getUnit();

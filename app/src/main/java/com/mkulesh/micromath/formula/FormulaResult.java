@@ -568,7 +568,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         final int yValuesNumber = arrayResult.getDimensions()[1];
         final int colsNumber = Math.min(yValuesNumber, properties.arrayLength + 1);
 
-        final Unit targetUnit = TermParser.parseUnits(TermParser.prepareUnitString(properties.units));
+        final Unit targetUnit = TermParser.parseUnits(properties.units);
 
         arrayResultMatrix.resize(rowsNumber, colsNumber, R.layout.formula_result_cell);
         for (int r = 0; r < rowsNumber; r++)
@@ -627,7 +627,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         final int yValuesNumber = arrayResult.getDimensions()[1];
         final int colsNumber = Math.min(yValuesNumber, properties.arrayLength + 1);
 
-        final Unit targetUnit = TermParser.parseUnits(TermParser.prepareUnitString(properties.units));
+        final Unit targetUnit = TermParser.parseUnits(properties.units);
 
         ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>(rowsNumber);
         for (int r = 0; r < rowsNumber; r++)
@@ -722,8 +722,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
 
         if (resultType == ResultType.CONSTANT)
         {
-            convertUnits(constantResult, TermParser.parseUnits(
-                    TermParser.prepareUnitString(properties.units)), /*toBase=*/ true);
+            convertUnits(constantResult, TermParser.parseUnits(properties.units), /*toBase=*/ true);
             return constantResult.getResultDescription(getFormulaList().getDocumentSettings());
         }
 

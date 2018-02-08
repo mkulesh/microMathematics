@@ -502,12 +502,24 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     public void readFromXml(XmlPullParser parser) throws Exception
     {
         final String text = parser.getAttributeValue(null, FormulaList.XML_PROP_TEXT);
+        final String unit = parser.getAttributeValue(null, FormulaList.XML_PROP_UNIT);
         final String termCode = parser.getAttributeValue(null, FormulaList.XML_PROP_CODE);
         parser.require(XmlPullParser.START_TAG, FormulaList.XML_NS, parser.getName());
         boolean finishTag = true;
         if (termCode == null)
         {
-            setText(text == null || !isWritable ? "" : text);
+            if (text == null || !isWritable)
+            {
+                setText("");
+            }
+            else if (unit != null && !unit.isEmpty())
+            {
+                setText(text + TermParser.UNIT_SEPARATOR + unit);
+            }
+            else
+            {
+                setText(text);
+            }
         }
         else
         {
@@ -536,8 +548,21 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     {
         if (!isTerm())
         {
-            serializer
-                    .attribute(FormulaList.XML_NS, FormulaList.XML_PROP_TEXT, isEmptyOrAutoContent() ? "" : getText());
+            if (isEmptyOrAutoContent())
+            {
+                serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_TEXT,  "");
+            }
+            else if (parser.getUnit() != null && parser.getUnitTags() != null)
+            {
+                serializer.attribute(FormulaList.XML_NS,
+                        FormulaList.XML_PROP_TEXT, parser.getUnitTags().getFirst());
+                serializer.attribute(FormulaList.XML_NS,
+                        FormulaList.XML_PROP_UNIT, parser.getUnitTags().getSecond());
+            }
+            else
+            {
+                serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_TEXT, getText());
+            }
         }
         else
         {

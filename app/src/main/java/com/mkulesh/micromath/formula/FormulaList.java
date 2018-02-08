@@ -91,6 +91,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     public static final String XML_PROP_KEY = "key";
     public static final String XML_PROP_CODE = "code";
     public static final String XML_PROP_TEXT = "text";
+    public static final String XML_PROP_UNIT = "unit";
     public static final String XML_PROP_INRIGHTOFPREVIOUS = "inRightOfPrevious";
     public static final String XML_MAIN_TAG = "micromath";
     public static final String XML_LIST_TAG = "formulaList";
