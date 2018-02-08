@@ -423,7 +423,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     /**
      * Procedure returns declared interval if this root formula represents an interval
      */
-    public ArrayList<Double> getInterval(CalculaterTask thread) throws CancelException
+    public ArrayList<CalculatedValue> getInterval(CalculaterTask thread) throws CancelException
     {
         FormulaTerm t = rightTerm.getTerm();
         if (t != null && t instanceof Intervals)
@@ -443,7 +443,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         {
             return null;
         }
-        final ArrayList<Double> arr = getInterval(thread);
+        final ArrayList<CalculatedValue> arr = getInterval(thread);
         if (arr == null || arr.isEmpty())
         {
             return null;
@@ -451,7 +451,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         ArrayList<Double> newArr = new ArrayList<Double>();
         for (int i = 0; i < arr.size(); i++)
         {
-            final double v = arr.get(i);
+            final double v = arr.get(i).getReal();
             if (minMaxValues[1] != Double.POSITIVE_INFINITY && v > minMaxValues[1])
             {
                 break;

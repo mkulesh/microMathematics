@@ -90,6 +90,14 @@ public class CalculatedValue
         this.imaginary = imaginary;
     }
 
+    public CalculatedValue(double real, Unit u)
+    {
+        this.valueType = ValueType.REAL;
+        this.real = real;
+        this.imaginary = 0.0;
+        unit = u;
+    }
+
     public ValueType assign(CalculatedValue c)
     {
         valueType = c.valueType;
@@ -184,6 +192,13 @@ public class CalculatedValue
         this.real = real;
         this.imaginary = 0.0;
         valueType = ValueType.REAL;
+        return valueType;
+    }
+
+    public ValueType setValue(double real, Unit u)
+    {
+        this.setValue(real);
+        this.unit = u;
         return valueType;
     }
 

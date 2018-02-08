@@ -35,9 +35,12 @@ import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
 
 import org.apache.commons.math3.util.FastMath;
+import org.apache.commons.math3.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Locale;
+
+import javax.measure.unit.Unit;
 
 public class Intervals extends FormulaTerm
 {
@@ -162,6 +165,13 @@ public class Intervals extends FormulaTerm
     @Override
     public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
     {
+        Pair<Unit, Integer> units = compareUnits(new TermField []{minValueTerm, nextValueTerm, maxValueTerm});
+        if (units.getFirst() != null && units.getSecond() != 3)
+        {
+            return outValue.invalidate(CalculatedValue.ErrorType.INCOMPATIBLE_UNIT);
+        }
+        final Unit u = units.getFirst();
+
         if (getFormulaRoot() instanceof Equation)
         {
             minValue.processRealTerm(thread, minValueTerm);
@@ -181,15 +191,15 @@ public class Intervals extends FormulaTerm
             final int N = getNumberOfPoints(minValue.getReal(), maxValue.getReal(), calcDelta.getReal());
             if (idx == 0)
             {
-                return outValue.setValue(minValue.getReal());
+                return outValue.setValue(minValue.getReal(), u);
             }
             else if (idx == N)
             {
-                return outValue.setValue(maxValue.getReal());
+                return outValue.setValue(maxValue.getReal(), u);
             }
             else if (idx > 0 && idx < N)
             {
-                return outValue.setValue(minValue.getReal() + calcDelta.getReal() * (double) idx);
+                return outValue.setValue(minValue.getReal() + calcDelta.getReal() * (double) idx, u);
             }
         }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
@@ -270,11 +280,35 @@ public class Intervals extends FormulaTerm
      * FormulaTermInterval-specific methods
      *********************************************************/
 
+    private Pair<Unit, Integer> compareUnits(TermField [] terms)
+    {
+        Unit unit = terms[0].getParser().getUnit();
+        int compatibleNumber = 0;
+        for (TermField t : terms)
+        {
+            if (unit != null && unit.isCompatible(t.getParser().getUnit()))
+            {
+                compatibleNumber++;
+            }
+            if (unit == null)
+            {
+                unit = t.getParser().getUnit();
+            }
+        }
+        return new Pair<>(unit == null? null : unit.getStandardUnit(), compatibleNumber);
+    }
+
     /**
      * Procedure returns declared interval if this root formula represents an interval
      */
-    public ArrayList<Double> getInterval(CalculaterTask thread) throws CancelException
+    public ArrayList<CalculatedValue> getInterval(CalculaterTask thread) throws CancelException
     {
+        Pair<Unit, Integer> units = compareUnits(new TermField []{minValueTerm, nextValueTerm, maxValueTerm});
+        if (units.getFirst() != null && units.getSecond() != 3)
+        {
+            return null;
+        }
+
         minValue.processRealTerm(thread, minValueTerm);
         nextValue.processRealTerm(thread, nextValueTerm);
         maxValue.processRealTerm(thread, maxValueTerm);
@@ -288,7 +322,7 @@ public class Intervals extends FormulaTerm
             return null;
         }
         final int N = getNumberOfPoints(minValue.getReal(), maxValue.getReal(), calcDelta.getReal());
-        ArrayList<Double> retValue = new ArrayList<Double>(N);
+        ArrayList<CalculatedValue> retValue = new ArrayList<>(N);
         for (int idx = 0; idx <= N; idx++)
         {
             if (thread != null)
@@ -297,15 +331,16 @@ public class Intervals extends FormulaTerm
             }
             if (idx == 0)
             {
-                retValue.add(minValue.getReal());
+                retValue.add(new CalculatedValue(minValue.getReal(), units.getFirst()));
             }
             else if (idx == N)
             {
-                retValue.add(maxValue.getReal());
+                retValue.add(new CalculatedValue(maxValue.getReal(), units.getFirst()));
             }
             else
             {
-                retValue.add(minValue.getReal() + calcDelta.getReal() * (double) idx);
+                final double val = minValue.getReal() + calcDelta.getReal() * (double) idx;
+                retValue.add(new CalculatedValue(val, units.getFirst()));
             }
         }
         return retValue;

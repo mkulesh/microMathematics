@@ -1042,7 +1042,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             }
             else
             {
-                ArrayList<Double> par = linkedInterval.getInterval(thread);
+                final ArrayList<CalculatedValue> par = linkedInterval.getInterval(thread);
                 if (par == null)
                 {
                     return;
@@ -1057,7 +1057,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
                 }
                 for (int i = 0; i < par.size(); i++)
                 {
-                    argValues[0].setValue(par.get(i));
+                    argValues[0].assign(par.get(i));
                     linkedInterval.setArgumentValues(argValues);
                     calcVal.processRealTerm(thread, x);
                     final double xVal = calcVal.getReal();

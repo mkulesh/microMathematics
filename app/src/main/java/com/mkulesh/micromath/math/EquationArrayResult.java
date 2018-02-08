@@ -96,7 +96,7 @@ public class EquationArrayResult
         }
 
         // collect intervals and dimensions
-        final ArrayList<ArrayList<Double>> intervalValues = new ArrayList<ArrayList<Double>>();
+        final ArrayList<ArrayList<CalculatedValue>> intervalValues = new ArrayList<>();
         final int[] dimValues = new int[dimNumber];
         final CalculatedValue[] argValues = new CalculatedValue[dimNumber];
         for (int dim = 0; dim < dimNumber; dim++)
@@ -107,12 +107,12 @@ public class EquationArrayResult
             {
                 return;
             }
-            ArrayList<Double> interval = e.getInterval(thread);
+            final ArrayList<CalculatedValue> interval = e.getInterval(thread);
             if (interval == null || interval.isEmpty())
             {
                 return;
             }
-            final int lastIndex = interval.get(interval.size() - 1).intValue();
+            final int lastIndex = interval.get(interval.size() - 1).getInteger();
             if (lastIndex <= 0)
             {
                 return;
@@ -127,28 +127,28 @@ public class EquationArrayResult
 
         // calculate array
         equation.setArgumentValues(argValues);
-        for (Double d0 : intervalValues.get(D0))
+        for (final CalculatedValue d0 : intervalValues.get(D0))
         {
-            final int i0 = d0.intValue();
-            argValues[D0].setValue(d0);
+            final int i0 = d0.getInteger();
+            argValues[D0].assign(d0);
             if (dimNumber == 1)
             {
                 equationTerm.getValue(thread, values[i0]);
                 continue;
             }
-            for (Double d1 : intervalValues.get(D1))
+            for (final CalculatedValue d1 : intervalValues.get(D1))
             {
-                final int i1 = d1.intValue();
-                argValues[D1].setValue(d1);
+                final int i1 = d1.getInteger();
+                argValues[D1].assign(d1);
                 if (dimNumber == 2)
                 {
                     equationTerm.getValue(thread, values[getIndex(i0, i1)]);
                     continue;
                 }
-                for (Double d2 : intervalValues.get(D2))
+                for (final CalculatedValue d2 : intervalValues.get(D2))
                 {
-                    final int i2 = d2.intValue();
-                    argValues[D2].setValue(d2);
+                    final int i2 = d2.getInteger();
+                    argValues[D2].assign(d2);
                     equationTerm.getValue(thread, values[getIndex(i0, i1, i2)]);
                 }
             }

@@ -260,7 +260,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         {
             final CalculatedValue[] argValues = new CalculatedValue[1];
             argValues[0] = new CalculatedValue();
-            final ArrayList<Double> xValues = linkedIntervals.get(0).getInterval(thread);
+            final ArrayList<CalculatedValue> xValues = linkedIntervals.get(0).getInterval(thread);
             if (xValues != null && xValues.size() > 0)
             {
                 final int xLength = xValues.size();
@@ -269,9 +269,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                 arrayResult = new EquationArrayResult(xLength, 1);
                 for (int xIndex = 0; xIndex < xLength; xIndex++)
                 {
-                    final Double x = xValues.get(xIndex);
-                    argValues[0].setValue(x);
-                    arrayArgument.getValue1D(xIndex).setValue(x);
+                    argValues[0].assign(xValues.get(xIndex));
+                    arrayArgument.getValue1D(xIndex).assign(argValues[0]);
                     linkedIntervals.get(0).setArgumentValues(argValues);
                     leftTerm.getValue(thread, arrayResult.getValue2D(xIndex, 0));
                 }
@@ -285,9 +284,9 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         {
             final CalculatedValue[][] argValues = new CalculatedValue[2][1];
             argValues[0][0] = new CalculatedValue();
-            final ArrayList<Double> xValues = linkedIntervals.get(0).getInterval(thread);
+            final ArrayList<CalculatedValue> xValues = linkedIntervals.get(0).getInterval(thread);
             argValues[1][0] = new CalculatedValue();
-            final ArrayList<Double> yValues = linkedIntervals.get(1).getInterval(thread);
+            final ArrayList<CalculatedValue> yValues = linkedIntervals.get(1).getInterval(thread);
             if (xValues != null && xValues.size() > 0 && yValues != null && yValues.size() > 0)
             {
                 final int xLength = xValues.size();
@@ -296,11 +295,11 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                 arrayResult = new EquationArrayResult(xLength, yLength);
                 for (int xIndex = 0; xIndex < xLength; xIndex++)
                 {
-                    argValues[0][0].setValue(xValues.get(xIndex));
+                    argValues[0][0].assign(xValues.get(xIndex));
                     linkedIntervals.get(0).setArgumentValues(argValues[0]);
                     for (int yIndex = 0; yIndex < yLength; yIndex++)
                     {
-                        argValues[1][0].setValue(yValues.get(yIndex));
+                        argValues[1][0].assign(yValues.get(yIndex));
                         linkedIntervals.get(1).setArgumentValues(argValues[1]);
                         leftTerm.getValue(thread, arrayResult.getValue2D(xIndex, yIndex));
                     }

@@ -266,6 +266,10 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
                 return outValue.getValueType();
             case ARGUMENT:
                 outValue.assign(parser.getArgumentHolder().getArgumentValue(parser.getArgumentIndex()));
+                if (parser.getUnit() != null)
+                {
+                    outValue.convertUnit(parser.getUnit(), parser.getUnit().getStandardUnit());
+                }
                 return outValue.multiply(parser.getSign());
             case VARIABLE_LINK:
                 if (linkedVariable.isInterval())
