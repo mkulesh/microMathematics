@@ -32,10 +32,12 @@ import org.apache.commons.math3.util.FastMath;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.measure.DecimalMeasure;
 import javax.measure.Measure;
+import javax.measure.unit.SI;
 import javax.measure.unit.Unit;
 
 public class CalculatedValue
@@ -130,6 +132,42 @@ public class CalculatedValue
         {
             invalidate(ErrorType.INCOMPATIBLE_UNIT);
         }
+    }
+
+    public void convertUnit(final Unit targetUnit, boolean toBase)
+    {
+        final Unit sourceUnit = getUnit();
+        if (sourceUnit == null)
+        {
+            return;
+        }
+        Unit newUnit = targetUnit;
+        if (newUnit == null && toBase)
+        {
+            ArrayList<Unit> ul = new ArrayList<>();
+            for (Unit u : SI.getInstance().getUnits())
+            {
+                if (sourceUnit.isCompatible(u))
+                {
+                    ul.add(u);
+                }
+            }
+            int minLen = Integer.MAX_VALUE;
+            for (Unit u : ul)
+            {
+                if (sourceUnit.getStandardUnit().toString().equals(u.toString()))
+                {
+                    newUnit = u;
+                    break;
+                }
+                if (newUnit == null || u.toString().length() < minLen)
+                {
+                    newUnit = u;
+                    minLen = u.toString().length();
+                }
+            }
+        }
+        convertUnit(sourceUnit, newUnit == null ? sourceUnit.getStandardUnit() : newUnit);
     }
 
     public ValueType invalidate(ErrorType errorType)

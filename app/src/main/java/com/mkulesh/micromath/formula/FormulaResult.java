@@ -47,7 +47,6 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.ArrayList;
 
-import javax.measure.unit.SI;
 import javax.measure.unit.Unit;
 
 public class FormulaResult extends CalculationResult implements ResultPropertiesChangeIf, FocusChangeIf
@@ -369,7 +368,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         {
             DialogResultDetails d = new DialogResultDetails(getFormulaList().getActivity(),
                     arrayArgument, arrayResult,
-                    getFormulaList().getDocumentSettings());
+                    getFormulaList().getDocumentSettings(), properties);
             d.show();
         }
     }
@@ -507,18 +506,18 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         inflateRootLayout(R.layout.formula_result, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         // create name term
         {
-            CustomEditText v = (CustomEditText) layout.findViewById(R.id.formula_result_name);
+            CustomEditText v = layout.findViewById(R.id.formula_result_name);
             leftTerm = addTerm(this, (LinearLayout) layout.findViewById(R.id.result_function_layout), v, this, false);
             leftTerm.bracketsType = TermField.BracketsType.NEVER;
         }
         // create assign character
         {
-            resultAssign = (CustomTextView) layout.findViewById(R.id.formula_result_assign);
+            resultAssign = layout.findViewById(R.id.formula_result_assign);
             resultAssign.prepare(CustomTextView.SymbolType.TEXT, getFormulaList().getActivity(), this);
         }
         // create result term
         {
-            CustomEditText v = (CustomEditText) layout.findViewById(R.id.formula_result_value);
+            CustomEditText v = layout.findViewById(R.id.formula_result_value);
             constantResultField = addTerm(this, layout, v, this, true);
             constantResultField.bracketsType = TermField.BracketsType.NEVER;
             constantResultField.isWritable = false;
@@ -526,11 +525,11 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         }
         // brackets
         {
-            leftBracket = (CustomTextView) layout.findViewById(R.id.formula_result_left_bracket);
+            leftBracket = layout.findViewById(R.id.formula_result_left_bracket);
             leftBracket.prepare(CustomTextView.SymbolType.LEFT_SQR_BRACKET, getFormulaList().getActivity(), this);
             leftBracket.setText("."); // this text defines view width/height
 
-            rightBracket = (CustomTextView) layout.findViewById(R.id.formula_result_right_bracket);
+            rightBracket = layout.findViewById(R.id.formula_result_right_bracket);
             rightBracket.prepare(CustomTextView.SymbolType.RIGHT_SQR_BRACKET, getFormulaList().getActivity(), this);
             rightBracket.setText("."); // this text defines view width/height
         }
@@ -609,7 +608,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                     }
                 }
                 final CalculatedValue value = arrayResult.getValue2D(dataRowIdx, dataColIdx);
-                convertUnits(value, targetUnit, /*toBase=*/ false);
+                value.convertUnit(targetUnit, /*toBase=*/ false);
                 arrayResultMatrix.setText(r, c,
                         value.getResultDescription(getFormulaList().getDocumentSettings()));
             }
@@ -669,48 +668,11 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                     }
                 }
                 final CalculatedValue value = arrayResult.getValue2D(dataRowIdx, dataColIdx);
-                convertUnits(value, targetUnit, /*toBase=*/ false);
+                value.convertUnit(targetUnit, /*toBase=*/ false);
                 res.get(r).add(value.getResultDescription(getFormulaList().getDocumentSettings()));
             }
         }
         return res;
-    }
-
-    private void convertUnits(final CalculatedValue value, final Unit targetUnit, boolean toBase)
-    {
-        final Unit sourceUnit = value.getUnit();
-        if (sourceUnit == null)
-        {
-            return;
-        }
-        Unit newUnit = targetUnit;
-        if (newUnit == null && toBase)
-        {
-            ArrayList<Unit> ul = new ArrayList<>();
-            for (Unit u : SI.getInstance().getUnits())
-            {
-                if (sourceUnit.isCompatible(u))
-                {
-                    ul.add(u);
-                }
-            }
-            int minLen = Integer.MAX_VALUE;
-            for (Unit u : ul)
-            {
-                if (sourceUnit.getStandardUnit().toString().equals(u.toString()))
-                {
-                    newUnit = u;
-                    break;
-                }
-                if (newUnit == null || u.toString().length() < minLen)
-                {
-                    newUnit = u;
-                    minLen = u.toString().length();
-                }
-            }
-        }
-        value.convertUnit(value.getUnit(),
-                newUnit == null ? sourceUnit.getStandardUnit() : newUnit);
     }
 
     private String fillResultString()
@@ -722,7 +684,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
 
         if (resultType == ResultType.CONSTANT)
         {
-            convertUnits(constantResult, TermParser.parseUnits(properties.units), /*toBase=*/ true);
+            constantResult.convertUnit(TermParser.parseUnits(properties.units), /*toBase=*/ true);
             return constantResult.getResultDescription(getFormulaList().getDocumentSettings());
         }
 

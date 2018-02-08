@@ -24,17 +24,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.mkulesh.micromath.formula.TermParser;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.math.EquationArrayResult;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.DocumentProperties;
+import com.mkulesh.micromath.properties.ResultProperties;
 import com.mkulesh.micromath.utils.CompatUtils;
 
 import java.util.ArrayList;
+
+import javax.measure.unit.Unit;
 
 public class DialogResultDetails extends DialogBase
 {
@@ -65,7 +68,8 @@ public class DialogResultDetails extends DialogBase
 
     private ArgumentValueAdapter argumentValueAdapter;
 
-    public DialogResultDetails(Context context, EquationArrayResult args, EquationArrayResult vals, DocumentProperties doc)
+    public DialogResultDetails(Context context, EquationArrayResult args, EquationArrayResult vals,
+                               DocumentProperties docProp, ResultProperties resProp)
     {
         super(context, R.layout.dialog_result_details, R.string.action_details);
 
@@ -79,10 +83,11 @@ public class DialogResultDetails extends DialogBase
             calculatedItems.add(new ArgumentValueItem(arguments[i], values[i]));
         }
 
-        initialize(calculatedItems, doc);
+        initialize(calculatedItems, docProp, resProp);
     }
 
-    public DialogResultDetails(Context context, EquationArrayResult vals, DocumentProperties doc)
+    public DialogResultDetails(Context context, EquationArrayResult vals,
+                               DocumentProperties doc, ResultProperties resProp)
     {
         super(context, R.layout.dialog_result_details, R.string.action_details);
 
@@ -95,10 +100,11 @@ public class DialogResultDetails extends DialogBase
             calculatedItems.add(new ArgumentValueItem(i, values[i]));
         }
 
-        initialize(calculatedItems, doc);
+        initialize(calculatedItems, doc, resProp);
     }
 
-    public DialogResultDetails(Context context, double[] args, double[] vals, DocumentProperties doc)
+    public DialogResultDetails(Context context, double[] args, double[] vals,
+                               DocumentProperties doc, ResultProperties resProp)
     {
         super(context, R.layout.dialog_result_details, R.string.action_details);
 
@@ -110,33 +116,37 @@ public class DialogResultDetails extends DialogBase
             calculatedItems.add(new ArgumentValueItem(args[i], vals[i]));
         }
 
-        initialize(calculatedItems, doc);
+        initialize(calculatedItems, doc, resProp);
     }
 
-    private void initialize(ArrayList<ArgumentValueItem> calculatedItems, DocumentProperties doc)
+    private void initialize(ArrayList<ArgumentValueItem> calculatedItems,
+                            DocumentProperties docProp, ResultProperties resProp)
     {
         // Maximize the dialog.
         maximize();
-        ((LinearLayout) findViewById(R.id.dialog_button_panel)).setVisibility(View.GONE);
+        findViewById(R.id.dialog_button_panel).setVisibility(View.GONE);
 
-        argumentValueAdapter = new ArgumentValueAdapter(getContext(), calculatedItems, doc);
-        ListView listView = (ListView) findViewById(R.id.result_details_listview);
+        argumentValueAdapter = new ArgumentValueAdapter(getContext(), calculatedItems, docProp, resProp);
+        ListView listView = findViewById(R.id.result_details_listview);
         listView.setAdapter(argumentValueAdapter);
 
         // Show number of items
-        final TextView itemsNumber = (TextView) findViewById(R.id.result_details_items_number);
+        final TextView itemsNumber = findViewById(R.id.result_details_items_number);
         itemsNumber.setText(Integer.toString(calculatedItems.size()) + " "
                 + getContext().getString(R.string.dialog_list_items));
     }
 
     private final class ArgumentValueAdapter extends ArrayAdapter<ArgumentValueItem>
     {
-        private final DocumentProperties doc;
+        private final DocumentProperties docProp;
+        private final Unit targetUnit;
 
-        public ArgumentValueAdapter(Context context, ArrayList<ArgumentValueItem> list, DocumentProperties doc)
+        public ArgumentValueAdapter(Context context, ArrayList<ArgumentValueItem> list,
+                                    DocumentProperties docProp, ResultProperties resProp)
         {
             super(context, 0, list);
-            this.doc = doc;
+            this.docProp = docProp;
+            this.targetUnit = resProp != null? TermParser.parseUnits(resProp.units) : null;
         }
 
         @Override
@@ -153,11 +163,12 @@ public class DialogResultDetails extends DialogBase
             }
 
             // Lookup view for data population
-            final TextView tvArgument = (TextView) convertView.findViewById(R.id.result_details_item_argument);
-            tvArgument.setText(item.argument.getResultDescription(doc));
+            final TextView tvArgument = convertView.findViewById(R.id.result_details_item_argument);
+            tvArgument.setText(item.argument.getResultDescription(docProp));
 
-            final TextView tvValue = (TextView) convertView.findViewById(R.id.result_details_item_value);
-            tvValue.setText(item.value.getResultDescription(doc));
+            final TextView tvValue = convertView.findViewById(R.id.result_details_item_value);
+            item.value.convertUnit(targetUnit, /*toBase=*/ true);
+            tvValue.setText(item.value.getResultDescription(docProp));
 
             // To avoid a bug on some Android versions, set color to
             // TextView's instead of parent layout

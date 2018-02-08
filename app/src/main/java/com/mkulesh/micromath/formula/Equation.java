@@ -348,7 +348,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         {
             DialogResultDetails d = new DialogResultDetails(getFormulaList().getActivity(),
                     arrayResult,
-                    getFormulaList().getDocumentSettings());
+                    getFormulaList().getDocumentSettings(), null);
             d.show();
         }
     }

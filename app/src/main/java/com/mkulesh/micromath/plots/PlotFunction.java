@@ -426,7 +426,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         {
             DialogResultDetails d = new DialogResultDetails(getFormulaList().getActivity(),
                     f.getXValues(), f.getYValues(),
-                    getFormulaList().getDocumentSettings());
+                    getFormulaList().getDocumentSettings(), null);
             d.show();
         }
     }
