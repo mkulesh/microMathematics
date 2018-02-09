@@ -304,7 +304,8 @@ public class CalculatedValue
 
     public String toString()
     {
-        return valueType.toString() + "[" + real + ", " + imaginary + "]";
+        return valueType.toString() + "[" + real + ", " + imaginary + "]" +
+                (unit == null? "?" : unit.toString());
     }
 
     public String getResultDescription(DocumentProperties doc)
@@ -390,6 +391,10 @@ public class CalculatedValue
             }
             unit = f.unit;
         }
+        else
+        {
+            unit = null;
+        }
         if (f.isComplex() || g.isComplex())
         {
             return setComplexValue(f.real + g.real, f.imaginary + g.imaginary);
@@ -409,6 +414,10 @@ public class CalculatedValue
                 return invalidate(ErrorType.INCOMPATIBLE_UNIT);
             }
             unit = f.unit;
+        }
+        else
+        {
+            unit = null;
         }
         if (f.isComplex() || g.isComplex())
         {
@@ -436,6 +445,10 @@ public class CalculatedValue
             {
                 unit = f.unit.times(g.unit);
             }
+        }
+        else
+        {
+            unit = null;
         }
         if (f.isComplex() || g.isComplex())
         {
@@ -476,6 +489,10 @@ public class CalculatedValue
                 unit = f.unit.divide(g.unit);
             }
         }
+        else
+        {
+            unit = null;
+        }
         if (f.isComplex() || g.isComplex())
         {
             final double c = g.real;
@@ -503,11 +520,19 @@ public class CalculatedValue
 
     public ValueType pow(CalculatedValue f, CalculatedValue g)
     {
+        if (g.unit != null)
+        {
+            invalidate(ErrorType.INCOMPATIBLE_UNIT);
+        }
         if (f.isComplex() || g.isComplex())
         {
             if (f.unit != null)
             {
                 invalidate(ErrorType.INCOMPATIBLE_UNIT);
+            }
+            else
+            {
+                unit = null;
             }
             return setComplexValue(f.getComplex().pow(g.getComplex()));
         }
@@ -515,7 +540,7 @@ public class CalculatedValue
         {
             if (f.unit != null)
             {
-                final int n = (int) g.real;
+                final int n = g.getInteger();
                 if ((double) n != g.real)
                 {
                     invalidate(ErrorType.INCOMPATIBLE_UNIT);
@@ -524,6 +549,10 @@ public class CalculatedValue
                 {
                     unit = f.unit.pow(n);
                 }
+            }
+            else
+            {
+                unit = null;
             }
             return setValue(FastMath.pow(f.real, g.real));
         }
@@ -543,6 +572,10 @@ public class CalculatedValue
             {
                 invalidate(ErrorType.INCOMPATIBLE_UNIT);
             }
+            else
+            {
+                unit = null;
+            }
             return setComplexValue(g.getComplex().sqrt());
         }
         else
@@ -550,6 +583,10 @@ public class CalculatedValue
             if (g.unit != null)
             {
                 unit = g.unit.root(2);
+            }
+            else
+            {
+                unit = null;
             }
             return setValue(FastMath.sqrt(g.real));
         }
@@ -815,6 +852,10 @@ public class CalculatedValue
             if (g.unit != null)
             {
                 unit = g.unit.root(n);
+            }
+            else
+            {
+                unit = null;
             }
             final List<Complex> roots = g.getComplex().nthRoot(n);
             for (Complex root : roots)

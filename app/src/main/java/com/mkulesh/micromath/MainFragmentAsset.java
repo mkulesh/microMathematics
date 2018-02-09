@@ -130,6 +130,7 @@ public class MainFragmentAsset extends BaseFragment
     @Override
     protected void onSaveFinished()
     {
+        super.onSaveFinished();
         ((MainActivity) activity).selectWorksheet(INVALID_ACTION_ID);
     }
 
