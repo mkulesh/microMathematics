@@ -107,6 +107,13 @@ public class CalculatedValue
         return valueType;
     }
 
+    public ValueType assign(CalculatedValue c, Unit u)
+    {
+        this.assign(c);
+        unit = u;
+        return valueType;
+    }
+
     public Unit getUnit()
     {
         return unit;
@@ -501,30 +508,36 @@ public class CalculatedValue
         }
     }
 
+    public Unit powUnit(CalculatedValue f, CalculatedValue g)
+    {
+        if (f.unit == null || g.unit != null || g.isComplex())
+        {
+            return null;
+        }
+        final int n = (int) g.real;
+        if ((double) n != g.real)
+        {
+            return null;
+        }
+        return f.unit.pow(n);
+    }
+
     public ValueType pow(CalculatedValue f, CalculatedValue g)
     {
+        if (unitExists(f, g))
+        {
+            unit = powUnit(f,g);
+            if (unit == null)
+            {
+                return invalidate(ErrorType.INCOMPATIBLE_UNIT);
+            }
+        }
         if (f.isComplex() || g.isComplex())
         {
-            if (f.unit != null)
-            {
-                invalidate(ErrorType.INCOMPATIBLE_UNIT);
-            }
             return setComplexValue(f.getComplex().pow(g.getComplex()));
         }
         else
         {
-            if (f.unit != null)
-            {
-                final int n = (int) g.real;
-                if ((double) n != g.real)
-                {
-                    invalidate(ErrorType.INCOMPATIBLE_UNIT);
-                }
-                else
-                {
-                    unit = f.unit.pow(n);
-                }
-            }
             return setValue(FastMath.pow(f.real, g.real));
         }
     }

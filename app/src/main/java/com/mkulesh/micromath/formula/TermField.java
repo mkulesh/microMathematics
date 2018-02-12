@@ -518,7 +518,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             }
             else if (unit != null && !unit.isEmpty())
             {
-                setText(text + TermParser.UNIT_SEPARATOR + unit);
+                setText(text.isEmpty()? unit : text + TermParser.UNIT_SEPARATOR + unit);
             }
             else
             {
@@ -719,11 +719,11 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     }
 
     /**
-     * Procedure returns the type of parsed content
+     * Procedure checks whether this term is an editable term and holds unit definition
      */
-    public ContentType getContentType()
+    public boolean isInputUnit()
     {
-        return contentType;
+        return !isTerm() && parser.getUnit() != null;
     }
 
     /**

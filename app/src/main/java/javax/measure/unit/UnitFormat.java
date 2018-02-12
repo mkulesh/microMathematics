@@ -823,11 +823,11 @@ public abstract class UnitFormat extends Format {
         }
 
         // Alias and ASCIIFormat for Ohm
-        DEFAULT.alias(SI.OHM, "Ohm");
-        ASCII.label(SI.OHM, "Ohm");
+        DEFAULT.alias(SI.OHM, "ohm");
+        ASCII.label(SI.OHM, "ohm");
         for (int i = 0; i < PREFIXES.length; i++) {
-            DEFAULT.alias(SI.OHM.transform(CONVERTERS[i]), PREFIXES[i] + "Ohm");
-            ASCII.label(SI.OHM.transform(CONVERTERS[i]), asciiPrefix(PREFIXES[i]) + "Ohm");
+            DEFAULT.alias(SI.OHM.transform(CONVERTERS[i]), PREFIXES[i] + "ohm");
+            ASCII.label(SI.OHM.transform(CONVERTERS[i]), asciiPrefix(PREFIXES[i]) + "ohm");
         }
         
         // Special case for DEGREE_CElSIUS.
@@ -854,15 +854,18 @@ public abstract class UnitFormat extends Format {
         DEFAULT.label(NonSI.MINUTE_ANGLE, "'");
         DEFAULT.label(NonSI.SECOND_ANGLE, "\"");
         DEFAULT.label(NonSI.CENTIRADIAN, "centiradian");
-        DEFAULT.label(NonSI.GRADE, "grade");
+        // SMath Studio compatibility: grade -> grad
+        DEFAULT.label(NonSI.GRADE, "grad");
         DEFAULT.label(NonSI.ARE, "a");
         DEFAULT.label(NonSI.HECTARE, "ha");
         DEFAULT.label(NonSI.BYTE, "byte");
         DEFAULT.label(NonSI.MINUTE, "min");
-        DEFAULT.label(NonSI.HOUR, "h");
+        // SMath Studio compatibility: h -> hr
+        DEFAULT.label(NonSI.HOUR, "hr");
         DEFAULT.label(NonSI.DAY, "day");
         DEFAULT.label(NonSI.WEEK, "week");
-        DEFAULT.label(NonSI.YEAR, "year");
+        // SMath Studio compatibility: year -> yr
+        DEFAULT.label(NonSI.YEAR, "yr");
         DEFAULT.label(NonSI.MONTH, "month");
         DEFAULT.label(NonSI.DAY_SIDEREAL, "day_sidereal");
         DEFAULT.label(NonSI.YEAR_SIDEREAL, "year_sidereal");
@@ -886,15 +889,21 @@ public abstract class UnitFormat extends Format {
         DEFAULT.label(NonSI.MILES_PER_HOUR, "mph");
         DEFAULT.label(NonSI.ANGSTROM, "Å");
         ASCII.label(NonSI.ANGSTROM, "Angstrom");
-        DEFAULT.label(NonSI.ASTRONOMICAL_UNIT, "ua");
+        // SMath Studio compatibility: ua -> au
+        DEFAULT.label(NonSI.ASTRONOMICAL_UNIT, "au");
         DEFAULT.label(NonSI.LIGHT_YEAR, "ly");
         DEFAULT.label(NonSI.PARSEC, "pc");
+
+        /* Pixel and point are obsolete: do not support these units
         DEFAULT.label(NonSI.POINT, "pt");
         DEFAULT.label(NonSI.PIXEL, "pixel");
+        */
+
         DEFAULT.label(NonSI.MAXWELL, "Mx");
         DEFAULT.label(NonSI.GAUSS, "G");
         DEFAULT.label(NonSI.ATOMIC_MASS, "u");
-        DEFAULT.label(NonSI.ELECTRON_MASS, "me");
+        // SMath Studio compatibility: me -> m.e
+        DEFAULT.label(NonSI.ELECTRON_MASS, "m.e");
         DEFAULT.label(NonSI.POUND, "lb");
         DEFAULT.label(NonSI.OUNCE, "oz");
         DEFAULT.label(NonSI.TON_US, "ton_us");
@@ -913,7 +922,8 @@ public abstract class UnitFormat extends Format {
         DEFAULT.label(NonSI.CURIE, "Ci");
         DEFAULT.label(NonSI.RUTHERFORD, "Rd");
         DEFAULT.label(NonSI.SPHERE, "sphere");
-        DEFAULT.label(NonSI.RANKINE, "°R");
+        // SMath Studio compatibility: °R -> °Ra, in order to differ °Ra and °Re
+        DEFAULT.label(NonSI.RANKINE, "°Ra");
         ASCII.label(NonSI.RANKINE, "degree_rankine");
         DEFAULT.label(NonSI.FAHRENHEIT, "°F");
         ASCII.label(NonSI.FAHRENHEIT, "degree_fahrenheit");

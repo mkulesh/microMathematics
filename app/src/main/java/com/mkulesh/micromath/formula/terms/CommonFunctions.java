@@ -41,6 +41,8 @@ import org.apache.commons.math3.util.CombinatoricsUtils;
 
 import java.util.Locale;
 
+import javax.measure.unit.Unit;
+
 public class CommonFunctions extends FunctionBase
 {
     public TermTypeIf.GroupType getGroupType()
@@ -225,6 +227,18 @@ public class CommonFunctions extends FunctionBase
             switch (getFunctionType())
             {
             case POWER:
+                if (terms.get(0).isInputUnit())
+                {
+                    final Unit u = outValue.powUnit(a0, argVal[1]);
+                    if (u == null)
+                    {
+                        return outValue.invalidate(CalculatedValue.ErrorType.INCOMPATIBLE_UNIT);
+                    }
+                    else
+                    {
+                        return outValue.assign(a0, u);
+                    }
+                }
                 return outValue.pow(a0, argVal[1]);
 
             case SQRT:

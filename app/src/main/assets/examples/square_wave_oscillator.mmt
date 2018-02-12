@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="43" significantDigits="6" scale="0.49757" redefineAllowed="false">
+  <formulaList documentVersion="2" author="" title="" description="" textWidth="43" significantDigits="6" scale="0.49757" redefineAllowed="false">
     <text_fragment>
       <term key="text" text="This figure shows a 5-V square wave&#10;generator using the rail-to-rail amplifier&#10;TLV277x:" />
     </text_fragment>
@@ -10,7 +10,7 @@
       <term key="text" text="The amplifier offers a rail-to-rail output&#10;and a slew rate of 10.5 V/μs. In this&#10;circuit, the TLV277x can deliver at the&#10;output a 5-Vpp square wave up to 600 kHz.&#10;The frequency is independent of the&#10;operating voltage.&#10;&#10;The output frequency depends on the value&#10;of the resistors and the capacitor. For&#10;changes of R and C the frequency up to 600&#10;kHz is calculated using the following&#10;equation:" />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="f(r)" />
+      <term key="leftTerm" text="f(r,c)" />
       <term key="rightTerm" code="divide">
         <term key="leftTerm" text="1" />
         <term key="rightTerm" code="plus">
@@ -20,7 +20,7 @@
               <term key="leftTerm" code="identity">
                 <term key="argTerm" code="mult">
                   <term key="leftTerm" text="r" />
-                  <term key="rightTerm" text="C" />
+                  <term key="rightTerm" text="c" />
                 </term>
               </term>
               <term key="rightTerm" text="0.3" />
@@ -30,37 +30,35 @@
             <term key="leftTerm" text="1.4" />
             <term key="rightTerm" code="mult">
               <term key="leftTerm" text="r" />
-              <term key="rightTerm" text="C" />
+              <term key="rightTerm" text="c" />
             </term>
           </term>
         </term>
       </term>
     </equation>
-    <text_fragment>
-      <term key="text" text="Let us consider a fixed capacitor: " />
-    </text_fragment>
     <equation>
-      <term key="leftTerm" text="pF" />
-      <term key="rightTerm" code="power">
-        <term key="leftTerm" text="10" />
-        <term key="rightTerm" text="-12" />
-      </term>
-    </equation>
-    <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="C" />
+      <term key="leftTerm" text="F(r,c)" />
       <term key="rightTerm" code="mult">
-        <term key="leftTerm" text="68" />
-        <term key="rightTerm" text="pF" />
+        <term key="leftTerm" code="content:com.mkulesh.micromath.link.f:2">
+          <term key="argTerm1" code="divide_slash">
+            <term key="leftTerm" text="r" />
+            <term key="rightTerm" text="" unit="Ω" />
+          </term>
+          <term key="argTerm2" code="divide_slash">
+            <term key="leftTerm" text="c" />
+            <term key="rightTerm" text="" unit="F" />
+          </term>
+        </term>
+        <term key="rightTerm" text="" unit="Hz" />
       </term>
     </equation>
+    <text_fragment>
+      <term key="text" text="Let us consider a fixed capacitor (68 pF). " />
+    </text_fragment>
     <text_fragment>
       <term key="text" text="Wave frequency (kHz) depends on resistor&#10;value (kΩ):" />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="kΩ" />
-      <term key="rightTerm" text="1000" />
-    </equation>
-    <equation inRightOfPrevious="true">
       <term key="leftTerm" text="r" />
       <term key="rightTerm" code="equidistant_interval">
         <term key="minValue" text="1" />
@@ -71,11 +69,9 @@
     <plot_function width="667" height="500" axes_style="boxed" xLabelsNumber="9" yLabelsNumber="5" gridLineColor="#FF787878" functionsNumber="1">
       <term key="yMaxValue" text="600" />
       <term key="yFunction" color="#FF0000FF" width="4" lineStyle="solid" shapeType="diamond" shapeSize="500" code="divide">
-        <term key="leftTerm" code="content:com.mkulesh.micromath.link.f">
-          <term key="argTerm" code="mult">
-            <term key="leftTerm" text="r" />
-            <term key="rightTerm" text="kΩ" />
-          </term>
+        <term key="leftTerm" code="content:com.mkulesh.micromath.link.F:2">
+          <term key="argTerm1" text="r" unit="kΩ" />
+          <term key="argTerm2" text="68" unit="pF" />
         </term>
         <term key="rightTerm" text="1000" />
       </term>
@@ -85,16 +81,14 @@
       <term key="xMaxValue" text="" />
     </plot_function>
     <text_fragment>
-      <term key="text" text="Frequency (in Hz) for a given resistor:" />
+      <term key="text" text="Frequency (in kHz) for a given resistor:" />
     </text_fragment>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.link.f">
-        <term key="argTerm" code="mult">
-          <term key="leftTerm" text="68" />
-          <term key="rightTerm" text="kΩ" />
-        </term>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" units="kHz">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.link.F:2">
+        <term key="argTerm1" text="68" unit="kΩ" />
+        <term key="argTerm2" text="68" unit="pF" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="100.138 kHz" />
     </result>
   </formulaList>
 </micromath>
