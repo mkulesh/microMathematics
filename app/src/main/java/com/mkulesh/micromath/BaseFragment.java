@@ -181,7 +181,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
 
     protected void onSaveFinished()
     {
-        // default implementation is empty
+        setInOperation(false, null);
     }
 
     protected void saveFileAs(final boolean storeOpenedFileInfo)

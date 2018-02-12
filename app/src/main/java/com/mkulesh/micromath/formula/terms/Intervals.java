@@ -286,13 +286,14 @@ public class Intervals extends FormulaTerm
         int compatibleNumber = 0;
         for (TermField t : terms)
         {
-            if (unit != null && unit.isCompatible(t.getParser().getUnit()))
+            final Unit tp = t.getParser().getUnit();
+            if (unit != null && tp != null && unit.isCompatible(tp))
             {
                 compatibleNumber++;
             }
             if (unit == null)
             {
-                unit = t.getParser().getUnit();
+                unit = tp;
             }
         }
         return new Pair<>(unit == null? null : unit.getStandardUnit(), compatibleNumber);
