@@ -38,7 +38,6 @@ import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
-import com.mkulesh.micromath.widgets.ScaledDimensions;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -465,24 +464,6 @@ public class UserFunctions extends FunctionBase
             }
         }
         return v;
-    }
-
-    @Override
-    public void updateTextSize()
-    {
-        super.updateTextSize();
-        final int hsp = getFormulaList().getDimen().get(ScaledDimensions.Type.HOR_SYMBOL_PADDING);
-        if (functionTerm != null)
-        {
-            if (termType == FunctionType.FUNCTION_INDEX)
-            {
-                functionTerm.setPadding(0, 0, 0, 0);
-            }
-            else
-            {
-                functionTerm.setPadding(0, 0, hsp, 0);
-            }
-        }
     }
 
     /*********************************************************

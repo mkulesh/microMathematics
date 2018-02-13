@@ -171,9 +171,13 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
                 setWidth(20 * strokeWidth);
                 setHeight(60 * strokeWidth);
                 setPadding(p2, 0, p2, 0);
-            default:
-                final int p3 = dimen.get(ScaledDimensions.Type.HOR_SYMBOL_PADDING);
+            case TEXT:
+                final int p3 = dimen.get(ScaledDimensions.Type.HOR_TEXT_PADDING);
                 setPadding(p3, 0, p3, 0);
+                break;
+            default:
+                final int p4 = dimen.get(ScaledDimensions.Type.HOR_SYMBOL_PADDING);
+                setPadding(p4, 0, p4, 0);
                 break;
             }
         }

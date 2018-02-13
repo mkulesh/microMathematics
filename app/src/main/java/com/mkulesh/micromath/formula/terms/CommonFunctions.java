@@ -558,7 +558,7 @@ public class CommonFunctions extends FunctionBase
             {
                 functionTerm.setPadding(hsp, 0, hsp, 0);
             }
-            else
+            else if (getFunctionLabel().isEmpty())
             {
                 functionTerm.setPadding(0, 0, hsp, 0);
             }
