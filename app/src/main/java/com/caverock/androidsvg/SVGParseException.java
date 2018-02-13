@@ -21,16 +21,20 @@ package com.caverock.androidsvg;
  */
 
 @SuppressWarnings("serial")
-public class SVGParseException extends Exception {
-	public SVGParseException(String msg) {
-		super(msg);
-	}
+public class SVGParseException extends Exception
+{
+    public SVGParseException(String msg)
+    {
+        super(msg);
+    }
 
-	public SVGParseException(String msg, Throwable cause) {
-		super(msg, cause);
-	}
+    public SVGParseException(String msg, Throwable cause)
+    {
+        super(msg, cause);
+    }
 
-	public SVGParseException(Throwable cause) {
-		super(cause);
-	}
+    public SVGParseException(Throwable cause)
+    {
+        super(cause);
+    }
 }
