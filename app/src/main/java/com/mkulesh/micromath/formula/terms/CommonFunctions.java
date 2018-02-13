@@ -229,14 +229,20 @@ public class CommonFunctions extends FunctionBase
             case POWER:
                 if (terms.get(0).isInputUnit())
                 {
-                    final Unit u = outValue.powUnit(a0, argVal[1]);
-                    if (u == null)
+                    final Unit sourceUnit = terms.get(0).getParser().getUnit();
+                    outValue.setValue(1.0, sourceUnit);
+                    final Unit targetUnit = outValue.powUnit(outValue, argVal[1]);
+                    if (targetUnit != null)
                     {
-                        return outValue.invalidate(CalculatedValue.ErrorType.INCOMPATIBLE_UNIT);
+                        outValue.assign(a0);
+                        outValue.convertUnit(sourceUnit, /*toBase=*/ false);
+                        outValue.setUnit(targetUnit);
+                        outValue.convertUnit(targetUnit.getStandardUnit(), /*toBase=*/ false);
+                        return outValue.getValueType();
                     }
                     else
                     {
-                        return outValue.assign(a0, u);
+                        return outValue.invalidate(CalculatedValue.ErrorType.INCOMPATIBLE_UNIT);
                     }
                 }
                 return outValue.pow(a0, argVal[1]);

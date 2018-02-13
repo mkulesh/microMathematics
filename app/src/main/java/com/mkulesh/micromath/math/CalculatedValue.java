@@ -119,6 +119,11 @@ public class CalculatedValue
         return unit;
     }
 
+    public void setUnit(Unit unit)
+    {
+        this.unit = unit;
+    }
+
     public void convertUnit(@NonNull Unit sourceUnit, @NonNull Unit targetUnit)
     {
         if (valueType == ValueType.INVALID)
@@ -451,6 +456,10 @@ public class CalculatedValue
             else
             {
                 unit = f.unit.times(g.unit);
+                if (unit != null && unit.isCompatible(Unit.ONE))
+                {
+                    unit = null;
+                }
             }
         }
         else
