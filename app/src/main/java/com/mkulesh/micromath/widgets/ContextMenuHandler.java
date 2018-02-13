@@ -113,10 +113,6 @@ public class ContextMenuHandler
             {
                 menu.findItem(Type.values()[i].getResId()).setVisible(enabled[i]);
             }
-            if (formulaChangeIf != null)
-            {
-                formulaChangeIf.onCreateContextMenu(actionModeOwner, ContextMenuHandler.this);
-            }
             return true;
         }
 

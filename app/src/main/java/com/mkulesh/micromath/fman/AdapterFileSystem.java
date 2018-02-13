@@ -168,6 +168,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
                     }
                     catch (Exception e)
                     {
+                        // empty
                     }
                     if (link_target != null)
                     {

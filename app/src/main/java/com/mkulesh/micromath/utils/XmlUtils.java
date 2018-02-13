@@ -43,16 +43,4 @@ public class XmlUtils
             }
         }
     }
-
-    public static String readText(XmlPullParser parser) throws Exception
-    {
-        String result = "";
-        if (parser.next() == XmlPullParser.TEXT)
-        {
-            result = parser.getText();
-            parser.nextTag();
-        }
-        return result;
-    }
-
 }

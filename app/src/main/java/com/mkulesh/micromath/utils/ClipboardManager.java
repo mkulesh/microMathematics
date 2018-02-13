@@ -140,6 +140,7 @@ public class ClipboardManager
                     }
                     catch (IOException e)
                     {
+                        // empty
                     }
                 }
             }

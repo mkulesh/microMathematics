@@ -244,6 +244,7 @@ public final class FileUtils
         }
         catch (Exception e)
         {
+            // empty
         }
         return null;
     }

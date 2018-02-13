@@ -27,11 +27,6 @@ import java.util.ArrayList;
 public interface FormulaChangeIf
 {
     /**
-     * Procedure will be called if the context menu is activated
-     */
-    void onCreateContextMenu(View owner, ContextMenuHandler handler);
-
-    /**
      * Procedure will be called if a term is focused
      */
     void onFocus(View v, boolean hasFocus);

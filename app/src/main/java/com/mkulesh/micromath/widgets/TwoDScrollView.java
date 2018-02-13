@@ -23,7 +23,6 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.support.v4.view.GestureDetectorCompat;
-import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
@@ -259,12 +258,6 @@ public class TwoDScrollView extends FrameLayout
         return (LinearLayout) getChildAt(0);
     }
 
-    public void setMainLayout(LinearLayout l)
-    {
-        removeAllViews();
-        super.addView(l);
-    }
-
     public void setScaleListener(AppCompatActivity activity, ListChangeIf listChangeIf)
     {
         this.listChangeIf = listChangeIf;
@@ -277,7 +270,7 @@ public class TwoDScrollView extends FrameLayout
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event)
     {
-        final int action = MotionEventCompat.getActionMasked(event);
+        final int action = event.getActionMasked();
         if (action == MotionEvent.ACTION_DOWN && event.getEdgeFlags() != 0)
         {
             // Don't handle edge touches immediately -- they may actually belong to one of our
@@ -299,7 +292,7 @@ public class TwoDScrollView extends FrameLayout
         boolean retVal = mScaleGestureDetector.onTouchEvent(event);
         retVal = mGestureDetector.onTouchEvent(event) || retVal;
 
-        final int action = MotionEventCompat.getActionMasked(event);
+        final int action = event.getActionMasked();
         if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL
                 || action == MotionEvent.ACTION_POINTER_UP)
         {

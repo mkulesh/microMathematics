@@ -143,6 +143,7 @@ public class AdapterDocuments extends AdapterBaseImpl
                 }
                 catch (Exception e)
                 {
+                    // empty
                 }
                 if (path_root == null)
                     path_root = volume; // better than nothing

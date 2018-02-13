@@ -215,12 +215,6 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
      *********************************************************/
 
     @Override
-    public void onCreateContextMenu(View owner, ContextMenuHandler handler)
-    {
-        // empty
-    }
-
-    @Override
     public void onFocus(View v, boolean hasFocus)
     {
         if (v instanceof CustomEditText)
