@@ -59,7 +59,6 @@
     <string name="action_save">Сохранить</string>
     <string name="action_save_as">Сохранить как</string>
     <string name="action_export">Экспортировать</string>
-    <string name="action_licenses">Информация о лицензиях</string>
     <string name="action_details">Подробности</string>
     <string name="action_app_settings">Настройки</string>
 
@@ -313,26 +312,5 @@
     <string name="action_dev_autotest">Автоматический тест</string>
     <string name="action_dev_export_doc">Экспорт документации</string>
     <string name="action_dev_take_screenshot">Экспорт снимков</string>
-    <string name="message_developer_mode">Режим разработчика активирован</string>
-    
-    <!-- Library licenses -->
-    <string name="dialog_licenses_support_v7">Библиотека поддержки Android v7</string>
-    <string name="dialog_licenses_support_v7_path">http://developer.android.com</string>
-    <string name="dialog_licenses_support_v7_text">Copyright © 2013 The Android Open Source Project\n\nЛицензировано согласно Лицензии Apache, Версия 2.0 (\"Лицензия\"); вы можете использовать этот файл только в соответствии с Лицензией. Вы можете найти копию Лицензии по адресу\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nЗа исключением случаев, когда это регламентировано существующим законодательством или если это не оговорено в письменном соглашении, программное обеспечение распространяемое на условиях данной Лицензии, предоставляется \"КАК ЕСТЬ\" и любые явные или неявные ГАРАНТИИ ОТВЕРГАЮТСЯ. Информацию об основных правах и ограничениях, применяемых к определенному языку согласно Лицензии, вы можете найти в данной Лицензии.</string>
-        
-    <string name="dialog_licenses_math3">Математическая библиотека Apache</string>
-    <string name="dialog_licenses_math3_path">http://commons.apache.org</string>
-    <string name="dialog_licenses_math3_text">Copyright © Apache Software Foundation (ASF)\n\nЛицензировано согласно Лицензии Apache, Версия 2.0 (\"Лицензия\"); вы можете использовать этот файл только в соответствии с Лицензией. Вы можете найти копию Лицензии по адресу\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nЗа исключением случаев, когда это регламентировано существующим законодательством или если это не оговорено в письменном соглашении, программное обеспечение распространяемое на условиях данной Лицензии, предоставляется \"КАК ЕСТЬ\" и любые явные или неявные ГАРАНТИИ ОТВЕРГАЮТСЯ. Информацию об основных правах и ограничениях, применяемых к определенному языку согласно Лицензии, вы можете найти в данной Лицензии.</string> 
 
-    <string name="dialog_licenses_colorpicker">Библиотека HoloColorPicker</string>
-    <string name="dialog_licenses_colorpicker_path">https://github.com/LarsWerkman/HoloColorPicker</string>
-    <string name="dialog_licenses_colorpicker_text">Copyright © 2012 Lars Werkman\n\nЛицензировано согласно Лицензии Apache, Версия 2.0 (\"Лицензия\"); вы можете использовать этот файл только в соответствии с Лицензией. Вы можете найти копию Лицензии по адресу\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nЗа исключением случаев, когда это регламентировано существующим законодательством или если это не оговорено в письменном соглашении, программное обеспечение распространяемое на условиях данной Лицензии, предоставляется \"КАК ЕСТЬ\" и любые явные или неявные ГАРАНТИИ ОТВЕРГАЮТСЯ. Информацию об основных правах и ограничениях, применяемых к определенному языку согласно Лицензии, вы можете найти в данной Лицензии.</string>
-    
-    <string name="dialog_licenses_androidsvg">Библиотека AndroidSVG</string>
-    <string name="dialog_licenses_androidsvg_path">https://github.com/BigBadaboom/androidsvg</string>
-    <string name="dialog_licenses_androidsvg_text">Copyright © 2013 Paul LeBeau, Cave Rock Software Ltd\n\nЛицензировано согласно Лицензии Apache, Версия 2.0 (\"Лицензия\"); вы можете использовать этот файл только в соответствии с Лицензией. Вы можете найти копию Лицензии по адресу\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nЗа исключением случаев, когда это регламентировано существующим законодательством или если это не оговорено в письменном соглашении, программное обеспечение распространяемое на условиях данной Лицензии, предоставляется \"КАК ЕСТЬ\" и любые явные или неявные ГАРАНТИИ ОТВЕРГАЮТСЯ. Информацию об основных правах и ограничениях, применяемых к определенному языку согласно Лицензии, вы можете найти в данной Лицензии.</string>
-
-    <string name="dialog_licenses_ghostcommander">Движок Ghost Commander</string>
-    <string name="dialog_licenses_ghostcommander_path">https://sourceforge.net/projects/ghostcommander</string>
-    <string name="dialog_licenses_ghostcommander_text">Copyright © 2017 Ghost Commander\n\nНастоящая программа является свободным программным обеспечением: вы можете распространять программу и/или модифицировать ее по условиям Всеобщей публичной лицензии GNU, опубликованной Фондом свободного программного обеспечения, либо версии 3 Лицензии, либо (по вашему выбору) любой более поздней версии.\n\nНастоящая программа распространяется в надежде, что она будет полезной, но БЕЗ КАКОЙ-ЛИБО ГАРАНТИИ (ОБЯЗАТЕЛЬСТВ ПО ОТСУТСТВИЮ НЕДОСТАТКОВ); даже без подразумеваемой гарантии ПРИГОДНОСТИ ДЛЯ ОБЫЧНОГО ИСПОЛЬЗОВАНИЯ или ГОДНОСТИ ДЛЯ ОПРЕДЕЛЕННОЙ ЦЕЛИ. Подробнее см. Всеобщую публичную лицензию GNU.\n\nВы должны были получить копию Всеобщей публичной лицензии GNU вместе с настоящей программой. Если копия не предоставлена, см. http://www.gnu.org/licenses/.</string>
 </resources>

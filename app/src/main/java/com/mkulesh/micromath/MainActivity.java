@@ -47,7 +47,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mkulesh.micromath.dialogs.DialogLicenses;
 import com.mkulesh.micromath.fman.AdapterDocuments;
 import com.mkulesh.micromath.formula.StoredFormula;
 import com.mkulesh.micromath.plus.R;
@@ -220,9 +219,6 @@ public class MainActivity extends AppCompatActivity
             startActivityForResult(settings, SETTINGS_ACTIVITY_REQID);
             return true;
         }
-        case R.id.action_licenses:
-            (new DialogLicenses(this, BaseFragment.DEVELOPER_MODE)).show();
-            return true;
         case R.id.action_exit:
         case android.R.id.home:
             finish();

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="false">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="About uMath+" description="" textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="false">
     <text_fragment>
       <term key="text" text="The microMathematics Plus is the&#10;mathematical calculator on Android&#10;oriented around a spreadsheet that&#10;allows live editing of mathematical&#10;identities combined with highly&#10;accurate computations. " />
     </text_fragment>
@@ -119,8 +119,70 @@
       </term>
       <term key="xMaxValue" text="20" />
     </plot_function>
+
+    <text_fragment textStyle="subsection">
+      <term key="text" text="License" />
+    </text_fragment>
     <text_fragment>
-      <term key="text" text="2014-2018, Bremen, Germany" />
+      <term key="text" text="Copyright © 2014-2018 Mikhail Kulesh&#10;under the GNU General Public License,&#10;Version 3:&#10;www.gnu.org/licenses/gpl-3.0" />
+    </text_fragment>
+
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Open source libraries" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="The Android Support v7 Library" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="developer.android.com" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2013 The Android Open&#10;Source Project Licensed under the&#10;Apache License, Version 2.0:&#10;www.apache.org/licenses/LICENSE-2.0" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="The Apache Commons Mathematics Library" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="commons.apache.org" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Licensed to the Apache Software&#10;Foundation (ASF) under the Apache&#10;License, Version 2.0:&#10;www.apache.org/licenses/LICENSE-2.0" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="JScience - Java(TM) Tools and Libraries&#10;for the Advancement of Sciences" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="jscience.org" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2007 Jean-Marie Dautelle&#10;under the Apache License, Version 2.0:&#10;www.apache.org/licenses/LICENSE-2.0" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="HoloColorPicker Library" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="github.com/LarsWerkman/HoloColorPicker" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2012 Lars Werkman Licensed&#10;under the Apache License, Version 2.0:&#10;www.apache.org/licenses/LICENSE-2.0" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="AndroidSVG Library" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="github.com/BigBadaboom/androidsvg" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2013 Paul LeBeau, Cave Rock&#10;Software Ltd Licensed under the Apache&#10;License, Version 2.0:&#10;www.apache.org/licenses/LICENSE-2.0" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Ghost Commander Engine" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="sourceforge.net/projects/ghostcommander" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2017 Ghost Commander under&#10;the GNU General Public License, Version 3:&#10;www.gnu.org/licenses/gpl-3.0" />
     </text_fragment>
   </formulaList>
 </micromath>

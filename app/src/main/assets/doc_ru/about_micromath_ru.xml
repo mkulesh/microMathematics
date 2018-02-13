@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="35" significantDigits="6" scale="0.50000" redefineAllowed="false">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="About uMath+" description="" textWidth="35" significantDigits="6" scale="0.50000" redefineAllowed="false">
     <text_fragment>
       <term key="text" text="microMathematics Plus - это&#10;математический калькулятор для&#10;Android, основанный на подготовке&#10;интерактивных документов с&#10;вычислениями и визуальным&#10;сопровождением." />
     </text_fragment>
@@ -119,8 +119,70 @@
       </term>
       <term key="xMaxValue" text="20" />
     </plot_function>
+
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Лицензия" />
+    </text_fragment>
     <text_fragment>
-      <term key="text" text="2014-2018, Бремен, Германия" />
+      <term key="text" text="Copyright © 2014-2018 Mikhail Kulesh&#10;under the GNU General Public License,&#10;Version 3:&#10;www.gnu.org/licenses/gpl-3.0" />
+    </text_fragment>
+
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Информация о библиотеках" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Библиотека поддержки Android v7" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="developer.android.com" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2013 The Android Open&#10;Source Project Licensed under the&#10;Apache License, Version 2.0:&#10;www.apache.org/licenses/LICENSE-2.0" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Математическая библиотека Apache" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="commons.apache.org" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Licensed to the Apache Software&#10;Foundation (ASF) under the Apache&#10;License, Version 2.0:&#10;www.apache.org/licenses/LICENSE-2.0" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Математическая библиотека JScience" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="jscience.org" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2007 Jean-Marie Dautelle&#10;under the Apache License, Version 2.0:&#10;www.apache.org/licenses/LICENSE-2.0" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Библиотека HoloColorPicker" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="github.com/LarsWerkman/HoloColorPicker" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2012 Lars Werkman Licensed&#10;under the Apache License, Version 2.0:&#10;www.apache.org/licenses/LICENSE-2.0" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Библиотека AndroidSVG" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="github.com/BigBadaboom/androidsvg" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2013 Paul LeBeau, Cave Rock&#10;Software Ltd Licensed under the Apache&#10;License, Version 2.0:&#10;www.apache.org/licenses/LICENSE-2.0" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Движок Ghost Commander" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="sourceforge.net/projects/ghostcommander" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2017 Ghost Commander under&#10;the GNU General Public License, Version 3:&#10;www.gnu.org/licenses/gpl-3.0" />
     </text_fragment>
   </formulaList>
 </micromath>

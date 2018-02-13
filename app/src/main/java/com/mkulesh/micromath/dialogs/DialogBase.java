@@ -107,7 +107,7 @@ public class DialogBase extends Dialog implements OnClickListener
 
     protected void closeDialog(boolean hideKeyboard)
     {
-        if (!ViewUtils.isHardwareKeyboardAvailable(getContext()))
+        if (hideKeyboard && !ViewUtils.isHardwareKeyboardAvailable(getContext()))
         {
             InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             ViewUtils.Debug(this, "request to hide keyboard from dialog");

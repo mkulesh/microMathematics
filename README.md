@@ -70,7 +70,7 @@ For more screenshots, see directory images/screenshots.
 
 This software is published under the *GNU General Public License, Version 3*
 
-Copyright (C) 2014-2017 Mikhail Kulesh
+Copyright (C) 2014-2018 Mikhail Kulesh
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
@@ -78,11 +78,12 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 If not, see [www.gnu.org/licenses](https://www.gnu.org/licenses).
 
-## Dependencies
+## Used Open Source Libraries
 
 This App depends or includes the following third-party libraries or code fragments:
 * [The Android Support v7 Library](https://developer.android.com/topic/libraries/support-library/packages.html)
-* [The Apache Commons Mathematics Library](http://commons.apache.org/proper/commons-math)
+* [The Apache Commons Mathematics Library](https://commons.apache.org/proper/commons-math)
+* [JScience - Java(TM) Tools and Libraries for the Advancement of Sciences](http://jscience.org)
 * [HoloColorPicker Library](https://github.com/LarsWerkman/HoloColorPicker)
 * [AndroidSVG Library](https://github.com/BigBadaboom/androidsvg)
 * [Ghost Commander Engine](https://sourceforge.net/projects/ghostcommander)
