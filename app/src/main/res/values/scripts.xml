@@ -51,6 +51,7 @@
         <item>asset:/ta/ts_read.mmt</item>
         <item>asset:/ta/ts_units_constants.mmt</item>
         <item>asset:/ta/ts_units_operators.mmt</item>
+        <item>asset:/ta/ts_units_arrays.mmt</item>
     </string-array>
     
     <string-array name="doc_export_scripts" translatable="false">

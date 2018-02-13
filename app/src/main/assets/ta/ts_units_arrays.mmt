@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Test of units: intervals and arrays" description="Automated only" textWidth="35" significantDigits="6" scale="0.57846" redefineAllowed="true">
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="TC: Intervals" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="60" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="d1(r)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="60" unit="°" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="300" />
+          <term key="rightTerm" text="r" unit="'" />
+        </term>
+      </term>
+    </equation>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" units="°">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.link.d1">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="y" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" unit="'" />
+        <term key="nextValue" text="300" unit="'" />
+        <term key="maxValue" text="18000" unit="'" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="d2(r)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="60" unit="°" />
+        <term key="rightTerm" text="r" />
+      </term>
+    </equation>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" units="°">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.link.d2">
+        <term key="argTerm" text="y" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="S" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="10" />
+        <term key="index" text="k" />
+        <term key="minValue" text="1" />
+        <term key="argTerm" code="abs_layout">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.link.d1">
+              <term key="argTerm" code="content:com.mkulesh.micromath.index.x">
+                <term key="argTerm" text="k" />
+              </term>
+            </term>
+            <term key="rightTerm" code="content:com.mkulesh.micromath.link.d2">
+              <term key="argTerm" code="content:com.mkulesh.micromath.index.y">
+                <term key="argTerm" text="k" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="S" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="less">
+          <term key="leftTerm" text="S" />
+          <term key="rightTerm" text="2.3E-16" />
+        </term>
+        <term key="argTerm2" text="0" unit="rad" />
+        <term key="argTerm3" text="S" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="0" unit="rad" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="TC: Arrays" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="F(a,b,c)" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" code="divide">
+          <term key="leftTerm" code="plus">
+            <term key="leftTerm" code="mult">
+              <term key="leftTerm" text="a" />
+              <term key="rightTerm" text="b" />
+            </term>
+            <term key="rightTerm" code="power">
+              <term key="leftTerm" text="c" />
+              <term key="rightTerm" text="2" />
+            </term>
+          </term>
+          <term key="rightTerm" text="2" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="n" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="1" />
+        <term key="nextValue" text="2" />
+        <term key="maxValue" text="100" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="M1[n]" />
+      <term key="rightTerm" code="content:com.mkulesh.micromath.link.F:3">
+        <term key="argTerm1" text="100" unit="L" />
+        <term key="argTerm2" text="n" unit="L" />
+        <term key="argTerm3" text="n" unit="L" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="G(n)" />
+      <term key="rightTerm" text="n" unit="L" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="M2[n]" />
+      <term key="rightTerm" code="content:com.mkulesh.micromath.link.F:3">
+        <term key="argTerm1" text="100" unit="L" />
+        <term key="argTerm2" code="content:com.mkulesh.micromath.link.G">
+          <term key="argTerm" text="n" />
+        </term>
+        <term key="argTerm3" code="content:com.mkulesh.micromath.link.G">
+          <term key="argTerm" text="n" />
+        </term>
+      </term>
+    </equation>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" units="L">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M1">
+        <term key="argTerm" text="n" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M2">
+        <term key="argTerm" text="n" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" code="min">
+        <term key="argTerm1" code="rows">
+          <term key="argTerm" text="M1" />
+        </term>
+        <term key="argTerm2" code="rows">
+          <term key="argTerm" text="M2" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" code="minus">
+          <term key="leftTerm" text="N" />
+          <term key="rightTerm" text="1" />
+        </term>
+        <term key="index" text="k" />
+        <term key="minValue" text="1" />
+        <term key="argTerm" code="abs_layout">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.index.M1">
+              <term key="argTerm" text="k" />
+            </term>
+            <term key="rightTerm" code="content:com.mkulesh.micromath.index.M2">
+              <term key="argTerm" text="k" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="power">
+        <term key="leftTerm" text="0" unit="m" />
+        <term key="rightTerm" text="3" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+  </formulaList>
+</micromath>

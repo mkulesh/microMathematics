@@ -581,7 +581,15 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             {
                 argValue.setValue((double) idx);
                 argTerm.getValue(calculaterTask, calcVal);
-                outValue.add(outValue, calcVal);
+                if (idx == minValue)
+                {
+                    // For the first term, use assign in oder to set units
+                    outValue.assign(calcVal);
+                }
+                else
+                {
+                    outValue.add(outValue, calcVal);
+                }
                 if (outValue.isNaN())
                 {
                     break;
@@ -601,7 +609,15 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             {
                 argValue.setValue((double) idx);
                 argTerm.getDerivativeValue(var, calculaterTask, calcVal);
-                outValue.add(outValue, calcVal);
+                if (idx == minValue)
+                {
+                    // For the first term, use assign in oder to set units
+                    outValue.assign(calcVal);
+                }
+                else
+                {
+                    outValue.add(outValue, calcVal);
+                }
                 if (outValue.isNaN())
                 {
                     break;
@@ -621,7 +637,15 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             {
                 argValue.setValue((double) idx);
                 argTerm.getValue(calculaterTask, calcVal);
-                outValue.multiply(outValue, calcVal);
+                if (idx == minValue)
+                {
+                    // For the first term, use assign in oder to set units
+                    outValue.assign(calcVal);
+                }
+                else
+                {
+                    outValue.multiply(outValue, calcVal);
+                }
                 if (outValue.isNaN())
                 {
                     break;
