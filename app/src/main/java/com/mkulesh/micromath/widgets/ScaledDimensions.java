@@ -94,7 +94,7 @@ public class ScaledDimensions
 
     public int get(Type type)
     {
-        return (int)(dimen[type.ordinal()] * scaleFactor);
+        return Math.round(dimen[type.ordinal()] * scaleFactor);
     }
 
     public float getTextSize(int termDepth)
