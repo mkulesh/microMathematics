@@ -317,7 +317,15 @@ public class UserFunctions extends FunctionBase
                             terms.get(i).getDerivativeValue(var, thread, a0derVal);
                         }
                         tmp.multiply(tmp, a0derVal);
-                        outValue.add(outValue, tmp);
+                        if (i == 0)
+                        {
+                            // For the first term, use assign in oder to set units
+                            outValue.assign(tmp);
+                        }
+                        else
+                        {
+                            outValue.add(outValue, tmp);
+                        }
                     }
                     return outValue.getValueType();
                 }

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Test of units: intervals and arrays" description="Automated only" textWidth="35" significantDigits="6" scale="0.57846" redefineAllowed="true">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Test of units: intervals and arrays" description="Automated only" textWidth="35" significantDigits="6" scale="0.50000" redefineAllowed="true">
     <equation>
       <term key="leftTerm" text="begin" />
       <term key="rightTerm" text="0" />
@@ -242,6 +242,67 @@
       <term key="rightTerm" code="power">
         <term key="leftTerm" text="0" unit="m" />
         <term key="rightTerm" text="3" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="TC: Array multiplication" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="M3[n]" />
+      <term key="rightTerm" text="n" unit="m" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="P" />
+      <term key="rightTerm" text="7" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="product">
+        <term key="maxValue" text="P" />
+        <term key="index" text="k" />
+        <term key="minValue" text="1" />
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.M3">
+          <term key="argTerm" text="k" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="factorial">
+          <term key="argTerm" text="P" />
+        </term>
+        <term key="rightTerm" code="power">
+          <term key="leftTerm" text="" unit="m" />
+          <term key="rightTerm" text="P" />
+        </term>
       </term>
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
