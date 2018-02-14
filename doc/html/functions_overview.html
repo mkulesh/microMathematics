@@ -318,8 +318,8 @@ by the second</p>
 argument</p>
 
 <table border = "0" cellspacing="0" cellpadding="0"><tr>
-  <td>$$random \left( 1\right)  = 0.584225$$</td>
-  <td>$$random \left( 10\right)  = 4.74949$$</td>
+  <td>$$random \left( 1\right)  = 0.394316$$</td>
+  <td>$$random \left( 10\right)  = 3.18662$$</td>
 </tr></table><br>
 
 <p>The most negative (closest to negative
@@ -523,6 +523,28 @@ boundaries:</p>
 <table border = "0" cellspacing="0" cellpadding="0"><tr>
   <td>$$z_{5}  = -9.19192$$</td>
   <td>$$G_{5}  = -2.43959$$</td>
+</tr></table><br>
+
+<p>Define 2-D array</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$M := 200$$</td>
+  <td>$$m := \left[ 1,\, 2 \,..\, M \right]$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$G2[n,m] := round \left( sin \left( 2 \cdot pi \cdot \frac{n + m}{N + M}\right) ,\, 3\right) $$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$G2_{n,\, m}  = \begin{bmatrix}0.042&0.063&0.084&0.105&0.125&0.146&\dots&-0.876\\0.063&0.084&0.105&0.125&0.146&0.167&\dots&-0.886\\0.084&0.105&0.125&0.146&0.167&0.187&\dots&-0.896\\0.105&0.125&0.146&0.167&0.187&0.208&\dots&-0.905\\0.125&0.146&0.167&0.187&0.208&0.228&\dots&-0.914\\0.146&0.167&0.187&0.208&0.228&0.249&\dots&-0.922\\\dots&\dots&\dots&\dots&\dots&\dots&\dots&\dots\\0.855&0.844&0.833&0.821&0.809&0.797&\dots&0.0\\\end{bmatrix}$$</td>
+</tr></table><br>
+
+<p>Get count of rows and columns</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$rows \left( G2\right)  = 101.0$$</td>
+  <td>$$cols \left( G2\right)  = 201.0$$</td>
 </tr></table><br>
 
 </body></html>
