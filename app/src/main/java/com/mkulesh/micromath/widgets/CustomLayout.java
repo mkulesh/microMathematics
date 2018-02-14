@@ -150,8 +150,11 @@ public class CustomLayout extends LinearLayout
 
     public void setContentValid(boolean contentValid)
     {
-        this.contentValid = contentValid;
-        invalidate();
+        if(this.contentValid != contentValid)
+        {
+            this.contentValid = contentValid;
+            invalidate();
+        }
     }
 
     public void setCustomFeaturesDisabled(boolean customFeaturesDisabled)

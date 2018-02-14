@@ -19,6 +19,7 @@
 package com.mkulesh.micromath.formula;
 
 import android.content.Context;
+import android.support.annotation.AttrRes;
 import android.support.v7.widget.AppCompatImageButton;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -148,6 +149,20 @@ public class PaletteButton extends AppCompatImageButton
                 super.setEnabled(false);
                 break;
             }
+        }
+    }
+
+    /*********************************************************
+     * Performance optimization: fast color settings
+     *********************************************************/
+
+    private int colorAttrId = Integer.MIN_VALUE;
+    public void setColorAttr(@AttrRes int attrId)
+    {
+        if (this.colorAttrId != attrId)
+        {
+            this.colorAttrId = attrId;
+            ViewUtils.setImageButtonColorAttr(getContext(), this, attrId);
         }
     }
 }

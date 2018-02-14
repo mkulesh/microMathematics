@@ -20,6 +20,9 @@ package com.mkulesh.micromath.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Build;
+import android.support.annotation.AttrRes;
+import android.support.annotation.DrawableRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
@@ -229,7 +232,13 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
 
     public void updateMinimumWidth(ScaledDimensions dimen)
     {
-        setMinimumWidth(length() == 0 ? dimen.get(ScaledDimensions.Type.TEXT_MIN_WIDTH) : 0);
+        final int newWidth = length() == 0 ? dimen.get(ScaledDimensions.Type.TEXT_MIN_WIDTH) : 0;
+        final int prevWidth = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN?
+                getMinimumWidth() : Integer.MIN_VALUE;
+        if (prevWidth != newWidth)
+        {
+            setMinimumWidth(newWidth);
+        }
     }
 
     public void setRequestFocusEnabled(boolean requestFocusEnabled)
@@ -536,6 +545,26 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
             // null for input view means that we will start ActionMode without owner:
             // the root formula will be selected instead of owner term
             this.onLongClick(null);
+        }
+    }
+
+    /*********************************************************
+     * Performance optimization: fast color settings
+     *********************************************************/
+
+    private int backgroundDrawableId = Integer.MIN_VALUE;
+    private int backgroundAttrId = Integer.MIN_VALUE;
+    public void setBackgroundAttr(@DrawableRes int drawableId, @AttrRes int attrId)
+    {
+        if (this.backgroundDrawableId != drawableId)
+        {
+            this.backgroundDrawableId = drawableId;
+            setBackgroundResource(drawableId);
+        }
+        if (this.backgroundAttrId != attrId)
+        {
+            this.backgroundAttrId = attrId;
+            CompatUtils.updateBackgroundAttr(getContext(), this, drawableId, attrId);
         }
     }
 }

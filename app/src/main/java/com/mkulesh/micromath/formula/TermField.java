@@ -770,24 +770,21 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         // text border
         if (text.isSelected())
         {
-            CompatUtils.updateBackgroundAttr(getContext(), text,
-                    R.drawable.formula_term_background, R.attr.colorFormulaSelected);
+            text.setBackgroundAttr(R.drawable.formula_term_background, R.attr.colorFormulaSelected);
         }
         else if (errorDetected)
         {
-            CompatUtils.updateBackgroundAttr(getContext(), text,
-                    R.drawable.formula_term_border, R.attr.colorFormulaInvalid);
+            text.setBackgroundAttr(R.drawable.formula_term_border, R.attr.colorFormulaInvalid);
         }
         else if (isEmpty())
         {
             final int attrId = (text.isEmptyEnabled()) ?
                     R.attr.colorFormulaEmpty : R.attr.colorFormulaInvalid;
-            CompatUtils.updateBackgroundAttr(getContext(), text,
-                    R.drawable.formula_term_border, attrId);
+            text.setBackgroundAttr(R.drawable.formula_term_border, attrId);
         }
         else
         {
-            CompatUtils.updateBackground(getContext(), text, R.drawable.formula_term);
+            text.setBackgroundAttr(R.drawable.formula_term, Integer.MIN_VALUE);
         }
 
         // text color
@@ -806,7 +803,11 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             {
                 resId = R.attr.colorFormulaTextFragment;
             }
-            text.setTextColor(CompatUtils.getThemeColorAttr(getContext(), resId));
+            final int color = CompatUtils.getThemeColorAttr(getContext(), resId);
+            if (color != text.getCurrentTextColor())
+            {
+                text.setTextColor(color);
+            }
         }
 
         // update minimum width depending on content
