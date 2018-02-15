@@ -12,6 +12,7 @@ In order to build the documentation, the LaTeX (texlive) and following latex pac
 # yum install texlive-cyrillic texlive-babel-russian texlive-hyphen-russian texlive-lh 
 # yum install texlive-babel-german texlive-hyphen-german
 # yum install texlive-babel-portuges texlive-hyphen-portuguese
+# yum install texlive-collection-mathextra
 # fmtutil --all
 ```
 - as a local user (not root):

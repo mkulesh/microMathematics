@@ -128,6 +128,30 @@ complex number:
   $z := 5+3i$
 \end{tabular}\end{center}
 
+\subsubsection{Units}
+
+If you need a unit for the constant,
+you can put it from the keyboard into
+the same input field. The unit shall
+be separated from the number using
+space. You can use units both for real
+and complex constants:
+\begin{center}\begin{tabular}{ccc}
+  $r := 10 m$ &
+  $a := {10 m}^{2}$ &
+  $v := 10 km / hr$ \cr
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{cc}
+  ${\alpha} := 45 {\degree} + 30 ' + 15 ''$ &
+  ${\varphi} := 100 \cdot \frac{kg \cdot m}{{s}^{2}}$ \cr
+\end{tabular}\end{center}
+
+The document ''units\_overview.mmt''
+contains the list of all supported
+units. This document is delivered with
+the app and stored in the ''Resources
+of microMathematics Plus''.
+
 \subsubsection{Interval}
 
 An interval type equation defines a
@@ -154,18 +178,18 @@ the interval end point:
   $x := \left[ 0,\, 0.1 \,..\, 10 \right]$
 \end{tabular}\end{center}
 
-The interval elements can be accessed
-as follows:
+The interval elements shall be accessed
+by index:
 \begin{center}\begin{tabular}{ccc}
-  $x \left( 0\right)  = 0.0$ &
-  $x \left( 1\right)  = 0.1$ &
-  $x \left( 100\right)  = 10.0$ \cr
+  $x_{0}  = 0.0$ &
+  $x_{1}  = 0.1$ &
+  $x_{100}  = 10.0$ \cr
 \end{tabular}\end{center}
 
 The increment is the difference between
-the second and the first value:
+two neighbours values:
 \begin{center}\begin{tabular}{c}
-  $x \left( 1\right)  - x \left( 0\right)  = 0.1$
+  $x_{2}  - x_{1}  = 0.1$
 \end{tabular}\end{center}
 
 For example, we can define an
@@ -180,8 +204,8 @@ follows:
 
 \subsubsection{Function}
 
-A function is a relation between one
-or more arguments and a set of
+A function is a relation between one or
+more arguments and a set of
 permissible outputs with the property,
 that each argument value (real or
 complex) or arguments combination is
@@ -222,6 +246,11 @@ symbol ''('' and than enter its
 argument. This argument can also be a
 formula, which contains any other
 operations and functions.
+
+The document ''functions\_overview.mmt'',
+stored within the ''Resources of
+microMathematic Plus'', provides the
+list of all available functions.
 
 \subsubsection{Array}
 
@@ -301,7 +330,7 @@ If the left part does not contain any
 calculation result is just a real or
 complex number:
 \begin{center}\begin{tabular}{c}
-  $y \left( N - 1\right)  - y \left( 0\right)  = 9.95$
+  $y_{N - 1}  - y_{0}  = 9.95$
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{ccc}
   $\Re\left( z \right)  = 5.0$ &
@@ -310,6 +339,13 @@ complex number:
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
   $\sqrt{sin \left( \frac{3}{2} \cdot {\pi}\right) }  = 0.0+1.0i$
+\end{tabular}\end{center}
+
+If the left part contains any variable
+that has a dimensional unit, than the
+result will have dimension as well:
+\begin{center}\begin{tabular}{c}
+  $2 \cdot {\alpha} / 10 s = 0.15884 rad/s$
 \end{tabular}\end{center}
 
 If the left part contains an interval
@@ -373,12 +409,12 @@ from the app navigation drawer.
 
 \subsection{Three-dimensional Plot}
 
-The 3D plot element displays a graph
-of a single function that depends on
-two arguments. To create such a plot,
-use the ''New element'' button in the
-action bar or the ''Add 3D plot'' button
-from the tool bar:
+The 3D plot element displays a graph of
+a single function that depends on two
+arguments. To create such a plot, use
+the ''New element'' button in the action
+bar or the ''Add 3D plot'' button from
+the tool bar:
 \begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig10.png} \end{tabular}\end{center}
 \begin{center}\begin{tabular}{cc}
   $x := \left[ -10,\, -9.5 \,..\, 10 \right]$ &
@@ -417,7 +453,7 @@ where you can select the text style
 and activate the numbering. For
 example, the titles in this document
 have the style ''Subsection'' with
-activated  numbering.
+activated numbering.
 
 \subsection{Image}
 

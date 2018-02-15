@@ -8,7 +8,7 @@
       <term key="text" text="Редактирование" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text='Большинство объектов содержат&#10;поля, которые можно редактировать.&#10;Для редактирования используйте&#10;кнопки на нижней панели&#10;инструментов, с их помощью можно&#10;вводить математические символы в&#10;поля объекта.&#10;&#10;Символы с этой панели также можно&#10;ввести и с клавиатуры. Чтобы&#10;узнать символ, соответствующий&#10;кнопке, посмотрите подсказку,&#10;всплывающую при долгом нажатии на&#10;кнопку.&#10;&#10;При долгом нажатии на часть&#10;формулы активируется контекстное&#10;меню. В нём выбранную часть можно&#10;удалить, скопировать в буфер&#10;обмена, заменить выражением из&#10;буфера, а также вставить после неё&#10;оператор или функцию, используя&#10;панель инструментов или&#10;клавиатуру.&#10;&#10;Для отмены неудачного действия&#10;можно использовать команду&#10;главного меню "Отменить ввод":' />
+      <term key="text" text='Большинство объектов содержат поля,&#10;которые можно редактировать. Для&#10;редактирования используйте кнопки&#10;на нижней панели инструментов, с&#10;их помощью можно вводить&#10;математические символы в поля&#10;объекта.&#10;&#10;Символы с этой панели также можно&#10;ввести и с клавиатуры. Чтобы&#10;узнать символ, соответствующий&#10;кнопке, посмотрите подсказку,&#10;всплывающую при долгом нажатии на&#10;кнопку.&#10;&#10;При долгом нажатии на часть&#10;формулы активируется контекстное&#10;меню. В нём выбранную часть можно&#10;удалить, скопировать в буфер&#10;обмена, заменить выражением из&#10;буфера, а также вставить после неё&#10;оператор или функцию, используя&#10;панель инструментов или&#10;клавиатуру.&#10;&#10;Для отмены неудачного действия&#10;можно использовать команду&#10;главного меню "Отменить ввод":' />
     </text_fragment>
     <image_fragment fileName="asset:/images/menu_undo.svg" embedded="false" originalSize="false" width="330" height="90" />
     <text_fragment textStyle="subsection" numbering="true">
@@ -92,6 +92,59 @@
       <term key="rightTerm" text="5+3i" />
     </equation>
     <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Единицы измерений" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Если нужно использовать размерные&#10;константы, то единица измерения&#10;вводится с клавиатуры в том же&#10;поле, что и число, и отделяется&#10;пробелом. Единицы измерений&#10;допускаются как для вещественных,&#10;так и для комплексных констант:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="r" />
+      <term key="rightTerm" text="10" unit="m" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="a" />
+      <term key="rightTerm" code="power">
+        <term key="leftTerm" text="10" unit="m" />
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="v" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" text="10" unit="km" />
+        <term key="rightTerm" text="" unit="hr" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="α" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="45" unit="°" />
+        <term key="rightTerm" code="plus">
+          <term key="leftTerm" text="30" unit="'" />
+          <term key="rightTerm" text="15" unit='"' />
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="φ" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="100" />
+        <term key="rightTerm" code="divide">
+          <term key="leftTerm" code="mult">
+            <term key="leftTerm" text="" unit="kg" />
+            <term key="rightTerm" text="" unit="m" />
+          </term>
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="" unit="s" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text='Список поддерживаемых единиц&#10;измерений содержится в документе&#10;"units_overview.mmt", который&#10;находится в ресурсах приложения.' />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Формула - интервал" />
     </text_fragment>
     <text_fragment>
@@ -110,36 +163,36 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text="Обращаться к элементам интервала&#10;можно следующим образом:" />
+      <term key="text" text="Обращаться к элементам интервала&#10;нужно по индексу:" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.link.x">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
         <term key="argTerm" text="0" />
       </term>
       <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.link.x">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
         <term key="argTerm" text="1" />
       </term>
       <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.link.x">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
         <term key="argTerm" text="100" />
       </term>
       <term key="rightTerm" text="" />
     </result>
     <text_fragment>
-      <term key="text" text="Шаг определятся как разница второго&#10;и первого элементов:" />
+      <term key="text" text="Шаг определятся как разница двух&#10;соседних элементов:" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="minus">
-        <term key="leftTerm" code="content:com.mkulesh.micromath.link.x">
-          <term key="argTerm" text="1" />
+        <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
+          <term key="argTerm" text="2" />
         </term>
-        <term key="rightTerm" code="content:com.mkulesh.micromath.link.x">
-          <term key="argTerm" text="0" />
+        <term key="rightTerm" code="content:com.mkulesh.micromath.index.x">
+          <term key="argTerm" text="1" />
         </term>
       </term>
       <term key="rightTerm" text="" />
@@ -232,7 +285,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text='Правая часть такого объекта&#10;содержит математическое выражение&#10;для вычисления функции. Если&#10;правая часть не содержит ни одного&#10;аргумента из левой части, то такая&#10;функция будет интерпретироваться&#10;как константа.&#10;&#10;В правой части можно использовать&#10;другие функции, как встроенные,&#10;так и определённые ранее. Для&#10;этого введите имя функции, затем&#10;символ "(", а затем её аргумент.&#10;Аргумент также может быть формулой&#10;с любыми операторами и функциями.' />
+      <term key="text" text='Правая часть такого объекта&#10;содержит математическое выражение&#10;для вычисления функции. Если&#10;правая часть не содержит ни одного&#10;аргумента из левой части, то такая&#10;функция будет интерпретироваться&#10;как константа.&#10;&#10;В правой части можно использовать&#10;другие функции, как встроенные,&#10;так и определённые ранее. Для&#10;этого введите имя функции, затем&#10;символ "(", а затем её аргумент.&#10;Аргумент также может быть формулой&#10;с любыми операторами и функциями.&#10;&#10;Список всех встроенных функций&#10;содержится в документе&#10;"functions_overview.mmt", который&#10;находится в ресурсах приложения.' />
     </text_fragment>
     <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Формула-массив" />
@@ -360,17 +413,17 @@
       <term key="rightTerm" text="" />
     </result>
     <text_fragment>
-      <term key="text" text="Если левая часть не содержит&#10;переменных интервального типа, то&#10;результатом вычислений будет одно&#10;вещественное или комплексное&#10;число:" />
+      <term key="text" text="Если левая часть не зависит от&#10;переменных интервального типа, то&#10;результатом вычислений будет одно&#10;вещественное или комплексное&#10;число:" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="minus">
-        <term key="leftTerm" code="content:com.mkulesh.micromath.link.y">
+        <term key="leftTerm" code="content:com.mkulesh.micromath.index.y">
           <term key="argTerm" code="minus">
             <term key="leftTerm" text="N" />
             <term key="rightTerm" text="1" />
           </term>
         </term>
-        <term key="rightTerm" code="content:com.mkulesh.micromath.link.y">
+        <term key="rightTerm" code="content:com.mkulesh.micromath.index.y">
           <term key="argTerm" text="0" />
         </term>
       </term>
@@ -409,7 +462,20 @@
       <term key="rightTerm" text="" />
     </result>
     <text_fragment>
-      <term key="text" text="Если же слева используется&#10;интервал, то результат будет&#10;массивом чисел, соответствующих&#10;интервалу. Ввиду ограниченности&#10;дисплея, будут показаны только&#10;несколько первых и последнее&#10;число из этого массива:" />
+      <term key="text" text="Если при вычислении использовались&#10;размерные величины, то результат&#10;будет содержать итоговую&#10;размерность:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" units="rad/s">
+      <term key="leftTerm" code="mult">
+        <term key="leftTerm" text="2" />
+        <term key="rightTerm" code="divide_slash">
+          <term key="leftTerm" text="α" />
+          <term key="rightTerm" text="10" unit="s" />
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Если слева используется интервал,&#10;то результат будет массивом чисел,&#10;соответствующих интервалу. Ввиду&#10;ограниченности дисплея, будут&#10;показаны только несколько первых и&#10;последнее число из этого массива:" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="x" />
@@ -531,7 +597,7 @@
     </text_fragment>
     <image_fragment fileName="asset:/images/toolbar_text_fragment.svg" embedded="false" originalSize="false" width="450" height="90" />
     <text_fragment>
-      <term key="text" text='Если при помощи контекстного меню&#10;"Выбрать всё" выделить весь текст&#10;фрагмента, то  появится плавающая&#10;кнопка "Настройки объекта". &#10;&#10;При нажатии на эту кнопку&#10;откроется окно настроек текста,&#10;где можно изменить его стиль и&#10;нумерацию. Например, заголовки&#10;глав в данном документе  имеют тип&#10;"Глава" со включенной&#10;автоматической нумерацией.' />
+      <term key="text" text='Если при помощи контекстного меню&#10;"Выбрать всё" выделить весь текст&#10;фрагмента, то появится плавающая&#10;кнопка "Настройки объекта". &#10;&#10;При нажатии на эту кнопку&#10;откроется окно настроек текста,&#10;где можно изменить его стиль и&#10;нумерацию. Например, заголовки&#10;глав в данном документе имеют тип&#10;"Глава" со включенной&#10;автоматической нумерацией.' />
     </text_fragment>
     <text_fragment textStyle="subsection" numbering="true">
       <term key="text" text="Изображение" />

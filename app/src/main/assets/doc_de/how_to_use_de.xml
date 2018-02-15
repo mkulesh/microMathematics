@@ -113,19 +113,19 @@
       <term key="text" text="Man kann auf die Intervallemente&#10;zugreiffen:" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.link.x">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
         <term key="argTerm" text="0" />
       </term>
       <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.link.x">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
         <term key="argTerm" text="1" />
       </term>
       <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.link.x">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
         <term key="argTerm" text="100" />
       </term>
       <term key="rightTerm" text="" />
@@ -135,11 +135,11 @@
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="minus">
-        <term key="leftTerm" code="content:com.mkulesh.micromath.link.x">
-          <term key="argTerm" text="1" />
+        <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
+          <term key="argTerm" text="2" />
         </term>
-        <term key="rightTerm" code="content:com.mkulesh.micromath.link.x">
-          <term key="argTerm" text="0" />
+        <term key="rightTerm" code="content:com.mkulesh.micromath.index.x">
+          <term key="argTerm" text="1" />
         </term>
       </term>
       <term key="rightTerm" text="" />
@@ -364,13 +364,13 @@
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="minus">
-        <term key="leftTerm" code="content:com.mkulesh.micromath.link.y">
+        <term key="leftTerm" code="content:com.mkulesh.micromath.index.y">
           <term key="argTerm" code="minus">
             <term key="leftTerm" text="N" />
             <term key="rightTerm" text="1" />
           </term>
         </term>
-        <term key="rightTerm" code="content:com.mkulesh.micromath.link.y">
+        <term key="rightTerm" code="content:com.mkulesh.micromath.index.y">
           <term key="argTerm" text="0" />
         </term>
       </term>
