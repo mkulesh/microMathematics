@@ -121,6 +121,9 @@ public class ExportToLatex
 
             { "Ω", "\\Omega" }, { "ω", "\\omega" } };
 
+    protected final String[][] supplementTable = new String[][]{
+            { "°", "\\degree" }};
+
     public ExportToLatex(Context context, OutputStream stream, final Uri uri, final AdapterIf adapter,
                          final Exporter.Parameters exportParameters) throws Exception
     {
@@ -736,13 +739,26 @@ public class ExportToLatex
             final char c = text.charAt(i);
             boolean processed = false;
 
-            if (Character.UnicodeBlock.of(c) == Character.UnicodeBlock.GREEK)
+            final Character.UnicodeBlock block = Character.UnicodeBlock.of(c);
+            if (block == Character.UnicodeBlock.GREEK)
             {
                 for (int k = 0; k < greekTable.length; k++)
                 {
                     if (greekTable[k][0].charAt(0) == c)
                     {
                         outStr += (inEquation ? "{" : "$") + greekTable[k][1] + (inEquation ? "}" : "$");
+                        processed = true;
+                        break;
+                    }
+                }
+            }
+            else if (!(this instanceof ExportToMathJax) && block == Character.UnicodeBlock.LATIN_1_SUPPLEMENT)
+            {
+                for (int k = 0; k < supplementTable.length; k++)
+                {
+                    if (supplementTable[k][0].charAt(0) == c)
+                    {
+                        outStr += (inEquation ? "{" : "$") + supplementTable[k][1] + (inEquation ? "}" : "$");
                         processed = true;
                         break;
                     }
