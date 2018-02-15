@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="35" significantDigits="6" scale="0.50000" redefineAllowed="true">
+  <formulaList documentVersion="2" author="Михаил Кулеш" title="Описание программы" description="" textWidth="35" significantDigits="6" scale="0.50000" redefineAllowed="true">
     <text_fragment>
       <term key="text" text="Данное приложение является мощным&#10;математическим калькулятором,&#10;который основан на работе с&#10;интерактивными документами.&#10;Приложение содержит один рабочий&#10;лист, его можно изменять,&#10;вычислять, сохранять на SD карту,&#10;а также экспортировать в документ&#10;LaTeX или изображение.&#10;&#10;Рабочий лист - это полноценный&#10;документ с текстом, формулами и&#10;графиками. Математические объекты&#10;в нём можно редактировать и&#10;вычислять в том виде, как они&#10;выглядят на экране.&#10;&#10;Доступны следующие типы объектов:&#10;формула, текстовый результат,&#10;график функции, текстовое поле и&#10;изображение. В данном разделе&#10;даётся краткое описание того, как&#10;работать с этими объектами." />
     </text_fragment>
@@ -64,15 +64,15 @@
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="π" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="pi" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="e" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text="В правой части можно также&#10;использовать любую константу,&#10;определённую ранее:" />
@@ -116,19 +116,19 @@
       <term key="leftTerm" code="content:com.mkulesh.micromath.link.x">
         <term key="argTerm" text="0" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.link.x">
         <term key="argTerm" text="1" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.link.x">
         <term key="argTerm" text="100" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text="Шаг определятся как разница второго&#10;и первого элементов:" />
@@ -142,7 +142,7 @@
           <term key="argTerm" text="0" />
         </term>
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text='К примеру, задать интервал с&#10;нулевым начальным значением и&#10;содержащий N точек, равномерно&#10;распределённых с шагом "dy", можно&#10;таким образом:' />
@@ -292,14 +292,14 @@
         <term key="argTerm1" text="5" />
         <term key="argTerm2" text="10" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
         <term key="argTerm1" text="10" />
         <term key="argTerm2" text="5" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="N[k,m]" />
@@ -321,14 +321,14 @@
         <term key="argTerm1" text="10i" />
         <term key="argTerm2" text="100" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
         <term key="argTerm1" text="90" />
         <term key="argTerm2" text="210" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment textStyle="subsection" numbering="true">
       <term key="text" text="Текстовый результат" />
@@ -342,7 +342,7 @@
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text='Левое поле может содержать любое&#10;математическое выражение, а в&#10;правом будет показан результат&#10;после нажатия плавающей кнопки&#10;"Вычислить".&#10;&#10;В левом поле можно использовать&#10;любые константы и функции, как&#10;встроенные, как и определённые&#10;ранее:' />
@@ -357,7 +357,7 @@
           <term key="argTerm" text="NPi2" />
         </term>
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text="Если левая часть не содержит&#10;переменных интервального типа, то&#10;результатом вычислений будет одно&#10;вещественное или комплексное&#10;число:" />
@@ -374,25 +374,25 @@
           <term key="argTerm" text="0" />
         </term>
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="re">
         <term key="argTerm" text="z" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="im">
         <term key="argTerm" text="z" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="abs_layout">
         <term key="argTerm" text="z" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="sqrt_layout">
@@ -406,32 +406,32 @@
           </term>
         </term>
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text="Если же слева используется&#10;интервал, то результат будет&#10;массивом чисел, соответствующих&#10;интервалу. Ввиду ограниченности&#10;дисплея, будут показаны только&#10;несколько первых и последнее&#10;число из этого массива:" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="x" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="y" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="mult">
         <term key="leftTerm" text="2" />
         <term key="rightTerm" text="y" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <result disableCalculation="false" hideResultField="false" arrayLength="5">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.N:2">
         <term key="argTerm1" text="k" />
         <term key="argTerm2" text="m" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text='Количество показанных элементов, а&#10;также режим вычисления и показа&#10;поля результата можно изменить в&#10;настройках формулы. Для вызова&#10;окна настроек необходимо выделить&#10;всю формулу целиком, после чего&#10;появится плавающая кнопка&#10;"Настройки объекта", по нажатии на&#10;которую и откроется окно настроек:' />
