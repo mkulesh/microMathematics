@@ -157,10 +157,6 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
                                     isPublishRuns.wait();
                                 }
                             }
-                            if (error != null)
-                            {
-                                return null;
-                            }
                         }
                         else
                         {
@@ -171,14 +167,6 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
                             error = null;
                             postAction = PostAction.INTERRUPT;
                             return null;
-                        }
-                        try
-                        {
-                            Thread.sleep(25);
-                        }
-                        catch (InterruptedException e)
-                        {
-                            // nothing to do
                         }
                     }
                 }
@@ -211,7 +199,10 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
         }
         catch (Exception e)
         {
-            error = String.format(list.getActivity().getResources().getString(R.string.error_file_read), name);
+            if (error == null)
+            {
+                error = String.format(list.getActivity().getResources().getString(R.string.error_file_read), name);
+            }
             ViewUtils.Debug(this, error + ", " + e.getLocalizedMessage());
         }
         if (f != null)
