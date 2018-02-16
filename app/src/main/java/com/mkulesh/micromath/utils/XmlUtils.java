@@ -19,6 +19,9 @@
 package com.mkulesh.micromath.utils;
 
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
 
 // Tutorial: http://developer.android.com/training/basics/network-ops/xml.html
 public class XmlUtils
@@ -39,6 +42,19 @@ public class XmlUtils
                 break;
             case XmlPullParser.START_TAG:
                 depth++;
+                break;
+            }
+        }
+    }
+
+    public static void skipTagContent(XmlPullParser parser) throws IOException, XmlPullParserException
+    {
+        final int depth = parser.getDepth();
+        while (true)
+        {
+            parser.next();
+            if (parser.getEventType() == XmlPullParser.END_TAG && parser.getDepth() == depth)
+            {
                 break;
             }
         }

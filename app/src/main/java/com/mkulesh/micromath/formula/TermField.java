@@ -40,6 +40,7 @@ import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.IdGenerator;
 import com.mkulesh.micromath.utils.ViewUtils;
+import com.mkulesh.micromath.utils.XmlUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomLayout;
 import com.mkulesh.micromath.widgets.FocusChangeIf;
@@ -528,15 +529,18 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         else
         {
             term = convertToTerm(termCode, null, /*ensureManualTrigger=*/ false);
+            setText("");
             if (isTerm())
             {
-                setText("");
                 term.readFromXml(parser);
                 finishTag = false;
             }
             else
             {
-                throw new Exception("can not create term");
+                ViewUtils.Debug(this, "Term code \"" + termCode + "\" is not known");
+                ViewUtils.Debug(this, "Skipping tag: " + parser.getPositionDescription());
+                XmlUtils.skipTagContent(parser);
+                finishTag = false;
             }
         }
         if (finishTag)
