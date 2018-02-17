@@ -86,7 +86,8 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
      * Constants used to write/read the XML file.
      */
     public static final String XML_NS = null;
-    public static final String XML_HTTP = "http://micromath.mkulesh.com";
+    public static final String XML_MMT_SCHEMA = "http://micromath.mkulesh.com";
+    public static final String XML_SM_SCHEMA = "http://smath.info/schemas/worksheet/1.0";
     public static final String XML_PROP_MMT = "mmt";
     public static final String XML_PROP_KEY = "key";
     public static final String XML_PROP_CODE = "code";
@@ -588,11 +589,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         {
             return;
         }
-        InputStream is = FileUtils.getInputStream(activity, uri);
-        if (is != null)
-        {
-            readFromStream(is, FileUtils.getFileName(activity, uri), postAction);
-        }
+        readFromUri(uri, postAction);
     }
 
     /**
@@ -653,9 +650,9 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     /**
      * XML interface: procedure reads this list from the given input stream
      */
-    public void readFromStream(InputStream stream, String name, XmlLoaderTask.PostAction postAction)
+    private void readFromUri(Uri uri, XmlLoaderTask.PostAction postAction)
     {
-        xmlLoaderTask = new XmlLoaderTask(this, stream, name, postAction);
+        xmlLoaderTask = new XmlLoaderTask(this, uri, postAction);
         ViewUtils.Debug(this, "started XML loader task: " + xmlLoaderTask.toString());
         getUndoState().clear();
         CompatUtils.executeAsyncTask(xmlLoaderTask);
@@ -669,7 +666,8 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         InputStream is = FileUtils.getInputStream(activity, uri);
         if (is != null)
         {
-            readFromStream(is, FileUtils.getFileName(activity, uri), XmlLoaderTask.PostAction.NONE);
+            FileUtils.closeStream(is);
+            readFromUri(uri, XmlLoaderTask.PostAction.NONE);
             // do not close is since it will be closed by reading thread
             return true;
         }
@@ -688,7 +686,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
             serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
             serializer.setOutput(writer);
             serializer.startDocument("UTF-8", true);
-            serializer.setPrefix(FormulaList.XML_PROP_MMT, FormulaList.XML_HTTP);
+            serializer.setPrefix(FormulaList.XML_PROP_MMT, FormulaList.XML_MMT_SCHEMA);
             serializer.startTag(FormulaList.XML_NS, FormulaList.XML_MAIN_TAG);
             serializer.startTag(FormulaList.XML_NS, XML_LIST_TAG);
             documentSettings.writeToXml(serializer);
@@ -853,7 +851,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         if (!inOperation && owner instanceof XmlLoaderTask)
         {
             XmlLoaderTask t = (XmlLoaderTask) owner;
-            fragment.setXmlReadingResult(t.error == null);
+            fragment.setXmlReadingResult(t.isMmtOpened());
             if (t.error != null)
             {
                 isContentValid();

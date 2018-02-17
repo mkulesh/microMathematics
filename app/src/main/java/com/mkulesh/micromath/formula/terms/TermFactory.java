@@ -31,7 +31,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A static helper class used to create terms
@@ -39,6 +41,7 @@ import java.util.List;
 public class TermFactory
 {
     private static ArrayList<TermTypeIf> allTerms;
+    private static Map<String, TermTypeIf> termMap;
 
     /*********************************************************
      * Factory methods
@@ -59,7 +62,17 @@ public class TermFactory
         allTerms.addAll(Arrays.asList(Intervals.IntervalType.values()));
         allTerms.addAll(Arrays.asList(SeriesIntegrals.LoopType.values()));
 
+        termMap = new HashMap<>();
+        for(TermTypeIf t : allTerms)
+        {
+            termMap.put(t.getLowerCaseName(), t);
+        }
         ViewUtils.Debug(allTerms, "There are " + allTerms.size() + " terms");
+    }
+
+    public static Map<String, TermTypeIf> getTermMap()
+    {
+        return termMap;
     }
 
     /*********************************************************

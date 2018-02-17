@@ -18,9 +18,11 @@
  ******************************************************************************/
 package com.mkulesh.micromath.formula;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Xml;
 
+import com.mkulesh.micromath.export.ImportFromSMathStudio;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.DocumentProperties;
@@ -32,6 +34,7 @@ import com.mkulesh.micromath.widgets.ListChangeIf.Position;
 
 import org.xmlpull.v1.XmlPullParser;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Locale;
 
@@ -44,8 +47,16 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
         INTERRUPT
     }
 
+    public enum FileFormat
+    {
+        INVALID,
+        MMT,
+        SMATH_STUDIO
+    }
+
     private final FormulaList list;
-    private final InputStream stream;
+    private final Uri uri;
+    private InputStream stream = null;
     private final String name;
     private XmlPullParser parser = null;
     private int firstFormulaId = ViewUtils.INVALID_INDEX;
@@ -56,12 +67,13 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
     // result of operation
     public String error = null;
     public PostAction postAction = null;
+    private FileFormat fileFormat = FileFormat.INVALID;
 
-    XmlLoaderTask(FormulaList list, InputStream stream, String name, PostAction postAction)
+    XmlLoaderTask(FormulaList list, Uri uri, PostAction postAction)
     {
         this.list = list;
-        this.stream = stream;
-        this.name = name;
+        this.uri = uri;
+        this.name = FileUtils.getFileName(list.getActivity(), uri);
         this.postAction = postAction;
         this.headerNumber = TextProperties.getInitialNumber();
     }
@@ -73,6 +85,38 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
         list.setInOperation(/* owner= */this, /* inOperation= */true, /* stopHandler= */null);
     }
 
+    private FileFormat getFileFormat()
+    {
+        InputStream is = FileUtils.getInputStream(list.getActivity(), uri);
+        String prop = null;
+        try
+        {
+            final XmlPullParser p = Xml.newPullParser();
+            p.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+            p.setInput(is, null);
+            p.nextTag();
+            if (p.getAttributeCount() > 0)
+            {
+                prop = p.getAttributeValue(0);
+            }
+        }
+        catch (Exception e)
+        {
+            ViewUtils.Debug(this, "Can not define file format: " + e.getLocalizedMessage());
+        }
+        FileUtils.closeStream(is);
+
+        if (prop != null && FormulaList.XML_MMT_SCHEMA.equals(prop))
+        {
+            return FileFormat.MMT;
+        }
+        else if (prop != null && FormulaList.XML_SM_SCHEMA.equals(prop))
+        {
+            return FileFormat.SMATH_STUDIO;
+        }
+        return FileFormat.INVALID;
+    }
+
     @Override
     protected Void doInBackground(Void... arg0)
     {
@@ -80,26 +124,31 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
         isAborted.set(false);
         try
         {
+            fileFormat = getFileFormat();
+            stream = FileUtils.getInputStream(list.getActivity(), uri);
+            if (fileFormat == FileFormat.MMT)
+            {
+                // nothing to do
+            }
+            else if (fileFormat == FileFormat.SMATH_STUDIO)
+            {
+                ImportFromSMathStudio importer = new ImportFromSMathStudio(name);
+                InputStream s = new ByteArrayInputStream(importer.convertToMmt(stream).toString().getBytes());
+                FileUtils.closeStream(stream);
+                stream = s;
+            }
+            else
+            {
+                error = String.format(list.getActivity().getResources().getString(R.string.error_unknown_file_format),
+                        name);
+                ViewUtils.Debug(this, error);
+                return null;
+            }
+
             parser = Xml.newPullParser();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(stream, null);
             parser.nextTag();
-            boolean isValidFormat = false;
-            if (parser.getAttributeCount() > 0)
-            {
-                String prop = parser.getAttributeValue(0);
-                if (prop != null && FormulaList.XML_HTTP.equals(prop))
-                {
-                    isValidFormat = true;
-                }
-            }
-            if (!isValidFormat)
-            {
-                error = String.format(list.getActivity().getResources().getString(R.string.error_unknown_file_format),
-                        name);
-                ViewUtils.Debug(this, error + ": " + FormulaList.XML_PROP_MMT + " key is not found");
-                return null;
-            }
             parser.require(XmlPullParser.START_TAG, FormulaList.XML_NS, FormulaList.XML_MAIN_TAG);
             while (parser.next() != XmlPullParser.END_TAG)
             {
@@ -224,5 +273,10 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
     {
         ViewUtils.Debug(this, "trying to cancel XML loader task " + this.toString());
         isAborted.set(true);
+    }
+
+    public boolean isMmtOpened()
+    {
+        return fileFormat == XmlLoaderTask.FileFormat.MMT && error == null;
     }
 }
