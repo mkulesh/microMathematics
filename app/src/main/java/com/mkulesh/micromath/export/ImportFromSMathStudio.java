@@ -64,6 +64,7 @@ public class ImportFromSMathStudio
     private final String SM_TAG_MATH_OPERAND = "operand";
     private final String SM_TAG_MATH_OPERATOR = "operator";
     private final String SM_TAG_MATH_FUNCTION = "function";
+    private final String SM_TAG_MATH_INDEX = "el";
 
     private final String fileName;
 
@@ -366,13 +367,28 @@ public class ImportFromSMathStudio
             {
                 // Build-in function
                 serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_CODE, p.text);
-                if (p.args == 1)
+                parseTermArguments(p.args, elements, serializer);
+            }
+            else if (p.isArray() && !elements.isEmpty())
+            {
+                // Array
+                final String arrayName = getArrayName(elements, p.args);
+                if (!arrayName.isEmpty())
                 {
-                    parseTerm("argTerm", elements, serializer, false);
+                    ViewUtils.Debug(this, "arrayName = " + arrayName);
+                    serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_CODE,
+                            UserFunctions.FunctionType.FUNCTION_INDEX.getLinkObject() + "." + arrayName +
+                                    UserFunctions.FUNCTION_ARGS_MARKER + Integer.toString(p.args - 1));
+                    parseTermArguments(p.args - 1, elements, serializer);
+                    removeLast(elements);
                 }
-                else for (int i = 0; i < p.args; i++)
+                else
                 {
-                    parseTerm("argTerm" + Integer.toString(p.args - i), elements, serializer, false);
+                    // Array can not be resolved: convert as user function
+                    serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_CODE,
+                            UserFunctions.FunctionType.FUNCTION_LINK.getLinkObject() + "." + p.text +
+                                    UserFunctions.FUNCTION_ARGS_MARKER + Integer.toString(p.args));
+                    parseTermArguments(p.args, elements, serializer);
                 }
             }
             else
@@ -381,27 +397,56 @@ public class ImportFromSMathStudio
                 serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_CODE,
                         UserFunctions.FunctionType.FUNCTION_LINK.getLinkObject() + "." + p.text +
                                 UserFunctions.FUNCTION_ARGS_MARKER + Integer.toString(p.args));
-                if (p.args == 1)
-                {
-                    parseTerm("argTerm", elements, serializer, false);
-                }
-                else for (int i = 0; i < p.args; i++)
-                {
-                    parseTerm("argTerm" + Integer.toString(p.args - i), elements, serializer, false);
-                }
+                parseTermArguments(p.args, elements, serializer);
             }
         }
         serializer.endTag(FormulaList.XML_NS, FormulaList.XML_TERM_TAG);
     }
 
+    private String getArrayName(final List<Element> prevElements, int args) throws Exception
+    {
+        ArrayList<Element> elements = new ArrayList<>(prevElements.size());
+        elements.addAll(prevElements);
+
+        if (args > 1)
+        {
+            final StringWriter writer = new StringWriter();
+            final XmlSerializer serializer = Xml.newSerializer();
+            serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
+            serializer.setOutput(writer);
+            serializer.startDocument("UTF-8", true);
+            parseTermArguments(args - 1, elements, serializer);
+            serializer.endDocument();
+        }
+
+        final Element last = getLast(elements);
+        if (last != null)
+        {
+            ExpressionProperties p = new ExpressionProperties(last);
+            if (p.isOperand())
+            {
+                return p.text;
+            }
+        }
+        return "";
+    }
+
+    private void parseTermArguments(int args, List<Element> elements, XmlSerializer serializer) throws Exception
+    {
+        if (args == 1)
+        {
+            parseTerm("argTerm", elements, serializer, false);
+        }
+        else for (int i = 0; i < args; i++)
+        {
+            parseTerm("argTerm" + Integer.toString(args - i), elements, serializer, false);
+        }
+    }
+
     private void parseNegativeTerm(final List<Element> elements, final XmlSerializer serializer) throws Exception
     {
-        if (elements.isEmpty())
-        {
-            return;
-        }
-        final Element last = elements.get(elements.size() - 1);
-        if (last == null || last.getTextContent() == null)
+        final Element last = getLast(elements);
+        if (last == null)
         {
             return;
         }
@@ -491,6 +536,11 @@ public class ImportFromSMathStudio
         {
             return type.equals(SM_TAG_MATH_FUNCTION);
         }
+
+        boolean isArray()
+        {
+            return text.equals(SM_TAG_MATH_INDEX);
+        }
     }
 
     private List<Element> getElements(final Element e, final String name)
@@ -527,6 +577,24 @@ public class ImportFromSMathStudio
         return null;
     }
 
+    private Element getLast(final List<Element> elements)
+    {
+        if (!elements.isEmpty())
+        {
+            Element e = elements.get(elements.size() - 1);
+            if (e == null)
+            {
+                return null;
+            }
+            if (e.getTextContent() == null)
+            {
+                return null;
+            }
+            return e;
+        }
+        return null;
+    }
+
     private Element removeLast(final List<Element> elements)
     {
         if (!elements.isEmpty())
@@ -540,7 +608,7 @@ public class ImportFromSMathStudio
 
     private String makeFunctionName(List<Element> elements, ExpressionProperties p)
     {
-        String args = "";
+        ArrayList<String> args = new ArrayList<>();
         for (int i = 0; i < p.args; i++)
         {
             final Element arg = removeLast(elements);
@@ -549,14 +617,27 @@ public class ImportFromSMathStudio
                 ExpressionProperties argProp = new ExpressionProperties(arg);
                 if (argProp.isOperand())
                 {
-                    if (i > 0)
-                    {
-                        args = "," + args;
-                    }
-                    args = argProp.text + args;
+                    args.add(0, argProp.text);
                 }
             }
         }
-        return p.text + "(" + args + ")";
+        if (p.isArray() && !args.isEmpty())
+        {
+            String retValue = args.get(0) + "[";
+            for (int i = 1; i < args.size(); i++)
+            {
+                retValue += (i > 1? "," : "") + args.get(i);
+            }
+            return retValue + "]";
+        }
+        else
+        {
+            String retValue = p.text + "(";
+            for (int i = 0; i < args.size(); i++)
+            {
+                retValue += (i > 0? "," : "") + args.get(i);
+            }
+            return retValue + ")";
+        }
     }
 }
