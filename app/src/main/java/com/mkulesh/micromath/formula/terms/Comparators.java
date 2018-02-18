@@ -184,21 +184,21 @@ public class Comparators extends FormulaTerm
             switch (getComparatorType())
             {
             case EQUAL:
-                return outValue.setValue((leftTermValue.getReal() == rightTermValue.getReal()) ? 1 : -1);
+                return outValue.setValue((leftTermValue.getReal() == rightTermValue.getReal()) ? 1 : 0);
             case NOT_EQUAL:
-                return outValue.setValue((leftTermValue.getReal() != rightTermValue.getReal()) ? 1 : -1);
+                return outValue.setValue((leftTermValue.getReal() != rightTermValue.getReal()) ? 1 : 0);
             case LESS:
-                return outValue.setValue((leftTermValue.getReal() < rightTermValue.getReal()) ? 1 : -1);
+                return outValue.setValue((leftTermValue.getReal() < rightTermValue.getReal()) ? 1 : 0);
             case LESS_EQUAL:
-                return outValue.setValue((leftTermValue.getReal() <= rightTermValue.getReal()) ? 1 : -1);
+                return outValue.setValue((leftTermValue.getReal() <= rightTermValue.getReal()) ? 1 : 0);
             case GREATER:
-                return outValue.setValue((leftTermValue.getReal() > rightTermValue.getReal()) ? 1 : -1);
+                return outValue.setValue((leftTermValue.getReal() > rightTermValue.getReal()) ? 1 : 0);
             case GREATER_EQUAL:
-                return outValue.setValue((leftTermValue.getReal() >= rightTermValue.getReal()) ? 1 : -1);
+                return outValue.setValue((leftTermValue.getReal() >= rightTermValue.getReal()) ? 1 : 0);
             case COMPARATOR_AND:
-                return outValue.setValue((leftTermValue.getReal() > 0 && rightTermValue.getReal() > 0) ? 1 : -1);
+                return outValue.setValue((leftTermValue.getReal() > 0 && rightTermValue.getReal() > 0) ? 1 : 0);
             case COMPARATOR_OR:
-                return outValue.setValue((leftTermValue.getReal() > 0 || rightTermValue.getReal() > 0) ? 1 : -1);
+                return outValue.setValue((leftTermValue.getReal() > 0 || rightTermValue.getReal() > 0) ? 1 : 0);
             }
         }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);

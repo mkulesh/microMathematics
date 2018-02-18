@@ -57,7 +57,6 @@
         <attr name="emptyEnabled" format="boolean" />
         <attr name="intervalEnabled" format="boolean" />
         <attr name="complexEnabled" format="boolean" />
-        <attr name="comparatorEnabled" format="boolean" />
         <attr name="newTermEnabled" format="boolean" />
         <attr name="fileOperationEnabled" format="boolean" />
         <attr name="arrayType"/>

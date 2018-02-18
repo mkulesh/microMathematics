@@ -469,6 +469,10 @@ public class UserFunctions extends FunctionBase
             {
                 final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 0);
                 t.bracketsType = TermField.BracketsType.NEVER;
+                if (termType == FunctionType.IDENTITY)
+                {
+                    t.getEditText().setComparatorEnabled(true);
+                }
             }
         }
         return v;

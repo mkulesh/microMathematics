@@ -116,7 +116,6 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
             emptyEnabled = a.getBoolean(R.styleable.CustomViewExtension_emptyEnabled, false);
             intervalEnabled = a.getBoolean(R.styleable.CustomViewExtension_intervalEnabled, false);
             complexEnabled = a.getBoolean(R.styleable.CustomViewExtension_complexEnabled, true);
-            comparatorEnabled = a.getBoolean(R.styleable.CustomViewExtension_comparatorEnabled, false);
             newTermEnabled = a.getBoolean(R.styleable.CustomViewExtension_newTermEnabled, false);
             fileOperationEnabled = a.getBoolean(R.styleable.CustomViewExtension_fileOperationEnabled, false);
             final int arrayTypeInt = a.getInteger(R.styleable.CustomViewExtension_arrayType, -1);
