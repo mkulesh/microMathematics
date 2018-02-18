@@ -534,6 +534,8 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
             return R.drawable.fman_file_apk;
         if (FileUtils.C_MICROMATH.equals(cat))
             return R.drawable.fman_file_mmt;
+        if (FileUtils.C_SMATH_STUDIO.equals(cat))
+            return R.drawable.fman_file_sm;
         return R.drawable.fman_file_unknown;
     }
 

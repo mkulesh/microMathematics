@@ -47,7 +47,7 @@ public final class FileUtils
 
     public final static String C_AUDIO = "a", C_VIDEO = "v", C_TEXT = "t", C_ZIP = "z", C_OFFICE = "o", C_DROID = "d",
             C_BOOK = "b", C_IMAGE = "i", C_MARKUP = "m", C_APP = "x", C_PDF = "p", C_UNKNOWN = "u",
-            C_MICROMATH = "mmt";
+            C_MICROMATH = "mmt", C_SMATH_STUDIO = "SM";
 
     private final static String[][] mimes = { // should be sorted!
             { ".3gpp", "audio/3gpp", C_AUDIO },
@@ -116,6 +116,7 @@ public final class FileUtils
             { ".ra", "audio/x-pn-realaudio", C_AUDIO }, { ".ram", "audio/x-pn-realaudio", C_AUDIO },
             { ".rar", "application/x-rar-compressed", C_ZIP }, { ".rtf", "application/rtf", C_OFFICE },
             { ".sh", "application/x-sh", C_APP }, { ".so", "application/octet-stream", C_APP },
+            { ".sm", "application/micro-math", C_SMATH_STUDIO },
             { ".sqlite", "application/x-sqlite3", C_APP }, { ".svg", "image/svg+xml", C_IMAGE },
             { ".swf", "application/x-shockwave-flash", C_VIDEO },
             { ".sxw", "application/vnd.sun.xml.writer", C_OFFICE },
