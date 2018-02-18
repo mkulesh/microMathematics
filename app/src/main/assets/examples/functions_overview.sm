@@ -1,0 +1,2061 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio Desktop" version="0.99.6619.16334"?>
+<regions xmlns="http://smath.info/schemas/worksheet/1.0">
+  <settings dpi="96">
+    <identity>
+      <id>17d23d08-21f0-4a25-bea2-398d6c0107d8</id>
+      <revision>7</revision>
+    </identity>
+    <metadata lang="eng">
+      <title>Functions Overview</title>
+      <author>Mikhail Kulesh</author>
+      <description>This document summarizes functions supported by microMathmatics Plus</description>
+    </metadata>
+    <calculation>
+      <precision>6</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="true" viewMode="0" printGrid="false" printAreas="true" simpleEqualsOnly="false" printBackgroundImages="true">
+      <paper id="1" orientation="Portrait" width="850" height="1100" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+      <backgrounds />
+    </pageModel>
+    <dependencies>
+      <assembly name="SMath Studio Desktop" version="0.99.6619.16334" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Math Region" version="0.99.6619.16334" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="Custom Functions" version="1.1.6522.6678" guid="18dadffd-79a3-4cf9-aee1-d66deb0ea720" />
+      <assembly name="Special Functions" version="1.11.6619.16336" guid="2814e667-4e12-48b1-8d51-194e480eabc5" />
+      <assembly name="Text Region" version="1.10.6619.16337" guid="485d28c5-349a-48b6-93be-12a35a1c1e39" />
+      <assembly name="Plot Region" version="1.10.6619.16337" guid="c451c2b5-798b-4f08-b9ec-b90963d1ddaa" />
+    </dependencies>
+  </settings>
+  <region id="0" left="9" top="9" width="102" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p bold="true">1 Constants</p>
+    </text>
+    <metadata>
+      <value lang="ENG" name="Auto-numbering">true</value>
+      <value lang="ENG" name="Heading level">subsubsection</value>
+    </metadata>
+  </region>
+  <region id="1" left="9" top="36" width="102" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Set a value</p>
+    </text>
+  </region>
+  <region id="2" left="9" top="63" width="54" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">10</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="3" left="72" top="63" width="54" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">b</e>
+        <e type="operand">60</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="4" left="9" top="90" width="86" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Get value</p>
+    </text>
+  </region>
+  <region id="5" left="9" top="117" width="64" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">a</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">10</e>
+      </result>
+    </math>
+  </region>
+  <region id="6" left="81" top="117" width="64" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">b</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">60</e>
+      </result>
+    </math>
+  </region>
+  <region id="7" left="9" top="153" width="160" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Build-in constants</p>
+    </text>
+  </region>
+  <region id="8" left="9" top="180" width="110" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">e</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">2.718282</e>
+      </result>
+    </math>
+  </region>
+  <region id="9" left="9" top="207" width="110" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">π</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">3.141593</e>
+      </result>
+    </math>
+  </region>
+  <region id="10" left="9" top="234" width="110" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">π</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">3.141593</e>
+      </result>
+    </math>
+  </region>
+  <region id="11" left="9" top="261" width="54" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">i</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">i</e>
+      </result>
+    </math>
+  </region>
+  <region id="12" left="9" top="288" width="102" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p bold="true">2 Operators</p>
+    </text>
+    <metadata>
+      <value lang="ENG" name="Auto-numbering">true</value>
+      <value lang="ENG" name="Heading level">subsubsection</value>
+    </metadata>
+  </region>
+  <region id="13" left="9" top="315" width="144" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Addition ("+ +")</p>
+    </text>
+  </region>
+  <region id="14" left="9" top="342" width="86" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">d</e>
+        <e type="operand">10</e>
+        <e type="operand">70</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="15" left="108" top="342" width="64" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">d</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">80</e>
+      </result>
+    </math>
+  </region>
+  <region id="16" left="9" top="378" width="70" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">c</e>
+        <e type="operand">1</e>
+        <e type="operand">i</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="17" left="90" top="378" width="80" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">c</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+        <e type="operand">i</e>
+        <e type="operator" args="2">+</e>
+      </result>
+    </math>
+  </region>
+  <region id="18" left="9" top="405" width="169" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Subtraction ("- -")</p>
+    </text>
+  </region>
+  <region id="19" left="9" top="432" width="84" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">d</e>
+        <e type="operand">10</e>
+        <e type="operand">70</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="20" left="108" top="432" width="76" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">d</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">60</e>
+        <e type="operator" args="1">-</e>
+      </result>
+    </math>
+  </region>
+  <region id="21" left="9" top="468" width="68" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">c</e>
+        <e type="operand">1</e>
+        <e type="operand">i</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="22" left="90" top="468" width="78" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">c</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+        <e type="operand">i</e>
+        <e type="operator" args="2">-</e>
+      </result>
+    </math>
+  </region>
+  <region id="23" left="9" top="504" width="176" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Multiplication ("*")</p>
+    </text>
+  </region>
+  <region id="24" left="9" top="531" width="78" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">d</e>
+        <e type="operand">10</e>
+        <e type="operand">70</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="25" left="99" top="531" width="72" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">d</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">700</e>
+      </result>
+    </math>
+  </region>
+  <region id="26" left="9" top="558" width="62" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">c</e>
+        <e type="operand">i</e>
+        <e type="operand">i</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="27" left="81" top="558" width="68" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">c</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+      </result>
+    </math>
+  </region>
+  <region id="28" left="9" top="594" width="184" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Division ("/" or "÷")</p>
+    </text>
+  </region>
+  <region id="29" left="9" top="621" width="52" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">d</e>
+        <e type="operand">a</e>
+        <e type="operand">b</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="30" left="72" top="621" width="28" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>or</p>
+    </text>
+  </region>
+  <region id="31" left="117" top="621" width="52" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">d</e>
+        <e type="operand">a</e>
+        <e type="operand">b</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="32" left="9" top="666" width="50" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">c</e>
+        <e type="operand">i</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="33" left="72" top="666" width="88" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">c</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.5</e>
+        <e type="operand">i</e>
+        <e type="operator" args="2">*</e>
+      </result>
+    </math>
+  </region>
+  <region id="34" left="9" top="711" width="103" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Parenthesis</p>
+    </text>
+  </region>
+  <region id="35" left="9" top="738" width="118" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">e</e>
+        <e type="bracket">(</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">2.718282</e>
+      </result>
+    </math>
+  </region>
+  <region id="36" left="9" top="765" width="160" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Complex operators:</p>
+    </text>
+  </region>
+  <region id="37" left="9" top="792" width="232" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">b</e>
+        <e type="operator" args="2">+</e>
+        <e type="bracket">(</e>
+        <e type="operand">a</e>
+        <e type="operand">b</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">a</e>
+        <e type="operand">a</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">b</e>
+        <e type="operand">b</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">-</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="38" left="9" top="819" width="159" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p bold="true">3 Common functions</p>
+    </text>
+    <metadata>
+      <value lang="ENG" name="Auto-numbering">true</value>
+      <value lang="ENG" name="Heading level">subsubsection</value>
+    </metadata>
+  </region>
+  <region id="39" left="9" top="846" width="175" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Raise to power ("^")</p>
+    </text>
+  </region>
+  <region id="40" left="9" top="873" width="80" height="33" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">100</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">^</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="41" left="99" top="873" width="64" height="33" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">2</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">4</e>
+      </result>
+    </math>
+  </region>
+  <region id="42" left="9" top="918" width="331" height="40" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The square root of the argument ("#" or"sqrt")</p>
+    </text>
+  </region>
+  <region id="43" left="9" top="963" width="76" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">25</e>
+        <e type="function" args="1">sqrt</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">5</e>
+      </result>
+    </math>
+  </region>
+  <region id="44" left="99" top="963" width="80" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+        <e type="function" args="1">sqrt</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">i</e>
+      </result>
+    </math>
+  </region>
+  <region id="45" left="9" top="999" width="132" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">10</e>
+        <e type="function" args="1">sqrt</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">3.162278</e>
+      </result>
+    </math>
+  </region>
+  <region id="46" left="9" top="1026" width="299" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The n-th root of the argument ("$")</p>
+    </text>
+  </region>
+  <region id="47" left="9" top="1053" width="88" height="30" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">125</e>
+        <e type="operand">3</e>
+        <e type="function" args="2">nthroot</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">5</e>
+      </result>
+    </math>
+  </region>
+  <region id="48" left="9" top="1089" width="349" height="40" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The product of all positive integers lessthan or equal to the argument ("!")</p>
+    </text>
+  </region>
+  <region id="49" left="9" top="1134" width="79" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">5</e>
+        <e type="operator" args="1">!</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">120</e>
+      </result>
+    </math>
+  </region>
+  <region id="50" left="9" top="1161" width="348" height="40" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The absolute value of the real or complexargument ("|" or "abs")</p>
+    </text>
+  </region>
+  <region id="51" left="9" top="1206" width="78" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">10</e>
+        <e type="function" args="1">abs</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">10</e>
+      </result>
+    </math>
+  </region>
+  <region id="52" left="90" top="1206" width="90" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">10</e>
+        <e type="operator" args="1">-</e>
+        <e type="function" args="1">abs</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">10</e>
+      </result>
+    </math>
+  </region>
+  <region id="53" left="189" top="1206" width="62" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">i</e>
+        <e type="function" args="1">abs</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="54" left="9" top="1242" width="382" height="40" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The complex conjugate of the complex argument("~")</p>
+    </text>
+  </region>
+  <region id="55" left="9" top="1287" width="132" height="27" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">3</e>
+        <e type="operand">5</e>
+        <e type="operand">i</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="function" args="1">Conjugate</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">3</e>
+        <e type="operand">5</e>
+        <e type="operand">i</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">-</e>
+      </result>
+    </math>
+  </region>
+  <region id="56" left="9" top="1323" width="132" height="27" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operand">i</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">-</e>
+        <e type="function" args="1">Conjugate</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operand">i</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+      </result>
+    </math>
+  </region>
+  <region id="57" left="9" top="1359" width="365" height="40" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The real and imaginary parts of the complexargument</p>
+    </text>
+  </region>
+  <region id="58" left="9" top="1404" width="123" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">3</e>
+        <e type="operand">5</e>
+        <e type="operand">i</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="function" args="1">Re</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">3</e>
+      </result>
+    </math>
+  </region>
+  <region id="59" left="144" top="1404" width="123" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">3</e>
+        <e type="operand">5</e>
+        <e type="operand">i</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="function" args="1">Im</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">5</e>
+      </result>
+    </math>
+  </region>
+  <region id="60" left="9" top="1440" width="217" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p bold="true">4 Trigonometric functions</p>
+    </text>
+    <metadata>
+      <value lang="ENG" name="Auto-numbering">true</value>
+      <value lang="ENG" name="Heading level">subsubsection</value>
+    </metadata>
+  </region>
+  <region id="61" left="9" top="1467" width="185" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Sine, cosine, tangent</p>
+    </text>
+  </region>
+  <region id="62" left="9" top="1494" width="95" height="43" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">π</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">/</e>
+        <e type="function" args="1">sin</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="63" left="117" top="1494" width="103" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">π</e>
+        <e type="function" args="1">cos</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+      </result>
+    </math>
+  </region>
+  <region id="64" left="225" top="1494" width="91" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">0</e>
+        <e type="function" args="1">tan</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="65" left="9" top="1539" width="234" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Cosecant, secant, cotangent</p>
+    </text>
+  </region>
+  <region id="66" left="9" top="1566" width="95" height="43" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">π</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">/</e>
+        <e type="function" args="1">csc</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="67" left="117" top="1566" width="115" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">π</e>
+        <e type="operator" args="1">-</e>
+        <e type="function" args="1">sec</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+      </result>
+    </math>
+  </region>
+  <region id="68" left="234" top="1566" width="95" height="43" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">π</e>
+        <e type="operand">4</e>
+        <e type="operator" args="2">/</e>
+        <e type="function" args="1">cot</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="69" left="9" top="1620" width="251" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Inverse sine, cosine, tangent</p>
+    </text>
+  </region>
+  <region id="70" left="9" top="1647" width="155" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="function" args="1">asin</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1.570796</e>
+      </result>
+    </math>
+  </region>
+  <region id="71" left="9" top="1674" width="167" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+        <e type="function" args="1">acos</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">3.141593</e>
+      </result>
+    </math>
+  </region>
+  <region id="72" left="9" top="1701" width="99" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">0</e>
+        <e type="function" args="1">atan</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="73" left="9" top="1728" width="300" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Inverse cosecant, secant, cotangent</p>
+    </text>
+  </region>
+  <region id="74" left="9" top="1755" width="155" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="function" args="1">acsc</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1.570796</e>
+      </result>
+    </math>
+  </region>
+  <region id="75" left="9" top="1782" width="167" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+        <e type="function" args="1">asec</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">3.141593</e>
+      </result>
+    </math>
+  </region>
+  <region id="76" left="9" top="1809" width="155" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="function" args="1">acot</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.785398</e>
+      </result>
+    </math>
+  </region>
+  <region id="77" left="9" top="1836" width="332" height="40" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The arc tangent of y/x within the range[-pi..pi]</p>
+    </text>
+  </region>
+  <region id="78" left="9" top="1881" width="175" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">5</e>
+        <e type="function" args="2">atan</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.197396</e>
+      </result>
+    </math>
+  </region>
+  <region id="79" left="9" top="1908" width="315" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p bold="true">5 Hyperbolic functions and logarithms</p>
+    </text>
+    <metadata>
+      <value lang="ENG" name="Auto-numbering">true</value>
+      <value lang="ENG" name="Heading level">subsubsection</value>
+    </metadata>
+  </region>
+  <region id="80" left="9" top="1935" width="373" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The raising 'e' to the power of the argument</p>
+    </text>
+  </region>
+  <region id="81" left="9" top="1962" width="155" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">3</e>
+        <e type="function" args="1">exp</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">20.085537</e>
+      </result>
+    </math>
+  </region>
+  <region id="82" left="9" top="1989" width="128" height="33" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">e</e>
+        <e type="operand">3</e>
+        <e type="operator" args="2">^</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">20.085537</e>
+      </result>
+    </math>
+  </region>
+  <region id="83" left="9" top="2025" width="316" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The natural logarithm of the argument</p>
+    </text>
+  </region>
+  <region id="84" left="9" top="2052" width="93" height="35" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">e</e>
+        <e type="operand">5</e>
+        <e type="operator" args="2">^</e>
+        <e type="function" args="1">ln</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">5</e>
+      </result>
+    </math>
+  </region>
+  <region id="85" left="9" top="2088" width="347" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Logarithm of number to the specified base</p>
+    </text>
+  </region>
+  <region id="86" left="9" top="2115" width="117" height="32" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">256</e>
+        <e type="operand">2</e>
+        <e type="function" args="2">log</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">8</e>
+      </result>
+    </math>
+  </region>
+  <region id="87" left="9" top="2151" width="315" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The base 10 logarithm of the argument</p>
+    </text>
+  </region>
+  <region id="88" left="9" top="2178" width="125" height="35" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">10</e>
+        <e type="operand">5</e>
+        <e type="operator" args="2">^</e>
+        <e type="function" args="1">log10</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">5</e>
+      </result>
+    </math>
+  </region>
+  <region id="89" left="9" top="2214" width="275" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Hyperbolic sine, cosine, tangent</p>
+    </text>
+  </region>
+  <region id="90" left="9" top="2241" width="99" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">0</e>
+        <e type="function" args="1">sinh</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="91" left="126" top="2241" width="99" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">0</e>
+        <e type="function" args="1">cosh</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="92" left="243" top="2241" width="99" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">0</e>
+        <e type="function" args="1">tanh</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="93" left="9" top="2268" width="324" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Hyperbolic cosecant, secant, cotangent</p>
+    </text>
+  </region>
+  <region id="94" left="9" top="2295" width="155" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="function" args="1">csch</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.850918</e>
+      </result>
+    </math>
+  </region>
+  <region id="95" left="9" top="2322" width="99" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">0</e>
+        <e type="function" args="1">sech</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="96" left="9" top="2349" width="155" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="function" args="1">coth</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1.313035</e>
+      </result>
+    </math>
+  </region>
+  <region id="97" left="9" top="2376" width="242" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p bold="true">6 Functions for real numbers</p>
+    </text>
+    <metadata>
+      <value lang="ENG" name="Auto-numbering">true</value>
+      <value lang="ENG" name="Heading level">subsubsection</value>
+    </metadata>
+  </region>
+  <region id="98" left="9" top="2403" width="324" height="40" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The most positive (closest to positiveinfinity) of the two arguments</p>
+    </text>
+  </region>
+  <region id="99" left="9" top="2448" width="111" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="function" args="2">Max</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">2</e>
+      </result>
+    </math>
+  </region>
+  <region id="100" left="135" top="2448" width="111" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" args="2">Max</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">2</e>
+      </result>
+    </math>
+  </region>
+  <region id="101" left="9" top="2484" width="324" height="40" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The most negative (closest to negativeinfinity) of the two arguments</p>
+    </text>
+  </region>
+  <region id="102" left="9" top="2529" width="111" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="function" args="2">Min</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="103" left="135" top="2529" width="111" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" args="2">Min</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="104" left="9" top="2565" width="373" height="40" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The remainder on dividing the first argumentby the second</p>
+    </text>
+  </region>
+  <region id="105" left="9" top="2610" width="119" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">11</e>
+        <e type="operand">2</e>
+        <e type="function" args="2">mod</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="106" left="144" top="2610" width="167" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">e</e>
+        <e type="operand">2</e>
+        <e type="function" args="2">mod</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.718282</e>
+      </result>
+    </math>
+  </region>
+  <region id="107" left="9" top="2646" width="380" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Calculates percentage (for example, 5% of 20)</p>
+    </text>
+  </region>
+  <region id="108" left="9" top="2673" width="127" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">20</e>
+        <e type="operand">5</e>
+        <e type="function" args="2">perc</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="109" left="9" top="2700" width="374" height="40" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The pseudo-random value between zero and theargument</p>
+    </text>
+  </region>
+  <region id="110" left="9" top="2745" width="115" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="function" args="1">random</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="111" left="135" top="2745" width="123" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">10</e>
+        <e type="function" args="1">random</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">2</e>
+      </result>
+    </math>
+  </region>
+  <region id="112" left="9" top="2781" width="332" height="56" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The most negative (closest to negativeinfinity) integer value greater than orequal to the argument</p>
+    </text>
+  </region>
+  <region id="113" left="9" top="2844" width="64" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="function" args="1">Ceil</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="114" left="90" top="2844" width="88" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1.25</e>
+        <e type="function" args="1">Ceil</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">2</e>
+      </result>
+    </math>
+  </region>
+  <region id="115" left="9" top="2880" width="88" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1.75</e>
+        <e type="function" args="1">Ceil</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">2</e>
+      </result>
+    </math>
+  </region>
+  <region id="116" left="108" top="2880" width="64" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">2</e>
+        <e type="function" args="1">Ceil</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">2</e>
+      </result>
+    </math>
+  </region>
+  <region id="117" left="9" top="2916" width="356" height="56" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The most positive (closest to positiveinfinity) integer value less than or equalto the argument</p>
+    </text>
+  </region>
+  <region id="118" left="9" top="2979" width="64" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="function" args="1">Floor</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="119" left="90" top="2979" width="88" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1.25</e>
+        <e type="function" args="1">Floor</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="120" left="9" top="3015" width="88" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1.75</e>
+        <e type="function" args="1">Floor</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="121" left="108" top="3015" width="64" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">2</e>
+        <e type="function" args="1">Floor</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">2</e>
+      </result>
+    </math>
+  </region>
+  <region id="122" left="9" top="3051" width="305" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Rounds the real number x to n places</p>
+    </text>
+  </region>
+  <region id="123" left="9" top="3078" width="151" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">π</e>
+        <e type="operand">2</e>
+        <e type="function" args="2">round</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">3.14</e>
+      </result>
+    </math>
+  </region>
+  <region id="124" left="9" top="3105" width="372" height="40" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Returns the integer part of a real number byremoving the fractional part</p>
+    </text>
+  </region>
+  <region id="125" left="9" top="3150" width="107" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">π</e>
+        <e type="function" args="1">trunc</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">3</e>
+      </result>
+    </math>
+  </region>
+  <region id="126" left="9" top="3177" width="349" height="56" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Compute the signum of a number: -1 fornegative numbers, +1 for positive numbersand 0 otherwise:</p>
+    </text>
+  </region>
+  <region id="127" left="9" top="3240" width="123" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">5</e>
+        <e type="operator" args="1">-</e>
+        <e type="function" args="1">sign</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+      </result>
+    </math>
+  </region>
+  <region id="128" left="135" top="3240" width="99" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">0</e>
+        <e type="function" args="1">sign</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="129" left="252" top="3240" width="99" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">e</e>
+        <e type="function" args="1">sign</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="130" left="9" top="3267" width="241" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p bold="true">7 Processing of the sequence</p>
+    </text>
+    <metadata>
+      <value lang="ENG" name="Auto-numbering">true</value>
+      <value lang="ENG" name="Heading level">subsubsection</value>
+    </metadata>
+  </region>
+  <region id="131" left="9" top="3294" width="86" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Summation</p>
+    </text>
+  </region>
+  <region id="132" left="108" top="3294" width="100" height="70" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">k</e>
+        <e type="operand">k</e>
+        <e type="operand">1</e>
+        <e type="operand">10</e>
+        <e type="function" args="4">sum</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">55</e>
+      </result>
+    </math>
+  </region>
+  <region id="133" left="9" top="3375" width="70" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Product</p>
+    </text>
+  </region>
+  <region id="134" left="90" top="3375" width="166" height="70" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">k</e>
+        <e type="operand">k</e>
+        <e type="operand">1</e>
+        <e type="operand">10</e>
+        <e type="function" args="4">product</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">3.6288</e>
+        <e type="operand">10</e>
+        <e type="operand">6</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+      </result>
+    </math>
+  </region>
+  <region id="135" left="9" top="3456" width="241" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p bold="true">8 Derivative of the function</p>
+    </text>
+    <metadata>
+      <value lang="ENG" name="Auto-numbering">true</value>
+      <value lang="ENG" name="Heading level">subsubsection</value>
+    </metadata>
+  </region>
+  <region id="136" left="9" top="3483" width="144" height="44" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">x</e>
+        <e type="function" args="1">f1</e>
+        <e type="operand">x</e>
+        <e type="function" args="1">sin</e>
+        <e type="operand">x</e>
+        <e type="function" args="2">diff</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="137" left="162" top="3483" width="85" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">0</e>
+        <e type="function" args="1">f1</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="138" left="9" top="3528" width="172" height="44" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">x</e>
+        <e type="function" args="1">f2</e>
+        <e type="operand">x</e>
+        <e type="function" args="1">sin</e>
+        <e type="operand">x</e>
+        <e type="function" args="2">diff</e>
+        <e type="operand">x</e>
+        <e type="function" args="2">diff</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="139" left="189" top="3528" width="85" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">0</e>
+        <e type="function" args="1">f2</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="140" left="9" top="3573" width="315" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p bold="true">9 The definite integral of a function</p>
+    </text>
+    <metadata>
+      <value lang="ENG" name="Auto-numbering">true</value>
+      <value lang="ENG" name="Heading level">subsubsection</value>
+    </metadata>
+  </region>
+  <region id="141" left="9" top="3600" width="134" height="70" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">0.5</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">x</e>
+        <e type="operand">1</e>
+        <e type="operand">e</e>
+        <e type="function" args="4">int</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">2</e>
+      </result>
+    </math>
+  </region>
+  <region id="142" left="9" top="3672" width="227" height="43" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">φ</e>
+        <e type="operand">ρ</e>
+        <e type="function" args="2">G</e>
+        <e type="operand">3</e>
+        <e type="operand">φ</e>
+        <e type="function" args="1">cos</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">2</e>
+        <e type="operand">φ</e>
+        <e type="function" args="1">sin</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">-</e>
+        <e type="operand">ρ</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="143" left="9" top="3717" width="212" height="87" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">ρ</e>
+        <e type="operand">φ</e>
+        <e type="operand">ρ</e>
+        <e type="function" args="2">G</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">ρ</e>
+        <e type="operand">2</e>
+        <e type="operand">3</e>
+        <e type="function" args="4">int</e>
+        <e type="operand">φ</e>
+        <e type="operand">π</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">0</e>
+        <e type="function" args="4">int</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">5</e>
+      </result>
+    </math>
+  </region>
+  <region id="144" left="9" top="3807" width="308" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p bold="true">10 IF-function and logical operators</p>
+    </text>
+    <metadata>
+      <value lang="ENG" name="Auto-numbering">true</value>
+      <value lang="ENG" name="Heading level">subsubsection</value>
+    </metadata>
+  </region>
+  <region id="145" left="9" top="3834" width="316" height="40" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Select a term to be used depending oncomparison result for two expressions</p>
+    </text>
+  </region>
+  <region id="146" left="9" top="3879" width="70" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">true</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="147" left="90" top="3879" width="78" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">false</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="148" left="9" top="3915" width="104" height="72" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">≡</e>
+        <e type="operand">true</e>
+        <e type="operand">false</e>
+        <e type="function" args="3">if</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="149" left="9" top="3996" width="104" height="72" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">≠</e>
+        <e type="operand">true</e>
+        <e type="operand">false</e>
+        <e type="function" args="3">if</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="150" left="9" top="4077" width="104" height="72" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">&gt;</e>
+        <e type="operand">true</e>
+        <e type="operand">false</e>
+        <e type="function" args="3">if</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="151" left="9" top="4158" width="104" height="72" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">≥</e>
+        <e type="operand">true</e>
+        <e type="operand">false</e>
+        <e type="function" args="3">if</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="152" left="9" top="4239" width="104" height="72" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">&lt;</e>
+        <e type="operand">true</e>
+        <e type="operand">false</e>
+        <e type="function" args="3">if</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="153" left="9" top="4320" width="104" height="72" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">≤</e>
+        <e type="operand">true</e>
+        <e type="operand">false</e>
+        <e type="function" args="3">if</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="154" left="9" top="4401" width="163" height="74" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">≡</e>
+        <e type="bracket">(</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">≠</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">|</e>
+        <e type="operand">true</e>
+        <e type="operand">false</e>
+        <e type="function" args="3">if</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="155" left="9" top="4482" width="163" height="74" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">≡</e>
+        <e type="bracket">(</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">≠</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">&amp;</e>
+        <e type="operand">true</e>
+        <e type="operand">false</e>
+        <e type="function" args="3">if</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="156" left="9" top="4563" width="151" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p bold="true">11 Function plots</p>
+    </text>
+    <metadata>
+      <value lang="ENG" name="Auto-numbering">true</value>
+      <value lang="ENG" name="Heading level">subsubsection</value>
+    </metadata>
+  </region>
+  <region id="157" left="9" top="4590" width="160" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The first x-value:</p>
+    </text>
+  </region>
+  <region id="158" left="180" top="4590" width="74" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">x1</e>
+        <e type="operand">10</e>
+        <e type="operator" args="1">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="159" left="9" top="4617" width="152" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The last x-value:</p>
+    </text>
+  </region>
+  <region id="160" left="171" top="4617" width="62" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">x2</e>
+        <e type="operand">10</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="161" left="9" top="4653" width="160" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The sampling step:</p>
+    </text>
+  </region>
+  <region id="162" left="180" top="4653" width="70" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">dx</e>
+        <e type="operand">0.1</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="163" left="9" top="4689" width="209" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>X-values, interval (":")</p>
+    </text>
+  </region>
+  <region id="164" left="9" top="4716" width="166" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">x1</e>
+        <e type="operand">x2</e>
+        <e type="operand">x1</e>
+        <e type="operand">dx</e>
+        <e type="operator" args="2">+</e>
+        <e type="function" args="3">range</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="165" left="9" top="4743" width="216" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Y-values, a function of X</p>
+    </text>
+  </region>
+  <region id="166" left="9" top="4770" width="231" height="73" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">x</e>
+        <e type="function" args="1">f</e>
+        <e type="operand">e</e>
+        <e type="operand">x</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">10</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">^</e>
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+        <e type="bracket">(</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">^</e>
+        <e type="operand">2</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="1">!</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">x</e>
+        <e type="operand">2</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">n</e>
+        <e type="operand">0</e>
+        <e type="operand">20</e>
+        <e type="function" args="4">sum</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="167" left="9" top="4851" width="307" height="40" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>A plot with automatically calculatedboundaries:</p>
+    </text>
+  </region>
+  <region id="168" left="9" top="4896" width="350" height="258" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="1" scale_y="1" scale_z="1" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="0" transpose_y="0" transpose_z="0">
+      <input>
+        <e type="operand">x</e>
+        <e type="function" args="1">f</e>
+      </input>
+    </plot>
+  </region>
+  <region id="169" left="9" top="5184" width="341" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>A plot with manually defined boundaries:</p>
+    </text>
+  </region>
+  <region id="170" left="9" top="5211" width="350" height="258" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="30.5147058823529" scale_y="5.1875" scale_z="1" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-170" transpose_y="-125" transpose_z="0">
+      <input>
+        <e type="operand">x</e>
+        <e type="function" args="1">f</e>
+      </input>
+    </plot>
+  </region>
+  <region id="171" left="9" top="5499" width="85" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p bold="true">12 Arrays</p>
+    </text>
+    <metadata>
+      <value lang="ENG" name="Auto-numbering">true</value>
+      <value lang="ENG" name="Heading level">subsubsection</value>
+    </metadata>
+  </region>
+  <region id="172" left="9" top="5526" width="159" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Define index range</p>
+    </text>
+  </region>
+  <region id="173" left="9" top="5553" width="62" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">N</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="174" left="81" top="5553" width="104" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operand">N</e>
+        <e type="operand">2</e>
+        <e type="function" args="3">range</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="175" left="9" top="5589" width="143" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Define 1-D array</p>
+    </text>
+  </region>
+  <region id="176" left="9" top="5616" width="187" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">z</e>
+        <e type="operand">n</e>
+        <e type="function" args="2">el</e>
+        <e type="operand">x1</e>
+        <e type="operand">x2</e>
+        <e type="operand">x1</e>
+        <e type="operator" args="2">-</e>
+        <e type="operand">N</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="177" left="198" top="5616" width="97" height="35" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">G</e>
+        <e type="operand">n</e>
+        <e type="function" args="2">el</e>
+        <e type="operand">z</e>
+        <e type="operand">n</e>
+        <e type="function" args="2">el</e>
+        <e type="function" args="1">f</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="178" left="9" top="5661" width="225" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Show elements of 1-D array</p>
+    </text>
+  </region>
+  <region id="179" left="9" top="5688" width="379" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Show values of single elements of array ("[")</p>
+    </text>
+  </region>
+  <region id="180" left="9" top="5715" width="135" height="33" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">z</e>
+        <e type="operand">5</e>
+        <e type="function" args="2">el</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">9.191919</e>
+        <e type="operator" args="1">-</e>
+      </result>
+    </math>
+  </region>
+  <region id="181" left="153" top="5715" width="135" height="33" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">G</e>
+        <e type="operand">5</e>
+        <e type="function" args="2">el</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">2.439594</e>
+        <e type="operator" args="1">-</e>
+      </result>
+    </math>
+  </region>
+  <region id="182" left="9" top="5751" width="151" height="153" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">z</e>
+        <e type="operand">n</e>
+        <e type="function" args="2">el</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">10</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">9.79798</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">9.59596</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">9.393939</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">9.191919</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">8.989899</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">8.787879</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">7</e>
+        <e type="operand">1</e>
+        <e type="function" args="9">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="183" left="162" top="5751" width="151" height="153" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">G</e>
+        <e type="operand">n</e>
+        <e type="function" args="2">el</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">2.280833</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2.480547</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2.572485</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2.557214</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2.439594</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2.228414</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">1.93588</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">7</e>
+        <e type="operand">1</e>
+        <e type="function" args="9">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="184" left="9" top="5913" width="143" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Define 2-D array</p>
+    </text>
+  </region>
+  <region id="185" left="9" top="5940" width="62" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">M</e>
+        <e type="operand">200</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="186" left="81" top="5940" width="104" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">m</e>
+        <e type="operand">1</e>
+        <e type="operand">M</e>
+        <e type="operand">2</e>
+        <e type="function" args="3">range</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="187" left="9" top="5976" width="255" height="45" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">G2</e>
+        <e type="operand">n</e>
+        <e type="operand">m</e>
+        <e type="function" args="3">el</e>
+        <e type="operand">2</e>
+        <e type="operand">π</e>
+        <e type="operand">n</e>
+        <e type="operand">m</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">N</e>
+        <e type="operand">M</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">*</e>
+        <e type="function" args="1">sin</e>
+        <e type="operand">3</e>
+        <e type="function" args="2">round</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="188" left="9" top="6030" width="293" height="135" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,4,6">
+      <input>
+        <e type="operand">G2</e>
+        <e type="operand">n</e>
+        <e type="operand">m</e>
+        <e type="function" args="3">el</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.042</e>
+        <e type="operand">0.063</e>
+        <e type="operand">0.084</e>
+        <e type="operand">0.105</e>
+        <e type="operand">0.063</e>
+        <e type="operand">0.084</e>
+        <e type="operand">0.105</e>
+        <e type="operand">0.125</e>
+        <e type="operand">0.084</e>
+        <e type="operand">0.105</e>
+        <e type="operand">0.125</e>
+        <e type="operand">0.146</e>
+        <e type="operand">0.105</e>
+        <e type="operand">0.125</e>
+        <e type="operand">0.146</e>
+        <e type="operand">0.167</e>
+        <e type="operand">0.125</e>
+        <e type="operand">0.146</e>
+        <e type="operand">0.167</e>
+        <e type="operand">0.187</e>
+        <e type="operand">0.146</e>
+        <e type="operand">0.167</e>
+        <e type="operand">0.187</e>
+        <e type="operand">0.208</e>
+        <e type="operand">6</e>
+        <e type="operand">4</e>
+        <e type="function" args="26">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="189" left="9" top="6201" width="250" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Get count of rows and columns</p>
+    </text>
+  </region>
+  <region id="190" left="9" top="6228" width="125" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">G2</e>
+        <e type="function" args="1">rows</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">100</e>
+      </result>
+    </math>
+  </region>
+  <region id="191" left="126" top="6228" width="125" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math matrixOptions="0,0,1,7">
+      <input>
+        <e type="operand">G2</e>
+        <e type="function" args="1">cols</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">200</e>
+      </result>
+    </math>
+  </region>
+</regions>
