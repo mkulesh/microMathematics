@@ -22,7 +22,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Xml;
 
-import com.mkulesh.micromath.export.ImportFromSMathStudio;
+import com.mkulesh.micromath.io.ImportFromSMathStudio;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.DocumentProperties;
