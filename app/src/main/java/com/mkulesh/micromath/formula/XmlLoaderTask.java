@@ -132,7 +132,7 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
             }
             else if (fileFormat == FileFormat.SMATH_STUDIO)
             {
-                ImportFromSMathStudio importer = new ImportFromSMathStudio(name);
+                ImportFromSMathStudio importer = new ImportFromSMathStudio(list.getContext(), name);
                 InputStream s = new ByteArrayInputStream(importer.convertToMmt(stream).toString().getBytes());
                 FileUtils.closeStream(stream);
                 stream = s;

@@ -74,7 +74,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
     private static final String STATE_FUNCTIONVIEW_PARAMETERS = "functionview_parameters";
     private static final String STATE_FUNCTIONS_NUMBER = "functions_number";
     private static final String STATE_LINE_PARAMETERS = "line_parameters";
-    private static final String XML_PROP_FUNCTIONS_NUMBER = "functionsNumber";
+    public static final String XML_PROP_FUNCTIONS_NUMBER = "functionsNumber";
 
     // expandable layouts
     private LinearLayout xDataLayout = null, yDataLayout = null;

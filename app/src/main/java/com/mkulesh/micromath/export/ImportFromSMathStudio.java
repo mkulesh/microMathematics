@@ -18,6 +18,7 @@
  ******************************************************************************/
 package com.mkulesh.micromath.export;
 
+import android.content.Context;
 import android.util.Xml;
 
 import com.mkulesh.micromath.formula.FormulaBase;
@@ -32,7 +33,10 @@ import com.mkulesh.micromath.formula.terms.TermFactory;
 import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.formula.terms.TrigonometricFunctions;
 import com.mkulesh.micromath.formula.terms.UserFunctions;
+import com.mkulesh.micromath.plots.PlotFunction;
 import com.mkulesh.micromath.properties.DocumentProperties;
+import com.mkulesh.micromath.properties.LineProperties;
+import com.mkulesh.micromath.properties.PlotProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import org.w3c.dom.Document;
@@ -53,20 +57,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class ImportFromSMathStudio
 {
-    private final String SM_TAG_REGION = "region";
-    private final String SM_TAG_TEXT_FRAGMENT = "text";
-    private final String SM_TAG_TEXT_FRAGMENT_TEXT = "p";
-    private final String SM_TAG_MATH = "math";
-    private final String SM_TAG_MATH_INPUT = "input";
-    private final String SM_TAG_MATH_RESULT = "result";
     private final String SM_TAG_MATH_EXPRESSION = "e";
-    private final String SM_TAG_MATH_EQUATION = ":";
-    private final String SM_TAG_MATH_OPERAND = "operand";
     private final String SM_TAG_MATH_OPERATOR = "operator";
-    private final String SM_TAG_MATH_FUNCTION = "function";
-    private final String SM_TAG_MATH_INDEX = "el";
-
-    private final String fileName;
 
     private final class CodeMapValue
     {
@@ -79,15 +71,18 @@ public class ImportFromSMathStudio
             this.terms = terms;
         }
 
-        public boolean isValidArgs(int args)
+        boolean isValidArgs(int args)
         {
             return termType == UserFunctions.FunctionType.IDENTITY || terms.length == args;
         }
     }
 
+    private final String fileName;
     private final Map<String, CodeMapValue> codeMap = new HashMap<>();
+    private final Map<String, String> textMap = new HashMap<>();
+    private final PlotProperties plotProp = new PlotProperties();
 
-    public ImportFromSMathStudio(String fileName)
+    public ImportFromSMathStudio(Context context, String fileName)
     {
         this.fileName = fileName;
 
@@ -159,6 +154,12 @@ public class ImportFromSMathStudio
 
         codeMap.put("range", new CodeMapValue(
                 Intervals.IntervalType.EQUIDISTANT_INTERVAL, new CharSequence[]{ "nextValue", "maxValue", "minValue" }));
+
+        textMap.put("#", "");
+        textMap.put("\\0027\\", "'");
+        textMap.put("\\0022\\", "\"");
+
+        plotProp.initialize(context);
     }
 
     public StringWriter convertToMmt(InputStream stream)
@@ -189,7 +190,7 @@ public class ImportFromSMathStudio
                     continue;
                 }
                 final Element e = (Element) object;
-                if (SM_TAG_REGION.equals(e.getTagName()))
+                if ("region".equals(e.getTagName()))
                 {
                     parseRegion(e, prevRegion, serializer);
                     prevRegion = e;
@@ -234,7 +235,8 @@ public class ImportFromSMathStudio
                 final int prevButton = prevTop + Integer.parseInt(prevRegion.getAttribute("height"));
                 final int thisTop = Integer.parseInt(e.getAttribute("top"));
                 final int thisButton = thisTop + Integer.parseInt(e.getAttribute("height"));
-                if (thisButton > prevTop && thisTop < prevButton)
+                final int thisCenter = (thisTop + thisButton)/2;
+                if (thisCenter > prevTop && thisCenter < prevButton)
                 {
                     inRightOfPrevious = true;
                 }
@@ -247,21 +249,95 @@ public class ImportFromSMathStudio
 
         for (Element en : getElements(e))
         {
-            if (SM_TAG_TEXT_FRAGMENT.equals(en.getTagName()))
+            if ("text".equals(en.getTagName()))
             {
                 parseTextFragment(en, inRightOfPrevious, serializer);
             }
-            else if (SM_TAG_MATH.equals(en.getTagName()))
+            else if ("math".equals(en.getTagName()))
             {
                 parseMathExpression(en, inRightOfPrevious, serializer);
             }
+            else if ("plot".equals(en.getTagName()))
+            {
+                parsePlot(en, inRightOfPrevious, serializer);
+            }
         }
+    }
+
+    private void parsePlot(Element e, boolean inRightOfPrevious, XmlSerializer serializer) throws Exception
+    {
+        if (!ensureAttribute(e, "type", "2d"))
+        {
+            return;
+        }
+        final Element input = getElement(getElements(e), "input");
+        if (input == null)
+        {
+            return;
+        }
+
+        final String term = FormulaBase.BaseType.PLOT_FUNCTION.toString().toLowerCase(Locale.ENGLISH);
+        serializer.startTag(FormulaList.XML_NS, term);
+        plotProp.writeToXml(serializer);
+        serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_INRIGHTOFPREVIOUS,
+                Boolean.toString(inRightOfPrevious));
+
+        final List<Element> elements = getElements(input, SM_TAG_MATH_EXPRESSION);
+        if (!elements.isEmpty())
+        {
+            parsePlotFunctions(elements, serializer);
+        }
+
+        serializer.endTag(FormulaList.XML_NS, term);
+    }
+
+    private void parsePlotFunctions(List<Element> elements, XmlSerializer serializer) throws Exception
+    {
+        final Element last = getLast(elements);
+        if (last == null || last.getTextContent() == null)
+        {
+            return;
+        }
+        ExpressionProperties p = new ExpressionProperties(last);
+        LineProperties lineProp = new LineProperties();
+        if (p.text.equals("sys") && p.args > 2)
+        {
+            // Multiple functions
+            removeLast(elements);
+            final int argNumber = p.args - 2;
+            serializer.attribute(FormulaList.XML_NS, PlotFunction.XML_PROP_FUNCTIONS_NUMBER,
+                    Integer.toString(argNumber));
+            // remove two first arguments of sys function
+            removeLast(elements);
+            removeLast(elements);
+            // add functions
+            for(int i = 0; i < argNumber; i++)
+            {
+                final String suffix = Integer.toString(argNumber - i);
+                LineProperties newProp = new LineProperties();
+                parseTerm("yFunction" + suffix, elements, serializer, false, lineProp);
+                addTextTag("xFunction" + suffix, "x", serializer);
+                newProp.setNextDefault(lineProp);
+                lineProp = newProp;
+            }
+        }
+        else
+        {
+            // single function
+            serializer.attribute(FormulaList.XML_NS, PlotFunction.XML_PROP_FUNCTIONS_NUMBER, "1");
+            parseTerm("yFunction", elements, serializer, false, lineProp);
+            addTextTag("xFunction", "x", serializer);
+        }
+        addTextTag("yMinValue", "", serializer);
+        addTextTag("yMaxValue", "", serializer);
+        addTextTag("xMinValue", "", serializer);
+        addTextTag("xMaxValue", "", serializer);
     }
 
     private void parseTextFragment(Element e, boolean inRightOfPrevious, final XmlSerializer serializer) throws Exception
     {
         StringBuilder text = new StringBuilder();
-        for (Element en : getElements(e, SM_TAG_TEXT_FRAGMENT_TEXT))
+        for (Element en : getElements(e, "p"))
         {
             if (text.length() > 0)
             {
@@ -274,18 +350,15 @@ public class ImportFromSMathStudio
         serializer.startTag(FormulaList.XML_NS, term);
         serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_INRIGHTOFPREVIOUS,
                 Boolean.toString(inRightOfPrevious));
-        serializer.startTag(FormulaList.XML_NS, FormulaList.XML_TERM_TAG);
-        serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_KEY, FormulaList.XML_PROP_TEXT);
-        serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_TEXT, text.toString());
-        serializer.endTag(FormulaList.XML_NS, FormulaList.XML_TERM_TAG);
+        addTextTag(FormulaList.XML_PROP_TEXT, text.toString(), serializer);
         serializer.endTag(FormulaList.XML_NS, term);
     }
 
     private void parseMathExpression(Element e, boolean inRightOfPrevious, XmlSerializer serializer) throws Exception
     {
         final List<Element> elements = getElements(e);
-        final Element input = getElement(elements, SM_TAG_MATH_INPUT);
-        final Element result = getElement(elements, SM_TAG_MATH_RESULT);
+        final Element input = getElement(elements, "input");
+        final Element result = getElement(elements, "result");
         if (input == null)
         {
             return;
@@ -309,7 +382,7 @@ public class ImportFromSMathStudio
             return;
         }
         ExpressionProperties p = new ExpressionProperties(last);
-        if (!p.isEqual(SM_TAG_MATH_OPERATOR, 2, SM_TAG_MATH_EQUATION))
+        if (!p.isEqual(SM_TAG_MATH_OPERATOR, 2, ":"))
         {
             return;
         }
@@ -322,7 +395,14 @@ public class ImportFromSMathStudio
         serializer.endTag(FormulaList.XML_NS, term);
     }
 
-    private void parseTerm(final CharSequence key, final List<Element> elements, final XmlSerializer serializer, boolean asText) throws Exception
+    private void parseTerm(final CharSequence key, final List<Element> elements, final XmlSerializer serializer,
+                           boolean asText) throws Exception
+    {
+        parseTerm(key, elements, serializer, asText, null);
+    }
+
+    private void parseTerm(final CharSequence key, final List<Element> elements, final XmlSerializer serializer,
+                           boolean asText, LineProperties lineProp) throws Exception
     {
         final Element last = removeLast(elements);
         if (last == null || last.getTextContent() == null)
@@ -332,12 +412,17 @@ public class ImportFromSMathStudio
         ExpressionProperties p = new ExpressionProperties(last);
         serializer.startTag(FormulaList.XML_NS, FormulaList.XML_TERM_TAG);
         serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_KEY, key.toString());
+        if (lineProp != null)
+        {
+            lineProp.writeToXml(serializer);
+        }
         CodeMapValue code = codeMap.get(p.text);
         if (p.isOperand())
         {
             // A text term
+            final String newText = textMap.get(p.text);
             serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_TEXT,
-                    p.text.equals("#") ? "" : p.text);
+                    newText != null? newText : p.text);
         }
         else if (p.isEqual(SM_TAG_MATH_OPERATOR, 1, "-"))
         {
@@ -375,7 +460,6 @@ public class ImportFromSMathStudio
                 final String arrayName = getArrayName(elements, p.args);
                 if (!arrayName.isEmpty())
                 {
-                    ViewUtils.Debug(this, "arrayName = " + arrayName);
                     serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_CODE,
                             UserFunctions.FunctionType.FUNCTION_INDEX.getLinkObject() + "." + arrayName +
                                     UserFunctions.FUNCTION_ARGS_MARKER + Integer.toString(p.args - 1));
@@ -460,10 +544,7 @@ public class ImportFromSMathStudio
         {
             serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_CODE,
                     Operators.OperatorType.MULT.getLowerCaseName());
-            serializer.startTag(FormulaList.XML_NS, FormulaList.XML_TERM_TAG);
-            serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_KEY, "leftTerm");
-            serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_TEXT, "-1");
-            serializer.endTag(FormulaList.XML_NS, FormulaList.XML_TERM_TAG);
+            addTextTag("leftTerm", "-1", serializer);
             parseTerm("rightTerm", elements, serializer, false);
         }
     }
@@ -476,8 +557,7 @@ public class ImportFromSMathStudio
                 Boolean.toString(inRightOfPrevious));
         final List<Element> inputElements = getElements(input, SM_TAG_MATH_EXPRESSION);
         parseTerm("leftTerm", inputElements, serializer, false);
-        final String resultAction = result.getAttribute("action");
-        if (resultAction != null && resultAction.equals("numeric"))
+        if (ensureAttribute(result, "action", "numeric"))
         {
             final List<Element> resultElements = getElements(result, SM_TAG_MATH_EXPRESSION);
             parseResultTerm("rightTerm", resultElements, serializer);
@@ -489,9 +569,14 @@ public class ImportFromSMathStudio
     {
         final Element last = removeLast(elements);
         ExpressionProperties p = new ExpressionProperties(last);
+        addTextTag(key, p.isOperand() ? p.text : "", serializer);
+    }
+
+    private void addTextTag(final String key, final String s, final XmlSerializer serializer) throws Exception
+    {
         serializer.startTag(FormulaList.XML_NS, FormulaList.XML_TERM_TAG);
         serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_KEY, key);
-        serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_TEXT, p.isOperand() ? p.text : "");
+        serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_TEXT, s);
         serializer.endTag(FormulaList.XML_NS, FormulaList.XML_TERM_TAG);
     }
 
@@ -529,17 +614,17 @@ public class ImportFromSMathStudio
 
         boolean isOperand()
         {
-            return type.equals(SM_TAG_MATH_OPERAND);
+            return type.equals("operand");
         }
 
         boolean isFunction()
         {
-            return type.equals(SM_TAG_MATH_FUNCTION);
+            return type.equals("function");
         }
 
         boolean isArray()
         {
-            return text.equals(SM_TAG_MATH_INDEX);
+            return text.equals("el");
         }
     }
 
@@ -639,5 +724,14 @@ public class ImportFromSMathStudio
             }
             return retValue + ")";
         }
+    }
+
+    private boolean ensureAttribute(Element e, String type, String s)
+    {
+        if (e.getAttribute(type) == null)
+        {
+            return false;
+        }
+        return e.getAttribute(type).equals(s);
     }
 }
