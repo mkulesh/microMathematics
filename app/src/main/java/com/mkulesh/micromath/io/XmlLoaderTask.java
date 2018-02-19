@@ -70,7 +70,7 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
     public PostAction postAction = null;
     private FileFormat fileFormat = FileFormat.INVALID;
 
-    XmlLoaderTask(FormulaList list, Uri uri, PostAction postAction)
+    public XmlLoaderTask(FormulaList list, Uri uri, PostAction postAction)
     {
         this.list = list;
         this.uri = uri;
