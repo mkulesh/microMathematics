@@ -27,7 +27,7 @@ import android.view.ViewGroup;
 
 import com.mkulesh.micromath.dialogs.DialogDocumentSettings;
 import com.mkulesh.micromath.dialogs.DialogNewFormula;
-import com.mkulesh.micromath.formula.XmlLoaderTask;
+import com.mkulesh.micromath.io.XmlLoaderTask;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 

@@ -32,7 +32,7 @@ import com.mkulesh.micromath.fman.AdapterIf;
 import com.mkulesh.micromath.fman.Commander;
 import com.mkulesh.micromath.fman.FileType;
 import com.mkulesh.micromath.fman.FileUtils;
-import com.mkulesh.micromath.formula.XmlLoaderTask;
+import com.mkulesh.micromath.io.XmlLoaderTask;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.ta.TestSession;
 import com.mkulesh.micromath.utils.CompatUtils;

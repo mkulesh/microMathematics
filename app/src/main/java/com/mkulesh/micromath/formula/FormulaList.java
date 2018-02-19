@@ -39,6 +39,7 @@ import com.mkulesh.micromath.MainActivity;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.StoredFormula.StoredTerm;
 import com.mkulesh.micromath.formula.terms.TermFactory;
+import com.mkulesh.micromath.io.XmlLoaderTask;
 import com.mkulesh.micromath.plots.ImageFragment;
 import com.mkulesh.micromath.plots.PlotContour;
 import com.mkulesh.micromath.plots.PlotFunction;

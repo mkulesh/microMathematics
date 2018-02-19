@@ -16,20 +16,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package com.mkulesh.micromath.formula;
+package com.mkulesh.micromath.io;
 
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Xml;
 
-import com.mkulesh.micromath.io.ImportFromSMathStudio;
 import com.mkulesh.micromath.fman.FileUtils;
+import com.mkulesh.micromath.formula.FormulaBase;
+import com.mkulesh.micromath.formula.FormulaList;
+import com.mkulesh.micromath.formula.TextFragment;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.properties.TextProperties;
 import com.mkulesh.micromath.utils.SynchronizedBoolean;
 import com.mkulesh.micromath.utils.ViewUtils;
-import com.mkulesh.micromath.io.XmlUtils;
 import com.mkulesh.micromath.widgets.ListChangeIf.Position;
 
 import org.xmlpull.v1.XmlPullParser;
