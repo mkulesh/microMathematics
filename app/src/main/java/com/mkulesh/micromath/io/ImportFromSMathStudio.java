@@ -247,7 +247,7 @@ public class ImportFromSMathStudio
             // nothing to do
         }
 
-        for (Element en : getElements(e))
+        for (Element en : XmlUtils.getElements(e))
         {
             if ("text".equals(en.getTagName()))
             {
@@ -266,11 +266,11 @@ public class ImportFromSMathStudio
 
     private void parsePlot(Element e, boolean inRightOfPrevious, XmlSerializer serializer) throws Exception
     {
-        if (!ensureAttribute(e, "type", "2d"))
+        if (!XmlUtils.ensureAttribute(e, "type", "2d"))
         {
             return;
         }
-        final Element input = getElement(getElements(e), "input");
+        final Element input = XmlUtils.getElement(XmlUtils.getElements(e), "input");
         if (input == null)
         {
             return;
@@ -282,7 +282,7 @@ public class ImportFromSMathStudio
         serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_INRIGHTOFPREVIOUS,
                 Boolean.toString(inRightOfPrevious));
 
-        final List<Element> elements = getElements(input, SM_TAG_MATH_EXPRESSION);
+        final List<Element> elements = XmlUtils.getElements(input, SM_TAG_MATH_EXPRESSION);
         if (!elements.isEmpty())
         {
             parsePlotFunctions(elements, serializer);
@@ -293,7 +293,7 @@ public class ImportFromSMathStudio
 
     private void parsePlotFunctions(List<Element> elements, XmlSerializer serializer) throws Exception
     {
-        final Element last = getLast(elements);
+        final Element last = XmlUtils.getLast(elements);
         if (last == null || last.getTextContent() == null)
         {
             return;
@@ -303,13 +303,13 @@ public class ImportFromSMathStudio
         if (p.text.equals("sys") && p.args > 2)
         {
             // Multiple functions
-            removeLast(elements);
+            XmlUtils.removeLast(elements);
             final int argNumber = p.args - 2;
             serializer.attribute(FormulaList.XML_NS, PlotFunction.XML_PROP_FUNCTIONS_NUMBER,
                     Integer.toString(argNumber));
             // remove two first arguments of sys function
-            removeLast(elements);
-            removeLast(elements);
+            XmlUtils.removeLast(elements);
+            XmlUtils.removeLast(elements);
             // add functions
             for(int i = 0; i < argNumber; i++)
             {
@@ -337,7 +337,7 @@ public class ImportFromSMathStudio
     private void parseTextFragment(Element e, boolean inRightOfPrevious, final XmlSerializer serializer) throws Exception
     {
         StringBuilder text = new StringBuilder();
-        for (Element en : getElements(e, "p"))
+        for (Element en : XmlUtils.getElements(e, "p"))
         {
             if (text.length() > 0)
             {
@@ -356,9 +356,9 @@ public class ImportFromSMathStudio
 
     private void parseMathExpression(Element e, boolean inRightOfPrevious, XmlSerializer serializer) throws Exception
     {
-        final List<Element> elements = getElements(e);
-        final Element input = getElement(elements, "input");
-        final Element result = getElement(elements, "result");
+        final List<Element> elements = XmlUtils.getElements(e);
+        final Element input = XmlUtils.getElement(elements, "input");
+        final Element result = XmlUtils.getElement(elements, "result");
         if (input == null)
         {
             return;
@@ -375,8 +375,8 @@ public class ImportFromSMathStudio
 
     private void parseEquation(final Element input, boolean inRightOfPrevious, final XmlSerializer serializer) throws Exception
     {
-        final List<Element> elements = getElements(input, SM_TAG_MATH_EXPRESSION);
-        final Element last = removeLast(elements);
+        final List<Element> elements = XmlUtils.getElements(input, SM_TAG_MATH_EXPRESSION);
+        final Element last = XmlUtils.removeLast(elements);
         if (last == null || last.getTextContent() == null)
         {
             return;
@@ -404,7 +404,7 @@ public class ImportFromSMathStudio
     private void parseTerm(final CharSequence key, final List<Element> elements, final XmlSerializer serializer,
                            boolean asText, LineProperties lineProp) throws Exception
     {
-        final Element last = removeLast(elements);
+        final Element last = XmlUtils.removeLast(elements);
         if (last == null || last.getTextContent() == null)
         {
             return;
@@ -464,7 +464,7 @@ public class ImportFromSMathStudio
                             UserFunctions.FunctionType.FUNCTION_INDEX.getLinkObject() + "." + arrayName +
                                     UserFunctions.FUNCTION_ARGS_MARKER + Integer.toString(p.args - 1));
                     parseTermArguments(p.args - 1, elements, serializer);
-                    removeLast(elements);
+                    XmlUtils.removeLast(elements);
                 }
                 else
                 {
@@ -503,7 +503,7 @@ public class ImportFromSMathStudio
             serializer.endDocument();
         }
 
-        final Element last = getLast(elements);
+        final Element last = XmlUtils.getLast(elements);
         if (last != null)
         {
             ExpressionProperties p = new ExpressionProperties(last);
@@ -529,7 +529,7 @@ public class ImportFromSMathStudio
 
     private void parseNegativeTerm(final List<Element> elements, final XmlSerializer serializer) throws Exception
     {
-        final Element last = getLast(elements);
+        final Element last = XmlUtils.getLast(elements);
         if (last == null)
         {
             return;
@@ -538,7 +538,7 @@ public class ImportFromSMathStudio
         if (p.isOperand())
         {
             serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_TEXT, "-" + p.text);
-            removeLast(elements);
+            XmlUtils.removeLast(elements);
         }
         else
         {
@@ -555,11 +555,11 @@ public class ImportFromSMathStudio
         serializer.startTag(FormulaList.XML_NS, term);
         serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_INRIGHTOFPREVIOUS,
                 Boolean.toString(inRightOfPrevious));
-        final List<Element> inputElements = getElements(input, SM_TAG_MATH_EXPRESSION);
+        final List<Element> inputElements = XmlUtils.getElements(input, SM_TAG_MATH_EXPRESSION);
         parseTerm("leftTerm", inputElements, serializer, false);
-        if (ensureAttribute(result, "action", "numeric"))
+        if (XmlUtils.ensureAttribute(result, "action", "numeric"))
         {
-            final List<Element> resultElements = getElements(result, SM_TAG_MATH_EXPRESSION);
+            final List<Element> resultElements = XmlUtils.getElements(result, SM_TAG_MATH_EXPRESSION);
             parseResultTerm("rightTerm", resultElements, serializer);
         }
         serializer.endTag(FormulaList.XML_NS, term);
@@ -567,7 +567,7 @@ public class ImportFromSMathStudio
 
     private void parseResultTerm(String key, List<Element> elements, XmlSerializer serializer) throws Exception
     {
-        final Element last = removeLast(elements);
+        final Element last = XmlUtils.removeLast(elements);
         ExpressionProperties p = new ExpressionProperties(last);
         addTextTag(key, p.isOperand() ? p.text : "", serializer);
     }
@@ -628,75 +628,12 @@ public class ImportFromSMathStudio
         }
     }
 
-    private List<Element> getElements(final Element e, final String name)
-    {
-        List<Element> retValue = new ArrayList<>();
-        for (Node object = e.getFirstChild(); object != null; object = object.getNextSibling())
-        {
-            if (object instanceof Element)
-            {
-                final Element en = (Element) object;
-                if (name == null || name.equals(en.getTagName()))
-                {
-                    retValue.add(en);
-                }
-            }
-        }
-        return retValue;
-    }
-
-    private List<Element> getElements(final Element e)
-    {
-        return getElements(e, null);
-    }
-
-    private Element getElement(final List<Element> list, final String name)
-    {
-        for (Element en : list)
-        {
-            if (name.equals(en.getTagName()))
-            {
-                return en;
-            }
-        }
-        return null;
-    }
-
-    private Element getLast(final List<Element> elements)
-    {
-        if (!elements.isEmpty())
-        {
-            Element e = elements.get(elements.size() - 1);
-            if (e == null)
-            {
-                return null;
-            }
-            if (e.getTextContent() == null)
-            {
-                return null;
-            }
-            return e;
-        }
-        return null;
-    }
-
-    private Element removeLast(final List<Element> elements)
-    {
-        if (!elements.isEmpty())
-        {
-            Element e = elements.get(elements.size() - 1);
-            elements.remove(elements.size() - 1);
-            return e;
-        }
-        return null;
-    }
-
     private String makeFunctionName(List<Element> elements, ExpressionProperties p)
     {
         ArrayList<String> args = new ArrayList<>();
         for (int i = 0; i < p.args; i++)
         {
-            final Element arg = removeLast(elements);
+            final Element arg = XmlUtils.removeLast(elements);
             if (arg != null)
             {
                 ExpressionProperties argProp = new ExpressionProperties(arg);
@@ -724,14 +661,5 @@ public class ImportFromSMathStudio
             }
             return retValue + ")";
         }
-    }
-
-    private boolean ensureAttribute(Element e, String type, String s)
-    {
-        if (e.getAttribute(type) == null)
-        {
-            return false;
-        }
-        return e.getAttribute(type).equals(s);
     }
 }

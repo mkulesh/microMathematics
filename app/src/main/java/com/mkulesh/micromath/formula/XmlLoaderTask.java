@@ -29,7 +29,7 @@ import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.properties.TextProperties;
 import com.mkulesh.micromath.utils.SynchronizedBoolean;
 import com.mkulesh.micromath.utils.ViewUtils;
-import com.mkulesh.micromath.utils.XmlUtils;
+import com.mkulesh.micromath.io.XmlUtils;
 import com.mkulesh.micromath.widgets.ListChangeIf.Position;
 
 import org.xmlpull.v1.XmlPullParser;
