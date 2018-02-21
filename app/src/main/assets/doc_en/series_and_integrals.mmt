@@ -1,0 +1,296 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="This example demonstrates how to&#10;calculate series and integrals." />
+    </text_fragment>
+    <text_fragment textStyle="subsection" numbering="true">
+      <term key="text" text="Taylor series" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="In mathematics, Taylor series is a&#10;representation of a function as an&#10;infinite sum of terms that are&#10;calculated from the values of the&#10;function's derivatives at a single&#10;point.&#10;&#10;For example, Ts(x,N) is the Taylor&#10;expansion as a function of argument x&#10;and the number of terms N:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="Ts(x,N)" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="N" />
+        <term key="index" text="n" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" code="divide">
+            <term key="leftTerm" code="power">
+              <term key="leftTerm" code="identity">
+                <term key="argTerm" text="-1" />
+              </term>
+              <term key="rightTerm" text="n" />
+            </term>
+            <term key="rightTerm" code="factorial">
+              <term key="argTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" text="n" />
+              </term>
+            </term>
+          </term>
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="x" />
+            <term key="rightTerm" code="mult">
+              <term key="leftTerm" text="2" />
+              <term key="rightTerm" text="n" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="This expansion approximates the cosine&#10;function:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="s(x)" />
+      <term key="rightTerm" code="cos">
+        <term key="argTerm" text="x" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="If we plot both functions together for&#10;the same interval, they look both&#10;equal:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="0.1" />
+        <term key="maxValue" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" text="π" />
+        </term>
+      </term>
+    </equation>
+    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="6" gridLineColor="#87000000" functionsNumber="2">
+      <term key="yMaxValue" text="1.1" />
+      <term key="yFunction1" color="#FFFFA900" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.s">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction2" color="#FF0012FF" width="3" lineStyle="dashed" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.Ts:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="10" />
+      </term>
+      <term key="yMinValue" text="-1.1" />
+      <term key="xMinValue" text="0" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" text="x" />
+      <term key="xMaxValue" code="mult">
+        <term key="leftTerm" text="2" />
+        <term key="rightTerm" text="π" />
+      </term>
+    </plot_function>
+    <text_fragment>
+      <term key="text" text="However, there is a numerical error due&#10;to limited number of approximation&#10;terms N. The following function Δ(x,N)&#10;describes this error:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="Δ(x,N)" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.link.s">
+            <term key="argTerm" text="x" />
+          </term>
+          <term key="rightTerm" code="content:com.mkulesh.micromath.link.Ts:2">
+            <term key="argTerm1" text="x" />
+            <term key="argTerm2" text="N" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="We can plot this function in&#10;logarithmic coordinates and see that&#10;the numerical error will be decreased&#10;if we get more terms into the Taylor&#10;summation:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="E(N)" />
+      <term key="rightTerm" code="log10">
+        <term key="argTerm" code="content:com.mkulesh.micromath.link.Δ:2">
+          <term key="argTerm1" text="π" />
+          <term key="argTerm2" text="N" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="3" />
+        <term key="nextValue" text="4" />
+        <term key="maxValue" text="13" />
+      </term>
+    </equation>
+    <plot_function width="680" height="450" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#83000000" functionsNumber="1">
+      <term key="yMaxValue" text="-1" />
+      <term key="yFunction" color="#FF0EC300" width="5" lineStyle="solid" shapeType="diamond" shapeSize="500" code="content:com.mkulesh.micromath.link.E">
+        <term key="argTerm" text="N" />
+      </term>
+      <term key="yMinValue" text="-16" />
+      <term key="xMinValue" text="3" />
+      <term key="xFunction" text="N" />
+      <term key="xMaxValue" text="13" />
+    </plot_function>
+    <text_fragment textStyle="subsection" numbering="true">
+      <term key="text" text="Binomial series" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Let us consider this power function:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f(x,α)" />
+      <term key="rightTerm" code="power">
+        <term key="leftTerm" code="plus">
+          <term key="leftTerm" text="1" />
+          <term key="rightTerm" text="x" />
+        </term>
+        <term key="rightTerm" text="α" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="This function can be approximated using&#10;Binomial series:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="Tf(x,α,N)" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="N" />
+        <term key="index" text="n" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" code="identity">
+            <term key="argTerm" code="product">
+              <term key="maxValue" text="n" />
+              <term key="index" text="k" />
+              <term key="minValue" text="1" />
+              <term key="argTerm" code="divide">
+                <term key="leftTerm" code="plus">
+                  <term key="leftTerm" code="minus">
+                    <term key="leftTerm" text="α" />
+                    <term key="rightTerm" text="k" />
+                  </term>
+                  <term key="rightTerm" text="1" />
+                </term>
+                <term key="rightTerm" text="k" />
+              </term>
+            </term>
+          </term>
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="x" />
+            <term key="rightTerm" text="n" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="We can also plot both functions (the&#10;given power function and its&#10;approximation) together on the same&#10;plot:" />
+    </text_fragment>
+    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#7D000000" functionsNumber="2">
+      <term key="yMaxValue" text="3000" />
+      <term key="yFunction1" color="#FFFF9400" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="4" />
+      </term>
+      <term key="yFunction2" color="#FF002CFF" width="3" lineStyle="dashed" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.Tf:3">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="4" />
+        <term key="argTerm3" text="20" />
+      </term>
+      <term key="yMinValue" text="0" />
+      <term key="xMinValue" text="0" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" text="x" />
+      <term key="xMaxValue" text="6" />
+    </plot_function>
+    <text_fragment textStyle="subsection" numbering="true">
+      <term key="text" text="Integrals" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text='It is also possible to calculate a&#10;definite integral numerically using&#10;Simpson method. For example, we can&#10;calculate the integral using "Result&#10;View" element:' />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="integral">
+        <term key="maxValue" code="mult">
+          <term key="leftTerm" text="3" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" text="pi" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="power">
+          <term key="leftTerm" code="cos">
+            <term key="argTerm" code="divide">
+              <term key="leftTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" text="x" />
+              </term>
+              <term key="rightTerm" text="9" />
+            </term>
+          </term>
+          <term key="rightTerm" text="-2" />
+        </term>
+        <term key="index" text="x" />
+      </term>
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="The analytical solution is" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="I" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" text="9" />
+          <term key="rightTerm" code="sqrt_layout">
+            <term key="argTerm" text="3" />
+          </term>
+        </term>
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text=",   " />
+    </text_fragment>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="I" />
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Numerical error can be calculated as:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="minus">
+        <term key="leftTerm" code="integral">
+          <term key="maxValue" code="mult">
+            <term key="leftTerm" text="3" />
+            <term key="rightTerm" code="divide_slash">
+              <term key="leftTerm" text="pi" />
+              <term key="rightTerm" text="2" />
+            </term>
+          </term>
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="power">
+            <term key="leftTerm" code="cos">
+              <term key="argTerm" code="divide">
+                <term key="leftTerm" code="mult">
+                  <term key="leftTerm" text="2" />
+                  <term key="rightTerm" text="x" />
+                </term>
+                <term key="rightTerm" text="9" />
+              </term>
+            </term>
+            <term key="rightTerm" text="-2" />
+          </term>
+          <term key="index" text="x" />
+        </term>
+        <term key="rightTerm" text="I" />
+      </term>
+      <term key="rightTerm" />
+    </result>
+    <text_fragment>
+      <term key="text" text='This error depends on the value&#10;"Significant digits in result" that&#10;can be changed in the "Document&#10;Settings" dialog available from the&#10;action bar:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/menu_settings.svg" embedded="false" originalSize="false" width="330" height="90" />
+    <text_fragment>
+      <term key="text" text="If this value increased, the threshold&#10;that controls the Simpson method&#10;precision will also be increased." />
+    </text_fragment>
+  </formulaList>
+</micromath>

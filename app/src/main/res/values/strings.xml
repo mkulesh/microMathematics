@@ -30,16 +30,16 @@
     </string-array>
     <string-array name="activity_resources">
         <item></item>
-        <item>asset:/doc_en/how_to_use.xml</item>
-        <item>asset:/doc_en/function_plot.xml</item>
-        <item>asset:/doc_en/polar_plot.xml</item>
-        <item>asset:/doc_en/three_d_plot.xml</item>
-        <item>asset:/doc_en/series_and_integrals.xml</item>
-        <item>asset:/doc_en/about_micromath.xml</item>
+        <item>asset:/doc_en/how_to_use.mmt</item>
+        <item>asset:/doc_en/function_plot.mmt</item>
+        <item>asset:/doc_en/polar_plot.mmt</item>
+        <item>asset:/doc_en/three_d_plot.mmt</item>
+        <item>asset:/doc_en/series_and_integrals.mmt</item>
+        <item>asset:/doc_en/about_micromath.mmt</item>
         <item>https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.16.2.pdf</item>
     </string-array>
     <string name="activity_example">Examples</string>
-    <string name="activity_welcome">asset:/doc_en/welcome.xml</string>
+    <string name="activity_welcome">asset:/doc_en/welcome.mmt</string>
 
     <!-- Permissions -->
     <string name="allow_storage_access_title">Allow to access worksheet files</string>

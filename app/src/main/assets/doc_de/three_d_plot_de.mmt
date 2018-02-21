@@ -1,0 +1,328 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="Dieses Beispiel demonstriert 3D Plots&#10;zu drei verschiedenen Funktionen&#10;zweier Variablen.&#10;&#10;Zuerst definieren wir Intervalle für&#10;x- und y-Argumente. Das Intervall der&#10;x-Achse hängt von der Anzahl der&#10;Punkte entlang der x-Achse sowie den&#10;Minimal- und Maximalwerten x1 und x2&#10;ab:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="300" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x1" />
+      <term key="rightTerm" text="-2" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x2" />
+      <term key="rightTerm" text="2" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="x1" />
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" text="x1" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" code="abs_layout">
+              <term key="argTerm" code="minus">
+                <term key="leftTerm" text="x2" />
+                <term key="rightTerm" text="x1" />
+              </term>
+            </term>
+            <term key="rightTerm" text="N" />
+          </term>
+        </term>
+        <term key="maxValue" text="x2" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Das Intervall für die y-Achse wird dem&#10;entsprechend definiert:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="M" />
+      <term key="rightTerm" text="300" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="y1" />
+      <term key="rightTerm" text="-3" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="y2" />
+      <term key="rightTerm" text="3" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="y" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="y1" />
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" text="y1" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" code="abs_layout">
+              <term key="argTerm" code="minus">
+                <term key="leftTerm" text="y2" />
+                <term key="rightTerm" text="y1" />
+              </term>
+            </term>
+            <term key="rightTerm" text="M" />
+          </term>
+        </term>
+        <term key="maxValue" text="y2" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Wir zeichnen nun als Beispiel eine&#10;trigonometrische Funktion, die ein&#10;Produkt von Sinus und Kosinus ist:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="F(x,y)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="sin">
+          <term key="argTerm" code="mult">
+            <term key="leftTerm" text="3" />
+            <term key="rightTerm" code="power">
+              <term key="leftTerm" text="x" />
+              <term key="rightTerm" text="2" />
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="cos">
+          <term key="argTerm" code="power">
+            <term key="leftTerm" text="y" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text='Für die 3D Ansicht klicken Sie auf "3D&#10;Plot hinzufügen" in der Werkzeugleiste&#10;oder "Neu" in der Menüleiste:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_plot_contour.svg" embedded="false" originalSize="false" width="450" height="90" />
+    <text_fragment>
+      <term key="text" text="Setzen Sie den Funktionsnamen F(x,y) in&#10;das untere Mittelfeld:" />
+    </text_fragment>
+    <plot_contour plotStyle="contour" width="680" height="680" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#85242400" zLabelsNumber="19" colorMap="earthsky">
+      <term key="yMaxValue" text="3" />
+      <term key="yMinValue" text="-3" />
+      <term key="xMinValue" text="-2" />
+      <term key="zFunction" code="content:com.mkulesh.micromath.link.F:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="y" />
+      </term>
+      <term key="xMaxValue" text="2" />
+    </plot_contour>
+    <text_fragment>
+      <term key="text" text='Plot Grenzen, Größe, Stil, Bezeichnung&#10;und Raster können mittels des&#10;Dialogfensters "Plot Einstellungen"&#10;angepasst werden (siehe das Beispiel&#10;zu "Plot einer Funktion" im Hauptmenü&#10;für mehr Informationen). Wenn Sie auf&#10;die Mitte des Plot Bereichs lange&#10;gedrückt halten, erscheint ein Action&#10;Button "Objekteinstellungen". Ein Tap&#10;auf diesen Button öffnet dieses&#10;Dialogfenster.&#10;&#10;Zudem können Sie die Anzahl der&#10;Bezeichnungen entlang der z-Achse&#10;ändern und die Farbenpalette im Dialog&#10;"Farbtabellen Einstellungen" wählen.&#10;Dieser Dialog erscheint ebenfalls&#10;durch langes Drücken der z-Achse im&#10;rechten Bereich des Hauptgraphen.' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="R(x,y)" />
+      <term key="rightTerm" code="sin">
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" text="5" />
+          <term key="rightTerm" code="mult">
+            <term key="leftTerm" code="power">
+              <term key="leftTerm" text="x" />
+              <term key="rightTerm" text="2" />
+            </term>
+            <term key="rightTerm" code="minus">
+              <term key="leftTerm" text="y" />
+              <term key="rightTerm" text="x" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <plot_contour plotStyle="contour" width="680" height="680" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" zLabelsNumber="11" colorMap="greenblue">
+      <term key="yMaxValue" text="3" />
+      <term key="yMinValue" text="-3" />
+      <term key="xMinValue" text="-2" />
+      <term key="zFunction" code="content:com.mkulesh.micromath.link.R:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="y" />
+      </term>
+      <term key="xMaxValue" text="2" />
+    </plot_contour>
+    <text_fragment>
+      <term key="text" text='Eine Funktion zweier Argumente kann&#10;ebenso als Oberfläche im&#10;dreidimensionalen Raum aufgetragen&#10;werden. Dieser Modus kann in den "Plot&#10;Einstellungen" Dialog aktiviert&#10;werden, indem man den Button&#10;"Objekteinstellungen" clickt, der&#10;durch langes Gedrückthalten auf die&#10;Mitte des Plot Bereichs erscheint. Um&#10;die Berechnungszeit zu verbessern,&#10;verwenden wir Arrays und zeichnen nun&#10;die folgende Funktion F(n,m):' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="100" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="n" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="N" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x1" />
+      <term key="rightTerm" text="-15" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x2" />
+      <term key="rightTerm" text="15" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="M" />
+      <term key="rightTerm" text="100" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="m" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="M" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="y1" />
+      <term key="rightTerm" text="-15" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="y2" />
+      <term key="rightTerm" text="15" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x[n]" />
+      <term key="rightTerm" code="power">
+        <term key="leftTerm" code="plus">
+          <term key="leftTerm" text="x1" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" code="mult">
+              <term key="leftTerm" code="identity">
+                <term key="argTerm" code="minus">
+                  <term key="leftTerm" text="x2" />
+                  <term key="rightTerm" text="x1" />
+                </term>
+              </term>
+              <term key="rightTerm" text="n" />
+            </term>
+            <term key="rightTerm" text="N" />
+          </term>
+        </term>
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="y[m]" />
+      <term key="rightTerm" code="power">
+        <term key="leftTerm" code="plus">
+          <term key="leftTerm" text="y1" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" code="mult">
+              <term key="leftTerm" code="identity">
+                <term key="argTerm" code="minus">
+                  <term key="leftTerm" text="y2" />
+                  <term key="rightTerm" text="y1" />
+                </term>
+              </term>
+              <term key="rightTerm" text="m" />
+            </term>
+            <term key="rightTerm" text="M" />
+          </term>
+        </term>
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="r[n,m]" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" text="0.04" />
+          <term key="rightTerm" code="content:com.mkulesh.micromath.index.x">
+            <term key="argTerm" text="n" />
+          </term>
+        </term>
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="0.02" />
+          <term key="rightTerm" code="content:com.mkulesh.micromath.index.y">
+            <term key="argTerm" text="m" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="t[n,m]" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="plus">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
+            <term key="argTerm" text="n" />
+          </term>
+          <term key="rightTerm" code="mult">
+            <term key="leftTerm" text="0.05" />
+            <term key="rightTerm" code="content:com.mkulesh.micromath.index.y">
+              <term key="argTerm" text="m" />
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="exp">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" text="1" />
+            <term key="rightTerm" code="content:com.mkulesh.micromath.index.r:2">
+              <term key="argTerm1" text="n" />
+              <term key="argTerm2" text="m" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="F[n,m]" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="divide">
+          <term key="leftTerm" code="sin">
+            <term key="argTerm" code="plus">
+              <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
+                <term key="argTerm" text="n" />
+              </term>
+              <term key="rightTerm" code="mult">
+                <term key="leftTerm" text="0.1" />
+                <term key="rightTerm" code="content:com.mkulesh.micromath.index.y">
+                  <term key="argTerm" text="m" />
+                </term>
+              </term>
+            </term>
+          </term>
+          <term key="rightTerm" code="plus">
+            <term key="leftTerm" text="0.15" />
+            <term key="rightTerm" code="content:com.mkulesh.micromath.index.r:2">
+              <term key="argTerm1" text="n" />
+              <term key="argTerm2" text="m" />
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="divide">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.index.t:2">
+            <term key="argTerm1" text="n" />
+            <term key="argTerm2" text="m" />
+          </term>
+          <term key="rightTerm" text="10" />
+        </term>
+      </term>
+    </equation>
+    <plot_contour plotStyle="surface" width="680" height="680" axes_style="boxed" meshLines="false" meshFill="true" meshOpacity="155" rotation="125" elevation="20" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#85242400" zLabelsNumber="7" colorMap="coldhot">
+      <term key="yMaxValue" text="M" />
+      <term key="yMinValue" text="0" />
+      <term key="xMinValue" text="0" />
+      <term key="zFunction" code="content:com.mkulesh.micromath.index.F:2">
+        <term key="argTerm1" text="n" />
+        <term key="argTerm2" text="m" />
+      </term>
+      <term key="xMaxValue" text="N" />
+    </plot_contour>
+    <text_fragment>
+      <term key="text" text='Um die Plot Oberfläche zu gestalten&#10;gibt es zusätzliche Einstellungen, die&#10;im Dialog "Plot Einstellungen" zu&#10;finden sind. Sie können wählen, ob die&#10;Netzlinien sichtbar sein sollen,&#10;welche Deckkraft deren Farbe haben&#10;soll, oder die Rotations- und&#10;Elevationswinkel der Plot Box&#10;definieren. Zum Beispiel, die oben&#10;gezeigte Oberfläche sieht aus der&#10;anderen Perspektive so aus: ' />
+    </text_fragment>
+    <plot_contour plotStyle="surface" width="680" height="680" axes_style="boxed" meshLines="false" meshFill="true" meshOpacity="155" rotation="55" elevation="45" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#85242400" zLabelsNumber="7" colorMap="coldhot">
+      <term key="yMaxValue" text="M" />
+      <term key="yMinValue" text="0" />
+      <term key="xMinValue" text="0" />
+      <term key="zFunction" code="content:com.mkulesh.micromath.index.F:2">
+        <term key="argTerm1" text="n" />
+        <term key="argTerm2" text="m" />
+      </term>
+      <term key="xMaxValue" text="N" />
+    </plot_contour>
+  </formulaList>
+</micromath>
