@@ -85,17 +85,70 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text='Eine komplexe Zahl als eine Konstante&#10;wird durch zwei reele Zahlen und&#10;imaginäre Einheit "i" definiert:' />
+      <term key="text" text='Eine komplexe Zahl als eine Konstante&#10;wird durch zwei reelle Zahlen und&#10;imaginäre Einheit "i" definiert:' />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="z" />
       <term key="rightTerm" text="5+3i" />
     </equation>
     <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Einheiten" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Man kann auch die Konstanten mit&#10;Einheiten verwenden. In diesem Fall&#10;muss die Einheit mittels Tastatur in&#10;dem selben Feld eingegeben werden.&#10;Zwischen der Zahl und der Einheit muss&#10;ein Leerzeichen stehen. Die Einheiten&#10;können für reelle und komplexe Zahlen&#10;verwendet werden:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="r" />
+      <term key="rightTerm" text="10" unit="m" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="a" />
+      <term key="rightTerm" code="power">
+        <term key="leftTerm" text="10" unit="m" />
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="v" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" text="10" unit="km" />
+        <term key="rightTerm" text="" unit="hr" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="α" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="45" unit="°" />
+        <term key="rightTerm" code="plus">
+          <term key="leftTerm" text="30" unit="'" />
+          <term key="rightTerm" text="15" unit='"' />
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="φ" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="100" />
+        <term key="rightTerm" code="divide">
+          <term key="leftTerm" code="mult">
+            <term key="leftTerm" text="" unit="kg" />
+            <term key="rightTerm" text="" unit="m" />
+          </term>
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="" unit="s" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text='Alle unterstützte Einheiten sind im&#10;Dokument "units_overview.mmt"&#10;gelistet. Dieses Dokument ist zusammen&#10;mit der App geliefert und befindet&#10;sich in "Hilfsmittel der&#10;microMathematics Plus"' />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Intervalle" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text='Eine Intervall-Gleichung definiert&#10;eine Variable, die sich von einem&#10;vorgegebenen Minimalwert in einem&#10;vorgegebenem Schritte zu einem&#10;vorgegebenen Maximalwert verändert.&#10;Diese Variable kann als Parameter&#10;genutzt werden, um eine&#10;Funktionswert-Tabelle oder einen&#10;Funktionsgraphen zu erstellen.&#10;&#10;Um ein Intervall zu definieren, legen&#10;Sie einen Namen auf der linken Seite&#10;einer leeren Gleichung fest. Wählen&#10;Sie auf der rechten Seite der&#10;Gleichung entweder das Symbol ":" oder&#10;klicken Sie den Button "Äquidistantes&#10;Intervall" in der Werkzeugleiste:' />
+      <term key="text" text='Eine Intervall-Gleichung definiert eine&#10;Variable, die sich von einem&#10;vorgegebenen Minimalwert in einem&#10;vorgegebenem Schritte zu einem&#10;vorgegebenen Maximalwert verändert.&#10;Diese Variable kann als Parameter&#10;genutzt werden, um eine&#10;Funktionswert-Tabelle oder einen&#10;Funktionsgraphen zu erstellen.&#10;&#10;Um ein Intervall zu definieren, legen&#10;Sie einen Namen auf der linken Seite&#10;einer leeren Gleichung fest. Wählen&#10;Sie auf der rechten Seite der&#10;Gleichung entweder das Symbol ":" oder&#10;klicken Sie den Button "Äquidistantes&#10;Intervall" in der Werkzeugleiste:' />
     </text_fragment>
     <image_fragment fileName="asset:/images/toolbar_interval.svg" embedded="false" originalSize="false" width="450" height="90" />
     <text_fragment>
@@ -110,7 +163,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text="Man kann auf die Intervallemente&#10;zugreiffen:" />
+      <term key="text" text="Man kann auf die Intervallemente über&#10;Index zugreifen:" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
@@ -257,7 +310,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text='a) die Argumente des Arrays sind in eckigen&#10;Klammern "[ ]" anstelle der runden&#10;Klammern "( )" geschrieben:' />
+      <term key="text" text='a) die Argumente des Arrays sind in&#10;eckigen Klammern "[ ]" anstelle der&#10;runden Klammern "( )" geschrieben:' />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="M[k,m]" />
@@ -404,6 +457,19 @@
             </term>
             <term key="rightTerm" text="π" />
           </term>
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Wenn das linke Feld die Variablen mit&#10;Einheiten enthält, dann kann das&#10;Ergebnisfeld auch eine Einheit haben:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" units="rad/s">
+      <term key="leftTerm" code="mult">
+        <term key="leftTerm" text="2" />
+        <term key="rightTerm" code="divide_slash">
+          <term key="leftTerm" text="α" />
+          <term key="rightTerm" text="10" unit="s" />
         </term>
       </term>
       <term key="rightTerm" text="" />

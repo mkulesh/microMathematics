@@ -131,16 +131,43 @@ Konstante verwendet werden:
 \end{tabular}\end{center}
 
 Eine komplexe Zahl als eine Konstante
-wird durch zwei reele Zahlen und
+wird durch zwei reelle Zahlen und
 imaginäre Einheit ''i'' definiert:
 \begin{center}\begin{tabular}{c}
   $z := 5+3i$
 \end{tabular}\end{center}
 
+\subsubsection{Einheiten}
+
+Man kann auch die Konstanten mit
+Einheiten verwenden. In diesem Fall
+muss die Einheit mittels Tastatur in
+dem selben Feld eingegeben werden.
+Zwischen der Zahl und der Einheit muss
+ein Leerzeichen stehen. Die Einheiten
+können für reelle und komplexe Zahlen
+verwendet werden:
+\begin{center}\begin{tabular}{ccc}
+  $r := 10 m$ &
+  $a := {10 m}^{2}$ &
+  $v := 10 km / hr$ \cr
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{cc}
+  ${\alpha} := 45 {\degree} + 30 ' + 15 ''$ &
+  ${\varphi} := 100 \cdot \frac{kg \cdot m}{{s}^{2}}$ \cr
+\end{tabular}\end{center}
+
+Alle unterstützte Einheiten sind im
+Dokument ''units\_overview.mmt''
+gelistet. Dieses Dokument ist zusammen
+mit der App geliefert und befindet
+sich in ''Hilfsmittel der
+microMathematics Plus''
+
 \subsubsection{Intervalle}
 
-Eine Intervall-Gleichung definiert
-eine Variable, die sich von einem
+Eine Intervall-Gleichung definiert eine
+Variable, die sich von einem
 vorgegebenen Minimalwert in einem
 vorgegebenem Schritte zu einem
 vorgegebenen Maximalwert verändert.
@@ -167,8 +194,8 @@ Intervalls.
   $x := \left[ 0,\, 0.1 \,..\, 10 \right]$
 \end{tabular}\end{center}
 
-Man kann auf die Intervallemente
-zugreiffen:
+Man kann auf die Intervallemente über
+Index zugreifen:
 \begin{center}\begin{tabular}{ccc}
   $x_{0}  = 0.0$ &
   $x_{1}  = 0.1$ &
@@ -248,9 +275,9 @@ vorher definiertes Intervall sein:
   $m := \left[ 0,\, 1 \,..\, 200 \right]$ \cr
 \end{tabular}\end{center}
 
-a) die Argumente des Arrays sind in eckigen
-Klammern ''[ ]'' anstelle der runden
-Klammern ''( )'' geschrieben:
+a) die Argumente des Arrays sind in
+eckigen Klammern ''[ ]'' anstelle der
+runden Klammern ''( )'' geschrieben:
 \begin{center}\begin{tabular}{c}
   $M[k,m] := {sin \left( k / 10\right) }^{2} - 3 \cdot  \left| cos \left( m / 10\right)  \right| $
 \end{tabular}\end{center}
@@ -322,6 +349,13 @@ oder komplexe Zahl.
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
   $\sqrt{sin \left( \frac{3}{2} \cdot {\pi}\right) }  = 0.0+1.0i$
+\end{tabular}\end{center}
+
+Wenn das linke Feld die Variablen mit
+Einheiten enthält, dann kann das
+Ergebnisfeld auch eine Einheit haben:
+\begin{center}\begin{tabular}{c}
+  $2 \cdot {\alpha} / 10 s = 0.15884 rad/s$
 \end{tabular}\end{center}
 
 Falls der linke Teil als Variable ein
