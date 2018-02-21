@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/badge/license-GNU_GPLv3-orange.svg)](https://github.com/mkulesh/microMathematics/blob/master/LICENSE) [![Build Status](https://travis-ci.org/mkulesh/microMathematics.svg?branch=master)](https://travis-ci.org/mkulesh/microMathematics) [![Download unsigned APK from latest autobuild](https://img.shields.io/badge/APK-autobuild-blue.svg)](https://github.com/mkulesh/microMathematics/raw/autobuild/autobuild/microMathematics-v2.16.2.apk)
+[![License](https://img.shields.io/badge/license-GNU_GPLv3-orange.svg)](https://github.com/mkulesh/microMathematics/blob/master/LICENSE) [![Build Status](https://travis-ci.org/mkulesh/microMathematics.svg?branch=master)](https://travis-ci.org/mkulesh/microMathematics) [![Download unsigned APK from latest autobuild](https://img.shields.io/badge/APK-autobuild-blue.svg)](https://github.com/mkulesh/microMathematics/raw/autobuild/autobuild/microMathematics-v2.17.0.apk)
 
 # <img src="https://github.com/mkulesh/microMathematics/blob/master/images/icon.png" align="center" height="48" width="48"> "microMathematics Plus - Extended visual calculator"
 
@@ -18,8 +18,8 @@ Not only students, but also everybody who likes mathematics or needs more than j
 * Verification, validation, documentation and re-use of mathematical calculations
 * Works on smartphone or tablet in portrait and landscape mode
 * Supports all commonly used mathematical operations
-* Supports data import from ASCII files
 * Mathematical expressions are written in an intuitive and naturally readable form
+* Supports SI and non-SI units
 * Powerful mathematical touch-screen editor with undo function makes editing easier
 * You can do multiple calculations and subsequently correct or change all used formulas
 * It is possible to store intermediate results into 1D, 2D, or 3D array that can improve calculation performance
@@ -28,6 +28,7 @@ Not only students, but also everybody who likes mathematics or needs more than j
 * SD card on Android 6+ is also supported
 * The app contains detailed "How to use" page and several examples
 * Supports different color themes
+* Supports data import from ASCII files
 * Integration with [SMath Studio](https://en.smath.info): SMath Studio is able to open workshets stored in microMathematics, see [this document](https://github.com/mkulesh/microMathematics/wiki/Integration-with-SMath-Studio) for details
 
 ## Screenshots:
@@ -39,8 +40,9 @@ Not only students, but also everybody who likes mathematics or needs more than j
 For more screenshots, see directory images/screenshots.
 
 ## Documentation
-* [Functions Overview](http://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/functions_overview.html)
-* [The latest PDF version of the User Manual](https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.16.2.pdf)
+* [Supported Functions Overview](http://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/functions_overview.html)
+* [Supported Units Overview](http://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/units_overview.html)
+* [The latest PDF version of the User Manual](https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.17.0.pdf)
 
 ## Reviews and publications:
 
