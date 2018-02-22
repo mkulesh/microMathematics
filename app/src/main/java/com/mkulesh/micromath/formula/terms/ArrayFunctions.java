@@ -259,7 +259,7 @@ public class ArrayFunctions extends FunctionBase
             }
             else
             {
-                final Equation eq = searchLinkedEquation(argTerm.getText(), Equation.ARG_NUMBER_ARRAY);
+                final Equation eq = getFormulaRoot().searchLinkedEquation(argTerm.getText(), Equation.ARG_NUMBER_ARRAY);
                 if (eq == null || !eq.isArray())
                 {
                     errorMsg = String.format(getContext().getResources().getString(R.string.error_unknown_array),
