@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio Desktop" version="0.99.6622.8829"?>
+<regions xmlns="http://smath.info/schemas/worksheet/1.0">
+  <settings dpi="96">
+    <identity>
+      <id>0a7d2c22-54c5-4169-a24e-fefb1df252f1</id>
+      <revision>4</revision>
+    </identity>
+    <metadata lang="rus">
+      <title>Вычисление определённого интеграла (метод Симпсона)</title>
+      <author>Андрей Ивашов</author>
+      <description>Численное интегрирование определённого интеграла по методу Симпсона - приближение графика функции на отрезке параболой.
+Пользователь определяет функцию, пределы интегрирование и число итераций, от которого зависит точность метода.
+Расчёт ведётся по оптимизированной формуле Симпсона.
+В конце расчёта происходит проверка результата, основываясь на встроенной функции численного интегрирования программы.</description>
+      <company>SMath, http://smath.info/</company>
+      <keywords>Примеры, Определённый интеграл, Симпсон</keywords>
+    </metadata>
+    <metadata lang="ind">
+      <title>Metode Integral Numerik (aturan Simpson)</title>
+      <author>Andrey Ivashov</author>
+      <translator>Waluyo Adi Siswanto</translator>
+      <description>Aturan Simpson adalah salah satu metode untuk menghitung integral tertentu secara pendekatan numerik.
+Pengguna perlu menyatakan fungsi yang di integralkan, batas bawah dan atas integral, serta jumlah iterasi yang akan digunakan.
+Hasil integral dengan pendekatan numerik akan ditampilkan serta hasil perhitungan dengan fungsi integral yang ada di SMath akan diberikan sebagai perbandingan.</description>
+      <company>SMath, http://smath.info/</company>
+      <keywords>Contoh, Integral tertentu, Aturan Simpson</keywords>
+    </metadata>
+    <metadata lang="eng">
+      <title>Numeric integration method (Simpson's rule)</title>
+      <author>Andrey Ivashov</author>
+      <translator>Andrey Ivashov</translator>
+      <description>Simpson's rule is a method for numerical integration, the numerical approximation of definite integrals.
+User specifies function to integrate, interval and the number of iterations.
+At the end of calculation program controls the result with a built-in numerical integration function.</description>
+      <company>SMath, http://smath.info/</company>
+      <keywords>Examples, Definite integral, Simpson</keywords>
+    </metadata>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="false" viewMode="1" printGrid="false" printAreas="true" simpleEqualsOnly="false" printBackgroundImages="true">
+      <paper id="1" orientation="Portrait" width="850" height="1100" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+      <backgrounds />
+    </pageModel>
+    <dependencies>
+      <assembly name="SMath Studio Desktop" version="0.99.6622.8829" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Math Region" version="0.99.6622.8829" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="Special Functions" version="1.11.6622.8831" guid="2814e667-4e12-48b1-8d51-194e480eabc5" />
+      <assembly name="Text Region" version="1.10.6622.8831" guid="485d28c5-349a-48b6-93be-12a35a1c1e39" />
+    </dependencies>
+    <mode debug="true" />
+  </settings>
+  <region id="0" left="9" top="9" width="270" height="48" color="#0000ff" bgColor="#ffffff" fontSize="12">
+    <text lang="rus">
+      <p bold="true">Вычисление определённого интеграла(метод Симпсона)</p>
+    </text>
+    <text lang="ind">
+      <p bold="true">Metode Integral Numerik(Aturan Simpson)</p>
+    </text>
+    <text lang="eng">
+      <p bold="true">Numeric integration method(Simpson's rule)</p>
+    </text>
+  </region>
+  <region id="1" left="9" top="63" width="102" height="24" border="true" color="#000000" bgColor="#dddddd" fontSize="10">
+    <text lang="rus">
+      <p>Входные данные:</p>
+    </text>
+    <text lang="ind">
+      <p>Data masukan:</p>
+    </text>
+    <text lang="eng">
+      <p>Input data:</p>
+    </text>
+  </region>
+  <region id="2" left="9" top="90" width="81" height="34" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Right" lang="rus">
+        <p>подынтегральная функция</p>
+      </description>
+      <description active="true" position="Right" lang="ind">
+        <p>Fungsi yang akan di integralkan</p>
+      </description>
+      <description active="true" position="Right" lang="eng">
+        <p>integrand</p>
+      </description>
+      <input>
+        <e type="operand">x</e>
+        <e type="function" args="1">f</e>
+        <e type="operand">x</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="3" left="9" top="126" width="46" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Right" lang="rus">
+        <p>нижний предел интегрирования</p>
+      </description>
+      <description active="true" position="Right" lang="ind">
+        <p>Batas bawah integral</p>
+      </description>
+      <description active="true" position="Right" lang="eng">
+        <p>inferior limit</p>
+      </description>
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="4" left="9" top="153" width="46" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Right" lang="rus">
+        <p>верхний предел интегрирования</p>
+      </description>
+      <description active="true" position="Right" lang="ind">
+        <p>Batas atas integral</p>
+      </description>
+      <description active="true" position="Right" lang="eng">
+        <p>superior limit</p>
+      </description>
+      <input>
+        <e type="operand">b</e>
+        <e type="operand">5</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="5" left="9" top="180" width="54" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Right" lang="rus">
+        <p>точность вычисления</p>
+      </description>
+      <description active="true" position="Right" lang="ind">
+        <p>Tingkat ketepatan</p>
+      </description>
+      <description active="true" position="Right" lang="eng">
+        <p>accuracy</p>
+      </description>
+      <input>
+        <e type="operand">n</e>
+        <e type="operand">20</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="6" left="9" top="207" width="111" height="24" border="true" color="#000000" bgColor="#dddddd" fontSize="10">
+    <text lang="rus">
+      <p>Расчёт:</p>
+    </text>
+    <text lang="ind">
+      <p>Perhitungan:</p>
+    </text>
+    <text lang="eng">
+      <p>Calculation:</p>
+    </text>
+  </region>
+  <region id="7" left="9" top="234" width="76" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">h</e>
+        <e type="operand">b</e>
+        <e type="operand">a</e>
+        <e type="operator" args="2">-</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="8" left="9" top="270" width="536" height="72" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">int</e>
+        <e type="operand">1</e>
+        <e type="operand">3</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">h</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">a</e>
+        <e type="function" args="1">f</e>
+        <e type="operand">b</e>
+        <e type="function" args="1">f</e>
+        <e type="operator" args="2">+</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">h</e>
+        <e type="operand">a</e>
+        <e type="operand">k</e>
+        <e type="operand">h</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="function" args="1">f</e>
+        <e type="operand">k</e>
+        <e type="operand">1</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">-</e>
+        <e type="function" args="4">sum</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">2</e>
+        <e type="operand">3</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">h</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">a</e>
+        <e type="operand">h</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">-</e>
+        <e type="operand">k</e>
+        <e type="operand">h</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="function" args="1">f</e>
+        <e type="operand">k</e>
+        <e type="operand">1</e>
+        <e type="operand">n</e>
+        <e type="function" args="4">sum</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="9" left="9" top="342" width="70" height="24" border="true" color="#000000" bgColor="#dddddd" fontSize="10">
+    <text lang="rus">
+      <p>Ответ:</p>
+    </text>
+    <text lang="ind">
+      <p>Hasil:</p>
+    </text>
+    <text lang="eng">
+      <p>Result:</p>
+    </text>
+  </region>
+  <region id="10" left="9" top="369" width="120" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">int</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">41.3333</e>
+      </result>
+    </math>
+  </region>
+  <region id="11" left="9" top="396" width="78" height="24" border="true" color="#000000" bgColor="#dddddd" fontSize="10">
+    <text lang="rus">
+      <p>Проверка:</p>
+    </text>
+    <text lang="ind">
+      <p>Cek Hasil:</p>
+    </text>
+    <text lang="eng">
+      <p>Control:</p>
+    </text>
+  </region>
+  <region id="12" left="9" top="423" width="169" height="70" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">x</e>
+        <e type="function" args="1">f</e>
+        <e type="operand">x</e>
+        <e type="operand">a</e>
+        <e type="operand">b</e>
+        <e type="function" args="4">int</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">41.3333</e>
+      </result>
+    </math>
+  </region>
+</regions>

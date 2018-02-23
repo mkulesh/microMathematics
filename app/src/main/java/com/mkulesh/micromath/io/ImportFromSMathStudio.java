@@ -37,6 +37,7 @@ import com.mkulesh.micromath.plots.PlotFunction;
 import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.properties.LineProperties;
 import com.mkulesh.micromath.properties.PlotProperties;
+import com.mkulesh.micromath.utils.AppLocale;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import org.w3c.dom.Document;
@@ -44,6 +45,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xmlpull.v1.XmlSerializer;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -81,6 +83,7 @@ public class ImportFromSMathStudio
     private final Map<String, CodeMapValue> codeMap = new HashMap<>();
     private final Map<String, String> textMap = new HashMap<>();
     private final PlotProperties plotProp = new PlotProperties();
+    private final String defLanguage, prefLanguage;
 
     public ImportFromSMathStudio(Context context, String fileName)
     {
@@ -160,6 +163,9 @@ public class ImportFromSMathStudio
         textMap.put("\\0022\\", "\"");
 
         plotProp.initialize(context);
+
+        defLanguage = Locale.getDefault().getISO3Language();
+        prefLanguage = AppLocale.ContextWrapper.getPreferredLocale(context).getISO3Language();
     }
 
     public StringWriter convertToMmt(InputStream stream)
@@ -167,6 +173,30 @@ public class ImportFromSMathStudio
         ViewUtils.Debug(this, "Converting SMath Studio file " + fileName);
         try
         {
+            // Source document
+            final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            final DocumentBuilder builder = factory.newDocumentBuilder();
+            final Document doc = builder.parse(stream);
+            final Node objects = doc.getDocumentElement();
+            List<Element> metadata = null;
+            final List<Element> regions = new ArrayList<>();
+            for (Node object = objects.getFirstChild(); object != null; object = object.getNextSibling())
+            {
+                if (object instanceof Element)
+                {
+                    final Element e = (Element) object;
+                    if (e.getTagName().equals("settings"))
+                    {
+                        metadata = XmlUtils.getElements(e, "metadata");
+                    }
+                    else
+                    {
+                        regions.add(e);
+                    }
+                }
+            }
+
+            // Target document
             final StringWriter writer = new StringWriter();
             final XmlSerializer serializer = Xml.newSerializer();
             serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
@@ -176,20 +206,15 @@ public class ImportFromSMathStudio
             serializer.startTag(FormulaList.XML_NS, FormulaList.XML_MAIN_TAG);
             serializer.startTag(FormulaList.XML_NS, FormulaList.XML_LIST_TAG);
             serializer.attribute(FormulaList.XML_NS, DocumentProperties.XML_PROP_VERSION, "2");
+            if (metadata != null)
+            {
+                parseMetadata(metadata, serializer);
+            }
             serializer.attribute(FormulaList.XML_NS, DocumentProperties.XML_PROP_REDEFINE_ALLOWED, "true");
 
-            final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            final DocumentBuilder builder = factory.newDocumentBuilder();
-            final Document doc = builder.parse(stream);
-            final Node objects = doc.getDocumentElement();
             Element prevRegion = null;
-            for (Node object = objects.getFirstChild(); object != null; object = object.getNextSibling())
+            for (Element e : regions)
             {
-                if (!(object instanceof Element))
-                {
-                    continue;
-                }
-                final Element e = (Element) object;
                 if ("region".equals(e.getTagName()))
                 {
                     parseRegion(e, prevRegion, serializer);
@@ -220,6 +245,36 @@ public class ImportFromSMathStudio
         }
     }
 
+    private void parseMetadata(List<Element> metadata, XmlSerializer serializer) throws IOException
+    {
+        final String targetLanguage = getTargetLanguage(metadata, "metadata");
+        for (Element e : metadata)
+        {
+            if (targetLanguage == null || XmlUtils.ensureAttribute(e, "lang", targetLanguage))
+            {
+                for (Element p : XmlUtils.getElements(e))
+                {
+                    if (p.getTagName().equals("title"))
+                    {
+                        serializer.attribute(FormulaList.XML_NS,
+                                DocumentProperties.XML_PROP_TITLE, p.getTextContent());
+                    }
+                    if (p.getTagName().equals("author"))
+                    {
+                        serializer.attribute(FormulaList.XML_NS,
+                                DocumentProperties.XML_PROP_AUTHOR, p.getTextContent());
+                    }
+                    if (p.getTagName().equals("description"))
+                    {
+                        serializer.attribute(FormulaList.XML_NS,
+                                DocumentProperties.XML_PROP_DESCRIPTION, p.getTextContent());
+                    }
+                }
+                break;
+            }
+        }
+    }
+
     /*********************************************************
      * Parser methods
      *********************************************************/
@@ -247,11 +302,16 @@ public class ImportFromSMathStudio
             // nothing to do
         }
 
-        for (Element en : XmlUtils.getElements(e))
+        final List<Element> elements = XmlUtils.getElements(e);
+        final String targetLanguage = getTargetLanguage(elements, "text");
+        for (Element en : elements)
         {
             if ("text".equals(en.getTagName()))
             {
-                parseTextFragment(en, inRightOfPrevious, serializer);
+                if (targetLanguage == null || XmlUtils.ensureAttribute(en, "lang", targetLanguage))
+                {
+                    parseTextFragment(en, inRightOfPrevious, serializer);
+                }
             }
             else if ("math".equals(en.getTagName()))
             {
@@ -262,6 +322,38 @@ public class ImportFromSMathStudio
                 parsePlot(en, inRightOfPrevious, serializer);
             }
         }
+    }
+
+    private String getTargetLanguage(List<Element> elements, final String key)
+    {
+        ArrayList<String> textLanguages = null;
+        for (Element en : elements)
+        {
+            if (key.equals(en.getTagName()) && en.getAttribute("lang") != null)
+            {
+                if (textLanguages == null)
+                {
+                    textLanguages = new ArrayList<>();
+                }
+                textLanguages.add(en.getAttribute("lang"));
+            }
+        }
+        if (textLanguages != null)
+        {
+            if (textLanguages.contains(prefLanguage))
+            {
+                return prefLanguage;
+            }
+            else if (textLanguages.contains(defLanguage))
+            {
+                return defLanguage;
+            }
+            else if (textLanguages.contains("eng"))
+            {
+                return "eng";
+            }
+        }
+        return null;
     }
 
     private void parsePlot(Element e, boolean inRightOfPrevious, XmlSerializer serializer) throws Exception
