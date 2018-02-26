@@ -181,7 +181,12 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
 
     protected void onSaveFinished()
     {
-        // default implementation is empty
+        // Allow save button (for the case if a read-only asset is saved on SD card)
+        final MenuItem saveItem = (mainMenu == null) ? null : mainMenu.findItem(R.id.action_save);
+        if (saveItem != null)
+        {
+            saveItem.setVisible(true);
+        }
     }
 
     protected void saveFileAs(final boolean storeOpenedFileInfo)
