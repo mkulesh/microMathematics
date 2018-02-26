@@ -875,6 +875,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
                 ViewUtils.Debug(this, "terminated XML loader task: " + xmlLoaderTask.toString());
                 xmlLoaderTask = null;
             }
+            formulaScrollView.setScaleDetectorActive(true);
             updatePalette();
         }
         if (taSession != null)
