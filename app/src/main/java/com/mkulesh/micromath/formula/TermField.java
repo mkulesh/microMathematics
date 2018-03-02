@@ -324,7 +324,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         {
             return outValue.setValue(parser.getSign());
         }
-        return outValue.setValue(0.0);
+        return outValue.setValue(0.0, null /* erase units */);
     }
 
     /**
