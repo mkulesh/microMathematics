@@ -18,7 +18,7 @@ echo Starting ${EMU_NAME} on port ${EMU_PORT}...
 echo ================================================================================
 adb kill-server
 adb start-server
-${TOOLS_PATH}/emulator -avd ${EMU_NAME} -no-boot-anim -port ${EMU_PORT} &
+${ANDROID_HOME}/emulator/emulator -avd ${EMU_NAME} -no-boot-anim -port ${EMU_PORT} &
 
 # waiting until boot_completed
 while ("`${ADB_CMD} wait-for-device shell getprop sys.boot_completed | tr -d '\r' `" != "1")
