@@ -145,7 +145,7 @@ public class OpacityBar extends View {
 	private int oldChangedListenerOpacity;
 
 	public interface OnOpacityChangedListener {
-		public void onOpacityChanged(int opacity);
+		void onOpacityChanged(int opacity);
 	}
 
 	public void setOnOpacityChangedListener(OnOpacityChangedListener listener) {
@@ -326,7 +326,7 @@ public class OpacityBar extends View {
 		canvas.drawCircle(cX, cY, mBarPointerHaloRadius, mBarPointerHaloPaint);
 		// Draw the pointer.
 		canvas.drawCircle(cX, cY, mBarPointerRadius, mBarPointerPaint);
-	};
+	}
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {

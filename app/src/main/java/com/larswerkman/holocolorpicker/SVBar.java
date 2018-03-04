@@ -16,8 +16,6 @@
 
 package com.larswerkman.holocolorpicker;
 
-import com.mkulesh.micromath.plus.R;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -32,6 +30,8 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.mkulesh.micromath.plus.R;
 
 public class SVBar extends View {
 
@@ -306,7 +306,7 @@ public class SVBar extends View {
 		canvas.drawCircle(cX, cY, mBarPointerHaloRadius, mBarPointerHaloPaint);
 		// Draw the pointer.
 		canvas.drawCircle(cX, cY, mBarPointerRadius, mBarPointerPaint);
-	};
+	}
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {

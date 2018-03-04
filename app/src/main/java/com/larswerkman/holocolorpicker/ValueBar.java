@@ -155,7 +155,7 @@ public class ValueBar extends View {
 	private int oldChangedListenerValue;
 
 	public interface OnValueChangedListener {
-		public void onValueChanged(int value);
+		void onValueChanged(int value);
 	}
 
 	public void setOnValueChangedListener(OnValueChangedListener listener) {
@@ -330,7 +330,7 @@ public class ValueBar extends View {
 		canvas.drawCircle(cX, cY, mBarPointerHaloRadius, mBarPointerHaloPaint);
 		// Draw the pointer.
 		canvas.drawCircle(cX, cY, mBarPointerRadius, mBarPointerPaint);
-	};
+	}
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
