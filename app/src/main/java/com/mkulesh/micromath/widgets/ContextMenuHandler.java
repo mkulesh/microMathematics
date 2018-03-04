@@ -44,7 +44,7 @@ public class ContextMenuHandler
 
         private final int resId;
 
-        private Type(int resId)
+        Type(int resId)
         {
             this.resId = resId;
         }

@@ -72,7 +72,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         private final int imageId;
         private final int descriptionId;
 
-        private BaseType(int imageId, int descriptionId)
+        BaseType(int imageId, int descriptionId)
         {
             this.imageId = imageId;
             this.descriptionId = descriptionId;

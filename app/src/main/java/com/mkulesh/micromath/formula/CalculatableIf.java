@@ -23,7 +23,7 @@ import com.mkulesh.micromath.math.CalculatedValue;
 
 public interface CalculatableIf
 {
-    public enum DifferentiableType
+    enum DifferentiableType
     {
         NONE,
         NUMERICAL,
@@ -34,17 +34,17 @@ public interface CalculatableIf
     /**
      * Procedure calculates recursively the formula value
      */
-    public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException;
+    CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException;
 
     /**
      * Procedure checks whether this term holds a differentiable equation with respect to given variable name
      */
-    public DifferentiableType isDifferentiable(String var);
+    DifferentiableType isDifferentiable(String var);
 
     /**
      * Procedure calculates recursively the derivative value
      */
-    public CalculatedValue.ValueType getDerivativeValue(String var, CalculaterTask thread, CalculatedValue outValue)
+    CalculatedValue.ValueType getDerivativeValue(String var, CalculaterTask thread, CalculatedValue outValue)
             throws CancelException;
 
 }

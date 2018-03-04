@@ -34,7 +34,7 @@ public enum FileType
         return descriptionId;
     }
 
-    private FileType(int descriptionId)
+    FileType(int descriptionId)
     {
         this.descriptionId = descriptionId;
     }

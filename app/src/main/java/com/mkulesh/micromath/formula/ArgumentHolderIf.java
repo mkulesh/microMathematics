@@ -27,16 +27,16 @@ public interface ArgumentHolderIf
     /**
      * Procedure returns the parsed arguments of this formula
      */
-    public ArrayList<String> getArguments();
+    ArrayList<String> getArguments();
 
     /**
      * Procedure returns argument index for the given string representing an argument
      */
-    public int getArgumentIndex(String text);
+    int getArgumentIndex(String text);
 
     /**
      * Procedure returns argument value for given argument index
      */
-    public CalculatedValue getArgumentValue(int idx);
+    CalculatedValue getArgumentValue(int idx);
 
 }

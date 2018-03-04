@@ -59,7 +59,7 @@ public interface FormulaChangeIf
     /**
      * Procedure will be called if the formula is newly created by manual input
      */
-    public void onNewFormula();
+    void onNewFormula();
 
     /**
      * Procedure will be called if a term shall be deleted
