@@ -129,7 +129,7 @@ public class DocumentProperties
         final DecimalFormat df = CompatUtils.getDecimalFormat("0.00000");
 
         String attr = parser.getAttributeValue(null, XML_PROP_VERSION);
-        documentVersion = (attr != null)? Integer.parseInt(attr) : DEFAULT_DOCUMENT_VERSION;
+        documentVersion = (attr != null) ? Integer.parseInt(attr) : DEFAULT_DOCUMENT_VERSION;
         attr = parser.getAttributeValue(null, XML_PROP_AUTHOR);
         author = (attr == null) ? EMPTY_STRING : attr;
         attr = parser.getAttributeValue(null, XML_PROP_TITLE);

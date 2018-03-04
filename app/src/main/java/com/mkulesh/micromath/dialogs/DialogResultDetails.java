@@ -146,7 +146,7 @@ public class DialogResultDetails extends DialogBase
         {
             super(context, 0, list);
             this.docProp = docProp;
-            this.targetUnit = resProp != null? TermParser.parseUnits(resProp.units) : null;
+            this.targetUnit = resProp != null ? TermParser.parseUnits(resProp.units) : null;
         }
 
         @Override

@@ -519,7 +519,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             }
             else if (unit != null && !unit.isEmpty())
             {
-                setText(text.isEmpty()? unit : text + TermParser.UNIT_SEPARATOR + unit);
+                setText(text.isEmpty() ? unit : text + TermParser.UNIT_SEPARATOR + unit);
             }
             else
             {
@@ -558,7 +558,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         {
             if (isEmptyOrAutoContent())
             {
-                serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_TEXT,  "");
+                serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_TEXT, "");
             }
             else if (parser.getUnit() != null && parser.getUnitTags() != null)
             {

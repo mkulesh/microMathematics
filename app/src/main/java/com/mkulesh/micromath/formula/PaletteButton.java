@@ -157,6 +157,7 @@ public class PaletteButton extends AppCompatImageButton
      *********************************************************/
 
     private int colorAttrId = Integer.MIN_VALUE;
+
     public void setColorAttr(@AttrRes int attrId)
     {
         if (this.colorAttrId != attrId)

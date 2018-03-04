@@ -778,9 +778,9 @@ public class TwoDScrollView extends FrameLayout
      * area, the focus is reclaimed by this scrollview.
      *
      * @param directionY the scroll direction: {@link android.view.View#FOCUS_UP} to go upward
-     *                  {@link android.view.View#FOCUS_DOWN} to downward
-     * @param top       the top offset of the new area to be made visible
-     * @param bottom    the bottom offset of the new area to be made visible
+     *                   {@link android.view.View#FOCUS_DOWN} to downward
+     * @param top        the top offset of the new area to be made visible
+     * @param bottom     the bottom offset of the new area to be made visible
      * @return true if the key event is consumed by this method, false otherwise
      */
     private boolean scrollAndFocus(int directionY, int top, int bottom, int directionX, int left, int right)

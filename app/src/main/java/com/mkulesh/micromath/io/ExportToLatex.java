@@ -122,7 +122,7 @@ public class ExportToLatex
             { "Ω", "\\Omega" }, { "ω", "\\omega" } };
 
     protected final String[][] supplementTable = new String[][]{
-            { "°", "\\degree" }};
+            { "°", "\\degree" } };
 
     public ExportToLatex(Context context, OutputStream stream, final Uri uri, final AdapterIf adapter,
                          final Exporter.Parameters exportParameters) throws Exception

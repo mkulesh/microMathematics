@@ -290,7 +290,7 @@ public class ImportFromSMathStudio
                 final int prevButton = prevTop + Integer.parseInt(prevRegion.getAttribute("height"));
                 final int thisTop = Integer.parseInt(e.getAttribute("top"));
                 final int thisButton = thisTop + Integer.parseInt(e.getAttribute("height"));
-                final int thisCenter = (thisTop + thisButton)/2;
+                final int thisCenter = (thisTop + thisButton) / 2;
                 if (thisCenter > prevTop && thisCenter < prevButton)
                 {
                     inRightOfPrevious = true;
@@ -403,7 +403,7 @@ public class ImportFromSMathStudio
             XmlUtils.removeLast(elements);
             XmlUtils.removeLast(elements);
             // add functions
-            for(int i = 0; i < argNumber; i++)
+            for (int i = 0; i < argNumber; i++)
             {
                 final String suffix = Integer.toString(argNumber - i);
                 LineProperties newProp = new LineProperties();
@@ -514,7 +514,7 @@ public class ImportFromSMathStudio
             // A text term
             final String newText = textMap.get(p.text);
             serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_TEXT,
-                    newText != null? newText : p.text);
+                    newText != null ? newText : p.text);
         }
         else if (p.isEqual(SM_TAG_MATH_OPERATOR, 1, "-"))
         {
@@ -740,7 +740,7 @@ public class ImportFromSMathStudio
             String retValue = args.get(0) + "[";
             for (int i = 1; i < args.size(); i++)
             {
-                retValue += (i > 1? "," : "") + args.get(i);
+                retValue += (i > 1 ? "," : "") + args.get(i);
             }
             return retValue + "]";
         }
@@ -749,7 +749,7 @@ public class ImportFromSMathStudio
             String retValue = p.text + "(";
             for (int i = 0; i < args.size(); i++)
             {
-                retValue += (i > 0? "," : "") + args.get(i);
+                retValue += (i > 0 ? "," : "") + args.get(i);
             }
             return retValue + ")";
         }

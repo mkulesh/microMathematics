@@ -165,7 +165,7 @@ public class Intervals extends FormulaTerm
     @Override
     public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
     {
-        Pair<Unit, Integer> units = compareUnits(new TermField []{minValueTerm, nextValueTerm, maxValueTerm});
+        Pair<Unit, Integer> units = compareUnits(new TermField[]{ minValueTerm, nextValueTerm, maxValueTerm });
         if (units.getFirst() != null && units.getSecond() != 3)
         {
             return outValue.invalidate(CalculatedValue.ErrorType.INCOMPATIBLE_UNIT);
@@ -280,7 +280,7 @@ public class Intervals extends FormulaTerm
      * FormulaTermInterval-specific methods
      *********************************************************/
 
-    private Pair<Unit, Integer> compareUnits(TermField [] terms)
+    private Pair<Unit, Integer> compareUnits(TermField[] terms)
     {
         Unit unit = terms[0].getParser().getUnit();
         int compatibleNumber = 0;
@@ -296,7 +296,7 @@ public class Intervals extends FormulaTerm
                 unit = tp;
             }
         }
-        return new Pair<>(unit == null? null : unit.getStandardUnit(), compatibleNumber);
+        return new Pair<>(unit == null ? null : unit.getStandardUnit(), compatibleNumber);
     }
 
     /**
@@ -304,7 +304,7 @@ public class Intervals extends FormulaTerm
      */
     public ArrayList<CalculatedValue> getInterval(CalculaterTask thread) throws CancelException
     {
-        Pair<Unit, Integer> units = compareUnits(new TermField []{minValueTerm, nextValueTerm, maxValueTerm});
+        Pair<Unit, Integer> units = compareUnits(new TermField[]{ minValueTerm, nextValueTerm, maxValueTerm });
         if (units.getFirst() != null && units.getSecond() != 3)
         {
             return null;

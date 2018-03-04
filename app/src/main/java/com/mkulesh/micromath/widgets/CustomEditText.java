@@ -232,7 +232,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     public void updateMinimumWidth(ScaledDimensions dimen)
     {
         final int newWidth = length() == 0 ? dimen.get(ScaledDimensions.Type.TEXT_MIN_WIDTH) : 0;
-        final int prevWidth = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN?
+        final int prevWidth = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN ?
                 getMinimumWidth() : Integer.MIN_VALUE;
         if (prevWidth != newWidth)
         {
@@ -538,8 +538,8 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     {
         super.onSelectionChanged(selEnd, selEnd);
         if (CompatUtils.isMarshMallowOrLater() &&
-            isTextFragment() && getText().length() > 0 &&
-            hasSelection() && selEnd - selStart == getText().length())
+                isTextFragment() && getText().length() > 0 &&
+                hasSelection() && selEnd - selStart == getText().length())
         {
             // null for input view means that we will start ActionMode without owner:
             // the root formula will be selected instead of owner term
@@ -553,6 +553,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
 
     private int backgroundDrawableId = Integer.MIN_VALUE;
     private int backgroundAttrId = Integer.MIN_VALUE;
+
     public void setBackgroundAttr(@DrawableRes int drawableId, @AttrRes int attrId)
     {
         if (this.backgroundDrawableId != drawableId)

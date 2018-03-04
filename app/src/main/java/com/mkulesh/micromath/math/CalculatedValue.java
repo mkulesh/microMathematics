@@ -317,7 +317,7 @@ public class CalculatedValue
     public String toString()
     {
         return valueType.toString() + "[" + real + ", " + imaginary + "]" +
-                (unit == null? "?" : unit.toString());
+                (unit == null ? "?" : unit.toString());
     }
 
     public String getResultDescription(DocumentProperties doc)
@@ -552,7 +552,7 @@ public class CalculatedValue
     {
         if (unitExists(f, g))
         {
-            unit = powUnit(f,g);
+            unit = powUnit(f, g);
             if (unit == null)
             {
                 return invalidate(ErrorType.INCOMPATIBLE_UNIT);

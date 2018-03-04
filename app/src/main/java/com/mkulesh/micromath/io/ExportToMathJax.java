@@ -62,7 +62,7 @@ public class ExportToMathJax extends ExportToLatex
         writer.append("<html><head>\n");
         writer.append("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n");
         writer.append("<title>");
-        writer.append(isPropEmpty(docProp.title)? fileName : docProp.title);
+        writer.append(isPropEmpty(docProp.title) ? fileName : docProp.title);
         writer.append("</title>\n");
 
         writer.append("<script type=\"text/x-mathjax-config\">\n");

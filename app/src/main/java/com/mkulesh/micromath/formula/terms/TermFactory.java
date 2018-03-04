@@ -63,7 +63,7 @@ public class TermFactory
         allTerms.addAll(Arrays.asList(SeriesIntegrals.LoopType.values()));
 
         termMap = new HashMap<>();
-        for(TermTypeIf t : allTerms)
+        for (TermTypeIf t : allTerms)
         {
             termMap.put(t.getLowerCaseName(), t);
         }
