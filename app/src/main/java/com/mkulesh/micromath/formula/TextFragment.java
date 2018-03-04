@@ -379,7 +379,6 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
                 textStart = false;
                 lineStartIdx = lastSpaceIdx;
                 lastSpaceIdx = -1;
-                continue;
             }
         }
 

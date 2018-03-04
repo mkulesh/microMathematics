@@ -1474,25 +1474,25 @@ public class SVG
     // Any element that can appear inside a <switch> element.
     protected interface SvgConditional
     {
-        public void setRequiredFeatures(Set<String> features);
+        void setRequiredFeatures(Set<String> features);
 
-        public Set<String> getRequiredFeatures();
+        Set<String> getRequiredFeatures();
 
-        public void setRequiredExtensions(String extensions);
+        void setRequiredExtensions(String extensions);
 
-        public String getRequiredExtensions();
+        String getRequiredExtensions();
 
-        public void setSystemLanguage(Set<String> languages);
+        void setSystemLanguage(Set<String> languages);
 
-        public Set<String> getSystemLanguage();
+        Set<String> getSystemLanguage();
 
-        public void setRequiredFormats(Set<String> mimeTypes);
+        void setRequiredFormats(Set<String> mimeTypes);
 
-        public Set<String> getRequiredFormats();
+        Set<String> getRequiredFormats();
 
-        public void setRequiredFonts(Set<String> fontNames);
+        void setRequiredFonts(Set<String> fontNames);
 
-        public Set<String> getRequiredFonts();
+        Set<String> getRequiredFonts();
     }
 
     // Any element that can appear inside a <switch> element.
@@ -1568,9 +1568,9 @@ public class SVG
 
     protected interface SvgContainer
     {
-        public List<SvgObject> getChildren();
+        List<SvgObject> getChildren();
 
-        public void addChild(SvgObject elem) throws SAXException;
+        void addChild(SvgObject elem) throws SAXException;
     }
 
     protected static class SvgConditionalContainer extends SvgElement implements
@@ -1659,7 +1659,7 @@ public class SVG
 
     protected interface HasTransform
     {
-        public void setTransform(Matrix matrix);
+        void setTransform(Matrix matrix);
     }
 
     protected static class SvgPreserveAspectRatioContainer extends
@@ -1787,9 +1787,9 @@ public class SVG
 
     protected interface TextChild
     {
-        public void setTextRoot(TextRoot obj);
+        void setTextRoot(TextRoot obj);
 
-        public TextRoot getTextRoot();
+        TextRoot getTextRoot();
     }
 
     protected static class TextContainer extends SvgConditionalContainer
@@ -2095,19 +2095,19 @@ public class SVG
 
     protected interface PathInterface
     {
-        public void moveTo(float x, float y);
+        void moveTo(float x, float y);
 
-        public void lineTo(float x, float y);
+        void lineTo(float x, float y);
 
-        public void cubicTo(float x1, float y1, float x2, float y2, float x3,
+        void cubicTo(float x1, float y1, float x2, float y2, float x3,
                             float y3);
 
-        public void quadTo(float x1, float y1, float x2, float y2);
+        void quadTo(float x1, float y1, float x2, float y2);
 
-        public void arcTo(float rx, float ry, float xAxisRotation,
+        void arcTo(float rx, float ry, float xAxisRotation,
                           boolean largeArcFlag, boolean sweepFlag, float x, float y);
 
-        public void close();
+        void close();
     }
 
     protected static class PathDefinition implements PathInterface

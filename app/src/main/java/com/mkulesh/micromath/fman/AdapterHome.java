@@ -245,11 +245,12 @@ public class AdapterHome extends AdapterBaseImpl
         {
             String schema = item.origin instanceof String ? (String) item.origin : null;
             if (!FileUtils.str(schema))
+            {
                 return;
+            }
             if (AdapterDocuments.ORG_SCHEME.startsWith(schema) && R.id.fman_action_open_saf == command_id)
             {
                 commander.issue(CompatUtils.getDocTreeIntent(), AdapterDocuments.REQUEST_OPEN_DOCUMENT_TREE);
-                return;
             }
         }
         catch (Exception e)

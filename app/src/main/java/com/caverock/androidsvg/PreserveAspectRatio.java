@@ -231,9 +231,7 @@ public class PreserveAspectRatio
         PreserveAspectRatio other = (PreserveAspectRatio) obj;
         if (alignment != other.alignment)
             return false;
-        if (scale != other.scale)
-            return false;
-        return true;
+        return scale == other.scale;
     }
 
 }

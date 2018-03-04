@@ -534,7 +534,6 @@ public class AdapterFileSystem extends AdapterBaseImpl
                 {
                     sendResult(a.ctx.getString(R.string.fman_delete_confirm));
                 }
-                return;
             }
             catch (Exception e)
             {

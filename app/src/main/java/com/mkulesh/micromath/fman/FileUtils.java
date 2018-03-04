@@ -297,7 +297,9 @@ public final class FileUtils
     public final static boolean equals(String s1, String s2)
     {
         if (s1 == null)
-            return s2 == null ? true : false;
+        {
+            return s2 == null;
+        }
         return s1.equals(s2);
     }
 

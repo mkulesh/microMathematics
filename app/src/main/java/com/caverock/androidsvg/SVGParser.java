@@ -757,9 +757,7 @@ public class SVGParser extends DefaultHandler2
             if (styleElementContents == null)
                 styleElementContents = new StringBuilder(length);
             styleElementContents.append(ch, start, length);
-            return;
         }
-
     }
 
     @Override

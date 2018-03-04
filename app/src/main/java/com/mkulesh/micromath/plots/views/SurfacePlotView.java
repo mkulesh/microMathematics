@@ -306,13 +306,11 @@ public class SurfacePlotView extends PlotView
         {
             String error = getContext().getResources().getString(R.string.error_out_of_memory);
             Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
-            return;
         }
         catch (Exception ex)
         {
             String error = getContext().getResources().getString(R.string.error_out_of_memory);
             Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
-            return;
         }
     }
 

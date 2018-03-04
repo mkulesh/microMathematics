@@ -402,11 +402,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
 
     public boolean isDeveloperMode()
     {
-        if (preferences.getBoolean(DEVELOPER_MODE, false))
-        {
-            return true;
-        }
-        return false;
+        return preferences.getBoolean(DEVELOPER_MODE, false);
     }
 
     public int getFragmentNumber()

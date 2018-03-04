@@ -287,7 +287,7 @@ public class Operators extends FormulaTerm
         {
             if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_left_term_key)))
             {
-                final boolean addDepth = (termType == OperatorType.DIVIDE) ? true : false;
+                final boolean addDepth = (termType == OperatorType.DIVIDE);
                 leftTerm = addTerm(getFormulaRoot(), l, v, this, addDepth);
             }
             if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_right_term_key)))

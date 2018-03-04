@@ -340,7 +340,7 @@ public abstract class UnitFormat extends Format {
                     if (divisor != 1) {
                         result.append('/');
                         result.append(divisor);
-                    }          ;
+                    }
                 } else if (cvtr instanceof MultiplyConverter) {
                     result.append('*');
                     result.append(((MultiplyConverter) cvtr).getFactor());
