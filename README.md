@@ -29,7 +29,7 @@ Not only students, but also everybody who likes mathematics or needs more than j
 * The app contains detailed "How to use" page and several examples
 * Supports different color themes
 * Supports data import from ASCII files
-* Integration with [SMath Studio](https://en.smath.info): SMath Studio is able to open workshets stored in microMathematics, see [this document](https://github.com/mkulesh/microMathematics/wiki/Integration-with-SMath-Studio) for details
+* Integration with [SMath Studio](https://en.smath.info): SMath Studio is able to open workshets stored in microMathematics, see [this document](https://github.com/mkulesh/microMathematics/wiki/Integration-with-SMath-Studio) for details. Documents from SMath Studio can also be opened in microMathematics.
 
 ## Screenshots:
 
@@ -44,13 +44,17 @@ For more screenshots, see directory images/screenshots.
 * [Supported Units Overview](http://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/units_overview.html)
 * [The latest PDF version of the User Manual](https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.17.0.pdf)
 
+## Posts on Habrahabr (in Russian)
+
+* [Математический пакет для Android своими руками](https://habrahabr.ru/post/250727/)
+* [Математический пакет для Android — «Микро-Математика» — теперь с открытым исходным кодом](https://habrahabr.ru/post/334670/)
+* [Математический пакет для Android “Микро-Математика”: что нового?](https://habrahabr.ru/post/350286/)
+
 ## Reviews and publications:
 
 * [Press Release: Introducing microMathematics: the First Spreadsheet Oriented Mathematical Calculator for Android](http://www.androidappsreview.com/2014/09/29/micro-mathematics-press-release/)
 * [Advanced calculator to solve the most complex mathematical equations smart phone](http://mn1professional.blogspot.de/2015/12/advanced-calculator-to-solve-most.html)
 * [microMathematics Plus: Umfangreiche Rechner-App für Studenten & Schüler (in German)](http://beste-apps.chip.de/android/app/micro-mathematics-plus-umfangreiche-rechner-app-fuer-studenten-schueler,com.mkulesh.micromath.plus/)
-* [Математический пакет для Android своими руками (in Russian)](https://habrahabr.ru/post/250727/)
-* [Математический пакет для Android — «Микро-Математика» — теперь с открытым исходным кодом (in Russian)](https://habrahabr.ru/post/334670/)
 * [«Микро-математика»: формулы — это просто (in Russian)](http://4pda.ru/2015/09/01/241701/)
 * [microMathematics — отличный научный калькулятор и графопостроитель на Android (in Russian)](https://lifehacker.ru/2015/10/21/micro-mathematics/)
 * [MathCAD для Android..? (In Russian)](http://svchushki.blogspot.de/2017/04/mathcad-android.html)
