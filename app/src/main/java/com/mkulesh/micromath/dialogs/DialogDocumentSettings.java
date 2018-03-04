@@ -34,7 +34,7 @@ public class DialogDocumentSettings extends DialogBase
     private final DocumentProperties documentSettings;
     private final AppCompatEditText author, title, description;
     private final HorizontalNumberPicker textWidthPicker, significantDigitsPicker;
-    private final CheckBox reformatBox, redefineAllowed;
+    private final CheckBox reformatBox, enableZoom, redefineAllowed;
 
     public DialogDocumentSettings(Activity context, DocumentPropertiesChangeIf changeIf,
                                   DocumentProperties documentSettings)
@@ -68,6 +68,9 @@ public class DialogDocumentSettings extends DialogBase
             significantDigitsPicker.minValue = significantDigitsLimit[0];
             significantDigitsPicker.maxValue = significantDigitsLimit[1];
         }
+
+        enableZoom = findViewById(R.id.dialog_checkbox_enable_zoom);
+        enableZoom.setChecked(documentSettings.enableZoom);
 
         redefineAllowed = findViewById(R.id.dialog_checkbox_redefine_allowed);
         redefineAllowed.setChecked(documentSettings.redefineAllowed);
@@ -112,6 +115,7 @@ public class DialogDocumentSettings extends DialogBase
                     documentSettings.redefineAllowed = redefineAllowed.isChecked();
                     isChanged = true;
                 }
+                documentSettings.enableZoom = enableZoom.isChecked();
                 changeIf.onDocumentPropertiesChange(isChanged);
             }
         }

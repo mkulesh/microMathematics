@@ -177,7 +177,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         {
             readingStartTime = System.currentTimeMillis();
             final String scriptName = (String) scripts[script];
-            formulas.clear();
+            formulas.newDocument();
             formulas.readFromResource(Uri.parse(scriptName), XmlLoaderTask.PostAction.NONE);
             break;
         }

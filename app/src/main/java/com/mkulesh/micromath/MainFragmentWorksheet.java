@@ -275,7 +275,7 @@ public class MainFragmentWorksheet extends BaseFragment
                 // asset and we do not need to save anything
                 saveFile(false);
             }
-            formulas.clear();
+            formulas.newDocument();
             setOpenedFile(null);
             break;
         case R.id.action_open:

@@ -124,6 +124,7 @@
     <string name="dialog_document_settings_reformat">Форматировать текст</string>
     <string name="dialog_document_settings_width_size">Длина строки</string>
     <string name="dialog_document_settings_significant_digits">Значимые цифры в результате</string>
+    <string name="dialog_document_settings_enable_zoom">Разрешить масштабирование</string>
     <string name="dialog_document_settings_redefine_allowed">Разрешить переопределение формул</string>
     <string name="dialog_result_details_argument">Аргумент</string>
     <string name="dialog_result_details_value">Значение</string>

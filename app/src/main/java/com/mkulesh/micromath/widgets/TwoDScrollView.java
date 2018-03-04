@@ -81,7 +81,7 @@ public class TwoDScrollView extends FrameLayout
      */
     private View mChildToScrollTo = null;
 
-    private boolean scaleDetectorActive = true;
+    private boolean scaleDetectorActive = true, enableZoom = true;
     private ScaleGestureDetector mScaleGestureDetector;
     private GestureDetectorCompat mGestureDetector;
 
@@ -286,6 +286,11 @@ public class TwoDScrollView extends FrameLayout
         this.scaleDetectorActive = scaleDetectorActive;
     }
 
+    public void setEnableZoom(boolean enableZoom)
+    {
+        this.enableZoom = enableZoom;
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
@@ -407,7 +412,7 @@ public class TwoDScrollView extends FrameLayout
 
         public boolean onScaleBegin(ScaleGestureDetector detector)
         {
-            if (scaleDetectorActive)
+            if (scaleDetectorActive && enableZoom)
             {
                 isScaled = true;
                 scale = 1.0f;

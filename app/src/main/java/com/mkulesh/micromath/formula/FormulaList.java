@@ -125,7 +125,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     private final AppCompatActivity activity;
     private final TwoDScrollView formulaScrollView;
     private final FormulaListView formulaListView;
-    private final DocumentProperties documentSettings;
+    private DocumentProperties documentSettings;
     private final Palette palette;
     private int selectedFormulaId = ViewUtils.INVALID_INDEX;
     private XmlLoaderTask xmlLoaderTask = null;
@@ -158,6 +158,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         updatePalette();
 
         documentSettings = new DocumentProperties(getContext());
+        formulaScrollView.setEnableZoom(documentSettings.enableZoom);
         undoState = new UndoState(activity);
     }
 
@@ -571,6 +572,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
                 }
             }
         }
+        formulaScrollView.setEnableZoom(documentSettings.enableZoom);
         if (isChanged)
         {
             calculate();
@@ -876,12 +878,19 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
                 xmlLoaderTask = null;
             }
             formulaScrollView.setScaleDetectorActive(true);
+            formulaScrollView.setEnableZoom(documentSettings.enableZoom);
             updatePalette();
         }
         if (taSession != null)
         {
             taSession.setInOperation(owner, inOperation);
         }
+    }
+
+    public void newDocument()
+    {
+        clear();
+        documentSettings = new DocumentProperties(getContext());
     }
 
     /**

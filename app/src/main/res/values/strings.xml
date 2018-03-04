@@ -160,6 +160,7 @@
     <string name="dialog_document_settings_reformat">Format text fragment</string>
     <string name="dialog_document_settings_width_size">Line length</string>
     <string name="dialog_document_settings_significant_digits">Significant digits in result</string>
+    <string name="dialog_document_settings_enable_zoom">Enable zoom</string>
     <string name="dialog_document_settings_redefine_allowed">Allow to re-define equations</string>
     <string name="dialog_result_details_argument">Argument</string>
     <string name="dialog_result_details_value">Value</string>

@@ -88,7 +88,13 @@
                 style="@style/HorizontalDividerStyle"
                 android:layout_marginBottom="@dimen/dialog_content_padding"
                 android:layout_marginTop="@dimen/dialog_content_padding" />
-            
+
+            <android.support.v7.widget.AppCompatCheckBox
+                style="@style/CheckBoxStyle"
+                android:id="@+id/dialog_checkbox_enable_zoom"
+                android:text="@string/dialog_document_settings_enable_zoom"
+                android:checked="false" />
+
             <android.support.v7.widget.AppCompatCheckBox
                 style="@style/CheckBoxStyle"
                 android:id="@+id/dialog_checkbox_redefine_allowed"

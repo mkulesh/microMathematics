@@ -124,6 +124,7 @@
     <string name="dialog_document_settings_reformat">Text formatieren</string>
     <string name="dialog_document_settings_width_size">Zeilenlänge</string>
     <string name="dialog_document_settings_significant_digits">Signifikante Ziffern im Ergebnis</string>
+    <string name="dialog_document_settings_enable_zoom">Zoom-Funktion erlauben</string>
     <string name="dialog_document_settings_redefine_allowed">Neubestimmung erlauben</string>
     <string name="dialog_result_details_argument">Argument</string>
     <string name="dialog_result_details_value">Wert</string>

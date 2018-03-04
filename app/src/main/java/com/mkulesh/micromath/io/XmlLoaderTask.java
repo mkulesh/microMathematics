@@ -82,7 +82,7 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
     @Override
     protected void onPreExecute()
     {
-        list.clear();
+        list.newDocument();
         list.setInOperation(/* owner= */this, /* inOperation= */true, /* stopHandler= */null);
     }
 
