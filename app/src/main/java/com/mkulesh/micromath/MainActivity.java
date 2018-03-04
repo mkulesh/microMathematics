@@ -100,14 +100,14 @@ public class MainActivity extends AppCompatActivity
                         + pm.getInstallerPackageName(getPackageName()));
 
         // Action bar (v7 compatibility library): use Toolbar
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         // Action bar drawer
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.main_drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        mDrawerLayout = findViewById(R.id.main_drawer_layout);
+        navigationView = findViewById(R.id.navigation_view);
         if (navigationView != null)
         {
             prepareNavigationView();
@@ -420,7 +420,7 @@ public class MainActivity extends AppCompatActivity
         TextView versionInfo = null;
         for (int i = 0; i < navigationView.getHeaderCount(); i++)
         {
-            versionInfo = (TextView) navigationView.getHeaderView(i).findViewById(R.id.navigation_view_header_version);
+            versionInfo = navigationView.getHeaderView(i).findViewById(R.id.navigation_view_header_version);
             if (versionInfo != null)
             {
                 break;

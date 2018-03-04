@@ -1199,7 +1199,7 @@ public class SVG
                 obj = (Style) super.clone();
                 if (strokeDashArray != null)
                 {
-                    obj.strokeDashArray = (Length[]) strokeDashArray.clone();
+                    obj.strokeDashArray = strokeDashArray.clone();
                 }
                 return obj;
             }

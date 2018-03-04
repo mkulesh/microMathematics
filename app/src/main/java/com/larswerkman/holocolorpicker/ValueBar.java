@@ -16,8 +16,6 @@
 
 package com.larswerkman.holocolorpicker;
 
-import com.mkulesh.micromath.plus.R;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -32,6 +30,8 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.mkulesh.micromath.plus.R;
 
 public class ValueBar extends View {
 
@@ -470,7 +470,7 @@ public class ValueBar extends View {
 			coord = mBarLength;
 		}
 		mColor = Color.HSVToColor(new float[] { mHSVColor[0], mHSVColor[1],
-				(float) (1 - (mPosToSatFactor * coord)) });
+				(1 - (mPosToSatFactor * coord)) });
 	}
 
 	/**

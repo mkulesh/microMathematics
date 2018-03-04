@@ -318,7 +318,7 @@ public class TwoDScrollView extends FrameLayout
                 final int pulledToX = getScrollX() + (int) deltaX;
                 if (pulledToX < 0)
                 {
-                    mEdgeGlowLeft.onPull((float) deltaX / getWidth());
+                    mEdgeGlowLeft.onPull(deltaX / getWidth());
                     if (!mEdgeGlowRight.isFinished())
                     {
                         mEdgeGlowRight.onRelease();
@@ -327,7 +327,7 @@ public class TwoDScrollView extends FrameLayout
                 }
                 else if (pulledToX > rangeX)
                 {
-                    mEdgeGlowRight.onPull((float) deltaX / getWidth());
+                    mEdgeGlowRight.onPull(deltaX / getWidth());
                     if (!mEdgeGlowLeft.isFinished())
                     {
                         mEdgeGlowLeft.onRelease();
@@ -346,7 +346,7 @@ public class TwoDScrollView extends FrameLayout
                 final int pulledToY = getScrollY() + (int) deltaY;
                 if (pulledToY < 0)
                 {
-                    mEdgeGlowTop.onPull((float) deltaY / getHeight());
+                    mEdgeGlowTop.onPull(deltaY / getHeight());
                     if (!mEdgeGlowBottom.isFinished())
                     {
                         mEdgeGlowBottom.onRelease();
@@ -355,7 +355,7 @@ public class TwoDScrollView extends FrameLayout
                 }
                 else if (pulledToY > rangeY)
                 {
-                    mEdgeGlowBottom.onPull((float) deltaY / getHeight());
+                    mEdgeGlowBottom.onPull(deltaY / getHeight());
                     if (!mEdgeGlowTop.isFinished())
                     {
                         mEdgeGlowTop.onRelease();

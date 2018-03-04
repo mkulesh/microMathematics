@@ -265,7 +265,7 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
     private void onCreate()
     {
         inflateRootLayout(R.layout.image_fragment, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        imageView = (CustomImageView) layout.findViewById(R.id.image_view);
+        imageView = layout.findViewById(R.id.image_view);
         imageView.prepare(getFormulaList().getActivity(), this);
         parameters.initialize(getContext());
         parameters.width = imageView.getOriginalWidth();

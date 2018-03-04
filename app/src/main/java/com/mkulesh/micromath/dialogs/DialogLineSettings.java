@@ -55,23 +55,23 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
         super(context, R.layout.dialog_line_settings, R.string.dialog_line_settings_title);
         this.parameters = parameters;
 
-        widthPicker = (HorizontalNumberPicker) findViewById(R.id.dialog_number_picker);
+        widthPicker = findViewById(R.id.dialog_number_picker);
         widthPicker.setValue(parameters.width);
         widthPicker.minValue = 1;
 
         colorPicker = PrepareColorPicker(parameters.color);
 
         radioButtons = new RadioButton[4];
-        radioButtons[0] = (RadioButton) findViewById(R.id.dialog_button_line_style_solid);
-        radioButtons[1] = (RadioButton) findViewById(R.id.dialog_button_line_style_dotted);
-        radioButtons[2] = (RadioButton) findViewById(R.id.dialog_button_line_style_dashed);
-        radioButtons[3] = (RadioButton) findViewById(R.id.dialog_button_line_style_dash_dot);
+        radioButtons[0] = findViewById(R.id.dialog_button_line_style_solid);
+        radioButtons[1] = findViewById(R.id.dialog_button_line_style_dotted);
+        radioButtons[2] = findViewById(R.id.dialog_button_line_style_dashed);
+        radioButtons[3] = findViewById(R.id.dialog_button_line_style_dash_dot);
 
         radioLines = new CustomTextView[radioButtons.length];
-        radioLines[0] = (CustomTextView) findViewById(R.id.dialog_marker_line_style_solid);
-        radioLines[1] = (CustomTextView) findViewById(R.id.dialog_marker_line_style_dotted);
-        radioLines[2] = (CustomTextView) findViewById(R.id.dialog_marker_line_style_dashed);
-        radioLines[3] = (CustomTextView) findViewById(R.id.dialog_marker_line_style_dash_dot);
+        radioLines[0] = findViewById(R.id.dialog_marker_line_style_solid);
+        radioLines[1] = findViewById(R.id.dialog_marker_line_style_dotted);
+        radioLines[2] = findViewById(R.id.dialog_marker_line_style_dashed);
+        radioLines[3] = findViewById(R.id.dialog_marker_line_style_dash_dot);
 
         LineProperties l = new LineProperties();
         l.color = CompatUtils.getThemeColorAttr(getContext(), R.attr.colorDialogContent);
@@ -87,11 +87,11 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
             radioButtons[i].setOnClickListener(this);
         }
 
-        pointShapesBox = (CheckBox) findViewById(R.id.dialog_plot_point_shapes);
+        pointShapesBox = findViewById(R.id.dialog_plot_point_shapes);
         pointShapesBox.setOnClickListener(this);
         pointShapesBox.setChecked(parameters.shapeType != LineProperties.ShapeType.NONE);
 
-        shapeSizePicker = (HorizontalNumberPicker) findViewById(R.id.dialog_plot_point_shape_size);
+        shapeSizePicker = findViewById(R.id.dialog_plot_point_shape_size);
         shapeSizePicker.setValue(parameters.shapeSize);
         shapeSizePicker.minValue = 100;
         shapeSizePicker.setEnabled(pointShapesBox.isChecked());

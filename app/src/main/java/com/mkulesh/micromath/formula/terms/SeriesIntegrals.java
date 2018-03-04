@@ -481,7 +481,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
 
     private LinearLayout getLayoutWithTag(final String tag)
     {
-        LinearLayout retValue = (LinearLayout) layout.findViewWithTag(tag);
+        LinearLayout retValue = layout.findViewWithTag(tag);
         if (retValue != null)
         {
             retValue.setTag(null);

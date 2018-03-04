@@ -22,7 +22,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -44,12 +43,12 @@ public class DialogRadioGroup extends DialogBase
     public DialogRadioGroup(Activity context, int titleId, int numButtons, EventHandler eventHandler)
     {
         super(context, R.layout.dialog_radio_group, titleId);
-        ((LinearLayout) findViewById(R.id.dialog_button_panel)).setVisibility(View.GONE);
+        (findViewById(R.id.dialog_button_panel)).setVisibility(View.GONE);
 
         this.eventHandler = eventHandler;
 
         final LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        radioGroup = (RadioGroup) getRootLayout().findViewById(R.id.dialog_radio_group_view);
+        radioGroup = getRootLayout().findViewById(R.id.dialog_radio_group_view);
         for (int i = 0; i < numButtons; i++)
         {
             inflater.inflate(R.layout.dialog_radio_group_item, radioGroup);
@@ -76,7 +75,7 @@ public class DialogRadioGroup extends DialogBase
     @Override
     public void onClick(View v)
     {
-        final RadioButton selectedButton = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
+        final RadioButton selectedButton = findViewById(radioGroup.getCheckedRadioButtonId());
         if (v instanceof RadioButton && eventHandler != null && selectedButton != null)
         {
             eventHandler.onClick(selectedButton.getId() - radioGroup.getId() - 1);

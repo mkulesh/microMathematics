@@ -239,7 +239,7 @@ public class FormulaListView
             if (f != null && f instanceof FormulaBase)
             {
                 // check that the current formula depth has no conflicts with allowed formula depth
-                ((FormulaBase) f).checkFormulaDepth();
+                f.checkFormulaDepth();
             }
             if (termDeleted)
             {
@@ -369,7 +369,7 @@ public class FormulaListView
             }
             else if (v instanceof FormulaBase)
             {
-                if (((FormulaBase) v).getId() == id)
+                if (v.getId() == id)
                 {
                     return i;
                 }
@@ -634,7 +634,7 @@ public class FormulaListView
                 final View v = getChildAt(i);
                 if (v instanceof FormulaBase)
                 {
-                    if (((FormulaBase) v).getId() == id)
+                    if (v.getId() == id)
                     {
                         return i;
                     }

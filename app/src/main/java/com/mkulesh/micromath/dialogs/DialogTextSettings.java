@@ -41,11 +41,11 @@ public class DialogTextSettings extends DialogBase
         this.changeIf = changeIf;
         this.parameters = parameters;
 
-        rButtons[TextStyle.CHAPTER.ordinal()] = (RadioButton) findViewById(R.id.dialog_text_style_chapter);
-        rButtons[TextStyle.SECTION.ordinal()] = (RadioButton) findViewById(R.id.dialog_text_style_section);
-        rButtons[TextStyle.SUBSECTION.ordinal()] = (RadioButton) findViewById(R.id.dialog_text_style_subsection);
-        rButtons[TextStyle.SUBSUBSECTION.ordinal()] = (RadioButton) findViewById(R.id.dialog_text_style_subsubsection);
-        rButtons[TextStyle.TEXT_BODY.ordinal()] = (RadioButton) findViewById(R.id.dialog_text_style_text_body);
+        rButtons[TextStyle.CHAPTER.ordinal()] = findViewById(R.id.dialog_text_style_chapter);
+        rButtons[TextStyle.SECTION.ordinal()] = findViewById(R.id.dialog_text_style_section);
+        rButtons[TextStyle.SUBSECTION.ordinal()] = findViewById(R.id.dialog_text_style_subsection);
+        rButtons[TextStyle.SUBSUBSECTION.ordinal()] = findViewById(R.id.dialog_text_style_subsubsection);
+        rButtons[TextStyle.TEXT_BODY.ordinal()] = findViewById(R.id.dialog_text_style_text_body);
 
         for (int i = 0; i < rButtons.length; i++)
         {
@@ -53,7 +53,7 @@ public class DialogTextSettings extends DialogBase
             rButtons[i].setOnClickListener(this);
         }
 
-        cbNumbering = (CheckBox) findViewById(R.id.dialog_text_style_numbering);
+        cbNumbering = findViewById(R.id.dialog_text_style_numbering);
         cbNumbering.setChecked(parameters.numbering);
     }
 

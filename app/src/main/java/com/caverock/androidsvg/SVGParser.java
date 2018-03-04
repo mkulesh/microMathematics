@@ -736,9 +736,7 @@ public class SVGParser extends DefaultHandler2
             else
             {
                 // Add a new TextSequence to the child node list
-                ((SVG.SvgConditionalContainer) currentElement)
-                        .addChild(new SVG.TextSequence(new String(ch, start,
-                                length)));
+                currentElement.addChild(new SVG.TextSequence(new String(ch, start, length)));
             }
         }
 

@@ -39,10 +39,10 @@ public class DialogAxisSettings extends DialogBase
         super(context, R.layout.dialog_axis_settings, R.string.dialog_axis_settings_title);
         this.parameters = parameters;
 
-        xLabelsPicker = (HorizontalNumberPicker) findViewById(R.id.dialog_xlabels_number);
+        xLabelsPicker = findViewById(R.id.dialog_xlabels_number);
         xLabelsPicker.setValue(parameters.xLabelsNumber);
         xLabelsPicker.minValue = 0;
-        yLabelsPicker = (HorizontalNumberPicker) findViewById(R.id.dialog_ylabels_number);
+        yLabelsPicker = findViewById(R.id.dialog_ylabels_number);
         yLabelsPicker.setValue(parameters.yLabelsNumber);
         yLabelsPicker.minValue = 0;
 

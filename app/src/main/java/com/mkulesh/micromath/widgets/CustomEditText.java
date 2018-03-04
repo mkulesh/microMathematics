@@ -262,7 +262,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     @Override
     public int getBaseline()
     {
-        return (int) ((this.getMeasuredHeight() - getPaddingBottom() + getPaddingTop()) / 2);
+        return ((this.getMeasuredHeight() - getPaddingBottom() + getPaddingTop()) / 2);
     }
 
     /*********************************************************

@@ -22,7 +22,6 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
 import com.larswerkman.holocolorpicker.OpacityBar;
@@ -46,21 +45,21 @@ public class DialogPlotSettings extends DialogBase
         super(context, R.layout.dialog_plot_settings, R.string.dialog_plot_settings_title);
         this.parameters = parameters;
 
-        pickerWidth = (HorizontalNumberPicker) findViewById(R.id.dialog_picker_width);
+        pickerWidth = findViewById(R.id.dialog_picker_width);
         pickerWidth.setValue(parameters.width);
         pickerWidth.minValue = 0;
-        pickerHeight = (HorizontalNumberPicker) findViewById(R.id.dialog_picker_height);
+        pickerHeight = findViewById(R.id.dialog_picker_height);
         pickerHeight.setValue(parameters.height);
         pickerHeight.minValue = 0;
 
-        ((LinearLayout) findViewById(R.id.dialog_dimension_layout))
+        (findViewById(R.id.dialog_dimension_layout))
                 .setVisibility((changeIf.getDimension() == PlotPropertiesChangeIf.Dimension.TWO_D) ? View.VISIBLE
                         : View.GONE);
         if (changeIf.getDimension() == PlotPropertiesChangeIf.Dimension.TWO_D)
         {
-            rContour = (RadioButton) findViewById(R.id.dialog_button_contour);
+            rContour = findViewById(R.id.dialog_button_contour);
             rContour.setOnClickListener(this);
-            rSurface = (RadioButton) findViewById(R.id.dialog_button_surface);
+            rSurface = findViewById(R.id.dialog_button_surface);
             rSurface.setOnClickListener(this);
             switch (parameters.twoDPlotStyle)
             {
@@ -74,18 +73,18 @@ public class DialogPlotSettings extends DialogBase
                 break;
             }
 
-            cbMeshLines = (CheckBox) findViewById(R.id.dialog_checkbox_mesh_lines);
+            cbMeshLines = findViewById(R.id.dialog_checkbox_mesh_lines);
             cbMeshLines.setChecked(parameters.meshLines);
-            cbMeshFill = (CheckBox) findViewById(R.id.dialog_checkbox_mesh_fill);
+            cbMeshFill = findViewById(R.id.dialog_checkbox_mesh_fill);
             cbMeshFill.setChecked(parameters.meshFill);
-            pickerMeshOpacity = (OpacityBar) findViewById(R.id.dialog_colorpicker_mesh_opacity);
+            pickerMeshOpacity = findViewById(R.id.dialog_colorpicker_mesh_opacity);
             pickerMeshOpacity.setColor(Color.BLACK);
             pickerMeshOpacity.setOpacity(parameters.meshOpacity);
-            pickerRotation = (HorizontalNumberPicker) findViewById(R.id.dialog_picker_rotation);
+            pickerRotation = findViewById(R.id.dialog_picker_rotation);
             pickerRotation.setValue(parameters.rotation);
             pickerRotation.minValue = 0;
             pickerRotation.maxValue = 360;
-            pickerElevation = (HorizontalNumberPicker) findViewById(R.id.dialog_picker_elevation);
+            pickerElevation = findViewById(R.id.dialog_picker_elevation);
             pickerElevation.setValue(parameters.elevation);
             pickerElevation.minValue = 0;
             pickerElevation.maxValue = 360;
@@ -113,20 +112,20 @@ public class DialogPlotSettings extends DialogBase
         boolean isChanged = false;
         if (v.getId() == R.id.dialog_button_contour)
         {
-            final RadioButton rCrossed = (RadioButton) findViewById(R.id.dialog_button_axes_crossed);
+            final RadioButton rCrossed = findViewById(R.id.dialog_button_axes_crossed);
             rCrossed.setVisibility(View.VISIBLE);
-            ((LinearLayout) findViewById(R.id.dialog_surface_layout)).setVisibility(View.GONE);
+            findViewById(R.id.dialog_surface_layout).setVisibility(View.GONE);
             return;
         }
         else if (v.getId() == R.id.dialog_button_surface)
         {
-            final RadioButton rCrossed = (RadioButton) findViewById(R.id.dialog_button_axes_crossed);
+            final RadioButton rCrossed = findViewById(R.id.dialog_button_axes_crossed);
             if (rCrossed.isChecked())
             {
                 ((RadioButton) findViewById(R.id.dialog_button_axes_boxed)).setChecked(true);
             }
             rCrossed.setVisibility(View.GONE);
-            ((LinearLayout) findViewById(R.id.dialog_surface_layout)).setVisibility(View.VISIBLE);
+            findViewById(R.id.dialog_surface_layout).setVisibility(View.VISIBLE);
             return;
         }
         else if (v.getId() == R.id.dialog_button_ok && changeIf != null)

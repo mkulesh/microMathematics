@@ -553,7 +553,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             ensureFunctionsNumber(bundle.getInt(STATE_FUNCTIONS_NUMBER, 0));
             for (int i = 0; i < functions.size(); i++)
             {
-                LineProperties lp = (LineProperties) bundle.getParcelable(STATE_LINE_PARAMETERS + String.valueOf(i));
+                LineProperties lp = bundle.getParcelable(STATE_LINE_PARAMETERS + String.valueOf(i));
                 if (lp != null)
                 {
                     functions.get(i).getLineParameters().assign(lp);
@@ -638,16 +638,16 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         }
 
         // expandable layouts for x and y data
-        xDataLayout = (LinearLayout) layout.findViewById(R.id.plot_x_data_layout);
+        xDataLayout = layout.findViewById(R.id.plot_x_data_layout);
         if (xDataLayout instanceof SizeChangingLayout)
         {
             ((SizeChangingLayout) xDataLayout).setSizeChangedIf(this);
         }
-        cornerView = (CustomTextView) layout.findViewById(R.id.plot_corner_view_id);
-        yDataLayout = (LinearLayout) layout.findViewById(R.id.plot_y_data_layout);
+        cornerView = layout.findViewById(R.id.plot_corner_view_id);
+        yDataLayout = layout.findViewById(R.id.plot_y_data_layout);
 
         // create graph area
-        functionView = (FunctionPlotView) layout.findViewById(R.id.plot_function_view);
+        functionView = layout.findViewById(R.id.plot_function_view);
         functionView.prepare(getFormulaList().getActivity(), this);
 
         // create editable fields
@@ -912,7 +912,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         public void initializePrimaryY()
         {
             initializeY((LinearLayout) yDataLayout.findViewWithTag(Y_FUNCTION_TAG), -1);
-            settingsView = (CustomTextView) yDataLayout.findViewWithTag(Y_SETTINGS_TAG);
+            settingsView = yDataLayout.findViewWithTag(Y_SETTINGS_TAG);
             settingsView.prepare(CustomTextView.SymbolType.HOR_LINE, getFormulaList().getActivity(), PlotFunction.this);
         }
 

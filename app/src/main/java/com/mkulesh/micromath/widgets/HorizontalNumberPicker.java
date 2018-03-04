@@ -67,7 +67,7 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
         setOrientation(HORIZONTAL);
         final LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.horizontal_number_picker, this);
-        editText = ((EditText) findViewById(R.id.edit_text_value));
+        editText = findViewById(R.id.edit_text_value);
         if (attrs != null)
         {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.HorizontalNumberPicker, 0, 0);
@@ -80,17 +80,17 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
             a.recycle();
         }
 
-        bDecrease = (ImageButton) findViewById(R.id.button_decrease);
+        bDecrease = findViewById(R.id.button_decrease);
         bDecrease.setOnClickListener(this);
         bDecrease.setOnLongClickListener(this);
         updateViewColor(bDecrease);
 
-        bIncrease = (ImageButton) findViewById(R.id.button_increase);
+        bIncrease = findViewById(R.id.button_increase);
         bIncrease.setOnClickListener(this);
         bIncrease.setOnLongClickListener(this);
         updateViewColor(bIncrease);
 
-        description = (TextView) findViewById(R.id.label_text);
+        description = findViewById(R.id.label_text);
     }
 
     @Override

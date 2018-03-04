@@ -45,7 +45,7 @@ public class FileListView implements AdapterView.OnItemClickListener
     FileListView(Commander c)
     {
         commander = c;
-        listView = (ListView) commander.findViewById(R.id.fman_list_view);
+        listView = commander.findViewById(R.id.fman_list_view);
         listView.setItemsCanFocus(false);
         listView.setFocusableInTouchMode(true);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -57,9 +57,9 @@ public class FileListView implements AdapterView.OnItemClickListener
             listView.setSelector(outValue.resourceId);
         }
         commander.registerForContextMenu(listView);
-        statusPanel = (LinearLayout) commander.findViewById(R.id.fman_status_panel);
+        statusPanel = commander.findViewById(R.id.fman_status_panel);
         statusPanelDivider = commander.findViewById(R.id.fman_status_panel_divider);
-        statusBar = (TextView) commander.findViewById(R.id.fman_status_bar);
+        statusBar = commander.findViewById(R.id.fman_status_bar);
     }
 
     public final AdapterIf getListAdapter()

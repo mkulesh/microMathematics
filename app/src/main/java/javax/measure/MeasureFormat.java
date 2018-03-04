@@ -75,8 +75,7 @@ public abstract class MeasureFormat extends Format {
             Unit<?> unit = measure.getUnit();
             if (value instanceof Number) {
                 if (unit instanceof CompoundUnit)
-                    return formatCompound(((Number) value).doubleValue(),
-                            (CompoundUnit<?>) unit, toAppendTo, pos);
+                    return formatCompound(((Number) value).doubleValue(), unit, toAppendTo, pos);
                 _numberFormat.format(value, toAppendTo, pos);
             } else {
                 toAppendTo.append(value);

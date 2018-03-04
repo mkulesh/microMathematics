@@ -64,16 +64,16 @@ public class DialogBase extends Dialog implements OnClickListener
         getWindow().getDecorView().setBackgroundResource(outValue.resourceId);
         getWindow().getDecorView().setPadding(0, 0, 0, 0);
 
-        title = (TextView) findViewById(R.id.dialog_title_text);
+        title = findViewById(R.id.dialog_title_text);
         title.setText(titleId);
         prepareTextStyle(title);
 
-        final Button okButton = ((Button) findViewById(R.id.dialog_button_ok));
+        final Button okButton = findViewById(R.id.dialog_button_ok);
         okButton.setOnClickListener(this);
         prepareTextStyle(okButton);
         prepareButtonImage(okButton);
 
-        final Button cancelButton = ((Button) findViewById(R.id.dialog_button_cancel));
+        final Button cancelButton = findViewById(R.id.dialog_button_cancel);
         cancelButton.setOnClickListener(this);
         prepareTextStyle(cancelButton);
         prepareButtonImage(cancelButton);
@@ -155,7 +155,7 @@ public class DialogBase extends Dialog implements OnClickListener
 
     protected ColorPicker PrepareColorPicker(int color)
     {
-        ColorPicker cp = (ColorPicker) findViewById(R.id.dialog_colorpicker);
+        ColorPicker cp = findViewById(R.id.dialog_colorpicker);
         if (cp != null)
         {
             View v = findViewById(R.id.dialog_colorpicker_saturation_bar);

@@ -432,7 +432,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
                 if (s.getSingleData().baseType == BaseType.TERM)
                 {
                     // restore TERM
-                    final boolean restoreFocos = (pasteIntoEditText && ((CustomEditText) owner).isFocused());
+                    final boolean restoreFocos = (pasteIntoEditText && owner.isFocused());
                     if (pasteIntoEditText)
                     {
                         // we shall store the term state before operation
@@ -766,7 +766,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     {
         for (View v : elements)
         {
-            if ((View) v.getParent() == layout)
+            if (v.getParent() == layout)
             {
                 if (!out.contains(v))
                 {

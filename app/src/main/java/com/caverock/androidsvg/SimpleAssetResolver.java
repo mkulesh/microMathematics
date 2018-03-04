@@ -83,6 +83,7 @@ public class SimpleAssetResolver extends SVGExternalFileResolver
         }
         catch (Exception e)
         {
+            // Empty
         }
 
         // That failed, so try ".otf"

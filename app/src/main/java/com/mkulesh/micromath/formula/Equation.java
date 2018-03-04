@@ -378,17 +378,17 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         inflateRootLayout(R.layout.formula_equation, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         // create name term
         {
-            CustomEditText v = (CustomEditText) layout.findViewById(R.id.formula_equation_name);
+            CustomEditText v = layout.findViewById(R.id.formula_equation_name);
             leftTerm = addTerm(this, layout, v, this, false);
         }
         // create assign character
         {
-            CustomTextView v = (CustomTextView) layout.findViewById(R.id.formula_equation_assign);
+            CustomTextView v = layout.findViewById(R.id.formula_equation_assign);
             v.prepare(CustomTextView.SymbolType.TEXT, getFormulaList().getActivity(), this);
         }
         // create value term
         {
-            CustomEditText v = (CustomEditText) layout.findViewById(R.id.formula_equation_value);
+            CustomEditText v = layout.findViewById(R.id.formula_equation_value);
             rightTerm = addTerm(this, layout, v, this, false);
             rightTerm.bracketsType = TermField.BracketsType.NEVER;
         }

@@ -228,9 +228,9 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
     private void onCreate()
     {
         inflateRootLayout(R.layout.text_fragment, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        textField = (CustomEditText) layout.findViewById(R.id.text_fragment_text);
+        textField = layout.findViewById(R.id.text_fragment_text);
         addTerm(this, layout, textField, this, false);
-        numberField = (CustomTextView) layout.findViewById(R.id.text_fragment_number);
+        numberField = layout.findViewById(R.id.text_fragment_number);
         numberField.prepare(CustomTextView.SymbolType.TEXT, getFormulaList().getActivity(), this);
     }
 

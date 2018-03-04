@@ -54,31 +54,31 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
         this.activity = activity;
         this.parameters = parameters;
 
-        fileName = (EditText) findViewById(R.id.dialog_file_name);
+        fileName = findViewById(R.id.dialog_file_name);
         if (parameters.fileName != null)
         {
             fileName.setText(parameters.fileName);
         }
 
-        buttonSelectFile = (ImageButton) findViewById(R.id.dialog_button_select_file);
+        buttonSelectFile = findViewById(R.id.dialog_button_select_file);
         buttonSelectFile.setOnClickListener(this);
         buttonSelectFile.setOnLongClickListener(this);
         ViewUtils.setImageButtonColorAttr(activity, buttonSelectFile, R.attr.colorDialogContent);
 
-        cbEmbedded = (CheckBox) findViewById(R.id.dialog_checkbox_embedded);
+        cbEmbedded = findViewById(R.id.dialog_checkbox_embedded);
         cbEmbedded.setChecked(parameters.embedded);
 
-        pickerWidth = (HorizontalNumberPicker) findViewById(R.id.dialog_picker_width);
+        pickerWidth = findViewById(R.id.dialog_picker_width);
         pickerWidth.setValue(parameters.width);
         pickerWidth.minValue = 0;
-        pickerHeight = (HorizontalNumberPicker) findViewById(R.id.dialog_picker_height);
+        pickerHeight = findViewById(R.id.dialog_picker_height);
         pickerHeight.setValue(parameters.height);
         pickerHeight.minValue = 0;
 
-        rOriginalSize = (RadioButton) findViewById(R.id.dialog_button_original_size);
+        rOriginalSize = findViewById(R.id.dialog_button_original_size);
         rOriginalSize.setOnClickListener(this);
         rOriginalSize.setChecked(parameters.originalSize);
-        rCustomSize = (RadioButton) findViewById(R.id.dialog_button_custom_size);
+        rCustomSize = findViewById(R.id.dialog_button_custom_size);
         rCustomSize.setOnClickListener(this);
         rCustomSize.setChecked(!parameters.originalSize);
         onClick(parameters.originalSize ? rOriginalSize : rCustomSize);

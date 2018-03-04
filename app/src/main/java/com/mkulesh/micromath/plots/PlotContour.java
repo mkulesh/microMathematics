@@ -474,9 +474,9 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
     {
         PlotProperties currPlotParameters = null;
         AxisProperties currAxisParameters = null;
-        final PlotView contourView = (PlotView) layout.findViewById(R.id.plot_contour_view);
+        final PlotView contourView = layout.findViewById(R.id.plot_contour_view);
         contourView.getPlotParameters().twoDPlotStyle = TwoDPlotStyle.CONTOUR;
-        final PlotView surfaceView = (PlotView) layout.findViewById(R.id.plot_surface_view);
+        final PlotView surfaceView = layout.findViewById(R.id.plot_surface_view);
         surfaceView.getPlotParameters().twoDPlotStyle = TwoDPlotStyle.SURFACE;
         switch (style)
         {
@@ -522,21 +522,21 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
             cl.setBaselineAligned(false);
             cl.setBaselineAlignedChildIndex(1);
         }
-        functionViewLayout = (LinearLayout) layout.findViewById(R.id.plot_function_view_layout);
+        functionViewLayout = layout.findViewById(R.id.plot_function_view_layout);
 
-        xDataLayout = (LinearLayout) layout.findViewById(R.id.plot_x_data_layout);
+        xDataLayout = layout.findViewById(R.id.plot_x_data_layout);
         if (xDataLayout instanceof SizeChangingLayout)
         {
             ((SizeChangingLayout) xDataLayout).setSizeChangedIf(this);
         }
-        cornerView1 = (CustomTextView) layout.findViewById(R.id.plot_corner_view1_id);
-        cornerView2 = (CustomTextView) layout.findViewById(R.id.plot_corner_view2_id);
+        cornerView1 = layout.findViewById(R.id.plot_corner_view1_id);
+        cornerView2 = layout.findViewById(R.id.plot_corner_view2_id);
 
         // create graph area
-        final PlotView contourView = (PlotView) layout.findViewById(R.id.plot_contour_view);
+        final PlotView contourView = layout.findViewById(R.id.plot_contour_view);
         contourView.setColorMapView((ColorMapView) layout.findViewById(R.id.plot_colormap_view));
         contourView.prepare(getFormulaList().getActivity(), this);
-        final PlotView surfaceView = (PlotView) layout.findViewById(R.id.plot_surface_view);
+        final PlotView surfaceView = layout.findViewById(R.id.plot_surface_view);
         surfaceView.setColorMapView((ColorMapView) layout.findViewById(R.id.plot_colormap_view));
         surfaceView.prepare(getFormulaList().getActivity(), this);
         functionView = contourView;

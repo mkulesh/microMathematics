@@ -42,24 +42,24 @@ public class DialogColorMapSettings extends DialogBase
         super(context, R.layout.dialog_colormap_settings, R.string.dialog_colormap_settings_title);
         this.parameters = parameters;
 
-        zLabelsNumber = (HorizontalNumberPicker) findViewById(R.id.dialog_zlabels_number);
+        zLabelsNumber = findViewById(R.id.dialog_zlabels_number);
         zLabelsNumber.setValue(parameters.zLabelsNumber);
         zLabelsNumber.minValue = 0;
 
-        rButtons[ColorMap.COOL.ordinal()] = (RadioButton) findViewById(R.id.dialog_rbutton_cool);
-        rButtons[ColorMap.FIRE.ordinal()] = (RadioButton) findViewById(R.id.dialog_rbutton_fire);
-        rButtons[ColorMap.COLDHOT.ordinal()] = (RadioButton) findViewById(R.id.dialog_rbutton_coldhot);
-        rButtons[ColorMap.RAINBOW.ordinal()] = (RadioButton) findViewById(R.id.dialog_rbutton_rainbow);
-        rButtons[ColorMap.EARTHSKY.ordinal()] = (RadioButton) findViewById(R.id.dialog_rbutton_earthsky);
-        rButtons[ColorMap.GREENBLUE.ordinal()] = (RadioButton) findViewById(R.id.dialog_rbutton_greenblue);
-        rButtons[ColorMap.GRAYSCALE.ordinal()] = (RadioButton) findViewById(R.id.dialog_rbutton_grayscale);
-        cmBars[ColorMap.COOL.ordinal()] = (ColorMapView) findViewById(R.id.dialog_cmbar_cool);
-        cmBars[ColorMap.FIRE.ordinal()] = (ColorMapView) findViewById(R.id.dialog_cmbar_fire);
-        cmBars[ColorMap.COLDHOT.ordinal()] = (ColorMapView) findViewById(R.id.dialog_cmbar_coldhot);
-        cmBars[ColorMap.RAINBOW.ordinal()] = (ColorMapView) findViewById(R.id.dialog_cmbar_rainbow);
-        cmBars[ColorMap.EARTHSKY.ordinal()] = (ColorMapView) findViewById(R.id.dialog_cmbar_earthsky);
-        cmBars[ColorMap.GREENBLUE.ordinal()] = (ColorMapView) findViewById(R.id.dialog_cmbar_greenblue);
-        cmBars[ColorMap.GRAYSCALE.ordinal()] = (ColorMapView) findViewById(R.id.dialog_cmbar_grayscale);
+        rButtons[ColorMap.COOL.ordinal()] = findViewById(R.id.dialog_rbutton_cool);
+        rButtons[ColorMap.FIRE.ordinal()] = findViewById(R.id.dialog_rbutton_fire);
+        rButtons[ColorMap.COLDHOT.ordinal()] = findViewById(R.id.dialog_rbutton_coldhot);
+        rButtons[ColorMap.RAINBOW.ordinal()] = findViewById(R.id.dialog_rbutton_rainbow);
+        rButtons[ColorMap.EARTHSKY.ordinal()] = findViewById(R.id.dialog_rbutton_earthsky);
+        rButtons[ColorMap.GREENBLUE.ordinal()] = findViewById(R.id.dialog_rbutton_greenblue);
+        rButtons[ColorMap.GRAYSCALE.ordinal()] = findViewById(R.id.dialog_rbutton_grayscale);
+        cmBars[ColorMap.COOL.ordinal()] = findViewById(R.id.dialog_cmbar_cool);
+        cmBars[ColorMap.FIRE.ordinal()] = findViewById(R.id.dialog_cmbar_fire);
+        cmBars[ColorMap.COLDHOT.ordinal()] = findViewById(R.id.dialog_cmbar_coldhot);
+        cmBars[ColorMap.RAINBOW.ordinal()] = findViewById(R.id.dialog_cmbar_rainbow);
+        cmBars[ColorMap.EARTHSKY.ordinal()] = findViewById(R.id.dialog_cmbar_earthsky);
+        cmBars[ColorMap.GREENBLUE.ordinal()] = findViewById(R.id.dialog_cmbar_greenblue);
+        cmBars[ColorMap.GRAYSCALE.ordinal()] = findViewById(R.id.dialog_cmbar_grayscale);
         for (int i = 0; i < rButtons.length; i++)
         {
             rButtons[i].setChecked(ColorMap.values()[i] == parameters.colorMap);

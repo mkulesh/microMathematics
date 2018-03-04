@@ -96,8 +96,8 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
 
         setHasOptionsMenu(true);
 
-        primaryButtonsSet = (FloatingButtonsSet) rootView.findViewById(R.id.main_flb_set_primary);
-        secondaryButtonsSet = (FloatingButtonsSet) rootView.findViewById(R.id.main_flb_set_secondary);
+        primaryButtonsSet = rootView.findViewById(R.id.main_flb_set_primary);
+        secondaryButtonsSet = rootView.findViewById(R.id.main_flb_set_secondary);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(activity);
     }
@@ -318,7 +318,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         }
 
         // update progress bar
-        final ProgressBar progressBar = (ProgressBar) activity.findViewById(R.id.main_progress_bar);
+        final ProgressBar progressBar = activity.findViewById(R.id.main_progress_bar);
         if (progressBar != null)
         {
             progressBar.setVisibility(inOperation ? View.VISIBLE : View.GONE);

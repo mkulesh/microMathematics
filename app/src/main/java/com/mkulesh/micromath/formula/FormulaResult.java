@@ -520,7 +520,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
             constantResultField = addTerm(this, layout, v, this, true);
             constantResultField.bracketsType = TermField.BracketsType.NEVER;
             constantResultField.isWritable = false;
-            arrayResultMatrix = (ResultMatrixLayout) layout.findViewById(R.id.formula_result_table);
+            arrayResultMatrix = layout.findViewById(R.id.formula_result_table);
         }
         // brackets
         {
