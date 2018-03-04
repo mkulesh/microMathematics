@@ -54,11 +54,11 @@ For more screenshots, see directory images/screenshots.
 
 * [Press Release: Introducing microMathematics: the First Spreadsheet Oriented Mathematical Calculator for Android](http://www.androidappsreview.com/2014/09/29/micro-mathematics-press-release/)
 * [Advanced calculator to solve the most complex mathematical equations smart phone](http://mn1professional.blogspot.de/2015/12/advanced-calculator-to-solve-most.html)
-* [microMathematics Plus: Umfangreiche Rechner-App für Studenten & Schüler (in German)](http://beste-apps.chip.de/android/app/micro-mathematics-plus-umfangreiche-rechner-app-fuer-studenten-schueler,com.mkulesh.micromath.plus/)
 * [«Микро-математика»: формулы — это просто (in Russian)](http://4pda.ru/2015/09/01/241701/)
 * [microMathematics — отличный научный калькулятор и графопостроитель на Android (in Russian)](https://lifehacker.ru/2015/10/21/micro-mathematics/)
 * [MathCAD для Android..? (In Russian)](http://svchushki.blogspot.de/2017/04/mathcad-android.html)
 * [Micro Mathematics : Android Math Book Demo (Video)](https://www.youtube.com/watch?v=eUzF1gXd6rc&feature=player_embedded)
+* [How to Use microMathematics (Video)](https://utopian.io/utopian-io/@azwarrangkuti/how-to-use-micromathematics-android-app)
 
 ## Languages
 
