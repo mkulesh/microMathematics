@@ -23,6 +23,6 @@ public interface Frequency extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<Frequency> UNIT = SI.HERTZ;
+    Unit<Frequency> UNIT = SI.HERTZ;
 
 }

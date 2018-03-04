@@ -22,6 +22,6 @@ public interface Illuminance extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<Illuminance> UNIT = SI.LUX;
+    Unit<Illuminance> UNIT = SI.LUX;
 
 }

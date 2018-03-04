@@ -22,6 +22,6 @@ public interface Duration extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<Duration> UNIT = SI.SECOND;
+    Unit<Duration> UNIT = SI.SECOND;
 
 }

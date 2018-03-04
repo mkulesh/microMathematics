@@ -22,6 +22,6 @@ public interface Power extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<Power> UNIT = SI.WATT;
+    Unit<Power> UNIT = SI.WATT;
 
 }

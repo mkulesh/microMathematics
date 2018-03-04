@@ -24,6 +24,6 @@ public interface Mass extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<Mass> UNIT = SI.KILOGRAM;
+    Unit<Mass> UNIT = SI.KILOGRAM;
 
 }

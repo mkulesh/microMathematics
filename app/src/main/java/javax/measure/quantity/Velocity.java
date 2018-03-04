@@ -22,6 +22,6 @@ public interface Velocity extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<Velocity> UNIT = SI.METRES_PER_SECOND;
+    Unit<Velocity> UNIT = SI.METRES_PER_SECOND;
 
 }

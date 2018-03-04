@@ -22,6 +22,6 @@ public interface Energy extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<Energy> UNIT = SI.JOULE;
+    Unit<Energy> UNIT = SI.JOULE;
 
 }

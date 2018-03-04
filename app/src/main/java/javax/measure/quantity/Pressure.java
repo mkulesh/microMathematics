@@ -22,6 +22,6 @@ public interface Pressure extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<Pressure> UNIT = SI.PASCAL;
+    Unit<Pressure> UNIT = SI.PASCAL;
 
 }

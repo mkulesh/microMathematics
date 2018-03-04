@@ -23,6 +23,6 @@ public interface Force extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<Force> UNIT = SI.NEWTON;
+    Unit<Force> UNIT = SI.NEWTON;
 
 }

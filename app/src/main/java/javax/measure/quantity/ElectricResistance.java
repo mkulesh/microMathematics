@@ -22,6 +22,6 @@ public interface ElectricResistance extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<ElectricResistance> UNIT = SI.OHM;
+    Unit<ElectricResistance> UNIT = SI.OHM;
 
 }

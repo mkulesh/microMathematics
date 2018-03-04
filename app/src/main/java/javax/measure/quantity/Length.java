@@ -23,6 +23,6 @@ public interface Length extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<Length> UNIT = SI.METRE;
+    Unit<Length> UNIT = SI.METRE;
 
 }

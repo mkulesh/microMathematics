@@ -22,6 +22,6 @@ public interface ElectricInductance extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<ElectricInductance> UNIT = SI.HENRY;
+    Unit<ElectricInductance> UNIT = SI.HENRY;
 
 }

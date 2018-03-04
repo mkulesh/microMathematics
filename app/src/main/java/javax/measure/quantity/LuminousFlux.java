@@ -22,6 +22,6 @@ public interface LuminousFlux extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<LuminousFlux> UNIT = SI.LUMEN;
+    Unit<LuminousFlux> UNIT = SI.LUMEN;
 
 }

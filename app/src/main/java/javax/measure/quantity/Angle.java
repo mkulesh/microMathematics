@@ -23,6 +23,6 @@ public interface Angle extends Dimensionless {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<Angle> UNIT = SI.RADIAN;
+    Unit<Angle> UNIT = SI.RADIAN;
 
 }

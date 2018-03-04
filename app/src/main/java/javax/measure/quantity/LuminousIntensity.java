@@ -23,6 +23,6 @@ public interface LuminousIntensity extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<LuminousIntensity> UNIT = SI.CANDELA;
+    Unit<LuminousIntensity> UNIT = SI.CANDELA;
 
 }

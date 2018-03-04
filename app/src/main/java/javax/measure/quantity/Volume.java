@@ -23,6 +23,6 @@ public interface Volume extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<Volume> UNIT = SI.CUBIC_METRE;
+    Unit<Volume> UNIT = SI.CUBIC_METRE;
 
 }

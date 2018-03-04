@@ -23,6 +23,6 @@ public interface ElectricCurrent extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<ElectricCurrent> UNIT = SI.AMPERE;
+    Unit<ElectricCurrent> UNIT = SI.AMPERE;
 
 }

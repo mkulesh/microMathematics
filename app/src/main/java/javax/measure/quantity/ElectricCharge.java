@@ -22,6 +22,6 @@ public interface ElectricCharge extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<ElectricCharge> UNIT = SI.COULOMB;
+    Unit<ElectricCharge> UNIT = SI.COULOMB;
 
 }

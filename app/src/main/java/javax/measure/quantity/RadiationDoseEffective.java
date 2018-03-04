@@ -23,6 +23,6 @@ public interface RadiationDoseEffective extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<RadiationDoseEffective> UNIT = SI.SIEVERT;
+    Unit<RadiationDoseEffective> UNIT = SI.SIEVERT;
 
 }

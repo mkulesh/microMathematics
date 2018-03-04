@@ -25,7 +25,7 @@ public interface KinematicViscosity extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<KinematicViscosity> UNIT 
+    Unit<KinematicViscosity> UNIT
          = new ProductUnit<KinematicViscosity>(SI.METRE.pow(2).divide(SI.SECOND));
 
 }

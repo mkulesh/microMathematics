@@ -26,6 +26,6 @@ public interface MassFlowRate extends Quantity {
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
     @SuppressWarnings("unchecked")
-    public final static Unit<MassFlowRate> UNIT 
+    Unit<MassFlowRate> UNIT
        = (Unit<MassFlowRate>) SI.KILOGRAM.divide(SI.SECOND);
 }

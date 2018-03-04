@@ -22,6 +22,6 @@ public interface ElectricConductance extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<ElectricConductance> UNIT = SI.SIEMENS;
+    Unit<ElectricConductance> UNIT = SI.SIEMENS;
 
 }

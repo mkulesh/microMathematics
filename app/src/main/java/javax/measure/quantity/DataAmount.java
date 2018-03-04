@@ -22,6 +22,6 @@ public interface DataAmount extends Dimensionless {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<DataAmount> UNIT = SI.BIT;
+    Unit<DataAmount> UNIT = SI.BIT;
 
 }

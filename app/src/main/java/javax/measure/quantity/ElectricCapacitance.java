@@ -22,6 +22,6 @@ public interface ElectricCapacitance extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<ElectricCapacitance> UNIT = SI.FARAD;
+    Unit<ElectricCapacitance> UNIT = SI.FARAD;
 
 }

@@ -216,7 +216,7 @@ public final class Dimension implements Serializable {
         /**
          * Holds the standard model (default).
          */
-        public Model STANDARD = new Model() {
+        Model STANDARD = new Model() {
 
             public Dimension getDimension(BaseUnit<?> unit) {
                 if (unit.equals(SI.METRE)) return Dimension.LENGTH;

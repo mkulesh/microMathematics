@@ -22,6 +22,6 @@ public interface RadioactiveActivity extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<RadioactiveActivity> UNIT = SI.BECQUEREL;
+    Unit<RadioactiveActivity> UNIT = SI.BECQUEREL;
 
 }

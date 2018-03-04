@@ -22,6 +22,6 @@ public interface MagneticFlux extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<MagneticFlux> UNIT = SI.WEBER;
+    Unit<MagneticFlux> UNIT = SI.WEBER;
 
 }

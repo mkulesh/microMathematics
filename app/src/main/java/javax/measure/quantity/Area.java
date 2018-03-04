@@ -23,6 +23,6 @@ public interface Area extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    public final static Unit<Area> UNIT = SI.SQUARE_METRE;
+    Unit<Area> UNIT = SI.SQUARE_METRE;
 
 }
