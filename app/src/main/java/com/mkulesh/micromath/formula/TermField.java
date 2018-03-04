@@ -758,13 +758,15 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     {
         // flag whether an error is detected: for a formula that will be not calculated,
         // errors will be not shown
-        final boolean errorDetected = disableCalculation() ? false : (errorId != NO_ERROR_ID || errorMsg != null);
+        final boolean parentTermError = !disableCalculation() && (errorId != NO_ERROR_ID || errorMsg != null);
+        final boolean thisTermError = !disableCalculation() && contentType == ContentType.INVALID
+                && errorNotification == ErrorNotification.COLOR;
 
         // layout border
         if (layout instanceof CustomLayout)
         {
             ((CustomLayout) layout).setContentValid(true);
-            if (isTerm() && errorNotification == ErrorNotification.LAYOUT_BORDER && errorDetected)
+            if (isTerm() && errorNotification == ErrorNotification.LAYOUT_BORDER && parentTermError)
             {
                 ((CustomLayout) layout).setContentValid(false);
                 return;
@@ -776,7 +778,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         {
             text.setBackgroundAttr(R.drawable.formula_term_background, R.attr.colorFormulaSelected);
         }
-        else if (errorDetected)
+        else if (parentTermError || thisTermError)
         {
             text.setBackgroundAttr(R.drawable.formula_term_border, R.attr.colorFormulaInvalid);
         }
@@ -794,12 +796,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         // text color
         {
             int resId = R.attr.colorFormulaNormal;
-            if (!disableCalculation() && contentType == ContentType.INVALID
-                    && errorNotification == ErrorNotification.COLOR)
-            {
-                resId = R.attr.colorFormulaInvalid;
-            }
-            else if (text.isCalculatedValue() || (!isEmpty() && isEmptyOrAutoContent()))
+            if (text.isCalculatedValue() || (!isEmpty() && isEmptyOrAutoContent()))
             {
                 resId = R.attr.colorFormulaCalculatedValue;
             }
