@@ -30,6 +30,7 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Shader.TileMode;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.util.Base64;
 import android.util.Log;
 
@@ -711,14 +712,22 @@ public class SVGAndroidRenderer
 
     // ==============================================================================
 
+    @SuppressWarnings("deprecation")
     private boolean pushLayer()
     {
         if (!requiresCompositing())
             return false;
 
         // Custom version of statePush() that also saves the layer
-        canvas.saveLayerAlpha(null, clamp255(state.style.opacity),
-                Canvas.HAS_ALPHA_LAYER_SAVE_FLAG);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            canvas.saveLayerAlpha(null, clamp255(state.style.opacity));
+        }
+        else
+        {
+            canvas.saveLayerAlpha(null, clamp255(state.style.opacity),
+                    Canvas.HAS_ALPHA_LAYER_SAVE_FLAG);
+        }
 
         // Save style state
         stateStack.push(state);
@@ -3912,7 +3921,7 @@ public class SVGAndroidRenderer
     private void clipStatePush()
     {
         // Save matrix and clip
-        canvas.save(Canvas.MATRIX_SAVE_FLAG);
+        canvas.save();
         // Save style state
         stateStack.push(state);
         state = (RendererState) state.clone();
