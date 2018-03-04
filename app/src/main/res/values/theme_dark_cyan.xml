@@ -10,6 +10,8 @@
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColorSecondary">@color/material_grey_300</item>
         <item name="colorMicroMathIcon">@android:color/white</item>
+        <item name="colorMicroMathFloatingIcon">?attr/colorMicroMathIcon</item>
+        <item name="drawableAppHeader">@drawable/app_header_dark_cyan</item>
         <!-- Dialog style -->
         <item name="drawableDialogWindow">@drawable/dialog_window_dark</item>
         <item name="drawableDialogPanel">@drawable/dialog_panel_dark</item>

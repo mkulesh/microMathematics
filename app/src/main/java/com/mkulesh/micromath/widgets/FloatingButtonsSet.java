@@ -76,7 +76,7 @@ public class FloatingButtonsSet extends LinearLayout implements OnLongClickListe
                 if (v instanceof FloatingActionButton)
                 {
                     CompatUtils.setDrawableColorAttr(getContext(),
-                            ((FloatingActionButton) v).getDrawable(), R.attr.colorMicroMathIcon);
+                            ((FloatingActionButton) v).getDrawable(), R.attr.colorMicroMathFloatingIcon);
                 }
             }
             else

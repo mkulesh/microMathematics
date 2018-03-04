@@ -5,6 +5,8 @@
     <attr name="themeMicroMathPopup" format="reference" />
     <attr name="colorMicroMathNavigator" format="color" />
     <attr name="colorMicroMathIcon" format="color" />
+    <attr name="colorMicroMathFloatingIcon" format="color" />
+    <attr name="drawableAppHeader" format="reference" />
     <attr name="drawableDialogWindow" format="reference" />
     <attr name="drawableDialogPanel" format="reference" />
     <attr name="colorDialogTitle" format="color" />
