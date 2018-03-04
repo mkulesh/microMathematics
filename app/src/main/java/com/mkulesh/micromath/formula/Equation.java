@@ -41,7 +41,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
 {
     public static final int ARG_NUMBER_ANY = -1;
     public static final int ARG_NUMBER_CONSTANT = 0;
-    public static final int ARG_NUMBER_INTERVAL = 1;
+    public static final int ARG_NUMBER_INTERVAL = Integer.MAX_VALUE - 1;
     public static final int ARG_NUMBER_ARRAY = Integer.MAX_VALUE;
 
     private TermField leftTerm = null;
@@ -158,8 +158,14 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
                 }
                 leftTerm.setError(errorMsg, ErrorNotification.LAYOUT_BORDER, null);
             }
-            if (!isValid || isInterval())
+            if (!isValid)
             {
+                break;
+            }
+            // check that the equation is an interval
+            if (isInterval())
+            {
+                arrayResult = new EquationArrayResult(this, null);
                 break;
             }
             // check that the equation result can be cached
@@ -308,9 +314,16 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         {
             return;
         }
-        fileOperation(true);
-        arrayResult.calculate(thread, getArguments());
-        fileOperation(false);
+        if (isInterval())
+        {
+            ((Intervals) rightTerm.getTerm()).getInterval(arrayResult, thread);
+        }
+        else
+        {
+            fileOperation(true);
+            arrayResult.calculate(thread, getArguments());
+            fileOperation(false);
+        }
     }
 
     public void fileOperation(boolean status)
@@ -338,7 +351,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     @Override
     public boolean enableDetails()
     {
-        return arrayResult != null && arrayResult.getDimNumber() == 1 && arrayResult.getRawValues() != null;
+        return arrayResult != null && arrayResult.isArray1D();
     }
 
     @Override
@@ -403,8 +416,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
      */
     public boolean isInterval()
     {
-        FormulaTerm t = rightTerm.getTerm();
-        return (t != null && t instanceof Intervals);
+        return (rightTerm.getTerm() != null && rightTerm.getTerm() instanceof Intervals);
     }
 
     /**
@@ -423,12 +435,11 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     /**
      * Procedure returns declared interval if this root formula represents an interval
      */
-    public ArrayList<CalculatedValue> getInterval(CalculaterTask thread) throws CancelException
+    public final CalculatedValue[] getInterval() throws CancelException
     {
-        FormulaTerm t = rightTerm.getTerm();
-        if (t != null && t instanceof Intervals)
+        if (isInterval() && arrayResult != null && arrayResult.isArray1D())
         {
-            return ((Intervals) t).getInterval(thread);
+            return arrayResult.getRawValues();
         }
         return null;
     }
@@ -436,22 +447,22 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     /**
      * Procedure fills the given value array and array with minimum and maximum values from this interval
      */
-    public double[] fillBoundedInterval(CalculaterTask thread, double[] targetValues, double[] minMaxValues)
+    public double[] fillBoundedInterval(double[] targetValues, double[] minMaxValues)
             throws CancelException
     {
         if (!isInterval() || minMaxValues == null || minMaxValues.length != 2)
         {
             return null;
         }
-        final ArrayList<CalculatedValue> arr = getInterval(thread);
-        if (arr == null || arr.isEmpty())
+        final CalculatedValue[] arr = getInterval();
+        if (arr == null)
         {
             return null;
         }
         ArrayList<Double> newArr = new ArrayList<Double>();
-        for (int i = 0; i < arr.size(); i++)
+        for (int i = 0; i < arr.length; i++)
         {
-            final double v = arr.get(i).getReal();
+            final double v = arr[i].getReal();
             if (minMaxValues[1] != Double.POSITIVE_INFINITY && v > minMaxValues[1])
             {
                 break;

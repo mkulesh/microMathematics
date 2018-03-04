@@ -377,10 +377,13 @@ public class UserFunctions extends FunctionBase
             isValid = super.isContentValid(type);
             if (isValid && getFunctionType().isLink())
             {
-                FormulaBase f = getFormulaRoot().getFormulaList().getFormula(functionLinkName, terms.size(),
-                        getFormulaRoot().getId(), false);
+                Equation f = getFormulaRoot().searchLinkedEquation(functionLinkName, terms.size(), false);
+                if (f == null)
+                {
+                    f = getFormulaRoot().searchLinkedEquation(functionLinkName, Equation.ARG_NUMBER_INTERVAL, false);
+                }
                 ErrorCode errorCode = ErrorCode.NO_ERROR;
-                if (f == null || !(f instanceof Equation))
+                if (f == null)
                 {
                     errorCode = (termType == FunctionType.FUNCTION_LINK) ? ErrorCode.UNKNOWN_FUNCTION
                             : ErrorCode.UNKNOWN_ARRAY;
@@ -391,20 +394,19 @@ public class UserFunctions extends FunctionBase
                     errorCode = ErrorCode.RECURSIVE_CALL;
                     isValid = false;
                 }
-                else if (termType == FunctionType.FUNCTION_LINK && ((Equation) f).isArray())
+                else if (termType == FunctionType.FUNCTION_LINK && f.isArray())
                 {
                     errorCode = ErrorCode.NOT_A_FUNCTION;
                     isValid = false;
                 }
-                else if (termType == FunctionType.FUNCTION_INDEX && !((Equation) f).isArray()
-                        && !((Equation) f).isInterval())
+                else if (termType == FunctionType.FUNCTION_INDEX && !f.isArray() && !f.isInterval())
                 {
                     errorCode = ErrorCode.NOT_AN_ARRAY;
                     isValid = false;
                 }
                 else
                 {
-                    linkedFunction = (Equation) f;
+                    linkedFunction = f;
                 }
                 setErrorCode(errorCode, functionLinkName + "[" + terms.size() + "]");
                 if (getFormulaRoot() instanceof LinkHolder && linkedFunction != null)

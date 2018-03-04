@@ -1042,22 +1042,22 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             }
             else
             {
-                final ArrayList<CalculatedValue> par = linkedInterval.getInterval(thread);
+                final CalculatedValue[] par = linkedInterval.getInterval();
                 if (par == null)
                 {
                     return;
                 }
-                if (xValues.length != par.size())
+                if (xValues.length != par.length)
                 {
-                    xValues = new double[par.size()];
+                    xValues = new double[par.length];
                 }
-                if (yValues.length != par.size())
+                if (yValues.length != par.length)
                 {
-                    yValues = new double[par.size()];
+                    yValues = new double[par.length];
                 }
-                for (int i = 0; i < par.size(); i++)
+                for (int i = 0; i < par.length; i++)
                 {
-                    argValues[0].assign(par.get(i));
+                    argValues[0].assign(par[i]);
                     linkedInterval.setArgumentValues(argValues);
                     calcVal.processRealTerm(thread, x);
                     final double xVal = calcVal.getReal();

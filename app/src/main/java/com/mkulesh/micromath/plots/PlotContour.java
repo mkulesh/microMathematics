@@ -680,7 +680,7 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
                 calcVal.processRealTerm(thread, xMax);
                 minMaxValues[FunctionIf.X][FunctionIf.MAX] = calcVal.getReal();
             }
-            xValues = linkedIntervals.get(0).fillBoundedInterval(thread, xValues, minMaxValues[FunctionIf.X]);
+            xValues = linkedIntervals.get(0).fillBoundedInterval(xValues, minMaxValues[FunctionIf.X]);
             if (xValues == null)
             {
                 return;
@@ -698,7 +698,7 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
                 calcVal.processRealTerm(thread, yMax);
                 minMaxValues[FunctionIf.Y][FunctionIf.MAX] = calcVal.getReal();
             }
-            yValues = linkedIntervals.get(1).fillBoundedInterval(thread, yValues, minMaxValues[FunctionIf.Y]);
+            yValues = linkedIntervals.get(1).fillBoundedInterval(yValues, minMaxValues[FunctionIf.Y]);
             if (yValues == null)
             {
                 return;

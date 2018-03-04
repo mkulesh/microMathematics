@@ -30,6 +30,7 @@ import com.mkulesh.micromath.formula.Palette;
 import com.mkulesh.micromath.formula.PaletteButton;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
+import com.mkulesh.micromath.math.EquationArrayResult;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
@@ -37,7 +38,6 @@ import com.mkulesh.micromath.widgets.CustomTextView;
 import org.apache.commons.math3.util.FastMath;
 import org.apache.commons.math3.util.Pair;
 
-import java.util.ArrayList;
 import java.util.Locale;
 
 import javax.measure.unit.Unit;
@@ -302,12 +302,12 @@ public class Intervals extends FormulaTerm
     /**
      * Procedure returns declared interval if this root formula represents an interval
      */
-    public ArrayList<CalculatedValue> getInterval(CalculaterTask thread) throws CancelException
+    public void getInterval(EquationArrayResult arrayResult, CalculaterTask thread) throws CancelException
     {
         Pair<Unit, Integer> units = compareUnits(new TermField[]{ minValueTerm, nextValueTerm, maxValueTerm });
         if (units.getFirst() != null && units.getSecond() != 3)
         {
-            return null;
+            return;
         }
 
         minValue.processRealTerm(thread, minValueTerm);
@@ -315,36 +315,36 @@ public class Intervals extends FormulaTerm
         maxValue.processRealTerm(thread, maxValueTerm);
         if (minValue.isNaN() || nextValue.isNaN() || maxValue.isNaN())
         {
-            return null;
+            return;
         }
         final CalculatedValue calcDelta = getDelta(minValue.getReal(), nextValue.getReal(), maxValue.getReal());
         if (calcDelta.isNaN())
         {
-            return null;
+            return;
         }
         final int N = getNumberOfPoints(minValue.getReal(), maxValue.getReal(), calcDelta.getReal());
-        ArrayList<CalculatedValue> retValue = new ArrayList<>(N);
+        arrayResult.resize1D(N + 1);
         for (int idx = 0; idx <= N; idx++)
         {
             if (thread != null)
             {
                 thread.checkCancelation();
             }
+            final CalculatedValue cv = arrayResult.getValue1D(idx);
             if (idx == 0)
             {
-                retValue.add(new CalculatedValue(minValue.getReal(), units.getFirst()));
+                cv.setValue(minValue.getReal(), units.getFirst());
             }
             else if (idx == N)
             {
-                retValue.add(new CalculatedValue(maxValue.getReal(), units.getFirst()));
+                cv.setValue(maxValue.getReal(), units.getFirst());
             }
             else
             {
                 final double val = minValue.getReal() + calcDelta.getReal() * (double) idx;
-                retValue.add(new CalculatedValue(val, units.getFirst()));
+                cv.setValue(val, units.getFirst());
             }
         }
-        return retValue;
     }
 
     /**

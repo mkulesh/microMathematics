@@ -1157,7 +1157,14 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
 
     public Equation searchLinkedEquation(String name, int argNumber)
     {
-        final FormulaBase f = getFormulaList().getFormula(name, argNumber, getId(), true);
+        return searchLinkedEquation(name, argNumber, true);
+    }
+
+    public Equation searchLinkedEquation(String name, int argNumber, boolean excludeRoot)
+    {
+        final boolean redefineAllowed = getFormulaList().getDocumentSettings().redefineAllowed;
+        final FormulaBase f = getFormulaList().getFormulaListView().getFormula(
+                name, argNumber, getId(), excludeRoot, !redefineAllowed);
         if (f == null)
         {
             return null;

@@ -974,15 +974,6 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     }
 
     /**
-     * Procedure searches a root formula with given properties
-     */
-    public FormulaBase getFormula(String name, int argNumber, int rootId, boolean excludeRoot)
-    {
-        return getFormulaListView().getFormula(
-                name, argNumber, rootId, excludeRoot, !documentSettings.redefineAllowed);
-    }
-
-    /**
      * Procedure sets the formula with given ID as selected
      */
     public void setSelectedFormula(int id, boolean setFocus)

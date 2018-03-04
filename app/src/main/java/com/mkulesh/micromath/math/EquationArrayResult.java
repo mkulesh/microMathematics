@@ -96,7 +96,7 @@ public class EquationArrayResult
         }
 
         // collect intervals and dimensions
-        final ArrayList<ArrayList<CalculatedValue>> intervalValues = new ArrayList<>();
+        final ArrayList<CalculatedValue[]> intervalValues = new ArrayList<>();
         final int[] dimValues = new int[dimNumber];
         final CalculatedValue[] argValues = new CalculatedValue[dimNumber];
         for (int dim = 0; dim < dimNumber; dim++)
@@ -107,12 +107,12 @@ public class EquationArrayResult
             {
                 return;
             }
-            final ArrayList<CalculatedValue> interval = e.getInterval(thread);
-            if (interval == null || interval.isEmpty())
+            final CalculatedValue[] interval = e.getInterval();
+            if (interval == null)
             {
                 return;
             }
-            final int lastIndex = interval.get(interval.size() - 1).getInteger();
+            final int lastIndex = interval[interval.length - 1].getInteger();
             if (lastIndex <= 0)
             {
                 return;
@@ -163,6 +163,14 @@ public class EquationArrayResult
     private int getIndex(int i0, int i1, int i2)
     {
         return (i0 * dimensions[1] + i1) * dimensions[2] + i2;
+    }
+
+    public void resize1D(int size)
+    {
+        final int dimNumber = 1;
+        final int[] dimValues = new int[dimNumber];
+        dimValues[D0] = size;
+        resize(dimValues);
     }
 
     private void resize(int[] dimValues)
@@ -234,5 +242,10 @@ public class EquationArrayResult
         default:
             return CalculatedValue.NaN;
         }
+    }
+
+    public boolean isArray1D()
+    {
+        return getDimNumber() == 1 && values != null && values.length > 0;
     }
 }
