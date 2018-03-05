@@ -97,6 +97,7 @@
         <item>Light (Indigo and Orange)</item>
         <item>Light (Teal and Deep Orange)</item>
         <item>Light (Blue Gray and Indigo)</item>
+        <item>Strong Light (Black on White)</item>
         <item>Dark (Dim Gray and Cyan)</item>
     </string-array>
     <!-- Non-Translatable parameters of themes -->
@@ -105,18 +106,21 @@
         <item>indigo-orange</item>
         <item>teal-deep-orange</item>
         <item>gray-indigo</item>
+        <item>strong-light</item>
         <item>dark-cyan</item>
     </string-array>
     <array name="main_themes" translatable="false">
         <item>@style/MainThemeIndigoOrange</item>
         <item>@style/MainThemeTealDeepOrange</item>
         <item>@style/MainThemeGrayIndigo</item>
+        <item>@style/MainThemeStrongLight</item>
         <item>@style/MainThemeDarkCyan</item>
     </array>
     <array name="settings_themes" translatable="false">
         <item>@style/SettingsThemeIndigoOrange</item>
         <item>@style/SettingsThemeTealDeepOrange</item>
         <item>@style/SettingsThemeGrayIndigo</item>
+        <item>@style/SettingsThemeStrongLight</item>
         <item>@style/SettingsThemeDarkCyan</item>
     </array>
 

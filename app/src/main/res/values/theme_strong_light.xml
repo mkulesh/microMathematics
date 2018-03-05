@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Strong Light (Black on White) theme -->
+    <style name="BaseThemeStrongLight" parent="AppBaseThemeLight">
+        <!-- Parent styles -->
+        <item name="themeMicroMathToolBar">@style/ThemeOverlay.AppCompat.ActionBar</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="colorMicroMathNavigator">@android:color/white</item>
+        <!-- Activity colors -->
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorPrimaryDark">@android:color/black</item>
+        <item name="colorAccent">@android:color/black</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textColorSecondary">@color/material_grey_600</item>
+        <item name="colorMicroMathIcon">@android:color/black</item>
+        <item name="colorMicroMathFloatingIcon">@android:color/white</item>
+        <item name="drawableAppHeader">@drawable/app_header_strong_light</item>
+        <!-- Dialog style -->
+        <item name="drawableDialogWindow">@drawable/dialog_window_light</item>
+        <item name="drawableDialogPanel">@drawable/dialog_panel_light</item>
+        <item name="colorDialogTitle">?attr/colorAccent</item>
+        <item name="colorDialogDivider">@color/material_grey_600</item>
+        <item name="colorDialogContent">@android:color/black</item>
+        <item name="colorDialogDisabledElement">@color/material_grey_600</item>
+        <item name="colorDialogEditText">@android:color/white</item>
+        <item name="colorDialogHighlighted">@color/material_grey_300</item>
+        <!-- Formula style -->
+        <item name="colorFormulaBackground">@android:color/transparent</item>
+        <item name="colorFormulaHighlighted">@color/material_grey_300</item>
+        <item name="colorFormulaNormal">@android:color/black</item>
+        <item name="colorFormulaEmpty">@color/material_grey_600</item>
+        <item name="colorFormulaInvalid">@android:color/black</item>
+        <item name="colorFormulaSelected">@color/material_grey_600</item>
+        <item name="colorFormulaCalculatedValue">@color/material_grey_600</item>
+        <item name="colorFormulaTextFragment">@android:color/black</item>
+        <item name="colorPlotGridLine">@color/material_grey_300</item>
+        <!-- Other elements -->
+        <item name="actionModeBackground">?attr/colorPrimary</item>
+    </style>
+
+    <style name="MainThemeStrongLight" parent="BaseThemeStrongLight">
+        <!-- No settings -->
+    </style>
+
+    <style name="SettingsThemeStrongLight" parent="BaseThemeStrongLight">
+        <!-- For preference activity, de-activate overlay -->
+        <item name="windowActionModeOverlay">false</item>
+    </style>
+
+</resources>
