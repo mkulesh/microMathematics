@@ -58,6 +58,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     public static final String OPENED_FILE_EMPTY = "";
     public static final String FILE_READING_OPERATION = "file_reading_operation";
     public static final String DEVELOPER_MODE = "developer_mode";
+    public static final String ZOOM_ENABLED = "zoom_enabled";
 
     /**
      * Class members.
@@ -92,14 +93,13 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     {
         fragmentNumber = number;
         activity = (AppCompatActivity) getActivity();
+        preferences = PreferenceManager.getDefaultSharedPreferences(activity);
         formulas = new FormulaList(this, rootView);
 
         setHasOptionsMenu(true);
 
         primaryButtonsSet = rootView.findViewById(R.id.main_flb_set_primary);
         secondaryButtonsSet = rootView.findViewById(R.id.main_flb_set_secondary);
-
-        preferences = PreferenceManager.getDefaultSharedPreferences(activity);
     }
 
     @Override
@@ -400,13 +400,18 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         formulas.showSoftKeyboard(false);
     }
 
+    public int getFragmentNumber()
+    {
+        return fragmentNumber;
+    }
+
     public boolean isDeveloperMode()
     {
         return preferences.getBoolean(DEVELOPER_MODE, false);
     }
 
-    public int getFragmentNumber()
+    public boolean isZoomEnabled()
     {
-        return fragmentNumber;
+        return preferences.getBoolean(ZOOM_ENABLED, true);
     }
 }

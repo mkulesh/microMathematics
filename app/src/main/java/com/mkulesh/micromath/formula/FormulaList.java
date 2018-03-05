@@ -151,6 +151,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         formulaScrollView.setScaleListener(activity, this);
         formulaScrollView.setSaveEnabled(false);
         formulaScrollView.setScaleDetectorActive(true);
+        formulaScrollView.setEnableZoom(fragment.isZoomEnabled());
         formulaListView = new FormulaListView(fragment.getActivity(), formulaScrollView.getMainLayout());
 
         LinearLayout paletteView = rootView.findViewById(R.id.main_palette_view);
@@ -158,7 +159,6 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         updatePalette();
 
         documentSettings = new DocumentProperties(getContext());
-        formulaScrollView.setEnableZoom(documentSettings.enableZoom);
         undoState = new UndoState(activity);
     }
 
@@ -572,7 +572,6 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
                 }
             }
         }
-        formulaScrollView.setEnableZoom(documentSettings.enableZoom);
         if (isChanged)
         {
             calculate();
@@ -878,7 +877,6 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
                 xmlLoaderTask = null;
             }
             formulaScrollView.setScaleDetectorActive(true);
-            formulaScrollView.setEnableZoom(documentSettings.enableZoom);
             updatePalette();
         }
         if (taSession != null)

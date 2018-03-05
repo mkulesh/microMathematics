@@ -231,7 +231,7 @@
     <string name="math_function_coth">The hyperbolic cotangent of the argument</string>
     <string name="math_function_log">Logarithm of number to the specified base</string>
     <string name="error_forbidden_array">Array is not allowed for this field</string>
-    <string name="dialog_document_settings_enable_zoom">Enable zoom</string>
+    <string name="pref_zoom_enabled">Enable zoom</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Chegou ao limite da profundidade do layout para esta versão do Android</string>

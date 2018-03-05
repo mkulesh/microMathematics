@@ -91,12 +91,6 @@
 
             <android.support.v7.widget.AppCompatCheckBox
                 style="@style/CheckBoxStyle"
-                android:id="@+id/dialog_checkbox_enable_zoom"
-                android:text="@string/dialog_document_settings_enable_zoom"
-                android:checked="false" />
-
-            <android.support.v7.widget.AppCompatCheckBox
-                style="@style/CheckBoxStyle"
                 android:id="@+id/dialog_checkbox_redefine_allowed"
                 android:text="@string/dialog_document_settings_redefine_allowed"
                 android:checked="false" />

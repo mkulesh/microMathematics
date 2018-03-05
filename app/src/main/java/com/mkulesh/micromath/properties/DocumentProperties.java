@@ -45,7 +45,6 @@ public class DocumentProperties
     private static final String STATE_DOCUMENT_SIGNIFICANT_DIGITS = "document_significant_digits";
     private static final String STATE_DOCUMENT_SCALE_FACTOR = "document_scale_factor";
     private static final String STATE_DOCUMENT_REDEFINE_ALLOWED = "document_redefine_allowed";
-    private static final String STATE_DOCUMENT_ENABLE_ZOOM = "document_enable_zoom";
 
     /**
      * Constants used to write/read the XML file.
@@ -59,7 +58,6 @@ public class DocumentProperties
     public static final String XML_PROP_SIGNIFICANT_DIGITS = "significantDigits";
     public static final String XML_PROP_SCALE = "scale";
     public static final String XML_PROP_REDEFINE_ALLOWED = "redefineAllowed";
-    public static final String XML_PROP_ENABLE_ZOOM = "enableZoom";
 
     /**
      * Document versions
@@ -81,7 +79,6 @@ public class DocumentProperties
     public int significantDigits = 6;
     private ScaledDimensions scaledDimensions = null;
     public boolean redefineAllowed = false;
-    public boolean enableZoom = true;
 
     /**
      * Default constructor
@@ -111,7 +108,6 @@ public class DocumentProperties
         significantDigits = inState.getInt(STATE_DOCUMENT_SIGNIFICANT_DIGITS);
         scaledDimensions.setScaleFactor(inState.getFloat(STATE_DOCUMENT_SCALE_FACTOR));
         redefineAllowed = inState.getBoolean(STATE_DOCUMENT_REDEFINE_ALLOWED);
-        enableZoom = inState.getBoolean(STATE_DOCUMENT_ENABLE_ZOOM);
     }
 
     public void writeToBundle(Bundle outState)
@@ -126,7 +122,6 @@ public class DocumentProperties
         outState.putInt(STATE_DOCUMENT_SIGNIFICANT_DIGITS, significantDigits);
         outState.putFloat(STATE_DOCUMENT_SCALE_FACTOR, scaledDimensions.getScaleFactor());
         outState.putBoolean(STATE_DOCUMENT_REDEFINE_ALLOWED, redefineAllowed);
-        outState.putBoolean(STATE_DOCUMENT_ENABLE_ZOOM, enableZoom);
     }
 
     public void readFromXml(XmlPullParser parser)
@@ -169,11 +164,6 @@ public class DocumentProperties
         {
             redefineAllowed = Boolean.parseBoolean(attr);
         }
-        attr = parser.getAttributeValue(null, XML_PROP_ENABLE_ZOOM);
-        if (attr != null)
-        {
-            enableZoom = Boolean.parseBoolean(attr);
-        }
     }
 
     public void writeToXml(XmlSerializer serializer) throws Exception
@@ -188,7 +178,6 @@ public class DocumentProperties
         serializer.attribute(FormulaList.XML_NS, XML_PROP_SIGNIFICANT_DIGITS, String.valueOf(significantDigits));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_SCALE, df.format(scaledDimensions.getScaleFactor()));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_REDEFINE_ALLOWED, String.valueOf(redefineAllowed));
-        serializer.attribute(FormulaList.XML_NS, XML_PROP_ENABLE_ZOOM, String.valueOf(enableZoom));
     }
 
     public static void setDocumentVersion(int version)
