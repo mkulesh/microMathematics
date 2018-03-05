@@ -133,6 +133,15 @@ public class DialogBase extends Dialog implements OnClickListener
     protected void setButtonSelected(ImageButton b, boolean isSelected)
     {
         b.setSelected(isSelected);
+        if (b.isSelected())
+        {
+            b.setBackgroundResource(R.drawable.formula_term_border);
+            CompatUtils.setDrawableColorAttr(getContext(), b.getBackground(), R.attr.colorAccent);
+        }
+        else
+        {
+            b.setBackgroundResource(android.R.color.transparent);
+        }
         ViewUtils.setImageButtonColorAttr(getContext(), b,
                 b.isSelected() ? R.attr.colorAccent : R.attr.colorDialogContent);
     }
