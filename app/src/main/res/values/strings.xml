@@ -99,6 +99,7 @@
         <item>Light (Blue Gray and Indigo)</item>
         <item>Strong Light (Black on White)</item>
         <item>Dark (Dim Gray and Cyan)</item>
+        <item>Strong Dark (White on Black)</item>
     </string-array>
     <!-- Non-Translatable parameters of themes -->
     <string name="pref_default_theme_code" translatable="false">indigo-orange</string>
@@ -108,6 +109,7 @@
         <item>gray-indigo</item>
         <item>strong-light</item>
         <item>dark-cyan</item>
+        <item>strong-dark</item>
     </string-array>
     <array name="main_themes" translatable="false">
         <item>@style/MainThemeIndigoOrange</item>
@@ -115,6 +117,7 @@
         <item>@style/MainThemeGrayIndigo</item>
         <item>@style/MainThemeStrongLight</item>
         <item>@style/MainThemeDarkCyan</item>
+        <item>@style/MainThemeStrongDark</item>
     </array>
     <array name="settings_themes" translatable="false">
         <item>@style/SettingsThemeIndigoOrange</item>
@@ -122,6 +125,7 @@
         <item>@style/SettingsThemeGrayIndigo</item>
         <item>@style/SettingsThemeStrongLight</item>
         <item>@style/SettingsThemeDarkCyan</item>
+        <item>@style/SettingsThemeStrongDark</item>
     </array>
 
     <!-- Dialogs -->

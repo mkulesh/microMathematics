@@ -83,6 +83,7 @@
         <item>Helles (Blaugrau und Indigo)</item>
         <item>Kontrastreiches helles (Schwarz auf Weiß)</item>
         <item>Dunkles (Dunkelgrau und Türkis)</item>
+        <item>Kontrastreiches dunkles (Weiß auf Schwarz)</item>
     </string-array>
 
     <!-- Dialogs -->

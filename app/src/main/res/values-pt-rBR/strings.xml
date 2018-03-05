@@ -232,6 +232,7 @@
         <item>Light (Blue Gray and Indigo)</item>
         <item>Strong Light (Black on White)</item>
         <item>Dark (Dim Gray and Cyan)</item>
+        <item>Strong Dark (White on Black)</item>
     </string-array>
 
     <!-- Errors -->
