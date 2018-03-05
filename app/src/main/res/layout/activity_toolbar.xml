@@ -14,4 +14,9 @@
         app:theme="?attr/themeMicroMathToolBar"
         app:popupTheme="?attr/themeMicroMathPopup" />
 
+    <View
+        android:id="@+id/toolbar_separator"
+        style="@style/HorizontalDividerStyle"
+        android:visibility="gone" />
+
 </android.support.design.widget.AppBarLayout>

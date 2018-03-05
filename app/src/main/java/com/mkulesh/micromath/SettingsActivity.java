@@ -20,6 +20,7 @@
 package com.mkulesh.micromath;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -32,6 +33,7 @@ import android.view.ViewGroup;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.AppLocale;
 import com.mkulesh.micromath.utils.AppTheme;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.Locale;
@@ -68,6 +70,15 @@ public class SettingsActivity extends AppCompatPreferenceActivity
             // Show the Up button in the action bar.
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setTitle(R.string.action_app_settings);
+        }
+
+        // activate toolbar separator, if necessary
+        {
+            final int sepColor = CompatUtils.getThemeColorAttr(this, R.attr.colorToolBarSeparator);
+            if (sepColor != Color.TRANSPARENT && findViewById(R.id.toolbar_separator) != null)
+            {
+                findViewById(R.id.toolbar_separator).setVisibility(View.VISIBLE);
+            }
         }
     }
 

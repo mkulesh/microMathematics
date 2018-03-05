@@ -27,6 +27,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -104,6 +105,14 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(mToolbar);
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        // activate toolbar separator, if necessary
+        {
+            final int sepColor = CompatUtils.getThemeColorAttr(this, R.attr.colorToolBarSeparator);
+            if (sepColor != Color.TRANSPARENT && findViewById(R.id.toolbar_separator) != null)
+            {
+                findViewById(R.id.toolbar_separator).setVisibility(View.VISIBLE);
+            }
+        }
 
         // Action bar drawer
         mDrawerLayout = findViewById(R.id.main_drawer_layout);
