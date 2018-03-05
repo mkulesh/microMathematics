@@ -20,7 +20,7 @@
         <item name="colorDialogContent">@android:color/white</item>
         <item name="colorDialogDisabledElement">@color/material_grey_600</item>
         <item name="colorDialogEditText">@color/material_grey_800</item>
-        <item name="colorDialogHighlighted">@color/material_grey_600</item>
+        <item name="colorDialogHighlighted">@color/material_grey_800</item>
         <!-- Formula style -->
         <item name="colorFormulaBackground">@android:color/transparent</item>
         <item name="colorFormulaHighlighted">@color/material_grey_800</item>
