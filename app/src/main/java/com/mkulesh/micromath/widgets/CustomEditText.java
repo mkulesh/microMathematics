@@ -28,7 +28,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.ActionMode;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.View.OnLongClickListener;
@@ -116,8 +119,46 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         {
             this.setOnLongClickListener(this);
         }
+        else
+        {
+            this.prepareFloatingActionMode();
+        }
         this.setOnFocusChangeListener(this);
         setSaveEnabled(false);
+    }
+
+    private void prepareFloatingActionMode()
+    {
+        if (CompatUtils.isMarshMallowOrLater())
+        {
+            setCustomInsertionActionModeCallback(new ActionMode.Callback()
+            {
+                public boolean onPrepareActionMode(ActionMode mode, Menu menu)
+                {
+                    return true;
+                }
+
+                public void onDestroyActionMode(ActionMode mode)
+                {
+                    // empty
+                }
+
+                public boolean onCreateActionMode(ActionMode mode, Menu menu)
+                {
+                    // Call onLongClick direct if the text is empty
+                    if (isTextFragment() && getText().length() == 0)
+                    {
+                        onLongClick(null);
+                    }
+                    return true;
+                }
+
+                public boolean onActionItemClicked(ActionMode mode, MenuItem item)
+                {
+                    return true;
+                }
+            });
+        }
     }
 
     /*********************************************************
