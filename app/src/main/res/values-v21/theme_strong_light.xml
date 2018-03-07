@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="MainThemeStrongLight" parent="BaseThemeStrongLight">
+        <!-- Toolbar separator is only necessary for Android 4.0-4.4 -->
+        <!-- This separator is de-activated for API 21 -->
+        <item name="colorToolBarSeparator">@android:color/transparent</item>
+    </style>
+
+</resources>
