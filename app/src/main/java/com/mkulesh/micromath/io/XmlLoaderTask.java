@@ -261,7 +261,10 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
     @Override
     protected void onPostExecute(Void par)
     {
-        FileUtils.closeStream(stream);
+        if (stream != null)
+        {
+            FileUtils.closeStream(stream);
+        }
         DocumentProperties.setDocumentVersion(DocumentProperties.LATEST_DOCUMENT_VERSION);
         if (list.getSelectedFormulaId() == ViewUtils.INVALID_INDEX)
         {

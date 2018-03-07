@@ -396,7 +396,7 @@ public final class FileUtils
         {
             stream.close();
         }
-        catch (IOException e)
+        catch (Exception e)
         {
             // nothing to do
         }
