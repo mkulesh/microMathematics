@@ -24,6 +24,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -32,6 +33,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity
 
     private static final int STORAGE_PERMISSION_REQID = 255;
     private static final int SETTINGS_ACTIVITY_REQID = 256;
+    public static final String EXIT_CONFIRM = "exit_confirm";
 
     private Dialog storagePermissionDialog = null;
     private int storagePermissionAction = ViewUtils.INVALID_INDEX;
@@ -85,6 +88,7 @@ public class MainActivity extends AppCompatActivity
     private final ArrayList<MenuItem> activityMenuItems = new ArrayList<>();
     private ActionBarDrawerToggle mDrawerToggle;
     private Uri externalUri = null;
+    private Toast exitToast = null;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -229,11 +233,33 @@ public class MainActivity extends AppCompatActivity
             return true;
         }
         case R.id.action_exit:
-        case android.R.id.home:
             finish();
             return true;
+        case android.R.id.home:
+            onBackPressed();
+            return false;
         default:
             return super.onOptionsItemSelected(menuItem);
+        }
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if (!preferences.getBoolean(EXIT_CONFIRM, false))
+        {
+            finish();
+        }
+        else if (exitToast != null && exitToast.getView().isShown())
+        {
+            exitToast.cancel();
+            finish();
+        }
+        else
+        {
+            exitToast = Toast.makeText(this, R.string.action_exit_confirm, Toast.LENGTH_LONG);
+            exitToast.show();
         }
     }
 

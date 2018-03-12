@@ -48,6 +48,7 @@
     
     <!-- Main menu -->
     <string name="action_exit">Exit</string>
+    <string name="action_exit_confirm">Press back button again to exit</string>
     <string name="action_play">Calculate worksheet</string>
     <string name="action_stop">Stop calculation</string>
     <string name="action_object_properties">Object properties</string>
@@ -71,6 +72,7 @@
     <!-- Application settings -->
     <string name="pref_zoom_enabled">Enable zoom</string>
     <string name="pref_developer_mode">Developer options</string>
+    <string name="pref_exit_confirm">Press back button twice for exit</string>
 
     <!-- Application settings: Languages -->
     <!-- Translatable list of languages -->

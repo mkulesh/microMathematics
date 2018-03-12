@@ -48,6 +48,7 @@
     
     <!-- Main menu -->
     <string name="action_exit">Beenden</string>
+    <string name="action_exit_confirm">Zum Verlassen die Zurück-Taste erneut drücken</string>
     <string name="action_play">Berechnen</string>
     <string name="action_stop">Berechnungen abbrechen</string>
     <string name="action_object_properties">Objekteinstellungen</string>
@@ -71,6 +72,7 @@
     <!-- Application settings -->
     <string name="pref_zoom_enabled">Zoom-Funktion erlauben</string>
     <string name="pref_developer_mode">Entwicklermodus</string>
+    <string name="pref_exit_confirm">Zurücktaste 2x drücken, um App zu beenden</string>
 
     <!-- Application settings: Languages -->
     <string name="pref_app_language">Sprache</string>

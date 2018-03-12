@@ -234,6 +234,8 @@
         <item>Dark (Dim Gray and Cyan)</item>
         <item>Strong Dark (White on Black)</item>
     </string-array>
+    <string name="action_exit_confirm">Press back button again to exit</string>
+    <string name="pref_exit_confirm">Press back button twice for exit</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Chegou ao limite da profundidade do layout para esta versão do Android</string>
