@@ -17,19 +17,19 @@
         android:summary="%s"
         android:title="@string/pref_app_theme"/>
 
-    <CheckBoxPreference
+    <com.mkulesh.micromath.widgets.MultilineCheckBoxPreference
         android:defaultValue="true"
         android:key="zoom_enabled"
         android:title="@string/pref_zoom_enabled"
         android:widgetLayout="@layout/pref_check_box"/>
 
-    <CheckBoxPreference
+    <com.mkulesh.micromath.widgets.MultilineCheckBoxPreference
         android:defaultValue="false"
         android:key="developer_mode"
         android:title="@string/pref_developer_mode"
         android:widgetLayout="@layout/pref_check_box"/>
 
-    <CheckBoxPreference
+    <com.mkulesh.micromath.widgets.MultilineCheckBoxPreference
         android:defaultValue="false"
         android:key="exit_confirm"
         android:title="@string/pref_exit_confirm"
