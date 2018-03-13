@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
 
     private static final int STORAGE_PERMISSION_REQID = 255;
     private static final int SETTINGS_ACTIVITY_REQID = 256;
+    private static final String SHORTCUT_NEW_DOCUMENT = "com.mkulesh.micromath.NEW_DOCUMENT";
 
     private Dialog storagePermissionDialog = null;
     private int storagePermissionAction = ViewUtils.INVALID_INDEX;
@@ -132,11 +133,24 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         activeActionModes = new ArrayList<android.support.v7.view.ActionMode>();
 
         Intent intent = getIntent();
+        boolean intentProcessed = false;
         if (intent != null)
         {
-            externalUri = intent.getData();
+            if (SHORTCUT_NEW_DOCUMENT.equals(intent.getAction()))
+            {
+                ViewUtils.Debug(this, "Called with shortcut intent: " + intent.toString());
+                selectWorksheet(R.id.action_new_document);
+                intentProcessed = true;
+            }
+            else if (intent.getData() != null)
+            {
+                ViewUtils.Debug(this, "Called with external UIR: " + intent.toString());
+                externalUri = intent.getData();
+                selectWorksheet(BaseFragment.INVALID_ACTION_ID);
+                intentProcessed = true;
+            }
         }
-        if (savedInstanceState == null)
+        if (!intentProcessed && savedInstanceState == null)
         {
             selectWorksheet(BaseFragment.INVALID_ACTION_ID);
         }
@@ -466,6 +480,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     {
         selectNavigationItem(navigationView.getMenu().getItem(0), postActionId);
     }
+
     public CharSequence getWorksheetName()
     {
         return worksheetName;
