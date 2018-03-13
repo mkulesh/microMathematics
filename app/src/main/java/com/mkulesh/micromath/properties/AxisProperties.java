@@ -64,7 +64,7 @@ public class AxisProperties implements Parcelable
     {
         dest.writeInt(labelLineSize);
         dest.writeInt(labelTextSize);
-        dest.writeLong(gridLineColor);
+        dest.writeInt(gridLineColor);
         dest.writeInt(gridLineWidth);
         dest.writeInt(xLabelsNumber);
         dest.writeInt(yLabelsNumber);
