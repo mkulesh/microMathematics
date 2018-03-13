@@ -48,7 +48,7 @@
     
     <!-- Main menu -->
     <string name="action_exit">Выйти</string>
-    <string name="action_exit_confirm">Для выхода нажмите кнопку "Назад" ещё раз</string>
+    <string name="action_exit_confirm">Для выхода нажмите кнопку \"Назад\" ещё раз</string>
     <string name="action_play">Вычислить</string>
     <string name="action_stop">Прервать вычисления</string>
     <string name="action_object_properties">Настройки объекта</string>
@@ -72,7 +72,7 @@
     <!-- Application settings -->
     <string name="pref_zoom_enabled">Разрешить масштабирование</string>
     <string name="pref_developer_mode">Режим разработчика</string>
-    <string name="pref_exit_confirm">Для выхода нажать кнопку "Назад" два раза</string>
+    <string name="pref_exit_confirm">Для выхода нажать кнопку \"Назад\" два раза</string>
 
     <!-- Application settings: Languages -->
     <string name="pref_app_language">Язык приложения</string>
