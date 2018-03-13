@@ -45,7 +45,9 @@
                 
                 <data android:pathPattern=".*\\.xml" />
                 <data android:pathPattern=".*\\.mmt" />
-            </intent-filter>            
+            </intent-filter>
+
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts"/>
         </activity>
 
         <activity
