@@ -141,7 +141,7 @@ public class CalculatedValue
                     final Measure imaginaryV = DecimalMeasure.valueOf(imaginary, sourceUnit);
                     imaginary = imaginaryV.doubleValue(targetUnit);
                 }
-                unit = targetUnit;
+                unit = (targetUnit.toString() == null || targetUnit.toString().isEmpty())? null : targetUnit;
             }
             catch (Exception ex)
             {
