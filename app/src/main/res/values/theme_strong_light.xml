@@ -9,7 +9,7 @@
         <item name="colorMicroMathNavigator">@android:color/white</item>
         <!-- Activity colors -->
         <item name="colorPrimary">@android:color/white</item>
-        <item name="colorPrimaryDark">@android:color/black</item>
+        <item name="colorPrimaryDark">@color/material_grey_300</item>
         <item name="colorAccent">@android:color/black</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textColorSecondary">@color/material_grey_600</item>
@@ -27,11 +27,11 @@
         <item name="colorDialogHighlighted">@color/material_grey_300</item>
         <!-- Formula style -->
         <item name="colorFormulaBackground">@android:color/transparent</item>
-        <item name="colorFormulaHighlighted">@color/material_grey_300</item>
+        <item name="colorFormulaHighlighted">@color/material_grey_100</item>
         <item name="colorFormulaNormal">@android:color/black</item>
         <item name="colorFormulaEmpty">@color/material_grey_600</item>
         <item name="colorFormulaInvalid">@android:color/black</item>
-        <item name="colorFormulaSelected">@color/material_grey_600</item>
+        <item name="colorFormulaSelected">@color/material_grey_300</item>
         <item name="colorFormulaCalculatedValue">@color/material_grey_600</item>
         <item name="colorFormulaTextFragment">@android:color/black</item>
         <item name="colorPlotGridLine">@color/material_grey_300</item>
