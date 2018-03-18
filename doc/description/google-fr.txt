@@ -11,8 +11,8 @@ Avantages et caractéristiques:
 - Vérification, validation, documentation et réutilisation des calculs mathématiques
 - Fonctionne sur smartphone ou tablette en mode portrait et paysage
 - Supporte toutes les opérations mathématiques couramment utilisées
-- Supporte l'importation de données depuis des fichiers ASCII
 - Les expressions mathématiques sont écrites sous une forme intuitive et naturellement lisible
+- Supporte unités de mesure
 - Un puissant éditeur mathématique adapté aux écrans tactiles avec une fonction d'annulation qui facilite l'édition
 - Vous pouvez faire plusieurs calculs et modifier/corriger de manière conséquente toutes les formules utilisées
 - Il est possible de stocker des résultats intermédiaires dans un tableau 1D, 2D ou 3D, ce qui peut améliorer la performance de calcul
@@ -21,7 +21,8 @@ Avantages et caractéristiques:
 - Les cartes SD sur Android 6+ sont également supportées
 - L'application contient une page détaillée pour apprendre à utiliser l'application ainsi que plusieurs exemples
 - Prend en charge différents thèmes de couleur
+- Supporte l'importation de données depuis des fichiers ASCII
 
-MicroMathematics Plus a exactement la même interface utilisateur que la version gratuite microMathematics, mais elle implémente plus de fonctionnalités mathématiques : tableaux, nombres complexes, fonctions à arguments multiples, tracés de plusieurs fonctions, contours et 3D, sommation et opérations de produits, intégrales dérivées et définies, if-function et opérateurs logiques... Cette version a les limitations mathématiques suivantes : elle ne supporte pas les fonctions spéciales, les vecteurs, les matrices et plusieurs autres choses éléments de mathématiques de haut niveau.
+MicroMathematics Plus a exactement la même interface utilisateur que la version gratuite microMathematics, mais elle implémente plus de fonctionnalités mathématiques: unités de mesure, tableaux, nombres complexes, fonctions à arguments multiples, tracés de plusieurs fonctions, contours et 3D, sommation et opérations de produits, intégrales dérivées et définies, if-function et opérateurs logiques... Cette version a les limitations mathématiques suivantes : elle ne supporte pas les fonctions spéciales, les vecteurs, les matrices et plusieurs autres choses éléments de mathématiques de haut niveau.
 
-Langues : français, anglais, russe, allemand, portugais brésilien.
+Langues : anglais, russe, allemand, portugais brésilien.

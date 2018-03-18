@@ -11,8 +11,8 @@ Benefits and features:
 - Verification, validation, documentation and re-use of mathematical calculations
 - Works on smartphone or tablet in portrait and landscape mode
 - Supports all commonly used mathematical operations
-- Supports data import from ASCII files
 - Mathematical expressions are written in an intuitive and naturally readable form
+- Supports SI and non-SI units
 - Powerful mathematical touch-screen editor with undo function makes editing easier
 - You can do multiple calculations and subsequently correct or change all used formulas
 - It is possible to store intermediate results into 1D, 2D, or 3D array that can improve calculation performance
@@ -21,7 +21,8 @@ Benefits and features:
 - SD card on Android 6+ is also supported
 - The app contains detailed "How to use" page and several examples
 - Supports different color themes
+- Supports data import from ASCII files
 
-The microMathematics Plus has exactly the same user interface as the microMathematics free version, but implements more mathematical functionality: arrays, complex numbers, functions of many arguments, plots for several functions, contour and 3D plots, summation and product operations, derivative and definite integrals, if-function and logical operators. This version has following mathematical limitations: it does not support special functions, vectors, matrices and many other things from high-level mathematics.
+The microMathematics Plus has exactly the same user interface as the microMathematics free version, but implements more mathematical functionality: units of measurements, arrays, complex numbers, functions of many arguments, plots for several functions, contour and 3D plots, summation and product operations, derivative and definite integrals, if-function and logical operators. This version has following mathematical limitations: it does not support special functions, vectors, matrices and many other things from high-level mathematics.
 
 Languages: English, Russian, German, Brazilian Portuguese.

@@ -12,8 +12,8 @@ Features und Vorteile:
 - ermöglicht Vorbereitung, Validierung, Dokumentierung und Wiederverwendung der mathematischen Berechnungen
 - optimal angepasst sowie für Smartphones als auch für Phablets und Tablets im Hoch- und Querformat
 - unterstützt die gängigen mathematischen Operationen
-- unterstützt Import von Daten aus ASCII-Dateien
 - ermöglicht Eingabe mathematischer Formeln in einer natürlichen und intuitiven Weise
+- man kann auch Konstanten und Variablen mit Einheiten verwenden
 - erleichtert Editierung durch leistungsstarken Touchscreen-Editor mit Undo-Funktion
 - gleichzeitige Berechnung und einfache nachträgliche Korrektur mehrerer Formeln
 - es ist möglich, die Zwischenresultate in ein 1-D, 2-D, oder 3-D Array zu speichern, um Kalkulationsleistung zu verbessern
@@ -23,7 +23,8 @@ Features und Vorteile:
 - Export in LaTeX- oder Bild-Format
 - erleichterte Einführung durch ausführliche Dokumentation und viele Beispiele
 - verschiedene Farbthemen
+- unterstützt Import von Daten aus ASCII-Dateien
 
-Die microMathematics Plus sieht genau so aus wie die kostenfreie Version, hat aber mehr Funktionalität: sie unterstützt Arrays, komplexe Zahlen, Funktionen mehrerer Variablen, Funktionsgraphen mehrerer Funktionen, 3-D Graphen, Summe und Produkt einer Folge, bestimmtes Integral und Ableitung sowie logische Operatoren. Diese Version hat folgende Einschränkungen: sie unterstützt weder Sonderfunktionen, Vektoren, Matrizen noch viele andere Dinge auf mathematisch höherem Niveau.
+Die microMathematics Plus sieht genau so aus wie die kostenfreie Version, hat aber mehr Funktionalität: sie unterstützt Einheiten, Arrays, komplexe Zahlen, Funktionen mehrerer Variablen, Funktionsgraphen mehrerer Funktionen, 3-D Graphen, Summe und Produkt einer Folge, bestimmtes Integral und Ableitung sowie logische Operatoren. Diese Version hat folgende Einschränkungen: sie unterstützt weder Sonderfunktionen, Vektoren, Matrizen noch viele andere Dinge auf mathematisch höherem Niveau.
 
 Sprachen: Englisch, Russisch, Deutsch, Brasilianisches Portugiesisch.
