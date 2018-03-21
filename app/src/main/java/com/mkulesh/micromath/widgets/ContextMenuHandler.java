@@ -158,7 +158,7 @@ public class ContextMenuHandler
         ArrayList<View> list = null;
         if (this.actionModeOwner != null && this.actionModeOwner instanceof CustomEditText)
         {
-            list = new ArrayList<View>();
+            list = new ArrayList<>();
             list.add(this.actionModeOwner);
         }
 

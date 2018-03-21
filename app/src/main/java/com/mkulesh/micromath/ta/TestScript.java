@@ -67,7 +67,7 @@ public class TestScript
     private final String scriptName;
     private String scriptContent = null;
     private final SynchronizedState state = new SynchronizedState();
-    private final ArrayList<TestCase> testCases = new ArrayList<TestCase>();
+    private final ArrayList<TestCase> testCases = new ArrayList<>();
     private TestCase testCase = null;
     private long readingDuration;
 

@@ -119,7 +119,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
      * Class members.
      */
     private FormulaBase selectedTerm = null;
-    private final ArrayList<FormulaBase> selectedEquations = new ArrayList<FormulaBase>();
+    private final ArrayList<FormulaBase> selectedEquations = new ArrayList<>();
 
     private final BaseFragment fragment;
     private final AppCompatActivity activity;
@@ -133,7 +133,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     private TestSession taSession = null;
 
     @SuppressLint("UseSparseArrays")
-    private final HashMap<Integer, FormulaBase> formulas = new HashMap<Integer, FormulaBase>();
+    private final HashMap<Integer, FormulaBase> formulas = new HashMap<>();
 
     /*********************************************************
      * Constructors
@@ -474,8 +474,8 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
             return false;
         }
         ClipboardManager.copyToClipboard(getContext(), ClipboardManager.CLIPBOARD_LIST_OBJECT);
-        ArrayList<FormulaBase.BaseType> types = new ArrayList<FormulaBase.BaseType>();
-        ArrayList<Parcelable> data = new ArrayList<Parcelable>();
+        ArrayList<FormulaBase.BaseType> types = new ArrayList<>();
+        ArrayList<Parcelable> data = new ArrayList<>();
         final ArrayList<FormulaBase> fList = formulaListView.getFormulas(FormulaBase.class);
         for (FormulaBase f : fList)
         {
@@ -1046,7 +1046,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         case CLEAR_ALL:
             if (!selectedEquations.isEmpty())
             {
-                ArrayList<FormulaBase> toBeCleared = new ArrayList<FormulaBase>();
+                ArrayList<FormulaBase> toBeCleared = new ArrayList<>();
                 for (FormulaBase e : selectedEquations)
                 {
                     toBeCleared.add(e);
@@ -1161,7 +1161,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     {
         boolean isValid = true;
         final ArrayList<FormulaBase> fList = formulaListView.getFormulas(FormulaBase.class);
-        ArrayList<Integer> invalidFormulas = new ArrayList<Integer>();
+        ArrayList<Integer> invalidFormulas = new ArrayList<>();
         // first pass - validate single formulas
         for (FormulaBase m : fList)
         {

@@ -627,7 +627,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
 
         final Unit targetUnit = TermParser.parseUnits(properties.units);
 
-        ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>(rowsNumber);
+        ArrayList<ArrayList<String>> res = new ArrayList<>(rowsNumber);
         for (int r = 0; r < rowsNumber; r++)
         {
             int dataRowIdx = r;

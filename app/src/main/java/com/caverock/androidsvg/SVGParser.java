@@ -99,7 +99,7 @@ public class SVGParser extends DefaultHandler2
     {
         svg, a, circle, clipPath, defs, desc, ellipse, g, image, line, linearGradient, marker, mask, path, pattern, polygon, polyline, radialGradient, rect, solidColor, stop, style, SWITCH, symbol, text, textPath, title, tref, tspan, use, view, UNSUPPORTED;
 
-        private static final Map<String, SVGElem> cache = new HashMap<String, SVGElem>();
+        private static final Map<String, SVGElem> cache = new HashMap<>();
 
         public static SVGElem fromString(String str)
         {
@@ -200,7 +200,7 @@ public class SVGParser extends DefaultHandler2
         // font_size_adjust, font_stretch, font_variant,
         gradientTransform, gradientUnits, height, href, id, marker, marker_start, marker_mid, marker_end, markerHeight, markerUnits, markerWidth, mask, maskContentUnits, maskUnits, media, offset, opacity, orient, overflow, pathLength, patternContentUnits, patternTransform, patternUnits, points, preserveAspectRatio, r, refX, refY, requiredFeatures, requiredExtensions, requiredFormats, requiredFonts, rx, ry, solid_color, solid_opacity, spreadMethod, startOffset, stop_color, stop_opacity, stroke, stroke_dasharray, stroke_dashoffset, stroke_linecap, stroke_linejoin, stroke_miterlimit, stroke_opacity, stroke_width, style, systemLanguage, text_anchor, text_decoration, transform, type, vector_effect, version, viewBox, width, x, y, x1, y1, x2, y2, viewport_fill, viewport_fill_opacity, visibility, UNSUPPORTED;
 
-        private static final Map<String, SVGAttr> cache = new HashMap<String, SVGAttr>();
+        private static final Map<String, SVGAttr> cache = new HashMap<>();
 
         public static SVGAttr fromString(String str)
         {
@@ -254,7 +254,7 @@ public class SVGParser extends DefaultHandler2
     // and are thread safe
     private static class ColourKeywords
     {
-        private static final Map<String, Integer> colourKeywords = new HashMap<String, Integer>(
+        private static final Map<String, Integer> colourKeywords = new HashMap<>(
                 47);
 
         static
@@ -416,7 +416,7 @@ public class SVGParser extends DefaultHandler2
 
     private static class FontSizeKeywords
     {
-        private static final Map<String, Length> fontSizeKeywords = new HashMap<String, Length>(
+        private static final Map<String, Length> fontSizeKeywords = new HashMap<>(
                 9);
 
         static
@@ -440,7 +440,7 @@ public class SVGParser extends DefaultHandler2
 
     private static class FontWeightKeywords
     {
-        private static final Map<String, Integer> fontWeightKeywords = new HashMap<String, Integer>(
+        private static final Map<String, Integer> fontWeightKeywords = new HashMap<>(
                 13);
 
         static
@@ -468,7 +468,7 @@ public class SVGParser extends DefaultHandler2
 
     private static class AspectRatioKeywords
     {
-        private static final Map<String, PreserveAspectRatio.Alignment> aspectRatioKeywords = new HashMap<String, PreserveAspectRatio.Alignment>(
+        private static final Map<String, PreserveAspectRatio.Alignment> aspectRatioKeywords = new HashMap<>(
                 10);
 
         static
@@ -502,7 +502,7 @@ public class SVGParser extends DefaultHandler2
 
     protected void setSupportedFormats(String[] mimeTypes)
     {
-        this.supportedFormats = new HashSet<String>(mimeTypes.length);
+        this.supportedFormats = new HashSet<>(mimeTypes.length);
         Collections.addAll(this.supportedFormats, mimeTypes);
     }
 
@@ -1373,7 +1373,7 @@ public class SVGParser extends DefaultHandler2
             if (SVGAttr.fromString(attributes.getLocalName(i)) == SVGAttr.points)
             {
                 TextScanner scan = new TextScanner(attributes.getValue(i));
-                List<Float> points = new ArrayList<Float>();
+                List<Float> points = new ArrayList<>();
                 scan.skipWhitespace();
 
                 while (!scan.empty())
@@ -1594,7 +1594,7 @@ public class SVGParser extends DefaultHandler2
                 break;
             case requiredFonts:
                 List<String> fonts = parseFontFamily(val);
-                Set<String> fontSet = (fonts != null) ? new HashSet<String>(
+                Set<String> fontSet = (fonts != null) ? new HashSet<>(
                         fonts) : new HashSet<String>(0);
                 obj.setRequiredFonts(fontSet);
                 break;
@@ -3129,7 +3129,7 @@ public class SVGParser extends DefaultHandler2
         if (val.length() == 0)
             throw new SAXException("Invalid length list (empty string)");
 
-        List<Length> coords = new ArrayList<Length>(1);
+        List<Length> coords = new ArrayList<>(1);
 
         TextScanner scan = new TextScanner(val);
         scan.skipWhitespace();
@@ -3465,7 +3465,7 @@ public class SVGParser extends DefaultHandler2
             if (item == null)
                 break;
             if (fonts == null)
-                fonts = new ArrayList<String>();
+                fonts = new ArrayList<>();
             fonts.add(item);
             scan.skipCommaWhitespace();
             if (scan.empty())
@@ -3605,7 +3605,7 @@ public class SVGParser extends DefaultHandler2
 
         float sum = dash.floatValue();
 
-        List<Length> dashes = new ArrayList<Length>();
+        List<Length> dashes = new ArrayList<>();
         dashes.add(dash);
         while (!scan.empty())
         {
@@ -3997,7 +3997,7 @@ public class SVGParser extends DefaultHandler2
             throws SAXException
     {
         TextScanner scan = new TextScanner(val);
-        HashSet<String> result = new HashSet<String>();
+        HashSet<String> result = new HashSet<>();
 
         while (!scan.empty())
         {
@@ -4026,7 +4026,7 @@ public class SVGParser extends DefaultHandler2
             throws SAXException
     {
         TextScanner scan = new TextScanner(val);
-        HashSet<String> result = new HashSet<String>();
+        HashSet<String> result = new HashSet<>();
 
         while (!scan.empty())
         {
@@ -4051,7 +4051,7 @@ public class SVGParser extends DefaultHandler2
             throws SAXException
     {
         TextScanner scan = new TextScanner(val);
-        HashSet<String> result = new HashSet<String>();
+        HashSet<String> result = new HashSet<>();
 
         while (!scan.empty())
         {

@@ -25,11 +25,11 @@ import java.util.ArrayList;
 
 public abstract class LinkHolder extends FormulaBase
 {
-    private final ArrayList<Equation> directIntervals = new ArrayList<Equation>();
-    private final ArrayList<Equation> allIntervals = new ArrayList<Equation>();
+    private final ArrayList<Equation> directIntervals = new ArrayList<>();
+    private final ArrayList<Equation> allIntervals = new ArrayList<>();
 
-    private final ArrayList<Equation> directFunctions = new ArrayList<Equation>();
-    private final ArrayList<Equation> allFunctions = new ArrayList<Equation>();
+    private final ArrayList<Equation> directFunctions = new ArrayList<>();
+    private final ArrayList<Equation> allFunctions = new ArrayList<>();
 
     /*********************************************************
      * Constructors
@@ -108,7 +108,7 @@ public abstract class LinkHolder extends FormulaBase
      */
     public ArrayList<String> getIndirectIntervals()
     {
-        ArrayList<String> retValue = new ArrayList<String>();
+        ArrayList<String> retValue = new ArrayList<>();
         if (getDirectIntervals().size() != getAllIntervals().size())
         {
             for (Equation li : allIntervals)
@@ -156,7 +156,7 @@ public abstract class LinkHolder extends FormulaBase
         }
 
         // stack is used to prevent unlimited recursive calls
-        ArrayList<LinkHolder> stack = new ArrayList<LinkHolder>();
+        ArrayList<LinkHolder> stack = new ArrayList<>();
         if (callStack != null)
         {
             for (LinkHolder lh : callStack)
@@ -190,7 +190,7 @@ public abstract class LinkHolder extends FormulaBase
     protected ArrayList<Equation> collectAllFunctions(ArrayList<LinkHolder> callStack)
     {
         // stack is used to prevent unlimited recursive calls
-        ArrayList<LinkHolder> stack = new ArrayList<LinkHolder>();
+        ArrayList<LinkHolder> stack = new ArrayList<>();
         if (callStack != null)
         {
             for (LinkHolder lh : callStack)

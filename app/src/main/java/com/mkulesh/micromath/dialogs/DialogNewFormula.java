@@ -38,8 +38,8 @@ public class DialogNewFormula extends DialogBase implements OnLongClickListener
     public static final String LAST_INSERTED_EMPTY = "empty";
 
     private final ListChangeIf changeIf;
-    private final HashMap<ListChangeIf.Position, ImageButton> positionButtons = new HashMap<ListChangeIf.Position, ImageButton>();
-    private final HashMap<ListChangeIf.FormulaType, ImageButton> objectButtons = new HashMap<ListChangeIf.FormulaType, ImageButton>();
+    private final HashMap<ListChangeIf.Position, ImageButton> positionButtons = new HashMap<>();
+    private final HashMap<ListChangeIf.FormulaType, ImageButton> objectButtons = new HashMap<>();
 
     public DialogNewFormula(Activity context, ListChangeIf listChangeIf)
     {

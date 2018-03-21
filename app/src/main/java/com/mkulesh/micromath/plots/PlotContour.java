@@ -73,7 +73,7 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
     // visual components
     private TwoDPlotStyle twoDPlotStyle = TwoDPlotStyle.CONTOUR;
     private TermField yMin = null, yMax = null, xMin = null, functionTerm = null, xMax = null;
-    private final ArrayList<CustomTextView> axes = new ArrayList<CustomTextView>();
+    private final ArrayList<CustomTextView> axes = new ArrayList<>();
     private PlotView functionView = null;
     private LinearLayout xDataLayout = null, functionViewLayout = null;
     private CustomTextView cornerView1 = null, cornerView2 = null;
@@ -237,12 +237,12 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
             }
             else if (owner == functionView.getColorMapView())
             {
-                list = new ArrayList<View>();
+                list = new ArrayList<>();
                 list.add(owner);
             }
             else if (axes.contains(owner))
             {
-                list = new ArrayList<View>();
+                list = new ArrayList<>();
                 for (int i = 0; i < axes.size(); i++)
                 {
                     list.add(axes.get(i));

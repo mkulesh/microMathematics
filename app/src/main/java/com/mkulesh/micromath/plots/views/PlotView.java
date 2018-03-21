@@ -226,7 +226,7 @@ public abstract class PlotView extends CustomTextView
 
         if (functions == null)
         {
-            functions = new ArrayList<FunctionIf>();
+            functions = new ArrayList<>();
         }
         else
         {

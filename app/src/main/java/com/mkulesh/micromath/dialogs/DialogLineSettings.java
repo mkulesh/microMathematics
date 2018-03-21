@@ -48,7 +48,7 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
 
     private final CheckBox pointShapesBox;
     private final HorizontalNumberPicker shapeSizePicker;
-    private final HashMap<LineProperties.ShapeType, ImageButton> shapeTypeButtons = new HashMap<LineProperties.ShapeType, ImageButton>();
+    private final HashMap<LineProperties.ShapeType, ImageButton> shapeTypeButtons = new HashMap<>();
 
     public DialogLineSettings(Activity context, LinePropertiesChangeIf changeIf, LineProperties parameters)
     {

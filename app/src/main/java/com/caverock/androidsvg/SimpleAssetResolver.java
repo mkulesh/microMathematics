@@ -44,7 +44,7 @@ public class SimpleAssetResolver extends SVGExternalFileResolver
         this.assetManager = assetManager;
     }
 
-    private static final Set<String> supportedFormats = new HashSet<String>(8);
+    private static final Set<String> supportedFormats = new HashSet<>(8);
 
     // Static initialiser
     {

@@ -80,7 +80,7 @@ public final class Dimension implements Serializable {
      * @param symbol the associated symbol.
      */
     public Dimension(char symbol) {
-        _pseudoUnit = new BaseUnit<Dimensionless>("[" + symbol + "]");
+        _pseudoUnit = new BaseUnit<>("[" + symbol + "]");
     }
 
     /**

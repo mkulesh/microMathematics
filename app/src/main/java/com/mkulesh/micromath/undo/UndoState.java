@@ -34,7 +34,7 @@ public class UndoState
     private static final String ENTRY_NUMBER = "entry_number";
     private static final String ENTRY_STATE = "entry_state";
 
-    private final ArrayList<Parcelable> entrys = new ArrayList<Parcelable>();
+    private final ArrayList<Parcelable> entrys = new ArrayList<>();
     private MenuItem menuItem = null;
     private final Context context;
 

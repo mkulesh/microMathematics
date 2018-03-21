@@ -25,6 +25,6 @@ public interface VolumetricDensity extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    Unit<VolumetricDensity> UNIT = new ProductUnit<VolumetricDensity>(
+    Unit<VolumetricDensity> UNIT = new ProductUnit<>(
             SI.KILOGRAM.divide(SI.METRE.pow(3)));
 }

@@ -63,7 +63,7 @@ public class DecimalMeasure<Q extends Quantity> extends Measure<BigDecimal, Q> {
      */
     public static <Q extends Quantity> DecimalMeasure<Q> valueOf(
             BigDecimal decimal, Unit<Q> unit) {
-        return new DecimalMeasure<Q>(decimal, unit);
+        return new DecimalMeasure<>(decimal, unit);
     }
 
     /**
@@ -97,7 +97,7 @@ public class DecimalMeasure<Q extends Quantity> extends Measure<BigDecimal, Q> {
         if (unitStartIndex > 0) {
             unit = Unit.valueOf(str.substring(unitStartIndex));
         }
-        return new DecimalMeasure<Q>(decimal, unit);
+        return new DecimalMeasure<>(decimal, unit);
     }
 
     @Override
@@ -151,20 +151,20 @@ public class DecimalMeasure<Q extends Quantity> extends Measure<BigDecimal, Q> {
             BigDecimal result = mathContext == null ?
                     _value.multiply(dividend).divide(divisor) :
                         _value.multiply(dividend, mathContext).divide(divisor, mathContext);
-            return new DecimalMeasure<Q>(result, unit);        
+            return new DecimalMeasure<>(result, unit);
         } else if (cvtr.isLinear()) {
             BigDecimal factor = BigDecimal.valueOf(cvtr.convert(1.0));
             BigDecimal result = mathContext == null ?
                     _value.multiply(factor) : _value.multiply(factor, mathContext);
-            return new DecimalMeasure<Q>(result, unit);
+            return new DecimalMeasure<>(result, unit);
         } else if (cvtr instanceof AddConverter) {
             BigDecimal offset = BigDecimal.valueOf(((AddConverter)cvtr).getOffset());
             BigDecimal result = mathContext == null ?
                     _value.add(offset) : _value.add(offset, mathContext);
-            return new DecimalMeasure<Q>(result, unit);
+            return new DecimalMeasure<>(result, unit);
         } else { // Non-linear and not an offset, convert the double value.
             BigDecimal result = BigDecimal.valueOf(cvtr.convert(_value.doubleValue()));
-            return new DecimalMeasure<Q>(result, unit);
+            return new DecimalMeasure<>(result, unit);
         }    
     }
 

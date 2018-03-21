@@ -99,14 +99,14 @@ public class CSSParser
         public void addAttrib(String attrName, AttribOp op, String attrValue)
         {
             if (attribs == null)
-                attribs = new ArrayList<Attrib>();
+                attribs = new ArrayList<>();
             attribs.add(new Attrib(attrName, op, attrValue));
         }
 
         public void addPseudo(String pseudo)
         {
             if (pseudos == null)
-                pseudos = new ArrayList<String>();
+                pseudos = new ArrayList<>();
             pseudos.add(pseudo);
         }
 
@@ -159,7 +159,7 @@ public class CSSParser
         public void add(Rule rule)
         {
             if (this.rules == null)
-                this.rules = new ArrayList<Rule>();
+                this.rules = new ArrayList<>();
             for (int i = 0; i < rules.size(); i++)
             {
                 Rule nextRule = rules.get(i);
@@ -177,7 +177,7 @@ public class CSSParser
             if (rules.rules == null)
                 return;
             if (this.rules == null)
-                this.rules = new ArrayList<Rule>(rules.rules.size());
+                this.rules = new ArrayList<>(rules.rules.size());
             for (Rule rule : rules.rules)
             {
                 this.rules.add(rule);
@@ -233,7 +233,7 @@ public class CSSParser
         public void add(SimpleSelector part)
         {
             if (this.selector == null)
-                this.selector = new ArrayList<SimpleSelector>();
+                this.selector = new ArrayList<>();
             this.selector.add(part);
         }
 
@@ -578,7 +578,7 @@ public class CSSParser
     private static List<MediaType> parseMediaList(CSSTextScanner scan)
             throws SAXException
     {
-        ArrayList<MediaType> typeList = new ArrayList<MediaType>();
+        ArrayList<MediaType> typeList = new ArrayList<>();
         while (!scan.empty())
         {
             String type = scan.nextToken(',');
@@ -716,7 +716,7 @@ public class CSSParser
         if (scan.empty())
             return null;
 
-        ArrayList<Selector> selectorGroup = new ArrayList<Selector>(1);
+        ArrayList<Selector> selectorGroup = new ArrayList<>(1);
         Selector selector = new Selector();
 
         while (!scan.empty())
@@ -794,7 +794,7 @@ public class CSSParser
                 throw new SAXException(
                         "Invalid value for \"class\" attribute: " + val);
             if (classNameList == null)
-                classNameList = new ArrayList<String>();
+                classNameList = new ArrayList<>();
             classNameList.add(className);
             scan.skipWhitespace();
         }
@@ -807,7 +807,7 @@ public class CSSParser
     protected static boolean ruleMatch(Selector selector, SvgElementBase obj)
     {
         // Build the list of ancestor objects
-        List<SvgContainer> ancestors = new ArrayList<SvgContainer>();
+        List<SvgContainer> ancestors = new ArrayList<>();
         SvgContainer parent = obj.parent;
         while (parent != null)
         {

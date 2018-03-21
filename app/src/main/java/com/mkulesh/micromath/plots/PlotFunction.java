@@ -81,12 +81,12 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
 
     // visual components
     private TermField xMin = null, xMax = null, yMin = null, yMax = null;
-    private final ArrayList<CustomTextView> axes = new ArrayList<CustomTextView>();
+    private final ArrayList<CustomTextView> axes = new ArrayList<>();
     private FunctionPlotView functionView = null;
     private CustomTextView cornerView = null;
 
     // function data
-    private final ArrayList<Function2D> functions = new ArrayList<Function2D>();
+    private final ArrayList<Function2D> functions = new ArrayList<>();
     private final TermField[] boundaries = new TermField[4];
 
     // undo
@@ -212,7 +212,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         {
             functionView.setSignificantDigits(getFormulaList().getDocumentSettings().significantDigits);
             updatePlotBoundaries(functionView, xMin, xMax, yMin, yMax);
-            ArrayList<FunctionIf> func = new ArrayList<FunctionIf>();
+            ArrayList<FunctionIf> func = new ArrayList<>();
             for (Function2D f : functions)
             {
                 func.add(f);
@@ -242,7 +242,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             }
             else if (axes.contains(owner))
             {
-                list = new ArrayList<View>();
+                list = new ArrayList<>();
                 for (int i = 0; i < axes.size(); i++)
                 {
                     list.add(axes.get(i));
@@ -254,7 +254,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
                 {
                     if (f.getSettingsView() == owner)
                     {
-                        list = new ArrayList<View>();
+                        list = new ArrayList<>();
                         list.add(owner);
                         break;
                     }
@@ -927,7 +927,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
 
             Function2D f = new Function2D();
             f.lineParameters.setNextDefault(this.lineParameters);
-            ArrayList<View> newTerms = new ArrayList<View>();
+            ArrayList<View> newTerms = new ArrayList<>();
             inflateElements(newTerms, R.layout.plot_function_add_func, true);
             for (View t : newTerms)
             {

@@ -251,12 +251,12 @@ public abstract class UnitFormat extends Format {
         /**
          * Holds the name to unit mapping.
          */
-        final HashMap<String, Unit<?>> _nameToUnit = new HashMap<String, Unit<?>>();
+        final HashMap<String, Unit<?>> _nameToUnit = new HashMap<>();
 
         /**
          * Holds the unit to name mapping.
          */
-        final HashMap<Unit<?>, String> _unitToName = new HashMap<Unit<?>, String>();
+        final HashMap<Unit<?>, String> _unitToName = new HashMap<>();
 
         @Override
         public void label(Unit<?> unit, String label) {

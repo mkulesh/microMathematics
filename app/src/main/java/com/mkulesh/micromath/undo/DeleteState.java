@@ -85,7 +85,7 @@ public final class DeleteState implements Parcelable
         };
     }
 
-    private final ArrayList<EntryState> entries = new ArrayList<EntryState>();
+    private final ArrayList<EntryState> entries = new ArrayList<>();
 
     public DeleteState()
     {

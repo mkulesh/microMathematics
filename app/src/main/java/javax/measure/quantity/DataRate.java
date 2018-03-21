@@ -23,6 +23,6 @@ public interface DataRate extends Quantity {
     /**
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
-    Unit<DataRate> UNIT = new ProductUnit<DataRate>(SI.BIT.divide(SI.SECOND));
+    Unit<DataRate> UNIT = new ProductUnit<>(SI.BIT.divide(SI.SECOND));
 
 }

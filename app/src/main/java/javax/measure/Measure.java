@@ -45,7 +45,7 @@ public abstract class Measure<V, Q extends Quantity> implements Measurable<Q>,
      */
     public static <Q extends Quantity> Measure<java.lang.Double, Q> valueOf(
             double doubleValue, Unit<Q> unit) {
-        return new Double<Q>(doubleValue, unit);
+        return new Double<>(doubleValue, unit);
     }
 
     /**
@@ -57,7 +57,7 @@ public abstract class Measure<V, Q extends Quantity> implements Measurable<Q>,
      */
     public static <Q extends Quantity> Measure<java.lang.Long, Q> valueOf(
             long longValue, Unit<Q> unit) {
-        return new Long<Q>(longValue, unit);
+        return new Long<>(longValue, unit);
     }
 
     /**
@@ -69,7 +69,7 @@ public abstract class Measure<V, Q extends Quantity> implements Measurable<Q>,
      */
     public static <Q extends Quantity> Measure<java.lang.Float, Q> valueOf(
             float floatValue, Unit<Q> unit) {
-        return new Float<Q>(floatValue, unit);
+        return new Float<>(floatValue, unit);
     }
 
     /**
@@ -81,7 +81,7 @@ public abstract class Measure<V, Q extends Quantity> implements Measurable<Q>,
      */
     public static <Q extends Quantity> Measure<java.lang.Integer, Q> valueOf(
             int intValue, Unit<Q> unit) {
-        return new Integer<Q>(intValue, unit);
+        return new Integer<>(intValue, unit);
     }
 
     /**
@@ -272,7 +272,7 @@ public abstract class Measure<V, Q extends Quantity> implements Measurable<Q>,
         public Measure<java.lang.Double, Q> to(Unit<Q> unit) {
             if ((unit == _unit) || (unit.equals(_unit)))
                 return this;
-            return new Double<Q>(doubleValue(unit), unit);
+            return new Double<>(doubleValue(unit), unit);
         }
 
         public double doubleValue(Unit<Q> unit) {
@@ -313,7 +313,7 @@ public abstract class Measure<V, Q extends Quantity> implements Measurable<Q>,
         public Measure<java.lang.Long, Q> to(Unit<Q> unit) {
             if ((unit == _unit) || (unit.equals(_unit)))
                 return this;
-            return new Long<Q>(longValue(unit), unit);
+            return new Long<>(longValue(unit), unit);
         }
 
         public double doubleValue(Unit<Q> unit) {
@@ -361,7 +361,7 @@ public abstract class Measure<V, Q extends Quantity> implements Measurable<Q>,
         public Measure<java.lang.Float, Q> to(Unit<Q> unit) {
             if ((unit == _unit) || (unit.equals(_unit)))
                 return this;
-            return new Float<Q>(floatValue(unit), unit);
+            return new Float<>(floatValue(unit), unit);
         }
 
         public double doubleValue(Unit<Q> unit) {
@@ -402,7 +402,7 @@ public abstract class Measure<V, Q extends Quantity> implements Measurable<Q>,
         public Measure<java.lang.Integer, Q> to(Unit<Q> unit) {
             if ((unit == _unit) || (unit.equals(_unit)))
                 return this;
-            return new Integer<Q>(intValue(unit), unit);
+            return new Integer<>(intValue(unit), unit);
         }
 
         public double doubleValue(Unit<Q> unit) {

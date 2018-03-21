@@ -104,8 +104,8 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     private final FormulaList formulaList;
     protected TermField parentField = null;
     protected LinearLayout layout = null;
-    protected ArrayList<View> elements = new ArrayList<View>();
-    protected ArrayList<TermField> terms = new ArrayList<TermField>();
+    protected ArrayList<View> elements = new ArrayList<>();
+    protected ArrayList<TermField> terms = new ArrayList<>();
     protected final int termDepth;
     private boolean inRightOfPrevious = false;
 
@@ -286,7 +286,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         // In this case, it shall be marked as selected
         if (list == null)
         {
-            list = new ArrayList<View>();
+            list = new ArrayList<>();
             collectElemets(layout, list);
         }
 
@@ -786,7 +786,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     protected int removeElements()
     {
         int minIdx = layout.getChildCount() + 1;
-        ArrayList<View> toRemove = new ArrayList<View>();
+        ArrayList<View> toRemove = new ArrayList<>();
         collectElemets(layout, toRemove);
         for (View v : toRemove)
         {

@@ -27,6 +27,6 @@ public interface DynamicViscosity extends Quantity {
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
     Unit<DynamicViscosity> UNIT
-       = new ProductUnit<DynamicViscosity>(SI.PASCAL.times(SI.SECOND));
+       = new ProductUnit<>(SI.PASCAL.times(SI.SECOND));
 
 }

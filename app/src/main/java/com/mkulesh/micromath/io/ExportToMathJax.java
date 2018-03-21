@@ -95,7 +95,7 @@ public class ExportToMathJax extends ExportToLatex
             View v = formulaListView.getList().getChildAt(i);
             if (v instanceof FormulaListView.ListRow)
             {
-                ArrayList<FormulaBase> row = new ArrayList<FormulaBase>();
+                ArrayList<FormulaBase> row = new ArrayList<>();
                 ((FormulaListView.ListRow) v).getFormulas(FormulaBase.class, row);
                 if (row.size() == 0)
                 {

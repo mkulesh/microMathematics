@@ -237,7 +237,7 @@ public class AdapterDocuments extends AdapterBaseImpl
             c = cr.query(children_uri, projection, null, null, null);
             if (c != null)
             {
-                ArrayList<SAFItem> tmp_list = new ArrayList<SAFItem>();
+                ArrayList<SAFItem> tmp_list = new ArrayList<>();
                 if (c.getCount() == 0)
                 {
                     return tmp_list;

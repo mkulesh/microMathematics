@@ -35,7 +35,7 @@ public class AdapterAssets extends AdapterBaseImpl
     public final static String ORG_SCHEME = "asset";
     private String dirName;
     protected FileItem[] items;
-    private final ArrayList<String> assetFilter = new ArrayList<String>();
+    private final ArrayList<String> assetFilter = new ArrayList<>();
     private final AssetManager assetManager;
 
     public AdapterAssets(Context context, CharSequence[] assetFilter)
@@ -107,7 +107,7 @@ public class AdapterAssets extends AdapterBaseImpl
             final long appTimeStamp = FileUtils.getAppTimeStamp(ctx);
             if (assets != null && assets.length > 0)
             {
-                ArrayList<FileItem> fileItems = new ArrayList<FileItem>();
+                ArrayList<FileItem> fileItems = new ArrayList<>();
                 for (String asset : assets)
                 {
                     if (assetsPath.length() == 0 && !assetFilter.contains(asset))

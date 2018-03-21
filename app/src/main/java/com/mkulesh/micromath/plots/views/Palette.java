@@ -43,8 +43,8 @@ public class Palette
     // data and parameters
     private final ColorType colorType;
     private boolean mirrorOutOfRangeComponents;
-    private final ArrayList<Double> divisionPoints = new ArrayList<Double>();
-    private final ArrayList<float[]> divisionPointColors = new ArrayList<float[]>();
+    private final ArrayList<Double> divisionPoints = new ArrayList<>();
+    private final ArrayList<float[]> divisionPointColors = new ArrayList<>();
     private final float[] hsvConvertor = new float[3];
 
     /**

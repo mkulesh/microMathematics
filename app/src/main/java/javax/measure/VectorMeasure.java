@@ -59,7 +59,7 @@ public abstract class VectorMeasure<Q extends Quantity> extends Measure<double[]
      */
     public static <Q extends Quantity> VectorMeasure<Q> valueOf(
             double x, double y, Unit<Q> unit) {
-        return new TwoDimensional<Q>(x, y, unit);
+        return new TwoDimensional<>(x, y, unit);
     }
 
     /**
@@ -72,7 +72,7 @@ public abstract class VectorMeasure<Q extends Quantity> extends Measure<double[]
      */
     public static <Q extends Quantity> VectorMeasure<Q> valueOf(
             double x, double y, double z, Unit<Q> unit) {
-        return new ThreeDimensional<Q>(x, y, z, unit);
+        return new ThreeDimensional<>(x, y, z, unit);
     }
 
     /**
@@ -83,7 +83,7 @@ public abstract class VectorMeasure<Q extends Quantity> extends Measure<double[]
      */
     public static <Q extends Quantity> VectorMeasure<Q> valueOf(double[] components, 
             Unit<Q> unit) {
-        return new MultiDimensional<Q>(components, unit);
+        return new MultiDimensional<>(components, unit);
     }
     
     /**
@@ -167,7 +167,7 @@ public abstract class VectorMeasure<Q extends Quantity> extends Measure<double[]
             if ((unit == _unit) || (unit.equals(_unit)))
                 return this;
             UnitConverter cvtr = _unit.getConverterTo(unit);
-            return new TwoDimensional<Q>(cvtr.convert(_x), cvtr.convert(_y), unit); 
+            return new TwoDimensional<>(cvtr.convert(_x), cvtr.convert(_y), unit);
         } 
 
         private static final long serialVersionUID = 1L;
@@ -215,7 +215,7 @@ public abstract class VectorMeasure<Q extends Quantity> extends Measure<double[]
             if ((unit == _unit) || (unit.equals(_unit)))
                 return this;
             UnitConverter cvtr = _unit.getConverterTo(unit);
-            return new ThreeDimensional<Q>(cvtr.convert(_x), cvtr.convert(_y), cvtr.convert(_z), unit); 
+            return new ThreeDimensional<>(cvtr.convert(_x), cvtr.convert(_y), cvtr.convert(_z), unit);
         } 
 
         private static final long serialVersionUID = 1L;
@@ -264,7 +264,7 @@ public abstract class VectorMeasure<Q extends Quantity> extends Measure<double[]
             for (int i=0; i < _components.length; i++) {
                 newValues[i] = cvtr.convert(_components[i]);
             }
-            return new MultiDimensional<Q>(newValues, unit); 
+            return new MultiDimensional<>(newValues, unit);
         } 
 
         private static final long serialVersionUID = 1L;

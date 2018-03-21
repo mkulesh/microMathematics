@@ -85,7 +85,7 @@ public final class ReplaceState implements Parcelable
         };
     }
 
-    private final ArrayList<EntryState> entries = new ArrayList<EntryState>();
+    private final ArrayList<EntryState> entries = new ArrayList<>();
 
     public ReplaceState()
     {

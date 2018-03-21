@@ -69,7 +69,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
     private final Activity context;
     private final CharSequence[] scripts;
     private final SynchronizedBoolean isPublishRuns = new SynchronizedBoolean();
-    private final ArrayList<TestScript> testScripts = new ArrayList<TestScript>();
+    private final ArrayList<TestScript> testScripts = new ArrayList<>();
     private final Mode mode;
     private TestScript testScript = null;
     private long readingStartTime;

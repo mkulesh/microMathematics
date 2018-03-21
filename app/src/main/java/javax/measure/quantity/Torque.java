@@ -29,6 +29,6 @@ public interface Torque extends Quantity {
      * Holds the SI unit (Système International d'Unités) for this quantity.
      */
     Unit<Torque> UNIT =
-        new ProductUnit<Torque>(SI.NEWTON.times(SI.METRE));
+        new ProductUnit<>(SI.NEWTON.times(SI.METRE));
 
 }

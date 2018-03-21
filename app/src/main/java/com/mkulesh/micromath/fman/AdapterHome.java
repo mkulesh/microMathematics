@@ -101,7 +101,7 @@ public class AdapterHome extends AdapterBaseImpl
         try
         {
             items = null;
-            ArrayList<Item> ia = new ArrayList<Item>();
+            ArrayList<Item> ia = new ArrayList<>();
 
             ia.add(makeItem(LOCAL, AdapterFileSystem.ORG_SCHEME));
 

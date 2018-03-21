@@ -459,7 +459,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         {
             return null;
         }
-        ArrayList<Double> newArr = new ArrayList<Double>();
+        ArrayList<Double> newArr = new ArrayList<>();
         for (int i = 0; i < arr.length; i++)
         {
             final double v = arr[i].getReal();

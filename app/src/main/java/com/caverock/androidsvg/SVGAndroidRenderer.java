@@ -178,7 +178,7 @@ public class SVGAndroidRenderer
     private void resetState()
     {
         state = new RendererState();
-        stateStack = new Stack<RendererState>();
+        stateStack = new Stack<>();
 
         // Initialise the style state properties like Paints etc using a fresh
         // instance of Style
@@ -196,14 +196,14 @@ public class SVGAndroidRenderer
         // statePush();
 
         // Initialise the stacks used for mask handling
-        canvasStack = new Stack<Canvas>();
-        bitmapStack = new Stack<Bitmap>();
+        canvasStack = new Stack<>();
+        bitmapStack = new Stack<>();
 
         // Keep track of element stack while rendering.
         // The 'render parent' for some elements (eg <use> references) is
         // different from its DOM parent.
-        matrixStack = new Stack<Matrix>();
-        parentStack = new Stack<SvgContainer>();
+        matrixStack = new Stack<>();
+        parentStack = new Stack<>();
     }
 
 	/*
@@ -963,7 +963,7 @@ public class SVGAndroidRenderer
 
     private static synchronized void initialiseSupportedFeaturesMap()
     {
-        supportedFeatures = new HashSet<String>();
+        supportedFeatures = new HashSet<>();
 
         // SVG features this SVG implementation supports
         // Actual feature strings have the prefix: FEATURE_STRING_PREFIX (see
@@ -1325,7 +1325,7 @@ public class SVGAndroidRenderer
         _x2 = (obj.x2 != null) ? obj.x2.floatValueX(this) : 0f;
         _y2 = (obj.y2 != null) ? obj.y2.floatValueY(this) : 0f;
 
-        List<MarkerVector> markers = new ArrayList<MarkerVector>(2);
+        List<MarkerVector> markers = new ArrayList<>(2);
         markers.add(new MarkerVector(_x1, _y1, (_x2 - _x1), (_y2 - _y1)));
         markers.add(new MarkerVector(_x2, _y2, (_x2 - _x1), (_y2 - _y1)));
         return markers;
@@ -1379,7 +1379,7 @@ public class SVGAndroidRenderer
         if (numPoints < 2)
             return null;
 
-        List<MarkerVector> markers = new ArrayList<MarkerVector>();
+        List<MarkerVector> markers = new ArrayList<>();
         MarkerVector lastPos = new MarkerVector(obj.points[0], obj.points[1],
                 0, 0);
         float x = 0, y = 0;
@@ -2964,7 +2964,7 @@ public class SVGAndroidRenderer
 	 */
     private class MarkerPositionCalculator implements PathInterface
     {
-        private List<MarkerVector> markers = new ArrayList<MarkerVector>();
+        private List<MarkerVector> markers = new ArrayList<>();
         private float startX, startY;
         private MarkerVector lastPos = null;
         private boolean startArc = false, normalCubic = true;
@@ -3330,7 +3330,7 @@ public class SVGAndroidRenderer
     private RendererState findInheritFromAncestorState(SvgObject obj,
                                                        RendererState newState)
     {
-        List<SvgElementBase> ancestors = new ArrayList<SvgElementBase>();
+        List<SvgElementBase> ancestors = new ArrayList<>();
 
         // Traverse up the document tree adding element styles to a list.
         while (true)

@@ -142,7 +142,7 @@ public class BracketParser
 
     private ArrayList<String> getArcs(String args)
     {
-        ArrayList<String> tmpArgs = new ArrayList<String>();
+        ArrayList<String> tmpArgs = new ArrayList<>();
         while (true)
         {
             int cmPosition = args.indexOf(",");

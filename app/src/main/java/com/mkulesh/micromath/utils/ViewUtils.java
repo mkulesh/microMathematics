@@ -112,7 +112,7 @@ public final class ViewUtils
         final int decMaxLength = Math.max(0, significantDigits - 2);
         final int expMaxLength = Math.max(0, significantDigits - 2);
         String[] strValues = new String[values.length];
-        Set<String> trial = new HashSet<String>();
+        Set<String> trial = new HashSet<>();
 
         // First run: try to find suitable simple decimal format
         // Second run: we shall use exponential format to ensure given maximum length

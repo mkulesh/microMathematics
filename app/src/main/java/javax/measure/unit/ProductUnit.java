@@ -129,7 +129,7 @@ public final class ProductUnit<Q extends Quantity> extends DerivedUnit<Q> {
             for (int i = 0; i < resultIndex; i++) {
                 elems[i] = result[i];
             }
-            return new ProductUnit<Quantity>(elems);
+            return new ProductUnit<>(elems);
         }
     }
 

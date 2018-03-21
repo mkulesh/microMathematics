@@ -387,7 +387,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         final String indexName = getIndexName();
         if (indexName != null)
         {
-            ArrayList<String> retValue = new ArrayList<String>();
+            ArrayList<String> retValue = new ArrayList<>();
             retValue.add(indexName);
             return retValue;
         }

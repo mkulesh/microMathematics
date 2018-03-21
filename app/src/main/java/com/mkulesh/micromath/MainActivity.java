@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity
         CompatUtils.setDrawerListener(mDrawerLayout, mDrawerToggle);
 
         // context menu
-        activeActionModes = new ArrayList<android.support.v7.view.ActionMode>();
+        activeActionModes = new ArrayList<>();
 
         Intent intent = getIntent();
         boolean intentProcessed = false;

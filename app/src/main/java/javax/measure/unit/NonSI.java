@@ -31,7 +31,7 @@ public final class NonSI extends SystemOfUnits {
     /**
      * Holds collection of NonSI units.
      */
-    private static HashSet<Unit<?>> UNITS = new HashSet<Unit<?>>();
+    private static HashSet<Unit<?>> UNITS = new HashSet<>();
 
     /**
      * Holds the standard gravity constant: 9.80665 m/s² exact.

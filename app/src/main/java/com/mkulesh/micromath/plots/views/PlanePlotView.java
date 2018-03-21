@@ -138,7 +138,7 @@ public abstract class PlanePlotView extends PlotView
             // Method 1: label center is not a boundary
             // first, we obtain values including label center
             final double delta = area.getDim().get(idx) / (double) labelNumber;
-            ArrayList<Double> rawValues = new ArrayList<Double>();
+            ArrayList<Double> rawValues = new ArrayList<>();
             for (int i = 0; i < labelNumber; i++)
             {
                 final double v = -1.0 * (double) (labelNumber - i) * delta;

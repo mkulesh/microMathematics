@@ -57,12 +57,12 @@ public abstract class Unit<Q extends Quantity> implements Serializable {
     /**
      * Holds the dimensionless unit <code>ONE</code>.
      */
-    public static final Unit<Dimensionless> ONE = new ProductUnit<Dimensionless>();
+    public static final Unit<Dimensionless> ONE = new ProductUnit<>();
 
     /**
      * Holds the unique symbols collection (base unit or alternate units).
      */
-    static final HashMap<String, Unit<?>> SYMBOL_TO_UNIT = new HashMap<String, Unit<?>>();
+    static final HashMap<String, Unit<?>> SYMBOL_TO_UNIT = new HashMap<>();
 
     /**
      * Default constructor.
@@ -296,7 +296,7 @@ public abstract class Unit<Q extends Quantity> implements Serializable {
      *         associated to a different unit.
      */
     public final <A extends Quantity> AlternateUnit<A> alternate(String symbol) {
-        return new AlternateUnit<A>(symbol, this);
+        return new AlternateUnit<>(symbol, this);
     }
 
     /**
@@ -312,7 +312,7 @@ public abstract class Unit<Q extends Quantity> implements Serializable {
      * @return the corresponding compound unit.
      */
     public final CompoundUnit<Q> compound(Unit<Q> subunit) {
-        return new CompoundUnit<Q>(this, subunit);
+        return new CompoundUnit<>(this, subunit);
     }
 
     /**
@@ -332,11 +332,11 @@ public abstract class Unit<Q extends Quantity> implements Serializable {
             UnitConverter toParent = tf.toParentUnit().concatenate(operation);
             if (toParent == UnitConverter.IDENTITY)
                 return parent;
-            return new TransformedUnit<Q>(parent, toParent);
+            return new TransformedUnit<>(parent, toParent);
         }
         if (operation == UnitConverter.IDENTITY) 
             return this;
-        return new TransformedUnit<Q>(this, operation);
+        return new TransformedUnit<>(this, operation);
     }
 
     /**

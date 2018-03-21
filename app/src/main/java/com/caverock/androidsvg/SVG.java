@@ -106,7 +106,7 @@ public class SVG
     private Ruleset cssRules = new Ruleset();
 
     // Map from id attribute to element
-    Map<String, SvgElementBase> idToElementMap = new HashMap<String, SvgElementBase>();
+    Map<String, SvgElementBase> idToElementMap = new HashMap<>();
 
     protected enum Unit
     {
@@ -579,7 +579,7 @@ public class SVG
 
         List<SvgObject> viewElems = getElementsByTagName(View.class);
 
-        Set<String> viewIds = new HashSet<String>(viewElems.size());
+        Set<String> viewIds = new HashSet<>(viewElems.size());
         for (SvgObject elem : viewElems)
         {
             View view = (View) elem;
@@ -1576,7 +1576,7 @@ public class SVG
     protected static class SvgConditionalContainer extends SvgElement implements
             SvgContainer, SvgConditional
     {
-        public List<SvgObject> children = new ArrayList<SvgObject>();
+        public List<SvgObject> children = new ArrayList<>();
 
         public Set<String> requiredFeatures = null;
         public String requiredExtensions = null;
@@ -1935,7 +1935,7 @@ public class SVG
     protected static class GradientElement extends SvgElementBase implements
             SvgContainer
     {
-        public List<SvgObject> children = new ArrayList<SvgObject>();
+        public List<SvgObject> children = new ArrayList<>();
 
         public Boolean gradientUnitsAreUser;
         public Matrix gradientTransform;
@@ -2306,7 +2306,7 @@ public class SVG
     @SuppressWarnings("rawtypes")
     private List<SvgObject> getElementsByTagName(SvgContainer obj, Class clazz)
     {
-        List<SvgObject> result = new ArrayList<SvgObject>();
+        List<SvgObject> result = new ArrayList<>();
 
         if (obj.getClass() == clazz)
             result.add((SvgObject) obj);

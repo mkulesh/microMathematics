@@ -89,7 +89,7 @@ public class FormulaListView
     @SuppressWarnings("unchecked")
     public <T> ArrayList<T> getFormulas(Class<T> c)
     {
-        ArrayList<T> retValue = new ArrayList<T>();
+        ArrayList<T> retValue = new ArrayList<>();
         final int n = list.getChildCount();
         for (int i = 0; i < n; i++)
         {

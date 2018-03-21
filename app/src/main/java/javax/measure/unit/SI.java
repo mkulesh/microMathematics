@@ -38,7 +38,7 @@ public final class SI extends SystemOfUnits {
     /**
      * Holds collection of SI units.
      */
-    private static HashSet<Unit<?>> UNITS = new HashSet<Unit<?>>();
+    private static HashSet<Unit<?>> UNITS = new HashSet<>();
 
     /**
      * Default constructor (prevents this class from being instantiated).
