@@ -46,6 +46,7 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
     private final CheckBox cbEmbedded;
     private final HorizontalNumberPicker pickerWidth, pickerHeight;
     private final RadioButton rOriginalSize, rCustomSize;
+    private final RadioButton rOriginalColor, rAutoColor;
     private final ImagePropertiesChangeIf changeIf;
 
     public DialogImageSettings(AppCompatActivity activity, ImagePropertiesChangeIf changeIf, ImageProperties parameters)
@@ -83,13 +84,20 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
         rCustomSize.setChecked(!parameters.originalSize);
         onClick(parameters.originalSize ? rOriginalSize : rCustomSize);
 
+        rOriginalColor = findViewById(R.id.dialog_button_original_color);
+        rOriginalColor.setOnClickListener(this);
+        rOriginalColor.setChecked(parameters.colorType == ImageProperties.ColorType.ORIGINAL);
+        rAutoColor = findViewById(R.id.dialog_button_auto_color);
+        rAutoColor.setOnClickListener(this);
+        rAutoColor.setChecked(parameters.colorType == ImageProperties.ColorType.AUTO);
+
         this.changeIf = changeIf;
     }
 
     @Override
     public void onClick(View v)
     {
-        boolean isFileChanged = false, isSizeChanged = false;
+        boolean isFileChanged = false, isImageChanged = false;
         if (v.getId() == R.id.dialog_button_original_size || v.getId() == R.id.dialog_button_custom_size)
         {
             pickerWidth.setEnabled(v.getId() == R.id.dialog_button_custom_size);
@@ -99,6 +107,10 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
         else if (v.getId() == R.id.dialog_button_select_file)
         {
             showFileChooserDialog();
+            return;
+        }
+        else if (v.getId() == R.id.dialog_button_original_color || v.getId() == R.id.dialog_button_auto_color)
+        {
             return;
         }
         else if (v.getId() == R.id.dialog_button_ok)
@@ -116,14 +128,25 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
                 if (parameters.originalSize != rOriginalSize.isChecked() || parameters.width != pickerWidth.getValue()
                         || parameters.height != pickerHeight.getValue())
                 {
-                    isSizeChanged = true;
+                    isImageChanged = true;
                     parameters.originalSize = rOriginalSize.isChecked();
                     parameters.width = pickerWidth.getValue();
                     parameters.height = pickerHeight.getValue();
                 }
+
+                final ImageProperties.ColorType colorType = rOriginalColor.isChecked()?
+                        ImageProperties.ColorType.ORIGINAL : ImageProperties.ColorType.AUTO;
+                if (parameters.colorType != colorType)
+                {
+                    isImageChanged = true;
+                    parameters.colorType = colorType;
+                }
             }
         }
-        changeIf.onImagePropertiesChange(isFileChanged, isSizeChanged);
+        if (changeIf != null)
+        {
+            changeIf.onImagePropertiesChange(isFileChanged, isImageChanged);
+        }
         closeDialog();
     }
 

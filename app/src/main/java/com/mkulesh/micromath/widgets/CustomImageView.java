@@ -21,11 +21,12 @@ package com.mkulesh.micromath.widgets;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.RectF;
-import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -43,6 +44,7 @@ import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.ImageProperties;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -83,6 +85,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
     private String svgData = null;
     private final RectF rect = new RectF();
     private int originalWidth = 0, originalHeight = 0;
+    private ColorFilter colorFilter = null;
 
     /*********************************************************
      * Creating
@@ -132,6 +135,20 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         return originalHeight + 2 * strokeWidth;
     }
 
+    public void setColorType(ImageProperties.ColorType colorType)
+    {
+        if (colorType == ImageProperties.ColorType.AUTO)
+        {
+            colorFilter = new PorterDuffColorFilter(
+                    CompatUtils.getThemeColorAttr(getContext(), R.attr.colorFormulaNormal),
+                    PorterDuff.Mode.SRC_IN);
+        }
+        else
+        {
+            colorFilter = null;
+        }
+    }
+
     /*********************************************************
      * Read/write interface
      *********************************************************/
@@ -148,7 +165,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
             return;
         }
 
-        Uri imageUri = null;
+        Uri imageUri;
         if (parameters.isAsset())
         {
             imageUri = Uri.parse(fileName);
@@ -282,13 +299,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
                     serializer.cdsect(encodedImage);
                     stream.close();
                 }
-                catch (OutOfMemoryError ex)
-                {
-                    String error = getContext().getResources().getString(R.string.error_out_of_memory);
-                    Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
-                    return;
-                }
-                catch (Exception ex)
+                catch (OutOfMemoryError | Exception ex)
                 {
                     String error = getContext().getResources().getString(R.string.error_out_of_memory);
                     Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
@@ -383,27 +394,22 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
             {
                 final int width = (int) rect.width();
                 final int height = (int) rect.height();
-                final PictureDrawable pictureDrawable = new PictureDrawable(svg.renderToPicture(width, height));
-                bitmap = Bitmap.createBitmap(width, height, Config.ARGB_8888);
-                final Canvas c1 = new Canvas(bitmap);
-                c1.drawPicture(pictureDrawable.getPicture());
+                bitmap = ViewUtils.pictureToBitmap(svg.renderToPicture(width, height), width, height);
+                paint.setColorFilter(colorFilter);
                 c.drawBitmap(bitmap, null, rect, paint);
             }
             else if (imageType == ImageType.BITMAP && bitmap != null)
             {
+                paint.setColorFilter(colorFilter);
                 c.drawBitmap(bitmap, null, rect, paint);
             }
             else
             {
+                // do not set color filter for text image
                 super.onDraw(c);
             }
         }
-        catch (OutOfMemoryError ex)
-        {
-            String error = getContext().getResources().getString(R.string.error_out_of_memory);
-            Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
-        }
-        catch (Exception ex)
+        catch (OutOfMemoryError | Exception ex)
         {
             String error = getContext().getResources().getString(R.string.error_out_of_memory);
             Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();

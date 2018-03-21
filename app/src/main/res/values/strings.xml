@@ -182,6 +182,8 @@
     <string name="dialog_image_settings_custom_size">Custom size</string>
     <string name="dialog_image_settings_width">Image width</string>
     <string name="dialog_image_settings_height">Image height</string>
+    <string name="dialog_image_settings_original_color">Original color</string>
+    <string name="dialog_image_settings_auto_color">Auto-color</string>
     <string name="dialog_result_title">Result properties</string>
     <string name="dialog_result_disable_calculation">Do not calculate</string>
     <string name="dialog_result_hide_result_field">Hide result field</string>

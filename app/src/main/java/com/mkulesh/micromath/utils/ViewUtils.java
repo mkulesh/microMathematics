@@ -22,7 +22,12 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Picture;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.PictureDrawable;
+import android.os.Build;
 import android.support.annotation.AttrRes;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -106,9 +111,8 @@ public final class ViewUtils
     /**
      * Procedure returns an array of formatted values
      */
-    public static String[] catValues(double[] values, int significantDigits)
+    public static String[] catValues(double[] values, final int significantDigits)
     {
-        final int strMaxLength = significantDigits;
         final int decMaxLength = Math.max(0, significantDigits - 2);
         final int expMaxLength = Math.max(0, significantDigits - 2);
         String[] strValues = new String[values.length];
@@ -153,7 +157,7 @@ public final class ViewUtils
                 {
                     return strValues;
                 }
-                if (!hasDuplicate && trialLength <= strMaxLength)
+                if (!hasDuplicate && trialLength <= significantDigits)
                 {
                     resultFound = true;
                 }
@@ -272,5 +276,23 @@ public final class ViewUtils
             result = activity.getResources().getDimensionPixelSize(resourceId);
         }
         return result;
+    }
+
+    public static Bitmap pictureToBitmap(final Picture picture, final int w, final int h)
+    {
+        final PictureDrawable pd = new PictureDrawable(picture);
+        final Bitmap bitmap = Bitmap.createBitmap(w, h, getBitmapConfig());
+        final Canvas canvas = new Canvas(bitmap);
+        canvas.drawPicture(pd.getPicture());
+        return bitmap;
+    }
+
+    public static Bitmap.Config getBitmapConfig()
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            return Bitmap.Config.RGBA_F16;
+        }
+        return Bitmap.Config.ARGB_8888;
     }
 }

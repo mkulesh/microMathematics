@@ -152,10 +152,10 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
     }
 
     @Override
-    public void onImagePropertiesChange(boolean isFileChanged, boolean isSizeChanged)
+    public void onImagePropertiesChange(boolean isFileChanged, boolean isImageChanged)
     {
         getFormulaList().finishActiveActionMode();
-        if (isFileChanged || isSizeChanged)
+        if (isFileChanged || isImageChanged)
         {
             if (formulaState != null)
             {
@@ -289,6 +289,7 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         }
         imageView.getLayoutParams().width = Math.round(width * scale);
         imageView.getLayoutParams().height = Math.round(height * scale);
+        imageView.setColorType(parameters.colorType);
         ((CustomLayout) layout).setContentValid(imageView.getImageType() != CustomImageView.ImageType.NONE);
     }
 }

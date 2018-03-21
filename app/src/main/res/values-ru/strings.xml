@@ -140,6 +140,8 @@
     <string name="dialog_image_settings_custom_size">Задать размер</string>
     <string name="dialog_image_settings_width">Ширина</string>
     <string name="dialog_image_settings_height">Высота</string>
+    <string name="dialog_image_settings_original_color">Оригинальный цвет</string>
+    <string name="dialog_image_settings_auto_color">Автоматический цвет</string>
     <string name="dialog_result_title">Текстовый результат</string>
     <string name="dialog_result_disable_calculation">Не вычислять</string>
     <string name="dialog_result_hide_result_field">Скрыть поле с результатом</string>
