@@ -790,10 +790,12 @@ public abstract class UnitFormat extends Format {
             "M", "k", "h", "da", "d", "c", "m", "µ", "n", "p", "f", "a", "z",
             "y" };
 
+    private static final String[] IEC_PREFIXES = { "Yi", "Zi", "Ei", "Pi", "Ti", "Gi", "Mi", "Ki" };
+
     private static final UnitConverter[] CONVERTERS = { E24, E21, E18, E15, E12,
             E9, E6, E3, E2, E1, Em1, Em2, Em3, Em6, Em9, Em12,
             Em15, Em18, Em21, Em24 };
-    
+
     private static String asciiPrefix(String prefix) {
         return prefix == "µ" ? "micro" : prefix;
     }
@@ -811,6 +813,29 @@ public abstract class UnitFormat extends Format {
                 }
             }
         }
+
+        // Alias for computer storage and telecommunication units
+        Unit<?> siXBit = SI.BIT;
+        Unit<?> iecXBit = SI.BIT;
+        Unit<?> siXbps = SI.BIT_PER_SECOND;
+        for (int i = IEC_PREFIXES.length - 1; i >= 0 ; i--)
+        {
+            // bit and byte, see https://en.wikipedia.org/wiki/Bit, see https://en.wikipedia.org/wiki/Byte
+            // SI prefixes
+            siXBit = siXBit.times(1000);
+            DEFAULT.label(siXBit, PREFIXES[i] + "bit");
+            DEFAULT.label(siXBit.times(8), PREFIXES[i] + "B");
+            // Binary (IEC) prefixes
+            iecXBit = iecXBit.times(1024);
+            DEFAULT.label(iecXBit, IEC_PREFIXES[i] + "bit");
+            DEFAULT.label(iecXBit.times(8), IEC_PREFIXES[i] + "B");
+            // data rate units, see https://en.wikipedia.org/wiki/Data-rate_units#Kilobit_per_second
+            // SI prefixes only
+            siXbps = siXbps.times(1000);
+            DEFAULT.label(siXbps, PREFIXES[i] + "bps");
+            DEFAULT.label(siXbps.times(8), PREFIXES[i] + "Bps");
+        }
+
         // Special case for KILOGRAM.
         DEFAULT.label(SI.GRAM, "g");
         for (int i = 0; i < PREFIXES.length; i++) {
@@ -893,12 +918,6 @@ public abstract class UnitFormat extends Format {
         DEFAULT.label(NonSI.ASTRONOMICAL_UNIT, "au");
         DEFAULT.label(NonSI.LIGHT_YEAR, "ly");
         DEFAULT.label(NonSI.PARSEC, "pc");
-
-        /* Pixel and point are obsolete: do not support these units
-        DEFAULT.label(NonSI.POINT, "pt");
-        DEFAULT.label(NonSI.PIXEL, "pixel");
-        */
-
         DEFAULT.label(NonSI.MAXWELL, "Mx");
         DEFAULT.label(NonSI.GAUSS, "G");
         DEFAULT.label(NonSI.ATOMIC_MASS, "u");

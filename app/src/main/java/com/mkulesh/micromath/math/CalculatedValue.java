@@ -37,6 +37,7 @@ import java.util.List;
 
 import javax.measure.DecimalMeasure;
 import javax.measure.Measure;
+import javax.measure.unit.NonSI;
 import javax.measure.unit.SI;
 import javax.measure.unit.Unit;
 
@@ -184,6 +185,18 @@ public class CalculatedValue
                 {
                     newUnit = u;
                     minLen = u.toString().length();
+                }
+            }
+            // some special cases
+            if (newUnit != null)
+            {
+                if (newUnit.equals(SI.BECQUEREL))
+                {
+                    newUnit = SI.HERTZ;
+                }
+                if (newUnit.equals(SI.BIT) && real >= 8)
+                {
+                    newUnit = NonSI.BYTE;
                 }
             }
         }

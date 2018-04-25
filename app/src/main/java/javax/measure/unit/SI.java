@@ -161,9 +161,13 @@ public final class SI extends SystemOfUnits {
     /**
      * The unit for binary information (<code>bit</code>).
      */
-    public static final AlternateUnit<DataAmount> BIT = si(new AlternateUnit<DataAmount>(
-            "bit", Unit.ONE));
+    public static final BaseUnit<DataAmount> BIT = si(new BaseUnit<DataAmount>("bit"));
 
+    /**
+     * The unit for bit rate (<code>bps</code>).
+     */
+    public static final AlternateUnit<DataRate> BIT_PER_SECOND = si(new AlternateUnit<DataRate>(
+            "bps", BIT.divide(SECOND)));
     /**
      * The derived unit for frequency (<code>Hz</code>).
      * A unit of frequency equal to one cycle per second.
@@ -665,14 +669,11 @@ public final class SI extends SystemOfUnits {
 
     static final MultiplyConverter E21 = new MultiplyConverter(1E21);
 
-    static final RationalConverter E18 = new RationalConverter(
-            1000000000000000000L, 1);
+    static final RationalConverter E18 = new RationalConverter(1000000000000000000L, 1);
 
-    static final RationalConverter E15 = new RationalConverter(
-            1000000000000000L, 1);
+    static final RationalConverter E15 = new RationalConverter(1000000000000000L, 1);
 
-    static final RationalConverter E12 = new RationalConverter(1000000000000L,
-            1);
+    static final RationalConverter E12 = new RationalConverter(1000000000000L,1);
 
     static final RationalConverter E9 = new RationalConverter(1000000000L, 1);
 
@@ -694,14 +695,11 @@ public final class SI extends SystemOfUnits {
 
     static final RationalConverter Em9 = new RationalConverter(1, 1000000000L);
 
-    static final RationalConverter Em12 = new RationalConverter(1,
-            1000000000000L);
+    static final RationalConverter Em12 = new RationalConverter(1, 1000000000000L);
 
-    static final RationalConverter Em15 = new RationalConverter(1,
-            1000000000000000L);
+    static final RationalConverter Em15 = new RationalConverter(1, 1000000000000000L);
 
-    static final RationalConverter Em18 = new RationalConverter(1,
-            1000000000000000000L);
+    static final RationalConverter Em18 = new RationalConverter(1, 1000000000000000000L);
 
     static final MultiplyConverter Em21 = new MultiplyConverter(1E-21);
 
