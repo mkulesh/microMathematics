@@ -42,6 +42,7 @@ import com.mkulesh.micromath.formula.LinkHolder;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TermField.BracketsType;
 import com.mkulesh.micromath.formula.TermField.ErrorNotification;
+import com.mkulesh.micromath.math.AxisTypeConverter;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plots.views.FunctionPlotView;
 import com.mkulesh.micromath.plus.R;
@@ -206,12 +207,12 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
     @Override
     public void showResult()
     {
-        final boolean b1 = setEmptyBorders(FunctionIf.X, xMin, xMax);
-        final boolean b2 = setEmptyBorders(FunctionIf.Y, yMin, yMax);
+        final boolean b1 = setEmptyBorders(FunctionIf.X, xMin, xMax, functionView.getAxisParameters().xType);
+        final boolean b2 = setEmptyBorders(FunctionIf.Y, yMin, yMax, functionView.getAxisParameters().yType);
         if (b1 && b2)
         {
             functionView.setSignificantDigits(getFormulaList().getDocumentSettings().significantDigits);
-            updatePlotBoundaries(functionView, xMin, xMax, yMin, yMax);
+            updatePlotBoundaries(functionView, xMin, xMax, yMin, yMax, functionView.getAxisParameters());
             ArrayList<FunctionIf> func = new ArrayList<>();
             for (Function2D f : functions)
             {
@@ -442,6 +443,12 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
     }
 
     @Override
+    public AxisType getAxisType()
+    {
+        return AxisType.EXTENDED;
+    }
+
+    @Override
     public void onLinePropertiesChange(boolean isChanged)
     {
         if (!isChanged)
@@ -471,7 +478,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             getFormulaList().getUndoState().addEntry(formulaState);
             formulaState = null;
         }
-        updatePlotBoundaries(functionView, xMin, xMax, yMin, yMax);
+        updatePlotBoundaries(functionView, xMin, xMax, yMin, yMax, functionView.getAxisParameters());
         ViewUtils.invalidateLayout(functionView, layout);
     }
 
@@ -782,7 +789,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         }
     }
 
-    private boolean setEmptyBorders(int idx, TermField f1, TermField f2)
+    private boolean setEmptyBorders(int idx, TermField f1, TermField f2, AxisTypeConverter.Type type)
     {
         double[] minMaxValues = null;
         for (Function2D f : functions)
@@ -801,6 +808,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
                         f.getMinMaxValues(idx)[FunctionIf.MAX]);
             }
         }
+        AxisTypeConverter.toBaseType(minMaxValues, type);
         return super.setEmptyBorders(minMaxValues, f1, f2);
     }
 
@@ -1023,6 +1031,8 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             {
                 argValues[0] = new CalculatedValue();
             }
+            final AxisTypeConverter.Type xType = functionView.getAxisParameters().xType;
+            final AxisTypeConverter.Type yType = functionView.getAxisParameters().yType;
             if (linkedInterval == null)
             {
                 if (xValues.length != 1)
@@ -1030,13 +1040,13 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
                     xValues = new double[1];
                 }
                 calcVal.processRealTerm(thread, x);
-                xValues[0] = calcVal.getReal();
+                xValues[0] = AxisTypeConverter.toSpecialType(calcVal.getReal(), xType);
                 if (yValues.length != 1)
                 {
                     yValues = new double[1];
                 }
                 calcVal.processRealTerm(thread, y);
-                yValues[0] = calcVal.getReal();
+                yValues[0] = AxisTypeConverter.toSpecialType(calcVal.getReal(), yType);
                 xMinMaxValues[FunctionIf.MIN] = xMinMaxValues[FunctionIf.MAX] = xValues[0];
                 yMinMaxValues[FunctionIf.MIN] = yMinMaxValues[FunctionIf.MAX] = yValues[0];
             }
@@ -1060,9 +1070,9 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
                     argValues[0].assign(par[i]);
                     linkedInterval.setArgumentValues(argValues);
                     calcVal.processRealTerm(thread, x);
-                    final double xVal = calcVal.getReal();
+                    final double xVal = AxisTypeConverter.toSpecialType(calcVal.getReal(), xType);
                     calcVal.processRealTerm(thread, y);
-                    final double yVal = calcVal.getReal();
+                    final double yVal = AxisTypeConverter.toSpecialType(calcVal.getReal(), yType);
                     xValues[i] = xVal;
                     yValues[i] = yVal;
                     if (i == 0)

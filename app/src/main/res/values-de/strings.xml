@@ -102,6 +102,7 @@
     <string name="dialog_axis_settings_title">Rastereinstellungen</string>
     <string name="dialog_axis_settings_xlabels">Anzahl von X-Bezeichnungen</string>
     <string name="dialog_axis_settings_ylabels">Anzahl von Y-Bezeichnungen</string>
+    <string name="dialog_axis_settings_type_log10">Logarithmische Darstellung</string>
     <string name="dialog_plot_settings_title">Plot Einstellungen</string>
     <string name="dialog_plot_settings_width">Plot Breite</string>
     <string name="dialog_plot_settings_height">Plot Höhe</string>

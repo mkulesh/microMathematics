@@ -28,6 +28,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.Toast;
 
+import com.mkulesh.micromath.math.AxisTypeConverter;
 import com.mkulesh.micromath.math.Vector2D;
 import com.mkulesh.micromath.plots.FunctionIf;
 import com.mkulesh.micromath.plots.FunctionIf.Type;
@@ -108,8 +109,8 @@ public abstract class PlanePlotView extends PlotView
             labelCenter.y = area.getMin().y;
         }
 
-        this.xLabels = makeLabels(FunctionIf.X, axisParameters.xLabelsNumber);
-        this.yLabels = makeLabels(FunctionIf.Y, axisParameters.yLabelsNumber);
+        this.xLabels = makeLabels(FunctionIf.X, axisParameters.xLabelsNumber, axisParameters.xType);
+        this.yLabels = makeLabels(FunctionIf.Y, axisParameters.yLabelsNumber, axisParameters.yType);
     }
 
     protected void getScaledPadding(Rect r)
@@ -124,7 +125,7 @@ public abstract class PlanePlotView extends PlotView
      * Labels
      *********************************************************/
 
-    private Label[] makeLabels(int idx, int labelNumber)
+    private Label[] makeLabels(int idx, int labelNumber, AxisTypeConverter.Type axisType)
     {
         if (labelNumber == 0)
         {
@@ -160,12 +161,12 @@ public abstract class PlanePlotView extends PlotView
                 }
             }
             // second, convert it to Labels array
-            double[] values = new double[rawValues.size()];
+            final double[] values = new double[rawValues.size()];
             for (int i = 0; i < values.length; i++)
             {
                 values[i] = rawValues.get(i);
             }
-            final String[] strValues = ViewUtils.catValues(values, significantDigits);
+            final String[] strValues = ViewUtils.catValues(AxisTypeConverter.cloneToBaseType(values, axisType), significantDigits);
             retValue = new Label[values.length];
             for (int i = 0; i < retValue.length; i++)
             {
@@ -185,7 +186,7 @@ public abstract class PlanePlotView extends PlotView
                 final double v = (double) (i - 1) * delta + minValue;
                 values[i - 1] = v;
             }
-            final String[] strValues = ViewUtils.catValues(values, significantDigits);
+            final String[] strValues = ViewUtils.catValues(AxisTypeConverter.cloneToBaseType(values, axisType), significantDigits);
             // second, we dismiss the plot boundaries
             retValue = new Label[labelNumber];
             for (int i = 0; i < retValue.length; i++)

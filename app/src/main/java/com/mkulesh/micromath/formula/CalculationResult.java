@@ -23,9 +23,11 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
+import com.mkulesh.micromath.math.AxisTypeConverter;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plots.FunctionIf;
 import com.mkulesh.micromath.plots.views.PlotView;
+import com.mkulesh.micromath.properties.AxisProperties;
 import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.ViewUtils;
 
@@ -188,7 +190,7 @@ public abstract class CalculationResult extends LinkHolder
     }
 
     protected void updatePlotBoundaries(PlotView view, TermField xMinTerm, TermField xMaxTerm, TermField yMinTerm,
-                                        TermField yMaxTerm)
+                                        TermField yMaxTerm, AxisProperties prop)
     {
         try
         {
@@ -200,7 +202,17 @@ public abstract class CalculationResult extends LinkHolder
             xMaxVal.processRealTerm(null, xMaxTerm);
             yMinVal.processRealTerm(null, yMinTerm);
             yMaxVal.processRealTerm(null, yMaxTerm);
-            view.setArea(xMinVal.getReal(), xMaxVal.getReal(), yMinVal.getReal(), yMaxVal.getReal());
+            if (prop != null)
+            {
+                view.setArea(AxisTypeConverter.toSpecialType(xMinVal.getReal(), prop.xType),
+                             AxisTypeConverter.toSpecialType(xMaxVal.getReal(), prop.xType),
+                             AxisTypeConverter.toSpecialType(yMinVal.getReal(), prop.yType),
+                             AxisTypeConverter.toSpecialType(yMaxVal.getReal(), prop.yType));
+            }
+            else
+            {
+                view.setArea(xMinVal.getReal(), xMaxVal.getReal(), yMinVal.getReal(), yMaxVal.getReal());
+            }
         }
         catch (CancelException e)
         {

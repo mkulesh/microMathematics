@@ -20,8 +20,10 @@ package com.mkulesh.micromath.dialogs;
 
 import android.app.Activity;
 import android.view.View;
+import android.widget.CheckBox;
 
 import com.larswerkman.holocolorpicker.ColorPicker;
+import com.mkulesh.micromath.math.AxisTypeConverter;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.AxisProperties;
 import com.mkulesh.micromath.properties.AxisPropertiesChangeIf;
@@ -33,6 +35,7 @@ public class DialogAxisSettings extends DialogBase
     private final AxisProperties parameters;
     private final HorizontalNumberPicker xLabelsPicker, yLabelsPicker;
     private final ColorPicker gridLineColor;
+    private final CheckBox xTypeCheckBox, yTypeCheckBox;
 
     public DialogAxisSettings(Activity context, AxisPropertiesChangeIf changeIf, AxisProperties parameters)
     {
@@ -47,6 +50,21 @@ public class DialogAxisSettings extends DialogBase
         yLabelsPicker.minValue = 0;
 
         gridLineColor = PrepareColorPicker(parameters.gridLineColor);
+
+        xTypeCheckBox = findViewById(R.id.dialog_xtype);
+        yTypeCheckBox = findViewById(R.id.dialog_ytype);
+        if (changeIf.getAxisType() == AxisPropertiesChangeIf.AxisType.EXTENDED)
+        {
+            xTypeCheckBox.setVisibility(View.VISIBLE);
+            xTypeCheckBox.setChecked(parameters.xType == AxisTypeConverter.Type.LOG10);
+            yTypeCheckBox.setVisibility(View.VISIBLE);
+            yTypeCheckBox.setChecked(parameters.yType == AxisTypeConverter.Type.LOG10);
+        }
+        else
+        {
+            xTypeCheckBox.setVisibility(View.GONE);
+            yTypeCheckBox.setVisibility(View.GONE);
+        }
 
         this.changeIf = changeIf;
     }
@@ -74,8 +92,33 @@ public class DialogAxisSettings extends DialogBase
                 isChanged = true;
                 parameters.yLabelsNumber = yLabelsPicker.getValue();
             }
+
+            if (changeIf.getAxisType() == AxisPropertiesChangeIf.AxisType.EXTENDED)
+            {
+                // X-axis type
+                {
+                    final AxisTypeConverter.Type type = xTypeCheckBox.isChecked()?
+                            AxisTypeConverter.Type.LOG10 : AxisTypeConverter.Type.LINEAR;
+                    if (parameters.xType != type)
+                    {
+                        isChanged = true;
+                        parameters.xType = type;
+                    }
+                }
+
+                // Y-axis type
+                {
+                    final AxisTypeConverter.Type type = yTypeCheckBox.isChecked()?
+                            AxisTypeConverter.Type.LOG10 : AxisTypeConverter.Type.LINEAR;
+                    if (parameters.yType != type)
+                    {
+                        isChanged = true;
+                        parameters.yType = type;
+                    }
+                }
+            }
+            changeIf.onAxisPropertiesChange(isChanged);
         }
-        changeIf.onAxisPropertiesChange(isChanged);
         closeDialog();
     }
 }

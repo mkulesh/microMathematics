@@ -16,23 +16,44 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package com.mkulesh.micromath.properties;
+package com.mkulesh.micromath.math;
 
-public interface AxisPropertiesChangeIf
+import org.apache.commons.math3.util.FastMath;
+
+public final class AxisTypeConverter
 {
-    enum AxisType
+    public enum Type
     {
         LINEAR,
-        EXTENDED;
+        LOG10
     }
 
-    /**
-     * Procedure returns supported axis type of this interface
-     */
-    AxisType getAxisType();
+    public static double toSpecialType(final double value, Type type)
+    {
+        return (type == Type.LINEAR)? value : FastMath.log10(value);
+    }
 
-    /**
-     * Procedure will be called if axis parameters are changed
-     */
-    void onAxisPropertiesChange(boolean isChanged);
+    public static double toBaseType(final double value, Type type)
+    {
+        return (type == Type.LINEAR)? value : FastMath.pow(10.0, value);
+    }
+
+    public static void toBaseType(final double[] values, Type type)
+    {
+        for (int i = 0; i < values.length; i++)
+        {
+            values[i] = toBaseType(values[i], type);
+        }
+    }
+
+    public static double[] cloneToBaseType(final double[] values, Type type)
+    {
+        final double[] retValue = new double[values.length];
+        for (int i = 0; i < values.length; i++)
+        {
+            retValue[i] = values[i];
+        }
+        toBaseType(retValue, type);
+        return retValue;
+    }
 }

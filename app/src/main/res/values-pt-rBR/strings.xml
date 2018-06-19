@@ -91,6 +91,7 @@
     <string name="dialog_axis_settings_title">Configurações de grade</string>
     <string name="dialog_axis_settings_xlabels">Número de rótulos-X</string>
     <string name="dialog_axis_settings_ylabels">Número de rótulos-Y</string>
+    <string name="dialog_axis_settings_type_log10">Escala logarítmica</string>
     <string name="dialog_plot_settings_title">Configurar traçado</string>
     <string name="dialog_plot_settings_width">Largura do traço</string>
     <string name="dialog_plot_settings_height">Altura do traço</string>

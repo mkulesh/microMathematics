@@ -143,6 +143,7 @@
     <string name="dialog_line_settings_widthlabel">Line width and style</string>
     <string name="dialog_axis_settings_title">Grid settings</string>
     <string name="dialog_axis_settings_xlabels">Number of X-labels</string>
+    <string name="dialog_axis_settings_type_log10">Logarithmic scale</string>
     <string name="dialog_axis_settings_ylabels">Number of Y-labels</string>
     <string name="dialog_plot_settings_title">Plot settings</string>
     <string name="dialog_plot_settings_width">Plot width</string>

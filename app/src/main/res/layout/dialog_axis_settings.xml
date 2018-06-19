@@ -15,19 +15,46 @@
             android:gravity="center_horizontal"
             android:orientation="vertical" >
 
-            <com.mkulesh.micromath.widgets.HorizontalNumberPicker
-                android:id="@+id/dialog_xlabels_number"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                micromath:label="@string/dialog_axis_settings_xlabels" />
+                android:gravity="left"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/dialog_content_padding">
 
-            <com.mkulesh.micromath.widgets.HorizontalNumberPicker
-                android:id="@+id/dialog_ylabels_number"
+                <com.mkulesh.micromath.widgets.HorizontalNumberPicker
+                    android:id="@+id/dialog_xlabels_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    micromath:label="@string/dialog_axis_settings_xlabels" />
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/dialog_xtype"
+                    style="@style/CheckBoxStyle"
+                    android:checked="false"
+                    android:text="@string/dialog_axis_settings_type_log10" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                micromath:label="@string/dialog_axis_settings_ylabels" />
+                android:gravity="left"
+                android:orientation="vertical">
+
+                <com.mkulesh.micromath.widgets.HorizontalNumberPicker
+                    android:id="@+id/dialog_ylabels_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    micromath:label="@string/dialog_axis_settings_ylabels" />
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/dialog_ytype"
+                    style="@style/CheckBoxStyle"
+                    android:checked="false"
+                    android:text="@string/dialog_axis_settings_type_log10" />
+            </LinearLayout>
 
             <include layout="@layout/color_picker"/>
         </LinearLayout>

@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Logarithmic scale" description="Example of plots using logarithmic scale" textWidth="50" significantDigits="6" scale="0.49461" redefineAllowed="false">
+    <text_fragment textStyle="subsubsection">
+      <term key="text" text="Logarithmic scale" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="A logarithmic scale is a nonlinear scale used when&#10;there is a large range of quantities. t is based&#10;on orders of magnitude, rather than a standard&#10;linear scale, so the value represented by each&#10;equidistant mark on the scale is the value at the&#10;previous mark multiplied by a constant." />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="0.1" />
+        <term key="maxValue" text="1000" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="f1(x)" />
+      <term key="rightTerm" code="power">
+        <term key="leftTerm" text="10" />
+        <term key="rightTerm" text="x" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="f2(x)" />
+      <term key="rightTerm" text="x" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="f3(x)" />
+      <term key="rightTerm" code="ln">
+        <term key="argTerm" text="x" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="To change scale, use Grid Settings " />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="         Lin-Lin                                    Log-Lin" />
+    </text_fragment>
+    <plot_function width="395" height="395" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="3">
+      <term key="yMaxValue" text="10" />
+      <term key="yFunction1" color="#FFE5000F" width="5" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f1">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction2" color="#FF00DB0F" width="5" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f2">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction3" color="#FF0017E4" width="5" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f3">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="0" />
+      <term key="xMinValue" text="0" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" text="x" />
+      <term key="xFunction3" text="x" />
+      <term key="xMaxValue" text="10" />
+    </plot_function>
+    <plot_function inRightOfPrevious="true" width="395" height="395" axes_style="boxed" xLabelsNumber="3" yLabelsNumber="4" gridLineColor="#FF838383" xType="log10" yType="linear" functionsNumber="3">
+      <term key="yMaxValue" text="10" />
+      <term key="yFunction1" color="#FFE5000F" width="5" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f1">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction2" color="#FF00DB0F" width="5" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f2">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction3" color="#FF0017E4" width="5" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f3">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="0" />
+      <term key="xMinValue" text="0.1" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" text="x" />
+      <term key="xFunction3" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text="         Lin-Log                                   Log-Log" />
+    </text_fragment>
+    <plot_function width="395" height="395" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="3" gridLineColor="#FF838383" xType="linear" yType="log10" functionsNumber="3">
+      <term key="yMaxValue" text="1000" />
+      <term key="yFunction1" color="#FFE5000F" width="5" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f1">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction2" color="#FF00DB0F" width="5" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f2">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction3" color="#FF0017E4" width="5" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f3">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="0.1" />
+      <term key="xMinValue" text="0" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" text="x" />
+      <term key="xFunction3" text="x" />
+      <term key="xMaxValue" text="10" />
+    </plot_function>
+    <plot_function inRightOfPrevious="true" width="395" height="395" axes_style="boxed" xLabelsNumber="3" yLabelsNumber="3" gridLineColor="#FF838383" xType="log10" yType="log10" functionsNumber="3">
+      <term key="yMaxValue" text="1000" />
+      <term key="yFunction1" color="#FFE5000F" width="5" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f1">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction2" color="#FF00DB0F" width="5" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f2">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction3" color="#FF0017E4" width="5" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f3">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="0.1" />
+      <term key="xMinValue" text="0.1" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" text="x" />
+      <term key="xFunction3" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+  </formulaList>
+</micromath>

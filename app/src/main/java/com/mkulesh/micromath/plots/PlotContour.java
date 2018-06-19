@@ -212,7 +212,7 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
                 }
             }
             // updatePlotBoundaries needs valid function set
-            updatePlotBoundaries(functionView, xMin, xMax, yMin, yMax);
+            updatePlotBoundaries(functionView, xMin, xMax, yMin, yMax, null);
             functionView.invalidate();
         }
         else
@@ -290,6 +290,12 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
     }
 
     @Override
+    public AxisType getAxisType()
+    {
+        return AxisType.LINEAR;
+    }
+
+    @Override
     public void onAxisPropertiesChange(boolean isChanged)
     {
         if (!isChanged)
@@ -302,7 +308,7 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
             getFormulaList().getUndoState().addEntry(formulaState);
             formulaState = null;
         }
-        updatePlotBoundaries(functionView, xMin, xMax, yMin, yMax);
+        updatePlotBoundaries(functionView, xMin, xMax, yMin, yMax, null);
         ViewUtils.invalidateLayout(functionView, layout);
     }
 

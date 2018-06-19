@@ -103,15 +103,6 @@
       <term key="text" text="Wir können diese Funktion in&#10;logarithmischen Koordinaten ausdrücken&#10;und werden sehen, dass der numerische&#10;Fehler sich verringert hat, wenn wir&#10;mehr Terme in die Taylorreihe&#10;integrieren:" />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="E(N)" />
-      <term key="rightTerm" code="log10">
-        <term key="argTerm" code="content:com.mkulesh.micromath.link.Δ:2">
-          <term key="argTerm1" text="π" />
-          <term key="argTerm2" text="N" />
-        </term>
-      </term>
-    </equation>
-    <equation>
       <term key="leftTerm" text="N" />
       <term key="rightTerm" code="equidistant_interval">
         <term key="minValue" text="3" />
@@ -119,12 +110,13 @@
         <term key="maxValue" text="13" />
       </term>
     </equation>
-    <plot_function width="680" height="450" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#83000000" functionsNumber="1">
-      <term key="yMaxValue" text="-1" />
-      <term key="yFunction" color="#FF0EC300" width="5" lineStyle="solid" shapeType="diamond" shapeSize="500" code="content:com.mkulesh.micromath.link.E">
-        <term key="argTerm" text="N" />
+    <plot_function width="680" height="450" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="7" gridLineColor="#83000000" xType="linear" yType="log10" functionsNumber="1">
+      <term key="yMaxValue" text="1" />
+      <term key="yFunction" color="#FF0EC300" width="5" lineStyle="solid" shapeType="diamond" shapeSize="500" code="content:com.mkulesh.micromath.link.Δ:2">
+        <term key="argTerm1" text="π" />
+        <term key="argTerm2" text="N" />
       </term>
-      <term key="yMinValue" text="-16" />
+      <term key="yMinValue" text="10E-17" />
       <term key="xMinValue" text="3" />
       <term key="xFunction" text="N" />
       <term key="xMaxValue" text="13" />
