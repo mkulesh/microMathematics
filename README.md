@@ -19,7 +19,7 @@ Not only students, but also everybody who likes mathematics or needs more than j
 * Works on smartphone or tablet in portrait and landscape mode
 * Supports all commonly used mathematical operations
 * Mathematical expressions are written in an intuitive and naturally readable form
-* Supports SI and non-SI units
+* Supports SI and non-SI units (including units of information)
 * Powerful mathematical touch-screen editor with undo function makes editing easier
 * You can do multiple calculations and subsequently correct or change all used formulas
 * It is possible to store intermediate results into 1D, 2D, or 3D array that can improve calculation performance
@@ -44,11 +44,11 @@ For more screenshots, see directory images/screenshots.
 * [Supported Units Overview](http://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/units_overview.html)
 * [The latest PDF version of the User Manual](https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.17.2.pdf)
 
-## Posts on Habrahabr (in Russian)
+## Posts on Habr (in Russian)
 
-* [Математический пакет для Android своими руками](https://habrahabr.ru/post/250727/)
-* [Математический пакет для Android — «Микро-Математика» — теперь с открытым исходным кодом](https://habrahabr.ru/post/334670/)
-* [Математический пакет для Android “Микро-Математика”: что нового?](https://habrahabr.ru/post/350286/)
+* [Математический пакет для Android своими руками](https://habr.com/post/250727/)
+* [Математический пакет для Android — «Микро-Математика» — теперь с открытым исходным кодом](https://habr.com/post/334670/)
+* [Математический пакет для Android “Микро-Математика”: что нового?](https://habr.com/post/350286/)
 
 ## Reviews and publications:
 
