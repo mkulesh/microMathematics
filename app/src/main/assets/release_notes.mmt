@@ -5,6 +5,100 @@
       <term key="text" text="Current release:" />
     </text_fragment>
     <text_fragment numbering="true">
+      <term key="text" text="Implemented SI units of information:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="1" unit="bit" />
+      <term key="rightTerm" text="1.0 bit" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="1" unit="bps" />
+      <term key="rightTerm" text="1.0 bps" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="8" unit="bit" />
+      <term key="rightTerm" text="8.0 bit" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="divide_slash">
+        <term key="leftTerm" text="1" unit="byte" />
+        <term key="rightTerm" text="" unit="s" />
+      </term>
+      <term key="rightTerm" text="8.0 bps" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="1" unit="kbit" />
+      <term key="rightTerm" text="125.0 byte" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="1" unit="kB" />
+      <term key="rightTerm" text="1000.0 byte" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="divide_slash">
+        <term key="leftTerm" text="1" unit="kbit" />
+        <term key="rightTerm" text="" unit="s" />
+      </term>
+      <term key="rightTerm" text="1000.0 bps" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="divide_slash">
+        <term key="leftTerm" text="1" unit="kB" />
+        <term key="rightTerm" text="" unit="s" />
+      </term>
+      <term key="rightTerm" text="8000.0 bps" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="Expanded image settings: now it is&#10;possible to use an automatic color&#10;adjustment for SVG images depending on&#10;theme" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Changed app icon in order to support&#10;Oreo icon shape" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="For a fuction plot, it is now possible&#10;to use logarithmic scale" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0.1" />
+        <term key="nextValue" text="0.105" />
+        <term key="maxValue" text="1000" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="y(x)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="3" />
+        <term key="rightTerm" code="cos">
+          <term key="argTerm" code="ln">
+            <term key="argTerm" code="mult">
+              <term key="leftTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" text="pi" />
+              </term>
+              <term key="rightTerm" text="x" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <plot_function width="650" height="350" axes_style="boxed" xLabelsNumber="3" yLabelsNumber="4" gridLineColor="#FF787878" xType="log10" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FF0000FF" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.y">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Previous releases:" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Version 2.17.1" />
+    </text_fragment>
+    <text_fragment numbering="true">
       <term key="text" text='An interval variable can now be shown in&#10;the "Details" window. To show this&#10;window, calculate document and than&#10;long press on the equation that defines&#10;an interval variable:' />
     </text_fragment>
     <equation>
@@ -23,9 +117,6 @@
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text='Added new configuration parameters in&#10;the "App settings"' />
-    </text_fragment>
-    <text_fragment textStyle="subsection">
-      <term key="text" text="Previous releases:" />
     </text_fragment>
     <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Version 2.17.0" />
@@ -180,7 +271,7 @@
         <term key="argTerm" text="asset:/examples/three_component_signal.dat" />
       </term>
     </equation>
-    <plot_function width="610" height="305" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" functionsNumber="1">
+    <plot_function width="650" height="305" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FFE0E0E0" xType="linear" yType="linear" functionsNumber="1">
       <term key="yMaxValue" text="" />
       <term key="yFunction" color="#FF0000FF" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.index.S:2">
         <term key="argTerm1" text="k" />
@@ -323,7 +414,7 @@
     <text_fragment numbering="true">
       <term key="text" text="Added Details dialog for function plot&#10;and 1D array" />
     </text_fragment>
-    <image_fragment fileName="asset:/images/menu_details.svg" embedded="false" originalSize="false" width="650" height="250" />
+    <image_fragment fileName="asset:/images/menu_details.svg" embedded="false" originalSize="false" width="650" height="250" colorType="original" />
     <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Version 2.14.4" />
     </text_fragment>
@@ -371,7 +462,7 @@
         <term key="maxValue" text="pi" />
       </term>
     </equation>
-    <plot_function width="650" height="350" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" functionsNumber="1">
+    <plot_function width="650" height="350" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" xType="linear" yType="linear" functionsNumber="1">
       <term key="yMaxValue" text="" />
       <term key="yFunction" color="#FF0000FF" width="6" lineStyle="solid" shapeType="diamond" shapeSize="500" code="sin">
         <term key="argTerm" text="x" />
