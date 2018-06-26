@@ -30,7 +30,7 @@
         <item name="colorFormulaSelected">@color/highlighted_text_material_dark</item>
         <item name="colorFormulaCalculatedValue">@android:color/darker_gray</item>
         <item name="colorFormulaTextFragment">@android:color/white</item>
-        <item name="colorPlotGridLine">#efefef</item>
+        <item name="colorPlotGridLine">#FF787878</item>
         <!-- Other elements -->
         <item name="actionModeBackground">?attr/colorPrimary</item>
     </style>

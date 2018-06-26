@@ -30,7 +30,7 @@
         <item name="colorFormulaSelected">#CFD8DC</item>
         <item name="colorFormulaCalculatedValue">@color/material_grey_600</item>
         <item name="colorFormulaTextFragment">#ff000066</item>
-        <item name="colorPlotGridLine">@color/material_grey_300</item>
+        <item name="colorPlotGridLine">#FF787878</item>
         <!-- Other elements -->
         <item name="actionModeBackground">?attr/colorPrimary</item>
     </style>

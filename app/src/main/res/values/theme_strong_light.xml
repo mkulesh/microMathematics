@@ -34,7 +34,7 @@
         <item name="colorFormulaSelected">@color/material_grey_300</item>
         <item name="colorFormulaCalculatedValue">@color/material_grey_600</item>
         <item name="colorFormulaTextFragment">@android:color/black</item>
-        <item name="colorPlotGridLine">@color/material_grey_300</item>
+        <item name="colorPlotGridLine">#FF787878</item>
         <!-- Other elements -->
         <item name="actionModeBackground">?attr/colorPrimary</item>
     </style>
