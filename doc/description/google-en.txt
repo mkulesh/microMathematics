@@ -12,7 +12,7 @@ Benefits and features:
 - Works on smartphone or tablet in portrait and landscape mode
 - Supports all commonly used mathematical operations
 - Mathematical expressions are written in an intuitive and naturally readable form
-- Supports SI and non-SI units
+- Supports SI and non-SI units (including units of information)
 - Powerful mathematical touch-screen editor with undo function makes editing easier
 - You can do multiple calculations and subsequently correct or change all used formulas
 - It is possible to store intermediate results into 1D, 2D, or 3D array that can improve calculation performance
