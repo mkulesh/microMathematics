@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="ken" title="dog_river pursuit problem" description="Paul J. Nahin - Chases and Escapes section 1.2" textWidth="60" significantDigits="6" scale="0.48048" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="Dog swims across river.&#10;From Xint,Yint to dock at 0,0.&#10;rdv is current/dog speed &lt;1.0&#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="Xint" />
+      <term key="rightTerm" text="2.0" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="Yint" />
+      <term key="rightTerm" text="1.0" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="rdv1" />
+      <term key="rightTerm" text="0.3" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="rdv2" />
+      <term key="rightTerm" text="0.5" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="rdv3" />
+      <term key="rightTerm" text="0.7" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="N1" />
+      <term key="rightTerm" text="100" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="C(rdv)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="power">
+          <term key="leftTerm" text="Xint" />
+          <term key="rightTerm" text="rdv" />
+        </term>
+        <term key="rightTerm" code="identity">
+          <term key="argTerm" code="divide_slash">
+            <term key="leftTerm" text="Xint" />
+            <term key="rightTerm" code="plus">
+              <term key="leftTerm" text="Yint" />
+              <term key="rightTerm" code="sqrt_layout">
+                <term key="argTerm" code="plus">
+                  <term key="leftTerm" code="power">
+                    <term key="leftTerm" text="Xint" />
+                    <term key="rightTerm" text="2" />
+                  </term>
+                  <term key="rightTerm" code="power">
+                    <term key="leftTerm" text="Yint" />
+                    <term key="rightTerm" text="2" />
+                  </term>
+                </term>
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" code="divide">
+          <term key="leftTerm" text="Xint" />
+          <term key="rightTerm" text="N1" />
+        </term>
+        <term key="maxValue" text="Xint" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;Rewrote y(x,rdv):= so x can be zero&#10;x1[N] puts more points near zero &#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="N1" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x1[N]" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="Xint" />
+        <term key="rightTerm" code="power">
+          <term key="leftTerm" code="divide">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
+              <term key="argTerm" text="N" />
+            </term>
+            <term key="rightTerm" text="Xint" />
+          </term>
+          <term key="rightTerm" text="4" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="y(x,rdv)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="divide">
+          <term key="leftTerm" text="1" />
+          <term key="rightTerm" text="2" />
+        </term>
+        <term key="rightTerm" code="minus">
+          <term key="leftTerm" code="divide">
+            <term key="leftTerm" code="power">
+              <term key="leftTerm" text="x" />
+              <term key="rightTerm" code="identity">
+                <term key="argTerm" code="plus">
+                  <term key="leftTerm" text="rdv" />
+                  <term key="rightTerm" text="1" />
+                </term>
+              </term>
+            </term>
+            <term key="rightTerm" code="content:com.mkulesh.micromath.link.C">
+              <term key="argTerm" text="rdv" />
+            </term>
+          </term>
+          <term key="rightTerm" code="divide">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.link.C">
+              <term key="argTerm" text="rdv" />
+            </term>
+            <term key="rightTerm" code="power">
+              <term key="leftTerm" text="x" />
+              <term key="rightTerm" code="identity">
+                <term key="argTerm" code="minus">
+                  <term key="leftTerm" text="rdv" />
+                  <term key="rightTerm" text="1" />
+                </term>
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;Results&#10;" />
+    </text_fragment>
+    <plot_function width="667" height="500" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FFE0E0E0" xType="linear" yType="linear" functionsNumber="3">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction1" color="#FF0000FF" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.y:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="rdv1" />
+      </term>
+      <term key="yFunction2" color="#FFFF0080" width="6" lineStyle="dashed" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.y:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="rdv2" />
+      </term>
+      <term key="yFunction3" color="#FF00990C" width="6" lineStyle="dotted" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.y:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="rdv3" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" text="x" />
+      <term key="xFunction3" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text="&#10;Plot near zero shows x1[N] advantage&#10;" />
+    </text_fragment>
+    <plot_function width="667" height="500" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FFE0E0E0" xType="linear" yType="linear" functionsNumber="2">
+      <term key="yMaxValue" text="0" />
+      <term key="yFunction1" color="#FF0000FF" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.y:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="rdv3" />
+      </term>
+      <term key="yFunction2" color="#FFFF0080" width="6" lineStyle="dashed" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.y:2">
+        <term key="argTerm1" code="content:com.mkulesh.micromath.index.x1">
+          <term key="argTerm" text="N" />
+        </term>
+        <term key="argTerm2" text="rdv3" />
+      </term>
+      <term key="yMinValue" text="-0.2" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" code="content:com.mkulesh.micromath.index.x1">
+        <term key="argTerm" text="N" />
+      </term>
+      <term key="xMaxValue" text="0.02" />
+    </plot_function>
+  </formulaList>
+</micromath>

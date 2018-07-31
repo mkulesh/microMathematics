@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="ken" title="Bessel J0" description="Schaum's Mathematical Handbook" textWidth="60" significantDigits="6" scale="0.39083" redefineAllowed="false">
+    <text_fragment>
+      <term key="text" text="Bessel J0&#10;&#10;Compares truncated series to large x approximations.&#10;Note the difference is x10.&#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="J0(x)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" code="summation">
+          <term key="maxValue" text="35" />
+          <term key="index" text="L" />
+          <term key="minValue" text="1" />
+          <term key="argTerm" code="identity">
+            <term key="argTerm" code="mult">
+              <term key="leftTerm" code="identity">
+                <term key="argTerm" code="power">
+                  <term key="leftTerm" text="-1" />
+                  <term key="rightTerm" text="L" />
+                </term>
+              </term>
+              <term key="rightTerm" code="divide_slash">
+                <term key="leftTerm" code="power">
+                  <term key="leftTerm" text="x" />
+                  <term key="rightTerm" code="identity">
+                    <term key="argTerm" code="mult">
+                      <term key="leftTerm" text="2" />
+                      <term key="rightTerm" text="L" />
+                    </term>
+                  </term>
+                </term>
+                <term key="rightTerm" code="power">
+                  <term key="leftTerm" code="mult">
+                    <term key="leftTerm" code="power">
+                      <term key="leftTerm" text="2" />
+                      <term key="rightTerm" text="L" />
+                    </term>
+                    <term key="rightTerm" code="factorial">
+                      <term key="argTerm" text="L" />
+                    </term>
+                  </term>
+                  <term key="rightTerm" text="2" />
+                </term>
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="JA(y)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="sqrt_layout">
+          <term key="argTerm" code="divide">
+            <term key="leftTerm" text="2" />
+            <term key="rightTerm" code="mult">
+              <term key="leftTerm" text="y" />
+              <term key="rightTerm" text="pi" />
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="cos">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" text="y" />
+            <term key="rightTerm" code="divide">
+              <term key="leftTerm" text="pi" />
+              <term key="rightTerm" text="4" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="E1(y)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="10" />
+        <term key="rightTerm" code="identity">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.link.J0">
+              <term key="argTerm" text="y" />
+            </term>
+            <term key="rightTerm" code="content:com.mkulesh.micromath.link.JA">
+              <term key="argTerm" text="y" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="xmax" />
+      <term key="rightTerm" text="25" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" code="divide">
+          <term key="leftTerm" text="xmax" />
+          <term key="rightTerm" text="200" />
+        </term>
+        <term key="maxValue" text="xmax" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.link.J0">
+        <term key="argTerm" text="18.0711" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="y" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" code="divide">
+          <term key="leftTerm" text="xmax" />
+          <term key="rightTerm" text="10" />
+        </term>
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" code="divide">
+            <term key="leftTerm" text="xmax" />
+            <term key="rightTerm" text="10" />
+          </term>
+          <term key="rightTerm" code="divide">
+            <term key="leftTerm" text="xmax" />
+            <term key="rightTerm" text="200" />
+          </term>
+        </term>
+        <term key="maxValue" text="xmax" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;Bessel J0" />
+    </text_fragment>
+    <plot_function width="677" height="677" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="5" gridLineColor="#FF787878" xType="linear" yType="linear" functionsNumber="3">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction1" color="#FF0000FF" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.J0">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction2" color="#FFFF0080" width="6" lineStyle="dashed" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.JA">
+        <term key="argTerm" text="y" />
+      </term>
+      <term key="yFunction3" color="#FFFF0080" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.E1">
+        <term key="argTerm" text="y" />
+      </term>
+      <term key="yMinValue" text="-0.5" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" text="y" />
+      <term key="xFunction3" text="y" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+  </formulaList>
+</micromath>

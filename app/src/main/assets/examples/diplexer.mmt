@@ -1,0 +1,345 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="ken" title="diplexer - uses Rterm = infinity filters" description="E. Folke Bolinder - Geometrization of the Explicit Formulas for Element Values of Butterworth and Chebyshev Filters" textWidth="60" significantDigits="6" scale="0.37014" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="Diplexer&#10;Frequency splits output while maintaining &#10;a fixed load to the power source. Try simulating&#10;on Spice.&#10;&#10;Fails for N1&lt;2 since iterator=1&#10;" />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/diplexer.png" embedded="false" originalSize="false" width="895" height="406" colorType="original" />
+    <equation>
+      <term key="leftTerm" text="R0" />
+      <term key="rightTerm" text="50" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="Fc" />
+      <term key="rightTerm" text="1e6" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="N1" />
+      <term key="rightTerm" text="3" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="wc" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" text="pi" />
+        </term>
+        <term key="rightTerm" text="Fc" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="N2" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" code="identity">
+          <term key="argTerm" code="plus">
+            <term key="leftTerm" text="N1" />
+            <term key="rightTerm" code="minus">
+              <term key="leftTerm" text="2" />
+              <term key="rightTerm" code="mod">
+                <term key="argTerm1" text="N1" />
+                <term key="argTerm2" text="2" />
+              </term>
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="1" />
+        <term key="nextValue" text="2" />
+        <term key="maxValue" text="N1" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="M1" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="1" />
+        <term key="nextValue" text="2" />
+        <term key="maxValue" text="N2" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="M2" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="1" />
+        <term key="nextValue" text="2" />
+        <term key="maxValue" code="plus">
+          <term key="leftTerm" text="N2" />
+          <term key="rightTerm" text="1" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="A0[N]" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="2" />
+        <term key="rightTerm" code="sin">
+          <term key="argTerm" code="divide_slash">
+            <term key="leftTerm" code="mult">
+              <term key="leftTerm" code="identity">
+                <term key="argTerm" code="minus">
+                  <term key="leftTerm" code="mult">
+                    <term key="leftTerm" text="2" />
+                    <term key="rightTerm" text="N" />
+                  </term>
+                  <term key="rightTerm" text="1" />
+                </term>
+              </term>
+              <term key="rightTerm" text="pi" />
+            </term>
+            <term key="rightTerm" code="identity">
+              <term key="argTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" text="N1" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="These next 7 lines replace 2 in a for loop" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="A1[N]" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="2" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" code="cos">
+            <term key="argTerm" code="divide_slash">
+              <term key="leftTerm" code="mult">
+                <term key="leftTerm" text="N" />
+                <term key="rightTerm" text="pi" />
+              </term>
+              <term key="rightTerm" text="N1" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="A10[N]" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="greater">
+          <term key="leftTerm" text="N" />
+          <term key="rightTerm" text="1" />
+        </term>
+        <term key="argTerm2" code="content:com.mkulesh.micromath.index.A1">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" text="N" />
+            <term key="rightTerm" text="1" />
+          </term>
+        </term>
+        <term key="argTerm3" text="2" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="B1[M1]" />
+      <term key="rightTerm" code="product">
+        <term key="maxValue" text="M1" />
+        <term key="index" text="L" />
+        <term key="minValue" text="1" />
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.A10">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="mult">
+              <term key="leftTerm" text="2" />
+              <term key="rightTerm" text="L" />
+            </term>
+            <term key="rightTerm" text="1" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="B2[M1]" />
+      <term key="rightTerm" code="product">
+        <term key="maxValue" text="M1" />
+        <term key="index" text="L" />
+        <term key="minValue" text="1" />
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.A10">
+          <term key="argTerm" code="mult">
+            <term key="leftTerm" text="2" />
+            <term key="rightTerm" text="L" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="B3[M2]" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="greater">
+          <term key="leftTerm" text="M2" />
+          <term key="rightTerm" text="1" />
+        </term>
+        <term key="argTerm2" code="content:com.mkulesh.micromath.index.B2">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" text="M2" />
+            <term key="rightTerm" text="1" />
+          </term>
+        </term>
+        <term key="argTerm3" text="1" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="A2[N]" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="mod">
+          <term key="argTerm1" text="N" />
+          <term key="argTerm2" text="2" />
+        </term>
+        <term key="argTerm2" code="divide">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.index.B3">
+            <term key="argTerm" code="divide_slash">
+              <term key="leftTerm" code="plus">
+                <term key="leftTerm" text="N" />
+                <term key="rightTerm" text="1" />
+              </term>
+              <term key="rightTerm" text="2" />
+            </term>
+          </term>
+          <term key="rightTerm" code="content:com.mkulesh.micromath.index.B1">
+            <term key="argTerm" code="divide_slash">
+              <term key="leftTerm" code="plus">
+                <term key="leftTerm" text="N" />
+                <term key="rightTerm" text="1" />
+              </term>
+              <term key="rightTerm" text="2" />
+            </term>
+          </term>
+        </term>
+        <term key="argTerm3" code="divide">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.index.B1">
+            <term key="argTerm" code="divide_slash">
+              <term key="leftTerm" text="N" />
+              <term key="rightTerm" text="2" />
+            </term>
+          </term>
+          <term key="rightTerm" code="content:com.mkulesh.micromath.index.B3">
+            <term key="argTerm" code="plus">
+              <term key="leftTerm" code="divide_slash">
+                <term key="leftTerm" text="N" />
+                <term key="rightTerm" text="2" />
+              </term>
+              <term key="rightTerm" text="1" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Reverse order then high pass" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="A3[N]" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="content:com.mkulesh.micromath.index.A0">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="plus">
+              <term key="leftTerm" text="N1" />
+              <term key="rightTerm" text="1" />
+            </term>
+            <term key="rightTerm" text="N" />
+          </term>
+        </term>
+        <term key="rightTerm" code="content:com.mkulesh.micromath.index.A2">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="plus">
+              <term key="leftTerm" text="N1" />
+              <term key="rightTerm" text="1" />
+            </term>
+            <term key="rightTerm" text="N" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="A4[N]" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" code="content:com.mkulesh.micromath.index.A3">
+          <term key="argTerm" text="N" />
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Denormalizing" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="A5[N]" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="mod">
+          <term key="argTerm1" text="N" />
+          <term key="argTerm2" text="2" />
+        </term>
+        <term key="argTerm2" code="mult">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.index.A3">
+            <term key="argTerm" text="N" />
+          </term>
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" text="R0" />
+            <term key="rightTerm" text="wc" />
+          </term>
+        </term>
+        <term key="argTerm3" code="divide_slash">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.index.A3">
+            <term key="argTerm" text="N" />
+          </term>
+          <term key="rightTerm" code="identity">
+            <term key="argTerm" code="mult">
+              <term key="leftTerm" text="R0" />
+              <term key="rightTerm" text="wc" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="A6[N]" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="mod">
+          <term key="argTerm1" text="N" />
+          <term key="argTerm2" text="2" />
+        </term>
+        <term key="argTerm2" code="divide_slash">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.index.A4">
+            <term key="argTerm" text="N" />
+          </term>
+          <term key="rightTerm" code="identity">
+            <term key="argTerm" code="mult">
+              <term key="leftTerm" text="R0" />
+              <term key="rightTerm" text="wc" />
+            </term>
+          </term>
+        </term>
+        <term key="argTerm3" code="divide_slash">
+          <term key="leftTerm" code="mult">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.index.A4">
+              <term key="argTerm" text="N" />
+            </term>
+            <term key="rightTerm" text="R0" />
+          </term>
+          <term key="rightTerm" text="wc" />
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Component Values&#10;" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.A5">
+        <term key="argTerm" text="N" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.A6">
+        <term key="argTerm" text="N" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+  </formulaList>
+</micromath>

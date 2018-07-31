@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="ken" title="MacCluer - Calculus of Variations" description="Problem 2.13" textWidth="60" significantDigits="6" scale="0.43509" redefineAllowed="false">
+    <text_fragment>
+      <term key="text" text="MacCluer CoV problem 2.13&#10;&#10;Beam stiffness is proportional to w*h^3.&#10;Find the stiffest beam cut from a round log.&#10;The beam width is 2*x and height is 2*y.&#10;" />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/mac_cluer_cov_problem.png" embedded="false" originalSize="false" width="694" height="677" colorType="original" />
+    <equation>
+      <term key="leftTerm" text="R" />
+      <term key="rightTerm" text="5" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" code="divide">
+          <term key="leftTerm" text="R" />
+          <term key="rightTerm" text="100" />
+        </term>
+        <term key="maxValue" code="mult">
+          <term key="leftTerm" text="0.99" />
+          <term key="rightTerm" text="R" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="y(x)" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" code="power">
+            <term key="leftTerm" text="R" />
+            <term key="rightTerm" text="2" />
+          </term>
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="x" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="stf(x)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" text="x" />
+        </term>
+        <term key="rightTerm" code="power">
+          <term key="leftTerm" code="identity">
+            <term key="argTerm" code="mult">
+              <term key="leftTerm" text="2" />
+              <term key="rightTerm" code="content:com.mkulesh.micromath.link.y">
+                <term key="argTerm" text="x" />
+              </term>
+            </term>
+          </term>
+          <term key="rightTerm" text="3" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="dstf(x)" />
+      <term key="rightTerm" code="derivative">
+        <term key="index" text="x" />
+        <term key="argTerm" code="content:com.mkulesh.micromath.link.stf">
+          <term key="argTerm" text="x" />
+        </term>
+      </term>
+    </equation>
+    <plot_function width="677" height="677" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" xType="linear" yType="linear" functionsNumber="3">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction1" color="#FF0000FF" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.dstf">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction2" color="#FFFF0080" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.stf">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yFunction3" color="#FF000000" width="6" lineStyle="solid" shapeType="none" shapeSize="300" text="0" />
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction1" text="x" />
+      <term key="xFunction2" text="x" />
+      <term key="xFunction3" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.link.dstf">
+        <term key="argTerm" text="2.5" />
+      </term>
+      <term key="rightTerm" text="0.0" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.link.stf">
+        <term key="argTerm" text="2.5" />
+      </term>
+      <term key="rightTerm" text="3247.6" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.link.y">
+        <term key="argTerm" text="2.5" />
+      </term>
+      <term key="rightTerm" text="4.33013" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;Lagrange multiplier can also solve this easily.&#10;F = 2*x*(2*y)^3 + lamda*(R^2 - x^2 - y^2)&#10;Set partial dF/dx = 0 and dF/dy = 0&#10;Combine these two to remove lamda giving&#10;y^2 = 3*x^2 and put this in the constraint,&#10;R^2 = x^2 + y^2, to get x = R/2" />
+    </text_fragment>
+  </formulaList>
+</micromath>

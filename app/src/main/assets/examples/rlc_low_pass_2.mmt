@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="ken" title="Ladder Circuit" description="Based on rlc_low_pass example" textWidth="60" significantDigits="6" scale="0.48993" redefineAllowed="false">
+    <text_fragment>
+      <term key="text" text="&#10;A different take on the rlc_low_pass example&#10;" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Schematic" />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/rlc_low_pass_2.png" embedded="false" originalSize="false" width="500" height="333" colorType="original" />
+    <text_fragment>
+      <term key="text" text="Ladder circuit analysis&#10;Assume V0 = 1.0&#10;Gain = V0/V1&#10;" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Components&#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="RL" />
+      <term key="rightTerm" text="1.0" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="R1" />
+      <term key="rightTerm" text="1.0" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="L" />
+      <term key="rightTerm" text="4.7e-6" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="C" />
+      <term key="rightTerm" text="150e-6" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="V0" />
+      <term key="rightTerm" text="1.0" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;Equations&#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="XC(w)" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" code="identity">
+          <term key="argTerm" code="mult">
+            <term key="leftTerm" code="mult">
+              <term key="leftTerm" text="i" />
+              <term key="rightTerm" text="w" />
+            </term>
+            <term key="rightTerm" text="C" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="XL(w)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" text="i" />
+          <term key="rightTerm" text="w" />
+        </term>
+        <term key="rightTerm" text="L" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="I0" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" text="V0" />
+        <term key="rightTerm" text="RL" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="I1(w)" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" text="V0" />
+        <term key="rightTerm" code="content:com.mkulesh.micromath.link.XC">
+          <term key="argTerm" text="w" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="I2(w)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="I0" />
+        <term key="rightTerm" code="content:com.mkulesh.micromath.link.I1">
+          <term key="argTerm" text="w" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="V1(w)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="V0" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.link.I2">
+            <term key="argTerm" text="w" />
+          </term>
+          <term key="rightTerm" code="identity">
+            <term key="argTerm" code="plus">
+              <term key="leftTerm" text="R1" />
+              <term key="rightTerm" code="content:com.mkulesh.micromath.link.XL">
+                <term key="argTerm" text="w" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="G(w)" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" text="V0" />
+        <term key="rightTerm" code="content:com.mkulesh.micromath.link.V1">
+          <term key="argTerm" text="w" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="Gdb(w)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="20" />
+        <term key="rightTerm" code="log10">
+          <term key="argTerm" code="abs_layout">
+            <term key="argTerm" code="content:com.mkulesh.micromath.link.G">
+              <term key="argTerm" text="w" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="Gph(w)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="divide">
+          <term key="leftTerm" text="180" />
+          <term key="rightTerm" text="pi" />
+        </term>
+        <term key="rightTerm" code="atan2">
+          <term key="argTerm1" code="im">
+            <term key="argTerm" code="content:com.mkulesh.micromath.link.G">
+              <term key="argTerm" text="w" />
+            </term>
+          </term>
+          <term key="argTerm2" code="re">
+            <term key="argTerm" code="content:com.mkulesh.micromath.link.G">
+              <term key="argTerm" text="w" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;Frequency range&#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f1" />
+      <term key="rightTerm" text="1.0" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="f2" />
+      <term key="rightTerm" text="10e6" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="200" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="f[N]" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="f1" />
+        <term key="rightTerm" code="power">
+          <term key="leftTerm" code="divide">
+            <term key="leftTerm" text="f2" />
+            <term key="rightTerm" text="f1" />
+          </term>
+          <term key="rightTerm" code="divide">
+            <term key="leftTerm" text="N" />
+            <term key="rightTerm" text="200" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="w[N]" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" text="pi" />
+        </term>
+        <term key="rightTerm" code="content:com.mkulesh.micromath.index.f">
+          <term key="argTerm" text="N" />
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;Plots&#10;" />
+    </text_fragment>
+    <plot_function width="688" height="344" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF787878" xType="log10" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FF0000FF" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.Gdb">
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.w">
+          <term key="argTerm" text="N" />
+        </term>
+      </term>
+      <term key="yMinValue" text="-120" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" code="content:com.mkulesh.micromath.index.f">
+        <term key="argTerm" text="N" />
+      </term>
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <plot_function width="688" height="344" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF787878" xType="log10" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FF0000FF" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.Gph">
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.w">
+          <term key="argTerm" text="N" />
+        </term>
+      </term>
+      <term key="yMinValue" text="-180" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" code="content:com.mkulesh.micromath.index.f">
+        <term key="argTerm" text="N" />
+      </term>
+      <term key="xMaxValue" text="" />
+    </plot_function>
+  </formulaList>
+</micromath>

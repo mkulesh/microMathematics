@@ -1,0 +1,310 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="ken" title="Brachistochrone" description="MacCluer CoV problem 4.45" textWidth="60" significantDigits="6" scale="0.40172" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="Brachistochrone&#10;&#10;Quickest path under gravity for frictionless&#10;mass sliding from 0,0 to x1,-y1&#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="x1" />
+      <term key="rightTerm" text="6" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="y1" />
+      <term key="rightTerm" text="3" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="yx1" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" text="y1" />
+        <term key="rightTerm" text="x1" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="g" />
+      <term key="rightTerm" text="9.81" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;Need to find p1 so yx1 = u2(p1)/u1(p1)&#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="u1(p1)" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" text="p1" />
+        <term key="rightTerm" code="sin">
+          <term key="argTerm" text="p1" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="u2(p1)" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" code="cos">
+          <term key="argTerm" text="p1" />
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;p1 is estimated and one newton iteration refinement&#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="p1" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" code="sqrt_layout">
+          <term key="argTerm" code="plus">
+            <term key="leftTerm" code="mult">
+              <term key="leftTerm" text="25" />
+              <term key="rightTerm" code="power">
+                <term key="leftTerm" text="yx1" />
+                <term key="rightTerm" text="2" />
+              </term>
+            </term>
+            <term key="rightTerm" text="30" />
+          </term>
+        </term>
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="5" />
+          <term key="rightTerm" text="yx1" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="p1" />
+      <term key="rightTerm" text="3.5208" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="yx2" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" code="content:com.mkulesh.micromath.link.u2">
+          <term key="argTerm" text="p1" />
+        </term>
+        <term key="rightTerm" code="content:com.mkulesh.micromath.link.u1">
+          <term key="argTerm" text="p1" />
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="dyx" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" text="yx1" />
+        <term key="rightTerm" text="yx2" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="yx2" />
+      <term key="rightTerm" text="0.495752" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="dp" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="dyx" />
+        <term key="rightTerm" code="divide_slash">
+          <term key="leftTerm" code="power">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.link.u1">
+              <term key="argTerm" text="p1" />
+            </term>
+            <term key="rightTerm" text="2" />
+          </term>
+          <term key="rightTerm" code="identity">
+            <term key="argTerm" code="minus">
+              <term key="leftTerm" code="minus">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" code="mult">
+                  <term key="leftTerm" text="p1" />
+                  <term key="rightTerm" code="sin">
+                    <term key="argTerm" text="p1" />
+                  </term>
+                </term>
+              </term>
+              <term key="rightTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" code="cos">
+                  <term key="argTerm" text="p1" />
+                </term>
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="p1" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" text="p1" />
+        <term key="rightTerm" text="dp" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="dp" />
+      <term key="rightTerm" text="0.0124618" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="p1" />
+      <term key="rightTerm" text="3.50834" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="divide_slash">
+        <term key="leftTerm" code="content:com.mkulesh.micromath.link.u2">
+          <term key="argTerm" text="p1" />
+        </term>
+        <term key="rightTerm" code="content:com.mkulesh.micromath.link.u1">
+          <term key="argTerm" text="p1" />
+        </term>
+      </term>
+      <term key="rightTerm" text="0.500011" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="yx1" />
+      <term key="rightTerm" text="0.5" />
+    </result>
+    <text_fragment>
+      <term key="text" text="&#10;gam is a scaling constant determined by y1 and p1&#10;time is seconds to reach x1,y1 in meters&#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="gam" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" code="identity">
+          <term key="argTerm" code="divide_slash">
+            <term key="leftTerm" code="mult">
+              <term key="leftTerm" text="2" />
+              <term key="rightTerm" text="y1" />
+            </term>
+            <term key="rightTerm" code="content:com.mkulesh.micromath.link.u2">
+              <term key="argTerm" text="p1" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="gam" />
+      <term key="rightTerm" text="1.76158" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="time" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" text="gam" />
+          <term key="rightTerm" text="p1" />
+        </term>
+        <term key="rightTerm" code="sqrt_layout">
+          <term key="argTerm" code="mult">
+            <term key="leftTerm" text="2" />
+            <term key="rightTerm" text="g" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="time" />
+      <term key="rightTerm" text="1.39526" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="p" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" code="divide">
+          <term key="leftTerm" text="p1" />
+          <term key="rightTerm" text="100" />
+        </term>
+        <term key="maxValue" text="p1" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x1(p)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="power">
+          <term key="leftTerm" text="gam" />
+          <term key="rightTerm" text="2" />
+        </term>
+        <term key="rightTerm" code="divide_slash">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.link.u1">
+            <term key="argTerm" text="p" />
+          </term>
+          <term key="rightTerm" text="2" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="y1(p)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="power">
+          <term key="leftTerm" text="gam" />
+          <term key="rightTerm" text="2" />
+        </term>
+        <term key="rightTerm" code="divide_slash">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.link.u2">
+            <term key="argTerm" text="p" />
+          </term>
+          <term key="rightTerm" text="-2" />
+        </term>
+      </term>
+    </equation>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="So gravity is down" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="&#10;Quickest Path&#10;" />
+    </text_fragment>
+    <plot_function width="677" height="677" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" xType="linear" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FF0000FF" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.y1">
+        <term key="argTerm" text="p" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" code="content:com.mkulesh.micromath.link.x1">
+        <term key="argTerm" text="p" />
+      </term>
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text="&#10;Compare to time sliding down straight line&#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="len1" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" code="plus">
+          <term key="leftTerm" code="power">
+            <term key="leftTerm" text="x1" />
+            <term key="rightTerm" text="2" />
+          </term>
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="y1" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="sin1" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" text="y1" />
+        <term key="rightTerm" text="len1" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="time2" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" code="divide_slash">
+          <term key="leftTerm" code="identity">
+            <term key="argTerm" code="mult">
+              <term key="leftTerm" text="2" />
+              <term key="rightTerm" text="len1" />
+            </term>
+          </term>
+          <term key="rightTerm" code="identity">
+            <term key="argTerm" code="mult">
+              <term key="leftTerm" text="g" />
+              <term key="rightTerm" text="sin1" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="time2" />
+      <term key="rightTerm" text="1.74874" />
+    </result>
+  </formulaList>
+</micromath>

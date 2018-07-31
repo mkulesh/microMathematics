@@ -1,0 +1,265 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="RLC Low-Pass Filter Example" description="" textWidth="49" significantDigits="6" scale="0.38908" redefineAllowed="false">
+    <text_fragment>
+      <term key="text" text="This example demonstrates RLC low-pass filter.&#10;Use this example to simulate the frequency&#10;responce at a given frequency, damping ratio ζ,&#10;or values of R, L and C. " />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/rlc_low_pass_1.svg" embedded="false" originalSize="false" width="571" height="371" colorType="auto" />
+    <text_fragment textStyle="subsubsection">
+      <term key="text" text="Input parameters" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="R" />
+      <term key="rightTerm" text="1" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="C" />
+      <term key="rightTerm" text="150E-06" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" units="μF">
+      <term key="leftTerm" text="C" unit="F" />
+      <term key="rightTerm" text="150.0 µF" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="L" />
+      <term key="rightTerm" text="4.7E-6" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" units="μH">
+      <term key="leftTerm" text="L" unit="H" />
+      <term key="rightTerm" text="4.7 µH" />
+    </result>
+    <text_fragment textStyle="subsubsection">
+      <term key="text" text="Damping ratio" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="ζ" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="divide">
+          <term key="leftTerm" text="R" />
+          <term key="rightTerm" text="2" />
+        </term>
+        <term key="rightTerm" code="sqrt_layout">
+          <term key="argTerm" code="divide">
+            <term key="leftTerm" text="C" />
+            <term key="rightTerm" text="L" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="ζ" />
+      <term key="rightTerm" text="2.82466" />
+    </result>
+    <text_fragment textStyle="subsubsection">
+      <term key="text" text="Poles" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="K" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="L" />
+          <term key="rightTerm" text="C" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="K" />
+      <term key="rightTerm" text="1.41844E9" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="p1" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="divide">
+          <term key="leftTerm" text="-R" />
+          <term key="rightTerm" code="mult">
+            <term key="leftTerm" text="2" />
+            <term key="rightTerm" text="L" />
+          </term>
+        </term>
+        <term key="rightTerm" code="sqrt_layout">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="power">
+              <term key="leftTerm" code="identity">
+                <term key="argTerm" code="divide">
+                  <term key="leftTerm" text="R" />
+                  <term key="rightTerm" code="mult">
+                    <term key="leftTerm" text="2" />
+                    <term key="rightTerm" text="L" />
+                  </term>
+                </term>
+              </term>
+              <term key="rightTerm" text="2" />
+            </term>
+            <term key="rightTerm" text="K" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="p1" unit="Hz" />
+      <term key="rightTerm" text="-6889.77 Hz" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="p2" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" code="divide">
+          <term key="leftTerm" text="-R" />
+          <term key="rightTerm" code="mult">
+            <term key="leftTerm" text="2" />
+            <term key="rightTerm" text="L" />
+          </term>
+        </term>
+        <term key="rightTerm" code="sqrt_layout">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="power">
+              <term key="leftTerm" code="identity">
+                <term key="argTerm" code="divide">
+                  <term key="leftTerm" text="R" />
+                  <term key="rightTerm" code="mult">
+                    <term key="leftTerm" text="2" />
+                    <term key="rightTerm" text="L" />
+                  </term>
+                </term>
+              </term>
+              <term key="rightTerm" text="2" />
+            </term>
+            <term key="rightTerm" text="K" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="p2" unit="Hz" />
+      <term key="rightTerm" text="-205876.0 Hz" />
+    </result>
+    <text_fragment textStyle="subsubsection">
+      <term key="text" text="Cut-off frequency" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="ωn" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" text="K" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="ωn" />
+      <term key="rightTerm" text="37662.2" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="fn" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" text="ωn" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" text="π" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" units="hHz">
+      <term key="leftTerm" text="fn" unit="Hz" />
+      <term key="rightTerm" text="59.9412 hHz" />
+    </result>
+    <text_fragment textStyle="subsubsection">
+      <term key="text" text="Impedance" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="Xc" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="ωn" />
+          <term key="rightTerm" text="C" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="Xc" />
+      <term key="rightTerm" text="0.177012" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="XL" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="ωn" />
+          <term key="rightTerm" text="L" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="XL" />
+      <term key="rightTerm" text="5.64933" />
+    </result>
+    <text_fragment textStyle="subsubsection">
+      <term key="text" text="Frequency responce" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="H(ω)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="20" />
+        <term key="rightTerm" code="identity">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="minus">
+              <term key="leftTerm" code="log10">
+                <term key="argTerm" text="K" />
+              </term>
+              <term key="rightTerm" code="log10">
+                <term key="argTerm" code="sqrt_layout">
+                  <term key="argTerm" code="plus">
+                    <term key="leftTerm" code="power">
+                      <term key="leftTerm" text="ω" />
+                      <term key="rightTerm" text="2" />
+                    </term>
+                    <term key="rightTerm" code="power">
+                      <term key="leftTerm" text="p1" />
+                      <term key="rightTerm" text="2" />
+                    </term>
+                  </term>
+                </term>
+              </term>
+            </term>
+            <term key="rightTerm" code="log10">
+              <term key="argTerm" code="sqrt_layout">
+                <term key="argTerm" code="plus">
+                  <term key="leftTerm" code="power">
+                    <term key="leftTerm" text="ω" />
+                    <term key="rightTerm" text="2" />
+                  </term>
+                  <term key="rightTerm" code="power">
+                    <term key="leftTerm" text="p2" />
+                    <term key="rightTerm" text="2" />
+                  </term>
+                </term>
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="f" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="1" />
+        <term key="nextValue" text="100" />
+        <term key="maxValue" text="1E+7" />
+      </term>
+    </equation>
+    <plot_function width="900" height="571" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="4" gridLineColor="#FF787878" xType="log10" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" text="30" />
+      <term key="yFunction" color="#FF0000FF" width="10" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.H">
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" code="mult">
+            <term key="leftTerm" text="π" />
+            <term key="rightTerm" text="f" />
+          </term>
+        </term>
+      </term>
+      <term key="yMinValue" text="-120" />
+      <term key="xMinValue" text="1" />
+      <term key="xFunction" text="f" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+  </formulaList>
+</micromath>
