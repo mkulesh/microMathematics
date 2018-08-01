@@ -219,7 +219,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         case BITMAP:
             if (bitmap != null)
             {
-                bundle.putParcelable(STATE_IMAGE_BITMAP, bitmap);
+                bundle.putString(STATE_IMAGE_BITMAP, getEncodedImage(bitmap));
             }
             break;
         case SVG:
@@ -253,12 +253,50 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
                 // nothing to do
                 break;
             case BITMAP:
-                setBitmap((Bitmap) bundle.getParcelable(STATE_IMAGE_BITMAP));
+                setBitmap(getDecodedImage(bundle.getString(STATE_IMAGE_BITMAP)));
                 break;
             case SVG:
                 setSvg(bundle.getString(STATE_IMAGE_SVG));
                 break;
             }
+        }
+    }
+
+    private String getEncodedImage(Bitmap b)
+    {
+        try
+        {
+            final ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            b.compress(Bitmap.CompressFormat.PNG,100,stream);
+            final String encodedImage = Base64.encodeToString(stream.toByteArray(), BASE64_OPTIONS);
+            stream.close();
+            return encodedImage;
+        }
+        catch (Exception e)
+        {
+            ViewUtils.Debug(this, e.getLocalizedMessage());
+            return "";
+        }
+    }
+
+    private Bitmap getDecodedImage(String s)
+    {
+        try
+        {
+            final byte[] imageDecoded = Base64.decode(s, BASE64_OPTIONS);
+            if (imageDecoded == null)
+            {
+                throw new Exception("cannot decode image, string lenght = " + s.length());
+            }
+            ByteArrayInputStream imageStream = new ByteArrayInputStream(imageDecoded);
+            final Bitmap b = BitmapFactory.decodeStream(imageStream);
+            imageStream.close();
+            return b;
+        }
+        catch (Exception e)
+        {
+            ViewUtils.Debug(this, e.getLocalizedMessage());
+            return null;
         }
     }
 
