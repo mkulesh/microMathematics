@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg2897"
+   version="1.1"
+   viewBox="0 0 820 300"
+   height="80mm"
+   width="217mm">
+  <metadata
+     id="metadata2903">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs2901" />
+  <g
+     id="g3572">
+    <path
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       d="M 299.998 150 L 311.998,150 C 310.498,140 308.998,130 316.498,130 C 323.998,130 325.498,150 320.998,150 C 316.498,150 317.998,130 325.498,130 C 332.998,130 334.498,150 329.998,150 C 325.498,150 326.998,130 334.498,130 C 341.998,130 343.498,150 338.998,150 C 334.498,150 335.998,130 343.498,130 C 350.998,130 349.498,145 347.998,150 L 359.998,150"
+       id="path2649" />
+    <path
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       d="M 179.998 150 L 191.998,150 C 190.498,140 188.998,130 196.498,130 C 203.998,130 205.498,150 200.998,150 C 196.498,150 197.998,130 205.498,130 C 212.998,130 214.498,150 209.998,150 C 205.498,150 206.998,130 214.498,130 C 221.998,130 223.498,150 218.998,150 C 214.498,150 215.998,130 223.498,130 C 230.998,130 229.498,145 227.998,150 L 239.998,150"
+       id="path2651" />
+    <g
+       id="g2661"
+       style="stroke:#000000;stroke-opacity:1">
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="439.998"
+         y1="150"
+         x2="463.998"
+         y2="150"
+         id="line2653" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="463.998"
+         y1="130"
+         x2="463.998"
+         y2="170"
+         id="line2655" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="475.998"
+         y1="130"
+         x2="475.998"
+         y2="170"
+         id="line2657" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="475.998"
+         y1="150"
+         x2="499.998"
+         y2="150"
+         id="line2659" />
+    </g>
+    <g
+       id="g2671"
+       style="stroke:#000000;stroke-opacity:1">
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="559.998"
+         y1="150"
+         x2="583.998"
+         y2="150"
+         id="line2663" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="583.998"
+         y1="130"
+         x2="583.998"
+         y2="170"
+         id="line2665" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="595.998"
+         y1="130"
+         x2="595.998"
+         y2="170"
+         id="line2667" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="595.998"
+         y1="150"
+         x2="619.998"
+         y2="150"
+         id="line2669" />
+    </g>
+    <g
+       id="g2681"
+       style="stroke:#000000;stroke-opacity:1">
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="279.998"
+         y1="180"
+         x2="279.998"
+         y2="200"
+         id="line2673" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="259.998"
+         y1="200"
+         x2="299.998"
+         y2="200"
+         id="line2675" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="259.998"
+         y1="210"
+         x2="299.998"
+         y2="210"
+         id="line2677" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="279.998"
+         y1="210"
+         x2="279.998"
+         y2="230"
+         id="line2679" />
+    </g>
+    <g
+       id="g2691"
+       style="stroke:#000000;stroke-opacity:1">
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="159.998"
+         y1="180"
+         x2="159.998"
+         y2="200"
+         id="line2683" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="139.998"
+         y1="200"
+         x2="179.998"
+         y2="200"
+         id="line2685" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="139.998"
+         y1="210"
+         x2="179.998"
+         y2="210"
+         id="line2687" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="159.998"
+         y1="210"
+         x2="159.998"
+         y2="230"
+         id="line2689" />
+    </g>
+    <polyline
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       points="759.998,170 759.998,188 749.998,190 769.998,194 749.998,198 769.998,202 749.998,206 769.998,210 759.998,212 759.998,230 "
+       id="polyline2693" />
+    <path
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       d="M 519.998 170 L 519.998,182 C 529.998,180.5 539.998,179 539.998,186.5 C 539.998,194 519.998,195.5 519.998,191 C 519.998,186.5 539.998,188 539.998,195.5 C 539.998,203 519.998,204.5 519.998,200 C 519.998,195.5 539.998,197 539.998,204.5 C 539.998,212 519.998,213.5 519.998,209 C 519.998,204.5 539.998,206 539.998,213.5 C 539.998,221 524.998,219.5 519.998,218 L 519.998,230"
+       id="path2695" />
+    <path
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       d="M 639.998 170 L 639.998,182 C 649.998,180.5 659.998,179 659.998,186.5 C 659.998,194 639.998,195.5 639.998,191 C 639.998,186.5 659.998,188 659.998,195.5 C 659.998,203 639.998,204.5 639.998,200 C 639.998,195.5 659.998,197 659.998,204.5 C 659.998,212 639.998,213.5 639.998,209 C 639.998,204.5 659.998,206 659.998,213.5 C 659.998,221 644.998,219.5 639.998,218 L 639.998,230"
+       id="path2697" />
+    <polyline
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       points="39.9978,170 39.9978,188 29.9978,190 49.9978,194 29.9978,198 49.9978,202 29.9978,206 49.9978,210 39.9978,212 39.9978,230 "
+       id="polyline2699" />
+    <g
+       id="g2709"
+       style="stroke:#000000;stroke-opacity:1">
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="19.9979"
+         y1="270"
+         x2="39.9978"
+         y2="290"
+         id="line2701" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="19.9979"
+         y1="270"
+         x2="59.9978"
+         y2="270"
+         id="line2703" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="59.9978"
+         y1="270"
+         x2="39.9978"
+         y2="290"
+         id="line2705" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="39.9978"
+         y1="250"
+         x2="39.9978"
+         y2="270"
+         id="line2707" />
+    </g>
+    <g
+       id="g2719"
+       style="stroke:#000000;stroke-opacity:1">
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="139.998"
+         y1="270"
+         x2="159.998"
+         y2="290"
+         id="line2711" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="139.998"
+         y1="270"
+         x2="179.998"
+         y2="270"
+         id="line2713" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="179.998"
+         y1="270"
+         x2="159.998"
+         y2="290"
+         id="line2715" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="159.998"
+         y1="250"
+         x2="159.998"
+         y2="270"
+         id="line2717" />
+    </g>
+    <g
+       id="g2729"
+       style="stroke:#000000;stroke-opacity:1">
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="259.998"
+         y1="270"
+         x2="279.998"
+         y2="290"
+         id="line2721" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="259.998"
+         y1="270"
+         x2="299.998"
+         y2="270"
+         id="line2723" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="299.998"
+         y1="270"
+         x2="279.998"
+         y2="290"
+         id="line2725" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="279.998"
+         y1="250"
+         x2="279.998"
+         y2="270"
+         id="line2727" />
+    </g>
+    <g
+       id="g2739"
+       style="stroke:#000000;stroke-opacity:1">
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="380.002"
+         y1="270"
+         x2="400.002"
+         y2="290"
+         id="line2731" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="380.002"
+         y1="270"
+         x2="420.002"
+         y2="270"
+         id="line2733" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="420.002"
+         y1="270"
+         x2="400.002"
+         y2="290"
+         id="line2735" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="400.002"
+         y1="250"
+         x2="400.002"
+         y2="270"
+         id="line2737" />
+    </g>
+    <g
+       id="g2749"
+       style="stroke:#000000;stroke-opacity:1">
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="499.998"
+         y1="270"
+         x2="519.998"
+         y2="290"
+         id="line2741" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="499.998"
+         y1="270"
+         x2="539.998"
+         y2="270"
+         id="line2743" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="539.998"
+         y1="270"
+         x2="519.998"
+         y2="290"
+         id="line2745" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="519.998"
+         y1="250"
+         x2="519.998"
+         y2="270"
+         id="line2747" />
+    </g>
+    <g
+       id="g2759"
+       style="stroke:#000000;stroke-opacity:1">
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="619.998"
+         y1="270"
+         x2="639.998"
+         y2="290"
+         id="line2751" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="619.998"
+         y1="270"
+         x2="659.998"
+         y2="270"
+         id="line2753" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="659.998"
+         y1="270"
+         x2="639.998"
+         y2="290"
+         id="line2755" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="639.998"
+         y1="250"
+         x2="639.998"
+         y2="270"
+         id="line2757" />
+    </g>
+    <g
+       id="g2769"
+       style="stroke:#000000;stroke-opacity:1">
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="739.998"
+         y1="270"
+         x2="759.998"
+         y2="290"
+         id="line2761" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="739.998"
+         y1="270"
+         x2="779.998"
+         y2="270"
+         id="line2763" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="779.998"
+         y1="270"
+         x2="759.998"
+         y2="290"
+         id="line2765" />
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="759.998"
+         y1="250"
+         x2="759.998"
+         y2="270"
+         id="line2767" />
+    </g>
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="179.998"
+       y1="150"
+       x2="139.998"
+       y2="150"
+       id="line2771" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="239.998"
+       y1="150"
+       x2="299.998"
+       y2="150"
+       id="line2773" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="279.998"
+       y1="180"
+       x2="279.998"
+       y2="150"
+       id="line2775" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="279.998"
+       y1="250"
+       x2="279.998"
+       y2="230"
+       id="line2777" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="360.002"
+       y1="150"
+       x2="439.998"
+       y2="150"
+       id="line2779" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="499.998"
+       y1="150"
+       x2="559.998"
+       y2="150"
+       id="line2781" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="619.998"
+       y1="150"
+       x2="659.998"
+       y2="150"
+       id="line2783" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="39.9978"
+       y1="250"
+       x2="39.9978"
+       y2="230"
+       id="line2785" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="39.9978"
+       y1="170"
+       x2="39.9978"
+       y2="150"
+       id="line2787" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="39.9978"
+       y1="150"
+       x2="59.9978"
+       y2="150"
+       id="line2789" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="519.998"
+       y1="250"
+       x2="519.998"
+       y2="230"
+       id="line2791" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="519.998"
+       y1="170"
+       x2="519.998"
+       y2="150"
+       id="line2793" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="639.998"
+       y1="250"
+       x2="639.998"
+       y2="230"
+       id="line2795" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="639.998"
+       y1="170"
+       x2="639.998"
+       y2="150"
+       id="line2797" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="759.998"
+       y1="250"
+       x2="759.998"
+       y2="230"
+       id="line2799" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="759.998"
+       y1="170"
+       x2="759.998"
+       y2="150"
+       id="line2801" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="759.998"
+       y1="150"
+       x2="739.998"
+       y2="150"
+       id="line2803" />
+    <text
+       font-size="12.8"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;"
+       x="319.998"
+       y="130"
+       id="text2807">
+      <tspan
+         x="319.998"
+         y="130"
+         id="tspan2805"
+         style="stroke:#000000;stroke-opacity:1;" />
+    </text>
+    <text
+       font-size="12.8"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;"
+       x="279.998"
+       y="205"
+       id="text2811">
+      <tspan
+         x="279.998"
+         y="205"
+         id="tspan2809"
+         style="stroke:#000000;stroke-opacity:1;" />
+    </text>
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="159.998"
+       y1="250"
+       x2="159.998"
+       y2="230"
+       id="line2813" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="159.998"
+       y1="180"
+       x2="159.998"
+       y2="150"
+       id="line2815" />
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;fill-opacity:1;"
+       x="479.998"
+       y="90"
+       id="text2819">
+      <tspan
+         x="479.998"
+         y="90"
+         id="tspan2817"
+         style="stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1;">A6 Values</tspan>
+    </text>
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;fill-opacity:1;"
+       x="120.002"
+       y="30"
+       id="text2823">
+      <tspan
+         x="120.002"
+         y="30"
+         id="tspan2821"
+         style="stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1;">Constant load, R0, to Iac - A5 Low Pass - A6 High Pass</tspan>
+    </text>
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;fill-opacity:1;"
+       x="219.998"
+       y="90"
+       id="text2827">
+      <tspan
+         x="219.998"
+         y="90"
+         id="tspan2825"
+         style="stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1;">A5 Values</tspan>
+    </text>
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;fill-opacity:1;"
+       x="499.998"
+       y="210"
+       id="text2831">
+      <tspan
+         x="499.998"
+         y="210"
+         id="tspan2829"
+         style="stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1;">2</tspan>
+    </text>
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;fill-opacity:1;"
+       x="559.998"
+       y="130"
+       id="text2835">
+      <tspan
+         x="559.998"
+         y="130"
+         id="tspan2833"
+         style="stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1;">3</tspan>
+    </text>
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;fill-opacity:1;"
+       x="619.998"
+       y="210"
+       id="text2839">
+      <tspan
+         x="619.998"
+         y="210"
+         id="tspan2837"
+         style="stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1;">4</tspan>
+    </text>
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;fill-opacity:1;"
+       x="59.9978"
+       y="210"
+       id="text2843">
+      <tspan
+         x="59.9978"
+         y="210"
+         id="tspan2841"
+         style="stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1;">R0</tspan>
+    </text>
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;"
+       x="379.998"
+       y="50"
+       id="text2847">
+      <tspan
+         x="379.998"
+         y="50"
+         id="tspan2845"
+         style="stroke:#000000;stroke-opacity:1;" />
+    </text>
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;fill-opacity:1;"
+       x="439.998"
+       y="130"
+       id="text2851">
+      <tspan
+         x="439.998"
+         y="130"
+         id="tspan2849"
+         style="stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1;">1</tspan>
+    </text>
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;fill-opacity:1;"
+       x="359.998"
+       y="130"
+       id="text2855">
+      <tspan
+         x="359.998"
+         y="130"
+         id="tspan2853"
+         style="stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1;">1</tspan>
+    </text>
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;fill-opacity:1;"
+       x="239.998"
+       y="210"
+       id="text2859">
+      <tspan
+         x="239.998"
+         y="210"
+         id="tspan2857"
+         style="stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1;">2</tspan>
+    </text>
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;fill-opacity:1;"
+       x="239.998"
+       y="130"
+       id="text2863">
+      <tspan
+         x="239.998"
+         y="130"
+         id="tspan2861"
+         style="stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1;">3</tspan>
+    </text>
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;fill-opacity:1;"
+       x="119.998"
+       y="210"
+       id="text2867">
+      <tspan
+         x="119.998"
+         y="210"
+         id="tspan2865"
+         style="stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1;">4</tspan>
+    </text>
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;fill-opacity:1;"
+       x="779.998"
+       y="210"
+       id="text2871">
+      <tspan
+         x="779.998"
+         y="210"
+         id="tspan2869"
+         style="stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1;">R0</tspan>
+    </text>
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;"
+       x="79.9978"
+       y="150"
+       id="text2875">
+      <tspan
+         x="79.9978"
+         y="150"
+         id="tspan2873"
+         style="stroke:#000000;stroke-opacity:1;">. . .</tspan>
+    </text>
+    <text
+       font-size="22.5778"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;"
+       x="679.998"
+       y="150"
+       id="text2879">
+      <tspan
+         x="679.998"
+         y="150"
+         id="tspan2877"
+         style="stroke:#000000;stroke-opacity:1;">. . .</tspan>
+    </text>
+    <ellipse
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       cx="400.002"
+       cy="210"
+       rx="20"
+       ry="20"
+       id="ellipse2881" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="400"
+       y1="150"
+       x2="400.002"
+       y2="190"
+       id="line2883" />
+    <line
+       style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+       x1="400.002"
+       y1="250"
+       x2="400.002"
+       y2="230"
+       id="line2885" />
+    <text
+       font-size="19.7556"
+       style="fill:#000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal;stroke:#000000;stroke-opacity:1;fill-opacity:1;"
+       x="350"
+       y="230"
+       id="text2889">
+      <tspan
+         x="350"
+         y="230"
+         id="tspan2887"
+         style="stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1;">Iac</tspan>
+    </text>
+    <g
+       id="g2895"
+       style="stroke:#000000;stroke-opacity:1">
+      <line
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         x1="430"
+         y1="250"
+         x2="430"
+         y2="204.472"
+         id="line2891" />
+      <polyline
+         style="fill:none;fill-opacity:0;stroke-width:2;stroke:#000000;stroke-opacity:1"
+         points="435,212.236 430,202.236 425,212.236 "
+         id="polyline2893" />
+    </g>
+  </g>
+</svg>

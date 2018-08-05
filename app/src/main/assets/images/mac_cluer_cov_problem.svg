@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="80mm" height="80mm" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="30" y1="150" x2="265.528" y2="150"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="257.764,155 267.764,150 257.764,145 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="150" y1="270" x2="150" y2="34.4721"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="155,42.2361 150,32.2361 145,42.2361 "/>
+  </g>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="150" y1="150" x2="150" y2="150"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="150" y1="150" x2="150" y2="150"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="210" y1="70" x2="150" y2="150"/>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="150" y="150">
+    <tspan x="150" y="150"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="150" y="150">
+    <tspan x="150" y="150"></tspan>
+  </text>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #0000ff" x1="90" y1="70" x2="210" y2="70"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #0000ff" x1="210" y1="70" x2="210" y2="230"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #0000ff" x1="210" y1="230" x2="90" y2="230"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #0000ff" x1="90" y1="230" x2="90" y2="70"/>
+  <text font-size="22.5778" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="170" y="100">
+    <tspan x="170" y="100">R</tspan>
+  </text>
+  <text font-size="22.5778" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="170" y="170">
+    <tspan x="170" y="170">x</tspan>
+  </text>
+  <text font-size="22.5778" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="130" y="110">
+    <tspan x="130" y="110">y</tspan>
+  </text>
+  <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #8b6914" cx="150" cy="150" rx="100" ry="100"/>
+</svg>
