@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- General settings -->
+    <string name="app_name">microMathematics Plus</string>
+    <string name="app_short_name">μMath+</string>
+    <string name="app_description">擴展可視化計算機：實時編輯併計算公式</string>
+    
+    <!-- Drawer -->
+    <string name="drawer_open">打開導航選單</string>
+    <string-array name="activity_titles">
+        <item>工作表</item>
+        <item>如何使用</item>
+        <item>範例</item>
+        <item>範例</item>
+        <item>範例</item>
+        <item>範例</item>
+        <item>關於</item>
+        <item>文件</item>
+    </string-array>
+    <string-array name="activity_subtitles">
+        <item>我的文件</item>
+        <item>應用簡介</item>
+        <item>函數圖像</item>
+        <item>極坐標函數圖像</item>
+        <item>3D 圖像</item>
+        <item>級數和積分</item>
+        <item>microMathematics Plus</item>
+        <item>下載 PDF</item>
+    </string-array>
+    <string-array name="activity_resources">
+        <item></item>
+        <item>asset:/doc_en/how_to_use.mmt</item>
+        <item>asset:/doc_en/function_plot.mmt</item>
+        <item>asset:/doc_en/polar_plot.mmt</item>
+        <item>asset:/doc_en/three_d_plot.mmt</item>
+        <item>asset:/doc_en/series_and_integrals.mmt</item>
+        <item>asset:/doc_en/about_micromath.mmt</item>
+        <item>https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.17.3.pdf</item>
+    </string-array>
+    <string name="activity_example">範例</string>
+    <string name="activity_welcome">asset:/doc_en/welcome.mmt</string>
+
+    <!-- Permissions -->
+    <string name="allow_storage_access_title">允許訪問工作表文件</string>
+    <string name="allow_storage_access_description">此應用需要您授權以訪問此設備上的工作表文件</string>
+    <string name="allow_storage_access_grant">授權</string>
+    
+    <!-- Main menu -->
+    <string name="action_exit">退出</string>
+    <string name="action_exit_confirm">再按一次返回鍵退出</string>
+    <string name="action_play">計算工作表</string>
+    <string name="action_stop">停止計算</string>
+    <string name="action_object_properties">對象屬性</string>
+    <string name="action_undo">撤銷</string>
+    <string name="action_discard">刪除選中內容</string>
+    <string name="action_document_settings">文件設置</string>
+    <string name="action_new_document">新增文件</string>
+    <string name="action_open">打開文件</string>
+    <string name="action_save">保存文件</string>
+    <string name="action_save_as">另存為</string>
+    <string name="action_export">匯出</string>
+    <string name="action_details">詳細信息</string>
+    <string name="action_app_settings">應用設置</string>
+
+    <!-- Context menu -->
+    <string name="context_expand">擴選</string>
+    <string name="context_copy">複製</string>
+    <string name="context_cut">剪下</string>
+    <string name="context_paste">貼上</string>
+
+    <!-- Application settings -->
+    <string name="pref_zoom_enabled">啟用縮放</string>
+    <string name="pref_developer_mode">開發者選項</string>
+    <string name="pref_exit_confirm">按返回鍵兩次退出</string>
+
+    <!-- Application settings: Languages -->
+    <string name="pref_app_language">應用語言</string>
+
+    <!-- Application settings: Themes -->
+    <!-- Translatable list of themes -->
+    <string name="pref_app_theme">應用主題</string>
+    <string-array name="pref_theme_names">
+        <item>亮（群青和桔黃）</item>
+        <item>亮（青藍和朱紅）</item>
+        <item>亮（藍灰和群青）</item>
+        <item>高對比度亮（白底黑字）</item>
+        <item>暗（暗灰和松石綠）</item>
+        <item>高對比度暗（黑底白字）</item>
+    </string-array>
+
+    <!-- Dialogs -->
+    <string name="dialog_navigation_accept">確定</string>
+    <string name="dialog_navigation_cancel">取消</string>
+    <string name="dialog_button_decrease">減小</string>
+    <string name="dialog_button_increase">增大</string>
+    <string name="dialog_new_formula_insert_before">插入到已選內容之前</string>
+    <string name="dialog_new_formula_insert_after">插入到已選內容之後</string>
+    <string name="dialog_new_formula_insert_left">插入到已選內容左側</string>
+    <string name="dialog_new_formula_insert_right">插入到已選內容右側</string>
+    <string name="dialog_line_settings_title">線設置</string>
+    <string name="dialog_line_settings_widthlabel">線寬和線型</string>
+    <string name="dialog_axis_settings_title">網格設置</string>
+    <string name="dialog_axis_settings_xlabels">X 標籤數</string>
+    <string name="dialog_axis_settings_type_log10">對數刻度</string>
+    <string name="dialog_axis_settings_ylabels">Y 標籤數</string>
+    <string name="dialog_plot_settings_title">圖像設置</string>
+    <string name="dialog_plot_settings_width">圖像寬度</string>
+    <string name="dialog_plot_settings_height">圖像高度</string>
+    <string name="dialog_plot_settings_axes_boxed">邊界框</string>
+    <string name="dialog_plot_settings_axes_crossed">交叉</string>
+    <string name="dialog_plot_settings_axes_none">不顯示邊界框和軸</string>
+    <string name="dialog_plot_point_shapes">顯示記號</string>
+    <string name="dialog_plot_point_shape_size" formatted="false">記號大小（% 線寬）</string>
+    <string name="dialog_plot_point_square">方形點</string>
+    <string name="dialog_plot_point_circle">圓形點</string>
+    <string name="dialog_plot_point_diamond">菱形點</string>
+    <string name="dialog_plot_point_cross">X 形點</string>
+    <string name="dialog_surface_settings_contour">等高線圖</string>
+    <string name="dialog_surface_settings_surface">曲面圖</string>
+    <string name="dialog_surface_settings_mesh_lines">顯示網格線</string>
+    <string name="dialog_surface_settings_mesh_fill">用顏色填充網格</string>
+    <string name="dialog_surface_settings_mesh_opacity">不透明度</string>
+    <string name="dialog_surface_settings_rotation">旋轉角</string>
+    <string name="dialog_surface_settings_elevation">俯仰角</string>
+    <string name="dialog_colormap_settings_title">顏色映射設置</string>
+    <string name="dialog_colormap_settings_zlabels">Z 標籤數</string>
+    <string name="dialog_document_settings_author">作者</string>
+    <string name="dialog_document_settings_document_title">標題</string>
+    <string name="dialog_document_settings_description">描述</string>
+    <string name="dialog_document_settings_reformat">格式化文本片段</string>
+    <string name="dialog_document_settings_width_size">行長度</string>
+    <string name="dialog_document_settings_significant_digits">結果顯示位數</string>
+    <string name="dialog_document_settings_redefine_allowed">允許重定義</string>
+    <string name="dialog_result_details_argument">參數</string>
+    <string name="dialog_result_details_value">值</string>
+    <string name="dialog_image_settings_title">圖像設置</string>
+    <string name="dialog_image_settings_file">格式 (png, bmp, gif, jpeg, svg)</string>
+    <string name="dialog_image_settings_select_file">選擇文件</string>
+    <string name="dialog_image_settings_embedded">嵌入式圖像</string>
+    <string name="dialog_image_settings_original_size">原始大小</string>
+    <string name="dialog_image_settings_custom_size">自定義大小</string>
+    <string name="dialog_image_settings_width">圖像寬度</string>
+    <string name="dialog_image_settings_height">圖像高度</string>
+    <string name="dialog_image_settings_original_color">原始顏色</string>
+    <string name="dialog_image_settings_auto_color">自動顏色</string>
+    <string name="dialog_result_title">結果屬性</string>
+    <string name="dialog_result_disable_calculation">不計算</string>
+    <string name="dialog_result_hide_result_field">隱藏結果字段</string>
+    <string name="dialog_result_array_length">值數量</string>
+    <string name="dialog_result_units">輸出單元</string>
+    <string name="dialog_text_settings_title">文本屬性</string>
+    <string name="dialog_text_style_chapter">章</string>
+    <string name="dialog_text_style_section">節</string>
+    <string name="dialog_text_style_subsection">段</string>
+    <string name="dialog_text_style_subsubsection">分段</string>
+    <string name="dialog_text_style_text_body">正文</string>
+    <string name="dialog_text_style_numbering">編號</string>
+    <string name="dialog_list_items">項</string>
+    <string name="dialog_function_selection">函數</string>
+    <string name="dialog_color_picker_saturation" translatable="false">S:</string>
+    <string name="dialog_color_picker_value" translatable="false">L:</string>
+    <string name="dialog_color_picker_opacity" translatable="false">A:</string>
+    <string name="dialog_palette_settings_title">工具欄設置</string>
+
+    <!-- Mathematical elements -->
+    <string name="math_new_element">新元素</string>
+    <string name="math_new_equation">添加定義式</string>
+    <string name="math_new_result">添加求解式</string>
+    <string name="math_new_function_plot">添加函數圖像</string>
+    <string name="math_new_contour_plot">添加 3D 圖像</string>
+    <string name="math_new_text_fragment">添加文本段</string>
+    <string name="math_new_image_fragment">從文件添加圖片</string>
+    <string name="image_fragment_text">長按匯入圖片</string>
+    <string name="math_new_term">添加新參數</string>
+    <string name="math_equidistant_interval">等間距數組</string>
+    <string name="math_operator_plus">加</string>
+    <string name="math_operator_minus">減</string>
+    <string name="math_operator_mult">乘</string>
+    <string name="math_operator_divide">除</string>
+    <string name="math_operator_divide_slash">除</string>
+    <string name="math_comparator_equal">測試兩項是否相等</string>
+    <string name="math_comparator_not_equal">測試兩項是否不等</string>
+    <string name="math_comparator_less">測試左側的項是否小於右側的項</string>
+    <string name="math_comparator_less_eq">測試左側的項是否小於等於右側的項</string>
+    <string name="math_comparator_greater">測試左側的項是否大於右側的項</string>
+    <string name="math_comparator_greater_eq">測試左側的項是否大於等於右側的項</string>
+    <string name="math_comparator_and">測試兩項是否都為真</string>
+    <string name="math_comparator_and_text"> 和 </string>
+    <string name="math_comparator_or">測試是否有至少一項為真</string>
+    <string name="math_comparator_or_text"> 或 </string>
+    <string name="math_loop_summation">序列的和</string>
+    <string name="math_loop_product">序列的積</string>
+    <string name="math_loop_integral">定積分</string>
+    <string name="math_loop_derivative">一階導數</string>
+    <string name="math_function_identity">括號</string>
+    <string name="math_function_index">通過索引獲取數組元素</string>
+    <string name="math_function_power">指數</string>
+    <string name="math_function_abs">實參數或複參數的絕對值</string>
+    <string name="math_function_conjugate">複參數的共軛</string>
+    <string name="math_function_re">複參數的實部</string>
+    <string name="math_function_im">複參數的虛部</string>
+    <string name="math_function_sqrt">參數的平方根</string>
+    <string name="math_function_nthrt">參數的 n 次方根</string>
+    <string name="math_function_if">根據兩個表達式的比較結果，選擇要使用的項</string>
+    <string name="math_function_sin">參數的正弦</string>
+    <string name="math_function_asin">參數的反正弦，值域為 [-pi/2..pi/2]</string>
+    <string name="math_function_sinh">參數的雙曲正弦</string>
+    <string name="math_function_cos">參數的餘弦</string>
+    <string name="math_function_acos">參數的反餘弦，值域為 [0..pi]</string>
+    <string name="math_function_cosh">參數的雙曲餘弦</string>
+    <string name="math_function_tan">參數的正切</string>
+    <string name="math_function_atan">參數的反正切，值域為 [-pi/2..pi/2]</string>
+    <string name="math_function_atan2">y/x 的反正切，值域為 [-pi..pi]</string>
+    <string name="math_function_tanh">參數的雙曲正切</string>
+    <string name="math_function_exp">參數作為 \'e\' 的指數</string>
+    <string name="math_function_ln">參數的自然對數</string>
+    <string name="math_function_log">指定底的對數</string>
+    <string name="math_function_log10">參數的以 10 為底的對數</string>
+    <string name="math_function_ceil">大於等於參數的最小整數（最接近負無窮）</string>
+    <string name="math_function_floor">小於等於參數的最大整數（最接近正無窮）</string>
+    <string name="math_function_random">0 和參數之間的偽隨機值</string>
+    <string name="math_function_factorial">小於或等於參數的正整數之積</string>
+    <string name="math_function_max">兩個參數中的最大值（最接近正無窮）</string>
+    <string name="math_function_min">兩個參數中的最小值（最接近負無窮）</string>
+    <string name="math_function_read">從 ASCII 文件匯入數據</string>
+    <string name="math_function_rows">返回矩陣/向量的行數</string>
+    <string name="math_function_cols">返回矩陣/向量的列數</string>
+    <string name="math_function_mod">返回第一個參數除以第二個參數的餘數</string>
+    <string name="math_function_perc">計算百分比</string>
+    <string name="math_function_round">​​真實值 x 的近似值，精確到第 n 位小數</string>
+    <string name="math_function_trunc">通過移除小數部分返回實數的整數部分</string>
+    <string name="math_function_sign">如果 x=0 ，返回 0 ，如果 x>0 ，返回 1 ，否則返回 -1</string>
+    <string name="math_function_csc">參數的餘割（正弦的倒數）</string>
+    <string name="math_function_sec">參數的正割（餘弦的倒數）</string>
+    <string name="math_function_cot">參數的餘切（正切的倒數）</string>
+    <string name="math_function_acsc">參數的反餘割</string>
+    <string name="math_function_asec">參數的反正割</string>
+    <string name="math_function_acot">參數的反餘切</string>
+    <string name="math_function_csch">參數的雙曲餘割</string>
+    <string name="math_function_sech">參數的雙曲正割</string>
+    <string name="math_function_coth">參數的雙曲餘切</string>
+
+    <!-- Errors -->
+    <string name="error_max_layout_depth">已達到此 Android 版本的佈局深度限制</string>
+    <string name="error_brackets_not_completed">括號未閉合</string>
+    <string name="error_invalid_variable_name">無效的變量名</string>
+    <string name="error_unknown_variable">符號不是已知的變量或參數</string>
+    <string name="error_unknown_function">函數 %s 未定義，也不是內置函數</string>
+    <string name="error_unknown_array">數組 %s 未定義</string>
+    <string name="error_not_an_array">%s 無法通過索引訪問，因為它不是一個數組</string>
+    <string name="error_not_a_function">%s 無法通過變量訪問，因為它不是一個函數</string>
+    <string name="error_invalid_array_dimension">尚不支持 %s 維數組</string>
+    <string name="error_invalid_array_interval">引用了步長 %s，但未將其聲明為索引</string>
+    <string name="error_invalid_array_index">索引 %s 不是已知步長</string>
+    <string name="error_recursive_call">方程在它的定義中被遞歸調用</string>
+    <string name="error_not_differentiable">函數在 %s 不可微</string>
+    <string name="error_invalid_brackets_order">無效的括號順序</string>
+    <string name="error_empty_argument_list">函數應該有一個參數</string>
+    <string name="error_invalid_comma_position">無效的逗號位置</string>
+    <string name="error_empty_argument">一個參數不能為空​​</string>
+    <string name="error_invalid_argument">函數參數應只包含字母或數字</string>
+    <string name="error_ensure_single_interval">函數只能依賴於一個區間</string>
+    <string name="error_ensure_double_interval">函數應當依賴於兩個區間</string>
+    <string name="error_indirect_intervals">有間接引用的區間：%s</string>
+    <string name="error_duplicated_identifier">此標識符已被使用</string>
+    <string name="error_forbidden_​​arguments">此標識符不允許有參數</string>
+    <string name="error_forbidden_​​complex">此字段不允許複數</string>
+    <string name="error_forbidden_​​imaginary_unit">符號 \'i\' 是為在這種情況下不允許的虛單位保留的</string>
+    <string name="error_forbidden_​​array">此字段不允許數組</string>
+    <string name="error_nan_value">字段包含非數字值</string>
+    <string name="error_unknown_file_format">文件 %s 格式未知</string>
+    <string name="error_file_read">無法打開文件 %s</string>
+    <string name="error_file_write">無法保存文件 %s</string>
+    <string name="error_calculation_aborted">計算中止</string>
+    <string name="error_paste_root_into_term">無法將等式貼上進一項</string>
+    <string name="error_paste_term_into_text">無法貼上項，因為此字段不允許此內容</string>
+    <string name="error_out_of_memory">圖像可視化內存不足</string>
+
+    <!-- File manager -->
+    <string name="fman_local">內部存儲</string>
+    <string name="fman_local_descr">從主文件系統訪問文件</string>
+    <string name="fman_external">外部存儲卡</string>
+    <string name="fman_external_descr">訪問 SD 卡上文件。在某些設備上它可能是只讀的</string>
+    <string name="fman_saf">文件</string>
+    <string name="fman_saf_descr">訪問文件存儲中的文件</string>
+    <string name="fman_assets">\"microMathematics Plus\" 資源</string>
+    <string name="fman_assets_descr">此應用提供的文件和範例</string>
+    <string name="fman_home">主目錄</string>
+    <string name="fman_sort_by_name">按文件名稱排序</string>
+    <string name="fman_sort_by_ext">按擴展名稱排序</string>
+    <string name="fman_sort_by_size">按文件大小排序</string>
+    <string name="fman_sort_by_date">按日期排序</string>
+    <string name="fman_refresh_title">刷新</string>
+    <string name="fman_open_saf">打開存儲</string>
+    <string name="fman_operation">操作</string>
+    <string name="fman_create_folder_title">新增文件夾</string>
+    <string name="fman_create_folder_dialog_prompt">新文件夾名稱：</string>
+    <string name="fman_create_folder_error">無法新增文件夾“%s”</string>
+    <string name="fman_rename_title">重新命名</string>
+    <string name="fman_rename_dialog_prompt">將“%s”重新命名為：</string>
+    <string name="fman_rename_error">無法重新命名“%s”</string>
+    <string name="fman_delete_title">刪除</string>
+    <string name="fman_delete_dialog_prompt">刪除“%s”？ </string>
+    <string name="fman_delete_confirm">選中的文件已刪除</string>
+    <string name="fman_delete_error">無法刪除“%s”</string>
+    <string name="fman_warning_dialog_title">警告</string>
+    <string name="fman_error_no_items">未選擇完成此操作的項目</string>
+    <string name="fman_error_sec_err">安全問題：%s</string>
+    <string name="fman_error_no_such_folder">“%s”不是有效的文件夾</string>
+    <string name="fman_new_file">新文件名</string>
+    <string name="fman_overwrite_file">文件“%s”已存在，您確定想要覆蓋它嗎？ </string>
+    <string name="fman_file_type">文件類型</string>
+    <string name="fman_file_type_selection">選擇文件類型</string>
+    <string name="fman_file_type_png_image">PNG 圖片</string>
+    <string name="fman_file_type_jpeg_image">JPEG 圖片</string>
+    <string name="fman_file_type_latex">LaTeX 文件</string>
+    <string name="fman_file_type_mathjax">HTML 文件</string>
+    
+    <!-- Messages -->
+    <string name="message_file_written">文件 %s 已寫入</string>
+    
+    <!-- Developer options -->
+    <string name="action_dev_autotest">自動測試</string>
+    <string name="action_dev_export_doc">匯出文件</string>
+    <string name="action_dev_take_screenshot">匯出屏幕截圖</string>
+
+</resources>
