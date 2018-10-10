@@ -66,11 +66,13 @@ For more screenshots, see directory images/screenshots.
 * Russian
 * German
 * Brazilian Portuguese
+* Chinese
 
 ## Authors
 
 * Mikhail Kulesh (core development, German/Russian translation), mikhail.kulesh@gmail.com
 * Caio Roberto Ramos da Silva (Brazilian Portuguese translation), caiorrs@gmail.com
+* Yubin Hsu (Chinese translation), yubin.taiwan@gmail.com
 
 ## License
 
