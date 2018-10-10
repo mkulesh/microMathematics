@@ -75,7 +75,6 @@
     <string name="pref_exit_confirm">Press back button twice for exit</string>
 
     <!-- Application settings: Languages -->
-    <!-- Translatable list of languages -->
     <string name="pref_app_language">App language</string>
     <string-array name="pref_language_names" translatable="false">
         <item>English</item>

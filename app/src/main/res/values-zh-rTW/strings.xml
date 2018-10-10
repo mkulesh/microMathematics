@@ -158,9 +158,6 @@
     <string name="dialog_text_style_numbering">編號</string>
     <string name="dialog_list_items">項</string>
     <string name="dialog_function_selection">函數</string>
-    <string name="dialog_color_picker_saturation" translatable="false">S:</string>
-    <string name="dialog_color_picker_value" translatable="false">L:</string>
-    <string name="dialog_color_picker_opacity" translatable="false">A:</string>
     <string name="dialog_palette_settings_title">工具欄設置</string>
 
     <!-- Mathematical elements -->
@@ -264,10 +261,10 @@
     <string name="error_ensure_double_interval">函數應當依賴於兩個區間</string>
     <string name="error_indirect_intervals">有間接引用的區間：%s</string>
     <string name="error_duplicated_identifier">此標識符已被使用</string>
-    <string name="error_forbidden_​​arguments">此標識符不允許有參數</string>
-    <string name="error_forbidden_​​complex">此字段不允許複數</string>
-    <string name="error_forbidden_​​imaginary_unit">符號 \'i\' 是為在這種情況下不允許的虛單位保留的</string>
-    <string name="error_forbidden_​​array">此字段不允許數組</string>
+    <string name="error_forbidden_arguments">此標識符不允許有參數</string>
+    <string name="error_forbidden_complex">此字段不允許複數</string>
+    <string name="error_forbidden_imaginary_unit">符號 \'i\' 是為在這種情況下不允許的虛單位保留的</string>
+    <string name="error_forbidden_array">此字段不允許數組</string>
     <string name="error_nan_value">字段包含非數字值</string>
     <string name="error_unknown_file_format">文件 %s 格式未知</string>
     <string name="error_file_read">無法打開文件 %s</string>

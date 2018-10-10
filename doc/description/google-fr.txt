@@ -25,4 +25,4 @@ Avantages et caractéristiques:
 
 MicroMathematics Plus a exactement la même interface utilisateur que la version gratuite microMathematics, mais elle implémente plus de fonctionnalités mathématiques: unités de mesure, tableaux, nombres complexes, fonctions à arguments multiples, tracés de plusieurs fonctions, contours et 3D, sommation et opérations de produits, intégrales dérivées et définies, if-function et opérateurs logiques... Cette version a les limitations mathématiques suivantes : elle ne supporte pas les fonctions spéciales, les vecteurs, les matrices et plusieurs autres choses éléments de mathématiques de haut niveau.
 
-Langues : anglais, russe, allemand, portugais brésilien.
+Langues : anglais, russe, allemand, portugais brésilien, chinoise.

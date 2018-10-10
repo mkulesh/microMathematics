@@ -158,9 +158,6 @@
     <string name="dialog_text_style_numbering">编号</string>
     <string name="dialog_list_items">项</string>
     <string name="dialog_function_selection">函数</string>
-    <string name="dialog_color_picker_saturation" translatable="false">S:</string>
-    <string name="dialog_color_picker_value" translatable="false">L:</string>
-    <string name="dialog_color_picker_opacity" translatable="false">A:</string>
     <string name="dialog_palette_settings_title">工具栏设置</string>
 
     <!-- Mathematical elements -->
