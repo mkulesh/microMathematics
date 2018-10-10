@@ -83,6 +83,7 @@
         <item>Deutsch</item>
         <item>Português (Brasil)</item>
         <item>繁體中文</item>
+        <item>简体中文</item>
     </string-array>
     <!-- Non-Translatable parameters of languages -->
     <string name="pref_default_language_code" translatable="false">en</string>
@@ -92,6 +93,7 @@
         <item>de</item>
         <item>pt-rBR</item>
         <item>zh-rTW</item>
+        <item>zh-rCN</item>
     </string-array>
 
     <!-- Application settings: Themes -->
