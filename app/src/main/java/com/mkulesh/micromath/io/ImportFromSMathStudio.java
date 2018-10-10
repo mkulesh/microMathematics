@@ -175,6 +175,8 @@ public class ImportFromSMathStudio
         {
             // Source document
             final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            // https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Prevention_Cheat_Sheet
+            factory.setExpandEntityReferences(false);
             final DocumentBuilder builder = factory.newDocumentBuilder();
             final Document doc = builder.parse(stream);
             final Node objects = doc.getDocumentElement();
