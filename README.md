@@ -73,6 +73,7 @@ For more screenshots, see directory images/screenshots.
 * Mikhail Kulesh (core development, German/Russian translation), mikhail.kulesh@gmail.com
 * Caio Roberto Ramos da Silva (Brazilian Portuguese translation), caiorrs@gmail.com
 * Yubin Hsu (Chinese translation), yubin.taiwan@gmail.com
+* Linsui (Chinese translation), linsui555@gmail.com
 
 ## License
 
