@@ -1,21 +1,15 @@
-/*******************************************************************************
- * microMathematics Plus - Extended visual calculator
- * *****************************************************************************
- * Copyright (C) 2014-2017 Mikhail Kulesh
+/*
+ * Copyright (C) 2014-2018 Mikhail Kulesh
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License as published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- ******************************************************************************/
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+ * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details. You should have received a copy of the GNU General
+ * Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package com.mkulesh.micromath.dialogs;
 
 import android.net.Uri;
@@ -134,7 +128,7 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
                     parameters.height = pickerHeight.getValue();
                 }
 
-                final ImageProperties.ColorType colorType = rOriginalColor.isChecked()?
+                final ImageProperties.ColorType colorType = rOriginalColor.isChecked() ?
                         ImageProperties.ColorType.ORIGINAL : ImageProperties.ColorType.AUTO;
                 if (parameters.colorType != colorType)
                 {
