@@ -25,6 +25,7 @@ createAVD android_7.0.0 'system-images;android-24;default;x86_64'
 createAVD android_7.1.1 'system-images;android-25;google_apis;x86'
 createAVD android_8.0.0 'system-images;android-26;google_apis;x86'
 createAVD android_8.1.0 'system-images;android-27;google_apis;x86'
+createAVD android_9.0.0 'system-images;android-28;google_apis;x86'
 
 echo ""
 echo "----------------------------------------------------------------------------------"

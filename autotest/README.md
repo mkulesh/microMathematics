@@ -14,3 +14,12 @@ Usage:
 ```
 
 *run-emulator.sh* - helper script
+
+Note: it is possible, that additionally to Android SDK, the android tools are also installed in the machine. 
+In this case, the version of the */usr/bin/adb* executable shall be the same as in *ANDROID_SDK/platform-tools/adb*
+To ensure it, run:
+```
+# /usr/bin/adb version
+# ANDROID_SDK/platform-tools/adb version
+```
+If versions are different, exchange the file */usr/bin/adb* by *ANDROID_SDK/platform-tools/adb*.
