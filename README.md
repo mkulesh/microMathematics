@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/badge/license-GNU_GPLv3-orange.svg)](https://github.com/mkulesh/microMathematics/blob/master/LICENSE) [![Build Status](https://travis-ci.org/mkulesh/microMathematics.svg?branch=master)](https://travis-ci.org/mkulesh/microMathematics) [![Download unsigned APK from latest autobuild](https://img.shields.io/badge/APK-autobuild-blue.svg)](https://github.com/mkulesh/microMathematics/raw/autobuild/autobuild/microMathematics-v2.17.3.apk)
 
-# <img src="https://github.com/mkulesh/microMathematics/blob/master/images/icon.png" align="center" height="48" width="48"> "microMathematics Plus - Extended visual calculator"
+# <img src="https://github.com/mkulesh/microMathematics/blob/master/images/icon.png" align="center" height="48" width="48"> "microMathematics Plus - Extended Visual Calculator"
 
 With microMathematics Plus, not only can you perform mathematical calculations in naturally readable form but you can also create and manage your own collection of interactive formulas!
 
