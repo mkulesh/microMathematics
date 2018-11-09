@@ -2,11 +2,11 @@
 
 # <img src="https://github.com/mkulesh/microMathematics/blob/master/images/icon.png" align="center" height="48" width="48"> "microMathematics Plus - Extended visual calculator"
 
-With microMathematics Plus, you can not only perform mathematical calculations in naturally readable form, but can also create and manage your own collection of interactive formulas!
+With microMathematics Plus, not only can you perform mathematical calculations in naturally readable form but you can also create and manage your own collection of interactive formulas!
 
-microMathematics Plus is a revolutionary new kind of mobile calculator. It is the scientific graphing calculator and function plotter on Android oriented around a worksheet. It allows live editing of mathematical identities combined with highly accurate computations.
+microMathematics Plus is a revolutionary new kind of mobile calculator. It is a scientific graphing calculator and function plotter on Android oriented around a worksheet. It features live editing of mathematical identities combined with highly accurate computations.
 
-Not only students, but also everybody who likes mathematics or needs more than just a basic calculator will benefit from this amazing technique of mathematical calculations and plotting.
+This app is not only for students. Anyone who enjoys mathematics or requires more than just a basic calculator will benefit from microMathematics' amazing calculations and plotting.
 
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
       alt="Get it on Google Play" height="110">](https://play.google.com/store/apps/details?id=com.mkulesh.micromath.plus)
@@ -20,13 +20,13 @@ Not only students, but also everybody who likes mathematics or needs more than j
 * Supports all commonly used mathematical operations
 * Mathematical expressions are written in an intuitive and naturally readable form
 * Supports SI and non-SI units (including units of information)
-* Powerful mathematical touch-screen editor with undo function makes editing easier
-* You can do multiple calculations and subsequently correct or change all used formulas
+* Powerful mathematical touch-screen editor with undo function which makes editing easier
+* You can perform multiple calculations and subsequently correct or change all used formulas
 * It is possible to store intermediate results into 1D, 2D, or 3D array that can improve calculation performance
 * Mathematical expressions are collected in a document, that includes not only formulas and plots, but also additional text and images ([SVG format](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) is also supported)
-* You can store your document on SD card and export it into [LaTeX format](https://www.latex-project.org/) or an image (SD writing permission is needed)
+* You can store your document on an SD card and export it into [LaTeX format](https://www.latex-project.org/) or an image (SD writing permission is needed)
 * SD card on Android 6+ is also supported
-* The app contains detailed "How to use" page and several examples
+* The app contains a detailed "How to use" page and several examples
 * Supports different color themes
 * Supports data import from ASCII files
 * Integration with [SMath Studio](https://en.smath.info): SMath Studio is able to open workshets stored in microMathematics, see [this document](https://github.com/mkulesh/microMathematics/wiki/Integration-with-SMath-Studio) for details. Documents from SMath Studio can also be opened in microMathematics.
