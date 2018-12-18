@@ -10,7 +10,6 @@
     
     <application
         android:allowBackup="true"
-        android:allowClearUserData="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher"
