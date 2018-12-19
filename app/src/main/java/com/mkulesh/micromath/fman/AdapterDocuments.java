@@ -34,6 +34,7 @@ import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.CompatUtils;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -423,12 +424,22 @@ public class AdapterDocuments extends AdapterBaseImpl
     @Override
     public boolean renameItem(int position, String newName)
     {
-        //FIXME: in what cases the copy==true?
         ContentResolver cr = ctx.getContentResolver();
         Item item = items[position - 1];
-        Uri new_uri = DocumentsContract.renameDocument(cr, (Uri) item.origin, newName);
-        if (new_uri == null)
+        Uri new_uri = null;
+        try
+        {
+            new_uri = DocumentsContract.renameDocument(cr, (Uri) item.origin, newName);
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
             return false;
+        }
+        if (new_uri == null)
+        {
+            return false;
+        }
         item.origin = new_uri;
         notifyRefr(newName);
         return true;

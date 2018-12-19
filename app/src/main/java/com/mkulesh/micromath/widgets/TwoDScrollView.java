@@ -18,16 +18,13 @@
  ******************************************************************************/
 package com.mkulesh.micromath.widgets;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Build;
 import android.support.v4.view.GestureDetectorCompat;
-import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.EdgeEffectCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.FocusFinder;
@@ -39,6 +36,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.animation.AnimationUtils;
+import android.widget.EdgeEffect;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
@@ -92,10 +90,10 @@ public class TwoDScrollView extends FrameLayout
 
     private int autoScrollMargins = 0;
 
-    private EdgeEffectCompat mEdgeGlowTop;
-    private EdgeEffectCompat mEdgeGlowBottom;
-    private EdgeEffectCompat mEdgeGlowLeft;
-    private EdgeEffectCompat mEdgeGlowRight;
+    private EdgeEffect mEdgeGlowTop;
+    private EdgeEffect mEdgeGlowBottom;
+    private EdgeEffect mEdgeGlowLeft;
+    private EdgeEffect mEdgeGlowRight;
 
     /*********************************************************
      * Creating
@@ -133,10 +131,10 @@ public class TwoDScrollView extends FrameLayout
             autoScrollMargins = a.getDimensionPixelSize(R.styleable.CustomViewExtension_autoScrollMargins, 0);
             a.recycle();
         }
-        mEdgeGlowLeft = new EdgeEffectCompat(getContext());
-        mEdgeGlowTop = new EdgeEffectCompat(getContext());
-        mEdgeGlowRight = new EdgeEffectCompat(getContext());
-        mEdgeGlowBottom = new EdgeEffectCompat(getContext());
+        mEdgeGlowLeft = new EdgeEffect(getContext());
+        mEdgeGlowTop = new EdgeEffect(getContext());
+        mEdgeGlowRight = new EdgeEffect(getContext());
+        mEdgeGlowBottom = new EdgeEffect(getContext());
         setWillNotDraw(false);
     }
 
@@ -278,7 +276,7 @@ public class TwoDScrollView extends FrameLayout
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event)
     {
-        final int action = MotionEventCompat.getActionMasked(event);
+        final int action = event.getActionMasked();
         if (action == MotionEvent.ACTION_DOWN && event.getEdgeFlags() != 0)
         {
             // Don't handle edge touches immediately -- they may actually belong to one of our
@@ -295,7 +293,7 @@ public class TwoDScrollView extends FrameLayout
         boolean retVal = mScaleGestureDetector.onTouchEvent(event);
         retVal = mGestureDetector.onTouchEvent(event) || retVal;
 
-        final int action = MotionEventCompat.getActionMasked(event);
+        final int action = event.getActionMasked();
         if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL
                 || action == MotionEvent.ACTION_POINTER_UP)
         {
@@ -321,7 +319,7 @@ public class TwoDScrollView extends FrameLayout
                 final int pulledToX = getScrollX() + (int) deltaX;
                 if (pulledToX < 0)
                 {
-                    mEdgeGlowLeft.onPull((float) deltaX / getWidth(), 0);
+                    mEdgeGlowLeft.onPull(deltaX / getWidth());
                     if (!mEdgeGlowRight.isFinished())
                     {
                         mEdgeGlowRight.onRelease();
@@ -330,7 +328,7 @@ public class TwoDScrollView extends FrameLayout
                 }
                 else if (pulledToX > rangeX)
                 {
-                    mEdgeGlowRight.onPull((float) deltaX / getWidth(), 0);
+                    mEdgeGlowRight.onPull(deltaX / getWidth());
                     if (!mEdgeGlowLeft.isFinished())
                     {
                         mEdgeGlowLeft.onRelease();
@@ -349,7 +347,7 @@ public class TwoDScrollView extends FrameLayout
                 final int pulledToY = getScrollY() + (int) deltaY;
                 if (pulledToY < 0)
                 {
-                    mEdgeGlowTop.onPull((float) deltaY / getHeight(), 0);
+                    mEdgeGlowTop.onPull(deltaY / getHeight());
                     if (!mEdgeGlowBottom.isFinished())
                     {
                         mEdgeGlowBottom.onRelease();
@@ -358,7 +356,7 @@ public class TwoDScrollView extends FrameLayout
                 }
                 else if (pulledToY > rangeY)
                 {
-                    mEdgeGlowBottom.onPull((float) deltaY / getHeight(), 0);
+                    mEdgeGlowBottom.onPull(deltaY / getHeight());
                     if (!mEdgeGlowTop.isFinished())
                     {
                         mEdgeGlowTop.onRelease();
@@ -403,7 +401,6 @@ public class TwoDScrollView extends FrameLayout
     /**
      * The scale listener, used for handling multi-finger scale gestures.
      */
-    @SuppressLint("NewApi")
     private class MyScaleListener implements ScaleGestureDetector.OnScaleGestureListener
     {
         public boolean isScaled = false;
