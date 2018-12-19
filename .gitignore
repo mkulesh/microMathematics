@@ -5,3 +5,4 @@ app/app.iml
 build/
 uMathLight.iml
 local.properties
+release/
