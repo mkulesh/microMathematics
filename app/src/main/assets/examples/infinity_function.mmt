@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="60" significantDigits="6" scale="0.46273" redefineAllowed="true">
+  <formulaList textWidth="60" significantDigits="6" scale="0.39021" redefineAllowed="true">
     <equation>
       <term key="leftTerm" text="x" />
       <term key="rightTerm" code="equidistant_interval">
@@ -9,17 +9,9 @@
         <term key="maxValue" text="pi" />
       </term>
     </equation>
-    <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="y" />
-      <term key="rightTerm" code="equidistant_interval">
-        <term key="minValue" text="0" />
-        <term key="nextValue" text="0.01" />
-        <term key="maxValue" text="pi" />
-      </term>
-    </equation>
-    <plot_function width="800" height="600" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#FF787878">
+    <plot_function width="800" height="600" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#FF838383">
       <term key="yMaxValue" text="100" />
-      <term key="yFunction" color="#FF0000FF" width="5" lineStyle="solid" shapeType="none" shapeSize="300" code="divide_slash">
+      <term key="yFunction" color="#FFFF2500" width="8" lineStyle="dashed" shapeType="none" shapeSize="300" code="divide_slash">
         <term key="leftTerm" text="1" />
         <term key="rightTerm" code="power">
           <term key="leftTerm" code="cos">
@@ -33,21 +25,61 @@
       <term key="xFunction" text="x" />
       <term key="xMaxValue" text="pi" />
     </plot_function>
-    <plot_function width="800" height="600" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#FF787878">
+    <plot_function width="800" height="600" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#FF838383">
       <term key="yMaxValue" text="100" />
-      <term key="yFunction" color="#FF0000FF" width="5" lineStyle="solid" shapeType="none" shapeSize="300" code="divide_slash">
+      <term key="yFunction" color="#FF369900" width="8" lineStyle="dotted" shapeType="none" shapeSize="300" code="divide_slash">
         <term key="leftTerm" text="1" />
         <term key="rightTerm" code="power">
           <term key="leftTerm" code="sin">
-            <term key="argTerm" text="y" />
+            <term key="argTerm" text="x" />
           </term>
           <term key="rightTerm" text="2" />
         </term>
       </term>
       <term key="yMinValue" text="-1" />
       <term key="xMinValue" text="0" />
-      <term key="xFunction" text="y" />
+      <term key="xFunction" text="x" />
       <term key="xMaxValue" text="pi" />
+    </plot_function>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="250" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x1" />
+      <term key="rightTerm" text="-10" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x2" />
+      <term key="rightTerm" text="10" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="x1" />
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" text="x1" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" code="minus">
+              <term key="leftTerm" text="x2" />
+              <term key="rightTerm" text="x1" />
+            </term>
+            <term key="rightTerm" text="N" />
+          </term>
+        </term>
+        <term key="maxValue" text="x2" />
+      </term>
+    </equation>
+    <plot_function width="800" height="600" axes_style="crossed" xLabelsNumber="20" yLabelsNumber="20" gridLineColor="#FF838383">
+      <term key="yMaxValue" text="10" />
+      <term key="yFunction" color="#FFDB0100" width="3" lineStyle="solid" shapeType="circle" shapeSize="300" code="divide_slash">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="-10" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="" />
     </plot_function>
   </formulaList>
 </micromath>
