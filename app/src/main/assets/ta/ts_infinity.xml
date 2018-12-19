@@ -283,7 +283,7 @@
       <term key="leftTerm" text="x" />
       <term key="rightTerm" code="equidistant_interval">
         <term key="minValue" text="-100" />
-        <term key="nextValue" text="-98" />
+        <term key="nextValue" text="-99" />
         <term key="maxValue" text="100" />
       </term>
     </equation>

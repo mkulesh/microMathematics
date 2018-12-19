@@ -249,8 +249,12 @@ public class FunctionView extends PlotView
             }
         }
 
+        int outside = 0;
         for (int i = 0; i < f.size(); i++)
         {
+            boolean startPoint = (i == 0);
+
+            // Prepare the function point
             final Vector2D value = f.get(i);
             double xv = value.x;
             {
@@ -260,9 +264,29 @@ public class FunctionView extends PlotView
             {
                 yv = (Double.isNaN(yv) || yv > ymax) ? ymax : ((yv < ymin) ? ymin : yv);
             }
-            value.set(xv, yv);
-            area.toScreenPoint(value, rect, p1);
-            if (i == 0)
+            tmpVec.set(xv, yv);
+
+            // Check whether the function point is inside if the plotting area
+            if (!area.isInside(tmpVec))
+            {
+                outside++;
+            }
+            else
+            {
+                outside = 0;
+            }
+
+            // For the 2-nd point outside the area, move point to the new position
+            // instead of the line
+            if (outside >= 2)
+            {
+                startPoint = true;
+            }
+
+            // Convert to screen coordinates
+            area.toScreenPoint(tmpVec, rect, p1);
+
+            if (startPoint)
             {
                 path.moveTo(p1.x, p1.y);
             }
@@ -270,6 +294,8 @@ public class FunctionView extends PlotView
             {
                 path.lineTo(p1.x, p1.y);
             }
+
+            // plot a shape
             switch (lineParameters.shapeType)
             {
             case CIRCLE:
@@ -297,6 +323,7 @@ public class FunctionView extends PlotView
             }
             p2.set(p1.x, p1.y);
         }
+
         c.drawPath(path, linePaint);
     }
 

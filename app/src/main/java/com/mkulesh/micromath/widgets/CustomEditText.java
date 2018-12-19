@@ -18,8 +18,10 @@
  ******************************************************************************/
 package com.mkulesh.micromath.widgets;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
@@ -35,7 +37,7 @@ import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputConnectionWrapper;
 import android.widget.Toast;
 
-import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.CompatUtils;
 
@@ -48,21 +50,17 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     private boolean textWatcherActive = true;
 
     private boolean toBeDeleted = false;
+    private boolean emptyEnabled = false;
+    private boolean intervalEnabled = false;
+    private boolean complexEnabled = true;
+    private boolean comparatorEnabled = false;
     private boolean textFragment = false;
     private boolean equationName = false;
     private boolean indexName = false;
     private boolean intermediateArgument = false;
     private boolean calculatedValue = false;
-    private boolean requesFocusEnabled = true;
-    private boolean fileName = false;
-
-    // custom content types
-    private boolean emptyEnabled = false;
-    private boolean intervalEnabled = false;
-    private boolean complexEnabled = true;
-    private boolean comparatorEnabled = false;
     private boolean newTermEnabled = false;
-    private boolean fileOperationEnabled = false;
+    private boolean requesFocusEnabled = true;
 
     // context menu handling
     private ContextMenuHandler menuHandler = null;
@@ -95,20 +93,16 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         if (attrs != null)
         {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CustomViewExtension, 0, 0);
+            emptyEnabled = a.getBoolean(R.styleable.CustomViewExtension_emptyEnabled, false);
+            intervalEnabled = a.getBoolean(R.styleable.CustomViewExtension_intervalEnabled, false);
+            complexEnabled = a.getBoolean(R.styleable.CustomViewExtension_complexEnabled, true);
+            comparatorEnabled = a.getBoolean(R.styleable.CustomViewExtension_comparatorEnabled, false);
             textFragment = a.getBoolean(R.styleable.CustomViewExtension_textFragment, false);
             equationName = a.getBoolean(R.styleable.CustomViewExtension_equationName, false);
             indexName = a.getBoolean(R.styleable.CustomViewExtension_indexName, false);
             intermediateArgument = a.getBoolean(R.styleable.CustomViewExtension_intermediateArgument, false);
             calculatedValue = a.getBoolean(R.styleable.CustomViewExtension_calculatedValue, false);
-            fileName = a.getBoolean(R.styleable.CustomViewExtension_fileName, false);
-            // custom content types
-            emptyEnabled = a.getBoolean(R.styleable.CustomViewExtension_emptyEnabled, false);
-            intervalEnabled = a.getBoolean(R.styleable.CustomViewExtension_intervalEnabled, false);
-            complexEnabled = a.getBoolean(R.styleable.CustomViewExtension_complexEnabled, true);
-            comparatorEnabled = a.getBoolean(R.styleable.CustomViewExtension_comparatorEnabled, false);
             newTermEnabled = a.getBoolean(R.styleable.CustomViewExtension_newTermEnabled, false);
-            fileOperationEnabled = a.getBoolean(R.styleable.CustomViewExtension_fileOperationEnabled, false);
-            // menu
             menuHandler.initialize(a);
             a.recycle();
         }
@@ -127,7 +121,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     }
 
     /*********************************************************
-     * Custom content types
+     * Interface
      *********************************************************/
 
     public boolean isEmptyEnabled()
@@ -155,20 +149,6 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         this.comparatorEnabled = comparatorEnabled;
     }
 
-    public boolean isNewTermEnabled()
-    {
-        return newTermEnabled;
-    }
-
-    public boolean isFileOperationEnabled()
-    {
-        return fileOperationEnabled;
-    }
-
-    /*********************************************************
-     * Interface
-     *********************************************************/
-
     public boolean isTextFragment()
     {
         return textFragment;
@@ -194,10 +174,15 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         return calculatedValue;
     }
 
+    public boolean isNewTermEnabled()
+    {
+        return newTermEnabled;
+    }
+
     public boolean isConversionEnabled()
     {
         return !isEquationName() && !isIndexName() && !isIntermediateArgument() && !isTextFragment()
-                && !isCalculatedValue() && !isFileName();
+                && !isCalculatedValue();
     }
 
     public void updateTextSize(ScaledDimensions dimen, int termDepth, ScaledDimensions.Type paddingType)
@@ -221,11 +206,6 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     public boolean isRequestFocusEnabled()
     {
         return requesFocusEnabled;
-    }
-
-    public boolean isFileName()
-    {
-        return fileName;
     }
 
     /*********************************************************
@@ -434,6 +414,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
      * Navigation
      *********************************************************/
 
+    @SuppressLint("NewApi")
     @Override
     public void onFocusChange(View v, boolean hasFocus)
     {
@@ -447,7 +428,10 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
             setNextFocusLeftId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_LEFT));
             setNextFocusRightId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_RIGHT));
             setNextFocusUpId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_UP));
-            setNextFocusForwardId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_RIGHT));
+            if (Build.VERSION.SDK_INT >= 11)
+            {
+                setNextFocusForwardId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_RIGHT));
+            }
         }
         if (formulaChangeIf != null)
         {
@@ -511,8 +495,8 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     {
         super.onSelectionChanged(selEnd, selEnd);
         if (CompatUtils.isMarshMallowOrLater() &&
-            isTextFragment() && getText().length() > 0 &&
-            hasSelection() && selEnd - selStart == getText().length())
+                isTextFragment() && getText().length() > 0 &&
+                hasSelection() && selEnd - selStart == getText().length())
         {
             // null for input view means that we will start ActionMode without owner:
             // the root formula will be selected instead of owner term
