@@ -58,6 +58,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
      * Constants used to save/restore the instance state.
      */
     private static final String STATE_IMAGE_TYPE = "image_type";
+    private static final String STATE_IMAGE_URI = "image_uri";
     private static final String STATE_IMAGE_BITMAP = "image_bitmap";
     private static final String STATE_IMAGE_SVG = "image_svg";
     private static final String XML_PROP_BIN_ENCODING = "binEncoding";
@@ -74,6 +75,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
     }
 
     private ImageType imageType = ImageType.NONE;
+    private Uri externalUri = null;
     private Bitmap bitmap = null;
     private SVG svg = null;
     private String svgData = null;
@@ -183,7 +185,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         if (fileExt.equals(".svg"))
         {
             // first, try to load image as SVG
-            if (!loadSVG(imageUri))
+            if (!loadSVG(imageUri, parameters.embedded))
             {
                 return;
             }
@@ -192,7 +194,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         if (imageType == ImageType.NONE)
         {
             // second, try to load image as a bitmap
-            if (!loadBitmap(imageUri))
+            if (!loadBitmap(imageUri, parameters.embedded))
             {
                 return;
             }
@@ -201,7 +203,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         if (imageType == ImageType.NONE)
         {
             // finally, try to load image as SVG
-            loadSVG(imageUri);
+            loadSVG(imageUri, parameters.embedded);
         }
 
         // error if nothing loaded
@@ -222,23 +224,17 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
     {
         Bundle bundle = new Bundle();
         bundle.putString(STATE_IMAGE_TYPE, imageType.toString());
-        switch (imageType)
+        if (externalUri != null)
         {
-        case NONE:
-            // nothing to do
-            break;
-        case BITMAP:
-            if (bitmap != null)
-            {
-                bundle.putString(STATE_IMAGE_BITMAP, getEncodedImage(bitmap));
-            }
-            break;
-        case SVG:
-            if (svgData != null)
-            {
-                bundle.putString(STATE_IMAGE_SVG, svgData);
-            }
-            break;
+            bundle.putString(STATE_IMAGE_URI, externalUri.toString());
+        }
+        else if (imageType == ImageType.BITMAP && bitmap != null)
+        {
+            bundle.putString(STATE_IMAGE_BITMAP, getEncodedImage(bitmap));
+        }
+        else if (imageType == ImageType.SVG && svgData != null)
+        {
+            bundle.putString(STATE_IMAGE_SVG, svgData);
         }
         return bundle;
     }
@@ -258,16 +254,37 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         {
             Bundle bundle = (Bundle) state;
             final ImageType type = ImageType.valueOf(bundle.getString(STATE_IMAGE_TYPE));
+
+            Uri uri = null;
+            final String uriStr = bundle.getString(STATE_IMAGE_URI);
+            if (uriStr != null)
+            {
+                uri = Uri.parse(uriStr);
+            }
             switch (type)
             {
             case NONE:
                 // nothing to do
                 break;
             case BITMAP:
-                setBitmap(getDecodedImage(bundle.getString(STATE_IMAGE_BITMAP)));
+                if (uri != null)
+                {
+                    loadBitmap(uri, /*isEmbedded=*/ false);
+                }
+                else
+                {
+                    setBitmap(getDecodedImage(bundle.getString(STATE_IMAGE_BITMAP)));
+                }
                 break;
             case SVG:
-                setSvg(bundle.getString(STATE_IMAGE_SVG));
+                if (uri != null)
+                {
+                    loadSVG(uri, /*isEmbedded=*/ false);
+                }
+                else
+                {
+                    setSvg(bundle.getString(STATE_IMAGE_SVG));
+                }
                 break;
             }
         }
@@ -455,6 +472,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
     private void clear()
     {
         imageType = ImageType.NONE;
+        externalUri = null;
         bitmap = null;
         svg = null;
         svgData = null;
@@ -499,7 +517,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         imageType = this.svg == null ? ImageType.NONE : ImageType.SVG;
     }
 
-    private boolean loadBitmap(Uri imageUri)
+    private boolean loadBitmap(Uri imageUri, boolean isEmbedded)
     {
         InputStream stream = FileUtils.getInputStream(getContext(), imageUri);
         if (stream != null)
@@ -507,6 +525,10 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
             try
             {
                 setBitmap(BitmapFactory.decodeStream(stream));
+                if (!isEmbedded)
+                {
+                    externalUri = imageUri;
+                }
             }
             catch (OutOfMemoryError ex)
             {
@@ -536,7 +558,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         return total.toString();
     }
 
-    private boolean loadSVG(Uri imageUri)
+    private boolean loadSVG(Uri imageUri, boolean isEmbedded)
     {
         InputStream stream = FileUtils.getInputStream(getContext(), imageUri);
         if (stream != null)
@@ -544,6 +566,10 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
             try
             {
                 setSvg(getStringFromInputStream(stream));
+                if (!isEmbedded)
+                {
+                    externalUri = imageUri;
+                }
             }
             catch (Exception e)
             {

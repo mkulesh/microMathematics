@@ -49,7 +49,7 @@ public class ImageProperties implements Parcelable
 
     // state- and XML-related attributes
     public String fileName = EMPTY_FILE_NAME;
-    public boolean embedded = true;
+    public boolean embedded = false;
     public boolean originalSize = true;
     public int width = DEFAULT_SIZE;
     public int height = DEFAULT_SIZE;
