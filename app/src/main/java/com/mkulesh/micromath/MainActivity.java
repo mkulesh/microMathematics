@@ -103,7 +103,10 @@ public class MainActivity extends AppCompatActivity
         mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         final ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (actionBar != null)
+        {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         // activate toolbar separator, if necessary
         {
             final int sepColor = CompatUtils.getThemeColorAttr(this, R.attr.colorToolBarSeparator);
@@ -474,7 +477,7 @@ public class MainActivity extends AppCompatActivity
             try
             {
                 final PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
-                final String verInfo = "v." + pi.versionName + "/" + pi.versionCode;
+                final String verInfo = "v." + pi.versionName;
                 versionInfo.setText(verInfo);
             }
             catch (Exception e)

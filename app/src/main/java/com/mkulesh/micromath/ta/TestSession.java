@@ -17,6 +17,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.View;
@@ -266,18 +267,27 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         {
             /* grab whole window */
             final View v1 = context.getWindow().getDecorView().getRootView();
-            v1.setDrawingCacheEnabled(true);
-            final Bitmap bitmap1 = Bitmap.createBitmap(v1.getDrawingCache());
-            v1.setDrawingCacheEnabled(false);
 
-            /* skip status bar in screenshot */
-            final int contentViewTop = ViewUtils.getStatusBarHeight(context);
-            final Bitmap bitmap2 = Bitmap.createBitmap(
-                    bitmap1, 0, contentViewTop, bitmap1.getWidth(), bitmap1.getHeight() - contentViewTop, null, true);
+            try
+            {
+                final Bitmap bitmap1 = Bitmap.createBitmap(v1.getMeasuredWidth(), v1.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+                final Canvas canvas = new Canvas(bitmap1);
+                v1.draw(canvas);
 
-            /* write into file */
-            bitmap2.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            stream.flush();
+                /* skip status bar in screenshot */
+                final int contentViewTop = ViewUtils.getStatusBarHeight(context);
+                final Bitmap bitmap2 = Bitmap.createBitmap(
+                        bitmap1, 0, contentViewTop, bitmap1.getWidth(), bitmap1.getHeight() - contentViewTop, null, true);
+
+                /* write into file */
+                bitmap2.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                stream.flush();
+            }
+            catch (OutOfMemoryError e)
+            {
+                throw new Exception(e.getLocalizedMessage());
+            }
+
             stream.close();
 
             final String message = String.format(context.getResources().getString(R.string.message_file_written),
