@@ -217,9 +217,14 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
             }
         }
 
-        // check that all arguments are valid intervals
+        // check that all arguments are valid intervals or integer constants
         for (String s : arguments)
         {
+            final Integer numIndex = CalculatedValue.toInteger(s);
+            if (numIndex != null && numIndex >= 0)
+            {
+                continue;
+            }
             final Equation f = searchLinkedEquation(s, ARG_NUMBER_INTERVAL);
             if (f == null || !f.isInterval())
             {
@@ -315,7 +320,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         else
         {
             fileOperation(true);
-            arrayResult.calculate(thread, getArguments());
+            arrayResult.calculate(thread, getArguments(), findPreviousArray());
             fileOperation(false);
         }
     }
@@ -527,5 +532,29 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
             return true;
         }
         return false;
+    }
+
+    private EquationArrayResult findPreviousArray()
+    {
+        if (!isArray())
+        {
+            // this equation is not an array
+            return null;
+        }
+        Equation prevArray = null;
+        final ArrayList<Equation> eqList = getFormulaList().getFormulaListView().getFormulas(Equation.class);
+        for (Equation eq : eqList)
+        {
+            if (eq == this)
+            {
+                break;
+            }
+            if (eq.isArray() && eq.getArguments() != null &&
+                isEqual(eq.getName(), eq.getArguments().size(), eq.getId(), true))
+            {
+                prevArray = eq;
+            }
+        }
+        return (prevArray != null)? prevArray.arrayResult : null;
     }
 }

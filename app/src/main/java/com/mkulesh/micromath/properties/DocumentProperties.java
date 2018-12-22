@@ -72,7 +72,7 @@ public class DocumentProperties
     public int textWidth = 60;
     public int significantDigits = 6;
     private ScaledDimensions scaledDimensions = null;
-    public boolean redefineAllowed = false;
+    public boolean redefineAllowed = true;
 
     /**
      * Default constructor

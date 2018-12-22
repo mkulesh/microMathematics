@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList documentVersion="2" author="Mikhail Kulesh" title="2D arrays: creation, access, and size" description="Automated only" textWidth="60" significantDigits="8" scale="0.55341" redefineAllowed="true">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="2D arrays: creation, access, and size" description="Automated only" textWidth="60" significantDigits="8" scale="0.50000" redefineAllowed="true">
     <equation>
       <term key="leftTerm" text="begin" />
       <term key="rightTerm" text="0" />
@@ -61,7 +61,7 @@
         <term key="argTerm2" text="k" />
       </term>
     </equation>
-    <plot_contour plotStyle="contour" width="600" height="300" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" zLabelsNumber="10" colorMap="rainbow">
+    <plot_contour plotStyle="contour" width="600" height="300" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" xType="linear" yType="linear" zLabelsNumber="10" colorMap="rainbow">
       <term key="yMaxValue" text="" />
       <term key="yMinValue" text="" />
       <term key="xMinValue" text="" />
@@ -678,7 +678,7 @@
         </term>
       </term>
     </equation>
-    <plot_contour plotStyle="surface" width="500" height="500" axes_style="boxed" meshLines="false" meshFill="true" meshOpacity="155" rotation="35" elevation="20" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#85242400" zLabelsNumber="7" colorMap="coldhot">
+    <plot_contour plotStyle="surface" width="500" height="500" axes_style="boxed" meshLines="false" meshFill="true" meshOpacity="155" rotation="35" elevation="20" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#85242400" xType="linear" yType="linear" zLabelsNumber="7" colorMap="coldhot">
       <term key="yMaxValue" text="M" />
       <term key="yMinValue" text="0" />
       <term key="xMinValue" text="0" />
@@ -718,7 +718,7 @@
       <term key="leftTerm" text="begin" />
       <term key="rightTerm" text="" />
     </result>
-    <plot_contour plotStyle="surface" width="500" height="500" axes_style="boxed" meshLines="false" meshFill="true" meshOpacity="155" rotation="35" elevation="20" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#85242400" zLabelsNumber="7" colorMap="coldhot">
+    <plot_contour plotStyle="surface" width="500" height="500" axes_style="boxed" meshLines="false" meshFill="true" meshOpacity="155" rotation="35" elevation="20" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#85242400" xType="linear" yType="linear" zLabelsNumber="7" colorMap="coldhot">
       <term key="yMaxValue" text="M" />
       <term key="yMinValue" text="0" />
       <term key="xMinValue" text="0" />
@@ -886,7 +886,7 @@
         </term>
       </term>
     </equation>
-    <plot_contour plotStyle="surface" width="500" height="500" axes_style="boxed" meshLines="false" meshFill="true" meshOpacity="155" rotation="35" elevation="20" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#85242400" zLabelsNumber="7" colorMap="coldhot">
+    <plot_contour plotStyle="surface" width="500" height="500" axes_style="boxed" meshLines="false" meshFill="true" meshOpacity="155" rotation="35" elevation="20" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#85242400" xType="linear" yType="linear" zLabelsNumber="7" colorMap="coldhot">
       <term key="yMaxValue" text="yb" />
       <term key="yMinValue" text="ya" />
       <term key="xMinValue" text="xa" />
@@ -913,19 +913,16 @@
       <term key="rightTerm" text="" />
     </result>
     <text_fragment numbering="true">
-      <term key="text" text="TC: Size of redefined array" />
+      <term key="text" text="TC: Size of redefined array: rows" />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="begin" />
-      <term key="rightTerm" code="plus">
-        <term key="leftTerm" text="1" />
-        <term key="rightTerm" text="begin" />
-      </term>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="299" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" text="begin" />
-      <term key="rightTerm" text="" />
-    </result>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="P" />
+      <term key="rightTerm" text="199" />
+    </equation>
     <equation>
       <term key="leftTerm" text="m" />
       <term key="rightTerm" code="equidistant_interval">
@@ -939,10 +936,7 @@
       <term key="rightTerm" code="equidistant_interval">
         <term key="minValue" text="0" />
         <term key="nextValue" text="1" />
-        <term key="maxValue" code="divide_slash">
-          <term key="leftTerm" text="N" />
-          <term key="rightTerm" text="2" />
-        </term>
+        <term key="maxValue" text="P" />
       </term>
     </equation>
     <equation>
@@ -952,6 +946,17 @@
         <term key="rightTerm" text="m" />
       </term>
     </equation>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
     <equation>
       <term key="leftTerm" text="result" />
       <term key="rightTerm" code="rows">
@@ -966,6 +971,49 @@
       <term key="leftTerm" text="desired" />
       <term key="rightTerm" code="plus">
         <term key="leftTerm" text="N" />
+        <term key="rightTerm" text="1" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: Size of redefined array: cols" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="cols">
+        <term key="argTerm" text="M" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="P" />
         <term key="rightTerm" text="1" />
       </term>
     </equation>

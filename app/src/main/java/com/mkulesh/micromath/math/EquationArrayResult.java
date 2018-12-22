@@ -79,7 +79,7 @@ public class EquationArrayResult
         return values;
     }
 
-    public void calculate(CalculaterTask thread, ArrayList<String> arguments) throws CancelException
+    public void calculate(CalculaterTask thread, ArrayList<String> arguments, final EquationArrayResult mergedArray) throws CancelException
     {
         values = null;
 
@@ -89,61 +89,166 @@ public class EquationArrayResult
             return;
         }
 
+        if (mergedArray != null && mergedArray.getDimNumber() != dimNumber)
+        {
+            return;
+        }
+
         // collect intervals and dimensions
         final ArrayList<CalculatedValue[]> intervalValues = new ArrayList<>();
         final int[] dimValues = new int[dimNumber];
+        final int[] fixedIndex = new int[dimNumber];
         final CalculatedValue[] argValues = new CalculatedValue[dimNumber];
         for (int dim = 0; dim < dimNumber; dim++)
         {
-            final Equation e = equation.searchLinkedEquation(
-                    arguments.get(dim), Equation.ARG_NUMBER_INTERVAL);
-            if (e == null || !e.isInterval())
+            final String arg = arguments.get(dim);
+            if (arg == null)
             {
                 return;
             }
-            final CalculatedValue[] interval = e.getInterval();
-            if (interval == null)
+
+            // Process an integer index
+            final Integer numIndex = CalculatedValue.toInteger(arg);
+            if (numIndex != null)
             {
-                return;
+                if (numIndex < 0)
+                {
+                    return;
+                }
+                final int size = numIndex + 1;
+                dimValues[dim] = size;
+                final CalculatedValue[] interval = new CalculatedValue[size];
+                for (int i = 0; i < size; i++)
+                {
+                    interval[i] = new CalculatedValue(CalculatedValue.ValueType.REAL, i, 0.0);
+                }
+                fixedIndex[dim] = numIndex;
+                intervalValues.add(interval);
             }
-            final int lastIndex = interval[interval.length - 1].getInteger();
-            if (lastIndex <= 0)
+            else
             {
-                return;
+                final Equation e = equation.searchLinkedEquation(
+                        arg, Equation.ARG_NUMBER_INTERVAL);
+                if (e == null || !e.isInterval())
+                {
+                    return;
+                }
+                final CalculatedValue[] interval = e.getInterval();
+                if (interval == null)
+                {
+                    return;
+                }
+                for (CalculatedValue c : interval)
+                {
+                    if (c.getInteger() < 0)
+                    {
+                        return;
+                    }
+                }
+                final int lastIndex = interval[interval.length - 1].getInteger();
+                if (lastIndex <= 0)
+                {
+                    return;
+                }
+                dimValues[dim] = lastIndex + 1;
+                fixedIndex[dim] = Integer.MIN_VALUE;
+                intervalValues.add(interval);
             }
-            dimValues[dim] = lastIndex + 1;
-            intervalValues.add(interval);
             argValues[dim] = new CalculatedValue();
         }
 
-        // initialize array with zero
-        resize(dimValues);
+        // merge mergedArray
+        if (mergedArray != null)
+        {
+            final int[] mergedDimensions = mergedArray.getDimensions();
+            for (int dim = 0; dim < dimNumber; dim++)
+            {
+                dimValues[dim] = Math.max(dimValues[dim], mergedDimensions[dim]);
+            }
+            // initialize array with zero
+            resize(dimValues);
+            mergeValues(mergedArray, mergedDimensions);
+        }
+        else
+        {
+            // initialize array with zero
+            resize(dimValues);
+        }
+
 
         // calculate array
         equation.setArgumentValues(argValues);
         for (final CalculatedValue d0 : intervalValues.get(D0))
         {
             final int i0 = d0.getInteger();
+            if (i0 < 0)
+            {
+                continue;
+            }
             argValues[D0].assign(d0);
+            final boolean calc0 = fixedIndex[D0] < 0 || fixedIndex[D0] == i0;
             if (dimNumber == 1)
             {
-                equationTerm.getValue(thread, values[i0]);
+                if (calc0)
+                {
+                    equationTerm.getValue(thread, values[i0]);
+                }
                 continue;
             }
             for (final CalculatedValue d1 : intervalValues.get(D1))
             {
                 final int i1 = d1.getInteger();
+                if (i1 < 0)
+                {
+                    continue;
+                }
                 argValues[D1].assign(d1);
+                final boolean calc1 = fixedIndex[D1] < 0 || fixedIndex[D1] == i1;
                 if (dimNumber == 2)
                 {
-                    equationTerm.getValue(thread, values[getIndex(i0, i1)]);
+                    if (calc0 && calc1)
+                    {
+                        equationTerm.getValue(thread, values[getIndex(i0, i1)]);
+                    }
                     continue;
                 }
                 for (final CalculatedValue d2 : intervalValues.get(D2))
                 {
                     final int i2 = d2.getInteger();
+                    if (i2 < 0)
+                    {
+                        continue;
+                    }
                     argValues[D2].assign(d2);
-                    equationTerm.getValue(thread, values[getIndex(i0, i1, i2)]);
+                    final boolean calc2 = fixedIndex[D2] < 0 || fixedIndex[D2] == i2;
+                    if (calc0 && calc1 && calc2)
+                    {
+                        equationTerm.getValue(thread, values[getIndex(i0, i1, i2)]);
+                    }
+                }
+            }
+        }
+    }
+
+    private void mergeValues(EquationArrayResult mergedArray, int[] mergedDimensions)
+    {
+        for (int i0 = 0; i0 < mergedDimensions[D0]; i0++)
+        {
+            if (mergedDimensions.length == 1)
+            {
+                values[i0].merge(mergedArray.values[i0]);
+                continue;
+            }
+            for (int i1 = 0; i1 < mergedDimensions[D1]; i1++)
+            {
+                if (mergedDimensions.length == 2)
+                {
+                    values[getIndex(i0, i1)].merge(mergedArray.values[mergedArray.getIndex(i0, i1)]);
+                    continue;
+                }
+                for (int i2 = 0; i2 < mergedDimensions[D2]; i2++)
+                {
+                    values[getIndex(i0, i1, i2)].merge(mergedArray.values[mergedArray.getIndex(i0, i1, i2)]);
                 }
             }
         }

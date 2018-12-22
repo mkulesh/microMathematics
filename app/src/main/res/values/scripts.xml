@@ -56,9 +56,11 @@
         <item>asset:/ta/ts_integrals_cmpl.mmt</item>
         <item>asset:/ta/ts_integrals_multiple.mmt</item>
         <item>asset:/ta/ts_infinity.mmt</item>
-        <item>asset:/ta/ts_array_1d.mmt</item>
         <item>asset:/ta/ts_fourier_transform.mmt</item>
+        <item>asset:/ta/ts_array_1d.mmt</item>
+        <item>asset:/ta/ts_array_1d_index.mmt</item>
         <item>asset:/ta/ts_array_2d.mmt</item>
+        <item>asset:/ta/ts_array_2d_index.mmt</item>
         <item>asset:/ta/ts_random_const.mmt</item>
         <item>asset:/ta/ts_result_view.mmt</item>
         <item>asset:/ta/ts_read.mmt</item>

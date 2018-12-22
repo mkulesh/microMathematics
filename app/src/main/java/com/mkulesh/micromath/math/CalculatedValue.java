@@ -63,6 +63,7 @@ public class CalculatedValue
     public final static CalculatedValue NaN = new CalculatedValue(ValueType.INVALID, Double.NaN, 0.0);
     public final static CalculatedValue ONE = new CalculatedValue(ValueType.REAL, 1.0, 0.0);
     public final static CalculatedValue MINUS_ONE = new CalculatedValue(ValueType.REAL, -1.0, 0.0);
+    public final static CalculatedValue ZERO = new CalculatedValue(ValueType.REAL, 0.0, 0.0);
 
     private ValueType valueType = ValueType.INVALID;
     private double real = Double.NaN;
@@ -235,6 +236,31 @@ public class CalculatedValue
         imaginary = c.getImaginary();
         valueType = (imaginary != 0.0) ? ValueType.COMPLEX : ValueType.REAL;
         return valueType;
+    }
+
+    public void merge(CalculatedValue m)
+    {
+        if (m == null || m.isNaN())
+        {
+            assign(ZERO);
+        }
+        else
+        {
+            assign(m);
+        }
+    }
+
+    public static Integer toInteger(String s)
+    {
+        try
+        {
+            return Integer.valueOf(s);
+        }
+        catch(Exception e)
+        {
+            // nothing to do
+        }
+        return null;
     }
 
     /*********************************************************
