@@ -12,9 +12,12 @@
   ~ Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ListPreference
+        app:icon="@drawable/pref_language"
         android:defaultValue="@string/pref_default_language_code"
         android:entries="@array/pref_language_names"
         android:entryValues="@array/pref_language_codes"
@@ -23,6 +26,7 @@
         android:title="@string/pref_app_language"/>
 
     <ListPreference
+        app:icon="@drawable/pref_theme"
         android:defaultValue="@string/pref_default_theme_code"
         android:entries="@array/pref_theme_names"
         android:entryValues="@array/pref_theme_codes"
@@ -30,22 +34,25 @@
         android:summary="%s"
         android:title="@string/pref_app_theme"/>
 
-    <com.mkulesh.micromath.widgets.MultilineCheckBoxPreference
+    <SwitchPreferenceCompat
+        app:icon="@drawable/pref_zoom"
+        app:singleLineTitle="false"
         android:defaultValue="true"
         android:key="zoom_enabled"
-        android:title="@string/pref_zoom_enabled"
-        android:widgetLayout="@layout/pref_check_box"/>
+        android:title="@string/pref_zoom_enabled"/>
 
-    <com.mkulesh.micromath.widgets.MultilineCheckBoxPreference
+    <SwitchPreferenceCompat
+        app:icon="@drawable/pref_developer"
+        app:singleLineTitle="false"
         android:defaultValue="false"
         android:key="developer_mode"
-        android:title="@string/pref_developer_mode"
-        android:widgetLayout="@layout/pref_check_box"/>
+        android:title="@string/pref_developer_mode"/>
 
-    <com.mkulesh.micromath.widgets.MultilineCheckBoxPreference
+    <SwitchPreferenceCompat
+        app:icon="@drawable/pref_exit"
+        app:singleLineTitle="false"
         android:defaultValue="false"
         android:key="exit_confirm"
-        android:title="@string/pref_exit_confirm"
-        android:widgetLayout="@layout/pref_check_box"/>
+        android:title="@string/pref_exit_confirm"/>
 
 </PreferenceScreen>

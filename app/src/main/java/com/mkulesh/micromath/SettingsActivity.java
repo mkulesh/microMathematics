@@ -12,12 +12,17 @@
  */
 package com.mkulesh.micromath;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.Preference;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.ListPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceFragmentCompat;
+import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,18 +36,44 @@ import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.Locale;
 
-public class SettingsActivity extends AppCompatPreferenceActivity
+public class SettingsActivity extends AppCompatActivity
 {
     @Override
-    @SuppressWarnings("deprecation")
     protected void onCreate(Bundle savedInstanceState)
     {
         setTheme(AppTheme.getTheme(this, AppTheme.ThemeType.SETTINGS_THEME));
         super.onCreate(savedInstanceState);
         setupActionBar();
-        addPreferencesFromResource(R.xml.preferences);
-        prepareListPreference((ListPreference) findPreference("app_language"));
-        prepareListPreference((ListPreference) findPreference("app_theme"));
+        getSupportFragmentManager().beginTransaction().replace(
+                android.R.id.content, new MyPreferenceFragment()).commit();
+    }
+
+    public static class MyPreferenceFragment extends PreferenceFragmentCompat
+    {
+        @Override
+        public void onCreatePreferences(Bundle bundle, String s)
+        {
+            addPreferencesFromResource(R.xml.preferences);
+            prepareListPreference(getActivity(), (ListPreference) findPreference("app_language"));
+            prepareListPreference(getActivity(), (ListPreference) findPreference("app_theme"));
+            tintIcons(getActivity(), getPreferenceScreen());
+        }
+    }
+
+    private static void tintIcons(final Context c, Preference preference)
+    {
+        if (preference instanceof PreferenceGroup)
+        {
+            PreferenceGroup group = ((PreferenceGroup) preference);
+            for (int i = 0; i < group.getPreferenceCount(); i++)
+            {
+                tintIcons(c, group.getPreference(i));
+            }
+        }
+        else
+        {
+            CompatUtils.setDrawableColorAttr(c, preference.getIcon(), android.R.attr.textColorSecondary);
+        }
     }
 
     private void setupActionBar()
@@ -95,7 +126,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity
         return super.onOptionsItemSelected(item);
     }
 
-    private void prepareListPreference(final ListPreference listPreference)
+    private static void prepareListPreference(final Activity activity, final ListPreference listPreference)
     {
         if (listPreference == null)
         {
@@ -120,6 +151,12 @@ public class SettingsActivity extends AppCompatPreferenceActivity
             {
                 listPreference.setValue(newValue.toString());
                 preference.setSummary(listPreference.getEntry().toString());
+                if (activity != null)
+                {
+                    final Intent intent = activity.getIntent();
+                    activity.finish();
+                    activity.startActivity(intent);
+                }
                 return true;
             }
         });
