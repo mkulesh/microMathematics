@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Sushi price calculator" description="Calculation of sushi price using arrays" textWidth="60" significantDigits="6" scale="0.66171" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="The sushi price depends on the color&#10;of plate. There are four colors:" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Red" />
+    </text_fragment>
+    <image_fragment fileName="sushi_calculator_120.jpg" embedded="false" originalSize="true" width="395" height="395" colorType="original" />
+    <equation>
+      <term key="leftTerm" text="price[1]" />
+      <term key="rightTerm" text="120" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="number[1]" />
+      <term key="rightTerm" text="7" />
+    </equation>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Blue" />
+    </text_fragment>
+    <image_fragment fileName="sushi_calculator_160.jpg" embedded="false" originalSize="true" width="395" height="395" colorType="original" />
+    <equation>
+      <term key="leftTerm" text="price[2]" />
+      <term key="rightTerm" text="160" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="number[2]" />
+      <term key="rightTerm" text="4" />
+    </equation>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Yellow" />
+    </text_fragment>
+    <image_fragment fileName="sushi_calculator_210.jpg" embedded="false" originalSize="true" width="395" height="395" colorType="original" />
+    <equation>
+      <term key="leftTerm" text="price[3]" />
+      <term key="rightTerm" text="210" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="number[3]" />
+      <term key="rightTerm" text="4" />
+    </equation>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Green" />
+    </text_fragment>
+    <image_fragment fileName="sushi_calculator_260.jpg" embedded="false" originalSize="true" width="395" height="395" colorType="original" />
+    <equation>
+      <term key="leftTerm" text="price[4]" />
+      <term key="rightTerm" text="260" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="number[4]" />
+      <term key="rightTerm" text="3" />
+    </equation>
+    <text_fragment textStyle="subsubsection">
+      <term key="text" text="Price without tax" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="P" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="4" />
+        <term key="index" text="j" />
+        <term key="minValue" text="1" />
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.index.price">
+            <term key="argTerm" text="j" />
+          </term>
+          <term key="rightTerm" code="content:com.mkulesh.micromath.index.number">
+            <term key="argTerm" text="j" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="P" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment textStyle="subsubsection">
+      <term key="text" text="Add tax" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="TAX" />
+      <term key="rightTerm" text="9" unit="%" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="T" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="P" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="P" />
+          <term key="rightTerm" text="TAX" />
+        </term>
+      </term>
+    </equation>
+    <text_fragment textStyle="subsubsection">
+      <term key="text" text="Total price" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="T" />
+      <term key="rightTerm" text="" />
+    </result>
+  </formulaList>
+</micromath>
