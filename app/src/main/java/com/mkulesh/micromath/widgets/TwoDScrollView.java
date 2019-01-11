@@ -297,6 +297,13 @@ public class TwoDScrollView extends FrameLayout
         {
             mGestureListener.finish();
         }
+
+        if (action == MotionEvent.ACTION_DOWN)
+        {
+            mScroller.abortAnimation();
+            mGestureListener.finish();
+        }
+
         return retVal || super.onTouchEvent(event);
     }
 
