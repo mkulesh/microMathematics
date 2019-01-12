@@ -291,7 +291,36 @@
       <term key="text" text="Array" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text="Arrays sind besondere Funktionen, die&#10;folgende Eigenschaften haben:&#10;&#10;a) jedes Argument des Arrays muss ein&#10;vorher definiertes Intervall sein:" />
+      <term key="text" text='Arrays sind besondere Funktionen, die&#10;folgende Eigenschaften haben:&#10;&#10;a) man kann die Array-Elemente mit&#10;Hilfe von einem Index zuweisen. Die&#10;Argumente des Arrays sind in eckigen&#10;Klammern "[ ]" anstelle der runden&#10;Klammern "( )" geschrieben. Nicht&#10;definierte Elemente haben einen &#10;vorgegebenen Wert "0":' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="r[0]" />
+      <term key="rightTerm" text="5" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="r[3]" />
+      <term key="rightTerm" text="6" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="r[2]" />
+      <term key="rightTerm" text="-4" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="idx" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="3" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+        <term key="argTerm" text="idx" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="b) vorher definiertes Intervall kann&#10;auch als Argument des Arrays benutzt&#10;werden:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="k" />
@@ -309,9 +338,6 @@
         <term key="maxValue" text="200" />
       </term>
     </equation>
-    <text_fragment>
-      <term key="text" text='a) die Argumente des Arrays sind in&#10;eckigen Klammern "[ ]" anstelle der&#10;runden Klammern "( )" geschrieben:' />
-    </text_fragment>
     <equation>
       <term key="leftTerm" text="M[k,m]" />
       <term key="rightTerm" code="minus">

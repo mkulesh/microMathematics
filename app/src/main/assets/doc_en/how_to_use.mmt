@@ -291,7 +291,36 @@
       <term key="text" text="Array" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text="Arrays are special functions with&#10;following properties:&#10;&#10;a) only a previously defined interval&#10;can be used as array argument:" />
+      <term key="text" text="Arrays are special functions with&#10;following properties:&#10;&#10;a) array elements can be assigned&#10;using an index given in [ ] instead&#10;of ( ). Any not assigned element is &#10;set by default to zero:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="r[0]" />
+      <term key="rightTerm" text="5" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="r[3]" />
+      <term key="rightTerm" text="6" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="r[2]" />
+      <term key="rightTerm" text="-4" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="idx" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="3" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+        <term key="argTerm" text="idx" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="b) a previously defined interval&#10;can be used as array argument:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="k" />
@@ -309,9 +338,6 @@
         <term key="maxValue" text="200" />
       </term>
     </equation>
-    <text_fragment>
-      <term key="text" text="a) array arguments are given in [ ]&#10;instead of ( ):" />
-    </text_fragment>
     <equation>
       <term key="leftTerm" text="M[k,m]" />
       <term key="rightTerm" code="minus">
