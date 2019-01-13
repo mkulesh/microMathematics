@@ -1,5 +1,5 @@
 % This is auto-generated file: do not edit!
-% Exported from microMathematics Plus, version 2.17.4
+% Exported from microMathematics Plus, version 2.18.0
 
 
 This app is a powerful calculation
@@ -257,15 +257,26 @@ list of all available functions.
 Arrays are special functions with
 following properties:
 
-a) only a previously defined interval
+a) array elements can be assigned
+using an index given in [ ] instead
+of ( ). Any not assigned element is 
+set by default to zero:
+\begin{center}\begin{tabular}{ccc}
+  $r[0] := 5$ &
+  $r[3] := 6$ &
+  $r[2] := -4$ \cr
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{cc}
+  $idx := \left[ 0,\, 1 \,..\, 3 \right]$ &
+  $r_{idx}  = \begin{bmatrix}5.0\\0.0\\-4.0\\6.0\\\end{bmatrix}$ \cr
+\end{tabular}\end{center}
+
+b) a previously defined interval
 can be used as array argument:
 \begin{center}\begin{tabular}{cc}
   $k := \left[ 0,\, 1 \,..\, 100 \right]$ &
   $m := \left[ 0,\, 1 \,..\, 200 \right]$ \cr
 \end{tabular}\end{center}
-
-a) array arguments are given in [ ]
-instead of ( ):
 \begin{center}\begin{tabular}{c}
   $M[k,m] := {sin \left( k / 10\right) }^{2} - 3 \cdot  \left| cos \left( m / 10\right)  \right| $
 \end{tabular}\end{center}

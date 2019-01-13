@@ -49,7 +49,7 @@
         <item>asset:/doc_ru/three_d_plot_ru.mmt</item>
         <item>asset:/doc_ru/series_and_integrals_ru.mmt</item>
         <item>asset:/doc_ru/about_micromath_ru.mmt</item>
-        <item>https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.17.4-ru.pdf</item>
+        <item>https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.18.0-ru.pdf</item>
     </string-array>
     <string name="activity_example">Примеры</string>
     <string name="activity_welcome">asset:/doc_ru/welcome_ru.mmt</string>
