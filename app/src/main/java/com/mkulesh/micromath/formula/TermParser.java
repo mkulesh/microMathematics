@@ -293,38 +293,20 @@ public class TermParser
             }
 
             // check the link to a variable
-            final Equation fVar = formulaRoot.searchLinkedEquation(functionName, Equation.ARG_NUMBER_CONSTANT);
+            final Equation fVar = formulaRoot.searchLinkedEquation(
+                    functionName, Equation.ARG_NUMBER_ARRAY_OR_CONSTANT);
             if (fVar != null)
             {
-                ArrayList<String> args = fVar.getArguments();
-                if (args == null || args.isEmpty())
-                {
-                    linkedVariableId = fVar.getId();
-                    if (linkedVariableId >= 0)
-                    {
-                        // we found a link to the valid constant
-                        return;
-                    }
-                }
-            }
-
-            // check the link to an array
-            final Equation fArr = formulaRoot.searchLinkedEquation(functionName, Equation.ARG_NUMBER_ARRAY);
-            if (fArr != null && fArr.isArray())
-            {
-                if (editText.getArrayType() == CustomEditText.ArrayType.DISABLED)
+                if (fVar.isArray() && editText.getArrayType() == CustomEditText.ArrayType.DISABLED)
                 {
                     errorId = R.string.error_forbidden_array;
                     return;
                 }
-                else
+                linkedVariableId = fVar.getId();
+                if (linkedVariableId >= 0)
                 {
-                    linkedVariableId = fArr.getId();
-                    if (linkedVariableId >= 0)
-                    {
-                        // we found a link to the valid constant
-                        return;
-                    }
+                    // we found a link to the valid constant or array
+                    return;
                 }
             }
         }

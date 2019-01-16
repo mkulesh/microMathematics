@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="35" significantDigits="6" scale="0.36626" redefineAllowed="false">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Example of file read" description="" textWidth="35" significantDigits="6" scale="0.36626" redefineAllowed="false">
     <text_fragment>
       <term key="text" text="Three-component seismogram from an ASCII file:" />
     </text_fragment>
@@ -31,11 +31,14 @@
       </term>
     </equation>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.index.S:2">
-        <term key="argTerm1" text="k" />
-        <term key="argTerm2" text="n" />
+      <term key="leftTerm" text="S" />
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="rows">
+        <term key="argTerm" text="S" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <equation>
       <term key="leftTerm" text="t[k]" />
@@ -65,7 +68,7 @@
         <term key="argTerm2" text="3" />
       </term>
     </equation>
-    <plot_function width="900" height="600" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" functionsNumber="3">
+    <plot_function width="900" height="600" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="3">
       <term key="yMaxValue" code="mult">
         <term key="leftTerm" text="3" />
         <term key="rightTerm" text="M" />

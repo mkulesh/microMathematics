@@ -34,9 +34,8 @@ import java.util.ArrayList;
 public class Equation extends CalculationResult implements ArgumentHolderIf, CalculatableIf
 {
     public static final int ARG_NUMBER_ANY = -1;
-    public static final int ARG_NUMBER_CONSTANT = 0;
     public static final int ARG_NUMBER_INTERVAL = Integer.MAX_VALUE - 1;
-    public static final int ARG_NUMBER_ARRAY = Integer.MAX_VALUE;
+    public static final int ARG_NUMBER_ARRAY_OR_CONSTANT = Integer.MAX_VALUE;
 
     private TermField leftTerm = null;
     private TermField rightTerm = null;
@@ -108,6 +107,10 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         if (isInterval())
         {
             n += ": interval";
+        }
+        else if (isArray())
+        {
+            n += ": array";
         }
         return "Formula " + getBaseType().toString() + "(Id: " + getId() + ", Name: " + n + ")";
     }
@@ -431,6 +434,11 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         return arrayResult != null ? arrayResult.getDimensions() : null;
     }
 
+    public EquationArrayResult getArrayResult()
+    {
+        return arrayResult;
+    }
+
     /**
      * Procedure returns declared interval if this root formula represents an interval
      */
@@ -516,19 +524,14 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
             // normal function with arguments
             return true;
         }
-        else if (getArguments() == null && argNumber == ARG_NUMBER_CONSTANT)
-        {
-            // a constant
-            return true;
-        }
         else if (isInterval() && argNumber == ARG_NUMBER_INTERVAL)
         {
             // an interval
             return true;
         }
-        else if (isArray() && argNumber == ARG_NUMBER_ARRAY)
+        else if (argNumber == ARG_NUMBER_ARRAY_OR_CONSTANT && (isArray() || getArguments() == null))
         {
-            // an array
+            // an array or constant
             return true;
         }
         return false;
@@ -550,11 +553,11 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
                 break;
             }
             if (eq.isArray() && eq.getArguments() != null &&
-                isEqual(eq.getName(), eq.getArguments().size(), eq.getId(), true))
+                    isEqual(eq.getName(), eq.getArguments().size(), eq.getId(), true))
             {
                 prevArray = eq;
             }
         }
-        return (prevArray != null)? prevArray.arrayResult : null;
+        return (prevArray != null) ? prevArray.arrayResult : null;
     }
 }

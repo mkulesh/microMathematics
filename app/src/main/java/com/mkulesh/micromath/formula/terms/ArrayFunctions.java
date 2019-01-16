@@ -232,6 +232,15 @@ public class ArrayFunctions extends FunctionBase
         {
         case VALIDATE_SINGLE_FORMULA:
             linkedArray = null;
+            // Do not call directly super.isContentValid(type) since this function shall NOT register any
+            // dependencies from interval (call addLinkedEquation)
+            for (TermField t : terms)
+            {
+                if (t.checkContentType(/*registerLinkedEquation=*/false) == TermField.ContentType.INVALID)
+                {
+                    return false;
+                }
+            }
             if (getFunctionType() == FunctionType.READ)
             {
                 if (fileReader == null)
@@ -253,20 +262,16 @@ public class ArrayFunctions extends FunctionBase
             }
             else
             {
-                Equation eq = getFormulaRoot().searchLinkedEquation(argTerm.getText(), Equation.ARG_NUMBER_ARRAY);
-                if (eq == null)
+                final Equation arrayLink = argTerm.getLinkedArray();
+                if (arrayLink != null)
                 {
-                    eq = getFormulaRoot().searchLinkedEquation(argTerm.getText(), Equation.ARG_NUMBER_INTERVAL);
-                }
-                if (eq == null)
-                {
-                    errorMsg = String.format(getContext().getResources().getString(R.string.error_unknown_array),
-                            argTerm.getText());
+                    // ok
+                    linkedArray = arrayLink;
                 }
                 else
                 {
-                    // ok
-                    linkedArray = eq;
+                    errorMsg = String.format(getContext().getResources().getString(R.string.error_unknown_array),
+                            argTerm.getText());
                 }
             }
             break;

@@ -243,14 +243,80 @@ public class FormulaResult extends CalculationResult implements ResultProperties
             }
             return;
         }
+
+        // Inspect linked array
+        final Equation arrayLink = leftTerm.getLinkedArray();
+        final int[] arrayDimension = (arrayLink != null && arrayLink.getArrayResult() != null) ? arrayLink.getArrayDimensions() : null;
         ArrayList<Equation> linkedIntervals = getAllIntervals();
-        if (linkedIntervals.isEmpty())
+
+        if (arrayLink != null && arrayDimension != null)
         {
+            // Directly copy previously calculated array, no re-calculation is necessary
+            collectArrayResults(arrayLink, arrayDimension);
+        }
+        else if (linkedIntervals.isEmpty())
+        {
+            // trigger re-calculations for constant
             resultType = ResultType.CONSTANT;
             constantResult = new CalculatedValue();
             leftTerm.getValue(thread, constantResult);
         }
-        else if (linkedIntervals.size() == 1)
+        else
+        {
+            // trigger re-calculations for linked intervals
+            collectIntervalResults(thread, linkedIntervals);
+        }
+
+        if (!leftTerm.isTerm() && ta != null)
+        {
+            ta.setResult(leftTerm.getText(), fillResultString());
+        }
+    }
+
+    private void collectArrayResults(final Equation arrayLink, final int[] arrayDimension)
+    {
+        resultType = ResultType.NAN;
+
+        // A vector
+        if (arrayDimension.length == 1)
+        {
+            final int xLength = arrayDimension[0];
+            resultType = ResultType.ARRAY_1D;
+            arrayArgument = new EquationArrayResult(xLength);
+            arrayResult = new EquationArrayResult(xLength, 1);
+            for (int xIndex = 0; xIndex < xLength; xIndex++)
+            {
+                arrayArgument.getValue1D(xIndex).setValue(xIndex);
+                arrayResult.getValue2D(xIndex, 0).assign(arrayLink.getArrayResult().getValue1D(xIndex));
+            }
+            return;
+        }
+
+        // A matrix
+        if (arrayDimension.length == 2)
+        {
+            final int xLength = arrayDimension[0];
+            final int yLength = arrayDimension[1];
+            resultType = ResultType.ARRAY_2D;
+            arrayResult = new EquationArrayResult(xLength, yLength);
+            for (int xIndex = 0; xIndex < xLength; xIndex++)
+            {
+                for (int yIndex = 0; yIndex < yLength; yIndex++)
+                {
+                    arrayResult.getValue2D(xIndex, yIndex).assign(arrayLink.getArrayResult().getValue2D(xIndex, yIndex));
+                }
+            }
+        }
+
+        // Not a vector/matrix: nothing to do
+    }
+
+    private void collectIntervalResults(CalculaterTask thread, ArrayList<Equation> linkedIntervals) throws CancelException
+    {
+        resultType = ResultType.NAN;
+
+        // A vector
+        if (linkedIntervals.size() == 1)
         {
             final CalculatedValue[] argValues = new CalculatedValue[1];
             argValues[0] = new CalculatedValue();
@@ -269,12 +335,11 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                     leftTerm.getValue(thread, arrayResult.getValue2D(xIndex, 0));
                 }
             }
-            else
-            {
-                resultType = ResultType.NAN;
-            }
+            return;
         }
-        else if (linkedIntervals.size() == 2)
+
+        // A matrix
+        if (linkedIntervals.size() == 2)
         {
             final CalculatedValue[][] argValues = new CalculatedValue[2][1];
             argValues[0][0] = new CalculatedValue();
@@ -299,15 +364,9 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                     }
                 }
             }
-            else
-            {
-                resultType = ResultType.NAN;
-            }
         }
-        if (!leftTerm.isTerm() && ta != null)
-        {
-            ta.setResult(leftTerm.getText(), fillResultString());
-        }
+
+        // Not a vector/matrix: nothing to do
     }
 
     @Override

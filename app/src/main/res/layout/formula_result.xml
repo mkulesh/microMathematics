@@ -26,7 +26,8 @@
             style="@style/FormulaTextEditStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/formula_left_term_key" />
+            android:text="@string/formula_left_term_key"
+            micromath:arrayType="optional"/>
     </com.mkulesh.micromath.widgets.CustomLayout>
 
     <com.mkulesh.micromath.widgets.CustomTextView

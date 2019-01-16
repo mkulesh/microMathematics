@@ -164,6 +164,11 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
      */
     public ContentType checkContentType()
     {
+        return checkContentType(true);
+    }
+
+    public ContentType checkContentType(boolean registerLinkedEquation)
+    {
         errorMsg = null;
         errorNotification = ErrorNotification.COLOR;
         errorId = NO_ERROR_ID;
@@ -215,7 +220,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
                 {
                     contentType = ContentType.VARIABLE_LINK;
                     linkedVariable = (Equation) lv;
-                    if (formulaRoot instanceof LinkHolder)
+                    if (registerLinkedEquation && formulaRoot instanceof LinkHolder)
                     {
                         ((LinkHolder) formulaRoot).addLinkedEquation(linkedVariable);
                     }
@@ -722,6 +727,18 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     public boolean isInputUnit()
     {
         return !isTerm() && parser.getUnit() != null;
+    }
+
+    /**
+     * Procedure returns linked equation if it links to an array
+     */
+    public Equation getLinkedArray()
+    {
+        if (contentType == ContentType.VARIABLE_LINK && linkedVariable != null && (linkedVariable.isArray() || linkedVariable.isInterval()))
+        {
+            return linkedVariable;
+        }
+        return null;
     }
 
     /**
