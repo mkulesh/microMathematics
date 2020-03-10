@@ -11,7 +11,7 @@ git clone https://github.com/mkulesh/microMathematics.git --branch autobuild --s
 cd microMathematics_autobuild
 
 # Copy newly created APK into the target directory
-mv ../microMathematics/app/build/outputs/apk/microMathematics-v${APK_VERSION}.apk ./autobuild
+mv ../microMathematics/app/build/outputs/apk/debug/microMathematics-v${APK_VERSION}-debug.apk ./autobuild
 echo "Target APK"
 pwd; ls -l ./autobuild
 
