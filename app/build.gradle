@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.mkulesh.micromath.plus"
         minSdkVersion 14
-        targetSdkVersion 28
-        versionCode 313
-        versionName "2.18.0"
+        targetSdkVersion 29
+        versionCode 314
+        versionName "2.19.0"
         setProperty("archivesBaseName", "microMathematics-v" + versionName)
     }
 
