@@ -47,7 +47,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
-                <android.support.v7.widget.AppCompatRadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_rbutton_cool"
                     style="@style/RadioButtonStyle" />
 
@@ -64,7 +64,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
-                <android.support.v7.widget.AppCompatRadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_rbutton_fire"
                     style="@style/RadioButtonStyle" />
 
@@ -81,7 +81,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
-                <android.support.v7.widget.AppCompatRadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_rbutton_coldhot"
                     style="@style/RadioButtonStyle" />
 
@@ -98,7 +98,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
-                <android.support.v7.widget.AppCompatRadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_rbutton_rainbow"
                     style="@style/RadioButtonStyle" />
 
@@ -115,7 +115,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
-                <android.support.v7.widget.AppCompatRadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_rbutton_earthsky"
                     style="@style/RadioButtonStyle" />
 
@@ -132,7 +132,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
-                <android.support.v7.widget.AppCompatRadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_rbutton_greenblue"
                     style="@style/RadioButtonStyle" />
 
@@ -149,7 +149,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
-                <android.support.v7.widget.AppCompatRadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_rbutton_grayscale"
                     style="@style/RadioButtonStyle" />
 

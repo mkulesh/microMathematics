@@ -13,8 +13,8 @@
 package com.mkulesh.micromath.formula;
 
 import android.content.Context;
-import android.support.annotation.AttrRes;
-import android.support.v7.widget.AppCompatImageButton;
+import androidx.annotation.AttrRes;
+import androidx.appcompat.widget.AppCompatImageButton;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.ViewGroup;

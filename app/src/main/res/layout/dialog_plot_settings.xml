@@ -62,12 +62,12 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical" >
 
-                    <android.support.v7.widget.AppCompatRadioButton
+                    <androidx.appcompat.widget.AppCompatRadioButton
                         android:id="@+id/dialog_button_contour"
                         style="@style/RadioButtonStyle"
                         android:text="@string/dialog_surface_settings_contour" />
 
-                    <android.support.v7.widget.AppCompatRadioButton
+                    <androidx.appcompat.widget.AppCompatRadioButton
                         android:id="@+id/dialog_button_surface"
                         style="@style/RadioButtonStyle"
                         android:text="@string/dialog_surface_settings_surface" />
@@ -83,18 +83,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
-                <android.support.v7.widget.AppCompatRadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_axes_boxed"
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_plot_settings_axes_boxed" />
 
-                <android.support.v7.widget.AppCompatRadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_axes_crossed"
                     style="@style/RadioButtonStyle"
                     android:checked="true"
                     android:text="@string/dialog_plot_settings_axes_crossed" />
 
-                <android.support.v7.widget.AppCompatRadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_axes_none"
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_plot_settings_axes_none" />
@@ -113,13 +113,13 @@
                     android:layout_marginBottom="@dimen/dialog_content_padding"
                     android:layout_marginTop="@dimen/dialog_content_padding" />
 
-                <android.support.v7.widget.AppCompatCheckBox
+                <androidx.appcompat.widget.AppCompatCheckBox
                     android:id="@+id/dialog_checkbox_mesh_lines"
                     style="@style/CheckBoxStyle"
                     android:checked="false"
                     android:text="@string/dialog_surface_settings_mesh_lines" />
 
-                <android.support.v7.widget.AppCompatCheckBox
+                <androidx.appcompat.widget.AppCompatCheckBox
                     android:id="@+id/dialog_checkbox_mesh_fill"
                     style="@style/CheckBoxStyle"
                     android:checked="false"

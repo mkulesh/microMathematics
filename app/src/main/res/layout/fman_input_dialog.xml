@@ -29,7 +29,7 @@
         style="@style/DialogTextEditBackgroundStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <android.support.v7.widget.AppCompatEditText
+        <androidx.appcompat.widget.AppCompatEditText
             style="@style/DialogTextEditStyle"
             android:id="@+id/fman_input_dialog_edit_field"
             android:layout_height="wrap_content"

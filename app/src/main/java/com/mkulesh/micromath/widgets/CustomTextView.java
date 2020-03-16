@@ -18,8 +18,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
@@ -480,7 +480,7 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
     /**
      * Procedure returns the parent action mode or null if there are no related mode
      */
-    public android.support.v7.view.ActionMode getActionMode()
+    public androidx.appcompat.view.ActionMode getActionMode()
     {
         return menuHandler.getActionMode();
     }

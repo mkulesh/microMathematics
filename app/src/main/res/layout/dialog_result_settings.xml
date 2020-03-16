@@ -38,7 +38,7 @@
                 style="@style/DialogTextEditBackgroundStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
-                <android.support.v7.widget.AppCompatEditText
+                <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/dialog_result_units_field"
                     style="@style/DialogTextEditStyle"
                     android:layout_width="match_parent"
@@ -52,13 +52,13 @@
                 android:layout_marginBottom="@dimen/dialog_content_padding"
                 android:layout_marginTop="@dimen/dialog_content_padding" />
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/dialog_result_disable_calculation"
                 style="@style/CheckBoxStyle"
                 android:checked="false"
                 android:text="@string/dialog_result_disable_calculation" />
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/dialog_result_hide_result_field"
                 style="@style/CheckBoxStyle"
                 android:checked="false"

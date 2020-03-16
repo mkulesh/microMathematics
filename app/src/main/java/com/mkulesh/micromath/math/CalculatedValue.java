@@ -12,7 +12,7 @@
  */
 package com.mkulesh.micromath.math;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;

@@ -13,8 +13,8 @@
 package com.mkulesh.micromath.widgets;
 
 import android.content.Context;
-import android.support.annotation.AttrRes;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.AttrRes;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;

@@ -25,7 +25,7 @@
         android:textSize="@dimen/dialog_content_text_size"
         android:maxLines="9999" />
 
-    <android.support.v7.widget.AppCompatImageButton
+    <androidx.appcompat.widget.AppCompatImageButton
         style="@style/DialogImageButtonStyle"
         android:id="@+id/button_decrease"
         android:contentDescription="@string/dialog_button_decrease"
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="3dp">
-        <android.support.v7.widget.AppCompatEditText
+        <androidx.appcompat.widget.AppCompatEditText
             style="@style/DialogTextEditStyle"
             android:id="@+id/edit_text_value"
             android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
             android:textSize="@dimen/number_picker_number_size" />
     </LinearLayout>
 
-    <android.support.v7.widget.AppCompatImageButton
+    <androidx.appcompat.widget.AppCompatImageButton
         style="@style/DialogImageButtonStyle"
         android:id="@+id/button_increase"
         android:contentDescription="@string/dialog_button_increase"

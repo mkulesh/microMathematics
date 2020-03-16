@@ -72,7 +72,7 @@
                 android:paddingRight="@dimen/activity_palette_horizontal_padding"
                 android:orientation="horizontal" >
 
-                <android.support.v7.widget.AppCompatImageButton
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/palette_settings_button"
                     style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_palette_settings_title"
@@ -128,7 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <android.support.design.widget.FloatingActionButton
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 style="@style/FloatingButtonStyle"
                 android:id="@+id/main_flb_object_properties"
                 android:src="@drawable/flb_object_properties"
@@ -140,19 +140,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <android.support.design.widget.FloatingActionButton
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 style="@style/FloatingButtonStyle"
                 android:id="@+id/main_flb_action_play"
                 android:src="@drawable/flb_action_play"
                 android:contentDescription="@string/action_play" />
 
-            <android.support.design.widget.FloatingActionButton
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 style="@style/FloatingButtonStyle"
                 android:id="@+id/main_flb_action_stop"
                 android:src="@drawable/flb_action_stop"
                 android:contentDescription="@string/action_stop" />
 
-            <android.support.design.widget.FloatingActionButton
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 style="@style/FloatingButtonStyle"
                 android:id="@+id/main_flb_action_details"
                 android:src="@drawable/flb_action_details"

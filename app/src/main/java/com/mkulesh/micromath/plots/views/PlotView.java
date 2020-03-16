@@ -18,7 +18,7 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.AttributeSet;
 
 import com.mkulesh.micromath.math.Vector2D;

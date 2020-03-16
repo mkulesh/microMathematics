@@ -47,7 +47,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
-                    <android.support.v7.widget.AppCompatEditText
+                    <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/dialog_file_name"
                         style="@style/DialogTextEditStyle"
                         android:layout_width="match_parent"
@@ -56,14 +56,14 @@
                         android:inputType="textMultiLine"/>
                 </LinearLayout>
 
-                <android.support.v7.widget.AppCompatImageButton
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/dialog_button_select_file"
                     style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_image_settings_select_file"
                     android:src="@drawable/ic_action_content_open" />
             </LinearLayout>
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/dialog_checkbox_embedded"
                 style="@style/CheckBoxStyle"
                 android:checked="false"
@@ -79,12 +79,12 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical" >
 
-                <android.support.v7.widget.AppCompatRadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_original_size"
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_image_settings_original_size" />
 
-                <android.support.v7.widget.AppCompatRadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_custom_size"
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_image_settings_custom_size" />
@@ -116,12 +116,12 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical" >
 
-                <android.support.v7.widget.AppCompatRadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_original_color"
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_image_settings_original_color" />
 
-                <android.support.v7.widget.AppCompatRadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_auto_color"
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_image_settings_auto_color" />

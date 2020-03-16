@@ -20,11 +20,11 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
-import android.support.annotation.AttrRes;
-import android.support.annotation.ColorInt;
-import android.support.annotation.DrawableRes;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
+import androidx.annotation.AttrRes;
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.util.TypedValue;
 import android.view.View;
 

@@ -15,7 +15,7 @@ package com.mkulesh.micromath.formula;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.v7.widget.AppCompatImageButton;
+import androidx.appcompat.widget.AppCompatImageButton;
 import android.text.InputType;
 import android.view.View;
 import android.view.View.OnClickListener;

@@ -13,7 +13,7 @@
 package com.mkulesh.micromath.dialogs;
 
 import android.app.Activity;
-import android.support.v7.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatEditText;
 import android.view.View;
 import android.widget.CheckBox;
 

@@ -22,7 +22,7 @@ import android.graphics.Picture;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.PictureDrawable;
 import android.os.Build;
-import android.support.annotation.AttrRes;
+import androidx.annotation.AttrRes;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.MenuItem;

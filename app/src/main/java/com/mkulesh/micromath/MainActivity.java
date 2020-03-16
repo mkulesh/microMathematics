@@ -28,16 +28,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.navigation.NavigationView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity
     private CharSequence worksheetName = null;
 
     private Toolbar mToolbar = null;
-    private ArrayList<android.support.v7.view.ActionMode> activeActionModes = null;
+    private ArrayList<androidx.appcompat.view.ActionMode> activeActionModes = null;
     private DrawerLayout mDrawerLayout;
     private NavigationView navigationView = null;
     private CharSequence[] activityTitles = null, activitySubtitles = null, activityResources = null;
@@ -336,7 +336,7 @@ public class MainActivity extends AppCompatActivity
      * Context menu handling
      *********************************************************/
 
-    public android.support.v7.view.ActionMode getActionMode()
+    public androidx.appcompat.view.ActionMode getActionMode()
     {
         if (!activeActionModes.isEmpty())
         {
@@ -346,7 +346,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onSupportActionModeStarted(android.support.v7.view.ActionMode mode)
+    public void onSupportActionModeStarted(androidx.appcompat.view.ActionMode mode)
     {
         mToolbar.setVisibility(View.INVISIBLE);
         super.onSupportActionModeStarted(mode);
@@ -359,7 +359,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onSupportActionModeFinished(android.support.v7.view.ActionMode mode)
+    public void onSupportActionModeFinished(androidx.appcompat.view.ActionMode mode)
     {
         super.onSupportActionModeFinished(mode);
         mToolbar.setVisibility(View.VISIBLE);
@@ -377,7 +377,7 @@ public class MainActivity extends AppCompatActivity
      */
     public void finishActiveActionMode()
     {
-        for (android.support.v7.view.ActionMode mode : activeActionModes)
+        for (androidx.appcompat.view.ActionMode mode : activeActionModes)
         {
             mode.finish();
         }

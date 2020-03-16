@@ -17,7 +17,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.AttributeSet;
 
 import com.mkulesh.micromath.plots.FunctionIf;

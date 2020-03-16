@@ -24,7 +24,7 @@ import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.util.Base64;
 import android.util.DisplayMetrics;
