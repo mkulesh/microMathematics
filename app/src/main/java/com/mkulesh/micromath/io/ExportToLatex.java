@@ -348,7 +348,7 @@ public class ExportToLatex
         {
             writer.append("\n\\begin{center}");
         }
-        writer.append("\\begin{tabular}{c} \\includegraphics[resolution=" + String.valueOf(densityDpi) + "]{");
+        writer.append("\\begin{tabular}{c} \\includegraphics[width=0.45\\textwidth]{");
         if (!getImageDirectory().isEmpty())
         {
             writer.append(getImageDirectory() + "/");
