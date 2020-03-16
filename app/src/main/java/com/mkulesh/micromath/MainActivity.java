@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity
     private ActionBarDrawerToggle mDrawerToggle;
     private Uri externalUri = null;
     private Toast exitToast = null;
+    private String versionName = null;
+    int orientation;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -93,53 +95,20 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        PackageManager pm = getPackageManager();
-        ViewUtils.Debug(
-                this,
-                "App started, android version " + Build.VERSION.SDK_INT + ", installation source: "
-                        + pm.getInstallerPackageName(getPackageName()));
-
-        // Action bar (v7 compatibility library): use Toolbar
-        mToolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-        final ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null)
+        orientation = getResources().getConfiguration().orientation;
+        try
         {
-            actionBar.setDisplayHomeAsUpEnabled(true);
+            final PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
+            versionName = "v. " + pi.versionName;
+            ViewUtils.Debug(this, "Starting application: version " + versionName + ", orientation " + orientation);
         }
-        // activate toolbar separator, if necessary
+        catch (PackageManager.NameNotFoundException e)
         {
-            final int sepColor = CompatUtils.getThemeColorAttr(this, R.attr.colorToolBarSeparator);
-            if (sepColor != Color.TRANSPARENT && findViewById(R.id.toolbar_separator) != null)
-            {
-                findViewById(R.id.toolbar_separator).setVisibility(View.VISIBLE);
-            }
+            ViewUtils.Debug(this, "Starting application");
+            versionName = null;
         }
 
-        // Action bar drawer
-        mDrawerLayout = findViewById(R.id.main_drawer_layout);
-        navigationView = findViewById(R.id.navigation_view);
-        if (navigationView != null)
-        {
-            prepareNavigationView();
-        }
-
-        // ActionBarDrawerToggle ties together the the proper interactions
-        // between the sliding drawer and the action bar app icon
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.string.drawer_open, R.string.drawer_open)
-        {
-            public void onDrawerClosed(View view)
-            {
-                supportInvalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-
-            public void onDrawerOpened(View drawerView)
-            {
-                supportInvalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-        };
-        CompatUtils.setDrawerListener(mDrawerLayout, mDrawerToggle);
+        initGUI();
 
         // context menu
         activeActionModes = new ArrayList<>();
@@ -169,6 +138,59 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    public void onConfigurationChanged(android.content.res.Configuration newConfig)
+    {
+        orientation = newConfig.orientation;
+        ViewUtils.Debug(this, "device orientation change: " + orientation);
+        super.onConfigurationChanged(newConfig);
+
+        // Pass any configuration change to the drawer toggls
+        mDrawerToggle.onConfigurationChanged(newConfig);
+        mDrawerToggle.syncState();
+    }
+
+    private void initGUI()
+    {
+        // Action bar (v7 compatibility library): use Toolbar
+        mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null)
+        {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setElevation(5.0f);
+        }
+        // activate toolbar separator, if necessary
+        {
+            final int sepColor = CompatUtils.getThemeColorAttr(this, R.attr.colorToolBarSeparator);
+            if (sepColor != Color.TRANSPARENT && findViewById(R.id.toolbar_separator) != null)
+            {
+                findViewById(R.id.toolbar_separator).setVisibility(View.VISIBLE);
+            }
+        }
+
+        // Action bar drawer
+        mDrawerLayout = findViewById(R.id.main_drawer_layout);
+        navigationView = findViewById(R.id.navigation_view);
+        if (navigationView != null)
+        {
+            prepareNavigationView();
+        }
+
+        // ActionBarDrawerToggle ties together the the proper interactions
+        // between the sliding drawer and the action bar app icon
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,
+                R.string.drawer_open, R.string.drawer_open)
+        {
+            public void onDrawerOpened(View drawerView)
+            {
+                super.onDrawerOpened(drawerView);
+            }
+        };
+        CompatUtils.setDrawerListener(mDrawerLayout, mDrawerToggle);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.activity_main_actions, menu);
@@ -184,14 +206,6 @@ public class MainActivity extends AppCompatActivity
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
         mDrawerToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig)
-    {
-        super.onConfigurationChanged(newConfig);
-        // Pass any configuration change to the drawer toggls
-        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override

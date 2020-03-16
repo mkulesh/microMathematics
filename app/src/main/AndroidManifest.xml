@@ -21,7 +21,8 @@
             android:name="com.mkulesh.micromath.plus.MainActivityPlus"
             android:label="@string/app_short_name"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="stateHidden" >
+            android:windowSoftInputMode="stateHidden"
+            android:configChanges="orientation|screenSize|layoutDirection|keyboardHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
