@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="375" height="400" viewBox="0 0 323 344" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="180" cy="200" rx="160" ry="160"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="180" cy="200" rx="160" ry="160"/>
+  </g>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 180,40 A 1.77636e-014,1.77636e-014 0 1 0 180,40"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="20" y1="200" x2="340" y2="200"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 180,40 A 200,200 0 0 0 180,360"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 180,360 A 200,200 0 0 0 180,40"/>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 256.583,161.927 A 146.734,146.734 0 0 0 109.505,140.714"/>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="264.361" y="166.877">
+    <tspan x="264.361" y="166.877">C1</tspan>
+  </text>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="86.1701" y="137.179">
+    <tspan x="86.1701" y="137.179"/>
+  </text>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="87.5843" y="140.714">
+    <tspan x="87.5843" y="140.714">C2</tspan>
+  </text>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="240.319" y="100.409">
+    <tspan x="240.319" y="100.409">c11</tspan>
+  </text>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="113.04" y="96.8736">
+    <tspan x="113.04" y="96.8736"/>
+  </text>
+  <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 164.659,53.7401 A 20.558,20.558 0 0 0 195.065,53.033"/>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="166.073" y="75.6604">
+    <tspan x="166.073" y="75.6604">pa</tspan>
+  </text>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="171.023" y="30.4056">
+    <tspan x="171.023" y="30.4056">N Pole</tspan>
+  </text>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="152.638" y="149.907">
+    <tspan x="152.638" y="149.907">gcleg</tspan>
+  </text>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="110.919" y="87.6812">
+    <tspan x="110.919" y="87.6812">c21</tspan>
+  </text>
+</svg>

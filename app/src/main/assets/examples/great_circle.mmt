@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="Ken Webb" title="Great circle distances" description="Spherical triangles are covered in most math books. I used Shaum's Mathematical Handbook." textWidth="60" significantDigits="6" scale="0.38580" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="&#10;Using a spherical triangle to calculate great circle&#10;distance in KM between cities. R is Earth radius in KM.&#10;&#10;Latitudes and longitudes are entered in decimal degrees.&#10;South latitudes and West longitudes should be negative&#10;numbers. &#10;&#10;" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="City                           Latitude           Longitude&#10;&#10;Paris                         48.864716          2.349014&#10;Buenos Aires         -34.603722       -58.381592&#10;New York                 40.730610       -73.935242&#10;Singapore                  1.290270      103.851959&#10;Moscow                  55.751244        37.618423&#10;Sydney                    -33.865143      151.209900&#10;&#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="R" />
+      <term key="rightTerm" text="6371" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="c1lat" />
+      <term key="rightTerm" text="48.864716" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="c1lon" />
+      <term key="rightTerm" text="2.349014" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="c2lat" />
+      <term key="rightTerm" text="-34.603722" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="c2lon" />
+      <term key="rightTerm" text="-58.381592" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;                     The angle pa = | c12 - c22 |" />
+    </text_fragment>
+    <image_fragment fileName="images/great_circle.svg" embedded="false" originalSize="false" width="751" height="751" colorType="auto" />
+    <text_fragment>
+      <term key="text" text="&#10;Convert to spherical coordinates in radians&#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="c11" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="identity">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" text="90" />
+            <term key="rightTerm" text="c1lat" />
+          </term>
+        </term>
+        <term key="rightTerm" code="divide_slash">
+          <term key="leftTerm" text="pi" />
+          <term key="rightTerm" text="180" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="c12" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" text="c1lon" />
+          <term key="rightTerm" text="pi" />
+        </term>
+        <term key="rightTerm" text="180" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="c21" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" code="minus">
+            <term key="leftTerm" text="90" />
+            <term key="rightTerm" text="c2lat" />
+          </term>
+          <term key="rightTerm" text="pi" />
+        </term>
+        <term key="rightTerm" text="180" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="c22" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" text="c2lon" />
+          <term key="rightTerm" text="pi" />
+        </term>
+        <term key="rightTerm" text="180" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;Third point of the triangle is the North pole.&#10;The angle magnitude there should be &lt;= Pi&#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="pat" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="c12" />
+          <term key="rightTerm" text="c22" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="pa" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="greater">
+          <term key="leftTerm" text="pat" />
+          <term key="rightTerm" text="pi" />
+        </term>
+        <term key="argTerm2" code="minus">
+          <term key="leftTerm" code="mult">
+            <term key="leftTerm" text="2" />
+            <term key="rightTerm" text="pi" />
+          </term>
+          <term key="rightTerm" text="pat" />
+        </term>
+        <term key="argTerm3" text="pat" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;Finally, the law of cosines&#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="gcleg" />
+      <term key="rightTerm" code="acos">
+        <term key="argTerm" code="plus">
+          <term key="leftTerm" code="mult">
+            <term key="leftTerm" code="cos">
+              <term key="argTerm" text="c11" />
+            </term>
+            <term key="rightTerm" code="cos">
+              <term key="argTerm" text="c21" />
+            </term>
+          </term>
+          <term key="rightTerm" code="mult">
+            <term key="leftTerm" code="mult">
+              <term key="leftTerm" code="sin">
+                <term key="argTerm" text="c11" />
+              </term>
+              <term key="rightTerm" code="sin">
+                <term key="argTerm" text="c21" />
+              </term>
+            </term>
+            <term key="rightTerm" code="cos">
+              <term key="argTerm" text="pa" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="dist" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="R" />
+        <term key="rightTerm" text="gcleg" />
+      </term>
+    </equation>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="dist" />
+      <term key="rightTerm" text="11050.6" />
+    </result>
+  </formulaList>
+</micromath>

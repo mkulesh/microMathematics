@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="Ken Webb" title="Catalina" description="Basic trigonometry - Right triangles and definition of tangent." textWidth="60" significantDigits="6" scale="0.38580" redefineAllowed="false">
+    <text_fragment>
+      <term key="text" text="Can you see Catalina Island from Oceanside?&#10;&#10;R = earth radius 6371 KM&#10;Dc = distance Oceanside to Catalina 98.7 KM&#10;Hc = height of Catalina 0.64 KM&#10;Hv = height of viewer &#10;Anc = angle Oceanside to Catalina&#10;Zv = distance viewer to horizon&#10;Anh = angle viewer to horizon&#10;Zc = distance viewer horizon to Catalina&#10;X = height viewable at Catalina&#10;" />
+    </text_fragment>
+    <image_fragment fileName="images/catalina.svg" embedded="false" originalSize="false" width="833" height="833" colorType="auto" />
+    <equation>
+      <term key="leftTerm" text="R" />
+      <term key="rightTerm" text="6371" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="Dc" />
+      <term key="rightTerm" text="98.7" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="Hc" />
+      <term key="rightTerm" text="0.64" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="Hv" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text=".0005" />
+        <term key="nextValue" text=".001" />
+        <term key="maxValue" text="0.10" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="Anc" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" text="Dc" />
+        <term key="rightTerm" text="R" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="Anc" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="Zv" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" code="plus">
+          <term key="leftTerm" code="mult">
+            <term key="leftTerm" code="mult">
+              <term key="leftTerm" text="2" />
+              <term key="rightTerm" text="R" />
+            </term>
+            <term key="rightTerm" text="Hv" />
+          </term>
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="Hv" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="Anh" />
+      <term key="rightTerm" code="atan">
+        <term key="argTerm" code="divide_slash">
+          <term key="leftTerm" text="Zv" />
+          <term key="rightTerm" text="R" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="Zc" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="R" />
+        <term key="rightTerm" code="tan">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" text="Anc" />
+            <term key="rightTerm" text="Anh" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;If viewer's horizon is beyond Catalina, the earth's curvature does not&#10;block the view of the island." />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="X" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="greater">
+          <term key="leftTerm" text="Anh" />
+          <term key="rightTerm" text="Anc" />
+        </term>
+        <term key="argTerm2" text="0" />
+        <term key="argTerm3" code="minus">
+          <term key="leftTerm" code="sqrt_layout">
+            <term key="argTerm" code="plus">
+              <term key="leftTerm" code="power">
+                <term key="leftTerm" text="R" />
+                <term key="rightTerm" text="2" />
+              </term>
+              <term key="rightTerm" code="power">
+                <term key="leftTerm" text="Zc" />
+                <term key="rightTerm" text="2" />
+              </term>
+            </term>
+          </term>
+          <term key="rightTerm" text="R" />
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="&#10;Can see some of Catalina if X less than Hc" />
+    </text_fragment>
+    <plot_function width="901" height="751" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" xType="linear" yType="linear" functionsNumber="2">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction1" color="#FF0000FF" width="5" lineStyle="solid" shapeType="none" shapeSize="300" text="Hc" />
+      <term key="yFunction2" color="#FFFF0080" width="5" lineStyle="solid" shapeType="none" shapeSize="300" text="X" />
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction1" text="Hv" />
+      <term key="xFunction2" text="Hv" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+  </formulaList>
+</micromath>
