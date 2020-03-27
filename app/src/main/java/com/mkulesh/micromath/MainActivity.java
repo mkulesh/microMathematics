@@ -130,6 +130,10 @@ public class MainActivity extends AppCompatActivity
                 selectWorksheet(BaseFragment.INVALID_ACTION_ID);
                 intentProcessed = true;
             }
+            else
+            {
+                ViewUtils.Debug(this, "Called with unknown indent: " + intent.toString());
+            }
         }
         if (!intentProcessed && savedInstanceState == null)
         {
@@ -710,7 +714,11 @@ public class MainActivity extends AppCompatActivity
         if (requestCode == AdapterDocuments.REQUEST_OPEN_DOCUMENT_TREE && data != null)
         {
             Uri uri = data.getData();
-            AdapterDocuments.saveURI(this, uri);
+            AdapterDocuments.saveTreeRootURI(this, uri);
+            if (uri != null)
+            {
+                selectWorksheet(R.id.action_open);
+            }
         }
         else if (requestCode == SETTINGS_ACTIVITY_REQID)
         {

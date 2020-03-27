@@ -110,7 +110,7 @@ public class DialogBase extends Dialog implements OnClickListener
         dismiss();
     }
 
-    protected void closeDialog()
+    public void closeDialog()
     {
         closeDialog(/*hideKeyboard=*/ true);
     }

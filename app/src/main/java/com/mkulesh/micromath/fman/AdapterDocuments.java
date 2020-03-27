@@ -594,11 +594,15 @@ public class AdapterDocuments extends AdapterBaseImpl
         Arrays.sort(items_, comp);
     }
 
-    public static void saveURI(Context ctx, Uri uri)
+    public static void saveTreeRootURI(Context ctx, Uri uri)
     {
         SharedPreferences saf_sp = PreferenceManager.getDefaultSharedPreferences(ctx);
         SharedPreferences.Editor editor = saf_sp.edit();
         editor.putString(PREF_TREE_ROOT_URI, uri != null ? uri.toString() : null);
+        if (uri != null)
+        {
+            editor.putString(Commander.PREF_LAST_SELECTED_PATH, uri.toString());
+        }
         editor.commit();
     }
 

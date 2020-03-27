@@ -69,4 +69,9 @@ public interface CommanderIf
      * Procedure returns the calling mode of this adapter.
      */
     SelectionMode getSelectionMode();
+
+    /**
+     * Close commander dialog
+     */
+    void closeDialog();
 }

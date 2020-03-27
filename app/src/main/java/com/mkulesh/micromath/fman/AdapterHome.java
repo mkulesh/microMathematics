@@ -161,6 +161,7 @@ public class AdapterHome extends AdapterBaseImpl
             uri_s = saf_sp.getString(AdapterDocuments.PREF_TREE_ROOT_URI, null);
             if (uri_s == null)
             {
+                commander.closeDialog();
                 commander.issue(CompatUtils.getDocTreeIntent(), AdapterDocuments.REQUEST_OPEN_DOCUMENT_TREE);
                 return;
             }
@@ -244,6 +245,7 @@ public class AdapterHome extends AdapterBaseImpl
             }
             if (AdapterDocuments.ORG_SCHEME.startsWith(schema) && R.id.fman_action_open_saf == command_id)
             {
+                commander.closeDialog();
                 commander.issue(CompatUtils.getDocTreeIntent(), AdapterDocuments.REQUEST_OPEN_DOCUMENT_TREE);
             }
         }
