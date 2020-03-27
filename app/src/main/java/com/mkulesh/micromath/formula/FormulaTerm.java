@@ -26,6 +26,7 @@ import com.mkulesh.micromath.widgets.FocusChangeIf;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
 {
@@ -373,7 +374,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
     }
 
-    protected boolean splitIntoTerms(final String src, final TermTypeIf t)
+    protected boolean splitIntoTerms(final String src, final TermTypeIf t, boolean pasteFromClipboard)
     {
         if (src == null || src.isEmpty() || (t != null && t.getLowerCaseName().equals(src.toLowerCase(Locale.ENGLISH))))
         {
@@ -381,12 +382,20 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
         try
         {
-            int sepPosition = -1, sepLength = 0;
-            if (t != null && t.getShortCutId() != Palette.NO_BUTTON)
+            String sep = "";
+            int sepPosition = -1;
+            if (t != null)
             {
-                final String sep = getContext().getResources().getString(t.getShortCutId());
-                sepPosition = src.indexOf(sep);
-                sepLength = sep.length();
+                if (pasteFromClipboard)
+                {
+                    sep = getContext().getResources().getString(R.string.formula_term_separator);
+                    sepPosition = src.indexOf(sep);
+                }
+                if (sepPosition < 0 && t.getShortCutId() != Palette.NO_BUTTON)
+                {
+                    sep = getContext().getResources().getString(t.getShortCutId());
+                    sepPosition = src.indexOf(sep);
+                }
             }
             if (sepPosition < 0)
             {
@@ -400,8 +409,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             }
             else
             {
-                final String[] args = { src.substring(0, sepPosition),
-                        src.substring(sepPosition + sepLength, src.length()) };
+                final String[] args = src.split(Pattern.quote(sep));
                 boolean isChanged = false;
                 for (int i = 0, j = 0; i < args.length && j < terms.size(); i++, j++)
                 {

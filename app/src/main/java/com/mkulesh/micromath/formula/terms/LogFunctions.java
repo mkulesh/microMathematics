@@ -152,7 +152,7 @@ public class LogFunctions extends FunctionBase
     {
         super(owner, layout);
         termType = type;
-        createGeneralFunction(R.layout.formula_function_named, s, getFunctionType().getArgNumber(), idx);
+        createGeneralFunction(R.layout.formula_function_named, s, getFunctionType().getArgNumber(), idx, owner.isPasteFromClipboard());
     }
 
     /*********************************************************

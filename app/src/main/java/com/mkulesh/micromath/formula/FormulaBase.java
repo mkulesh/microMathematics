@@ -470,7 +470,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
                     t.onTermDelete(removeElements(), null);
                 }
                 // restore text
-                t.setText(content);
+                t.pasteFromClipboard(content);
             }
         }
         getFormulaList().onManualInput();

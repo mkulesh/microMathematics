@@ -292,7 +292,7 @@ public class Comparators extends FormulaTerm
             throw new Exception("cannot initialize comparators terms");
         }
         // set texts for left and right parts
-        splitIntoTerms(s, termType);
+        splitIntoTerms(s, termType, false);
         // disable brackets of child terms in some cases
         switch (getComparatorType())
         {

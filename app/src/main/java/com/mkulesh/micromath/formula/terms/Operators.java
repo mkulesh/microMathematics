@@ -346,7 +346,7 @@ public class Operators extends FormulaTerm
             throw new Exception("cannot initialize operator terms");
         }
         // set texts for left and right parts
-        splitIntoTerms(s, termType);
+        splitIntoTerms(s, termType, false);
         // disable brackets of child terms in some cases
         switch (getOperatorType())
         {

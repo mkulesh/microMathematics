@@ -591,7 +591,7 @@ public class UserFunctions extends FunctionBase
         }
 
         final String arg = BracketParser.removeBrackets(getContext(), s, BracketParser.FUNCTION_BRACKETS);
-        if (splitIntoTerms(arg, termType))
+        if (splitIntoTerms(arg, termType, false))
         {
             isContentValid(ValidationPassType.VALIDATE_SINGLE_FORMULA);
         }

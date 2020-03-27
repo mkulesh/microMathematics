@@ -68,6 +68,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     public boolean isWritable = true;
     private boolean emptyOrAutoContent = true; // empty or automatically filled content
     private boolean textChangeDetectionEnabled = true;
+    private boolean pasteFromClipboard = false;
 
     // content type and content parser
     public enum ContentType
@@ -655,6 +656,19 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         text.setText(s);
         onTextChanged(s.toString(), false);
         text.setTextWatcherActive(true);
+    }
+
+    public void pasteFromClipboard(CharSequence s)
+    {
+        ViewUtils.Debug(this, "pasteFromClipboard, s = " + s);
+        pasteFromClipboard = true;
+        setText(s);
+        pasteFromClipboard = false;
+    }
+
+    public boolean isPasteFromClipboard()
+    {
+        return pasteFromClipboard;
     }
 
     /**

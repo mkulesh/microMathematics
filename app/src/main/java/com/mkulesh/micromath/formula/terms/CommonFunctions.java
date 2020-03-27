@@ -160,7 +160,7 @@ public class CommonFunctions extends FunctionBase
     {
         super(owner, layout);
         termType = type;
-        createGeneralFunction(getFunctionType().getLayoutId(), s, getFunctionType().getArgNumber(), idx);
+        createGeneralFunction(getFunctionType().getLayoutId(), s, getFunctionType().getArgNumber(), idx, owner.isPasteFromClipboard());
     }
 
     /*********************************************************

@@ -241,6 +241,11 @@ public abstract class FunctionBase extends FormulaTerm
 
     protected void createGeneralFunction(int layoutId, String s, int argNumber, int idx) throws Exception
     {
+        createGeneralFunction(layoutId, s, argNumber, idx, false);
+    }
+
+    protected void createGeneralFunction(int layoutId, String s, int argNumber, int idx, boolean pasteFromClipboard) throws Exception
+    {
         inflateElements(layoutId, true);
         initializeElements(idx);
         if (terms.isEmpty())
@@ -266,7 +271,7 @@ public abstract class FunctionBase extends FormulaTerm
 
         // set texts for left and right parts (in editing mode only)
         final String arg = BracketParser.removeBrackets(getContext(), s, BracketParser.FUNCTION_BRACKETS);
-        if (splitIntoTerms(arg, termType))
+        if (splitIntoTerms(arg, termType, pasteFromClipboard))
         {
             isContentValid(ValidationPassType.VALIDATE_SINGLE_FORMULA);
         }
