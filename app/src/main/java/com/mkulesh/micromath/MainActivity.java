@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     private final ArrayList<MenuItem> activityMenuItems = new ArrayList<>();
     private ActionBarDrawerToggle mDrawerToggle;
     private Uri externalUri = null;
+    private String versionName = null;
+    int orientation;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -85,45 +87,23 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        PackageManager pm = getPackageManager();
-        ViewUtils.Debug(
-                this,
-                "App started, android version " + Build.VERSION.SDK_INT + ", installation source: "
-                        + pm.getInstallerPackageName(getPackageName()));
-
-        // Action bar (v7 compatibility library): use Toolbar
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-        final ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
-        // Action bar drawer
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.main_drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.navigation_view);
-        if (navigationView != null)
+        orientation = getResources().getConfiguration().orientation;
+        try
         {
-            prepareNavigationView();
+            final PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
+            versionName = "v. " + pi.versionName;
+            ViewUtils.Debug(this, "Starting application: version " + versionName + ", orientation " + orientation);
+        }
+        catch (PackageManager.NameNotFoundException e)
+        {
+            ViewUtils.Debug(this, "Starting application");
+            versionName = null;
         }
 
-        // ActionBarDrawerToggle ties together the the proper interactions
-        // between the sliding drawer and the action bar app icon
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.string.drawer_open, R.string.drawer_open)
-        {
-            public void onDrawerClosed(View view)
-            {
-                supportInvalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-
-            public void onDrawerOpened(View drawerView)
-            {
-                supportInvalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-        };
-        CompatUtils.setDrawerListener(mDrawerLayout, mDrawerToggle);
+        initGUI();
 
         // context menu
-        activeActionModes = new ArrayList<androidx.appcompat.view.ActionMode>();
+        activeActionModes = new ArrayList<>();
 
         Intent intent = getIntent();
         if (intent != null)
@@ -134,6 +114,51 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         {
             selectWorksheet(BaseFragment.INVALID_ACTION_ID);
         }
+    }
+
+    @Override
+    public void onConfigurationChanged(android.content.res.Configuration newConfig)
+    {
+        orientation = newConfig.orientation;
+        ViewUtils.Debug(this, "device orientation change: " + orientation);
+        super.onConfigurationChanged(newConfig);
+
+        // Pass any configuration change to the drawer toggls
+        mDrawerToggle.onConfigurationChanged(newConfig);
+        mDrawerToggle.syncState();
+    }
+
+    private void initGUI()
+    {
+        // Action bar (v7 compatibility library): use Toolbar
+        mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null)
+        {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setElevation(5.0f);
+        }
+
+        // Action bar drawer
+        mDrawerLayout = findViewById(R.id.main_drawer_layout);
+        navigationView = findViewById(R.id.navigation_view);
+        if (navigationView != null)
+        {
+            prepareNavigationView();
+        }
+
+        // ActionBarDrawerToggle ties together the the proper interactions
+        // between the sliding drawer and the action bar app icon
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,
+                R.string.drawer_open, R.string.drawer_open)
+        {
+            public void onDrawerOpened(View drawerView)
+            {
+                super.onDrawerOpened(drawerView);
+            }
+        };
+        CompatUtils.setDrawerListener(mDrawerLayout, mDrawerToggle);
     }
 
     @Override
@@ -152,14 +177,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
         mDrawerToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig)
-    {
-        super.onConfigurationChanged(newConfig);
-        // Pass any configuration change to the drawer toggls
-        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
