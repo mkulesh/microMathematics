@@ -14,8 +14,8 @@ package com.mkulesh.micromath.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.ActionMode;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -52,7 +52,7 @@ public class ContextMenuHandler
     private final boolean[] enabled = new boolean[Type.values().length];
     private final Context context;
     private FormulaChangeIf formulaChangeIf = null;
-    private android.support.v7.view.ActionMode actionMode = null;
+    private androidx.appcompat.view.ActionMode actionMode = null;
     private View actionModeOwner = null;
     private Menu menu = null;
 
@@ -85,7 +85,7 @@ public class ContextMenuHandler
         return true;
     }
 
-    public android.support.v7.view.ActionMode getActionMode()
+    public androidx.appcompat.view.ActionMode getActionMode()
     {
         return actionMode;
     }

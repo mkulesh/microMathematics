@@ -16,8 +16,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatEditText;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -481,7 +481,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     /**
      * Procedure returns the parent action mode or null if there are no related mode
      */
-    public android.support.v7.view.ActionMode getActionMode()
+    public androidx.appcompat.view.ActionMode getActionMode()
     {
         return menuHandler.getActionMode();
     }
