@@ -662,7 +662,11 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         if (requestCode == AdapterDocuments.REQUEST_OPEN_DOCUMENT_TREE && data != null)
         {
             Uri uri = data.getData();
-            AdapterDocuments.saveURI(this, uri);
+            AdapterDocuments.saveTreeRootURI(this, uri);
+            if (uri != null)
+            {
+                selectWorksheet(R.id.action_open);
+            }
         }
         else if (requestCode == SETTINGS_ACTIVITY_REQID)
         {

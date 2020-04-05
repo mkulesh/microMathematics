@@ -45,7 +45,8 @@
             android:src="@drawable/fman_home" />
     </LinearLayout>
 
-    <View style="@style/HorizontalDividerStyle" />
+    <View style="@style/HorizontalDividerStyle"
+        android:id="@+id/fman_status_panel_divider"/>
             
     <ListView
         android:id="@+id/fman_list_view"

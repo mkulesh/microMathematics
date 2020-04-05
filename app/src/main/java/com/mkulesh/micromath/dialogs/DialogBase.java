@@ -84,7 +84,7 @@ public class DialogBase extends Dialog implements OnClickListener
         return (root instanceof LinearLayout) ? (LinearLayout) root : null;
     }
 
-    protected void closeDialog()
+    public void closeDialog()
     {
         if (!ViewUtils.isHardwareKeyboardAvailable(getContext()))
         {

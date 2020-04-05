@@ -19,16 +19,16 @@ import android.os.Message;
 
 public interface CommanderIf
 {
-    public final static int OPERATION_IN_PROGRESS = 0;
-    public final static int OPERATION_FAILED = -2;
-    public final static int OPERATION_COMPLETED = -3;
-    public final static int OPERATION_COMPLETED_REFRESH_REQUIRED = -4;
-    public final static int OPERATION_FAILED_REFRESH_REQUIRED = -7;
+    int OPERATION_IN_PROGRESS = 0;
+    int OPERATION_FAILED = -2;
+    int OPERATION_COMPLETED = -3;
+    int OPERATION_COMPLETED_REFRESH_REQUIRED = -4;
+    int OPERATION_FAILED_REFRESH_REQUIRED = -7;
 
-    public final static String NOTIFY_COOKIE = "cookie", NOTIFY_POSTO = "posto", NOTIFY_URI = "uri",
+    String NOTIFY_COOKIE = "cookie", NOTIFY_POSTO = "posto", NOTIFY_URI = "uri",
             MESSAGE_STRING = "STRING";
 
-    public enum SelectionMode
+    enum SelectionMode
     {
         OPEN,
         SAVE_AS,
@@ -38,35 +38,40 @@ public interface CommanderIf
     /**
      * @return current UI context
      */
-    public Context getContext();
+    Context getContext();
 
     /**
      * Try to issue an indent
      */
-    public void issue(Intent in, int ret);
+    void issue(Intent in, int ret);
 
     /**
      * Shows given error
      */
-    public void showError(final String msg);
+    void showError(final String msg);
 
     /**
      * Navigate the current panel to the specified URI.
      */
-    public void Navigate(Uri uri, String positionTo);
+    void Navigate(Uri uri, String positionTo);
 
     /**
      * Execute (launch) the specified item.
      */
-    public void Open(Uri uri);
+    void Open(Uri uri);
 
     /**
      * Procedure completion notification.
      */
-    public boolean notifyMe(Message m);
+    boolean notifyMe(Message m);
 
     /**
      * Procedure returns the calling mode of this adapter.
      */
-    public SelectionMode getSelectionMode();
+    SelectionMode getSelectionMode();
+
+    /**
+     * Close commander dialog
+     */
+    void closeDialog();
 }

@@ -359,11 +359,11 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
                 row_view.setBackgroundColor(0); // transparent
             }
 
-            ImageView imgView = (ImageView) row_view.findViewById(R.id.fman_fld_icon);
-            TextView nameView = (TextView) row_view.findViewById(R.id.fman_fld_name);
-            TextView attrView = (TextView) row_view.findViewById(R.id.fman_fld_attr);
-            TextView dateView = (TextView) row_view.findViewById(R.id.fman_fld_date);
-            TextView sizeView = (TextView) row_view.findViewById(R.id.fman_fld_size);
+            ImageView imgView = row_view.findViewById(R.id.fman_fld_icon);
+            TextView nameView = row_view.findViewById(R.id.fman_fld_name);
+            TextView attrView = row_view.findViewById(R.id.fman_fld_attr);
+            TextView dateView = row_view.findViewById(R.id.fman_fld_date);
+            TextView sizeView = row_view.findViewById(R.id.fman_fld_size);
 
             String name = item.name, size = "", date = "";
 

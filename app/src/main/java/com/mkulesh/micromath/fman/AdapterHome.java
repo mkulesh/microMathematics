@@ -22,8 +22,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.fman.CommanderIf.SelectionMode;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.CompatUtils;
 
 import java.util.ArrayList;
@@ -95,7 +95,7 @@ public class AdapterHome extends AdapterBaseImpl
         try
         {
             items = null;
-            ArrayList<Item> ia = new ArrayList<Item>();
+            ArrayList<Item> ia = new ArrayList<>();
 
             ia.add(makeItem(LOCAL, AdapterFileSystem.ORG_SCHEME));
 
@@ -161,6 +161,7 @@ public class AdapterHome extends AdapterBaseImpl
             uri_s = saf_sp.getString(AdapterDocuments.PREF_TREE_ROOT_URI, null);
             if (uri_s == null)
             {
+                commander.closeDialog();
                 commander.issue(CompatUtils.getDocTreeIntent(), AdapterDocuments.REQUEST_OPEN_DOCUMENT_TREE);
                 return;
             }
@@ -239,11 +240,13 @@ public class AdapterHome extends AdapterBaseImpl
         {
             String schema = item.origin instanceof String ? (String) item.origin : null;
             if (!FileUtils.str(schema))
+            {
                 return;
+            }
             if (AdapterDocuments.ORG_SCHEME.startsWith(schema) && R.id.fman_action_open_saf == command_id)
             {
+                commander.closeDialog();
                 commander.issue(CompatUtils.getDocTreeIntent(), AdapterDocuments.REQUEST_OPEN_DOCUMENT_TREE);
-                return;
             }
         }
         catch (Exception e)

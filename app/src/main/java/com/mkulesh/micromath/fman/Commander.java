@@ -36,10 +36,10 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.dialogs.DialogBase;
 import com.mkulesh.micromath.dialogs.DialogRadioGroup;
 import com.mkulesh.micromath.dialogs.SimpleDialog;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
@@ -93,7 +93,7 @@ public class Commander extends DialogBase implements CommanderIf
         fileListView.adapterMode = pref.getInt(PREF_ADAPTER_MODE, 0);
         fileListView.applySettings();
 
-        homeButton = (ImageButton) findViewById(R.id.fman_action_home);
+        homeButton = findViewById(R.id.fman_action_home);
         homeButton.setOnClickListener(this);
         ViewUtils.setButtonIconColor(context, homeButton, R.color.dialog_content_color);
         homeButton.setOnLongClickListener(new OnLongClickListener()
@@ -106,10 +106,10 @@ public class Commander extends DialogBase implements CommanderIf
 
         this.selectionMode = selectionMode;
         this.assetFilter = assetFilter;
-        okButton = ((Button) findViewById(R.id.dialog_button_ok));
+        okButton = findViewById(R.id.dialog_button_ok);
 
         // prepare file name field
-        fileName = (EditText) findViewById(R.id.dialog_file_new_name_value);
+        fileName = findViewById(R.id.dialog_file_new_name_value);
         fileName.addTextChangedListener(new EditTextWatcher());
         fileName.setText("");
 
@@ -117,19 +117,19 @@ public class Commander extends DialogBase implements CommanderIf
         switch (selectionMode)
         {
         case OPEN:
-            ((LinearLayout) findViewById(R.id.dialog_button_panel)).setVisibility(View.GONE);
-            ((LinearLayout) findViewById(R.id.fman_file_type_layout)).setVisibility(View.GONE);
-            ((LinearLayout) findViewById(R.id.dialog_file_new_name_layout)).setVisibility(View.GONE);
-            ((LinearLayout) findViewById(R.id.dialog_content_panel)).setPadding(0, 0, 0, getContext().getResources()
+            (findViewById(R.id.dialog_button_panel)).setVisibility(View.GONE);
+            (findViewById(R.id.fman_file_type_layout)).setVisibility(View.GONE);
+            (findViewById(R.id.dialog_file_new_name_layout)).setVisibility(View.GONE);
+            (findViewById(R.id.dialog_content_panel)).setPadding(0, 0, 0, getContext().getResources()
                     .getDimensionPixelSize(R.dimen.dialog_panel_vertical_padding));
             break;
         case SAVE_AS:
         case EXPORT:
-            ((LinearLayout) findViewById(R.id.dialog_button_panel)).setVisibility(View.VISIBLE);
-            ((LinearLayout) findViewById(R.id.fman_file_type_layout))
+            (findViewById(R.id.dialog_button_panel)).setVisibility(View.VISIBLE);
+            (findViewById(R.id.fman_file_type_layout))
                     .setVisibility(selectionMode == SelectionMode.EXPORT ? View.VISIBLE : View.GONE);
-            ((LinearLayout) findViewById(R.id.dialog_file_new_name_layout)).setVisibility(View.VISIBLE);
-            fileTypeButton = ((Button) findViewById(R.id.fman_file_type_button));
+            (findViewById(R.id.dialog_file_new_name_layout)).setVisibility(View.VISIBLE);
+            fileTypeButton = findViewById(R.id.fman_file_type_button);
             fileTypeButton.setOnClickListener(this);
             fileTypeButton.setOnLongClickListener(new OnLongClickListener()
             {
@@ -309,10 +309,9 @@ public class Commander extends DialogBase implements CommanderIf
                 {
                     public void onCreate(SimpleDialog d, LinearLayout dLayout)
                     {
-                        final TextView prompt = (TextView) dLayout.findViewById(R.id.fman_input_dialog_prompt);
+                        final TextView prompt = dLayout.findViewById(R.id.fman_input_dialog_prompt);
                         prompt.setText(context.getString(R.string.fman_rename_dialog_prompt, selectedItem));
-                        final EditText edit = (EditText) dLayout
-                                .findViewById(R.id.fman_input_dialog_edit_field);
+                        final EditText edit = dLayout.findViewById(R.id.fman_input_dialog_edit_field);
                         edit.setText(selectedItem);
                         edit.requestFocus();
                     }
@@ -322,8 +321,7 @@ public class Commander extends DialogBase implements CommanderIf
                         if (whichButton == R.id.dialog_button_ok)
                         {
                             ViewUtils.Debug(Commander.this, "Renaming item " + selectedItem);
-                            final EditText edit = (EditText) dLayout
-                                    .findViewById(R.id.fman_input_dialog_edit_field);
+                            final EditText edit = dLayout.findViewById(R.id.fman_input_dialog_edit_field);
                             final String new_name = edit.getText().toString();
                             getListAdapter().renameItem(selectedPos, new_name);
                             fileListView.setSelection(new_name);
@@ -345,11 +343,10 @@ public class Commander extends DialogBase implements CommanderIf
                 {
                     public void onCreate(SimpleDialog d, LinearLayout dLayout)
                     {
-                        final ImageView image = (ImageView) dLayout.findViewById(R.id.fman_message_dialog_icon);
+                        final ImageView image = dLayout.findViewById(R.id.fman_message_dialog_icon);
                         d.setImage(image, R.drawable.ic_action_content_discard,
                                 CompatUtils.getColor(context, R.color.dialog_content_color));
-                        final TextView prompt = (TextView) dLayout
-                                .findViewById(R.id.fman_message_dialog_prompt);
+                        final TextView prompt = dLayout.findViewById(R.id.fman_message_dialog_prompt);
                         prompt.setText(context.getString(R.string.fman_delete_dialog_prompt, selectedItem));
                     }
 
@@ -374,10 +371,9 @@ public class Commander extends DialogBase implements CommanderIf
                 {
                     public void onCreate(SimpleDialog d, LinearLayout dLayout)
                     {
-                        final TextView prompt = (TextView) dLayout.findViewById(R.id.fman_input_dialog_prompt);
+                        final TextView prompt = dLayout.findViewById(R.id.fman_input_dialog_prompt);
                         prompt.setText(context.getString(R.string.fman_create_folder_dialog_prompt));
-                        final EditText edit = (EditText) dLayout
-                                .findViewById(R.id.fman_input_dialog_edit_field);
+                        final EditText edit = dLayout.findViewById(R.id.fman_input_dialog_edit_field);
                         edit.setText("");
                         edit.requestFocus();
                     }
@@ -386,8 +382,7 @@ public class Commander extends DialogBase implements CommanderIf
                     {
                         if (whichButton == R.id.dialog_button_ok)
                         {
-                            final EditText edit = (EditText) dLayout
-                                    .findViewById(R.id.fman_input_dialog_edit_field);
+                            final EditText edit = dLayout.findViewById(R.id.fman_input_dialog_edit_field);
                             final String new_name = edit.getText().toString();
                             getListAdapter().createFolder(new_name);
                             fileListView.setSelection(new_name);
@@ -504,7 +499,7 @@ public class Commander extends DialogBase implements CommanderIf
                 public void onCreate(SimpleDialog d, LinearLayout dLayout)
                 {
                     d.disableButton(R.id.dialog_button_ok);
-                    final TextView prompt = (TextView) dLayout.findViewById(R.id.fman_message_dialog_prompt);
+                    final TextView prompt = dLayout.findViewById(R.id.fman_message_dialog_prompt);
                     prompt.setText(errMsg);
                 }
 
@@ -674,11 +669,10 @@ public class Commander extends DialogBase implements CommanderIf
                 {
                     public void onCreate(SimpleDialog d, LinearLayout dLayout)
                     {
-                        final ImageView image = (ImageView) dLayout.findViewById(R.id.fman_message_dialog_icon);
+                        final ImageView image = dLayout.findViewById(R.id.fman_message_dialog_icon);
                         d.setImage(image, R.drawable.ic_action_content_save,
                                 CompatUtils.getColor(context, R.color.dialog_content_color));
-                        final TextView prompt = (TextView) dLayout
-                                .findViewById(R.id.fman_message_dialog_prompt);
+                        final TextView prompt = dLayout.findViewById(R.id.fman_message_dialog_prompt);
                         prompt.setText(context.getString(R.string.fman_overwrite_file, fileName));
                     }
 

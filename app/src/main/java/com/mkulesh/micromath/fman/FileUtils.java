@@ -28,7 +28,6 @@ import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.io.Closeable;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
@@ -238,6 +237,7 @@ public final class FileUtils
         }
         catch (Exception e)
         {
+            // empty
         }
         return null;
     }
@@ -289,7 +289,9 @@ public final class FileUtils
     public final static boolean equals(String s1, String s2)
     {
         if (s1 == null)
-            return s2 == null ? true : false;
+        {
+            return s2 == null;
+        }
         return s1.equals(s2);
     }
 
@@ -320,6 +322,11 @@ public final class FileUtils
 
     public static InputStream getInputStream(final Context c, final Uri u)
     {
+        return getInputStream(c, u, true);
+    }
+
+    public static InputStream getInputStream(final Context c, final Uri u, boolean showToastOnError)
+    {
         try
         {
             InputStream is = null;
@@ -345,7 +352,10 @@ public final class FileUtils
             final String error = String.format(c.getResources().getString(R.string.error_file_read),
                     u.getLastPathSegment());
             ViewUtils.Debug(c, error + ", " + e.getLocalizedMessage());
-            Toast.makeText(c, error, Toast.LENGTH_LONG).show();
+            if (showToastOnError)
+            {
+                Toast.makeText(c, error, Toast.LENGTH_LONG).show();
+            }
         }
         return null;
     }

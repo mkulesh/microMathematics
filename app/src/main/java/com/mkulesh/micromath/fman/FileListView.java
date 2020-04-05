@@ -29,6 +29,7 @@ public class FileListView implements AdapterView.OnItemClickListener
     private final Commander commander;
     public final ListView listView;
     private final LinearLayout statusPanel;
+    private final View statusPanelDivider;
     private final TextView statusBar;
 
     private int currentPosition = -1;
@@ -37,7 +38,7 @@ public class FileListView implements AdapterView.OnItemClickListener
     FileListView(Commander c)
     {
         commander = c;
-        listView = (ListView) commander.findViewById(R.id.fman_list_view);
+        listView = commander.findViewById(R.id.fman_list_view);
         listView.setItemsCanFocus(false);
         listView.setFocusableInTouchMode(true);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -47,8 +48,9 @@ public class FileListView implements AdapterView.OnItemClickListener
             listView.setSelector(R.drawable.clickable_background_no_padding);
         }
         commander.registerForContextMenu(listView);
-        statusPanel = (LinearLayout) commander.findViewById(R.id.fman_status_panel);
-        statusBar = (TextView) commander.findViewById(R.id.fman_status_bar);
+        statusPanel = commander.findViewById(R.id.fman_status_panel);
+        statusPanelDivider = commander.findViewById(R.id.fman_status_panel_divider);
+        statusBar = commander.findViewById(R.id.fman_status_bar);
     }
 
     public final AdapterIf getListAdapter()
@@ -79,6 +81,7 @@ public class FileListView implements AdapterView.OnItemClickListener
             ca.setMode(AdapterIf.MODE_SORTING | AdapterIf.MODE_SORT_DIR, adapterMode);
             ca.readSource(uri, Integer.toBinaryString(0) + (posTo == null ? "" : posTo));
             statusPanel.setVisibility((ca instanceof AdapterHome) ? View.GONE : View.VISIBLE);
+            statusPanelDivider.setVisibility(statusPanel.getVisibility());
             statusBar.setText(ca.toString());
             ViewUtils.Debug(this, "Current directory: " + ca.getUri().getPath());
         }
