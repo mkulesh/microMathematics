@@ -28,8 +28,6 @@
     <!-- Dialogs -->
     <dimen name="dialog_title_text_size">@dimen/abc_text_size_subhead_material</dimen>
     <dimen name="dialog_content_text_size">@dimen/abc_text_size_medium_material</dimen>
-    <dimen name="dialog_licenses_path_size">@dimen/abc_text_size_small_material</dimen>
-    <dimen name="dialog_licenses_text_size">@dimen/abc_text_size_small_material</dimen>
     <dimen name="dialog_panel_vertical_padding">6dp</dimen>
     <dimen name="dialog_panel_horizontal_padding">3dp</dimen>
     <dimen name="dialog_title_height">56dp</dimen>

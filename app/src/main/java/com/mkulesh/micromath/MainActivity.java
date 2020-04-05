@@ -20,9 +20,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.google.android.material.navigation.NavigationView;
@@ -41,7 +39,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mkulesh.micromath.dialogs.DialogLicenses;
 import com.mkulesh.micromath.fman.AdapterDocuments;
 import com.mkulesh.micromath.formula.StoredFormula;
 import com.mkulesh.micromath.utils.AppLocale;
@@ -228,9 +225,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
             startActivityForResult(settings, SETTINGS_ACTIVITY_REQID);
             return true;
         }
-        case R.id.action_licenses:
-            (new DialogLicenses(this, BaseFragment.DEVELOPER_MODE)).show();
-            return true;
         case R.id.action_exit:
         case android.R.id.home:
             finish();

@@ -10,14 +10,12 @@
     <text_fragment>
       <term key="text" text="The microMathematics supports&#10;school-level of mathematical&#10;calculations. This version has&#10;following mathematical limitations: it&#10;does not support complex numbers,&#10;functions of many arguments, special&#10;functions, vectors, matrices,&#10;integration, differentiation and many&#10;other things from high-level&#10;mathematics." />
     </text_fragment>
-    <text_fragment>
-      <term key="text" text="&#10;Author: Mikhail Kulesh&#10;Email: mikhail.kulesh@gmail.com&#10;April 2017, Bremen, Germany&#10;" />
+
+    <text_fragment textStyle="subsection">
+      <term key="text" text="The app icon" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text="Enjoy!" />
-    </text_fragment>
-    <text_fragment>
-      <term key="text" text="&#10;P.S. The app icon is generated from the&#10;following function defined in the&#10;polar coordinate system:" />
+      <term key="text" text="The app icon is generated from the&#10;following function defined in the&#10;polar coordinate system:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="f" />
@@ -113,5 +111,70 @@
       </term>
       <term key="xMaxValue" text="20" />
     </plot_function>
+
+    <text_fragment textStyle="subsection">
+      <term key="text" text="License" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2014-2020 Mikhail Kulesh&#10;under the GNU General Public License,&#10;Version 3:&#10;www.gnu.org/licenses/gpl-3.0" />
+    </text_fragment>
+
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Open source libraries" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="The AndroidX Library" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="developer.android.com" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2013 The Android Open&#10;Source Project Licensed under the&#10;Apache License, Version 2.0:&#10;www.apache.org/licenses/LICENSE-2.0" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="The Apache Commons Mathematics Library" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="commons.apache.org" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Licensed to the Apache Software&#10;Foundation (ASF) under the Apache&#10;License, Version 2.0:&#10;www.apache.org/licenses/LICENSE-2.0" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="JScience - Java(TM) Tools and Libraries&#10;for the Advancement of Sciences" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="jscience.org" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2007 Jean-Marie Dautelle&#10;under the Apache License, Version 2.0:&#10;www.apache.org/licenses/LICENSE-2.0" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="HoloColorPicker Library" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="github.com/LarsWerkman/HoloColorPicker" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2012 Lars Werkman Licensed&#10;under the Apache License, Version 2.0:&#10;www.apache.org/licenses/LICENSE-2.0" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="AndroidSVG Library" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="github.com/BigBadaboom/androidsvg" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2013 Paul LeBeau, Cave Rock&#10;Software Ltd Licensed under the Apache&#10;License, Version 2.0:&#10;www.apache.org/licenses/LICENSE-2.0" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Ghost Commander Engine" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="sourceforge.net/projects/ghostcommander" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Copyright © 2017 Ghost Commander under&#10;the GNU General Public License, Version 3:&#10;www.gnu.org/licenses/gpl-3.0" />
+    </text_fragment>
   </formulaList>
 </micromath>
