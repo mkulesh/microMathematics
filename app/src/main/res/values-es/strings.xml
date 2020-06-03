@@ -43,16 +43,16 @@
     </string-array>
     <string-array name="activity_resources">
         <item></item>
-        <item>asset:/doc_es/how_to_use_de.mmt</item>
-        <item>asset:/doc_es/function_plot_de.mmt</item>
-        <item>asset:/doc_es/polar_plot_de.mmt</item>
-        <item>asset:/doc_es/three_d_plot_de.mmt</item>
-        <item>asset:/doc_es/series_and_integrals_de.mmt</item>
-        <item>asset:/doc_es/about_micromath_de.mmt</item>
+        <item>asset:/doc_es/how_to_use_es.mmt</item>
+        <item>asset:/doc_es/function_plot_es.mmt</item>
+        <item>asset:/doc_es/polar_plot_es.mmt</item>
+        <item>asset:/doc_es/three_d_plot_es.mmt</item>
+        <item>asset:/doc_es/series_and_integrals_es.mmt</item>
+        <item>asset:/doc_es/about_micromath_es.mmt</item>
         <item>https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.19.0.pdf</item>
     </string-array>
     <string name="activity_example">Ejemplos</string>
-    <string name="activity_welcome">asset:/doc_es/welcome_de.mmt</string>
+    <string name="activity_welcome">asset:/doc_es/welcome_es.mmt</string>
     
     <!-- Permissions -->
     <string name="allow_storage_access_title">Permitir el acceso a los archivos de las hojas de trabajo</string>
@@ -60,7 +60,7 @@
     <string name="allow_storage_access_grant">Dar la aprobación</string>
     
     <!-- Main menu -->
-    <string name="action_exit">Dejar</string>
+    <string name="action_exit">Salir</string>
     <string name="action_exit_confirm">Para salir, presione la tecla de regreso otra vez</string>
     <string name="action_play">Calcular</string>
     <string name="action_stop">Cancelar los cálculos</string>
