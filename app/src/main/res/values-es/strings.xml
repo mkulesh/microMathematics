@@ -34,8 +34,8 @@
     <string-array name="activity_subtitles">
         <item>Mi documento</item>
         <item>Aplicación Descripción</item>
-        <item>Plano de una función</item>
-        <item>Plano de una función polar</item>
+        <item>Gráfica de una función</item>
+        <item>Gráfica de una función polar</item>
         <item>Gráfico 3D</item>
         <item>Series e integrales</item>
         <item>microMathematics Plus</item>
@@ -64,7 +64,7 @@
     <string name="action_exit_confirm">Para salir, presione la tecla de regreso otra vez</string>
     <string name="action_play">Calcular</string>
     <string name="action_stop">Cancelar los cálculos</string>
-    <string name="action_object_properties">Propiedades de objetos</string>
+    <string name="action_object_properties">Propiedades del objeto</string>
     <string name="action_undo">Deshacer</string>
     <string name="action_discard">Descartar</string>
     <string name="action_document_settings">Ajustes de documentos</string>
@@ -143,13 +143,13 @@
     <string name="dialog_document_settings_reformat">Formato de texto</string>
     <string name="dialog_document_settings_width_size">Longitud de la línea</string>
     <string name="dialog_document_settings_significant_digits">Dígitos significativos en el resultado</string>
-    <string name="dialog_document_settings_redefine_allowed">Permitir la redefinición</string>
+    <string name="dialog_document_settings_redefine_allowed">Permitir redefinición de ecucaciones</string>
     <string name="dialog_result_details_argument">Argumento</string>
     <string name="dialog_result_details_value">Valor</string>
     <string name="dialog_image_settings_title">Ajustes de imagen</string>
     <string name="dialog_image_settings_file">Archivo de imagen (png, bmp, gif, jpeg, svg)</string>
     <string name="dialog_image_settings_select_file">Seleccione el archivo</string>
-    <string name="dialog_image_settings_embedded">Documento embebido</string>
+    <string name="dialog_image_settings_embedded">Imagen incrustada</string>
     <string name="dialog_image_settings_original_size">Tamaño original</string>
     <string name="dialog_image_settings_custom_size">Tamaño original por el usuario</string>
     <string name="dialog_image_settings_width">Ancho de imagen</string>
@@ -255,7 +255,7 @@
     <string name="error_brackets_not_completed">Los corchetes no se cerraron</string>
     <string name="error_invalid_variable_name">Nombre de variable inválida</string>
     <string name="error_unknown_variable">El símbolo no es ni una variable conocida ni un argumento</string>
-    <string name="error_unknown_function">La función %s no está definida ni es una función integrada</string>
+    <string name="error_unknown_function">La función %s no está definida ni es una función preparada</string>
     <string name="error_unknown_array">La matriz %s no está definida</string>
     <string name="error_not_an_array">El acceso a los índices no está permitido porque %s no es una matriz</string>
     <string name="error_not_a_function">El uso del argumento no está permitido porque %s no es una función</string>
