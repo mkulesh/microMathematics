@@ -83,7 +83,7 @@
     <string name="context_paste">Pegar</string>
 
     <!-- Application settings -->
-    <string name="pref_zoom_enabled">Permitir la función de zoom</string>
+    <string name="pref_zoom_enabled">Permitir ampliación</string>
     <string name="pref_developer_mode">Modo desarrollador</string>
     <string name="pref_exit_confirm">Pulse dos veces la tecla de retroceso para salir</string>
 
@@ -176,7 +176,7 @@
     <string name="math_new_element">Nuevo elemento</string>
     <string name="math_new_equation">Añadir ecucación</string>
     <string name="math_new_result">Añadir vista de resultados</string>
-    <string name="math_new_function_plot">Añadir gráfico de función</string>
+    <string name="math_new_function_plot">Añadir gráfica de la función</string>
     <string name="math_new_contour_plot">Añadir gráfico 3D</string>
     <string name="math_new_text_fragment">Añadir fragmento de texto</string>
     <string name="math_new_image_fragment">Añadir imagen desde archivo</string>
