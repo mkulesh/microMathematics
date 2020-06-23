@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="false">
+    <text_fragment>
+      <term key="text" text='Gracias por elegir "micro Mathematics Plus", la&#10;primera calculadora matemática del mundo en Android, orientada a&#10;un documento interactivo.&#10;&#10;El documento puede contener no sólo fórmulas y&#10;gráficos, sino también algunos textos e imágenes.&#10;&#10;Este documento es sólo una muestra y al mismo tiempo&#10;es una plantilla que muestra un gráfico de funciones.&#10;&#10;En primer lugar, definiremos el intervalo para la entrada&#10;de la función x. Lo conseguimos añadiendo las&#10;siguientes ecuaciones utilizando el botón "Nuevo elemento"&#10;de la barra de acciones' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/menu_new.svg" embedded="false" originalSize="false" width="290" height="110" colorType="auto" />
+    <text_fragment>
+      <term key="text" text='o el botón "Añadir ecucación"en la barra&#10;de herramientas:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_equation.svg" embedded="false" originalSize="false" width="400" height="110" colorType="auto" />
+    <text_fragment>
+      <term key="text" text="The first x-value:" />
+    </text_fragment>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x1" />
+      <term key="rightTerm" text="-10" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="The last x-value:" />
+    </text_fragment>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x2" />
+      <term key="rightTerm" text="10" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="El paso de muestreo a lo largo del eje x y&#10;la variable de tipo de intervalo que&#10;define la entrada de la función sería:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="dx" />
+      <term key="rightTerm" text="0.1" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="x1" />
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" text="x1" />
+          <term key="rightTerm" text="dx" />
+        </term>
+        <term key="maxValue" text="x2" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text='En segundo lugar, añadimos un nuevo campo de ecuación&#10;usando el botón "Añadir ecuación" de la barra&#10;de herramientas. Dejemos que f(x) sea el nombre de&#10;la función que ponemos en el campo izquierdo.&#10;El campo derecho contiene la función que graficaremos.&#10;En comparación con la mayoría de las calculadoras,&#10;ponemos la fórmula de la función en la forma naturalmente&#10;legible:' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f(x)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="power">
+          <term key="leftTerm" text="e" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" text="-x" />
+            <term key="rightTerm" text="10" />
+          </term>
+        </term>
+        <term key="rightTerm" code="summation">
+          <term key="maxValue" text="20" />
+          <term key="index" text="n" />
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="mult">
+            <term key="leftTerm" code="divide">
+              <term key="leftTerm" code="power">
+                <term key="leftTerm" code="identity">
+                  <term key="argTerm" text="-1" />
+                </term>
+                <term key="rightTerm" text="n" />
+              </term>
+              <term key="rightTerm" code="factorial">
+                <term key="argTerm" code="mult">
+                  <term key="leftTerm" text="2" />
+                  <term key="rightTerm" text="n" />
+                </term>
+              </term>
+            </term>
+            <term key="rightTerm" code="power">
+              <term key="leftTerm" text="x" />
+              <term key="rightTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" text="n" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text='Finalmente, añadimos un panel de gráficos usando el botón&#10;"Añadir gráfico de la función" de la barra de herramientas:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_plot_function.svg" embedded="false" originalSize="false" width="400" height="110" colorType="auto" />
+    <text_fragment>
+      <term key="text" text="Ponemos la entrada de la función x en el campo&#10;centro-inferior y la función nombre en el campo centro-izquierdo.&#10;Los otros cuatro campos correspondientes a&#10;los ejes los límites pueden permanecer vacíos y&#10;serán calculados automáticamente:" />
+    </text_fragment>
+    <plot_function width="680" height="500" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FF0000FF" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text='&#10;Puedes guardar este documento usando el comando "Guardar&#10;como" del menú principal, borrar todo el texto&#10;y usarlo como una plantilla para graficar funciones.&#10;&#10;Para crear un documento vacío, elige la&#10;entrada "Nuevo documento" del menú principal.&#10;&#10;Para más detalles, consulta la página "Cómo usar"&#10;y los diferentes ejemplos del menú de navegación&#10;de la aplicación. Este menú también&#10;contiene el enlace a la documentación&#10;imprimible en formato PDF.' />
+    </text_fragment>
+  </formulaList>
+</micromath>

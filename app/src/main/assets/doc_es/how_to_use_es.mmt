@@ -1,0 +1,639 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="How To Use" description="" textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="Esta app es un potente software de cálculo&#10;en formato de hoja de cálculo. La&#10;hoja de cálculo puede ser editada libremente, almacenada&#10; o abierta en una tarjeta SD, y&#10;exportada a una imagen o formato&#10;LaTeX.&#10;&#10;La hoja de cálculo es un documento matemático&#10;que contiene texto, fórmulas y&#10;gráficos. Soporta la edición en vivo de&#10;notaciones matemáticas y su&#10;cálculo automático.&#10;&#10;Los siguientes objetos pueden ser insertados en&#10;hoja de trabajo: ecuaciones, vistas de resultados,&#10;gráficos, fragmentos de texto e imágenes. Este&#10;documento da una visión general de cómo&#10;editar estos objetos." />
+    </text_fragment>
+    <text_fragment textStyle="subsection" numbering="true">
+      <term key="text" text="Edición" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text='Casi todos los objetos disponibles contienen&#10;varios campos editables. Para editar el&#10;campo use los símbolos y funciones en&#10;la barra de herramientas.&#10;&#10;Todos los símbolos también pueden ser introducidos desde&#10;el teclado. Para saber cuál&#10;símbolo del teclado corresponde al&#10;símbolo matemático que desea introducir,&#10;lea la pista al mantener presionado en el&#10;botón de interés.&#10;&#10;Con un clic largo en un término puede&#10;seleccionar este término. El término seleccionado&#10;puede borrarse, copiarse al portapapeles,&#10;pegarse desde este elemento o puede&#10;insertar otro operador u otra función&#10;después de ese término utilizando los botones de la&#10;barra de herramientas o del teclado.&#10;&#10;El comando "Deshacer" está disponible en la&#10;barra de acción. Borra el último cambio&#10;realizado en el documento y lo devuelve a&#10;un estado anterior:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/menu_undo.svg" embedded="false" originalSize="false" width="290" height="110" colorType="auto" />
+    <text_fragment textStyle="subsection" numbering="true">
+      <term key="text" text="Ecucación" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text='Una ecuación define una constante&#10;numérica, un intervalo o una función.&#10;Para crear una ecuación, use el botón "Nuevo&#10;elemento" en la barra de acciones' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/menu_new.svg" embedded="false" originalSize="false" width="290" height="110" colorType="auto" />
+    <text_fragment>
+      <term key="text" text='o el botón "Añadir ecuación" de la&#10;barra de herramientas:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_equation.svg" embedded="false" originalSize="false" width="400" height="110" colorType="auto" />
+    <text_fragment>
+      <term key="text" text="Aparece una ecuación con dos campos vacíos.&#10;Estos campos deben ser rellenados:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="" />
+      <term key="rightTerm" text="" />
+    </equation>
+    <text_fragment>
+      <term key="text" text='El nombre de la ecuación se da en el campo&#10;de la izquierda. El nombre debe&#10;llevar únicamente letras o dígitos y se utilizará en&#10;otros objetos para hacer referencia a&#10;esta ecuación.&#10;&#10;Desde la barra de acciones, puede abrir&#10;la ventana de diálogo "Ajustes del documento": ' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/menu_settings.svg" embedded="false" originalSize="false" width="290" height="110" colorType="auto" />
+    <text_fragment>
+      <term key="text" text='Dependiendo del parámetro "Permitir &#10;redefinición de ecuaciones" en este diálogo,&#10;hay dos modos de uso: &#10;&#10;a) si no se permite la redefinición,&#10;el nombre de la ecuación será único&#10;dentro de toda la hoja de trabajo y la&#10;ecuación puede utilizarse tanto antes como&#10;después de su definición,&#10;&#10;b) si se permite la redefinición, puedes&#10;definir más de una ecuación con&#10;el mismo nombre. Si tal ecuación está&#10;referenciada, la última versión definida&#10;antes de la ecuación llamada será&#10;utilizada.' />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Constant" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Si el nombre de la ecuación no contiene&#10;algún argumento entre paréntesis, se define una&#10;constante o un intervalo:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="200" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="Sq2" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" text="100" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="Pi2" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" text="π" />
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="En el último ejemplo, se usó una constante&#10;pi preparada. Actualmente, las&#10;siguientes constantes incorporadas están&#10;disponibles:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="π" />
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="pi" />
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="e" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Una constante previamente definida también puede &#10;ser usada:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="NPi2" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="N" />
+        <term key="rightTerm" text="Pi2" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text='También puede utilizar el símbolo "i" como&#10;unidad imaginaria para definir un&#10;número complejo:' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="z" />
+      <term key="rightTerm" text="5+3i" />
+    </equation>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Units" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Si necesitas una unidad para la constante,&#10;puedes ponerla desde el teclado en&#10;el mismo campo de entrada. La unidad deberá&#10;estar separada del número usando&#10;espacio. Puedes usar unidades tanto para las constantes reales,&#10;como para las complejas:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="r" />
+      <term key="rightTerm" text="10" unit="m" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="a" />
+      <term key="rightTerm" code="power">
+        <term key="leftTerm" text="10" unit="m" />
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="v" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" text="10" unit="km" />
+        <term key="rightTerm" text="" unit="hr" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="α" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="45" unit="°" />
+        <term key="rightTerm" code="plus">
+          <term key="leftTerm" text="30" unit="'" />
+          <term key="rightTerm" text="15" unit='"' />
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="φ" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="100" />
+        <term key="rightTerm" code="divide">
+          <term key="leftTerm" code="mult">
+            <term key="leftTerm" text="" unit="kg" />
+            <term key="rightTerm" text="" unit="m" />
+          </term>
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="" unit="s" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text='El documento "units_overview.mmt"&#10;contiene la lista de todas las unidades soportadas&#10;. Este documento se entrega con&#10;la aplicación y se almacena en "Recursos&#10;de microMathematics Plus".' />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Interval" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text='Una ecuación de tipo intervalo define una&#10;variable que se cambia desde un valor&#10;mínimo hasta un valor&#10;máximo dado con un incremento definido. Esta&#10;variable puede ser utilizada como argumento para gráficos de función&#10; o como parámetro para&#10;elaborar una tabla de valores de función.&#10;&#10;Para definir un intervalo, ponga un nombre&#10;válido a la izquierda de una ecuación&#10;vacía. En el lado derecho de esta&#10;ecuación, ponga un símbolo ":", o&#10;pulse en el botón "Intervalo&#10;equidistante" de la barra de herramientas:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_interval.svg" embedded="false" originalSize="false" width="400" height="110" colorType="auto" />
+    <text_fragment>
+      <term key="text" text="Aquí, el primer elemento es el intervalo&#10;como punto de inicio, el siguiente elemento es el&#10;segundo punto, y el último elemento es&#10;el punto final del intervalo:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="0.1" />
+        <term key="maxValue" text="10" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Se accederá a los elementos del intervalo&#10;por índice:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
+        <term key="argTerm" text="0" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
+        <term key="argTerm" text="1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
+        <term key="argTerm" text="100" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="El incremento es la diferencia de&#10;dos valores vecinos:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="minus">
+        <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
+          <term key="argTerm" text="2" />
+        </term>
+        <term key="rightTerm" code="content:com.mkulesh.micromath.index.x">
+          <term key="argTerm" text="1" />
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text='Por ejemplo, podemos definir un&#10;intervalo equidistante que contiene N&#10;puntos distribuidos con el incremento "dy"&#10;donde el inicio del intervalo es cero como&#10;sigue:' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="dy" />
+      <term key="rightTerm" text="0.05" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="y" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="dy" />
+        <term key="maxValue" code="mult">
+          <term key="leftTerm" text="dy" />
+          <term key="rightTerm" text="N" />
+        </term>
+      </term>
+    </equation>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Function" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Una función es una relación entre uno&#10;o más argumentos y un conjunto&#10;de salidas permisibles con la propiedad,&#10;que cada valor del argumento (real o&#10;complejo) o combinación de argumentos está&#10;relacionado exactamente con la salida.&#10;&#10;El nombre de la función el argumento&#10;de la función entre paréntesis se dan en el&#10;lado izquierdo de una ecuación. No es&#10;necesario definir el argumento en&#10;la hoja de trabajo previamente, puedes&#10;definirlo como quieras, pero usando&#10;sólo letras o dígitos:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f(t)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="sin">
+          <term key="argTerm" text="t" />
+        </term>
+        <term key="rightTerm" code="divide_slash">
+          <term key="leftTerm" code="cos">
+            <term key="argTerm" text="t" />
+          </term>
+          <term key="rightTerm" text="2" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="w(z)" />
+      <term key="rightTerm" code="power">
+        <term key="leftTerm" text="e" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="2i" />
+          <term key="rightTerm" code="mult">
+            <term key="leftTerm" text="π" />
+            <term key="rightTerm" text="z" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="H(x,y)" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" code="plus">
+          <term key="leftTerm" code="power">
+            <term key="leftTerm" text="x" />
+            <term key="rightTerm" text="2" />
+          </term>
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="y" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="g(x,y)" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" code="sin">
+          <term key="argTerm" code="content:com.mkulesh.micromath.link.H:2">
+            <term key="argTerm1" text="x" />
+            <term key="argTerm2" text="y" />
+          </term>
+        </term>
+        <term key="rightTerm" code="plus">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.link.H:2">
+            <term key="argTerm1" text="x" />
+            <term key="argTerm2" code="divide_slash">
+              <term key="leftTerm" text="y" />
+              <term key="rightTerm" text="2" />
+            </term>
+          </term>
+          <term key="rightTerm" text="1" />
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text='El lado derecho de la función contiene&#10;una fórmula matemática de cómo&#10;calcular la función. Si esta&#10;fórmula no contiene el argumento declarado&#10; en la función, tal función&#10;se interpretará como una constante.&#10;&#10;También puedes utilizar en el lado derecho&#10;otras funciones incorporadas o previamente definidas&#10;. Para insertar una función introduzca&#10;su nombre, pulse en el corchete izquierdo&#10;el símbolo "(" y luego introduzca su&#10;argumento. Este argumento también puede ser un&#10;fórmula, que contiene cualquier otra&#10;operación y función.&#10;&#10;El documento "functions_overview.mmt",&#10;almacenado dentro de los "Recursos de&#10;microMathematic Plus", proporciona la&#10;lista de todas las funciones disponibles.' />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Matriz" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Las matrices son funciones especiales con&#10;las siguientes propiedades:&#10;&#10;a) los elementos de la matriz pueden asignarse&#10;usando un índice dado en [ ] en lugar&#10;de ( ). Cualquier elemento no asignado es &#10;establecido por defecto a cero:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="r[0]" />
+      <term key="rightTerm" text="5" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="r[3]" />
+      <term key="rightTerm" text="6" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="r[2]" />
+      <term key="rightTerm" text="-4" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="idx" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="3" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+        <term key="argTerm" text="idx" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="b) un intervalo previamente definido&#10;puede ser usado como argumento de la matriz:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="k" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="100" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="m" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="200" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="M[k,m]" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" code="power">
+          <term key="leftTerm" code="sin">
+            <term key="argTerm" code="divide_slash">
+              <term key="leftTerm" text="k" />
+              <term key="rightTerm" text="10" />
+            </term>
+          </term>
+          <term key="rightTerm" text="2" />
+        </term>
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="3" />
+          <term key="rightTerm" code="abs_layout">
+            <term key="argTerm" code="cos">
+              <term key="argTerm" code="divide_slash">
+                <term key="leftTerm" text="m" />
+                <term key="rightTerm" text="10" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text='c) los elementos de la matriz se calculan y&#10;se guardan en una memoria que reduce el&#10;tiempo de acceso a estos valores&#10;&#10;d) sólo se puede acceder a los elementos de la matriz&#10;utilizando un índice inferior. Para crear&#10;un índice inferior, ponga "[" después del nombre&#10;de la matriz:' />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
+        <term key="argTerm1" text="5" />
+        <term key="argTerm2" text="10" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
+        <term key="argTerm1" text="10" />
+        <term key="argTerm2" text="5" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="P[k,m]" />
+      <term key="rightTerm" code="floor">
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" text="-10" />
+          <term key="rightTerm" code="content:com.mkulesh.micromath.index.M:2">
+            <term key="argTerm1" text="k" />
+            <term key="argTerm2" text="m" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="e) si algún índice de la matriz es complejo o&#10;negativo o mayor que el límite superior&#10;del intervalo correspondiente,&#10;se devolverá el número inválido:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
+        <term key="argTerm1" text="10i" />
+        <term key="argTerm2" text="100" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
+        <term key="argTerm1" text="90" />
+        <term key="argTerm2" text="210" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment textStyle="subsection" numbering="true">
+      <term key="text" text="Result View" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text='Este elemento tiene como objetivo representar&#10;un resultado de cálculo como un número&#10; o una tabla. Para añadir este elemento,&#10; utilice el botón "Nuevo elemento" de la&#10;barra de acciones o el botón "Añadir vista de resultados" de&#10;la barra de herramientas:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_result.svg" embedded="false" originalSize="false" width="400" height="110" colorType="auto" />
+    <text_fragment>
+      <term key="text" text="Aparece una ecuación con dos campos,&#10;donde se rellenará el campo izquierdo:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text='El término de la izquierda contiene una fórmula&#10;para ser calculada y el término de la derecha&#10;es el resultado del cálculo. El resultado se&#10;mostrará cuando se presiona el botón flotante&#10;"Calcular".&#10;&#10;Dentro del término de la izquierda se puede utilizar cualquier&#10;constante y funciones definidas&#10;previamente así como cualquier función&#10;preparada:' />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="mult">
+        <term key="leftTerm" code="power">
+          <term key="leftTerm" text="e" />
+          <term key="rightTerm" text="π" />
+        </term>
+        <term key="rightTerm" code="content:com.mkulesh.micromath.link.f">
+          <term key="argTerm" text="NPi2" />
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text='Si la parte izquierda no contiene ninguna&#10;variable de "tipo intervalo", el&#10;resultado del cálculo es sólo un número real o&#10;complejo:' />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="minus">
+        <term key="leftTerm" code="content:com.mkulesh.micromath.index.y">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" text="N" />
+            <term key="rightTerm" text="1" />
+          </term>
+        </term>
+        <term key="rightTerm" code="content:com.mkulesh.micromath.index.y">
+          <term key="argTerm" text="0" />
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="re">
+        <term key="argTerm" text="z" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="im">
+        <term key="argTerm" text="z" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="abs_layout">
+        <term key="argTerm" text="z" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sqrt_layout">
+        <term key="argTerm" code="sin">
+          <term key="argTerm" code="mult">
+            <term key="leftTerm" code="divide">
+              <term key="leftTerm" text="3" />
+              <term key="rightTerm" text="2" />
+            </term>
+            <term key="rightTerm" text="π" />
+          </term>
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Si la parte izquierda contiene alguna variable&#10;que tenga una unidad dimensional, entonces el&#10;resultado puede tener dimensión también:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" units="rad/s">
+      <term key="leftTerm" code="mult">
+        <term key="leftTerm" text="2" />
+        <term key="rightTerm" code="divide_slash">
+          <term key="leftTerm" text="α" />
+          <term key="rightTerm" text="10" unit="s" />
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Si la parte izquierda contiene un intervalo&#10;variable, el resultado del cálculo es un&#10;vector de valores correspondiente a este&#10;intervalo. Debido al límite de espacio libre en&#10;la visualización, sólo se mostrarán los seis primeros y&#10;los últimos elementos del vector:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="y" />
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="mult">
+        <term key="leftTerm" text="2" />
+        <term key="rightTerm" text="y" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="5">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.P:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text='El número de elementos visualizados y el&#10;modo en el que se muestra el resultado&#10;puede ser cambiado. Al mantener presionado&#10;en el área de la fórmula y el menú contextual&#10;seleccione toda la fórmula. Si se selecciona la&#10;fórmula, aparece el botón flotante&#10;de "Propiedades del objeto". Si&#10;se hace clic en este botón, se mostrará el diálogo de vista&#10;de resultados:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/menu_details.svg" embedded="false" originalSize="false" width="550" height="200" colorType="auto" />
+    <text_fragment>
+      <term key="text" text='El segundo botón flotante, "Detalles",&#10;también aparecerá. Si hace clic en este&#10;botón, se mostrará el diálogo "Detalles",&#10;donde podrá observar todos&#10;los elementos de la matriz.&#10;&#10;Observe que el uso de tres o más&#10;variables "tipo intervalo" a la izquierda&#10;parte de una vista de resultados no está permitido&#10;en esta versión de la aplicación.' />
+    </text_fragment>
+    <text_fragment textStyle="subsection" numbering="true">
+      <term key="text" text="Gráfico de Funciones" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text='El elemento de la gráfica de la función muestra una&#10;representación visual de una función, que depende de&#10;un solo argumento. Para crear un gráfico,&#10;utilice el botón "Nuevo elemento" de la barra de acciones&#10;o el botón "Añadir gráfico de funciones"&#10;de la barra de herramientas:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_plot_function.svg" embedded="false" originalSize="false" width="400" height="110" colorType="auto" />
+    <text_fragment>
+      <term key="text" text="Aparece un panel con seis campos vacíos.&#10;La función que se va a graficar deberá&#10;ser puesta en el campo medio-izquierdo y&#10;el argumento de la función en el campo&#10;medio-inferior:" />
+    </text_fragment>
+    <plot_function width="680" height="600" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#FF838383" functionsNumber="2">
+      <term key="yMaxValue" text="0.26" />
+      <term key="yFunction1" color="#FFB10016" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" code="divide">
+          <term key="leftTerm" text="y" />
+          <term key="rightTerm" text="2" />
+        </term>
+      </term>
+      <term key="yFunction2" color="#FF0000FF" width="3" lineStyle="dash_dot" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.g:2">
+        <term key="argTerm1" text="5" />
+        <term key="argTerm2" text="y" />
+      </term>
+      <term key="yMinValue" text="-0.26" />
+      <term key="xMinValue" text="0" />
+      <term key="xFunction1" text="y" />
+      <term key="xFunction2" text="y" />
+      <term key="xMaxValue" code="mult">
+        <term key="leftTerm" text="2" />
+        <term key="rightTerm" text="π" />
+      </term>
+    </plot_function>
+    <text_fragment>
+      <term key="text" text='Para más detalles ver "Gráfica de funciones"&#10;y ejemplos de "Gráfica de funciones polares"&#10;del cajón de navegación de aplicaciones.' />
+    </text_fragment>
+    <text_fragment textStyle="subsection" numbering="true">
+      <term key="text" text="Gráfica tridimensional" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text='El elemento de la gráfica 3D muestra un gráfico de&#10;una sola función que depende de dos&#10;argumentos. Para crear un gráfico de este tipo, utilice&#10;el botón "Nuevo elemento" de la barra de acciones&#10;o el botón "Añadir gráfico 3D" de&#10;la barra de herramientas:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_plot_contour.svg" embedded="false" originalSize="false" width="400" height="110" colorType="auto" />
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="-10" />
+        <term key="nextValue" text="-9.5" />
+        <term key="maxValue" text="10" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="y" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="-10" />
+        <term key="nextValue" text="-9.5" />
+        <term key="maxValue" text="10" />
+      </term>
+    </equation>
+    <plot_contour plotStyle="surface" width="680" height="600" axes_style="boxed" meshLines="true" meshFill="true" meshOpacity="165" rotation="35" elevation="20" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" zLabelsNumber="10" colorMap="coldhot">
+      <term key="yMaxValue" text="10" />
+      <term key="yMinValue" text="-10" />
+      <term key="xMinValue" text="-10" />
+      <term key="zFunction" code="content:com.mkulesh.micromath.link.g:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="y" />
+      </term>
+      <term key="xMaxValue" text="10" />
+    </plot_contour>
+    <text_fragment>
+      <term key="text" text="En el campo central-inferior, coloca el&#10;nombre de la función o una ecuación que&#10;contiene exactamente dos intervalos previamente&#10;definidos. El uso de una matriz&#10;también es posible:" />
+    </text_fragment>
+    <plot_contour plotStyle="contour" width="680" height="500" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" zLabelsNumber="10" colorMap="rainbow">
+      <term key="yMaxValue" text="" />
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="zFunction" code="content:com.mkulesh.micromath.index.M:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
+      <term key="xMaxValue" text="" />
+    </plot_contour>
+    <text_fragment>
+      <term key="text" text='Para más detalles vea el ejemplo "Gráfico 3D"&#10;del cajón de navegación de aplicaciones.' />
+    </text_fragment>
+    <text_fragment textStyle="subsection" numbering="true">
+      <term key="text" text="Fragmento de texto" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text='El elemento de fragmento de texto muestra&#10;un texto simple como este. Para añadir un&#10;fragmento de texto, utilice el botón "Nuevo elemento"&#10;de la barra de acciones o el botón "Añadir fragmento&#10;de texto" de la barra de herramientas:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_text_fragment.svg" embedded="false" originalSize="false" width="400" height="110" colorType="auto" />
+    <text_fragment>
+      <term key="text" text='Si todo el texto dentro de un fragmento es &#10;seleccionado mediante el menú contextual&#10; "Seleccionar todo", aparecerá un botón flotante&#10; "Propiedades del objeto" en la&#10;parte inferior derecha de la pantalla.&#10;&#10;Si pulsa en este botón, aparecerá el&#10;diálogo "Propiedades de texto",&#10;donde podrá seleccionar el estilo de texto&#10;y activar la numeración. Por&#10;ejemplo, los títulos de este documento&#10;tienen el estilo "Subsección" con&#10;la numeración activada.' />
+    </text_fragment>
+    <text_fragment textStyle="subsection" numbering="true">
+      <term key="text" text="Image" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text='También puedes insertar una imagen del archivo de imágenes.&#10; Para hacerlo, usa el botón "Nuevo&#10;elemento" de la barra de acciones o&#10;el botón "Añadir imagen desde archivo" de&#10;la barra de herramientas:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_image_fragment.svg" embedded="false" originalSize="false" width="400" height="110" colorType="auto" />
+    <text_fragment>
+      <term key="text" text='Aparecerá el diálogo " Ajustes de imagen". Allí puede seleccionar un archivo&#10;con la imagen que se va a insertar y establecer&#10;el tamaño de imagen necesario.&#10;&#10;Los siguientes formatos de imagen son&#10;soportados: png, bmp, gif, jpeg, svg.&#10;&#10;Si activa el indicador "Imagen incrustada"&#10;en el diálogo "Ajustes de imagen",&#10;entonces la imagen se incrustará&#10;directamente en el documento. La imagen&#10;incrustada operará dentro del único documento, excepto&#10;en un archivo más grande.&#10;&#10;Si el indicador "Imagen incrustada" no está&#10; activado, el archivo de imagen sólo&#10;será referenciado en lugar de incrustarlo, es decir,&#10;su documento vinculará al archivo de la imagen&#10;por separado. En caso de que&#10;mueva su documento por favor no&#10;olvide mover el archivo de imagen también.&#10;&#10;Puede cambiar las propiedades de una&#10;imagen ya existente. Mantén presionado en&#10;el área de la imagen hasta que aparezca el botón flotante&#10;de "Propiedades del objeto". Si&#10;presiona este botón, se mostrará un diálogo con&#10;las propiedades de la imagen.' />
+    </text_fragment>
+  </formulaList>
+</micromath>
