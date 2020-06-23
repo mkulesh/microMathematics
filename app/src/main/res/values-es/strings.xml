@@ -136,7 +136,7 @@
     <string name="dialog_surface_settings_rotation">Ángulo de rotación</string>
     <string name="dialog_surface_settings_elevation">Inclinación</string>
     <string name="dialog_colormap_settings_title">Ajustes de color de la tabla</string>
-    <string name="dialog_colormap_settings_zlabels"Número de leyendas Z</string>
+    <string name="dialog_colormap_settings_zlabels">Número de leyendas Z</string>
     <string name="dialog_document_settings_author">Autor</string>
     <string name="dialog_document_settings_document_title">Título</string>
     <string name="dialog_document_settings_description">Descripción</string>
