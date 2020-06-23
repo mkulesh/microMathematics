@@ -13,6 +13,7 @@ buildPdf $1
 buildPdf $1 -ru
 buildPdf $1 -de
 buildPdf $1 -br
+buildPdf $1 -es
 
 rm -f *.log *.aux
 ls -l *.pdf

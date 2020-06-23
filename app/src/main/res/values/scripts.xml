@@ -12,7 +12,7 @@
   ~ Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- TA scenarios -->
     <string name="autotest_directory" translatable="false">ta</string>
@@ -95,9 +95,15 @@
         <item>asset:/doc_br/three_d_plot_br.mmt</item>
         <item>asset:/doc_br/series_and_integrals_br.mmt</item>
         <item>asset:/doc_br/about_micromath_br.mmt</item>
+        <item>asset:/doc_es/how_to_use_es.mmt</item>
+        <item>asset:/doc_es/function_plot_es.mmt</item>
+        <item>asset:/doc_es/polar_plot_es.mmt</item>
+        <item>asset:/doc_es/three_d_plot_es.mmt</item>
+        <item>asset:/doc_es/series_and_integrals_es.mmt</item>
+        <item>asset:/doc_es/about_micromath_es.mmt</item>
     </string-array>
 
-    <string-array name="take_screenshots_scripts" translatable="false">
+    <string-array name="take_screenshots_scripts" translatable="false" tools:ignore="InconsistentArrays">
         <item>asset:/examples/area_between_curves.mmt</item>
         <item>asset:/examples/cosine_transform.mmt</item>
         <item>asset:/examples/double_integral.mmt</item>
@@ -112,6 +118,7 @@
     <string-array name="asset_filter" translatable="false">
         <item>doc_br</item>
         <item>doc_en</item>
+        <item>doc_es</item>
         <item>doc_ru</item>
         <item>doc_de</item>
         <item>examples</item>

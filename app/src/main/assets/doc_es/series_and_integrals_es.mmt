@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
+  <formulaList documentVersion="2" author="" title="" description="" textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
     <text_fragment>
-      <term key="text" text="This example demonstrates how to&#10;calculate series and integrals." />
+      <term key="text" text="Este ejemplo demuestra cómo calcular&#10;series e integrales." />
     </text_fragment>
     <text_fragment textStyle="subsection" numbering="true">
       <term key="text" text="Serie de Taylor" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text="En matemáticas, la serie de Taylor es una representación de&#10;una función como una suma infinita de términos que&#10;se calculan a partir de los valores de las derivadas&#10;de la función en un solo punto.&#10;&#10;Por ejemplo, Ts(x,N) es la expansión de Taylor en función del&#10;argumento x y del número de términos N:" />
+      <term key="text" text="En matemáticas, la serie de Taylor es&#10;una representación de una función como&#10;una suma infinita de términos que se&#10;calculan a partir de los valores de&#10;las derivadas de la función en un solo&#10;punto.&#10;&#10;Por ejemplo, Ts(x,N) es la expansión&#10;de Taylor en función del argumento x y&#10;del número de términos N:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="Ts(x,N)" />
@@ -51,7 +51,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text="Si trazamos ambas funciones juntas para el mismo intervalo,&#10;ambas parecen iguales:" />
+      <term key="text" text="Si trazamos ambas funciones juntas para&#10;el mismo intervalo, ambas parecen&#10;iguales:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="x" />
@@ -64,7 +64,7 @@
         </term>
       </term>
     </equation>
-    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="6" gridLineColor="#FF838383" functionsNumber="2">
+    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="6" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="2">
       <term key="yMaxValue" text="1.1" />
       <term key="yFunction1" color="#FFFFA900" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.s">
         <term key="argTerm" text="x" />
@@ -83,7 +83,7 @@
       </term>
     </plot_function>
     <text_fragment>
-      <term key="text" text="Sin embargo, hay un error numérico debido al número limitado&#10;de términos de aproximación N. La siguiente&#10;función Δ(x,N) describe este error:" />
+      <term key="text" text="Sin embargo, hay un error numérico&#10;debido al número limitado de términos&#10;de aproximación N. La siguiente&#10;función Δ(x,N) describe este error:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="Δ(x,N)" />
@@ -100,7 +100,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text="Podemos graficar esta función en coordenadas logarítmicas y&#10;ver que el error numérico disminuirá si introducimos&#10;más términos en la suma de Taylor:" />
+      <term key="text" text="Podemos graficar esta función en&#10;coordenadas logarítmicas y ver que el&#10;error numérico disminuirá si&#10;introducimos más términos en la suma&#10;de Taylor:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="N" />
@@ -138,7 +138,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text="Esta función puede ser aproximada usando&#10;serie de binomios:" />
+      <term key="text" text="Esta función puede ser aproximada&#10;usando serie de binomios:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="Tf(x,α,N)" />
@@ -172,9 +172,9 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text="También podemos graficar ambas funciones (la&#10;función de potencia dada y su&#10;aproximación) juntas en la misma&#10;gráfica:" />
+      <term key="text" text="También podemos graficar ambas&#10;funciones (la función de potencia dada&#10;y su aproximación) juntas en la misma&#10;gráfica:" />
     </text_fragment>
-    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#FF838383" functionsNumber="2">
+    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="2">
       <term key="yMaxValue" text="3000" />
       <term key="yFunction1" color="#FFFF9400" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f:2">
         <term key="argTerm1" text="x" />
@@ -195,7 +195,7 @@
       <term key="text" text="Integrals" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text='También es posible calcular una integral definida&#10;numéricamente usando el método de Simpson. Por ejemplo,&#10;podemos calcular la integral usando el elemento&#10;"Añadir vista de resultados":' />
+      <term key="text" text='También es posible calcular una&#10;integral definida numéricamente usando&#10;el método de Simpson. Por ejemplo,&#10;podemos calcular la integral usando el&#10;elemento "Añadir vista de resultados":' />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="integral">
@@ -221,7 +221,7 @@
         </term>
         <term key="index" text="x" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text="La solución analítica es" />
@@ -243,10 +243,10 @@
     </text_fragment>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="I" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
-      <term key="text" text="El error numérico puede calcularse como:" />
+      <term key="text" text="El error numérico puede calcularse&#10;como:" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="minus">
@@ -275,14 +275,14 @@
         </term>
         <term key="rightTerm" text="I" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
-      <term key="text" text='Este error depende del valor "Cifras significativas en el&#10;resultado" que se puede cambiar en el cuadro de diálogo "Ajustes del documento" disponible en la barra&#10;de acciones:' />
+      <term key="text" text='Este error depende del valor "Cifras&#10;significativas en el resultado" que se&#10;puede cambiar en el cuadro de diálogo&#10;"Ajustes del documento" disponible en&#10;la barra de acciones:' />
     </text_fragment>
     <image_fragment fileName="asset:/images/menu_settings.svg" embedded="false" originalSize="false" width="290" height="110" colorType="auto" />
     <text_fragment>
-      <term key="text" text="Si este valor aumenta, el umbral que controla&#10;la precisión del método Simpson&#10;también aumentará." />
+      <term key="text" text="Si este valor aumenta, el umbral que&#10;controla la precisión del método&#10;Simpson también aumentará." />
     </text_fragment>
   </formulaList>
 </micromath>

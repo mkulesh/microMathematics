@@ -12,12 +12,13 @@ In order to build the documentation, the LaTeX (texlive) and following latex pac
 # yum install texlive-cyrillic texlive-babel-russian texlive-hyphen-russian texlive-lh 
 # yum install texlive-babel-german texlive-hyphen-german
 # yum install texlive-babel-portuges texlive-hyphen-portuguese
+# yum install texlive-babel-spanish texlive-hyphen-spanish
 # yum install texlive-collection-mathextra
-# fmtutil --all
+# fmtutil -sys --all
 ```
 - as a local user (not root):
 ```
-# fmtutil --missing
+# fmtutil -user --missing
 ```
 
 After LaTeX is installed, call 

@@ -1,0 +1,92 @@
+\documentclass[DIV=calc, paper=a4, fontsize=11pt, twocolumn]{scrartcl}
+\usepackage{microMathematics-br}
+\usepackage[portuguese]{babel} % Rortuguese language/hyphenation
+
+% Begin document
+\begin{document}
+\maketitle
+\thispagestyle{fancy} % Enabling the custom headers/footers for the first page
+
+\begin{bf}
+% This is the first part of the file about_micromath.tex
+El microMathematics Plus es la
+calculadora matemática en Android
+orientada alrededor de una hoja de cálculo que
+permite la edición en vivo de identidades matemáticas
+combinadas con cálculos altamente
+precisos.
+
+Basada en una potente pantalla táctil
+el editor permite a los usuarios crear y
+manipular de forma natural
+hojas de trabajo que contienen todas las
+anotaciones matemáticas básicas.
+
+El microMathematics Plus permite
+operar matemáticas al nivel de educación
+secundaria. Esta versión tiene
+siguientes limitaciones matemáticas: no soporta funciones especiales,
+vectores, matrices y muchas otras
+cosas de matemáticas de alto nivel.
+\end{bf}
+
+\section{Utilizar}
+\input{how_to_use_br}
+
+\section{Ejemplo: Gráfica de una función}
+\input{function_plot_br}
+
+\section{Ejemplo: Gráfica de una función polar}
+\input{polar_plot_br}
+
+\section{Ejemplo: Gráfico 3D}
+\input{three_d_plot_br}
+
+\section{Ejemplo: Series e integrales}
+\input{series_and_integrals_br}
+
+\section{Sobre microMathematics Plus}
+% This is the second part of the file about_micromath.tex
+\subsection{Autores}
+
+\begin{enumerate}
+\item Mikhail Kulesh,
+mikhail.kulesh@gmail.com
+
+\item Caio Roberto Ramos da Silva
+(Brazilian Portuguese translation),
+caiorrs@gmail.com
+
+\item Yubin Hsu
+(Chinese translation),
+yubin.taiwan@gmail.com
+
+\item Linsui
+(Chinese translation),
+linsui555@gmail.com
+\end{enumerate}
+
+\subsection{Icono de la app}
+
+El icono de la aplicación se genera a partir de la siguiente
+función definida en el
+sistema de coordenadas polares:
+\begin{center}\begin{tabular}{c}
+                $f := \left[ 0.01,\, 0.03 \,..\, 150 \right]$
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $s(f) := 4 + sin \left( 5 \cdot f\right)  + \frac{sin \left( 10 \cdot f\right) }{2} + \frac{sin \left( 60 \cdot f\right) }{6}$
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $r(f) := 0.9 \cdot \left( 1 + f / 50 \right) \cdot s \left( f\right) $
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $x(f) := r \left( f\right)  \cdot cos \left( f\right) $
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $y(f) := r \left( f\right)  \cdot sin \left( f\right) $
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/about_micromath_fig1.png} \end{tabular}\end{center}
+
+2014-2020, Bremen, Alemania
+\end{document}
