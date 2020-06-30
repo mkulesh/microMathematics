@@ -25,4 +25,4 @@ Benefits and features:
 
 The microMathematics Plus has exactly the same user interface as the microMathematics free version, but implements more mathematical functionality: units of measurements, arrays, complex numbers, functions of many arguments, plots for several functions, contour and 3D plots, summation and product operations, derivative and definite integrals, if-function and logical operators. This version has following mathematical limitations: it does not support special functions, vectors, matrices and many other things from high-level mathematics.
 
-Languages: English, Russian, German, Brazilian Portuguese, Chinese.
+Languages: English, Russian, German, Brazilian Portuguese, Chinese, Spanish
