@@ -1,0 +1,28 @@
+Con microMathematics Plus, no sólo puedes realizar cálculos matemáticos en forma naturalmente legible, sino que también. ¡puedes crear y administrar tu propia colección de fórmulas interactivas!
+
+MicroMathematics Plus es un nuevo y revolucionario tipo de calculadora móvil. Es la primera calculadora gráfica científica del mundo con trazador de funciones en Android orientado a una hoja de cálculo. Permite la edición en vivo de identidades matemáticas combinadas con cálculos altamente precisos.
+
+La aplicación es 100% de código abierto. Por favor, siéntase libre de descargarla, explorarla, bifurcarla o contribuir a ella en https://github.com/mkulesh/microMathematics
+
+No sólo los estudiantes, sino también todo aquel que le gusten las matemáticas o necesite algo más que una simple calculadora básica se beneficiará de esta asombrosa técnica de cálculos matemáticos y de trazado.
+
+Beneficios y características:
+
+- Verificación, validación, documentación y reutilización de los cálculos matemáticos
+- Funciona en un smartphone o tableta en modo retrato y paisaje
+- Soporta todas las operaciones matemáticas de uso común
+- Las expresiones matemáticas están escritas en una forma intuitiva y naturalmente legible
+- Soporta unidades del sistema internacional y otros (incluyendo unidades de información)
+- Potente editor matemático de pantalla táctil con función de deshacer hace más fácil la edición
+- Puede hacer múltiples cálculos y posteriormente corregir o cambiar todas las fórmulas utilizadas
+- Es posible almacenar los resultados intermedios en una matriz 1D, 2D o 3D que puede mejorar el rendimiento de los cálculos
+- Las expresiones matemáticas se recogen en un documento que incluye no sólo fórmulas y gráficos, sino también texto e imágenes adicionales (también se admite el formato SVG)
+- Puedes guardar tu documento en una tarjeta SD y exportarlo al formato LaTeX o a una imagen (se necesita un permiso de escritura SD)
+- La tarjeta SD en Android 6+ también es compatible
+- La aplicación contiene una página detallada de "Cómo usar" y varios ejemplos
+- Soporta diferentes temas de color
+- Soporta la importación de datos desde archivos ASCII
+
+El microMathematics Plus tiene exactamente la misma interfaz de usuario que la versión gratuita de microMathematics, pero implementa más funcionalidad matemática: unidades de medida, matrices, números complejos, funciones de muchos argumentos, gráficos de varias funciones, gráficos de contorno y tridimensionales, operaciones de suma y producto, integrales derivadas y definitivas, función si y operadores lógicos. Esta versión tiene las siguientes limitaciones matemáticas: no soporta funciones especiales, vectores, matrices y muchas otras cosas de las matemáticas de alto nivel.
+
+Lenguajes: Inglés, ruso, alemán, portugués brasileño, chino, español
