@@ -23,17 +23,17 @@
     <string name="drawer_open">Abrir Navegación de Aplicaciones</string>
     <string-array name="activity_titles">
         <item>Hoja de trabajo</item>
-        <item>Utilizar</item>
+        <item>Ayuda de uso</item>
         <item>Ejemplo</item>
         <item>Ejemplo</item>
         <item>Ejemplo</item>
         <item>Ejemplo</item>
-        <item>Información a</item>
+        <item>Acerca de</item>
         <item>Documentación</item>
     </string-array>
     <string-array name="activity_subtitles">
         <item>Mi documento</item>
-        <item>Aplicación Descripción</item>
+        <item>Descripción de la aplicación</item>
         <item>Gráfica de una función</item>
         <item>Gráfica de una función polar</item>
         <item>Gráfico 3D</item>
@@ -96,9 +96,9 @@
         <item>Claro (Índigo y Naranja)</item>
         <item>Claro (Petróleo y naranja oscuro)</item>
         <item>Claro (Gris azul y añil)</item>
-        <item>Claro en alto contraste (Negro sobre blanco)</item>
+        <item>Claro en alto contraste (Negro sobre fondo blanco)</item>
         <item>Oscuro (Gris y turquesa)</item>
-        <item>Oscuro contraste (Gris  und Türkis)</item>
+        <item>Oscuro contraste (Blanco sobre fondo negro)</item>
     </string-array>
 
     <!-- Dialogs -->
@@ -198,7 +198,7 @@
     <string name="math_comparator_and_text"> y </string>
     <string name="math_comparator_or">El operador devuelve verdadero si al menos un valor es verdadero</string>
     <string name="math_comparator_or_text"> o </string>
-    <string name="math_loop_summation">Suma de secuencias</string>
+    <string name="math_loop_summation">Sumatoria</string>
     <string name="math_loop_product">Producto de secuencias</string>
     <string name="math_loop_integral">Encontrar integral</string>
     <string name="math_loop_derivative">Primera derivada</string>
