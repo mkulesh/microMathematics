@@ -138,7 +138,8 @@ public class ExportToLatex
         if (skipImageLocale() && fileName.length() > 3)
         {
             if (fileName.endsWith("_en") || fileName.endsWith("_ru") ||
-                    fileName.endsWith("_de") || fileName.endsWith("_br"))
+                    fileName.endsWith("_de") || fileName.endsWith("_br") ||
+                    fileName.endsWith("_es"))
             {
                 fileName = fileName.substring(0, fileName.length() - 3);
             }
