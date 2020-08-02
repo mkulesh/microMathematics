@@ -13,13 +13,14 @@
 package com.mkulesh.micromath.dialogs;
 
 import android.net.Uri;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mkulesh.micromath.fman.AdapterIf;
 import com.mkulesh.micromath.fman.Commander;

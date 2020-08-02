@@ -20,9 +20,10 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
-import androidx.preference.PreferenceManager;
 import android.provider.DocumentsContract;
 import android.provider.DocumentsContract.Document;
+
+import androidx.preference.PreferenceManager;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.CompatUtils;

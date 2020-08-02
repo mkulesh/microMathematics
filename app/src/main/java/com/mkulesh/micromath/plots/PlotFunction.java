@@ -16,11 +16,12 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mkulesh.micromath.dialogs.DialogAxisSettings;
 import com.mkulesh.micromath.dialogs.DialogLineSettings;

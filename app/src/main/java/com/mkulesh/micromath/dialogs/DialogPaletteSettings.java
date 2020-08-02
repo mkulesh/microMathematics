@@ -13,11 +13,12 @@
 package com.mkulesh.micromath.dialogs;
 
 import android.content.Context;
-import androidx.appcompat.widget.AppCompatCheckBox;
-import androidx.appcompat.widget.AppCompatImageButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import androidx.appcompat.widget.AppCompatCheckBox;
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.mkulesh.micromath.formula.FormulaBase;
 import com.mkulesh.micromath.formula.PaletteButton;

@@ -18,8 +18,9 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.AttributeSet;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mkulesh.micromath.math.Vector2D;
 import com.mkulesh.micromath.plots.FunctionIf;

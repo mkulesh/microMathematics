@@ -16,11 +16,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
-import androidx.preference.PreferenceManager;
 import android.view.ContextMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+
+import androidx.preference.PreferenceManager;
 
 import com.mkulesh.micromath.fman.CommanderIf.SelectionMode;
 import com.mkulesh.micromath.plus.R;

@@ -15,10 +15,6 @@ package com.mkulesh.micromath.widgets;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
-import androidx.annotation.AttrRes;
-import androidx.annotation.DrawableRes;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -34,6 +30,11 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputConnectionWrapper;
 import android.widget.Toast;
+
+import androidx.annotation.AttrRes;
+import androidx.annotation.DrawableRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.ClipboardManager;

@@ -16,6 +16,12 @@
 
 package com.caverock.androidsvg;
 
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
+import android.util.Log;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -23,12 +29,6 @@ import java.io.Reader;
 import java.nio.charset.Charset;
 import java.util.HashSet;
 import java.util.Set;
-
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Typeface;
-import android.util.Log;
 
 
 /**

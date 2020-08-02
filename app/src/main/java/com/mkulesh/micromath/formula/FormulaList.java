@@ -19,14 +19,15 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.preference.PreferenceManager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Xml;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import com.mkulesh.micromath.BaseFragment;
 import com.mkulesh.micromath.MainActivity;

@@ -13,13 +13,14 @@
 package com.mkulesh.micromath.widgets;
 
 import android.content.Context;
-import androidx.annotation.AttrRes;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+
+import androidx.annotation.AttrRes;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.IdGenerator;

@@ -14,13 +14,13 @@ package com.mkulesh.micromath.widgets;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;

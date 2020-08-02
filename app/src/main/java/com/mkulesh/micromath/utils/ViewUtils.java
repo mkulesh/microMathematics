@@ -22,7 +22,6 @@ import android.graphics.Picture;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.PictureDrawable;
 import android.os.Build;
-import androidx.annotation.AttrRes;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -32,6 +31,8 @@ import android.view.ViewParent;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.annotation.AttrRes;
 
 import com.mkulesh.micromath.formula.FormulaBase;
 import com.mkulesh.micromath.plus.R;

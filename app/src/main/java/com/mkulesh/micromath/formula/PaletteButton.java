@@ -13,11 +13,12 @@
 package com.mkulesh.micromath.formula;
 
 import android.content.Context;
-import androidx.annotation.AttrRes;
-import androidx.appcompat.widget.AppCompatImageButton;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.ViewGroup;
+
+import androidx.annotation.AttrRes;
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.plus.R;

@@ -14,13 +14,14 @@ package com.mkulesh.micromath.formula;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import androidx.preference.PreferenceManager;
-import androidx.appcompat.widget.AppCompatImageButton;
 import android.text.InputType;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
+
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.preference.PreferenceManager;
 
 import com.mkulesh.micromath.dialogs.DialogPaletteSettings;
 import com.mkulesh.micromath.formula.PaletteButton.Category;

@@ -18,6 +18,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.LocaleList;
+
 import androidx.preference.PreferenceManager;
 
 import java.util.Locale;
