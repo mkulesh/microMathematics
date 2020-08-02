@@ -4014,7 +4014,7 @@ Log.d(TAG,"PROC INSTR: "+parser.getText());
       if (sum == 0f)
          return null;
       
-      return dashes.toArray(new Length[dashes.size()]);
+      return dashes.toArray(new Length[0]);
    }
 
 

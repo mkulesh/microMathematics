@@ -1610,7 +1610,7 @@ class CSSParser
       public String toString()
       {
          return isOfType ? String.format("only-of-type <%s>", nodeName)
-                         : String.format("only-child");
+                         : "only-child";
       }
 
    }

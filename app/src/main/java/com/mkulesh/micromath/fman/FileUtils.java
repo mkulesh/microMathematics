@@ -596,7 +596,7 @@ public final class FileUtils
                 }
                 for (index = lastCommonRoot + 1; index < relativeDirectories.length - 1; index++)
                 {
-                    relativePath.append(relativeDirectories[index] + "/");
+                    relativePath.append(relativeDirectories[index]).append("/");
                 }
                 relativePath.append(relativeDirectories[relativeDirectories.length - 1]);
             }

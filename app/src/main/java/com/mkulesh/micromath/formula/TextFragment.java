@@ -260,7 +260,7 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
             {
                 number[i] = 0;
             }
-            String nuberStr = "";
+            StringBuilder nuberStr = new StringBuilder();
             for (int i = 0; i <= idx; i++)
             {
                 if (number[i] == 0)
@@ -269,12 +269,12 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
                 }
                 if (nuberStr.length() != 0)
                 {
-                    nuberStr += ".";
+                    nuberStr.append(".");
                 }
-                nuberStr += Integer.toString(number[i]);
+                nuberStr.append(number[i]);
             }
             numberField.setVisibility(View.VISIBLE);
-            numberField.setText(nuberStr);
+            numberField.setText(nuberStr.toString());
         }
         else
         {

@@ -208,11 +208,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         {
             functionView.setSignificantDigits(getFormulaList().getDocumentSettings().significantDigits);
             updatePlotBoundaries(functionView, xMin, xMax, yMin, yMax, functionView.getAxisParameters());
-            ArrayList<FunctionIf> func = new ArrayList<>();
-            for (Function2D f : functions)
-            {
-                func.add(f);
-            }
+            ArrayList<FunctionIf> func = new ArrayList<>(functions);
             functionView.setFunctions(func);
             functionView.invalidate();
         }
@@ -239,10 +235,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             else if (axes.contains(owner))
             {
                 list = new ArrayList<>();
-                for (int i = 0; i < axes.size(); i++)
-                {
-                    list.add(axes.get(i));
-                }
+                list.addAll(axes);
             }
             else
             {

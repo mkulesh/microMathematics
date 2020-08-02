@@ -402,13 +402,22 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         writer.append("<title>Test session</title>\n");
         writer.append("</head><body>");
 
-        writer.append("<p>Device information: " + android.os.Build.DEVICE + ", model " + android.os.Build.MODEL
-                + ", OS version " + System.getProperty("os.version") + ", API level "
-                + Integer.toString(android.os.Build.VERSION.SDK_INT) + "</p>");
+        writer.append("<p>Device information: ")
+                .append(android.os.Build.DEVICE)
+                .append(", model ")
+                .append(android.os.Build.MODEL)
+                .append(", OS version ")
+                .append(System.getProperty("os.version"))
+                .append(", API level ")
+                .append(Integer.toString(android.os.Build.VERSION.SDK_INT))
+                .append("</p>");
 
         final PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-        writer.append("<p>App version: " + context.getResources().getString(pi.applicationInfo.labelRes) + ", "
-                + pi.versionName + "</p>");
+        writer.append("<p>App version: ")
+                .append(context.getResources().getString(pi.applicationInfo.labelRes))
+                .append(", ")
+                .append(pi.versionName)
+                .append("</p>");
 
         for (TestScript ts : testScripts)
         {
@@ -417,10 +426,10 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
 
         writer.append("\n\n<h1>Summary</h1>\n");
         final int failedNumber = getTestCaseNumber(NumberType.FAILED);
-        writer.append("<p><b>Number of scrips</b>: " + testScripts.size() + "</p>\n");
-        writer.append("<p><b>Number of test cases</b>: " + getTestCaseNumber(NumberType.TOTAL) + "</p>\n");
-        writer.append("<p><b>Passed</b>: " + getTestCaseNumber(NumberType.PASSED) + "</p>\n");
-        writer.append("<p><b>Failed</b>: " + failedNumber + "</p>\n");
+        writer.append("<p><b>Number of scrips</b>: ").append(String.valueOf(testScripts.size())).append("</p>\n");
+        writer.append("<p><b>Number of test cases</b>: ").append(String.valueOf(getTestCaseNumber(NumberType.TOTAL))).append("</p>\n");
+        writer.append("<p><b>Passed</b>: ").append(String.valueOf(getTestCaseNumber(NumberType.PASSED))).append("</p>\n");
+        writer.append("<p><b>Failed</b>: ").append(String.valueOf(failedNumber)).append("</p>\n");
         String status = "<p><b>Status</b>: ";
         if (failedNumber == 0)
         {

@@ -107,10 +107,7 @@ public class MainFragmentWorksheet extends BaseFragment
     private void initializeAssets(String[] stringArray)
     {
         assetFilter = new CharSequence[isDeveloperMode() ? stringArray.length + 1 : stringArray.length];
-        for (int i = 0; i < stringArray.length; i++)
-        {
-            assetFilter[i] = stringArray[i];
-        }
+        System.arraycopy(stringArray, 0, assetFilter, 0, stringArray.length);
         if (isDeveloperMode())
         {
             assetFilter[stringArray.length] = getResources().getString(R.string.autotest_directory);

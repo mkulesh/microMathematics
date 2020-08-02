@@ -153,10 +153,7 @@ public abstract class LinkHolder extends FormulaBase
         ArrayList<LinkHolder> stack = new ArrayList<>();
         if (callStack != null)
         {
-            for (LinkHolder lh : callStack)
-            {
-                stack.add(lh);
-            }
+            stack.addAll(callStack);
         }
         stack.add(this);
 
@@ -187,10 +184,7 @@ public abstract class LinkHolder extends FormulaBase
         ArrayList<LinkHolder> stack = new ArrayList<>();
         if (callStack != null)
         {
-            for (LinkHolder lh : callStack)
-            {
-                stack.add(lh);
-            }
+            stack.addAll(callStack);
         }
         stack.add(this);
 

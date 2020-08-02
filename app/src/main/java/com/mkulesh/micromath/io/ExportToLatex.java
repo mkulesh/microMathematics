@@ -169,8 +169,11 @@ public class ExportToLatex
         try
         {
             final PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-            writer.append("% Exported from " + context.getResources().getString(pi.applicationInfo.labelRes)
-                    + ", version " + pi.versionName + "\n");
+            writer.append("% Exported from ")
+                    .append(context.getResources().getString(pi.applicationInfo.labelRes))
+                    .append(", version ")
+                    .append(pi.versionName)
+                    .append("\n");
         }
         catch (NameNotFoundException e)
         {
@@ -352,9 +355,9 @@ public class ExportToLatex
         writer.append("\\begin{tabular}{c} \\includegraphics[width=0.45\\textwidth]{");
         if (!getImageDirectory().isEmpty())
         {
-            writer.append(getImageDirectory() + "/");
+            writer.append(getImageDirectory()).append("/");
         }
-        writer.append(figName + "} \\end{tabular}");
+        writer.append(figName).append("} \\end{tabular}");
         if (!inLine)
         {
             writer.append("\\end{center}");
@@ -728,7 +731,7 @@ public class ExportToLatex
 
     private void writeText(CharSequence text, boolean inEquation)
     {
-        String outStr = "";
+        StringBuilder outStr = new StringBuilder();
         for (int i = 0; i < text.length(); i++)
         {
             final char c = text.charAt(i);
@@ -741,7 +744,7 @@ public class ExportToLatex
                 {
                     if (greekTable[k][0].charAt(0) == c)
                     {
-                        outStr += (inEquation ? "{" : "$") + greekTable[k][1] + (inEquation ? "}" : "$");
+                        outStr.append(inEquation ? "{" : "$").append(greekTable[k][1]).append(inEquation ? "}" : "$");
                         processed = true;
                         break;
                     }
@@ -753,7 +756,7 @@ public class ExportToLatex
                 {
                     if (supplementTable[k][0].charAt(0) == c)
                     {
-                        outStr += (inEquation ? "{" : "$") + supplementTable[k][1] + (inEquation ? "}" : "$");
+                        outStr.append(inEquation ? "{" : "$").append(supplementTable[k][1]).append(inEquation ? "}" : "$");
                         processed = true;
                         break;
                     }
@@ -761,20 +764,20 @@ public class ExportToLatex
             }
             else if (c == '_')
             {
-                outStr += "\\_";
+                outStr.append("\\_");
                 processed = true;
             }
             else if (c == '"')
             {
-                outStr += "''";
+                outStr.append("''");
                 processed = true;
             }
             if (!processed)
             {
-                outStr += c;
+                outStr.append(c);
             }
         }
-        writer.append(outStr);
+        writer.append(outStr.toString());
     }
 
     protected boolean isPropEmpty(CharSequence prop)

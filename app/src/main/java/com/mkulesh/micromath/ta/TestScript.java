@@ -186,16 +186,17 @@ public class TestScript
     public void publishHtmlReport(StringWriter writer)
     {
         final int failedNumber = getTestCaseNumber(NumberType.FAILED);
-        writer.append("\n\n<h1>" + scriptContent + "</h1>\n");
-        writer.append("<p><b>Name</b>: " + scriptName + "</p>\n");
-        writer.append("<p><b>Number of test cases</b>: " + getTestCaseNumber(NumberType.TOTAL) + "</p>\n");
-        writer.append("<p><b>Reading duration</b>: " + readingDuration + "ms</p>\n");
+        writer.append("\n\n<h1>").append(scriptContent).append("</h1>\n");
+        writer.append("<p><b>Name</b>: ").append(scriptName).append("</p>\n");
+        writer.append("<p><b>Number of test cases</b>: ").append(String.valueOf(getTestCaseNumber(NumberType.TOTAL))).append("</p>\n");
+        writer.append("<p><b>Reading duration</b>: ").append(String.valueOf(readingDuration)).append("ms</p>\n");
         writer.append("<table border = \"1\" cellspacing=\"0\" cellpadding=\"5\">\n");
-        String title = "    <tr>";
+        StringBuilder titleBuilder = new StringBuilder("    <tr>");
         for (String t : TestCase.PARAMETERS)
         {
-            title += "<td><b>" + t + "</b></td>";
+            titleBuilder.append("<td><b>").append(t).append("</b></td>");
         }
+        String title = titleBuilder.toString();
         title += "</tr>\n";
         writer.append(title);
         for (TestCase tc : testCases)

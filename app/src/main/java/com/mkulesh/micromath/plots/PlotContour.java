@@ -237,10 +237,7 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
             else if (axes.contains(owner))
             {
                 list = new ArrayList<>();
-                for (int i = 0; i < axes.size(); i++)
-                {
-                    list.add(axes.get(i));
-                }
+                list.addAll(axes);
             }
         }
         super.onTermSelection(owner, isSelected, list);

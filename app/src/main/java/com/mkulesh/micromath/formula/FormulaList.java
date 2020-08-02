@@ -1041,11 +1041,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         case CLEAR_ALL:
             if (!selectedEquations.isEmpty())
             {
-                ArrayList<FormulaBase> toBeCleared = new ArrayList<>();
-                for (FormulaBase e : selectedEquations)
-                {
-                    toBeCleared.add(e);
-                }
+                ArrayList<FormulaBase> toBeCleared = new ArrayList<>(selectedEquations);
                 selectedEquations.clear();
                 for (FormulaBase e : toBeCleared)
                 {

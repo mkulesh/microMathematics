@@ -733,19 +733,19 @@ public class ImportFromSMathStudio
         }
         if (p.isArray() && !args.isEmpty())
         {
-            String retValue = args.get(0) + "[";
+            StringBuilder retValue = new StringBuilder(args.get(0) + "[");
             for (int i = 1; i < args.size(); i++)
             {
-                retValue += (i > 1 ? "," : "") + args.get(i);
+                retValue.append(i > 1 ? "," : "").append(args.get(i));
             }
             return retValue + "]";
         }
         else
         {
-            String retValue = p.text + "(";
+            StringBuilder retValue = new StringBuilder(p.text + "(");
             for (int i = 0; i < args.size(); i++)
             {
-                retValue += (i > 0 ? "," : "") + args.get(i);
+                retValue.append(i > 0 ? "," : "").append(args.get(i));
             }
             return retValue + ")";
         }

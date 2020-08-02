@@ -121,11 +121,12 @@ public final class ViewUtils
             boolean resultFound = false;
             for (int pos = 0; pos <= maxLength; pos++)
             {
-                String format = (pos < 1) ? "0" : "0.";
+                StringBuilder formatBuilder = new StringBuilder((pos < 1) ? "0" : "0.");
                 for (int k = 0; k < pos; k++)
                 {
-                    format += "0";
+                    formatBuilder.append("0");
                 }
+                String format = formatBuilder.toString();
                 if (run == 1)
                 {
                     format += "E0";
