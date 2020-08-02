@@ -82,7 +82,6 @@ public class MainActivity extends AppCompatActivity
     private ActionBarDrawerToggle mDrawerToggle;
     private Uri externalUri = null;
     private Toast exitToast = null;
-    private String versionName = null;
     int orientation;
 
     @SuppressLint("RestrictedApi")
@@ -94,6 +93,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         orientation = getResources().getConfiguration().orientation;
+        String versionName;
         try
         {
             final PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
@@ -103,7 +103,6 @@ public class MainActivity extends AppCompatActivity
         catch (PackageManager.NameNotFoundException e)
         {
             ViewUtils.Debug(this, "Starting application");
-            versionName = null;
         }
 
         initGUI();

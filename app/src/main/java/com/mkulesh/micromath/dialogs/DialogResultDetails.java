@@ -60,8 +60,6 @@ public class DialogResultDetails extends DialogBase
         }
     }
 
-    private ArgumentValueAdapter argumentValueAdapter;
-
     public DialogResultDetails(Context context, EquationArrayResult args, EquationArrayResult vals,
                                DocumentProperties docProp, ResultProperties resProp)
     {
@@ -120,7 +118,7 @@ public class DialogResultDetails extends DialogBase
         maximize();
         findViewById(R.id.dialog_button_panel).setVisibility(View.GONE);
 
-        argumentValueAdapter = new ArgumentValueAdapter(getContext(), calculatedItems, docProp, resProp);
+        ArgumentValueAdapter argumentValueAdapter = new ArgumentValueAdapter(getContext(), calculatedItems, docProp, resProp);
         ListView listView = findViewById(R.id.result_details_listview);
         listView.setAdapter(argumentValueAdapter);
 

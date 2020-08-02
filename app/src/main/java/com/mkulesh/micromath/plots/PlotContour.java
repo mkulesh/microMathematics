@@ -67,7 +67,7 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
     private TermField yMin = null, yMax = null, xMin = null, functionTerm = null, xMax = null;
     private final ArrayList<CustomTextView> axes = new ArrayList<>();
     private PlotView functionView = null;
-    private LinearLayout xDataLayout = null, functionViewLayout = null;
+    private LinearLayout functionViewLayout = null;
     private CustomTextView cornerView1 = null, cornerView2 = null;
 
     // function data
@@ -515,7 +515,7 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
         }
         functionViewLayout = layout.findViewById(R.id.plot_function_view_layout);
 
-        xDataLayout = layout.findViewById(R.id.plot_x_data_layout);
+        LinearLayout xDataLayout = layout.findViewById(R.id.plot_x_data_layout);
         if (xDataLayout instanceof SizeChangingLayout)
         {
             ((SizeChangingLayout) xDataLayout).setSizeChangedIf(this);

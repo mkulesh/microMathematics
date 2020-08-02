@@ -498,7 +498,7 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
         return row_view;
     }
 
-    public final static int getIconId(String file)
+    public static int getIconId(String file)
     {
         String cat = FileUtils.getCategoryByExt(FileUtils.getFileExt(file));
         if (FileUtils.C_UNKNOWN.equals(cat))

@@ -144,7 +144,7 @@ public class TextProperties implements Parcelable
         return textStyle != TextStyle.TEXT_BODY;
     }
 
-    public static final int[] getInitialNumber()
+    public static int[] getInitialNumber()
     {
         return new int[TextStyle.values().length];
     }

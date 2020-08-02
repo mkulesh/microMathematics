@@ -32,7 +32,6 @@ public class DialogRadioGroup extends DialogBase
 
     private final EventHandler eventHandler;
     private final RadioGroup radioGroup;
-    private final RadioButton[] radioButtons;
 
     public DialogRadioGroup(Activity context, int titleId, int numButtons, EventHandler eventHandler)
     {
@@ -48,7 +47,7 @@ public class DialogRadioGroup extends DialogBase
             inflater.inflate(R.layout.dialog_radio_group_item, radioGroup);
         }
 
-        radioButtons = new RadioButton[numButtons];
+        RadioButton[] radioButtons = new RadioButton[numButtons];
         for (int i = 0; i < numButtons; i++)
         {
             radioButtons[i] = (RadioButton) radioGroup.getChildAt(i);

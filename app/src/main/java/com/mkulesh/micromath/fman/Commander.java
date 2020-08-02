@@ -68,7 +68,6 @@ public class Commander extends DialogBase implements CommanderIf
     private final OnFileSelectedListener listener;
     private final AppCompatActivity context;
     private final FileListView fileListView;
-    private final ImageButton homeButton;
     private final SelectionMode selectionMode;
     private final CharSequence[] assetFilter;
 
@@ -93,7 +92,7 @@ public class Commander extends DialogBase implements CommanderIf
         fileListView.adapterMode = pref.getInt(PREF_ADAPTER_MODE, 0);
         fileListView.applySettings();
 
-        homeButton = findViewById(R.id.fman_action_home);
+        ImageButton homeButton = findViewById(R.id.fman_action_home);
         homeButton.setOnClickListener(this);
         ViewUtils.setImageButtonColorAttr(context, homeButton, R.attr.colorDialogContent);
         homeButton.setOnLongClickListener(v -> ViewUtils.showButtonDescription(getContext(), v));
@@ -262,7 +261,7 @@ public class Commander extends DialogBase implements CommanderIf
         fileListView.adapterMode = ca.getMode() & (AdapterIf.MODE_SORTING | AdapterIf.MODE_SORT_DIR);
     }
 
-    private final void NavigateInternal(Uri uri, String posTo)
+    private void NavigateInternal(Uri uri, String posTo)
     {
         fileListView.Navigate(uri, posTo);
         okButton.setEnabled(isFileSelected());

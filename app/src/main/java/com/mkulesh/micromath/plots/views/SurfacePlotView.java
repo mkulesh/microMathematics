@@ -37,7 +37,6 @@ public class SurfacePlotView extends PlotView
     // settings
     private static final int COLOR_MESH_LINES = 0x90FFFFFF;
     private static final int COLOR_WALL = Color.LTGRAY;
-    private final boolean isDrawLabels = true;
 
     // internal constants
     private static final int TOP = 0;
@@ -526,16 +525,13 @@ public class SurfacePlotView extends PlotView
             }
         }
 
-        if (isDrawLabels)
-        {
-            final float labelsScale = 2;
-            projector.project(p2, 0, factor_y * 13, -10);
-            drawString(canvas, p2.x, p2.y, functions.get(0).getLabels()[FunctionIf.X], CENTER, TOP, labelsScale);
-            projector.project(p2, factor_x * 13, 0, -10);
-            drawString(canvas, p2.x, p2.y, functions.get(0).getLabels()[FunctionIf.Y], CENTER, TOP, labelsScale);
-            projector.project(p2, -factor_x * 10, factor_y * 12, 0);
-            drawString(canvas, p2.x, p2.y, functions.get(0).getLabels()[FunctionIf.Z], CENTER, TOP, labelsScale);
-        }
+        final float labelsScale = 2;
+        projector.project(p2, 0, factor_y * 13, -10);
+        drawString(canvas, p2.x, p2.y, functions.get(0).getLabels()[FunctionIf.X], CENTER, TOP, labelsScale);
+        projector.project(p2, factor_x * 13, 0, -10);
+        drawString(canvas, p2.x, p2.y, functions.get(0).getLabels()[FunctionIf.Y], CENTER, TOP, labelsScale);
+        projector.project(p2, -factor_x * 10, factor_y * 12, 0);
+        drawString(canvas, p2.x, p2.y, functions.get(0).getLabels()[FunctionIf.Z], CENTER, TOP, labelsScale);
     }
 
     /**

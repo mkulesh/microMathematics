@@ -55,7 +55,6 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
     private final LinearLayout paletteLayout;
     private final CustomEditText hiddenInput;
     private String lastHiddenInput = "";
-    private final AppCompatImageButton paletteSettingsButton;
     private List<String> visibleGroups = new ArrayList<>();
 
     public Palette(Context context, LinearLayout paletteLayout, ListChangeIf listChangeIf)
@@ -64,7 +63,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         this.listChangeIf = listChangeIf;
         this.paletteLayout = paletteLayout;
 
-        paletteSettingsButton = paletteLayout.findViewById(R.id.palette_settings_button);
+        AppCompatImageButton paletteSettingsButton = paletteLayout.findViewById(R.id.palette_settings_button);
         paletteSettingsButton.setOnLongClickListener(this);
         paletteSettingsButton.setOnClickListener(this);
         ViewUtils.setImageButtonColorAttr(context, paletteSettingsButton, R.attr.colorMicroMathIcon);

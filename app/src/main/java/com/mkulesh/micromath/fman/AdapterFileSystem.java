@@ -534,7 +534,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
             }
         }
 
-        private final int deleteFiles(File[] l) throws Exception
+        private int deleteFiles(File[] l) throws Exception
         {
             int cnt = 0;
             for (File f : l) {

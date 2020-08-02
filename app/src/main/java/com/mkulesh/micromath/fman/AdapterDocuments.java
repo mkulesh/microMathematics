@@ -96,7 +96,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         return "com.android.externalstorage.documents".equals(uri.getAuthority());
     }
 
-    public static final String getPath(Uri u, boolean dir)
+    public static String getPath(Uri u, boolean dir)
     {
         try
         {
@@ -221,7 +221,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         return getChildren(ctx, u);
     }
 
-    public final static ArrayList<SAFItem> getChildren(Context ctx, Uri u)
+    public static ArrayList<SAFItem> getChildren(Context ctx, Uri u)
     {
         Cursor c = null;
         try
@@ -520,7 +520,7 @@ public class AdapterDocuments extends AdapterBaseImpl
             }
         }
 
-        private final int deleteFiles(Uri dir_uri, Item[] l) throws Exception
+        private int deleteFiles(Uri dir_uri, Item[] l) throws Exception
         {
             int cnt = 0;
             for (Item item : l)

@@ -35,11 +35,10 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
     private final AppCompatActivity activity;
     private final ImageProperties parameters;
     private final EditText fileName;
-    private final ImageButton buttonSelectFile;
     private final CheckBox cbEmbedded;
     private final HorizontalNumberPicker pickerWidth, pickerHeight;
-    private final RadioButton rOriginalSize, rCustomSize;
-    private final RadioButton rOriginalColor, rAutoColor;
+    private final RadioButton rOriginalSize;
+    private final RadioButton rOriginalColor;
     private final ImagePropertiesChangeIf changeIf;
 
     public DialogImageSettings(AppCompatActivity activity, ImagePropertiesChangeIf changeIf, ImageProperties parameters)
@@ -54,7 +53,7 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
             fileName.setText(parameters.fileName);
         }
 
-        buttonSelectFile = findViewById(R.id.dialog_button_select_file);
+        ImageButton buttonSelectFile = findViewById(R.id.dialog_button_select_file);
         buttonSelectFile.setOnClickListener(this);
         buttonSelectFile.setOnLongClickListener(this);
         ViewUtils.setImageButtonColorAttr(activity, buttonSelectFile, R.attr.colorDialogContent);
@@ -72,7 +71,7 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
         rOriginalSize = findViewById(R.id.dialog_button_original_size);
         rOriginalSize.setOnClickListener(this);
         rOriginalSize.setChecked(parameters.originalSize);
-        rCustomSize = findViewById(R.id.dialog_button_custom_size);
+        RadioButton rCustomSize = findViewById(R.id.dialog_button_custom_size);
         rCustomSize.setOnClickListener(this);
         rCustomSize.setChecked(!parameters.originalSize);
         onClick(parameters.originalSize ? rOriginalSize : rCustomSize);
@@ -80,7 +79,7 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
         rOriginalColor = findViewById(R.id.dialog_button_original_color);
         rOriginalColor.setOnClickListener(this);
         rOriginalColor.setChecked(parameters.colorType == ImageProperties.ColorType.ORIGINAL);
-        rAutoColor = findViewById(R.id.dialog_button_auto_color);
+        RadioButton rAutoColor = findViewById(R.id.dialog_button_auto_color);
         rAutoColor.setOnClickListener(this);
         rAutoColor.setChecked(parameters.colorType == ImageProperties.ColorType.AUTO);
 
