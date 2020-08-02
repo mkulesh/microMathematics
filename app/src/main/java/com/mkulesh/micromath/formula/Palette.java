@@ -114,7 +114,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         // prepare all buttons
         for (int i = 0; i < Category.values().length; i++)
         {
-            paletteBlock.add(new ArrayList<PaletteButton>());
+            paletteBlock.add(new ArrayList<>());
         }
         for (PaletteButton pb : termButtons)
         {

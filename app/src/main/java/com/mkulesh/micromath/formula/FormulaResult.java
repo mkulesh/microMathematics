@@ -683,7 +683,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         for (int r = 0; r < rowsNumber; r++)
         {
             int dataRowIdx = r;
-            res.add(new ArrayList<String>(colsNumber));
+            res.add(new ArrayList<>(colsNumber));
             if (xValuesNumber > properties.arrayLength)
             {
                 // before the last line

@@ -149,10 +149,8 @@ public class SimpleAssetResolver extends SVGExternalFileResolver
     */
    private String getAssetAsString(String url)
    {
-      InputStream is = null;
-      try
+      try (InputStream is = assetManager.open(url))
       {
-         is = assetManager.open(url);
 
          Reader r;
          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -172,14 +170,6 @@ public class SimpleAssetResolver extends SVGExternalFileResolver
       catch (IOException e)
       {
          return null;
-      }
-      finally {
-         try {
-            if (is != null)
-               is.close();
-         } catch (IOException e) {
-           // Do nothing
-         }
       }
    }
 

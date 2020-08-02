@@ -1886,7 +1886,7 @@ Log.d(TAG,"PROC INSTR: "+parser.getText());
                break;
             case requiredFonts:
                List<String>  fonts = parseFontFamily(val);
-               Set<String>  fontSet = (fonts != null) ? new HashSet<>(fonts) : new HashSet<String>(0);
+               Set<String>  fontSet = (fonts != null) ? new HashSet<>(fonts) : new HashSet<>(0);
                obj.setRequiredFonts(fontSet);
                break;
             default:

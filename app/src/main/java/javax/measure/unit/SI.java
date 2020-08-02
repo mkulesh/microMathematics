@@ -69,7 +69,7 @@ public final class SI extends SystemOfUnits {
      * these conductors a force equal to 2 × 10-7 newton per metre of length.
      * It is named after the French physicist Andre Ampere (1775-1836).
      */
-    public static final BaseUnit<ElectricCurrent> AMPERE = si(new BaseUnit<ElectricCurrent>(
+    public static final BaseUnit<ElectricCurrent> AMPERE = si(new BaseUnit<>(
             "A"));
 
     /**
@@ -81,7 +81,7 @@ public final class SI extends SystemOfUnits {
      * @see <a href="http://en.wikipedia.org/wiki/Candela"> 
      *      Wikipedia: Candela</a>
      */
-    public static final BaseUnit<LuminousIntensity> CANDELA = si(new BaseUnit<LuminousIntensity>(
+    public static final BaseUnit<LuminousIntensity> CANDELA = si(new BaseUnit<>(
             "cd"));
 
     /**
@@ -90,7 +90,7 @@ public final class SI extends SystemOfUnits {
      * triple point of water. It is named after the Scottish mathematician and
      * physicist William Thomson 1st Lord Kelvin (1824-1907)
      */
-    public static final BaseUnit<Temperature> KELVIN = si(new BaseUnit<Temperature>(
+    public static final BaseUnit<Temperature> KELVIN = si(new BaseUnit<>(
             "K"));
 
     /**
@@ -100,14 +100,14 @@ public final class SI extends SystemOfUnits {
      * form of a platinum-iridium cylinder kept at Sevres in France.
      * @see   #GRAM
      */
-    public static final BaseUnit<Mass> KILOGRAM = si(new BaseUnit<Mass>("kg"));
+    public static final BaseUnit<Mass> KILOGRAM = si(new BaseUnit<>("kg"));
 
     /**
      * The base unit for length quantities (<code>m</code>).
      * One meter was redefined in 1983 as the distance traveled by light in
      * a vacuum in 1/299,792,458 of a second.
      */
-    public static final BaseUnit<Length> METRE = si(new BaseUnit<Length>("m"));
+    public static final BaseUnit<Length> METRE = si(new BaseUnit<>("m"));
 
     /**
      * Equivalent to {@link #METRE} (American spelling).
@@ -119,7 +119,7 @@ public final class SI extends SystemOfUnits {
      * The mole is the amount of substance of a system which contains as many
      * elementary entities as there are atoms in 0.012 kilogram of carbon 12.
      */
-    public static final BaseUnit<AmountOfSubstance> MOLE = si(new BaseUnit<AmountOfSubstance>(
+    public static final BaseUnit<AmountOfSubstance> MOLE = si(new BaseUnit<>(
             "mol"));
 
     /**
@@ -128,7 +128,7 @@ public final class SI extends SystemOfUnits {
      * corresponding to the transition between two hyperfine levels of
      * the ground state of cesium (1967 Standard).
      */
-    public static final BaseUnit<Duration> SECOND = si(new BaseUnit<Duration>(
+    public static final BaseUnit<Duration> SECOND = si(new BaseUnit<>(
             "s"));
 
     ////////////////////////////////
@@ -146,7 +146,7 @@ public final class SI extends SystemOfUnits {
      * One radian is the angle between two radii of a circle such that the
      * length of the arc between them is equal to the radius.
      */
-    public static final AlternateUnit<Angle> RADIAN = si(new AlternateUnit<Angle>(
+    public static final AlternateUnit<Angle> RADIAN = si(new AlternateUnit<>(
             "rad", Unit.ONE));
 
     /**
@@ -155,18 +155,18 @@ public final class SI extends SystemOfUnits {
      * an area on the surface of the sphere that is equal to the radius squared.
      * The total solid angle of a sphere is 4*Pi steradians.
      */
-    public static final AlternateUnit<SolidAngle> STERADIAN = si(new AlternateUnit<SolidAngle>(
+    public static final AlternateUnit<SolidAngle> STERADIAN = si(new AlternateUnit<>(
             "sr", Unit.ONE));
 
     /**
      * The unit for binary information (<code>bit</code>).
      */
-    public static final BaseUnit<DataAmount> BIT = si(new BaseUnit<DataAmount>("bit"));
+    public static final BaseUnit<DataAmount> BIT = si(new BaseUnit<>("bit"));
 
     /**
      * The unit for bit rate (<code>bps</code>).
      */
-    public static final AlternateUnit<DataRate> BIT_PER_SECOND = si(new AlternateUnit<DataRate>(
+    public static final AlternateUnit<DataRate> BIT_PER_SECOND = si(new AlternateUnit<>(
             "bps", BIT.divide(SECOND)));
     /**
      * The derived unit for frequency (<code>Hz</code>).
@@ -174,7 +174,7 @@ public final class SI extends SystemOfUnits {
      * After Heinrich Rudolf Hertz (1857-1894), German physicist who was the
      * first to produce radio waves artificially.
      */
-    public static final AlternateUnit<Frequency> HERTZ = si(new AlternateUnit<Frequency>(
+    public static final AlternateUnit<Frequency> HERTZ = si(new AlternateUnit<>(
             "Hz", Unit.ONE.divide(SECOND)));
 
     /**
@@ -183,7 +183,7 @@ public final class SI extends SystemOfUnits {
      * of 1 metre per second per second. It is named after the English
      * mathematician and physicist Sir Isaac Newton (1642-1727).
      */
-    public static final AlternateUnit<Force> NEWTON = si(new AlternateUnit<Force>(
+    public static final AlternateUnit<Force> NEWTON = si(new AlternateUnit<>(
             "N", METRE.times(KILOGRAM).divide(SECOND.pow(2))));
 
     /**
@@ -191,7 +191,7 @@ public final class SI extends SystemOfUnits {
      * One pascal is equal to one newton per square meter. It is named after
      * the French philosopher and mathematician Blaise Pascal (1623-1662).
      */
-    public static final AlternateUnit<Pressure> PASCAL = si(new AlternateUnit<Pressure>(
+    public static final AlternateUnit<Pressure> PASCAL = si(new AlternateUnit<>(
             "Pa", NEWTON.divide(METRE.pow(2))));
 
     /**
@@ -200,7 +200,7 @@ public final class SI extends SystemOfUnits {
      * moves through a distance of 1 metre in the direction of the force.
      * It is named after the English physicist James Prescott Joule (1818-1889).
      */
-    public static final AlternateUnit<Energy> JOULE = si(new AlternateUnit<Energy>(
+    public static final AlternateUnit<Energy> JOULE = si(new AlternateUnit<>(
             "J", NEWTON.times(METRE)));
 
     /**
@@ -208,7 +208,7 @@ public final class SI extends SystemOfUnits {
      * One watt is equal to one joule per second. It is named after the British
      * scientist James Watt (1736-1819).
      */
-    public static final AlternateUnit<Power> WATT = si(new AlternateUnit<Power>(
+    public static final AlternateUnit<Power> WATT = si(new AlternateUnit<>(
             "W", JOULE.divide(SECOND)));
 
     /**
@@ -218,7 +218,7 @@ public final class SI extends SystemOfUnits {
      * by a steady current of one ampere. It is named after the French physicist
      * Charles Augustin de Coulomb (1736-1806).
      */
-    public static final AlternateUnit<ElectricCharge> COULOMB = si(new AlternateUnit<ElectricCharge>(
+    public static final AlternateUnit<ElectricCharge> COULOMB = si(new AlternateUnit<>(
             "C", SECOND.times(AMPERE)));
 
     /**
@@ -229,7 +229,7 @@ public final class SI extends SystemOfUnits {
      * when the power dissipated between the points is one watt. It is named
      * after the Italian physicist Count Alessandro Volta (1745-1827).
      */
-    public static final AlternateUnit<ElectricPotential> VOLT = si(new AlternateUnit<ElectricPotential>(
+    public static final AlternateUnit<ElectricPotential> VOLT = si(new AlternateUnit<>(
             "V", WATT.divide(AMPERE)));
 
     /**
@@ -239,7 +239,7 @@ public final class SI extends SystemOfUnits {
      * of 1 volt between the plates. It is named after the British physicist
      * and chemist Michael Faraday (1791-1867).
      */
-    public static final AlternateUnit<ElectricCapacitance> FARAD = si(new AlternateUnit<ElectricCapacitance>(
+    public static final AlternateUnit<ElectricCapacitance> FARAD = si(new AlternateUnit<>(
             "F", COULOMB.divide(VOLT)));
 
     /**
@@ -249,7 +249,7 @@ public final class SI extends SystemOfUnits {
      * one ampere is produced by a potential of one volt across its terminals.
      * It is named after the German physicist Georg Simon Ohm (1789-1854).
      */
-    public static final AlternateUnit<ElectricResistance> OHM = si(new AlternateUnit<ElectricResistance>(
+    public static final AlternateUnit<ElectricResistance> OHM = si(new AlternateUnit<>(
             "Ω", VOLT.divide(AMPERE)));
 
     /**
@@ -257,7 +257,7 @@ public final class SI extends SystemOfUnits {
      * One Siemens is equal to one ampere per volt. It is named after
      * the German engineer Ernst Werner von Siemens (1816-1892).
      */
-    public static final AlternateUnit<ElectricConductance> SIEMENS = si(new AlternateUnit<ElectricConductance>(
+    public static final AlternateUnit<ElectricConductance> SIEMENS = si(new AlternateUnit<>(
             "S", AMPERE.divide(VOLT)));
 
     /**
@@ -267,7 +267,7 @@ public final class SI extends SystemOfUnits {
      * reduced to zero within one second. It is named after the German physicist
      * Wilhelm Eduard Weber (1804-1891).
      */
-    public static final AlternateUnit<MagneticFlux> WEBER = si(new AlternateUnit<MagneticFlux>(
+    public static final AlternateUnit<MagneticFlux> WEBER = si(new AlternateUnit<>(
             "Wb", VOLT.times(SECOND)));
 
     /**
@@ -276,7 +276,7 @@ public final class SI extends SystemOfUnits {
      * after the Serbian-born American electrical engineer and physicist
      * Nikola Tesla (1856-1943).
      */
-    public static final AlternateUnit<MagneticFluxDensity> TESLA = si(new AlternateUnit<MagneticFluxDensity>(
+    public static final AlternateUnit<MagneticFluxDensity> TESLA = si(new AlternateUnit<>(
             "T", WEBER.divide(METRE.pow(2))));
 
     /**
@@ -286,7 +286,7 @@ public final class SI extends SystemOfUnits {
      * one ampere per second. It is named after the American physicist
      * Joseph Henry (1791-1878).
      */
-    public static final AlternateUnit<ElectricInductance> HENRY = si(new AlternateUnit<ElectricInductance>(
+    public static final AlternateUnit<ElectricInductance> HENRY = si(new AlternateUnit<>(
             "H", WEBER.divide(AMPERE)));
 
     /**
@@ -302,14 +302,14 @@ public final class SI extends SystemOfUnits {
      * One Lumen is equal to the amount of light given out through a solid angle
      * by a source of one candela intensity radiating equally in all directions.
      */
-    public static final AlternateUnit<LuminousFlux> LUMEN = si(new AlternateUnit<LuminousFlux>(
+    public static final AlternateUnit<LuminousFlux> LUMEN = si(new AlternateUnit<>(
             "lm", CANDELA.times(STERADIAN)));
 
     /**
      * The derived unit for illuminance (<code>lx</code>).
      * One Lux is equal to one lumen per square meter.
      */
-    public static final AlternateUnit<Illuminance> LUX = si(new AlternateUnit<Illuminance>(
+    public static final AlternateUnit<Illuminance> LUX = si(new AlternateUnit<>(
             "lx", LUMEN.divide(METRE.pow(2))));
 
     /**
@@ -318,7 +318,7 @@ public final class SI extends SystemOfUnits {
      * It is named after the French physicist, Antoine-Henri Becquerel
      * (1852-1908).
      */
-    public static final AlternateUnit<RadioactiveActivity> BECQUEREL = si(new AlternateUnit<RadioactiveActivity>(
+    public static final AlternateUnit<RadioactiveActivity> BECQUEREL = si(new AlternateUnit<>(
             "Bq", Unit.ONE.divide(SECOND)));
 
     /**
@@ -328,7 +328,7 @@ public final class SI extends SystemOfUnits {
      * kilogram of matter. It is named after the British physician
      * L. H. Gray (1905-1965).
      */
-    public static final AlternateUnit<RadiationDoseAbsorbed> GRAY = si(new AlternateUnit<RadiationDoseAbsorbed>(
+    public static final AlternateUnit<RadiationDoseAbsorbed> GRAY = si(new AlternateUnit<>(
             "Gy", JOULE.divide(KILOGRAM)));
 
     /**
@@ -338,13 +338,13 @@ public final class SI extends SystemOfUnits {
      * radiation. It is named after the Swedish physicist Rolf Sievert
      * (1898-1966).
      */
-    public static final AlternateUnit<RadiationDoseEffective> SIEVERT = si(new AlternateUnit<RadiationDoseEffective>(
+    public static final AlternateUnit<RadiationDoseEffective> SIEVERT = si(new AlternateUnit<>(
             "Sv", JOULE.divide(KILOGRAM)));
 
     /**
      * The derived unit for catalytic activity (<code>kat</code>).
      */
-    public static final AlternateUnit<CatalyticActivity> KATAL = si(new AlternateUnit<CatalyticActivity>(
+    public static final AlternateUnit<CatalyticActivity> KATAL = si(new AlternateUnit<>(
             "kat", MOLE.divide(SECOND)));
 
     //////////////////////////////
@@ -354,7 +354,7 @@ public final class SI extends SystemOfUnits {
     /**
      * The metric unit for velocity quantities (<code>m/s</code>).
      */
-    public static final Unit<Velocity> METRES_PER_SECOND = si(new ProductUnit<Velocity>(
+    public static final Unit<Velocity> METRES_PER_SECOND = si(new ProductUnit<>(
             METRE.divide(SECOND)));
 
     /**
@@ -365,7 +365,7 @@ public final class SI extends SystemOfUnits {
     /**
      * The metric unit for acceleration quantities (<code>m/s²</code>).
      */
-    public static final Unit<Acceleration> METRES_PER_SQUARE_SECOND = si(new ProductUnit<Acceleration>(
+    public static final Unit<Acceleration> METRES_PER_SQUARE_SECOND = si(new ProductUnit<>(
             METRES_PER_SECOND.divide(SECOND)));
 
     /**
@@ -376,13 +376,13 @@ public final class SI extends SystemOfUnits {
     /**
      * The metric unit for area quantities (<code>m²</code>).
      */
-    public static final Unit<Area> SQUARE_METRE = si(new ProductUnit<Area>(
+    public static final Unit<Area> SQUARE_METRE = si(new ProductUnit<>(
             METRE.times(METRE)));
 
     /**
      * The metric unit for volume quantities (<code>m³</code>).
      */
-    public static final Unit<Volume> CUBIC_METRE = si(new ProductUnit<Volume>(
+    public static final Unit<Volume> CUBIC_METRE = si(new ProductUnit<>(
             SQUARE_METRE.times(METRE)));
 
     /**
