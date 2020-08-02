@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.mkulesh.micromath.plus"
         minSdkVersion 14
@@ -11,18 +11,22 @@ android {
         versionName "2.20.0"
         setProperty("archivesBaseName", "microMathematics-v" + versionName)
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+    compileOptions {
+        encoding "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
-        disable "RtlHardcoded", "RtlSymmetry", "RtlEnabled", "ApplySharedPref", "PrivateResource", "SetTextI18n"
+        disable "RtlHardcoded", "RtlSymmetry", "RtlEnabled",
+                "ApplySharedPref", "PrivateResource", "SetTextI18n"
     }
 }
 
@@ -31,5 +35,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.preference:preference:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
+
     implementation 'org.apache.commons:commons-math3:3.6.1'
 }
