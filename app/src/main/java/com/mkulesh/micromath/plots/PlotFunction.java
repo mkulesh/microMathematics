@@ -210,13 +210,12 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             updatePlotBoundaries(functionView, xMin, xMax, yMin, yMax, functionView.getAxisParameters());
             ArrayList<FunctionIf> func = new ArrayList<>(functions);
             functionView.setFunctions(func);
-            functionView.invalidate();
         }
         else
         {
             functionView.setFunctions(null);
-            functionView.invalidate();
         }
+        functionView.invalidate();
     }
 
     /*********************************************************

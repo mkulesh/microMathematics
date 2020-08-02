@@ -568,7 +568,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
         }
         for (FileItem fi : items)
         {
-            if (fi.name != null && name != null && fi.name.equals(name))
+            if (fi.name != null && fi.name.equals(name))
             {
                 return Uri.fromFile(fi.f());
             }

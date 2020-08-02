@@ -612,7 +612,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
                 final String key = parser.getAttributeValue(null, FormulaList.XML_PROP_KEY);
                 for (TermField t : terms)
                 {
-                    if (t.getTermKey() != null && key != null && t.getTermKey().equals(key))
+                    if (t.getTermKey() != null && t.getTermKey().equals(key))
                     {
                         t.readFromXml(parser);
                         termFound = true;

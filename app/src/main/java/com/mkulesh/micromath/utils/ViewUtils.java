@@ -138,7 +138,7 @@ public final class ViewUtils
                 for (int i = 0; i < values.length; i++)
                 {
                     String fValue = (values[i] != 0.0) ? df.format(values[i]) : "0";
-                    if (fValue != null && (format.equals(fValue) || ("-" + format).equals(fValue)))
+                    if (format.equals(fValue) || ("-" + format).equals(fValue))
                     {
                         fValue = "0";
                     }

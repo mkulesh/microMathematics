@@ -106,7 +106,7 @@ public class ArrayFunctions extends FunctionBase
 
         public boolean isEnabled(CustomEditText field)
         {
-            return this == READ ? field.isFileOperationEnabled() : true;
+            return this != READ || field.isFileOperationEnabled();
         }
 
         public PaletteButton.Category getPaletteCategory()

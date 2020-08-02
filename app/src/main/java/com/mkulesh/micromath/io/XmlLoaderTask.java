@@ -101,11 +101,11 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
         }
         FileUtils.closeStream(is);
 
-        if (prop != null && FormulaList.XML_MMT_SCHEMA.equals(prop))
+        if (FormulaList.XML_MMT_SCHEMA.equals(prop))
         {
             return FileFormat.MMT;
         }
-        else if (prop != null && FormulaList.XML_SM_SCHEMA.equals(prop))
+        else if (FormulaList.XML_SM_SCHEMA.equals(prop))
         {
             return FileFormat.SMATH_STUDIO;
         }
@@ -157,12 +157,8 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
                     parser.require(XmlPullParser.START_TAG, FormulaList.XML_NS, FormulaList.XML_LIST_TAG);
                     list.getDocumentSettings().readFromXml(parser);
                     ViewUtils.Debug(this, "Document version: " + DocumentProperties.getDocumentVersion());
-                    while (true)
+                    while (parser.next() != XmlPullParser.END_TAG)
                     {
-                        if (parser.next() == XmlPullParser.END_TAG)
-                        {
-                            break;
-                        }
                         if (parser.getEventType() != XmlPullParser.START_TAG)
                         {
                             continue;

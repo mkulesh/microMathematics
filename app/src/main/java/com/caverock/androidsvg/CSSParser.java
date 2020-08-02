@@ -733,8 +733,9 @@ class CSSParser
            return null;
          skipWhitespace();
 
-         while (true) {
-            String  ident = nextIdentifier();
+         do
+         {
+            String ident = nextIdentifier();
             if (ident == null) {
                position = start;
                return null;
@@ -743,9 +744,8 @@ class CSSParser
                result = new ArrayList<>();
             result.add(ident);
             skipWhitespace();
-            if (!skipCommaWhitespace())
-               break;
          }
+         while (skipCommaWhitespace());
 
          if (consume(')'))
            return result;
@@ -1262,14 +1262,14 @@ class CSSParser
    private SVG.Style  parseDeclarations(CSSTextScanner scan) throws CSSParseException
    {
       SVG.Style  ruleStyle = new SVG.Style();
-      while (true)
+      do
       {
-         String  propertyName = scan.nextIdentifier();
+         String propertyName = scan.nextIdentifier();
          scan.skipWhitespace();
          if (!scan.consume(':'))
             throw new CSSParseException("Expected ':'");
          scan.skipWhitespace();
-         String  propertyValue = scan.nextPropertyValue();
+         String propertyValue = scan.nextPropertyValue();
          if (propertyValue == null)
             throw new CSSParseException("Expected property value");
          // Check for !important flag.
@@ -1286,9 +1286,8 @@ class CSSParser
          // TODO: support CSS only values such as "inherit"
          SVGParser.processStyleProperty(ruleStyle, propertyName, propertyValue);
          scan.skipWhitespace();
-         if (scan.empty() || scan.consume('}'))
-            break;
       }
+      while (!scan.empty() && !scan.consume('}'));
       return ruleStyle;
    }
 

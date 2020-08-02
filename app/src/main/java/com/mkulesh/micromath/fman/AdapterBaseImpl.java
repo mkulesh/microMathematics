@@ -115,8 +115,7 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
         Item item = (Item) getItem(position);
         if (item == null)
             return null;
-        View v = getView(convertView, parent, item);
-        return v;
+        return getView(convertView, parent, item);
     }
 
     /**

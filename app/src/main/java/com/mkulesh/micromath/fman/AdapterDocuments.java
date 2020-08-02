@@ -628,7 +628,7 @@ public class AdapterDocuments extends AdapterBaseImpl
     {
         for (SAFItem fi : items)
         {
-            if (fi.name != null && name != null && fi.name.equals(name))
+            if (fi.name != null && fi.name.equals(name))
             {
                 return (Uri) fi.origin;
             }
@@ -641,7 +641,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         ArrayList<SAFItem> entries = getChildren(ctx, parent);
         for (SAFItem fi : entries)
         {
-            if (fi.name != null && name != null && fi.name.equals(name))
+            if (fi.name != null && fi.name.equals(name))
             {
                 return (Uri) fi.origin;
             }

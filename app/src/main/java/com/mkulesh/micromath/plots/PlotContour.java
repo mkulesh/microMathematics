@@ -205,13 +205,12 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
             }
             // updatePlotBoundaries needs valid function set
             updatePlotBoundaries(functionView, xMin, xMax, yMin, yMax, null);
-            functionView.invalidate();
         }
         else
         {
             functionView.setFunction(null);
-            functionView.invalidate();
         }
+        functionView.invalidate();
     }
 
     /*********************************************************

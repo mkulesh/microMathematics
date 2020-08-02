@@ -1834,14 +1834,10 @@ Log.d(TAG,"PROC INSTR: "+parser.getText());
       for (int i=0; i<attributes.getLength(); i++)
       {
          String val = attributes.getValue(i).trim();
-         switch (SVGAttr.fromString(attributes.getLocalName(i)))
+         if (SVGAttr.fromString(attributes.getLocalName(i)) == SVGAttr.href)
          {
-            case href:
-               if ("".equals(attributes.getURI(i)) || XLINK_NAMESPACE.equals(attributes.getURI(i)))
-                  obj.href = val;
-               break;
-            default:
-               break;
+            if ("".equals(attributes.getURI(i)) || XLINK_NAMESPACE.equals(attributes.getURI(i)))
+               obj.href = val;
          }
       }
    }
@@ -2160,13 +2156,9 @@ Log.d(TAG,"PROC INSTR: "+parser.getText());
       for (int i=0; i<attributes.getLength(); i++)
       {
          String val = attributes.getValue(i).trim();
-         switch (SVGAttr.fromString(attributes.getLocalName(i)))
+         if (SVGAttr.fromString(attributes.getLocalName(i)) == SVGAttr.offset)
          {
-            case offset:
-               obj.offset = parseGradientOffset(val);
-               break;
-            default:
-               break;
+            obj.offset = parseGradientOffset(val);
          }
       }
    }
@@ -2245,19 +2237,20 @@ Log.d(TAG,"PROC INSTR: "+parser.getText());
       for (int i=0; i<attributes.getLength(); i++)
       {
          String val = attributes.getValue(i).trim();
-         switch (SVGAttr.fromString(attributes.getLocalName(i)))
+         if (SVGAttr.fromString(attributes.getLocalName(i)) == SVGAttr.clipPathUnits)
          {
-            case clipPathUnits:
-               if ("objectBoundingBox".equals(val)) {
-                  obj.clipPathUnitsAreUser = false;
-               } else if ("userSpaceOnUse".equals(val)) {
-                  obj.clipPathUnitsAreUser = true;
-               } else {
-                  throw new SVGParseException("Invalid value for attribute clipPathUnits");
-               }
-               break;
-            default:
-               break;
+            if ("objectBoundingBox".equals(val))
+            {
+               obj.clipPathUnitsAreUser = false;
+            }
+            else if ("userSpaceOnUse".equals(val))
+            {
+               obj.clipPathUnitsAreUser = true;
+            }
+            else
+            {
+               throw new SVGParseException("Invalid value for attribute clipPathUnits");
+            }
          }
       }
    }

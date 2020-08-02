@@ -679,14 +679,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
     {
-        switch (requestCode)
-        {
-        case STORAGE_PERMISSION_REQID:
+        if (requestCode == STORAGE_PERMISSION_REQID)
         {
             // If request is cancelled, the result arrays are empty.
             if (storagePermissionAction != ViewUtils.INVALID_INDEX && grantResults.length > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            {
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 ViewUtils.Debug(this, "permission was granted, performing file operation action");
                 final BaseFragment f = getVisibleFragment();
                 if (f != null)
@@ -699,10 +696,6 @@ public class MainActivity extends AppCompatActivity
                 String error = getResources().getString(R.string.allow_storage_access_description);
                 Toast.makeText(this, error, Toast.LENGTH_LONG).show();
             }
-            return;
-        }
-        default:
-            // nothing to do
         }
     }
 

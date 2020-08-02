@@ -245,24 +245,22 @@ public class LogFunctions extends FunctionBase
         }
 
         CalculatableIf.DifferentiableType retValue = CalculatableIf.DifferentiableType.NONE;
-        switch (getFunctionType())
-        {
         // for this function, derivative depends on the function itself
-        case LOG:
+        if (getFunctionType() == FunctionType.LOG)
+        {
             // log root is only differentiable if the base does not depend on the given argument
             retValue = argsProp;
-            if (retValue != CalculatableIf.DifferentiableType.INDEPENDENT)
+            if (retValue != DifferentiableType.INDEPENDENT)
             {
-                final CalculatableIf.DifferentiableType powValue =
-                        CalculatableIf.DifferentiableType.values()[terms.get(1).isDifferentiable(var).ordinal()];
-                retValue = (powValue == CalculatableIf.DifferentiableType.INDEPENDENT) ?
-                        retValue : CalculatableIf.DifferentiableType.NONE;
+                final DifferentiableType powValue =
+                        DifferentiableType.values()[terms.get(1).isDifferentiable(var).ordinal()];
+                retValue = (powValue == DifferentiableType.INDEPENDENT) ?
+                        retValue : DifferentiableType.NONE;
             }
-            break;
-        default:
-            // for all other functions, derivative can be calculated analytically
+        }
+        else
+        {// for all other functions, derivative can be calculated analytically
             retValue = argsProp;
-            break;
         }
         // set the error code to be displayed
         ErrorCode errorCode = ErrorCode.NO_ERROR;

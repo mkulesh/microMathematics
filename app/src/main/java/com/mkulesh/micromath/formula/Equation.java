@@ -529,12 +529,8 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
             // an interval
             return true;
         }
-        else if (argNumber == ARG_NUMBER_ARRAY_OR_CONSTANT && (isArray() || getArguments() == null))
-        {
-            // an array or constant
-            return true;
-        }
-        return false;
+        // an array or constant
+        else return argNumber == ARG_NUMBER_ARRAY_OR_CONSTANT && (isArray() || getArguments() == null);
     }
 
     private EquationArrayResult findPreviousArray()
