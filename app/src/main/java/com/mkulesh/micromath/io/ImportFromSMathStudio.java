@@ -550,7 +550,7 @@ public class ImportFromSMathStudio
                 {
                     serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_CODE,
                             UserFunctions.FunctionType.FUNCTION_INDEX.getLinkObject() + "." + arrayName +
-                                    UserFunctions.FUNCTION_ARGS_MARKER + Integer.toString(p.args - 1));
+                                    UserFunctions.FUNCTION_ARGS_MARKER + (p.args - 1));
                     parseTermArguments(p.args - 1, elements, serializer);
                     XmlUtils.removeLast(elements);
                 }
@@ -559,7 +559,7 @@ public class ImportFromSMathStudio
                     // Array can not be resolved: convert as user function
                     serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_CODE,
                             UserFunctions.FunctionType.FUNCTION_LINK.getLinkObject() + "." + p.text +
-                                    UserFunctions.FUNCTION_ARGS_MARKER + Integer.toString(p.args));
+                                    UserFunctions.FUNCTION_ARGS_MARKER + p.args);
                     parseTermArguments(p.args, elements, serializer);
                 }
             }
@@ -568,7 +568,7 @@ public class ImportFromSMathStudio
                 // User function
                 serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_CODE,
                         UserFunctions.FunctionType.FUNCTION_LINK.getLinkObject() + "." + p.text +
-                                UserFunctions.FUNCTION_ARGS_MARKER + Integer.toString(p.args));
+                                UserFunctions.FUNCTION_ARGS_MARKER + p.args);
                 parseTermArguments(p.args, elements, serializer);
             }
         }
@@ -611,7 +611,7 @@ public class ImportFromSMathStudio
         }
         else for (int i = 0; i < args; i++)
         {
-            parseTerm("argTerm" + Integer.toString(args - i), elements, serializer, false);
+            parseTerm("argTerm" + (args - i), elements, serializer, false);
         }
     }
 

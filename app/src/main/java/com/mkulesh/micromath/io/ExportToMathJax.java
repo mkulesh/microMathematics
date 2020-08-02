@@ -154,7 +154,7 @@ public class ExportToMathJax extends ExportToLatex
             return;
         }
 
-        final String figName = fileName + "_fig" + String.valueOf(figNumber) + ".png";
+        final String figName = fileName + "_fig" + figNumber + ".png";
         Uri figUri = adapter.getItemUri(figName);
         if (figUri == null)
         {

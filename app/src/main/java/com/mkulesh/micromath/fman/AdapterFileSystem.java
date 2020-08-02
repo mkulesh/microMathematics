@@ -186,7 +186,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
                     }
                     else
                     {
-                        f_item.attr = Integer.toString(subFiles.length) + " "
+                        f_item.attr = subFiles.length + " "
                                 + ctx.getString(R.string.dialog_list_items);
                     }
                 }

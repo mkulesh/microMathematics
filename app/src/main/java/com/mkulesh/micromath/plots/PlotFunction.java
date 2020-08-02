@@ -388,7 +388,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
                             for (int i = 0; i < rb.length; i++)
                             {
                                 final String text = ctx.getString(R.string.dialog_function_selection) + " "
-                                        + Integer.toString(i + 1) + ":";
+                                        + (i + 1) + ":";
                                 rb[i].setText(text);
                                 final Paint p = functions.get(i).getLineParameters().getPaint();
                                 final int textWidth = (int) rb[i].getPaint().measureText(text);
@@ -525,7 +525,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             {
                 LineProperties lp = new LineProperties();
                 lp.assign(functions.get(i).getLineParameters());
-                bundle.putParcelable(STATE_LINE_PARAMETERS + String.valueOf(i), lp);
+                bundle.putParcelable(STATE_LINE_PARAMETERS + i, lp);
             }
             bundle.putParcelable(STATE_FUNCTIONVIEW_PARAMETERS, functionView.onSaveInstanceState());
         }
@@ -548,7 +548,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             ensureFunctionsNumber(bundle.getInt(STATE_FUNCTIONS_NUMBER, 0));
             for (int i = 0; i < functions.size(); i++)
             {
-                LineProperties lp = bundle.getParcelable(STATE_LINE_PARAMETERS + String.valueOf(i));
+                LineProperties lp = bundle.getParcelable(STATE_LINE_PARAMETERS + i);
                 if (lp != null)
                 {
                     functions.get(i).getLineParameters().assign(lp);
@@ -747,8 +747,8 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             final String yKey = getContext().getResources().getString(R.string.formula_y_function_key);
             for (Function2D f : functions)
             {
-                f.x.setTermKey(xKey + String.valueOf(f.index));
-                f.y.setTermKey(yKey + String.valueOf(f.index));
+                f.x.setTermKey(xKey + f.index);
+                f.y.setTermKey(yKey + f.index);
             }
 
             Collections.sort(functions, new Comparator<Function2D>()

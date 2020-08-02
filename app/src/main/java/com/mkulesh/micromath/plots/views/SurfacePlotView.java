@@ -53,13 +53,14 @@ public class SurfacePlotView extends PlotView
     private final Rect rect = new Rect(), tmpRect = new Rect();
     private final Point p1 = new Point(), p2 = new Point();
     private int factor_x, factor_y; // conversion factors
-    private final int poly_x[] = new int[5], poly_y[] = new int[5];
-    private final int color[] = new int[5];
-    private final Point3D tmpVertex[] = new Point3D[4];
+    private final int[] poly_x = new int[5];
+    private final int[] poly_y = new int[5];
+    private final int[] color = new int[5];
+    private final Point3D[] tmpVertex = new Point3D[4];
     private final Point3D cop = new Point3D(0, 0, 0); // center of projection
-    private final float vertsValues[] = new float[12];
-    private final int vertsColors[] = new int[12];
-    private final double cubeBounds[][] = new double[][]{ { -10, -10, -10 }, { -10, 10, -10 }, { 10, 10, -10 },
+    private final float[] vertsValues = new float[12];
+    private final int[] vertsColors = new int[12];
+    private final double[][] cubeBounds = new double[][]{ { -10, -10, -10 }, { -10, 10, -10 }, { 10, 10, -10 },
             { 10, -10, -10 }, { -10, -10, 10 }, { -10, 10, 10 }, { 10, 10, 10 }, { 10, -10, 10 } };
     private final Vector2D labelCenter = new Vector2D(-10, -10);
     private Label[] xLabels = null;

@@ -126,7 +126,7 @@ public class DialogResultDetails extends DialogBase
 
         // Show number of items
         final TextView itemsNumber = findViewById(R.id.result_details_items_number);
-        itemsNumber.setText(Integer.toString(calculatedItems.size()) + " "
+        itemsNumber.setText(calculatedItems.size() + " "
                 + getContext().getString(R.string.dialog_list_items));
     }
 

@@ -378,7 +378,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
             }
             else
             {
-                mode.setTitle(String.valueOf(selected) + "/" + String.valueOf(total));
+                mode.setTitle(selected + "/" + total);
             }
             Menu m = mode.getMenu();
             if (m != null)

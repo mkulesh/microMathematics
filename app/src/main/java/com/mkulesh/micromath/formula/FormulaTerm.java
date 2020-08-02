@@ -291,7 +291,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         int count = 1;
         {
             final String termKey = getContext().getResources().getString(R.string.formula_arg_term_key);
-            final boolean firstTerm = owner.getTermKey().equals(termKey + String.valueOf(1));
+            final boolean firstTerm = owner.getTermKey().equals(termKey + 1);
             if (firstTerm && startIndex + 1 < expandable.getChildCount()
                     && expandable.getChildAt(startIndex + 1) instanceof CustomTextView)
             {
@@ -340,7 +340,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             int i = 1;
             for (TermField t : terms)
             {
-                t.setTermKey(getContext().getResources().getString(R.string.formula_arg_term_key) + String.valueOf(i++));
+                t.setTermKey(getContext().getResources().getString(R.string.formula_arg_term_key) + i++);
             }
         }
     }

@@ -134,7 +134,7 @@ public class AdapterAssets extends AdapterBaseImpl
                         {
                             FileItem fi = new FileItem(new File(asset));
                             fi.dir = true;
-                            fi.attr = Integer.toString(subAssets.length) + " "
+                            fi.attr = subAssets.length + " "
                                     + ctx.getString(R.string.dialog_list_items);
                             fi.date = new Date(appTimeStamp);
                             fi.size = -1;

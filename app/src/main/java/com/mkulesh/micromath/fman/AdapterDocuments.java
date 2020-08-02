@@ -256,7 +256,7 @@ public class AdapterDocuments extends AdapterBaseImpl
                     if (item.dir)
                     {
                         item.size = -1;
-                        item.attr = Integer.toString(getDirItemsNumber(ctx, (Uri) item.origin)) + " "
+                        item.attr = getDirItemsNumber(ctx, (Uri) item.origin) + " "
                                 + ctx.getString(R.string.dialog_list_items);
                     }
                     tmp_list.add(item);

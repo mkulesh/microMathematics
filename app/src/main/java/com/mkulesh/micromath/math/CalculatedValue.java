@@ -404,7 +404,7 @@ public class CalculatedValue
             final double roundV = roundToNumberOfSignificantDigits(value, doc.significantDigits);
             if (roundV >= 0 && addPlusSign)
             {
-                return "+" + Double.toString(roundV);
+                return "+" + roundV;
             }
             else
             {

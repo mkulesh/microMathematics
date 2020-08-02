@@ -287,7 +287,7 @@ class CSSParser
    }
 
 
-   static enum  Source
+   enum  Source
    {
       Document,
       RenderOptions
@@ -310,7 +310,7 @@ class CSSParser
       @Override
       public String toString()
       {
-         return String.valueOf(selector) + " {...} (src="+this.source+")";
+         return selector + " {...} (src="+this.source+")";
       }
    }
 
@@ -1495,9 +1495,9 @@ class CSSParser
    //==============================================================================
 
 
-   private static interface  PseudoClass
+   private interface  PseudoClass
    {
-      public boolean  matches(RuleMatchContext ruleMatchContext, SvgElementBase obj);
+      boolean  matches(RuleMatchContext ruleMatchContext, SvgElementBase obj);
    }
 
 
