@@ -146,11 +146,6 @@ public class TextProperties implements Parcelable
 
     public static final int[] getInitialNumber()
     {
-        final int[] initialNumber = new int[TextStyle.values().length];
-        for (int i = 0; i < initialNumber.length; i++)
-        {
-            initialNumber[i] = 0;
-        }
-        return initialNumber;
+        return new int[TextStyle.values().length];
     }
 }

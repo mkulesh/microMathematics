@@ -182,9 +182,8 @@ public abstract class UnitFormat extends Format {
     public final StringBuffer format(Object unit, final StringBuffer toAppendTo,
             FieldPosition pos) {
         try {
-            Object dest = toAppendTo;
-            if (dest instanceof Appendable) { 
-                format((Unit<?>) unit, (Appendable)dest);                        
+            if (toAppendTo instanceof Appendable) {
+                format((Unit<?>) unit, toAppendTo);
             } else {  // When retroweaver is used to produce 1.4 binaries.
                 format((Unit<?>) unit, new Appendable() {
 
@@ -352,7 +351,7 @@ public abstract class UnitFormat extends Format {
             // Compound unit.
             if (unit instanceof CompoundUnit) {
                 CompoundUnit<?> cpdUnit = (CompoundUnit<?>) unit;
-                return nameFor(cpdUnit.getHigher()).toString() + ":"
+                return nameFor(cpdUnit.getHigher()) + ":"
                         + nameFor(cpdUnit.getLower());
             }
             return null; // Product unit.

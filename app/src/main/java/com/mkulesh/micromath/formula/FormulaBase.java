@@ -361,7 +361,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         {
             getFormulaList().selectAll();
         }
-        else if (owner != null && owner instanceof CustomEditText)
+        else if (owner instanceof CustomEditText)
         {
             retValue = this;
         }
@@ -396,7 +396,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         }
 
         TermField t = null;
-        final boolean pasteIntoEditText = (owner != null && owner instanceof CustomEditText);
+        final boolean pasteIntoEditText = (owner instanceof CustomEditText);
         if (pasteIntoEditText)
         {
             // paste into text edit

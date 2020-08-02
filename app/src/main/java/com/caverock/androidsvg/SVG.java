@@ -1419,8 +1419,6 @@ public class SVG
       {
          switch (unit)
          {
-            case px:
-               return value;
             case em:
                return value * renderer.getCurrentFontSize();
             case ex:
@@ -1440,6 +1438,7 @@ public class SVG
                if (viewPortUser == null)
                   return value;  // Undefined in this situation - so just return value to avoid an NPE
                return value * viewPortUser.width / 100f;
+            case px:
             default:
                return value;
          }
@@ -1493,8 +1492,6 @@ public class SVG
       {
          switch (unit)
          {
-            case px:
-               return value;
             case in:
                return value * dpi;
             case cm:
@@ -1508,6 +1505,7 @@ public class SVG
             case em:
             case ex:
             case percent:
+            case px:
             default:
                return value;
          }

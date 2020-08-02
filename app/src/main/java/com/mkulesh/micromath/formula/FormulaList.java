@@ -1033,7 +1033,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
             }
             break;
         case CLEAR:
-            if (f != null && f.isRootFormula() && selectedEquations.contains(f))
+            if (f != null && f.isRootFormula())
             {
                 selectedEquations.remove(f);
             }

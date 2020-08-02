@@ -170,7 +170,7 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         if (state instanceof Bundle)
         {
             Bundle bundle = (Bundle) state;
-            parameters.assign((TextProperties) bundle.getParcelable(STATE_TEXT_PARAMETERS));
+            parameters.assign(bundle.getParcelable(STATE_TEXT_PARAMETERS));
             super.onRestoreInstanceState(bundle);
             updateTextView();
         }
@@ -351,7 +351,7 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         for (int i = 0; i < chars.length; i++)
         {
             final int currWidth = i - lineStartIdx;
-            final int charCode = (int) chars[i];
+            final int charCode = chars[i];
             if (!Character.isWhitespace(chars[i]))
             {
                 textStart = true;

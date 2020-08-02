@@ -185,7 +185,7 @@ public class FileListView implements AdapterView.OnItemClickListener
             if (FileUtils.str(item_name))
                 setSelection(item_name);
             else
-                setSelection(currentPosition > 0 ? currentPosition : 0, 0);
+                setSelection(Math.max(currentPosition, 0), 0);
         }
         catch (Exception e)
         {

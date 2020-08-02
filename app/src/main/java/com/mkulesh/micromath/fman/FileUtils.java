@@ -562,8 +562,7 @@ public final class FileUtils
             String[] relativeDirectories = relativeTo.split("/");
 
             //Get the shortest of the two paths
-            int length = absoluteDirectories.length < relativeDirectories.length ? absoluteDirectories.length
-                    : relativeDirectories.length;
+            int length = Math.min(absoluteDirectories.length, relativeDirectories.length);
 
             //Use to determine where in the loop we exited
             int lastCommonRoot = -1;

@@ -219,27 +219,26 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     protected TermField addArgument(TermField startField, int argLayoutId, int addDepth)
     {
         // target layout where terms will be added
-        View expandable = startField.getLayout();
+        LinearLayout expandable = startField.getLayout();
         if (expandable == null)
         {
             return null;
         }
-        LinearLayout expandableLayout = (LinearLayout) expandable;
 
         // view index of the field within the target layout and within the terms vector
         int viewIndex = -1;
         if (startField.isTerm())
         {
             ArrayList<View> list = new ArrayList<>();
-            startField.getTerm().collectElemets(expandableLayout, list);
+            startField.getTerm().collectElemets(expandable, list);
             for (View l : list)
             {
-                viewIndex = Math.max(viewIndex, ViewUtils.getViewIndex(expandableLayout, l));
+                viewIndex = Math.max(viewIndex, ViewUtils.getViewIndex(expandable, l));
             }
         }
         else
         {
-            viewIndex = ViewUtils.getViewIndex(expandableLayout, startField.getEditText());
+            viewIndex = ViewUtils.getViewIndex(expandable, startField.getEditText());
         }
         int termIndex = terms.indexOf(startField);
         if (viewIndex < 0 || termIndex < 0)
@@ -260,10 +259,10 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             }
             else if (t instanceof CustomEditText)
             {
-                newArg = addTerm(getFormulaRoot(), expandableLayout, ++termIndex, (CustomEditText) t, this, addDepth);
+                newArg = addTerm(getFormulaRoot(), expandable, ++termIndex, (CustomEditText) t, this, addDepth);
                 newArg.bracketsType = TermField.BracketsType.NEVER;
             }
-            expandableLayout.addView(t, ++viewIndex);
+            expandable.addView(t, ++viewIndex);
         }
         reIndexTerms();
         return newArg;
@@ -275,15 +274,14 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     protected TermField deleteArgument(TermField owner, String sep, boolean storeUndoState)
     {
         // target layout where terms will be deleted
-        View expandable = owner.getLayout();
+        LinearLayout expandable = owner.getLayout();
         if (expandable == null)
         {
             return null;
         }
-        LinearLayout expandableLayout = (LinearLayout) expandable;
 
         // view index of the field within the parent layout
-        int startIndex = ViewUtils.getViewIndex(expandableLayout, owner.getEditText());
+        int startIndex = ViewUtils.getViewIndex(expandable, owner.getEditText());
         if (startIndex < 0)
         {
             return null;
@@ -294,19 +292,19 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         {
             final String termKey = getContext().getResources().getString(R.string.formula_arg_term_key);
             final boolean firstTerm = owner.getTermKey().equals(termKey + String.valueOf(1));
-            if (firstTerm && startIndex + 1 < expandableLayout.getChildCount()
-                    && expandableLayout.getChildAt(startIndex + 1) instanceof CustomTextView)
+            if (firstTerm && startIndex + 1 < expandable.getChildCount()
+                    && expandable.getChildAt(startIndex + 1) instanceof CustomTextView)
             {
-                final CustomTextView next = ((CustomTextView) expandableLayout.getChildAt(startIndex + 1));
+                final CustomTextView next = ((CustomTextView) expandable.getChildAt(startIndex + 1));
                 if (next.getText().toString().equals(sep))
                 {
                     count++;
                 }
             }
             else if (!firstTerm && startIndex >= 1
-                    && expandableLayout.getChildAt(startIndex - 1) instanceof CustomTextView)
+                    && expandable.getChildAt(startIndex - 1) instanceof CustomTextView)
             {
-                final CustomTextView prev = ((CustomTextView) expandableLayout.getChildAt(startIndex - 1));
+                final CustomTextView prev = ((CustomTextView) expandable.getChildAt(startIndex - 1));
                 if (prev.getText().toString().equals(sep))
                 {
                     startIndex--;
@@ -322,7 +320,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         int prevIndex = terms.indexOf(owner);
         prevIndex--;
         terms.remove(owner);
-        expandableLayout.removeViews(startIndex, count);
+        expandable.removeViews(startIndex, count);
         reIndexTerms();
 
         return (prevIndex >= 0) ? terms.get(prevIndex) : null;

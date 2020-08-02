@@ -55,8 +55,8 @@ public class SettingsActivity extends AppCompatActivity
         public void onCreatePreferences(Bundle bundle, String s)
         {
             addPreferencesFromResource(R.xml.preferences);
-            prepareListPreference(getActivity(), (ListPreference) findPreference("app_language"));
-            prepareListPreference(getActivity(), (ListPreference) findPreference("app_theme"));
+            prepareListPreference(getActivity(), findPreference("app_language"));
+            prepareListPreference(getActivity(), findPreference("app_theme"));
             tintIcons(getActivity(), getPreferenceScreen());
         }
     }

@@ -208,7 +208,7 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         {
             Bundle bundle = (Bundle) state;
             imageView.onRestoreInstanceState(bundle.getParcelable(STATE_IMAGE_VIEW));
-            parameters.assign((ImageProperties) bundle.getParcelable(STATE_IMAGE_PARAMETERS));
+            parameters.assign(bundle.getParcelable(STATE_IMAGE_PARAMETERS));
             super.onRestoreInstanceState(bundle);
             updateImageView();
         }

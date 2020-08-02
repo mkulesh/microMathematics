@@ -230,7 +230,7 @@ public class FormulaListView
             {
                 row.addView(f, colIdx);
             }
-            if (f != null && f instanceof FormulaBase)
+            if (f != null)
             {
                 // check that the current formula depth has no conflicts with allowed formula depth
                 f.checkFormulaDepth();
@@ -609,7 +609,7 @@ public class FormulaListView
             if (idx != ViewUtils.INVALID_INDEX)
             {
                 View v = getNextView(this, idx, position);
-                if (v != null && v instanceof FormulaBase)
+                if (v instanceof FormulaBase)
                 {
                     return (FormulaBase) v;
                 }

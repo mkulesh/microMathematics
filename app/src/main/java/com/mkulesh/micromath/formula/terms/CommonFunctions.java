@@ -408,7 +408,7 @@ public class CommonFunctions extends FunctionBase
                 outValue.setValue(n - 1);
                 outValue.pow(argVal[1], outValue);
                 outValue.nthRoot(outValue, n);
-                outValue.multiply((double) n);
+                outValue.multiply(n);
                 return outValue.divide(a1derVal, outValue);
             }
             case ABS:

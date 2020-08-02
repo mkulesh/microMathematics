@@ -331,7 +331,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     public void fileOperation(boolean status)
     {
         FormulaTerm t = rightTerm.getTerm();
-        if (t != null && t instanceof ArrayFunctions)
+        if (t instanceof ArrayFunctions)
         {
             if (status)
             {

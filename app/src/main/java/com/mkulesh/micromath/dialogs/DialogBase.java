@@ -52,7 +52,7 @@ public class DialogBase extends Dialog implements OnClickListener
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_base);
         final LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(layoutId, (LinearLayout) findViewById(R.id.dialog_content_panel));
+        inflater.inflate(layoutId, findViewById(R.id.dialog_content_panel));
 
         TypedValue outValue = new TypedValue();
         context.getTheme().resolveAttribute(R.attr.drawableDialogWindow, outValue, true);
@@ -163,17 +163,17 @@ public class DialogBase extends Dialog implements OnClickListener
         if (cp != null)
         {
             View v = findViewById(R.id.dialog_colorpicker_saturation_bar);
-            if (v != null && v instanceof SaturationBar)
+            if (v instanceof SaturationBar)
             {
                 cp.addSaturationBar((SaturationBar) v);
             }
             v = findViewById(R.id.dialog_colorpicker_value_bar);
-            if (v != null && v instanceof ValueBar)
+            if (v instanceof ValueBar)
             {
                 cp.addValueBar((ValueBar) v);
             }
             v = findViewById(R.id.dialog_colorpicker_opacity_bar);
-            if (v != null && v instanceof OpacityBar)
+            if (v instanceof OpacityBar)
             {
                 cp.addOpacityBar((OpacityBar) v);
             }

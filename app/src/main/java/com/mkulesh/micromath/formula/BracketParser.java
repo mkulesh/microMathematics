@@ -148,7 +148,7 @@ public class BracketParser
             try
             {
                 tmpArgs.add(args.substring(0, cmPosition).trim());
-                args = args.substring(cmPosition + 1, args.length());
+                args = args.substring(cmPosition + 1);
             }
             catch (IndexOutOfBoundsException ex)
             {
@@ -202,7 +202,7 @@ public class BracketParser
             final String startBracket = res.getString(BracketParser.START_BRACKET_IDS[brIdx]);
             if (s.contains(startBracket))
             {
-                s = s.substring(s.indexOf(startBracket) + startBracket.length(), s.length());
+                s = s.substring(s.indexOf(startBracket) + startBracket.length());
             }
         }
         return s;

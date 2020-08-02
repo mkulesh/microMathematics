@@ -646,24 +646,24 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         functionView.prepare(getFormulaList().getActivity(), this);
 
         // create editable fields
-        yMax = addTerm(this, (LinearLayout) layout.findViewById(R.id.plot_y_max_layout),
-                (CustomEditText) layout.findViewById(R.id.plot_y_max_value), this, false);
+        yMax = addTerm(this, layout.findViewById(R.id.plot_y_max_layout),
+                layout.findViewById(R.id.plot_y_max_value), this, false);
         boundaries[0] = yMax;
 
         function.initializePrimaryY();
 
-        yMin = addTerm(this, (LinearLayout) layout.findViewById(R.id.plot_y_min_layout),
-                (CustomEditText) layout.findViewById(R.id.plot_y_min_value), this, false);
+        yMin = addTerm(this, layout.findViewById(R.id.plot_y_min_layout),
+                layout.findViewById(R.id.plot_y_min_value), this, false);
         boundaries[1] = yMin;
 
-        xMin = addTerm(this, (LinearLayout) layout.findViewById(R.id.plot_x_min_layout),
-                (CustomEditText) layout.findViewById(R.id.plot_x_min_value), this, false);
+        xMin = addTerm(this, layout.findViewById(R.id.plot_x_min_layout),
+                layout.findViewById(R.id.plot_x_min_value), this, false);
         boundaries[2] = xMin;
 
         function.initializePrimaryX();
 
-        xMax = addTerm(this, (LinearLayout) layout.findViewById(R.id.plot_x_max_layout),
-                (CustomEditText) layout.findViewById(R.id.plot_x_max_value), this, false);
+        xMax = addTerm(this, layout.findViewById(R.id.plot_x_max_layout),
+                layout.findViewById(R.id.plot_x_max_value), this, false);
         boundaries[3] = xMax;
 
         for (TermField t : terms)
@@ -675,10 +675,10 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             t.termDepth = 2;
         }
 
-        axes.add((CustomTextView) layout.findViewById(R.id.plot_x_axis1));
-        axes.add((CustomTextView) layout.findViewById(R.id.plot_x_axis2));
-        axes.add((CustomTextView) layout.findViewById(R.id.plot_y_axis1));
-        axes.add((CustomTextView) layout.findViewById(R.id.plot_y_axis2));
+        axes.add(layout.findViewById(R.id.plot_x_axis1));
+        axes.add(layout.findViewById(R.id.plot_x_axis2));
+        axes.add(layout.findViewById(R.id.plot_y_axis1));
+        axes.add(layout.findViewById(R.id.plot_y_axis2));
         for (int i = 0; i < axes.size(); i++)
         {
             axes.get(i).prepare(CustomTextView.SymbolType.TEXT, getFormulaList().getActivity(), this);
@@ -893,7 +893,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
 
         public void initializePrimaryX()
         {
-            initializeX((LinearLayout) xDataLayout.findViewWithTag(X_FUNCTION_TAG), -1);
+            initializeX(xDataLayout.findViewWithTag(X_FUNCTION_TAG), -1);
         }
 
         private void initializeY(LinearLayout yLayout, int idx)
@@ -907,7 +907,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
 
         public void initializePrimaryY()
         {
-            initializeY((LinearLayout) yDataLayout.findViewWithTag(Y_FUNCTION_TAG), -1);
+            initializeY(yDataLayout.findViewWithTag(Y_FUNCTION_TAG), -1);
             settingsView = yDataLayout.findViewWithTag(Y_SETTINGS_TAG);
             settingsView.prepare(CustomTextView.SymbolType.HOR_LINE, getFormulaList().getActivity(), PlotFunction.this);
         }

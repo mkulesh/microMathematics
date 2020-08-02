@@ -58,17 +58,15 @@ public class TermParser
     @Override
     public String toString()
     {
-        StringBuilder info = new StringBuilder();
-        info.append("value=").append(value == null ? "empty" : value.toString())
-                .append(", functionName=").append(functionName == null ? "empty" : functionName)
-                .append(", functionArgs=").append(functionArgs == null ? "empty" : functionArgs.toString())
-                .append(", argumentHolder=").append(argumentHolder == null ? "empty" : argumentHolder.toString())
-                .append(", argumentIndex=").append(argumentIndex)
-                .append(", linkedVariableId=").append(linkedVariableId)
-                .append(", sign=").append(sign)
-                .append(", isArray=").append(isArray)
-                .append(", unit=").append(unit == null ? "empty" : unit.toString());
-        return info.toString();
+        return "value=" + (value == null ? "empty" : value.toString()) +
+                ", functionName=" + (functionName == null ? "empty" : functionName) +
+                ", functionArgs=" + (functionArgs == null ? "empty" : functionArgs.toString()) +
+                ", argumentHolder=" + (argumentHolder == null ? "empty" : argumentHolder.toString()) +
+                ", argumentIndex=" + argumentIndex +
+                ", linkedVariableId=" + linkedVariableId +
+                ", sign=" + sign +
+                ", isArray=" + isArray +
+                ", unit=" + (unit == null ? "empty" : unit.toString());
     }
 
     public CalculatedValue getValue()
@@ -165,7 +163,7 @@ public class TermParser
         {
             final int sepPos = text.indexOf(UNIT_SEPARATOR);
             final String valuePart = text.substring(0, sepPos).trim();
-            final String unitPart = text.substring(sepPos + UNIT_SEPARATOR.length(), text.length()).trim();
+            final String unitPart = text.substring(sepPos + UNIT_SEPARATOR.length()).trim();
             unit = parseUnits(unitPart);
             if (unit != null)
             {

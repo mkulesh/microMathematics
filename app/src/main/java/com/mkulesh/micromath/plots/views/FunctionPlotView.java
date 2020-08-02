@@ -94,11 +94,11 @@ public class FunctionPlotView extends PlanePlotView
             // Prepare the function point
             double xv = xVal[i];
             {
-                xv = (Double.isNaN(xv) || xv > xmax) ? xmax : ((xv < xmin) ? xmin : xv);
+                xv = (Double.isNaN(xv) || xv > xmax) ? xmax : (Math.max(xv, xmin));
             }
             double yv = yVal[i];
             {
-                yv = (Double.isNaN(yv) || yv > ymax) ? ymax : ((yv < ymin) ? ymin : yv);
+                yv = (Double.isNaN(yv) || yv > ymax) ? ymax : (Math.max(yv, ymin));
             }
             tmpVec.set(xv, yv);
 
@@ -152,9 +152,8 @@ public class FunctionPlotView extends PlanePlotView
             case SQUARE:
                 c.drawRect(p1.x - shapeSize, p1.y - shapeSize, p1.x + shapeSize, p1.y + shapeSize, shapePaint);
                 break;
-            case NONE:
-                break;
-            default:
+                case NONE:
+                default:
                 break;
             }
             p2.set(p1.x, p1.y);

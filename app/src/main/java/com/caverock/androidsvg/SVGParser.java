@@ -3508,7 +3508,7 @@ Log.d(TAG,"PROC INSTR: "+parser.getText());
    {
       try {
          float  o = parseFloat(val);
-         return (o < 0f) ? 0f : (o > 1f) ? 1f : o;
+         return (o < 0f) ? 0f : Math.min(o, 1f);
       } catch (SVGParseException e) {
          return null;
       }
@@ -3748,8 +3748,8 @@ Log.d(TAG,"PROC INSTR: "+parser.getText());
       hue /= 60f;    // [0, 360] -> [0, 6]
       sat /= 100;   // [0, 100] -> [0, 1]
       light /= 100; // [0, 100] -> [0, 1]
-      sat = (sat < 0f) ? 0f : (sat > 1f) ? 1f : sat;
-      light = (light < 0f) ? 0f : (light > 1f) ? 1f : light;
+      sat = (sat < 0f) ? 0f : Math.min(sat, 1f);
+      light = (light < 0f) ? 0f : Math.min(light, 1f);
       float  t1, t2;
       if (light <= 0.5f) {
          t2 = light * (sat + 1f);

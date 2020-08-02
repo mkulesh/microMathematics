@@ -157,12 +157,12 @@ public abstract class PlotView extends CustomTextView
         if (state instanceof Bundle)
         {
             Bundle bundle = (Bundle) state;
-            axisParameters.assign((AxisProperties) bundle.getParcelable(STATE_AXIS_PARAMETERS));
-            plotParameters.assign((PlotProperties) bundle.getParcelable(STATE_PLOT_PARAMETERS));
+            axisParameters.assign(bundle.getParcelable(STATE_AXIS_PARAMETERS));
+            plotParameters.assign(bundle.getParcelable(STATE_PLOT_PARAMETERS));
             if (colorMapView != null)
             {
                 colorMapView.getColorMapParameters().assign(
-                        (ColorMapProperties) bundle.getParcelable(STATE_COLORMAP_PARAMETERS));
+                        bundle.getParcelable(STATE_COLORMAP_PARAMETERS));
             }
         }
     }
