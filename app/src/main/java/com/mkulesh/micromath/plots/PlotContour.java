@@ -350,13 +350,10 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
     {
         cornerView1.getLayoutParams().height = h;
         cornerView2.getLayoutParams().height = h;
-        cornerView1.post(new Runnable()
+        cornerView1.post(() ->
         {
-            public void run()
-            {
-                cornerView1.requestLayout();
-                cornerView2.requestLayout();
-            }
+            cornerView1.requestLayout();
+            cornerView2.requestLayout();
         });
     }
 

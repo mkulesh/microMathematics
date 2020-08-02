@@ -59,7 +59,6 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class PlotFunction extends CalculationResult implements SizeChangingLayout.SizeChangedIf,
         PlotPropertiesChangeIf, AxisPropertiesChangeIf, LinePropertiesChangeIf
@@ -497,13 +496,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
     {
         cornerView.getLayoutParams().width = LayoutParams.MATCH_PARENT;
         cornerView.getLayoutParams().height = h;
-        cornerView.post(new Runnable()
-        {
-            public void run()
-            {
-                cornerView.requestLayout();
-            }
-        });
+        cornerView.post(() -> cornerView.requestLayout());
     }
 
     /*********************************************************
@@ -750,16 +743,13 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
                 f.y.setTermKey(yKey + f.index);
             }
 
-            Collections.sort(functions, new Comparator<Function2D>()
+            Collections.sort(functions, (s1, s2) ->
             {
-                public int compare(Function2D s1, Function2D s2)
+                if (s1.index == s2.index)
                 {
-                    if (s1.index == s2.index)
-                    {
-                        return 0;
-                    }
-                    return (s1.index < s2.index) ? -1 : 1;
+                    return 0;
                 }
+                return (s1.index < s2.index) ? -1 : 1;
             });
         }
     }

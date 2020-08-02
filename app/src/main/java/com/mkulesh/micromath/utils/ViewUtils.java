@@ -226,14 +226,7 @@ public final class ViewUtils
     public static void invalidateLayout(View v, final LinearLayout l)
     {
         v.invalidate();
-        l.post(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                l.requestLayout();
-            }
-        });
+        l.post(l::requestLayout);
     }
 
     /**

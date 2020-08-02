@@ -24,7 +24,6 @@ import com.mkulesh.micromath.widgets.CustomEditText;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -182,15 +181,7 @@ public class TermFactory
     {
         final List<TermTypeIf.GroupType> gTypes =
                 Arrays.asList(TermTypeIf.GroupType.values());
-        Collections.sort(gTypes, new Comparator<TermTypeIf.GroupType>()
-        {
-            @Override
-            public int compare(TermTypeIf.GroupType lhs, TermTypeIf.GroupType rhs)
-            {
-                return lhs.getPaletteOrder() > rhs.getPaletteOrder() ? 1 :
-                        (lhs.getPaletteOrder() < rhs.getPaletteOrder()) ? -1 : 0;
-            }
-        });
+        Collections.sort(gTypes, (lhs, rhs) -> Integer.compare(lhs.getPaletteOrder(), rhs.getPaletteOrder()));
         return gTypes;
     }
 }

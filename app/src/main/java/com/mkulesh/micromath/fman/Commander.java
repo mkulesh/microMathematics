@@ -23,7 +23,6 @@ import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -97,13 +96,7 @@ public class Commander extends DialogBase implements CommanderIf
         homeButton = findViewById(R.id.fman_action_home);
         homeButton.setOnClickListener(this);
         ViewUtils.setImageButtonColorAttr(context, homeButton, R.attr.colorDialogContent);
-        homeButton.setOnLongClickListener(new OnLongClickListener()
-        {
-            public boolean onLongClick(View v)
-            {
-                return ViewUtils.showButtonDescription(getContext(), v);
-            }
-        });
+        homeButton.setOnLongClickListener(v -> ViewUtils.showButtonDescription(getContext(), v));
 
         this.selectionMode = selectionMode;
         this.assetFilter = assetFilter;
@@ -132,13 +125,7 @@ public class Commander extends DialogBase implements CommanderIf
             (findViewById(R.id.dialog_file_new_name_layout)).setVisibility(View.VISIBLE);
             fileTypeButton = findViewById(R.id.fman_file_type_button);
             fileTypeButton.setOnClickListener(this);
-            fileTypeButton.setOnLongClickListener(new OnLongClickListener()
-            {
-                public boolean onLongClick(View v)
-                {
-                    return ViewUtils.showButtonDescription(getContext(), v);
-                }
-            });
+            fileTypeButton.setOnLongClickListener(v -> ViewUtils.showButtonDescription(getContext(), v));
             prepareButtonImage(fileTypeButton);
             fileName.requestFocus();
             break;

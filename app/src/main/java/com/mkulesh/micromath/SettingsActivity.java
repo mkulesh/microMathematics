@@ -145,21 +145,17 @@ public class SettingsActivity extends AppCompatActivity
         {
             listPreference.setSummary(listPreference.getEntry().toString());
         }
-        listPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
+        listPreference.setOnPreferenceChangeListener((preference, newValue) ->
         {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue)
+            listPreference.setValue(newValue.toString());
+            preference.setSummary(listPreference.getEntry().toString());
+            if (activity != null)
             {
-                listPreference.setValue(newValue.toString());
-                preference.setSummary(listPreference.getEntry().toString());
-                if (activity != null)
-                {
-                    final Intent intent = activity.getIntent();
-                    activity.finish();
-                    activity.startActivity(intent);
-                }
-                return true;
+                final Intent intent = activity.getIntent();
+                activity.finish();
+                activity.startActivity(intent);
             }
+            return true;
         });
     }
 }

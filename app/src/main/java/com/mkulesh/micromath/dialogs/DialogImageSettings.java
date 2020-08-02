@@ -22,9 +22,7 @@ import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mkulesh.micromath.fman.AdapterIf;
 import com.mkulesh.micromath.fman.Commander;
-import com.mkulesh.micromath.fman.FileType;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.ImageProperties;
@@ -150,20 +148,17 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
 
         Commander commander = new Commander(activity, R.string.action_open, Commander.SelectionMode.OPEN,
                 activity.getResources().getStringArray(R.array.asset_filter),
-                new Commander.OnFileSelectedListener()
+                (uri, fileType, adapter) ->
                 {
-                    public void onSelectFile(Uri uri, FileType fileType, final AdapterIf adapter)
+                    uri = FileUtils.ensureScheme(uri);
+                    final boolean resolvePath = !FileUtils.isAssetUri(uri) && parameters.parentDirectory != null;
+                    if (resolvePath && parameters.parentDirectory.getScheme().equals(uri.getScheme()))
                     {
-                        uri = FileUtils.ensureScheme(uri);
-                        final boolean resolvePath = !FileUtils.isAssetUri(uri) && parameters.parentDirectory != null;
-                        if (resolvePath && parameters.parentDirectory.getScheme().equals(uri.getScheme()))
-                        {
-                            fileName.setText(FileUtils.convertToRelativePath(parameters.parentDirectory, uri));
-                        }
-                        else
-                        {
-                            fileName.setText(uri.toString());
-                        }
+                        fileName.setText(FileUtils.convertToRelativePath(parameters.parentDirectory, uri));
+                    }
+                    else
+                    {
+                        fileName.setText(uri.toString());
                     }
                 });
         if (fileName.getText().length() > 0)

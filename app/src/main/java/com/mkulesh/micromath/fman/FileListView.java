@@ -142,13 +142,7 @@ public class FileListView implements AdapterView.OnItemClickListener
     {
         final ListView flv$ = listView;
         final int position$ = i, y$ = y_;
-        flv$.post(new Runnable()
-        {
-            public void run()
-            {
-                flv$.setSelectionFromTop(position$, y$ > 0 ? y$ : flv$.getHeight() / 2);
-            }
-        });
+        flv$.post(() -> flv$.setSelectionFromTop(position$, y$ > 0 ? y$ : flv$.getHeight() / 2));
         currentPosition = i;
     }
 

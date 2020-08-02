@@ -16,7 +16,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -465,14 +464,10 @@ public class MainActivity extends AppCompatActivity
         }
 
         navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener()
+                menuItem ->
                 {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem)
-                    {
-                        selectNavigationItem(menuItem, BaseFragment.INVALID_ACTION_ID);
-                        return true;
-                    }
+                    selectNavigationItem(menuItem, BaseFragment.INVALID_ACTION_ID);
+                    return true;
                 });
 
         updateVersionInfo();
@@ -640,23 +635,12 @@ public class MainActivity extends AppCompatActivity
                 alert.setTitle(getString(R.string.allow_storage_access_title));
                 alert.setMessage(getString(R.string.allow_storage_access_description));
                 alert.setNegativeButton(getString(R.string.dialog_navigation_cancel),
-                        new DialogInterface.OnClickListener()
+                        (dialog, whichButton) ->
                         {
-                            @Override
-                            public void onClick(DialogInterface dialog, int whichButton)
-                            {
-                                // nothing to do
-                            }
+                            // nothing to do
                         });
                 alert.setPositiveButton(getString(R.string.allow_storage_access_grant),
-                        new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface dialog, int whichButton)
-                            {
-                                requestStoragePermission();
-                            }
-                        });
+                        (dialog, whichButton) -> requestStoragePermission());
                 storagePermissionDialog = alert.show();
             }
             else
