@@ -503,7 +503,7 @@ public class FormulaListView
      * Helper class that holds a single row
      *********************************************************/
 
-    public final class ListRow extends CustomLayout
+    public static final class ListRow extends CustomLayout
     {
         /**
          * Default constructor

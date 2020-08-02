@@ -34,7 +34,7 @@ public class TestScript
         CALCULATE_FINISHED
     }
 
-    private class SynchronizedState
+    private static class SynchronizedState
     {
         private State mystate = null;
 

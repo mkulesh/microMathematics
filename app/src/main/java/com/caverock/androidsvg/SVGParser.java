@@ -622,7 +622,7 @@ class SVGParser
    /*
     * Implements the SAX Attributes class so that our parser can share a common attributes object
     */
-   private class  XPPAttributesWrapper  implements Attributes
+   private static class  XPPAttributesWrapper  implements Attributes
    {
       private XmlPullParser  parser;
 

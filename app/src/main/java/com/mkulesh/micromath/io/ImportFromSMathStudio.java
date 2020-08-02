@@ -56,7 +56,7 @@ public class ImportFromSMathStudio
     private final String SM_TAG_MATH_EXPRESSION = "e";
     private final String SM_TAG_MATH_OPERATOR = "operator";
 
-    private final class CodeMapValue
+    private static final class CodeMapValue
     {
         final TermTypeIf termType;
         final CharSequence[] terms;
@@ -672,7 +672,7 @@ public class ImportFromSMathStudio
      * Helper methods
      *********************************************************/
 
-    private final class ExpressionProperties
+    private static final class ExpressionProperties
     {
         final String type;
         final int args;

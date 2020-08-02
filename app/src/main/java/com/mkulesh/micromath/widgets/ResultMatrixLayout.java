@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 public class ResultMatrixLayout extends TableLayout
 {
-    public final class ElementTag
+    public static final class ElementTag
     {
         public final int row;
         public final int col;

@@ -482,7 +482,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         return false;
     }
 
-    class DeleteEngine extends Engine
+    static class DeleteEngine extends Engine
     {
         private AdapterDocuments a;
         private Item[] mList;

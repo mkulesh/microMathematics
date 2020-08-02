@@ -130,7 +130,7 @@ public class DialogResultDetails extends DialogBase
                 + getContext().getString(R.string.dialog_list_items));
     }
 
-    private final class ArgumentValueAdapter extends ArrayAdapter<ArgumentValueItem>
+    private static final class ArgumentValueAdapter extends ArrayAdapter<ArgumentValueItem>
     {
         private final DocumentProperties docProp;
         private final Unit targetUnit;

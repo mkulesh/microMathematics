@@ -301,7 +301,7 @@ public class ColorMapView extends CustomTextView
     /*********************************************************
      * Helper class that holds labels
      *********************************************************/
-    private final class Label
+    private static final class Label
     {
         double y = 0;
         String name = null;

@@ -117,7 +117,7 @@ class SVGAndroidRenderer
    private CSSParser.RuleMatchContext  ruleMatchContext = null;
 
 
-   private class RendererState
+   private static class RendererState
    {
       Style    style;
       boolean  hasFill;
@@ -1497,7 +1497,7 @@ class SVGAndroidRenderer
    // Text sequence enumeration
 
 
-   private abstract class  TextProcessor
+   private abstract static class  TextProcessor
    {
       public boolean  doTextContainer(TextContainer obj)
       {
@@ -2519,7 +2519,7 @@ class SVGAndroidRenderer
    /*
     *  Convert an internal PathDefinition to an android.graphics.Path object
     */
-   private class  PathConverter implements PathInterface
+   private static class  PathConverter implements PathInterface
    {
       Path   path = new Path();
       float  lastX, lastY;
@@ -2790,7 +2790,7 @@ class SVGAndroidRenderer
    //==============================================================================
 
 
-   private class MarkerVector
+   private static class MarkerVector
    {
       float    x, y, dx=0f, dy=0f;
       boolean  isAmbiguous = false;
@@ -2857,7 +2857,7 @@ class SVGAndroidRenderer
    /*
     *  Calculates the positions and orientations of any markers that should be placed on the given path.
     */
-   private class  MarkerPositionCalculator implements PathInterface
+   private static class  MarkerPositionCalculator implements PathInterface
    {
       private List<MarkerVector>  markers = new ArrayList<>();
       private float               startX, startY;

@@ -58,7 +58,7 @@ public abstract class PlotView extends CustomTextView
     /*********************************************************
      * Helper class that holds labels
      *********************************************************/
-    public final class Label
+    public static final class Label
     {
         Vector2D point = null;
         String name = null;
