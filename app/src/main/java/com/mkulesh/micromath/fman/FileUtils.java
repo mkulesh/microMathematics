@@ -231,9 +231,9 @@ public final class FileUtils
             if (!FileUtils.str(sec_storage))
                 return null;
             String[] ss = sec_storage.split(":");
-            for (int i = 0; i < ss.length; i++)
-                if (ss[i].toLowerCase(Locale.ENGLISH).indexOf("sd") > 0)
-                    return ss[i];
+            for (String s : ss)
+                if (s.toLowerCase(Locale.ENGLISH).indexOf("sd") > 0)
+                    return s;
             return "";
         }
         catch (Exception e)

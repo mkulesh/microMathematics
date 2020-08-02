@@ -449,7 +449,7 @@ public class TermParser
         // convert both parts
         try
         {
-            return new Complex(Double.valueOf(rePart), Double.valueOf(imPart));
+            return new Complex(Double.parseDouble(rePart), Double.parseDouble(imPart));
         }
         catch (NumberFormatException e)
         {

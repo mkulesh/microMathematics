@@ -160,7 +160,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         final int n = paths.size();
         if (n < 4)
             return null;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n - 1; i++)
         {
             sb.append("/");
@@ -523,9 +523,8 @@ public class AdapterDocuments extends AdapterBaseImpl
         private final int deleteFiles(Uri dir_uri, Item[] l) throws Exception
         {
             int cnt = 0;
-            for (int i = 0; i < l.length; i++)
+            for (Item item : l)
             {
-                Item item = l[i];
                 DocumentsContract.deleteDocument(a.ctx.getContentResolver(), (Uri) item.origin);
                 cnt++;
             }

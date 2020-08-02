@@ -334,9 +334,9 @@ public abstract class PlanePlotView extends PlotView
         p.setStyle(Paint.Style.STROKE);
         p.setColor(axisParameters.gridLineColor);
         p.setStrokeWidth(axisParameters.getGridLineWidth());
-        for (int i = 0; i < labels.length; i++)
+        for (Label label : labels)
         {
-            area.toScreenPoint(labels[i].point, rect, p1);
+            area.toScreenPoint(label.point, rect, p1);
             if (idx == FunctionIf.X)
             {
                 c.drawLine(p1.x, rect.top, p1.x, rect.bottom, p);
@@ -359,10 +359,10 @@ public abstract class PlanePlotView extends PlotView
         p.setColor(getPaint().getColor());
         p.setTextSize(axisParameters.getLabelTextSize());
         final int labelLineSize = axisParameters.getLabelLineSize();
-        for (int i = 0; i < labels.length; i++)
+        for (Label value : labels)
         {
-            area.toScreenPoint(labels[i].point, rect, p1);
-            String label = labels[i].name;
+            area.toScreenPoint(value.point, rect, p1);
+            String label = value.name;
             p.getTextBounds(label, 0, label.length(), tmpRect);
             p.setStrokeWidth(labelLineSize);
             if (idx == FunctionIf.X)

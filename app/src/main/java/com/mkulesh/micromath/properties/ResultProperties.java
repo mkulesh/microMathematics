@@ -66,8 +66,8 @@ public class ResultProperties implements Parcelable
 
     public void readFromParcel(Parcel in)
     {
-        disableCalculation = Boolean.valueOf(in.readString());
-        hideResultField = Boolean.valueOf(in.readString());
+        disableCalculation = Boolean.parseBoolean(in.readString());
+        hideResultField = Boolean.parseBoolean(in.readString());
         arrayLength = in.readInt();
         units = in.readString();
     }

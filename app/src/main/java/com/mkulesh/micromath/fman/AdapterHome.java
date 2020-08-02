@@ -106,13 +106,13 @@ public class AdapterHome extends AdapterBaseImpl
                 String[] dirs = CompatUtils.getStorageDirs(ctx);
                 if (dirs != null)
                 {
-                    for (int i = 0; i < dirs.length; i++)
+                    for (String dir : dirs)
                     {
-                        if (!FileUtils.str(dirs[i]))
+                        if (!FileUtils.str(dir))
                             continue;
-                        if (fs.equals(dirs[i]))
+                        if (fs.equals(dir))
                             continue;
-                        Item item = makeItem(EXTERNAL, dirs[i]);
+                        Item item = makeItem(EXTERNAL, dir);
                         ia.add(item);
                     }
                 }

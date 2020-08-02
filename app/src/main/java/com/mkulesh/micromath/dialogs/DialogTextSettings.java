@@ -57,9 +57,9 @@ public class DialogTextSettings extends DialogBase
         boolean isChanged = false;
         if (v instanceof RadioButton)
         {
-            for (int i = 0; i < rButtons.length; i++)
+            for (RadioButton rButton : rButtons)
             {
-                rButtons[i].setChecked(rButtons[i] == v);
+                rButton.setChecked(rButton == v);
             }
             return;
         }

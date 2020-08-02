@@ -467,9 +467,9 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
             return null;
         }
         ArrayList<Double> newArr = new ArrayList<>();
-        for (int i = 0; i < arr.length; i++)
+        for (CalculatedValue calculatedValue : arr)
         {
-            final double v = arr[i].getReal();
+            final double v = calculatedValue.getReal();
             if (minMaxValues[1] != Double.POSITIVE_INFINITY && v > minMaxValues[1])
             {
                 break;

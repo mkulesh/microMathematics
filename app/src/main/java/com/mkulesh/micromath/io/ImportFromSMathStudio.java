@@ -685,7 +685,7 @@ public class ImportFromSMathStudio
             int argsTmp = -1;
             try
             {
-                argsTmp = Integer.valueOf(e.getAttribute("args").trim());
+                argsTmp = Integer.parseInt(e.getAttribute("args").trim());
             }
             catch (Exception ex)
             {

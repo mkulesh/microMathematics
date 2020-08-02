@@ -241,11 +241,11 @@ public class ExportToMathJax extends ExportToLatex
 
             if (Character.UnicodeBlock.of(c) == Character.UnicodeBlock.GREEK)
             {
-                for (int k = 0; k < greekTable.length; k++)
+                for (String[] strings : greekTable)
                 {
-                    if (greekTable[k][0].charAt(0) == c)
+                    if (strings[0].charAt(0) == c)
                     {
-                        outStr.append(inEquation ? "{" : "$").append(greekTable[k][1]).append(inEquation ? "}" : "$");
+                        outStr.append(inEquation ? "{" : "$").append(strings[1]).append(inEquation ? "}" : "$");
                         processed = true;
                         break;
                     }

@@ -580,7 +580,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
             String attr = parser.getAttributeValue(null, FormulaList.XML_PROP_INRIGHTOFPREVIOUS);
             if (attr != null)
             {
-                inRightOfPrevious = Boolean.valueOf(attr);
+                inRightOfPrevious = Boolean.parseBoolean(attr);
             }
         }
         return false;

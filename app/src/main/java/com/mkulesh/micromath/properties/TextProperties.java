@@ -68,7 +68,7 @@ public class TextProperties implements Parcelable
     public void readFromParcel(Parcel in)
     {
         textStyle = TextStyle.valueOf(in.readString());
-        numbering = Boolean.valueOf(in.readString());
+        numbering = Boolean.parseBoolean(in.readString());
     }
 
     public static final Parcelable.Creator<TextProperties> CREATOR = new Parcelable.Creator<TextProperties>()
@@ -117,7 +117,7 @@ public class TextProperties implements Parcelable
         attr = parser.getAttributeValue(null, XML_PROP_NUMBERING);
         if (attr != null)
         {
-            numbering = Boolean.valueOf(attr);
+            numbering = Boolean.parseBoolean(attr);
         }
     }
 

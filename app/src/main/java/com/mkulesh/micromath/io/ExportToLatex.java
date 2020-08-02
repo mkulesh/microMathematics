@@ -740,11 +740,11 @@ public class ExportToLatex
             final Character.UnicodeBlock block = Character.UnicodeBlock.of(c);
             if (block == Character.UnicodeBlock.GREEK)
             {
-                for (int k = 0; k < greekTable.length; k++)
+                for (String[] strings : greekTable)
                 {
-                    if (greekTable[k][0].charAt(0) == c)
+                    if (strings[0].charAt(0) == c)
                     {
-                        outStr.append(inEquation ? "{" : "$").append(greekTable[k][1]).append(inEquation ? "}" : "$");
+                        outStr.append(inEquation ? "{" : "$").append(strings[1]).append(inEquation ? "}" : "$");
                         processed = true;
                         break;
                     }
@@ -752,11 +752,11 @@ public class ExportToLatex
             }
             else if (!(this instanceof ExportToMathJax) && block == Character.UnicodeBlock.LATIN_1_SUPPLEMENT)
             {
-                for (int k = 0; k < supplementTable.length; k++)
+                for (String[] strings : supplementTable)
                 {
-                    if (supplementTable[k][0].charAt(0) == c)
+                    if (strings[0].charAt(0) == c)
                     {
-                        outStr.append(inEquation ? "{" : "$").append(supplementTable[k][1]).append(inEquation ? "}" : "$");
+                        outStr.append(inEquation ? "{" : "$").append(strings[1]).append(inEquation ? "}" : "$");
                         processed = true;
                         break;
                     }

@@ -99,8 +99,8 @@ public class PlotProperties implements Parcelable
         width = in.readInt();
         height = in.readInt();
         axesStyle = AxesStyle.valueOf(in.readString());
-        meshLines = Boolean.valueOf(in.readString());
-        meshFill = Boolean.valueOf(in.readString());
+        meshLines = Boolean.parseBoolean(in.readString());
+        meshFill = Boolean.parseBoolean(in.readString());
         meshOpacity = in.readInt();
         rotation = in.readInt();
         elevation = in.readInt();
@@ -176,12 +176,12 @@ public class PlotProperties implements Parcelable
         attr = parser.getAttributeValue(null, XML_PROP_MESH_LINES);
         if (attr != null)
         {
-            meshLines = Boolean.valueOf(attr);
+            meshLines = Boolean.parseBoolean(attr);
         }
         attr = parser.getAttributeValue(null, XML_PROP_MESH_FILL);
         if (attr != null)
         {
-            meshFill = Boolean.valueOf(attr);
+            meshFill = Boolean.parseBoolean(attr);
         }
         attr = parser.getAttributeValue(null, XML_PROP_MESH_OPACITY);
         if (attr != null)

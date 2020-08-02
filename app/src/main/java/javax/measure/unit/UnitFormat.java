@@ -312,7 +312,7 @@ public abstract class UnitFormat extends Format {
                 TransformedUnit<?> tfmUnit = (TransformedUnit<?>) unit;
                 Unit<?> baseUnits = tfmUnit.getStandardUnit();
                 UnitConverter cvtr = tfmUnit.toStandardUnit();
-                StringBuffer result = new StringBuffer();
+                StringBuilder result = new StringBuilder();
                 String baseUnitName = baseUnits.toString();
                 if ((baseUnitName.indexOf('·') >= 0) ||
                     (baseUnitName.indexOf('*') >= 0) ||
@@ -800,12 +800,11 @@ public abstract class UnitFormat extends Format {
     }
     
     static {
-        for (int i = 0; i < SI_UNITS.length; i++) {
+        for (Unit<?> siUnit : SI_UNITS) {
             for (int j = 0; j < PREFIXES.length; j++) {
-                Unit<?> si = SI_UNITS[i];
-                Unit<?> u = si.transform(CONVERTERS[j]);
-                String symbol = (si instanceof BaseUnit) ? ((BaseUnit<?>) si)
-                        .getSymbol() : ((AlternateUnit<?>) si).getSymbol();
+                Unit<?> u = siUnit.transform(CONVERTERS[j]);
+                String symbol = (siUnit instanceof BaseUnit) ? ((BaseUnit<?>) siUnit)
+                        .getSymbol() : ((AlternateUnit<?>) siUnit).getSymbol();
                 DEFAULT.label(u, PREFIXES[j] + symbol);
                 if (PREFIXES[j] == "µ") {
                     ASCII.label(u, "micro" + symbol);
