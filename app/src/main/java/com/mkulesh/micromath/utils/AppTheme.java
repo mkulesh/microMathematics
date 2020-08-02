@@ -16,7 +16,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 import androidx.annotation.StyleRes;
 
 import com.mkulesh.micromath.plus.R;

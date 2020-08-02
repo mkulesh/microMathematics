@@ -27,7 +27,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 import com.google.android.material.navigation.NavigationView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

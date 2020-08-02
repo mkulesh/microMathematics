@@ -19,7 +19,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Xml;
 import android.view.View;

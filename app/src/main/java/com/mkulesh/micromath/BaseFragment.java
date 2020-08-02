@@ -16,7 +16,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
@@ -87,7 +87,9 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     {
         fragmentNumber = number;
         activity = (AppCompatActivity) getActivity();
-        preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        if (activity != null) {
+            preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        }
         formulas = new FormulaList(this, rootView);
 
         setHasOptionsMenu(true);

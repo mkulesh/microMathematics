@@ -20,7 +20,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 import android.provider.DocumentsContract;
 import android.provider.DocumentsContract.Document;
 
