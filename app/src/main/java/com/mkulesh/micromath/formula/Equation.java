@@ -331,7 +331,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     public void fileOperation(boolean status)
     {
         FormulaTerm t = rightTerm.getTerm();
-        if (t != null && t instanceof ArrayFunctions)
+        if (t instanceof ArrayFunctions)
         {
             if (status)
             {
@@ -467,9 +467,9 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
             return null;
         }
         ArrayList<Double> newArr = new ArrayList<>();
-        for (int i = 0; i < arr.length; i++)
+        for (CalculatedValue calculatedValue : arr)
         {
-            final double v = arr[i].getReal();
+            final double v = calculatedValue.getReal();
             if (minMaxValues[1] != Double.POSITIVE_INFINITY && v > minMaxValues[1])
             {
                 break;
@@ -529,12 +529,8 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
             // an interval
             return true;
         }
-        else if (argNumber == ARG_NUMBER_ARRAY_OR_CONSTANT && (isArray() || getArguments() == null))
-        {
-            // an array or constant
-            return true;
-        }
-        return false;
+        // an array or constant
+        else return argNumber == ARG_NUMBER_ARRAY_OR_CONSTANT && (isArray() || getArguments() == null);
     }
 
     private EquationArrayResult findPreviousArray()

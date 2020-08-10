@@ -30,7 +30,6 @@ public class DialogPlotSettings extends DialogBase
     private final PlotProperties parameters;
     private HorizontalNumberPicker pickerWidth = null, pickerHeight = null, pickerRotation = null,
             pickerElevation = null;
-    private RadioButton rContour = null, rSurface = null;
     private OpacityBar pickerMeshOpacity = null;
     private CheckBox cbMeshLines = null, cbMeshFill = null;
 
@@ -51,9 +50,9 @@ public class DialogPlotSettings extends DialogBase
                         : View.GONE);
         if (changeIf.getDimension() == PlotPropertiesChangeIf.Dimension.TWO_D)
         {
-            rContour = findViewById(R.id.dialog_button_contour);
+            RadioButton rContour = findViewById(R.id.dialog_button_contour);
             rContour.setOnClickListener(this);
-            rSurface = findViewById(R.id.dialog_button_surface);
+            RadioButton rSurface = findViewById(R.id.dialog_button_surface);
             rSurface.setOnClickListener(this);
             switch (parameters.twoDPlotStyle)
             {

@@ -22,7 +22,6 @@ import android.graphics.Picture;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.PictureDrawable;
 import android.os.Build;
-import androidx.annotation.AttrRes;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -32,6 +31,8 @@ import android.view.ViewParent;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.annotation.AttrRes;
 
 import com.mkulesh.micromath.formula.FormulaBase;
 import com.mkulesh.micromath.plus.R;
@@ -120,11 +121,12 @@ public final class ViewUtils
             boolean resultFound = false;
             for (int pos = 0; pos <= maxLength; pos++)
             {
-                String format = (pos < 1) ? "0" : "0.";
+                StringBuilder formatBuilder = new StringBuilder((pos < 1) ? "0" : "0.");
                 for (int k = 0; k < pos; k++)
                 {
-                    format += "0";
+                    formatBuilder.append("0");
                 }
+                String format = formatBuilder.toString();
                 if (run == 1)
                 {
                     format += "E0";
@@ -136,7 +138,7 @@ public final class ViewUtils
                 for (int i = 0; i < values.length; i++)
                 {
                     String fValue = (values[i] != 0.0) ? df.format(values[i]) : "0";
-                    if (fValue != null && (format.equals(fValue) || ("-" + format).equals(fValue)))
+                    if (format.equals(fValue) || ("-" + format).equals(fValue))
                     {
                         fValue = "0";
                     }
@@ -224,14 +226,7 @@ public final class ViewUtils
     public static void invalidateLayout(View v, final LinearLayout l)
     {
         v.invalidate();
-        l.post(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                l.requestLayout();
-            }
-        });
+        l.post(l::requestLayout);
     }
 
     /**

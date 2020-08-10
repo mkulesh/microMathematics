@@ -134,7 +134,7 @@ public class AdapterAssets extends AdapterBaseImpl
                         {
                             FileItem fi = new FileItem(new File(asset));
                             fi.dir = true;
-                            fi.attr = Integer.toString(subAssets.length) + " "
+                            fi.attr = subAssets.length + " "
                                     + ctx.getString(R.string.dialog_list_items);
                             fi.date = new Date(appTimeStamp);
                             fi.size = -1;
@@ -326,7 +326,7 @@ public class AdapterAssets extends AdapterBaseImpl
         }
         for (FileItem fi : items)
         {
-            if (fi.name != null && name != null && fi.name.equals(name))
+            if (fi.name != null && fi.name.equals(name))
             {
                 return Uri.parse(toString() + name);
             }

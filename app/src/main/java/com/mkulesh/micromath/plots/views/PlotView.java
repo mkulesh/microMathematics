@@ -18,8 +18,9 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.AttributeSet;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mkulesh.micromath.math.Vector2D;
 import com.mkulesh.micromath.plots.FunctionIf;
@@ -57,7 +58,7 @@ public abstract class PlotView extends CustomTextView
     /*********************************************************
      * Helper class that holds labels
      *********************************************************/
-    public final class Label
+    public static final class Label
     {
         Vector2D point = null;
         String name = null;
@@ -156,12 +157,12 @@ public abstract class PlotView extends CustomTextView
         if (state instanceof Bundle)
         {
             Bundle bundle = (Bundle) state;
-            axisParameters.assign((AxisProperties) bundle.getParcelable(STATE_AXIS_PARAMETERS));
-            plotParameters.assign((PlotProperties) bundle.getParcelable(STATE_PLOT_PARAMETERS));
+            axisParameters.assign(bundle.getParcelable(STATE_AXIS_PARAMETERS));
+            plotParameters.assign(bundle.getParcelable(STATE_PLOT_PARAMETERS));
             if (colorMapView != null)
             {
                 colorMapView.getColorMapParameters().assign(
-                        (ColorMapProperties) bundle.getParcelable(STATE_COLORMAP_PARAMETERS));
+                        bundle.getParcelable(STATE_COLORMAP_PARAMETERS));
             }
         }
     }

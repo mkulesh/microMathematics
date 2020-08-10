@@ -361,7 +361,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         {
             getFormulaList().selectAll();
         }
-        else if (owner != null && owner instanceof CustomEditText)
+        else if (owner instanceof CustomEditText)
         {
             retValue = this;
         }
@@ -396,7 +396,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         }
 
         TermField t = null;
-        final boolean pasteIntoEditText = (owner != null && owner instanceof CustomEditText);
+        final boolean pasteIntoEditText = (owner instanceof CustomEditText);
         if (pasteIntoEditText)
         {
             // paste into text edit
@@ -580,7 +580,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
             String attr = parser.getAttributeValue(null, FormulaList.XML_PROP_INRIGHTOFPREVIOUS);
             if (attr != null)
             {
-                inRightOfPrevious = Boolean.valueOf(attr);
+                inRightOfPrevious = Boolean.parseBoolean(attr);
             }
         }
         return false;
@@ -612,7 +612,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
                 final String key = parser.getAttributeValue(null, FormulaList.XML_PROP_KEY);
                 for (TermField t : terms)
                 {
-                    if (t.getTermKey() != null && key != null && t.getTermKey().equals(key))
+                    if (t.getTermKey() != null && t.getTermKey().equals(key))
                     {
                         t.readFromXml(parser);
                         termFound = true;

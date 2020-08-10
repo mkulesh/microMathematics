@@ -17,7 +17,6 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.dialogs.DialogResultDetails;
 import com.mkulesh.micromath.dialogs.DialogResultSettings;
@@ -500,7 +499,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         if (state instanceof Bundle)
         {
             Bundle bundle = (Bundle) state;
-            properties.assign((ResultProperties) bundle.getParcelable(STATE_RESULT_PROPERTIES));
+            properties.assign(bundle.getParcelable(STATE_RESULT_PROPERTIES));
             super.onRestoreInstanceState(bundle);
             updateResultView(false);
         }
@@ -559,7 +558,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         // create name term
         {
             CustomEditText v = layout.findViewById(R.id.formula_result_name);
-            leftTerm = addTerm(this, (LinearLayout) layout.findViewById(R.id.result_function_layout), v, this, false);
+            leftTerm = addTerm(this, layout.findViewById(R.id.result_function_layout), v, this, false);
             leftTerm.bracketsType = TermField.BracketsType.NEVER;
         }
         // create assign character
@@ -684,7 +683,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         for (int r = 0; r < rowsNumber; r++)
         {
             int dataRowIdx = r;
-            res.add(new ArrayList<String>(colsNumber));
+            res.add(new ArrayList<>(colsNumber));
             if (xValuesNumber > properties.arrayLength)
             {
                 // before the last line

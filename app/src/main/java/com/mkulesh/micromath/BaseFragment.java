@@ -16,9 +16,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,9 +24,11 @@ import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.mkulesh.micromath.fman.AdapterIf;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
+
 import com.mkulesh.micromath.fman.Commander;
-import com.mkulesh.micromath.fman.FileType;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.io.Exporter;
@@ -87,7 +86,9 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     {
         fragmentNumber = number;
         activity = (AppCompatActivity) getActivity();
-        preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        if (activity != null) {
+            preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        }
         formulas = new FormulaList(this, rootView);
 
         setHasOptionsMenu(true);
@@ -186,19 +187,16 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     protected void saveFileAs(final boolean storeOpenedFileInfo)
     {
         Commander commander = new Commander(activity, R.string.action_save_as, Commander.SelectionMode.SAVE_AS, null,
-                new Commander.OnFileSelectedListener()
+                (uri, fileType, adapter) ->
                 {
-                    public void onSelectFile(Uri uri, FileType fileType, final AdapterIf adapter)
+                    uri = FileUtils.ensureScheme(uri);
+                    if (formulas.writeToFile(uri))
                     {
-                        uri = FileUtils.ensureScheme(uri);
-                        if (formulas.writeToFile(uri))
+                        if (storeOpenedFileInfo)
                         {
-                            if (storeOpenedFileInfo)
-                            {
-                                setOpenedFile(uri);
-                            }
-                            onSaveFinished();
+                            setOpenedFile(uri);
                         }
+                        onSaveFinished();
                     }
                 });
         commander.setFileName(((MainActivity) activity).getWorksheetName());
@@ -208,43 +206,40 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     protected void export()
     {
         Commander commander = new Commander(activity, R.string.action_export, Commander.SelectionMode.EXPORT, null,
-                new Commander.OnFileSelectedListener()
+                (uri, fileType, adapter) ->
                 {
-                    public void onSelectFile(Uri uri, FileType fileType, final AdapterIf adapter)
+                    uri = FileUtils.ensureScheme(uri);
+                    formulas.setSelectedFormula(ViewUtils.INVALID_INDEX, false);
+                    final boolean res = Exporter.write(formulas, uri, fileType, adapter, null);
+                    String mime = null;
+                    if (res)
                     {
-                        uri = FileUtils.ensureScheme(uri);
-                        formulas.setSelectedFormula(ViewUtils.INVALID_INDEX, false);
-                        final boolean res = Exporter.write(formulas, uri, fileType, adapter, null);
-                        String mime = null;
-                        if (res)
+                        switch (fileType)
                         {
-                            switch (fileType)
-                            {
-                            case JPEG_IMAGE:
-                                mime = "image/jpeg";
-                                break;
-                            case LATEX:
-                                break;
-                            case MATHJAX:
-                                mime = "text/html";
-                                break;
-                            case PNG_IMAGE:
-                                mime = "image/png";
-                                break;
-                            }
+                        case JPEG_IMAGE:
+                            mime = "image/jpeg";
+                            break;
+                        case LATEX:
+                            break;
+                        case MATHJAX:
+                            mime = "text/html";
+                            break;
+                        case PNG_IMAGE:
+                            mime = "image/png";
+                            break;
                         }
-                        if (mime != null)
+                    }
+                    if (mime != null)
+                    {
+                        try
                         {
-                            try
-                            {
-                                Intent intent = new Intent(Intent.ACTION_VIEW);
-                                intent.setDataAndType(uri, mime);
-                                startActivity(intent);
-                            }
-                            catch (Exception e)
-                            {
-                                Toast.makeText(getActivity(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-                            }
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            intent.setDataAndType(uri, mime);
+                            startActivity(intent);
+                        }
+                        catch (Exception e)
+                        {
+                            Toast.makeText(getActivity(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -375,7 +370,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
             }
             else
             {
-                mode.setTitle(String.valueOf(selected) + "/" + String.valueOf(total));
+                mode.setTitle(selected + "/" + total);
             }
             Menu m = mode.getMenu();
             if (m != null)

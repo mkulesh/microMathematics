@@ -13,7 +13,6 @@
 package com.mkulesh.micromath.dialogs;
 
 import android.net.Uri;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.CheckBox;
@@ -21,9 +20,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 
-import com.mkulesh.micromath.fman.AdapterIf;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.mkulesh.micromath.fman.Commander;
-import com.mkulesh.micromath.fman.FileType;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.ImageProperties;
@@ -36,11 +35,10 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
     private final AppCompatActivity activity;
     private final ImageProperties parameters;
     private final EditText fileName;
-    private final ImageButton buttonSelectFile;
     private final CheckBox cbEmbedded;
     private final HorizontalNumberPicker pickerWidth, pickerHeight;
-    private final RadioButton rOriginalSize, rCustomSize;
-    private final RadioButton rOriginalColor, rAutoColor;
+    private final RadioButton rOriginalSize;
+    private final RadioButton rOriginalColor;
     private final ImagePropertiesChangeIf changeIf;
 
     public DialogImageSettings(AppCompatActivity activity, ImagePropertiesChangeIf changeIf, ImageProperties parameters)
@@ -55,7 +53,7 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
             fileName.setText(parameters.fileName);
         }
 
-        buttonSelectFile = findViewById(R.id.dialog_button_select_file);
+        ImageButton buttonSelectFile = findViewById(R.id.dialog_button_select_file);
         buttonSelectFile.setOnClickListener(this);
         buttonSelectFile.setOnLongClickListener(this);
         ViewUtils.setImageButtonColorAttr(activity, buttonSelectFile, R.attr.colorDialogContent);
@@ -73,7 +71,7 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
         rOriginalSize = findViewById(R.id.dialog_button_original_size);
         rOriginalSize.setOnClickListener(this);
         rOriginalSize.setChecked(parameters.originalSize);
-        rCustomSize = findViewById(R.id.dialog_button_custom_size);
+        RadioButton rCustomSize = findViewById(R.id.dialog_button_custom_size);
         rCustomSize.setOnClickListener(this);
         rCustomSize.setChecked(!parameters.originalSize);
         onClick(parameters.originalSize ? rOriginalSize : rCustomSize);
@@ -81,7 +79,7 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
         rOriginalColor = findViewById(R.id.dialog_button_original_color);
         rOriginalColor.setOnClickListener(this);
         rOriginalColor.setChecked(parameters.colorType == ImageProperties.ColorType.ORIGINAL);
-        rAutoColor = findViewById(R.id.dialog_button_auto_color);
+        RadioButton rAutoColor = findViewById(R.id.dialog_button_auto_color);
         rAutoColor.setOnClickListener(this);
         rAutoColor.setChecked(parameters.colorType == ImageProperties.ColorType.AUTO);
 
@@ -149,20 +147,17 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
 
         Commander commander = new Commander(activity, R.string.action_open, Commander.SelectionMode.OPEN,
                 activity.getResources().getStringArray(R.array.asset_filter),
-                new Commander.OnFileSelectedListener()
+                (uri, fileType, adapter) ->
                 {
-                    public void onSelectFile(Uri uri, FileType fileType, final AdapterIf adapter)
+                    uri = FileUtils.ensureScheme(uri);
+                    final boolean resolvePath = !FileUtils.isAssetUri(uri) && parameters.parentDirectory != null;
+                    if (resolvePath && parameters.parentDirectory.getScheme().equals(uri.getScheme()))
                     {
-                        uri = FileUtils.ensureScheme(uri);
-                        final boolean resolvePath = !FileUtils.isAssetUri(uri) && parameters.parentDirectory != null;
-                        if (resolvePath && parameters.parentDirectory.getScheme().equals(uri.getScheme()))
-                        {
-                            fileName.setText(FileUtils.convertToRelativePath(parameters.parentDirectory, uri));
-                        }
-                        else
-                        {
-                            fileName.setText(uri.toString());
-                        }
+                        fileName.setText(FileUtils.convertToRelativePath(parameters.parentDirectory, uri));
+                    }
+                    else
+                    {
+                        fileName.setText(uri.toString());
                     }
                 });
         if (fileName.getText().length() > 0)

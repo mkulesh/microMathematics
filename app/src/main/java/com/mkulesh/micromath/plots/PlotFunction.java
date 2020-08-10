@@ -16,11 +16,12 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mkulesh.micromath.dialogs.DialogAxisSettings;
 import com.mkulesh.micromath.dialogs.DialogLineSettings;
@@ -58,7 +59,6 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class PlotFunction extends CalculationResult implements SizeChangingLayout.SizeChangedIf,
         PlotPropertiesChangeIf, AxisPropertiesChangeIf, LinePropertiesChangeIf
@@ -207,19 +207,14 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         {
             functionView.setSignificantDigits(getFormulaList().getDocumentSettings().significantDigits);
             updatePlotBoundaries(functionView, xMin, xMax, yMin, yMax, functionView.getAxisParameters());
-            ArrayList<FunctionIf> func = new ArrayList<>();
-            for (Function2D f : functions)
-            {
-                func.add(f);
-            }
+            ArrayList<FunctionIf> func = new ArrayList<>(functions);
             functionView.setFunctions(func);
-            functionView.invalidate();
         }
         else
         {
             functionView.setFunctions(null);
-            functionView.invalidate();
         }
+        functionView.invalidate();
     }
 
     /*********************************************************
@@ -238,10 +233,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             else if (axes.contains(owner))
             {
                 list = new ArrayList<>();
-                for (int i = 0; i < axes.size(); i++)
-                {
-                    list.add(axes.get(i));
-                }
+                list.addAll(axes);
             }
             else
             {
@@ -394,7 +386,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
                             for (int i = 0; i < rb.length; i++)
                             {
                                 final String text = ctx.getString(R.string.dialog_function_selection) + " "
-                                        + Integer.toString(i + 1) + ":";
+                                        + (i + 1) + ":";
                                 rb[i].setText(text);
                                 final Paint p = functions.get(i).getLineParameters().getPaint();
                                 final int textWidth = (int) rb[i].getPaint().measureText(text);
@@ -504,13 +496,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
     {
         cornerView.getLayoutParams().width = LayoutParams.MATCH_PARENT;
         cornerView.getLayoutParams().height = h;
-        cornerView.post(new Runnable()
-        {
-            public void run()
-            {
-                cornerView.requestLayout();
-            }
-        });
+        cornerView.post(() -> cornerView.requestLayout());
     }
 
     /*********************************************************
@@ -531,7 +517,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             {
                 LineProperties lp = new LineProperties();
                 lp.assign(functions.get(i).getLineParameters());
-                bundle.putParcelable(STATE_LINE_PARAMETERS + String.valueOf(i), lp);
+                bundle.putParcelable(STATE_LINE_PARAMETERS + i, lp);
             }
             bundle.putParcelable(STATE_FUNCTIONVIEW_PARAMETERS, functionView.onSaveInstanceState());
         }
@@ -554,7 +540,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             ensureFunctionsNumber(bundle.getInt(STATE_FUNCTIONS_NUMBER, 0));
             for (int i = 0; i < functions.size(); i++)
             {
-                LineProperties lp = bundle.getParcelable(STATE_LINE_PARAMETERS + String.valueOf(i));
+                LineProperties lp = bundle.getParcelable(STATE_LINE_PARAMETERS + i);
                 if (lp != null)
                 {
                     functions.get(i).getLineParameters().assign(lp);
@@ -652,24 +638,24 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         functionView.prepare(getFormulaList().getActivity(), this);
 
         // create editable fields
-        yMax = addTerm(this, (LinearLayout) layout.findViewById(R.id.plot_y_max_layout),
-                (CustomEditText) layout.findViewById(R.id.plot_y_max_value), this, false);
+        yMax = addTerm(this, layout.findViewById(R.id.plot_y_max_layout),
+                layout.findViewById(R.id.plot_y_max_value), this, false);
         boundaries[0] = yMax;
 
         function.initializePrimaryY();
 
-        yMin = addTerm(this, (LinearLayout) layout.findViewById(R.id.plot_y_min_layout),
-                (CustomEditText) layout.findViewById(R.id.plot_y_min_value), this, false);
+        yMin = addTerm(this, layout.findViewById(R.id.plot_y_min_layout),
+                layout.findViewById(R.id.plot_y_min_value), this, false);
         boundaries[1] = yMin;
 
-        xMin = addTerm(this, (LinearLayout) layout.findViewById(R.id.plot_x_min_layout),
-                (CustomEditText) layout.findViewById(R.id.plot_x_min_value), this, false);
+        xMin = addTerm(this, layout.findViewById(R.id.plot_x_min_layout),
+                layout.findViewById(R.id.plot_x_min_value), this, false);
         boundaries[2] = xMin;
 
         function.initializePrimaryX();
 
-        xMax = addTerm(this, (LinearLayout) layout.findViewById(R.id.plot_x_max_layout),
-                (CustomEditText) layout.findViewById(R.id.plot_x_max_value), this, false);
+        xMax = addTerm(this, layout.findViewById(R.id.plot_x_max_layout),
+                layout.findViewById(R.id.plot_x_max_value), this, false);
         boundaries[3] = xMax;
 
         for (TermField t : terms)
@@ -681,10 +667,10 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             t.termDepth = 2;
         }
 
-        axes.add((CustomTextView) layout.findViewById(R.id.plot_x_axis1));
-        axes.add((CustomTextView) layout.findViewById(R.id.plot_x_axis2));
-        axes.add((CustomTextView) layout.findViewById(R.id.plot_y_axis1));
-        axes.add((CustomTextView) layout.findViewById(R.id.plot_y_axis2));
+        axes.add(layout.findViewById(R.id.plot_x_axis1));
+        axes.add(layout.findViewById(R.id.plot_x_axis2));
+        axes.add(layout.findViewById(R.id.plot_y_axis1));
+        axes.add(layout.findViewById(R.id.plot_y_axis2));
         for (int i = 0; i < axes.size(); i++)
         {
             axes.get(i).prepare(CustomTextView.SymbolType.TEXT, getFormulaList().getActivity(), this);
@@ -753,20 +739,17 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             final String yKey = getContext().getResources().getString(R.string.formula_y_function_key);
             for (Function2D f : functions)
             {
-                f.x.setTermKey(xKey + String.valueOf(f.index));
-                f.y.setTermKey(yKey + String.valueOf(f.index));
+                f.x.setTermKey(xKey + f.index);
+                f.y.setTermKey(yKey + f.index);
             }
 
-            Collections.sort(functions, new Comparator<Function2D>()
+            Collections.sort(functions, (s1, s2) ->
             {
-                public int compare(Function2D s1, Function2D s2)
+                if (s1.index == s2.index)
                 {
-                    if (s1.index == s2.index)
-                    {
-                        return 0;
-                    }
-                    return (s1.index < s2.index) ? -1 : 1;
+                    return 0;
                 }
+                return (s1.index < s2.index) ? -1 : 1;
             });
         }
     }
@@ -899,7 +882,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
 
         public void initializePrimaryX()
         {
-            initializeX((LinearLayout) xDataLayout.findViewWithTag(X_FUNCTION_TAG), -1);
+            initializeX(xDataLayout.findViewWithTag(X_FUNCTION_TAG), -1);
         }
 
         private void initializeY(LinearLayout yLayout, int idx)
@@ -913,7 +896,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
 
         public void initializePrimaryY()
         {
-            initializeY((LinearLayout) yDataLayout.findViewWithTag(Y_FUNCTION_TAG), -1);
+            initializeY(yDataLayout.findViewWithTag(Y_FUNCTION_TAG), -1);
             settingsView = yDataLayout.findViewWithTag(Y_SETTINGS_TAG);
             settingsView.prepare(CustomTextView.SymbolType.HOR_LINE, getFormulaList().getActivity(), PlotFunction.this);
         }

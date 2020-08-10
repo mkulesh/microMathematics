@@ -491,13 +491,9 @@ public class CustomLayout extends LinearLayout
 
         if (symbolType != null)
         {
-            switch (symbolType)
+            if (symbolType == SymbolType.SQRT)
             {
-            case SQRT:
                 drawSqrt(c);
-                break;
-            default:
-                break;
             }
         }
 

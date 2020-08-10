@@ -20,9 +20,10 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.provider.DocumentsContract;
 import android.provider.DocumentsContract.Document;
+
+import androidx.preference.PreferenceManager;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.CompatUtils;
@@ -95,7 +96,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         return "com.android.externalstorage.documents".equals(uri.getAuthority());
     }
 
-    public static final String getPath(Uri u, boolean dir)
+    public static String getPath(Uri u, boolean dir)
     {
         try
         {
@@ -159,7 +160,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         final int n = paths.size();
         if (n < 4)
             return null;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n - 1; i++)
         {
             sb.append("/");
@@ -220,7 +221,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         return getChildren(ctx, u);
     }
 
-    public final static ArrayList<SAFItem> getChildren(Context ctx, Uri u)
+    public static ArrayList<SAFItem> getChildren(Context ctx, Uri u)
     {
         Cursor c = null;
         try
@@ -255,7 +256,7 @@ public class AdapterDocuments extends AdapterBaseImpl
                     if (item.dir)
                     {
                         item.size = -1;
-                        item.attr = Integer.toString(getDirItemsNumber(ctx, (Uri) item.origin)) + " "
+                        item.attr = getDirItemsNumber(ctx, (Uri) item.origin) + " "
                                 + ctx.getString(R.string.dialog_list_items);
                     }
                     tmp_list.add(item);
@@ -481,7 +482,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         return false;
     }
 
-    class DeleteEngine extends Engine
+    static class DeleteEngine extends Engine
     {
         private AdapterDocuments a;
         private Item[] mList;
@@ -519,12 +520,11 @@ public class AdapterDocuments extends AdapterBaseImpl
             }
         }
 
-        private final int deleteFiles(Uri dir_uri, Item[] l) throws Exception
+        private int deleteFiles(Uri dir_uri, Item[] l) throws Exception
         {
             int cnt = 0;
-            for (int i = 0; i < l.length; i++)
+            for (Item item : l)
             {
-                Item item = l[i];
                 DocumentsContract.deleteDocument(a.ctx.getContentResolver(), (Uri) item.origin);
                 cnt++;
             }
@@ -627,7 +627,7 @@ public class AdapterDocuments extends AdapterBaseImpl
     {
         for (SAFItem fi : items)
         {
-            if (fi.name != null && name != null && fi.name.equals(name))
+            if (fi.name != null && fi.name.equals(name))
             {
                 return (Uri) fi.origin;
             }
@@ -640,7 +640,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         ArrayList<SAFItem> entries = getChildren(ctx, parent);
         for (SAFItem fi : entries)
         {
-            if (fi.name != null && name != null && fi.name.equals(name))
+            if (fi.name != null && fi.name.equals(name))
             {
                 return (Uri) fi.origin;
             }

@@ -517,10 +517,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         if (maxValueTerm != null)
         {
             maxValue.processRealTerm(thread, maxValueTerm);
-            if (maxValue.isNaN())
-            {
-                return false;
-            }
+            return !maxValue.isNaN();
         }
         return true;
     }

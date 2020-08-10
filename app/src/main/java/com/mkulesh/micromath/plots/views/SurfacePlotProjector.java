@@ -25,9 +25,7 @@ public final class SurfacePlotProjector
     private double sin_rotation, cos_rotation; // sin and cos of rotation angle
     private double sin_elevation, cos_elevation; // sin and cos of elevation angle
     private int _2D_trans_x, _2D_trans_y; // 2D translation
-    private int x1, x2, y1, y2; // projection area
     private int center_x, center_y; // center of projection area
-    private double tmpValue;
     private int trans_x, trans_y;
     private double factor;
     private double sx_cos, sy_cos, sz_cos;
@@ -56,10 +54,11 @@ public final class SurfacePlotProjector
      */
     public void setProjectionArea(int width, int height)
     {
-        x1 = 0;
-        x2 = x1 + width;
-        y1 = 0;
-        y2 = y1 + height;
+        int x1 = 0;
+        int x2 = x1 + width;
+        int y1 = 0;
+        // projection area
+        int y2 = y1 + height;
         center_x = (x1 + x2) / 2;
         center_y = (y1 + y2) / 2;
         trans_x = center_x + _2D_trans_x;
@@ -312,7 +311,7 @@ public final class SurfacePlotProjector
     public void project(Point p, double x, double y, double z)
     {
         // rotates
-        tmpValue = x;
+        double tmpValue = x;
         x = x * sx_cos + y * sy_sin;
         y = tmpValue * sx_sin + y * sy_cos;
 

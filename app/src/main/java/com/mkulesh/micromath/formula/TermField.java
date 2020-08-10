@@ -217,7 +217,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             else if (parser.getLinkedVariableId() >= 0)
             {
                 final FormulaBase lv = formulaRoot.getFormulaList().getFormula(parser.getLinkedVariableId());
-                if (lv != null && lv instanceof Equation)
+                if (lv instanceof Equation)
                 {
                     contentType = ContentType.VARIABLE_LINK;
                     linkedVariable = (Equation) lv;

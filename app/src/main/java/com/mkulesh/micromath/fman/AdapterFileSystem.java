@@ -134,21 +134,20 @@ public class AdapterFileSystem extends AdapterBaseImpl
     @SuppressLint("NewApi")
     protected FileItem[] filesToItems(File[] files_)
     {
-        int num_files = files_.length;
-        int num = num_files;
+        int num = files_.length;
         if (HIDE_HIDDEN)
         {
             int cnt = 0;
-            for (int i = 0; i < num_files; i++)
-                if (!files_[i].isHidden())
+            for (File file : files_)
+                if (!file.isHidden())
                     cnt++;
             num = cnt;
         }
         FileItem[] items_ = new FileItem[num];
         int j = 0;
-        for (int i = 0; i < num_files; i++)
+        for (File file : files_)
         {
-            File f = files_[i];
+            File f = file;
             if (!f.isHidden() || !HIDE_HIDDEN)
             {
                 String fn = null;
@@ -186,7 +185,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
                     }
                     else
                     {
-                        f_item.attr = Integer.toString(subFiles.length) + " "
+                        f_item.attr = subFiles.length + " "
                                 + ctx.getString(R.string.dialog_list_items);
                     }
                 }
@@ -535,22 +534,16 @@ public class AdapterFileSystem extends AdapterBaseImpl
             }
         }
 
-        private final int deleteFiles(File[] l) throws Exception
+        private int deleteFiles(File[] l) throws Exception
         {
             int cnt = 0;
-            for (int i = 0; i < l.length; i++)
-            {
-                File f = l[i];
-                if (f.isDirectory() && f.listFiles() != null)
-                {
+            for (File f : l) {
+                if (f.isDirectory() && f.listFiles() != null) {
                     cnt += deleteFiles(f.listFiles());
                 }
-                if (f.delete())
-                {
+                if (f.delete()) {
                     cnt++;
-                }
-                else
-                {
+                } else {
                     error(a.ctx.getString(R.string.fman_delete_error, f.getName()));
                     break;
                 }
@@ -568,7 +561,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
         }
         for (FileItem fi : items)
         {
-            if (fi.name != null && name != null && fi.name.equals(name))
+            if (fi.name != null && fi.name.equals(name))
             {
                 return Uri.fromFile(fi.f());
             }

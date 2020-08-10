@@ -87,8 +87,8 @@ public class ImageProperties implements Parcelable
     public void readFromParcel(Parcel in)
     {
         fileName = in.readString();
-        embedded = Boolean.valueOf(in.readString());
-        originalSize = Boolean.valueOf(in.readString());
+        embedded = Boolean.parseBoolean(in.readString());
+        originalSize = Boolean.parseBoolean(in.readString());
         width = in.readInt();
         height = in.readInt();
         colorType = ColorType.valueOf(in.readString());
@@ -139,12 +139,12 @@ public class ImageProperties implements Parcelable
         attr = parser.getAttributeValue(null, XML_PROP_EMBEDDED);
         if (attr != null)
         {
-            embedded = Boolean.valueOf(attr);
+            embedded = Boolean.parseBoolean(attr);
         }
         attr = parser.getAttributeValue(null, XML_PROP_ORIGINAL_SIZE);
         if (attr != null)
         {
-            originalSize = Boolean.valueOf(attr);
+            originalSize = Boolean.parseBoolean(attr);
         }
         attr = parser.getAttributeValue(null, XML_PROP_WIDTH);
         if (attr != null)

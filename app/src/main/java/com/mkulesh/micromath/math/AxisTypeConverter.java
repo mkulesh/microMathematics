@@ -43,10 +43,7 @@ public final class AxisTypeConverter
     public static double[] cloneToBaseType(final double[] values, Type type)
     {
         final double[] retValue = new double[values.length];
-        for (int i = 0; i < values.length; i++)
-        {
-            retValue[i] = values[i];
-        }
+        System.arraycopy(values, 0, retValue, 0, values.length);
         toBaseType(retValue, type);
         return retValue;
     }

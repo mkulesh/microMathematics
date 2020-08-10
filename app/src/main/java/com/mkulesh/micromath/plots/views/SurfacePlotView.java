@@ -37,7 +37,6 @@ public class SurfacePlotView extends PlotView
     // settings
     private static final int COLOR_MESH_LINES = 0x90FFFFFF;
     private static final int COLOR_WALL = Color.LTGRAY;
-    private final boolean isDrawLabels = true;
 
     // internal constants
     private static final int TOP = 0;
@@ -53,13 +52,14 @@ public class SurfacePlotView extends PlotView
     private final Rect rect = new Rect(), tmpRect = new Rect();
     private final Point p1 = new Point(), p2 = new Point();
     private int factor_x, factor_y; // conversion factors
-    private final int poly_x[] = new int[5], poly_y[] = new int[5];
-    private final int color[] = new int[5];
-    private final Point3D tmpVertex[] = new Point3D[4];
+    private final int[] poly_x = new int[5];
+    private final int[] poly_y = new int[5];
+    private final int[] color = new int[5];
+    private final Point3D[] tmpVertex = new Point3D[4];
     private final Point3D cop = new Point3D(0, 0, 0); // center of projection
-    private final float vertsValues[] = new float[12];
-    private final int vertsColors[] = new int[12];
-    private final double cubeBounds[][] = new double[][]{ { -10, -10, -10 }, { -10, 10, -10 }, { 10, 10, -10 },
+    private final float[] vertsValues = new float[12];
+    private final int[] vertsColors = new int[12];
+    private final double[][] cubeBounds = new double[][]{ { -10, -10, -10 }, { -10, 10, -10 }, { 10, 10, -10 },
             { 10, -10, -10 }, { -10, -10, 10 }, { -10, 10, 10 }, { 10, 10, 10 }, { 10, -10, 10 } };
     private final Vector2D labelCenter = new Vector2D(-10, -10);
     private Label[] xLabels = null;
@@ -525,16 +525,13 @@ public class SurfacePlotView extends PlotView
             }
         }
 
-        if (isDrawLabels)
-        {
-            final float labelsScale = 2;
-            projector.project(p2, 0, factor_y * 13, -10);
-            drawString(canvas, p2.x, p2.y, functions.get(0).getLabels()[FunctionIf.X], CENTER, TOP, labelsScale);
-            projector.project(p2, factor_x * 13, 0, -10);
-            drawString(canvas, p2.x, p2.y, functions.get(0).getLabels()[FunctionIf.Y], CENTER, TOP, labelsScale);
-            projector.project(p2, -factor_x * 10, factor_y * 12, 0);
-            drawString(canvas, p2.x, p2.y, functions.get(0).getLabels()[FunctionIf.Z], CENTER, TOP, labelsScale);
-        }
+        final float labelsScale = 2;
+        projector.project(p2, 0, factor_y * 13, -10);
+        drawString(canvas, p2.x, p2.y, functions.get(0).getLabels()[FunctionIf.X], CENTER, TOP, labelsScale);
+        projector.project(p2, factor_x * 13, 0, -10);
+        drawString(canvas, p2.x, p2.y, functions.get(0).getLabels()[FunctionIf.Y], CENTER, TOP, labelsScale);
+        projector.project(p2, -factor_x * 10, factor_y * 12, 0);
+        drawString(canvas, p2.x, p2.y, functions.get(0).getLabels()[FunctionIf.Z], CENTER, TOP, labelsScale);
     }
 
     /**

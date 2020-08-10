@@ -17,7 +17,7 @@ public interface AxisPropertiesChangeIf
     enum AxisType
     {
         LINEAR,
-        EXTENDED;
+        EXTENDED
     }
 
     /**

@@ -12,17 +12,18 @@
  */
 package com.mkulesh.micromath.utils;
 
-import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.net.Uri;
+import android.os.Build;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 public class ClipboardManager
 {
@@ -86,7 +87,6 @@ public class ClipboardManager
         return "";
     }
 
-    @SuppressLint("NewApi")
     public static CharSequence convertToText(Context context, ClipData.Item item)
     {
         // If this Item has a URI value, try using that.
@@ -103,7 +103,12 @@ public class ClipboardManager
                 AssetFileDescriptor descr = context.getContentResolver().openTypedAssetFileDescriptor(uri, "text/*",
                         null);
                 stream = descr.createInputStream();
-                InputStreamReader reader = new InputStreamReader(stream, "UTF-8");
+                InputStreamReader reader;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    reader = new InputStreamReader(stream, StandardCharsets.UTF_8);
+                } else {
+                    reader = new InputStreamReader(stream, "UTF-8");
+                }
 
                 // Got it... copy the stream into a local string and return it.
                 StringBuilder builder = new StringBuilder(128);

@@ -114,8 +114,8 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
     {
         try
         {
-            final int r = Integer.valueOf(field.length() > 0 ? field.toString() : "") + inc;
-            return ((r < minValue) ? minValue : ((r > maxValue) ? maxValue : r));
+            final int r = Integer.parseInt(field.length() > 0 ? field.toString() : "") + inc;
+            return ((r < minValue) ? minValue : (Math.min(r, maxValue)));
         }
         catch (Exception e)
         {

@@ -30,7 +30,6 @@ import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TermField.ErrorNotification;
 import com.mkulesh.micromath.math.CalculatedValue;
-import com.mkulesh.micromath.plots.views.ColorMapView;
 import com.mkulesh.micromath.plots.views.PlotView;
 import com.mkulesh.micromath.plots.views.SurfacePlotView;
 import com.mkulesh.micromath.plus.R;
@@ -43,7 +42,6 @@ import com.mkulesh.micromath.properties.PlotProperties.TwoDPlotStyle;
 import com.mkulesh.micromath.properties.PlotPropertiesChangeIf;
 import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.ViewUtils;
-import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomLayout;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.SizeChangingLayout;
@@ -69,7 +67,7 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
     private TermField yMin = null, yMax = null, xMin = null, functionTerm = null, xMax = null;
     private final ArrayList<CustomTextView> axes = new ArrayList<>();
     private PlotView functionView = null;
-    private LinearLayout xDataLayout = null, functionViewLayout = null;
+    private LinearLayout functionViewLayout = null;
     private CustomTextView cornerView1 = null, cornerView2 = null;
 
     // function data
@@ -207,13 +205,12 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
             }
             // updatePlotBoundaries needs valid function set
             updatePlotBoundaries(functionView, xMin, xMax, yMin, yMax, null);
-            functionView.invalidate();
         }
         else
         {
             functionView.setFunction(null);
-            functionView.invalidate();
         }
+        functionView.invalidate();
     }
 
     /*********************************************************
@@ -237,10 +234,7 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
             else if (axes.contains(owner))
             {
                 list = new ArrayList<>();
-                for (int i = 0; i < axes.size(); i++)
-                {
-                    list.add(axes.get(i));
-                }
+                list.addAll(axes);
             }
         }
         super.onTermSelection(owner, isSelected, list);
@@ -356,13 +350,10 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
     {
         cornerView1.getLayoutParams().height = h;
         cornerView2.getLayoutParams().height = h;
-        cornerView1.post(new Runnable()
+        cornerView1.post(() ->
         {
-            public void run()
-            {
-                cornerView1.requestLayout();
-                cornerView2.requestLayout();
-            }
+            cornerView1.requestLayout();
+            cornerView2.requestLayout();
         });
     }
 
@@ -524,7 +515,7 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
         }
         functionViewLayout = layout.findViewById(R.id.plot_function_view_layout);
 
-        xDataLayout = layout.findViewById(R.id.plot_x_data_layout);
+        LinearLayout xDataLayout = layout.findViewById(R.id.plot_x_data_layout);
         if (xDataLayout instanceof SizeChangingLayout)
         {
             ((SizeChangingLayout) xDataLayout).setSizeChangedIf(this);
@@ -534,32 +525,32 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
 
         // create graph area
         final PlotView contourView = layout.findViewById(R.id.plot_contour_view);
-        contourView.setColorMapView((ColorMapView) layout.findViewById(R.id.plot_colormap_view));
+        contourView.setColorMapView(layout.findViewById(R.id.plot_colormap_view));
         contourView.prepare(getFormulaList().getActivity(), this);
         final PlotView surfaceView = layout.findViewById(R.id.plot_surface_view);
-        surfaceView.setColorMapView((ColorMapView) layout.findViewById(R.id.plot_colormap_view));
+        surfaceView.setColorMapView(layout.findViewById(R.id.plot_colormap_view));
         surfaceView.prepare(getFormulaList().getActivity(), this);
         functionView = contourView;
 
         // create editable fields
-        yMax = addTerm(this, (LinearLayout) layout.findViewById(R.id.plot_y_max_layout),
-                (CustomEditText) layout.findViewById(R.id.plot_y_max_value), this, false);
+        yMax = addTerm(this, layout.findViewById(R.id.plot_y_max_layout),
+                layout.findViewById(R.id.plot_y_max_value), this, false);
         boundaries[0] = yMax;
 
-        yMin = addTerm(this, (LinearLayout) layout.findViewById(R.id.plot_y_min_layout),
-                (CustomEditText) layout.findViewById(R.id.plot_y_min_value), this, false);
+        yMin = addTerm(this, layout.findViewById(R.id.plot_y_min_layout),
+                layout.findViewById(R.id.plot_y_min_value), this, false);
         boundaries[1] = yMin;
 
-        xMin = addTerm(this, (LinearLayout) layout.findViewById(R.id.plot_x_min_layout),
-                (CustomEditText) layout.findViewById(R.id.plot_x_min_value), this, false);
+        xMin = addTerm(this, layout.findViewById(R.id.plot_x_min_layout),
+                layout.findViewById(R.id.plot_x_min_value), this, false);
         boundaries[2] = xMin;
 
-        functionTerm = addTerm(this, (LinearLayout) layout.findViewById(R.id.plot_function_layout),
-                (CustomEditText) layout.findViewById(R.id.plot_function_term), this, false);
+        functionTerm = addTerm(this, layout.findViewById(R.id.plot_function_layout),
+                layout.findViewById(R.id.plot_function_term), this, false);
         functionTerm.termDepth = 1;
 
-        xMax = addTerm(this, (LinearLayout) layout.findViewById(R.id.plot_x_max_layout),
-                (CustomEditText) layout.findViewById(R.id.plot_x_max_value), this, false);
+        xMax = addTerm(this, layout.findViewById(R.id.plot_x_max_layout),
+                layout.findViewById(R.id.plot_x_max_value), this, false);
         boundaries[3] = xMax;
 
         for (TermField t : terms)
@@ -571,9 +562,9 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
             t.termDepth = 2;
         }
 
-        axes.add((CustomTextView) layout.findViewById(R.id.plot_x_axis1));
-        axes.add((CustomTextView) layout.findViewById(R.id.plot_x_axis2));
-        axes.add((CustomTextView) layout.findViewById(R.id.plot_y_axis));
+        axes.add(layout.findViewById(R.id.plot_x_axis1));
+        axes.add(layout.findViewById(R.id.plot_x_axis2));
+        axes.add(layout.findViewById(R.id.plot_y_axis));
         for (int i = 0; i < axes.size(); i++)
         {
             axes.get(i).prepare(CustomTextView.SymbolType.TEXT, getFormulaList().getActivity(), this);

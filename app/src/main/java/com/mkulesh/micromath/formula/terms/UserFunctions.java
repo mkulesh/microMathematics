@@ -613,7 +613,7 @@ public class UserFunctions extends FunctionBase
             if (s.contains(f.getLinkObject()))
             {
                 final String opCode = f.getLinkObject() + ".";
-                final String nameAndArgs = s.substring(s.indexOf(opCode) + opCode.length(), s.length());
+                final String nameAndArgs = s.substring(s.indexOf(opCode) + opCode.length());
                 if (nameAndArgs != null && nameAndArgs.length() > 0)
                 {
                     final int argsMarker = nameAndArgs.indexOf(FUNCTION_ARGS_MARKER);
@@ -656,14 +656,14 @@ public class UserFunctions extends FunctionBase
             }
             if (opCode != null)
             {
-                final String nameAndArgs = s.substring(s.indexOf(opCode) + opCode.length(), s.length());
+                final String nameAndArgs = s.substring(s.indexOf(opCode) + opCode.length());
                 if (nameAndArgs != null && nameAndArgs.length() > 0)
                 {
                     final int argsMarker = nameAndArgs.indexOf(FUNCTION_ARGS_MARKER);
                     if (argsMarker > 0)
                     {
-                        final String argsStr = nameAndArgs.substring(argsMarker + FUNCTION_ARGS_MARKER.length(),
-                                nameAndArgs.length());
+                        final String argsStr = nameAndArgs.substring(argsMarker + FUNCTION_ARGS_MARKER.length()
+                        );
                         return Integer.parseInt(argsStr);
                     }
                 }

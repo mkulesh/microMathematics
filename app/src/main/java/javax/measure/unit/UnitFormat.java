@@ -182,9 +182,8 @@ public abstract class UnitFormat extends Format {
     public final StringBuffer format(Object unit, final StringBuffer toAppendTo,
             FieldPosition pos) {
         try {
-            Object dest = toAppendTo;
-            if (dest instanceof Appendable) { 
-                format((Unit<?>) unit, (Appendable)dest);                        
+            if (toAppendTo instanceof Appendable) {
+                format((Unit<?>) unit, toAppendTo);
             } else {  // When retroweaver is used to produce 1.4 binaries.
                 format((Unit<?>) unit, new Appendable() {
 
@@ -313,7 +312,7 @@ public abstract class UnitFormat extends Format {
                 TransformedUnit<?> tfmUnit = (TransformedUnit<?>) unit;
                 Unit<?> baseUnits = tfmUnit.getStandardUnit();
                 UnitConverter cvtr = tfmUnit.toStandardUnit();
-                StringBuffer result = new StringBuffer();
+                StringBuilder result = new StringBuilder();
                 String baseUnitName = baseUnits.toString();
                 if ((baseUnitName.indexOf('·') >= 0) ||
                     (baseUnitName.indexOf('*') >= 0) ||
@@ -352,7 +351,7 @@ public abstract class UnitFormat extends Format {
             // Compound unit.
             if (unit instanceof CompoundUnit) {
                 CompoundUnit<?> cpdUnit = (CompoundUnit<?>) unit;
-                return nameFor(cpdUnit.getHigher()).toString() + ":"
+                return nameFor(cpdUnit.getHigher()) + ":"
                         + nameFor(cpdUnit.getLower());
             }
             return null; // Product unit.
@@ -801,12 +800,11 @@ public abstract class UnitFormat extends Format {
     }
     
     static {
-        for (int i = 0; i < SI_UNITS.length; i++) {
+        for (Unit<?> siUnit : SI_UNITS) {
             for (int j = 0; j < PREFIXES.length; j++) {
-                Unit<?> si = SI_UNITS[i];
-                Unit<?> u = si.transform(CONVERTERS[j]);
-                String symbol = (si instanceof BaseUnit) ? ((BaseUnit<?>) si)
-                        .getSymbol() : ((AlternateUnit<?>) si).getSymbol();
+                Unit<?> u = siUnit.transform(CONVERTERS[j]);
+                String symbol = (siUnit instanceof BaseUnit) ? ((BaseUnit<?>) siUnit)
+                        .getSymbol() : ((AlternateUnit<?>) siUnit).getSymbol();
                 DEFAULT.label(u, PREFIXES[j] + symbol);
                 if (PREFIXES[j] == "µ") {
                     ASCII.label(u, "micro" + symbol);

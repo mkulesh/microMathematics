@@ -16,11 +16,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import android.view.ContextMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+
+import androidx.preference.PreferenceManager;
 
 import com.mkulesh.micromath.fman.CommanderIf.SelectionMode;
 import com.mkulesh.micromath.plus.R;
@@ -105,13 +106,13 @@ public class AdapterHome extends AdapterBaseImpl
                 String[] dirs = CompatUtils.getStorageDirs(ctx);
                 if (dirs != null)
                 {
-                    for (int i = 0; i < dirs.length; i++)
+                    for (String dir : dirs)
                     {
-                        if (!FileUtils.str(dirs[i]))
+                        if (!FileUtils.str(dir))
                             continue;
-                        if (fs.equals(dirs[i]))
+                        if (fs.equals(dir))
                             continue;
-                        Item item = makeItem(EXTERNAL, dirs[i]);
+                        Item item = makeItem(EXTERNAL, dir);
                         ia.add(item);
                     }
                 }

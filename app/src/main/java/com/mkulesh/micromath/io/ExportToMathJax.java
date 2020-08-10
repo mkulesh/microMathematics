@@ -75,12 +75,12 @@ public class ExportToMathJax extends ExportToLatex
 
         if (!isPropEmpty(docProp.title))
         {
-            writer.append("\n<h1>" + docProp.title + "</h1>");
+            writer.append("\n<h1>").append(String.valueOf(docProp.title)).append("</h1>");
         }
 
         if (!isPropEmpty(docProp.description))
         {
-            writer.append("\n<em>" + docProp.description + "</em><br>");
+            writer.append("\n<em>").append(String.valueOf(docProp.description)).append("</em><br>");
         }
 
         final int n = formulaListView.getList().getChildCount();
@@ -154,7 +154,7 @@ public class ExportToMathJax extends ExportToLatex
             return;
         }
 
-        final String figName = fileName + "_fig" + String.valueOf(figNumber) + ".png";
+        final String figName = fileName + "_fig" + figNumber + ".png";
         Uri figUri = adapter.getItemUri(figName);
         if (figUri == null)
         {
@@ -178,7 +178,7 @@ public class ExportToMathJax extends ExportToLatex
         {
             writer.append("\n\n<center>");
         }
-        writer.append("<img src=\"" + figName + "\"alt=\"Image\">");
+        writer.append("<img src=\"").append(figName).append("\"alt=\"Image\">");
         if (!inLine)
         {
             writer.append("</center>");
@@ -220,7 +220,7 @@ public class ExportToMathJax extends ExportToLatex
                 final CharSequence number = f.getNumber();
                 if (number.length() > 0)
                 {
-                    writer.append(number + " ");
+                    writer.append(String.valueOf(number)).append(" ");
                 }
             }
             writeHtmlText(terms.get(0).getText(), false);
@@ -233,7 +233,7 @@ public class ExportToMathJax extends ExportToLatex
 
     private void writeHtmlText(CharSequence text, boolean inEquation)
     {
-        String outStr = "";
+        StringBuilder outStr = new StringBuilder();
         for (int i = 0; i < text.length(); i++)
         {
             final char c = text.charAt(i);
@@ -241,11 +241,11 @@ public class ExportToMathJax extends ExportToLatex
 
             if (Character.UnicodeBlock.of(c) == Character.UnicodeBlock.GREEK)
             {
-                for (int k = 0; k < greekTable.length; k++)
+                for (String[] strings : greekTable)
                 {
-                    if (greekTable[k][0].charAt(0) == c)
+                    if (strings[0].charAt(0) == c)
                     {
-                        outStr += (inEquation ? "{" : "$") + greekTable[k][1] + (inEquation ? "}" : "$");
+                        outStr.append(inEquation ? "{" : "$").append(strings[1]).append(inEquation ? "}" : "$");
                         processed = true;
                         break;
                     }
@@ -256,17 +256,17 @@ public class ExportToMathJax extends ExportToLatex
                 final int offset = getParagraphOffset(text, i);
                 if (offset != ViewUtils.INVALID_INDEX)
                 {
-                    outStr += "</p>\n\n<p>";
+                    outStr.append("</p>\n\n<p>");
                     i += offset;
                     processed = true;
                 }
             }
             if (!processed)
             {
-                outStr += c;
+                outStr.append(c);
             }
         }
-        writer.append(outStr);
+        writer.append(outStr.toString());
     }
 
     private int getParagraphOffset(CharSequence text, int currIdx)

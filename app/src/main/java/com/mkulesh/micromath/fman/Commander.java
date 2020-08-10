@@ -17,14 +17,12 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -35,6 +33,8 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mkulesh.micromath.dialogs.DialogBase;
 import com.mkulesh.micromath.dialogs.DialogRadioGroup;
@@ -68,7 +68,6 @@ public class Commander extends DialogBase implements CommanderIf
     private final OnFileSelectedListener listener;
     private final AppCompatActivity context;
     private final FileListView fileListView;
-    private final ImageButton homeButton;
     private final SelectionMode selectionMode;
     private final CharSequence[] assetFilter;
 
@@ -93,16 +92,10 @@ public class Commander extends DialogBase implements CommanderIf
         fileListView.adapterMode = pref.getInt(PREF_ADAPTER_MODE, 0);
         fileListView.applySettings();
 
-        homeButton = findViewById(R.id.fman_action_home);
+        ImageButton homeButton = findViewById(R.id.fman_action_home);
         homeButton.setOnClickListener(this);
         ViewUtils.setImageButtonColorAttr(context, homeButton, R.attr.colorDialogContent);
-        homeButton.setOnLongClickListener(new OnLongClickListener()
-        {
-            public boolean onLongClick(View v)
-            {
-                return ViewUtils.showButtonDescription(getContext(), v);
-            }
-        });
+        homeButton.setOnLongClickListener(v -> ViewUtils.showButtonDescription(getContext(), v));
 
         this.selectionMode = selectionMode;
         this.assetFilter = assetFilter;
@@ -131,13 +124,7 @@ public class Commander extends DialogBase implements CommanderIf
             (findViewById(R.id.dialog_file_new_name_layout)).setVisibility(View.VISIBLE);
             fileTypeButton = findViewById(R.id.fman_file_type_button);
             fileTypeButton.setOnClickListener(this);
-            fileTypeButton.setOnLongClickListener(new OnLongClickListener()
-            {
-                public boolean onLongClick(View v)
-                {
-                    return ViewUtils.showButtonDescription(getContext(), v);
-                }
-            });
+            fileTypeButton.setOnLongClickListener(v -> ViewUtils.showButtonDescription(getContext(), v));
             prepareButtonImage(fileTypeButton);
             fileName.requestFocus();
             break;
@@ -274,7 +261,7 @@ public class Commander extends DialogBase implements CommanderIf
         fileListView.adapterMode = ca.getMode() & (AdapterIf.MODE_SORTING | AdapterIf.MODE_SORT_DIR);
     }
 
-    private final void NavigateInternal(Uri uri, String posTo)
+    private void NavigateInternal(Uri uri, String posTo)
     {
         fileListView.Navigate(uri, posTo);
         okButton.setEnabled(isFileSelected());

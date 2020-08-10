@@ -194,16 +194,12 @@ public class SVG
    public static SVG  getFromResource(Resources resources, int resourceId) throws SVGParseException
    {
       SVGParser    parser = new SVGParser();
-      InputStream  is = resources.openRawResource(resourceId);
-      try {
+      try (InputStream  is = resources.openRawResource(resourceId)) {
          return parser.parse(is, enableInternalEntities);
-      } finally {
-         try {
-           is.close();
-         } catch (IOException e) {
-           // Do nothing
-         }
+      } catch (IOException e) {
+         // Do nothing
       }
+      return null;
    }
 
 
@@ -220,16 +216,10 @@ public class SVG
    public static SVG  getFromAsset(AssetManager assetManager, String filename) throws SVGParseException, IOException
    {
       SVGParser    parser = new SVGParser();
-      InputStream  is = assetManager.open(filename);
-      try {
+      try (InputStream  is = assetManager.open(filename)) {
          return parser.parse(is, enableInternalEntities);
-      } finally {
-         try {
-           is.close();
-         } catch (IOException e) {
-           // Do nothing
-         }
       }
+      // Do nothing
    }
 
 
@@ -1419,8 +1409,6 @@ public class SVG
       {
          switch (unit)
          {
-            case px:
-               return value;
             case em:
                return value * renderer.getCurrentFontSize();
             case ex:
@@ -1440,6 +1428,7 @@ public class SVG
                if (viewPortUser == null)
                   return value;  // Undefined in this situation - so just return value to avoid an NPE
                return value * viewPortUser.width / 100f;
+            case px:
             default:
                return value;
          }
@@ -1493,8 +1482,6 @@ public class SVG
       {
          switch (unit)
          {
-            case px:
-               return value;
             case in:
                return value * dpi;
             case cm:
@@ -1508,6 +1495,7 @@ public class SVG
             case em:
             case ex:
             case percent:
+            case px:
             default:
                return value;
          }

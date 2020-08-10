@@ -13,9 +13,10 @@
 package com.mkulesh.micromath.dialogs;
 
 import android.app.Activity;
-import androidx.appcompat.widget.AppCompatEditText;
 import android.view.View;
 import android.widget.CheckBox;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.DocumentProperties;

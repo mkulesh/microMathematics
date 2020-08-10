@@ -17,16 +17,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceGroup;
-import androidx.appcompat.widget.Toolbar;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.AppLocale;
@@ -54,8 +55,8 @@ public class SettingsActivity extends AppCompatActivity
         public void onCreatePreferences(Bundle bundle, String s)
         {
             addPreferencesFromResource(R.xml.preferences);
-            prepareListPreference(getActivity(), (ListPreference) findPreference("app_language"));
-            prepareListPreference(getActivity(), (ListPreference) findPreference("app_theme"));
+            prepareListPreference(getActivity(), findPreference("app_language"));
+            prepareListPreference(getActivity(), findPreference("app_theme"));
             tintIcons(getActivity(), getPreferenceScreen());
         }
     }
@@ -144,21 +145,17 @@ public class SettingsActivity extends AppCompatActivity
         {
             listPreference.setSummary(listPreference.getEntry().toString());
         }
-        listPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
+        listPreference.setOnPreferenceChangeListener((preference, newValue) ->
         {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue)
+            listPreference.setValue(newValue.toString());
+            preference.setSummary(listPreference.getEntry().toString());
+            if (activity != null)
             {
-                listPreference.setValue(newValue.toString());
-                preference.setSummary(listPreference.getEntry().toString());
-                if (activity != null)
-                {
-                    final Intent intent = activity.getIntent();
-                    activity.finish();
-                    activity.startActivity(intent);
-                }
-                return true;
+                final Intent intent = activity.getIntent();
+                activity.finish();
+                activity.startActivity(intent);
             }
+            return true;
         });
     }
 }

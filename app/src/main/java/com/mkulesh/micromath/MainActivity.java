@@ -16,34 +16,32 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.preference.PreferenceManager;
-import com.google.android.material.navigation.NavigationView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceManager;
+
+import com.google.android.material.navigation.NavigationView;
 import com.mkulesh.micromath.fman.AdapterDocuments;
 import com.mkulesh.micromath.formula.StoredFormula;
 import com.mkulesh.micromath.plus.R;
@@ -84,7 +82,6 @@ public class MainActivity extends AppCompatActivity
     private ActionBarDrawerToggle mDrawerToggle;
     private Uri externalUri = null;
     private Toast exitToast = null;
-    private String versionName = null;
     int orientation;
 
     @SuppressLint("RestrictedApi")
@@ -96,6 +93,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         orientation = getResources().getConfiguration().orientation;
+        String versionName;
         try
         {
             final PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
@@ -105,7 +103,6 @@ public class MainActivity extends AppCompatActivity
         catch (PackageManager.NameNotFoundException e)
         {
             ViewUtils.Debug(this, "Starting application");
-            versionName = null;
         }
 
         initGUI();
@@ -466,14 +463,10 @@ public class MainActivity extends AppCompatActivity
         }
 
         navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener()
+                menuItem ->
                 {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem)
-                    {
-                        selectNavigationItem(menuItem, BaseFragment.INVALID_ACTION_ID);
-                        return true;
-                    }
+                    selectNavigationItem(menuItem, BaseFragment.INVALID_ACTION_ID);
+                    return true;
                 });
 
         updateVersionInfo();
@@ -641,23 +634,12 @@ public class MainActivity extends AppCompatActivity
                 alert.setTitle(getString(R.string.allow_storage_access_title));
                 alert.setMessage(getString(R.string.allow_storage_access_description));
                 alert.setNegativeButton(getString(R.string.dialog_navigation_cancel),
-                        new DialogInterface.OnClickListener()
+                        (dialog, whichButton) ->
                         {
-                            @Override
-                            public void onClick(DialogInterface dialog, int whichButton)
-                            {
-                                // nothing to do
-                            }
+                            // nothing to do
                         });
                 alert.setPositiveButton(getString(R.string.allow_storage_access_grant),
-                        new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface dialog, int whichButton)
-                            {
-                                requestStoragePermission();
-                            }
-                        });
+                        (dialog, whichButton) -> requestStoragePermission());
                 storagePermissionDialog = alert.show();
             }
             else
@@ -678,16 +660,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
     {
-        switch (requestCode)
-        {
-        case STORAGE_PERMISSION_REQID:
+        if (requestCode == STORAGE_PERMISSION_REQID)
         {
             // If request is cancelled, the result arrays are empty.
             if (storagePermissionAction != ViewUtils.INVALID_INDEX && grantResults.length > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            {
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 ViewUtils.Debug(this, "permission was granted, performing file operation action");
                 final BaseFragment f = getVisibleFragment();
                 if (f != null)
@@ -700,10 +679,6 @@ public class MainActivity extends AppCompatActivity
                 String error = getResources().getString(R.string.allow_storage_access_description);
                 Toast.makeText(this, error, Toast.LENGTH_LONG).show();
             }
-            return;
-        }
-        default:
-            // nothing to do
         }
     }
 

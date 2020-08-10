@@ -22,9 +22,7 @@ import android.view.ViewGroup;
 
 import com.mkulesh.micromath.dialogs.DialogDocumentSettings;
 import com.mkulesh.micromath.dialogs.DialogNewFormula;
-import com.mkulesh.micromath.fman.AdapterIf;
 import com.mkulesh.micromath.fman.Commander;
-import com.mkulesh.micromath.fman.FileType;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.io.XmlLoaderTask;
 import com.mkulesh.micromath.plus.R;
@@ -107,10 +105,7 @@ public class MainFragmentWorksheet extends BaseFragment
     private void initializeAssets(String[] stringArray)
     {
         assetFilter = new CharSequence[isDeveloperMode() ? stringArray.length + 1 : stringArray.length];
-        for (int i = 0; i < stringArray.length; i++)
-        {
-            assetFilter[i] = stringArray[i];
-        }
+        System.arraycopy(stringArray, 0, assetFilter, 0, stringArray.length);
         if (isDeveloperMode())
         {
             assetFilter[stringArray.length] = getResources().getString(R.string.autotest_directory);
@@ -223,20 +218,17 @@ public class MainFragmentWorksheet extends BaseFragment
     public void openFile()
     {
         Commander commander = new Commander(activity, R.string.action_open, Commander.SelectionMode.OPEN, assetFilter,
-                new Commander.OnFileSelectedListener()
+                (uri, fileType, adapter) ->
                 {
-                    public void onSelectFile(Uri uri, FileType fileType, final AdapterIf adapter)
+                    saveFile(false);
+                    uri = FileUtils.ensureScheme(uri);
+                    if (formulas.readFromFile(uri))
                     {
-                        saveFile(false);
-                        uri = FileUtils.ensureScheme(uri);
-                        if (formulas.readFromFile(uri))
-                        {
-                            setOpenedFile(uri);
-                        }
-                        else
-                        {
-                            setOpenedFile(null);
-                        }
+                        setOpenedFile(uri);
+                    }
+                    else
+                    {
+                        setOpenedFile(null);
                     }
                 });
         commander.show();

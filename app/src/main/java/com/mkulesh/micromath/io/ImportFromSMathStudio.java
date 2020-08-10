@@ -56,7 +56,7 @@ public class ImportFromSMathStudio
     private final String SM_TAG_MATH_EXPRESSION = "e";
     private final String SM_TAG_MATH_OPERATOR = "operator";
 
-    private final class CodeMapValue
+    private static final class CodeMapValue
     {
         final TermTypeIf termType;
         final CharSequence[] terms;
@@ -550,7 +550,7 @@ public class ImportFromSMathStudio
                 {
                     serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_CODE,
                             UserFunctions.FunctionType.FUNCTION_INDEX.getLinkObject() + "." + arrayName +
-                                    UserFunctions.FUNCTION_ARGS_MARKER + Integer.toString(p.args - 1));
+                                    UserFunctions.FUNCTION_ARGS_MARKER + (p.args - 1));
                     parseTermArguments(p.args - 1, elements, serializer);
                     XmlUtils.removeLast(elements);
                 }
@@ -559,7 +559,7 @@ public class ImportFromSMathStudio
                     // Array can not be resolved: convert as user function
                     serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_CODE,
                             UserFunctions.FunctionType.FUNCTION_LINK.getLinkObject() + "." + p.text +
-                                    UserFunctions.FUNCTION_ARGS_MARKER + Integer.toString(p.args));
+                                    UserFunctions.FUNCTION_ARGS_MARKER + p.args);
                     parseTermArguments(p.args, elements, serializer);
                 }
             }
@@ -568,7 +568,7 @@ public class ImportFromSMathStudio
                 // User function
                 serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_CODE,
                         UserFunctions.FunctionType.FUNCTION_LINK.getLinkObject() + "." + p.text +
-                                UserFunctions.FUNCTION_ARGS_MARKER + Integer.toString(p.args));
+                                UserFunctions.FUNCTION_ARGS_MARKER + p.args);
                 parseTermArguments(p.args, elements, serializer);
             }
         }
@@ -611,7 +611,7 @@ public class ImportFromSMathStudio
         }
         else for (int i = 0; i < args; i++)
         {
-            parseTerm("argTerm" + Integer.toString(args - i), elements, serializer, false);
+            parseTerm("argTerm" + (args - i), elements, serializer, false);
         }
     }
 
@@ -672,7 +672,7 @@ public class ImportFromSMathStudio
      * Helper methods
      *********************************************************/
 
-    private final class ExpressionProperties
+    private static final class ExpressionProperties
     {
         final String type;
         final int args;
@@ -685,7 +685,7 @@ public class ImportFromSMathStudio
             int argsTmp = -1;
             try
             {
-                argsTmp = Integer.valueOf(e.getAttribute("args").trim());
+                argsTmp = Integer.parseInt(e.getAttribute("args").trim());
             }
             catch (Exception ex)
             {
@@ -733,19 +733,19 @@ public class ImportFromSMathStudio
         }
         if (p.isArray() && !args.isEmpty())
         {
-            String retValue = args.get(0) + "[";
+            StringBuilder retValue = new StringBuilder(args.get(0) + "[");
             for (int i = 1; i < args.size(); i++)
             {
-                retValue += (i > 1 ? "," : "") + args.get(i);
+                retValue.append(i > 1 ? "," : "").append(args.get(i));
             }
             return retValue + "]";
         }
         else
         {
-            String retValue = p.text + "(";
+            StringBuilder retValue = new StringBuilder(p.text + "(");
             for (int i = 0; i < args.size(); i++)
             {
-                retValue += (i > 0 ? "," : "") + args.get(i);
+                retValue.append(i > 0 ? "," : "").append(args.get(i));
             }
             return retValue + ")";
         }

@@ -124,7 +124,7 @@ public final class FileUtils
             { ".xls", "application/vnd.ms-excel", C_OFFICE }, { ".xlsx", "application/vnd.ms-excel", C_OFFICE },
             { ".xml", "text/xml", C_MARKUP }, { ".xsl", "text/xml", C_MARKUP }, { ".zip", "application/zip", C_ZIP } };
 
-    public final static String getMimeByExt(String ext, String defValue)
+    public static String getMimeByExt(String ext, String defValue)
     {
         if (str(ext))
         {
@@ -143,7 +143,7 @@ public final class FileUtils
         return defValue;
     }
 
-    public final static String getCategoryByExt(String ext)
+    public static String getCategoryByExt(String ext)
     {
         if (str(ext))
         {
@@ -174,7 +174,7 @@ public final class FileUtils
         return C_UNKNOWN;
     }
 
-    public final static String[] getTypeDescrByExt(String ext)
+    public static String[] getTypeDescrByExt(String ext)
     {
         ext = ext.toLowerCase(Locale.ENGLISH);
         int from = 0, to = mimes.length;
@@ -214,7 +214,7 @@ public final class FileUtils
         return null;
     }
 
-    public final static String getFileExt(String file_name)
+    public static String getFileExt(String file_name)
     {
         if (file_name == null)
             return "";
@@ -222,7 +222,7 @@ public final class FileUtils
         return dot >= 0 ? file_name.substring(dot) : "";
     }
 
-    public final static String getSecondaryStorage()
+    public static String getSecondaryStorage()
     {
         try
         {
@@ -231,9 +231,9 @@ public final class FileUtils
             if (!FileUtils.str(sec_storage))
                 return null;
             String[] ss = sec_storage.split(":");
-            for (int i = 0; i < ss.length; i++)
-                if (ss[i].toLowerCase(Locale.ENGLISH).indexOf("sd") > 0)
-                    return ss[i];
+            for (String s : ss)
+                if (s.toLowerCase(Locale.ENGLISH).indexOf("sd") > 0)
+                    return s;
             return "";
         }
         catch (Exception e)
@@ -245,12 +245,12 @@ public final class FileUtils
 
     static final char[] spaces = { '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0' };
 
-    public final static String getHumanSize(long sz)
+    public static String getHumanSize(long sz)
     {
         return getHumanSize(sz, true);
     }
 
-    public final static String getHumanSize(long sz, boolean prepend_nbsp)
+    public static String getHumanSize(long sz, boolean prepend_nbsp)
     {
         try
         {
@@ -275,19 +275,19 @@ public final class FileUtils
         return "" + sz + " ";
     }
 
-    public final static String mbAddSl(String path)
+    public static String mbAddSl(String path)
     {
         if (!str(path))
             return "/";
         return path.charAt(path.length() - 1) == '/' ? path : path + "/";
     }
 
-    public final static boolean str(String s)
+    public static boolean str(String s)
     {
         return s != null && s.length() > 0;
     }
 
-    public final static boolean equals(String s1, String s2)
+    public static boolean equals(String s1, String s2)
     {
         if (s1 == null)
         {
@@ -296,14 +296,14 @@ public final class FileUtils
         return s1.equals(s2);
     }
 
-    public final static String escapeRest(String s)
+    public static String escapeRest(String s)
     {
         if (!str(s))
             return s;
         return s.replaceAll("%", "%25").replaceAll("#", "%23").replaceAll(":", "%3A");
     }
 
-    public final static String escapePath(String s)
+    public static String escapePath(String s)
     {
         if (!str(s))
             return s;
@@ -410,10 +410,8 @@ public final class FileUtils
         String result = null;
         if (isContentUri(uri))
         {
-            Cursor cursor = null;
-            try
+            try (Cursor cursor = c.getContentResolver().query(uri, null, null, null, null))
             {
-                cursor = c.getContentResolver().query(uri, null, null, null, null);
                 if (cursor != null && cursor.moveToFirst())
                 {
                     result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
@@ -422,13 +420,6 @@ public final class FileUtils
             catch (Exception e)
             {
                 ViewUtils.Debug(c, "cannot resolve file name: " + e.getLocalizedMessage());
-            }
-            finally
-            {
-                if (cursor != null)
-                {
-                    cursor.close();
-                }
             }
         }
         else
@@ -562,8 +553,7 @@ public final class FileUtils
             String[] relativeDirectories = relativeTo.split("/");
 
             //Get the shortest of the two paths
-            int length = absoluteDirectories.length < relativeDirectories.length ? absoluteDirectories.length
-                    : relativeDirectories.length;
+            int length = Math.min(absoluteDirectories.length, relativeDirectories.length);
 
             //Use to determine where in the loop we exited
             int lastCommonRoot = -1;
@@ -596,7 +586,7 @@ public final class FileUtils
                 }
                 for (index = lastCommonRoot + 1; index < relativeDirectories.length - 1; index++)
                 {
-                    relativePath.append(relativeDirectories[index] + "/");
+                    relativePath.append(relativeDirectories[index]).append("/");
                 }
                 relativePath.append(relativeDirectories[relativeDirectories.length - 1]);
             }

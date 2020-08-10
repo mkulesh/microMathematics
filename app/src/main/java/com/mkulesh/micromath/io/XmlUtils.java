@@ -48,14 +48,11 @@ public class XmlUtils
     public static void skipTagContent(XmlPullParser parser) throws IOException, XmlPullParserException
     {
         final int depth = parser.getDepth();
-        while (true)
+        do
         {
             parser.next();
-            if (parser.getEventType() == XmlPullParser.END_TAG && parser.getDepth() == depth)
-            {
-                break;
-            }
         }
+        while (parser.getEventType() != XmlPullParser.END_TAG || parser.getDepth() != depth);
     }
 
     static boolean ensureAttribute(Element e, String type, String s)
