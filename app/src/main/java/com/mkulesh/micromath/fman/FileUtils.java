@@ -410,8 +410,10 @@ public final class FileUtils
         String result = null;
         if (isContentUri(uri))
         {
-            try (Cursor cursor = c.getContentResolver().query(uri, null, null, null, null))
+            Cursor cursor = null;
+            try
             {
+                cursor = c.getContentResolver().query(uri, null, null, null, null);
                 if (cursor != null && cursor.moveToFirst())
                 {
                     result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
@@ -420,6 +422,13 @@ public final class FileUtils
             catch (Exception e)
             {
                 ViewUtils.Debug(c, "cannot resolve file name: " + e.getLocalizedMessage());
+            }
+            finally
+            {
+                if (cursor != null)
+                {
+                    cursor.close();
+                }
             }
         }
         else
