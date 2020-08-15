@@ -666,7 +666,8 @@ public class MainActivity extends AppCompatActivity
         {
             // If request is cancelled, the result arrays are empty.
             if (storagePermissionAction != ViewUtils.INVALID_INDEX && grantResults.length > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
                 ViewUtils.Debug(this, "permission was granted, performing file operation action");
                 final BaseFragment f = getVisibleFragment();
                 if (f != null)

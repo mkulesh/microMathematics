@@ -537,13 +537,18 @@ public class AdapterFileSystem extends AdapterBaseImpl
         private int deleteFiles(File[] l) throws Exception
         {
             int cnt = 0;
-            for (File f : l) {
-                if (f.isDirectory() && f.listFiles() != null) {
+            for (File f : l)
+            {
+                if (f.isDirectory() && f.listFiles() != null)
+                {
                     cnt += deleteFiles(f.listFiles());
                 }
-                if (f.delete()) {
+                if (f.delete())
+                {
                     cnt++;
-                } else {
+                }
+                else
+                {
                     error(a.ctx.getString(R.string.fman_delete_error, f.getName()));
                     break;
                 }

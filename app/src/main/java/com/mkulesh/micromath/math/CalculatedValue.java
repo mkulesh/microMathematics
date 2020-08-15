@@ -256,7 +256,7 @@ public class CalculatedValue
         {
             return Integer.valueOf(s);
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             // nothing to do
         }

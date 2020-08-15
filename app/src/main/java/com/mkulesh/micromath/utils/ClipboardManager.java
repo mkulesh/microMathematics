@@ -104,9 +104,12 @@ public class ClipboardManager
                         null);
                 stream = descr.createInputStream();
                 InputStreamReader reader;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+                {
                     reader = new InputStreamReader(stream, StandardCharsets.UTF_8);
-                } else {
+                }
+                else
+                {
                     reader = new InputStreamReader(stream, "UTF-8");
                 }
 

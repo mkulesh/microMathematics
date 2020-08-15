@@ -530,7 +530,10 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
             return true;
         }
         // an array or constant
-        else return argNumber == ARG_NUMBER_ARRAY_OR_CONSTANT && (isArray() || getArguments() == null);
+        else
+        {
+            return argNumber == ARG_NUMBER_ARRAY_OR_CONSTANT && (isArray() || getArguments() == null);
+        }
     }
 
     private EquationArrayResult findPreviousArray()

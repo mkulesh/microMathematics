@@ -86,7 +86,8 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     {
         fragmentNumber = number;
         activity = (AppCompatActivity) getActivity();
-        if (activity != null) {
+        if (activity != null)
+        {
             preferences = PreferenceManager.getDefaultSharedPreferences(activity);
         }
         formulas = new FormulaList(this, rootView);

@@ -152,8 +152,8 @@ public class FunctionPlotView extends PlanePlotView
             case SQUARE:
                 c.drawRect(p1.x - shapeSize, p1.y - shapeSize, p1.x + shapeSize, p1.y + shapeSize, shapePaint);
                 break;
-                case NONE:
-                default:
+            case NONE:
+            default:
                 break;
             }
             p2.set(p1.x, p1.y);
