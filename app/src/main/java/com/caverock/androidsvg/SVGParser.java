@@ -622,7 +622,7 @@ class SVGParser
    /*
     * Implements the SAX Attributes class so that our parser can share a common attributes object
     */
-   private static class  XPPAttributesWrapper  implements Attributes
+   private class  XPPAttributesWrapper  implements Attributes
    {
       private XmlPullParser  parser;
 
@@ -1834,10 +1834,14 @@ Log.d(TAG,"PROC INSTR: "+parser.getText());
       for (int i=0; i<attributes.getLength(); i++)
       {
          String val = attributes.getValue(i).trim();
-         if (SVGAttr.fromString(attributes.getLocalName(i)) == SVGAttr.href)
+         switch (SVGAttr.fromString(attributes.getLocalName(i)))
          {
-            if ("".equals(attributes.getURI(i)) || XLINK_NAMESPACE.equals(attributes.getURI(i)))
-               obj.href = val;
+            case href:
+               if ("".equals(attributes.getURI(i)) || XLINK_NAMESPACE.equals(attributes.getURI(i)))
+                  obj.href = val;
+               break;
+            default:
+               break;
          }
       }
    }
@@ -1886,7 +1890,7 @@ Log.d(TAG,"PROC INSTR: "+parser.getText());
                break;
             case requiredFonts:
                List<String>  fonts = parseFontFamily(val);
-               Set<String>  fontSet = (fonts != null) ? new HashSet<>(fonts) : new HashSet<>(0);
+               Set<String>  fontSet = (fonts != null) ? new HashSet<>(fonts) : new HashSet<String>(0);
                obj.setRequiredFonts(fontSet);
                break;
             default:
@@ -2156,9 +2160,13 @@ Log.d(TAG,"PROC INSTR: "+parser.getText());
       for (int i=0; i<attributes.getLength(); i++)
       {
          String val = attributes.getValue(i).trim();
-         if (SVGAttr.fromString(attributes.getLocalName(i)) == SVGAttr.offset)
+         switch (SVGAttr.fromString(attributes.getLocalName(i)))
          {
-            obj.offset = parseGradientOffset(val);
+            case offset:
+               obj.offset = parseGradientOffset(val);
+               break;
+            default:
+               break;
          }
       }
    }
@@ -2237,20 +2245,19 @@ Log.d(TAG,"PROC INSTR: "+parser.getText());
       for (int i=0; i<attributes.getLength(); i++)
       {
          String val = attributes.getValue(i).trim();
-         if (SVGAttr.fromString(attributes.getLocalName(i)) == SVGAttr.clipPathUnits)
+         switch (SVGAttr.fromString(attributes.getLocalName(i)))
          {
-            if ("objectBoundingBox".equals(val))
-            {
-               obj.clipPathUnitsAreUser = false;
-            }
-            else if ("userSpaceOnUse".equals(val))
-            {
-               obj.clipPathUnitsAreUser = true;
-            }
-            else
-            {
-               throw new SVGParseException("Invalid value for attribute clipPathUnits");
-            }
+            case clipPathUnits:
+               if ("objectBoundingBox".equals(val)) {
+                  obj.clipPathUnitsAreUser = false;
+               } else if ("userSpaceOnUse".equals(val)) {
+                  obj.clipPathUnitsAreUser = true;
+               } else {
+                  throw new SVGParseException("Invalid value for attribute clipPathUnits");
+               }
+               break;
+            default:
+               break;
          }
       }
    }
@@ -3501,7 +3508,7 @@ Log.d(TAG,"PROC INSTR: "+parser.getText());
    {
       try {
          float  o = parseFloat(val);
-         return (o < 0f) ? 0f : Math.min(o, 1f);
+         return (o < 0f) ? 0f : (o > 1f) ? 1f : o;
       } catch (SVGParseException e) {
          return null;
       }
@@ -3741,8 +3748,8 @@ Log.d(TAG,"PROC INSTR: "+parser.getText());
       hue /= 60f;    // [0, 360] -> [0, 6]
       sat /= 100;   // [0, 100] -> [0, 1]
       light /= 100; // [0, 100] -> [0, 1]
-      sat = (sat < 0f) ? 0f : Math.min(sat, 1f);
-      light = (light < 0f) ? 0f : Math.min(light, 1f);
+      sat = (sat < 0f) ? 0f : (sat > 1f) ? 1f : sat;
+      light = (light < 0f) ? 0f : (light > 1f) ? 1f : light;
       float  t1, t2;
       if (light <= 0.5f) {
          t2 = light * (sat + 1f);
@@ -4007,7 +4014,7 @@ Log.d(TAG,"PROC INSTR: "+parser.getText());
       if (sum == 0f)
          return null;
       
-      return dashes.toArray(new Length[0]);
+      return dashes.toArray(new Length[dashes.size()]);
    }
 
 

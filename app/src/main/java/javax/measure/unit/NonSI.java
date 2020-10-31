@@ -556,8 +556,8 @@ public final class NonSI extends SystemOfUnits {
      * (standard name <code>lbf</code>).
      */
     public static final Unit<Force> POUND_FORCE = nonSI(NEWTON
-            .times((long) AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND).divide(
-                    (long) AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR));
+            .times(1L * AVOIRDUPOIS_POUND_DIVIDEND * STANDARD_GRAVITY_DIVIDEND).divide(
+                    1L * AVOIRDUPOIS_POUND_DIVISOR * STANDARD_GRAVITY_DIVISOR));
 
     ///////////
     // Power //

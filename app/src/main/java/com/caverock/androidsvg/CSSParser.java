@@ -287,7 +287,7 @@ class CSSParser
    }
 
 
-   enum  Source
+   static enum  Source
    {
       Document,
       RenderOptions
@@ -310,7 +310,7 @@ class CSSParser
       @Override
       public String toString()
       {
-         return selector + " {...} (src="+this.source+")";
+         return String.valueOf(selector) + " {...} (src="+this.source+")";
       }
    }
 
@@ -733,9 +733,8 @@ class CSSParser
            return null;
          skipWhitespace();
 
-         do
-         {
-            String ident = nextIdentifier();
+         while (true) {
+            String  ident = nextIdentifier();
             if (ident == null) {
                position = start;
                return null;
@@ -744,8 +743,9 @@ class CSSParser
                result = new ArrayList<>();
             result.add(ident);
             skipWhitespace();
+            if (!skipCommaWhitespace())
+               break;
          }
-         while (skipCommaWhitespace());
 
          if (consume(')'))
            return result;
@@ -999,11 +999,11 @@ class CSSParser
       private int  hexChar(int ch)
       {
          if (ch >= '0' && ch <= '9')
-            return (ch - (int)'0');
+            return ((int)ch - (int)'0');
          if (ch >= 'A' && ch <= 'F')
-            return (ch - (int)'A') + 10;
+            return ((int)ch - (int)'A') + 10;
          if (ch >= 'a' && ch <= 'f')
-            return (ch - (int)'a') + 10;
+            return ((int)ch - (int)'a') + 10;
          return -1;
       }
 
@@ -1262,14 +1262,14 @@ class CSSParser
    private SVG.Style  parseDeclarations(CSSTextScanner scan) throws CSSParseException
    {
       SVG.Style  ruleStyle = new SVG.Style();
-      do
+      while (true)
       {
-         String propertyName = scan.nextIdentifier();
+         String  propertyName = scan.nextIdentifier();
          scan.skipWhitespace();
          if (!scan.consume(':'))
             throw new CSSParseException("Expected ':'");
          scan.skipWhitespace();
-         String propertyValue = scan.nextPropertyValue();
+         String  propertyValue = scan.nextPropertyValue();
          if (propertyValue == null)
             throw new CSSParseException("Expected property value");
          // Check for !important flag.
@@ -1286,8 +1286,9 @@ class CSSParser
          // TODO: support CSS only values such as "inherit"
          SVGParser.processStyleProperty(ruleStyle, propertyName, propertyValue);
          scan.skipWhitespace();
+         if (scan.empty() || scan.consume('}'))
+            break;
       }
-      while (!scan.empty() && !scan.consume('}'));
       return ruleStyle;
    }
 
@@ -1494,9 +1495,9 @@ class CSSParser
    //==============================================================================
 
 
-   private interface  PseudoClass
+   private static interface  PseudoClass
    {
-      boolean  matches(RuleMatchContext ruleMatchContext, SvgElementBase obj);
+      public boolean  matches(RuleMatchContext ruleMatchContext, SvgElementBase obj);
    }
 
 
@@ -1609,7 +1610,7 @@ class CSSParser
       public String toString()
       {
          return isOfType ? String.format("only-of-type <%s>", nodeName)
-                         : "only-child";
+                         : String.format("only-child");
       }
 
    }

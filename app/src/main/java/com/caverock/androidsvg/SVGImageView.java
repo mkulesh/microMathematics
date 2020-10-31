@@ -23,11 +23,10 @@ import android.graphics.Picture;
 import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import androidx.appcompat.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-
-import androidx.appcompat.widget.AppCompatImageView;
 
 import com.mkulesh.micromath.plus.R;
 

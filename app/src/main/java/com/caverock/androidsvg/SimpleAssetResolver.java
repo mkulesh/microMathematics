@@ -16,21 +16,19 @@
 
 package com.caverock.androidsvg;
 
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Typeface;
-import android.os.Build;
-import android.util.Log;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 import java.util.Set;
+
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
+import android.util.Log;
 
 
 /**
@@ -67,7 +65,7 @@ public class SimpleAssetResolver extends SVGExternalFileResolver
       supportedFormats.add("image/bmp");
       supportedFormats.add("image/x-windows-bmp");
       // .webp supported in 4.0+ (ICE_CREAM_SANDWICH)
-      if (Build.VERSION.SDK_INT >= 14) {
+      if (android.os.Build.VERSION.SDK_INT >= 14) {
          supportedFormats.add("image/webp");
       }
    }
@@ -149,15 +147,12 @@ public class SimpleAssetResolver extends SVGExternalFileResolver
     */
    private String getAssetAsString(String url)
    {
-      try (InputStream is = assetManager.open(url))
+      InputStream is = null;
+      try
       {
+         is = assetManager.open(url);
 
-         Reader r;
-         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            r = new InputStreamReader(is, StandardCharsets.UTF_8);
-         } else {
-            r = new InputStreamReader(is, Charset.forName("UTF-8"));
-         }
+         Reader r = new InputStreamReader(is, Charset.forName("UTF-8"));
          char[]         buffer = new char[4096];
          StringBuilder  sb = new StringBuilder();
          int            len = r.read(buffer);
@@ -170,6 +165,14 @@ public class SimpleAssetResolver extends SVGExternalFileResolver
       catch (IOException e)
       {
          return null;
+      }
+      finally {
+         try {
+            if (is != null)
+               is.close();
+         } catch (IOException e) {
+           // Do nothing
+         }
       }
    }
 

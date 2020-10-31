@@ -117,7 +117,7 @@ class SVGAndroidRenderer
    private CSSParser.RuleMatchContext  ruleMatchContext = null;
 
 
-   private static class RendererState
+   private class RendererState
    {
       Style    style;
       boolean  hasFill;
@@ -260,7 +260,7 @@ class SVGAndroidRenderer
       if (renderOptions.hasView())
       {
          SvgObject  obj = this.document.getElementById(renderOptions.viewId);
-         if (!(obj instanceof SVG.View)) {
+         if (obj == null || !(obj instanceof SVG.View)) {
             Log.w(TAG, String.format("View element with id \"%s\" not found.", renderOptions.viewId));
             return;
          }
@@ -733,7 +733,7 @@ class SVGAndroidRenderer
       if (state.style.mask != null) {
          SVG.SvgObject  ref = document.resolveIRI(state.style.mask);
          // Check the we are referencing a mask element
-         if (!(ref instanceof SVG.Mask)) {
+         if (ref == null || !(ref instanceof SVG.Mask)) {
             // This is an invalid mask reference - disable this object's mask
             error("Mask reference '%s' not found", state.style.mask);
             state.style.mask = null;
@@ -1497,7 +1497,7 @@ class SVGAndroidRenderer
    // Text sequence enumeration
 
 
-   private abstract static class  TextProcessor
+   private abstract class  TextProcessor
    {
       public boolean  doTextContainer(TextContainer obj)
       {
@@ -1619,7 +1619,7 @@ class SVGAndroidRenderer
 
             // Locate the referenced object
             SVG.SvgObject  ref = obj.document.resolveIRI(tref.href);
-            if ((ref instanceof TextContainer))
+            if (ref != null && (ref instanceof TextContainer))
             {
                StringBuilder  str = new StringBuilder();
                extractRawText((TextContainer) ref, str);
@@ -1985,7 +1985,7 @@ class SVGAndroidRenderer
          return null;
 
       int  comma = url.indexOf(',');
-      if (comma < 12)
+      if (comma == -1 || comma < 12)
          return null;
       if (!";base64".equals(url.substring(comma-7, comma)))
          return null;
@@ -2438,11 +2438,13 @@ class SVGAndroidRenderer
          case "serif":
             font = Typeface.create(Typeface.SERIF, typefaceStyle); break;
          case "sans-serif":
-         case "cursive":
-         case "fantasy":
             font = Typeface.create(Typeface.SANS_SERIF, typefaceStyle); break;
          case "monospace":
             font = Typeface.create(Typeface.MONOSPACE, typefaceStyle); break;
+         case "cursive":
+            font = Typeface.create(Typeface.SANS_SERIF, typefaceStyle); break;
+         case "fantasy":
+            font = Typeface.create(Typeface.SANS_SERIF, typefaceStyle); break;
       }
       return font;
    }
@@ -2452,7 +2454,7 @@ class SVGAndroidRenderer
    private static int  clamp255(float val)
    {
       int  i = (int)(val * 256f);
-      return (i<0) ? 0 : Math.min(i, 255);
+      return (i<0) ? 0 : (i>255) ? 255 : i;
    }
 
 
@@ -2460,7 +2462,7 @@ class SVGAndroidRenderer
    {
       int  alpha = (colour >> 24) & 0xff;
       alpha = Math.round(alpha * opacity);
-      alpha = (alpha<0) ? 0 : Math.min(alpha, 255);
+      alpha = (alpha<0) ? 0 : (alpha>255) ? 255 : alpha;
       return (alpha << 24) | (colour & 0xffffff);
    }
 
@@ -2517,7 +2519,7 @@ class SVGAndroidRenderer
    /*
     *  Convert an internal PathDefinition to an android.graphics.Path object
     */
-   private static class  PathConverter implements PathInterface
+   private class  PathConverter implements PathInterface
    {
       Path   path = new Path();
       float  lastX, lastY;
@@ -2788,7 +2790,7 @@ class SVGAndroidRenderer
    //==============================================================================
 
 
-   private static class MarkerVector
+   private class MarkerVector
    {
       float    x, y, dx=0f, dy=0f;
       boolean  isAmbiguous = false;
@@ -2855,7 +2857,7 @@ class SVGAndroidRenderer
    /*
     *  Calculates the positions and orientations of any markers that should be placed on the given path.
     */
-   private static class  MarkerPositionCalculator implements PathInterface
+   private class  MarkerPositionCalculator implements PathInterface
    {
       private List<MarkerVector>  markers = new ArrayList<>();
       private float               startX, startY;
