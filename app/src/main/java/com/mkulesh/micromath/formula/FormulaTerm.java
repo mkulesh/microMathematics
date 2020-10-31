@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
+import androidx.annotation.NonNull;
+
 public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
 {
     private final FormulaBase formulaRoot;
@@ -56,6 +58,7 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
      * Common getters
      *********************************************************/
 
+    @NonNull
     @Override
     public String toString()
     {

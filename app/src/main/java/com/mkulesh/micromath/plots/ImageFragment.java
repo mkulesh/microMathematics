@@ -34,6 +34,8 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+
 public class ImageFragment extends FormulaBase implements ImagePropertiesChangeIf
 {
     /*
@@ -77,6 +79,7 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
      * Re-implementation for methods for Object superclass
      *********************************************************/
 
+    @NonNull
     @Override
     public String toString()
     {

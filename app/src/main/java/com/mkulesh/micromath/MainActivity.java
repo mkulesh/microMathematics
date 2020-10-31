@@ -30,6 +30,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -210,7 +211,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem)
+    public boolean onOptionsItemSelected(@NonNull MenuItem menuItem)
     {
         storagePermissionAction = ViewUtils.INVALID_INDEX;
 
@@ -309,7 +310,7 @@ public class MainActivity extends AppCompatActivity
      *********************************************************/
 
     @Override
-    protected void onSaveInstanceState(Bundle outState)
+    protected void onSaveInstanceState(@NonNull Bundle outState)
     {
         if (storedFormula != null)
         {
@@ -323,7 +324,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle inState)
+    protected void onRestoreInstanceState(@NonNull Bundle inState)
     {
         try
         {
@@ -361,7 +362,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onSupportActionModeStarted(androidx.appcompat.view.ActionMode mode)
+    public void onSupportActionModeStarted(@NonNull androidx.appcompat.view.ActionMode mode)
     {
         mToolbar.setVisibility(View.INVISIBLE);
         super.onSupportActionModeStarted(mode);
@@ -374,7 +375,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onSupportActionModeFinished(androidx.appcompat.view.ActionMode mode)
+    public void onSupportActionModeFinished(@NonNull androidx.appcompat.view.ActionMode mode)
     {
         super.onSupportActionModeFinished(mode);
         mToolbar.setVisibility(View.VISIBLE);
@@ -660,7 +661,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
     {
         if (requestCode == STORAGE_PERMISSION_REQID)
         {

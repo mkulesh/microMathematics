@@ -25,6 +25,8 @@ import com.mkulesh.micromath.utils.CompatUtils;
 import java.io.File;
 import java.util.Arrays;
 
+import androidx.annotation.NonNull;
+
 public class AdapterFileSystem extends AdapterBaseImpl
 {
     public final static String ORG_SCHEME = "file";
@@ -46,6 +48,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
         return "";
     }
 
+    @NonNull
     @Override
     public String toString()
     {

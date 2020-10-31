@@ -23,6 +23,7 @@ import android.os.Handler;
 import android.provider.DocumentsContract;
 import android.provider.DocumentsContract.Document;
 
+import androidx.annotation.NonNull;
 import androidx.preference.PreferenceManager;
 
 import com.mkulesh.micromath.plus.R;
@@ -69,6 +70,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         return AdapterDocuments.ORG_SCHEME;
     }
 
+    @NonNull
     @Override
     public String toString()
     {

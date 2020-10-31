@@ -19,6 +19,8 @@ import android.os.Parcelable;
 
 import com.mkulesh.micromath.math.Vector2D;
 
+import androidx.annotation.NonNull;
+
 public class PhysicalArea implements Parcelable
 {
 
@@ -151,6 +153,7 @@ public class PhysicalArea implements Parcelable
     /**
      * Procedure returns the string representation of this area
      */
+    @NonNull
     public String toString()
     {
         return "min [" + min.x + "," + min.y + "] max [" + max.x + "," + max.y + "] dim [" + dim.x + "," + dim.y + "]";

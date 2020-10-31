@@ -27,6 +27,8 @@ import com.mkulesh.micromath.utils.ViewUtils;
 
 import org.apache.commons.math3.util.FastMath;
 
+import androidx.annotation.NonNull;
+
 public abstract class CalculationResult extends LinkHolder
 {
     /*********************************************************
@@ -87,6 +89,7 @@ public abstract class CalculationResult extends LinkHolder
      * Re-implementation for methods for Object superclass
      *********************************************************/
 
+    @NonNull
     @Override
     public String toString()
     {

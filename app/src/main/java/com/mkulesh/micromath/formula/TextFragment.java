@@ -33,6 +33,8 @@ import com.mkulesh.micromath.widgets.ScaledDimensions;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
 
+import androidx.annotation.NonNull;
+
 public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
 {
     /*
@@ -76,6 +78,7 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
      * Re-implementation for methods for Object superclass
      *********************************************************/
 
+    @NonNull
     @Override
     public String toString()
     {

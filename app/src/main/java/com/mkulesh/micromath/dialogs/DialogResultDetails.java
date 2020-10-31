@@ -12,6 +12,7 @@
  */
 package com.mkulesh.micromath.dialogs;
 
+import androidx.annotation.NonNull;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -141,8 +142,9 @@ public class DialogResultDetails extends DialogBase
             this.targetUnit = resProp != null ? TermParser.parseUnits(resProp.units) : null;
         }
 
+        @NonNull
         @Override
-        public View getView(int position, View convertView, ViewGroup parent)
+        public View getView(int position, View convertView, @NonNull ViewGroup parent)
         {
             // Get the data item for this position
             ArgumentValueItem item = getItem(position);

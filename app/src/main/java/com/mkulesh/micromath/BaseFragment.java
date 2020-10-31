@@ -24,6 +24,7 @@ import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
@@ -99,7 +100,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater)
     {
         super.onCreateOptionsMenu(menu, inflater);
         boolean delayedSetInOperationCall = (mainMenu != menu);
@@ -111,7 +112,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState)
+    public void onSaveInstanceState(@NonNull Bundle outState)
     {
         if (formulas.getXmlLoaderTask() != null)
         {

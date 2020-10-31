@@ -35,6 +35,8 @@ import com.mkulesh.micromath.plus.R;
 import java.io.File;
 import java.util.Date;
 
+import androidx.annotation.NonNull;
+
 public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
 {
     static final String DEFAULT_DIR = Environment.getExternalStorageDirectory().getAbsolutePath();
@@ -68,7 +70,7 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
         }
 
         @Override
-        public void handleMessage(Message msg)
+        public void handleMessage(@NonNull Message msg)
         {
             try
             {

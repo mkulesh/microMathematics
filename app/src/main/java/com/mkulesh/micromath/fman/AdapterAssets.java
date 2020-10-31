@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
+import androidx.annotation.NonNull;
+
 public class AdapterAssets extends AdapterBaseImpl
 {
     public final static String ORG_SCHEME = "asset";
@@ -54,6 +56,7 @@ public class AdapterAssets extends AdapterBaseImpl
         return AdapterDocuments.ORG_SCHEME;
     }
 
+    @NonNull
     @Override
     public String toString()
     {

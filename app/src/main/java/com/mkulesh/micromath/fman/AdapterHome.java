@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import androidx.annotation.NonNull;
 import androidx.preference.PreferenceManager;
 
 import com.mkulesh.micromath.fman.CommanderIf.SelectionMode;
@@ -75,6 +76,7 @@ public class AdapterHome extends AdapterBaseImpl
         return mode;
     }
 
+    @NonNull
     @Override
     public String toString()
     {

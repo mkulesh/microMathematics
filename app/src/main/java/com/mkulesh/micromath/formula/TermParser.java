@@ -26,6 +26,8 @@ import javax.measure.DecimalMeasure;
 import javax.measure.Measure;
 import javax.measure.unit.Unit;
 
+import androidx.annotation.NonNull;
+
 public class TermParser
 {
     private CalculatedValue value = null;
@@ -55,6 +57,7 @@ public class TermParser
         // empty
     }
 
+    @NonNull
     @Override
     public String toString()
     {

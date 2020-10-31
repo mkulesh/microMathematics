@@ -34,6 +34,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mkulesh.micromath.dialogs.DialogBase;
@@ -432,7 +433,7 @@ public class Commander extends DialogBase implements CommanderIf
     }
 
     @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item)
+    public boolean onMenuItemSelected(int featureId, @NonNull MenuItem item)
     {
         if (featureId != Window.FEATURE_CONTEXT_MENU)
         {

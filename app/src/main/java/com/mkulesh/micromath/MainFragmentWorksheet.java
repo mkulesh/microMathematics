@@ -32,6 +32,8 @@ import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.io.File;
 
+import androidx.annotation.NonNull;
+
 public class MainFragmentWorksheet extends BaseFragment
 {
     private static final String AUTOSAVE_FILE_NAME = "autosave.mmt";
@@ -63,7 +65,7 @@ public class MainFragmentWorksheet extends BaseFragment
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater)
     {
         super.onCreateOptionsMenu(menu, inflater);
         menu.findItem(R.id.action_open).setVisible(true);

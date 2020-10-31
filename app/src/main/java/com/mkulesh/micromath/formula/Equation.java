@@ -31,6 +31,8 @@ import com.mkulesh.micromath.widgets.CustomTextView;
 
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+
 public class Equation extends CalculationResult implements ArgumentHolderIf, CalculatableIf
 {
     public static final int ARG_NUMBER_ANY = -1;
@@ -92,6 +94,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
      * Re-implementation for methods for Object superclass
      *********************************************************/
 
+    @NonNull
     @Override
     public String toString()
     {

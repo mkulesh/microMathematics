@@ -347,6 +347,7 @@ public class CalculatedValue
      * Conversion methods
      *********************************************************/
 
+    @NonNull
     public String toString()
     {
         return valueType.toString() + "[" + real + ", " + imaginary + "]" +
