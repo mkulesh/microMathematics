@@ -24,7 +24,7 @@ public final class FormulaState implements Parcelable
 {
     public int formulaId = ViewUtils.INVALID_INDEX;
     public int termId = ViewUtils.INVALID_INDEX;
-    public Parcelable data;
+    public final Parcelable data;
 
     public FormulaState(int formulaId, int termId, Parcelable data)
     {

@@ -484,9 +484,9 @@ public class AdapterDocuments extends AdapterBaseImpl
 
     static class DeleteEngine extends Engine
     {
-        private AdapterDocuments a;
-        private Item[] mList;
-        private Uri dirUri;
+        private final AdapterDocuments a;
+        private final Item[] mList;
+        private final Uri dirUri;
 
         DeleteEngine(AdapterDocuments a, Handler h, Item[] list)
         {

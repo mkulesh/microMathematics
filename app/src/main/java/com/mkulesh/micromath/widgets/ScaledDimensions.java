@@ -39,8 +39,8 @@ public class ScaledDimensions
     }
 
     private float scaleFactor = 1.0f;
-    private float depthStepSize;
-    private float[] dimen;
+    private final float depthStepSize;
+    private final float[] dimen;
 
     public ScaledDimensions(Context context)
     {

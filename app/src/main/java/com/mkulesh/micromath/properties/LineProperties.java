@@ -57,7 +57,7 @@ public class LineProperties implements Parcelable
     public ShapeType shapeType = ShapeType.NONE;
     public int shapeSize = 300;
 
-    private Paint paint = new Paint();
+    private final Paint paint = new Paint();
 
     /**
      * Parcelable interface

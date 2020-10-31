@@ -18,9 +18,9 @@ import java.util.Comparator;
 
 class ItemComparator implements Comparator<Item>
 {
-    private int type;
-    private boolean case_ignore;
-    private boolean ascending;
+    private final int type;
+    private final boolean case_ignore;
+    private final boolean ascending;
 
     public ItemComparator(int type_, boolean case_ignore_, boolean ascending_)
     {

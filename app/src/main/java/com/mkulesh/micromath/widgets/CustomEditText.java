@@ -52,7 +52,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     private AppCompatActivity activity = null;
     private TextChangeIf textChangeIf = null;
     private FocusChangeIf focusChangeIf = null;
-    private TextWatcher textWatcher = new EditTextWatcher();
+    private final TextWatcher textWatcher = new EditTextWatcher();
     private boolean textWatcherActive = true;
 
     private boolean toBeDeleted = false;

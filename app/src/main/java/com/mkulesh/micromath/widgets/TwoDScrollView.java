@@ -80,8 +80,8 @@ public class TwoDScrollView extends FrameLayout
     private ScaleGestureDetector mScaleGestureDetector;
     private GestureDetectorCompat mGestureDetector;
 
-    private MyGestureListener mGestureListener = new MyGestureListener();
-    private MyScaleListener mScaleListener = new MyScaleListener();
+    private final MyGestureListener mGestureListener = new MyGestureListener();
+    private final MyScaleListener mScaleListener = new MyScaleListener();
 
     private int autoScrollMargins = 0;
 

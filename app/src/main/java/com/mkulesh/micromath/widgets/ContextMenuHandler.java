@@ -91,7 +91,7 @@ public class ContextMenuHandler
         return actionMode;
     }
 
-    private ActionMode.Callback actionModeCallback = new ActionMode.Callback()
+    private final ActionMode.Callback actionModeCallback = new ActionMode.Callback()
     {
         // Called when the action mode is created; startActionMode() was called
         @Override

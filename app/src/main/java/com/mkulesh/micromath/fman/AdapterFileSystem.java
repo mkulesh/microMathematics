@@ -433,8 +433,8 @@ public class AdapterFileSystem extends AdapterBaseImpl
 
     private static class ListEngine extends Engine
     {
-        private String pass_back_on_done;
-        private AdapterFileSystem a;
+        private final String pass_back_on_done;
+        private final AdapterFileSystem a;
         private File[] files_ = null;
         private File dir = null;
 
@@ -498,8 +498,8 @@ public class AdapterFileSystem extends AdapterBaseImpl
 
     private static class DeleteEngine extends Engine
     {
-        private AdapterFileSystem a;
-        private File[] mList;
+        private final AdapterFileSystem a;
+        private final File[] mList;
 
         DeleteEngine(AdapterFileSystem a, Handler h, FileItem[] list)
         {

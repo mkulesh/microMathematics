@@ -29,9 +29,9 @@ public final class DeleteState implements Parcelable
      */
     public static class EntryState implements Parcelable
     {
-        public FormulaBase.BaseType type;
-        public Coordinate coordinate;
-        public Parcelable data;
+        public final FormulaBase.BaseType type;
+        public final Coordinate coordinate;
+        public final Parcelable data;
 
         EntryState(FormulaBase.BaseType type, Coordinate coordinate, Parcelable data)
         {

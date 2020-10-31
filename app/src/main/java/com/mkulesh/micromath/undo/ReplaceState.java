@@ -29,9 +29,9 @@ public final class ReplaceState implements Parcelable
      */
     public static class EntryState implements Parcelable
     {
-        public FormulaBase.BaseType type;
-        public int formulaId;
-        public Parcelable data;
+        public final FormulaBase.BaseType type;
+        public final int formulaId;
+        public final Parcelable data;
 
         EntryState(int formulaId, FormulaBase.BaseType type, Parcelable data)
         {

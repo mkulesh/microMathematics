@@ -98,8 +98,8 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     private final FormulaList formulaList;
     protected TermField parentField = null;
     protected LinearLayout layout = null;
-    ArrayList<View> elements = new ArrayList<>();
-    protected ArrayList<TermField> terms = new ArrayList<>();
+    final ArrayList<View> elements = new ArrayList<>();
+    protected final ArrayList<TermField> terms = new ArrayList<>();
     final int termDepth;
     private boolean inRightOfPrevious = false;
 

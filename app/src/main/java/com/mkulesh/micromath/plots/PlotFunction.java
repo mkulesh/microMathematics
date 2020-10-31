@@ -812,7 +812,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         private final double[] yMinMaxValues = new double[2];
         private double[] xValues = new double[1];
         private double[] yValues = new double[1];
-        private LineProperties lineParameters = new LineProperties();
+        private final LineProperties lineParameters = new LineProperties();
         int index = 0;
 
         @Override
