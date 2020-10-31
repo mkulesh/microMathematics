@@ -178,11 +178,6 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
         }
     }
 
-    public SymbolType getSymbolType()
-    {
-        return symbolType;
-    }
-
     public void setExternalPaint(Paint p)
     {
         if (p != null)

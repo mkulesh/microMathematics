@@ -287,11 +287,6 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
         notify(s, what, -1);
     }
 
-    protected void notify(int what)
-    {
-        notify(null, what, -1);
-    }
-
     void notifyRefr(String item_name)
     {
         Message msg = simpleHandler.obtainMessage(CommanderIf.OPERATION_COMPLETED_REFRESH_REQUIRED, null);
@@ -299,18 +294,6 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
         {
             Bundle b = new Bundle();
             b.putString(CommanderIf.NOTIFY_POSTO, item_name);
-            msg.setData(b);
-            msg.sendToTarget();
-        }
-    }
-
-    protected void notifyNav(Uri uri)
-    {
-        Message msg = simpleHandler.obtainMessage(CommanderIf.OPERATION_COMPLETED_REFRESH_REQUIRED, null);
-        if (msg != null)
-        {
-            Bundle b = new Bundle();
-            b.putParcelable(CommanderIf.NOTIFY_URI, uri);
             msg.setData(b);
             msg.sendToTarget();
         }

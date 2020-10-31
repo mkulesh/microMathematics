@@ -40,7 +40,6 @@ public class CalculatedValue
     public enum ErrorType
     {
         TERM_NOT_READY,
-        INVALID_ARGUMENT,
         NOT_A_NUMBER,
         NOT_A_REAL,
         PASSED_COMPLEX,
@@ -86,27 +85,12 @@ public class CalculatedValue
         this.imaginary = imaginary;
     }
 
-    public CalculatedValue(double real, Unit u)
-    {
-        this.valueType = ValueType.REAL;
-        this.real = real;
-        this.imaginary = 0.0;
-        unit = u;
-    }
-
     public ValueType assign(CalculatedValue c)
     {
         valueType = c.valueType;
         real = c.real;
         imaginary = c.imaginary;
         unit = c.unit;
-        return valueType;
-    }
-
-    public ValueType assign(CalculatedValue c, Unit u)
-    {
-        this.assign(c);
-        unit = u;
         return valueType;
     }
 

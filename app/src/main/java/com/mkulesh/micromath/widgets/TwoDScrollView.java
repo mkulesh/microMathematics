@@ -951,17 +951,6 @@ public class TwoDScrollView extends FrameLayout
     }
 
     /**
-     * Like {@link #scrollTo}, but scroll smoothly instead of immediately.
-     *
-     * @param x the position where to scroll on the X axis
-     * @param y the position where to scroll on the Y axis
-     */
-    public final void smoothScrollTo(int x, int y)
-    {
-        smoothScrollBy(x - getScrollX(), y - getScrollY());
-    }
-
-    /**
      * <p>
      * The scroll range of a scroll view is the overall height of all of its children.
      * </p>

@@ -65,19 +65,6 @@ public class Palette
     }
 
     /**
-     * Removes a specified division point, one of the points where the color is specified explicitly.
-     */
-    public void join(int divisionPointIndex)
-    {
-        if (divisionPointIndex <= 0 || divisionPointIndex >= divisionPoints.size() - 1)
-        {
-            throw new IllegalArgumentException("Division point index out of range: " + divisionPointIndex);
-        }
-        divisionPoints.remove(divisionPointIndex);
-        divisionPointColors.remove(divisionPointIndex);
-    }
-
-    /**
      * Adds a division point to the palette. The color associated to the point is obtained by interpolating between the
      * colors of the points that neighbor the new point.
      */
@@ -148,73 +135,6 @@ public class Palette
     }
 
     /**
-     * Returns the number of division points in the palette, always two or more.
-     */
-    public int getDivisionPointCount()
-    {
-        return divisionPoints.size();
-    }
-
-    /**
-     * Returns a specified division points. The return value is the range 0.0 to 1.0. Divsion points are stored in
-     * strictly increasing order.
-     */
-    public double getDivisionPoint(int index)
-    {
-        return divisionPoints.get(index);
-    }
-
-    /**
-     * Sets the value of a specified division point. Does not apply to the first or last points, which always have
-     * values 0.0 and 1.0. The new value must be strictly between the positions the neighboring division points.
-     */
-    public void setDivisionPoint(int index, double position)
-    {
-        if (index <= 0 || index >= divisionPoints.size() - 1)
-        {
-            throw new IllegalArgumentException("Index out of legal range");
-        }
-        if (position <= divisionPoints.get(index - 1) || position >= divisionPoints.get(index + 1))
-        {
-            throw new IllegalArgumentException("Division point position outside of legal range.");
-        }
-        if (position != divisionPoints.get(index))
-        {
-            divisionPoints.set(index, position);
-        }
-    }
-
-    /**
-     * Get the color associated with a given division point.
-     */
-    public int getDivisionPointColor(int index)
-    {
-        float[] components = divisionPointColors.get(index);
-        float a = clamp1(components[0]);
-        float b = clamp2(components[1]);
-        float c = clamp2(components[2]);
-        switch (colorType)
-        {
-        case HSV:
-            hsvConvertor[0] = 360f * a;
-            hsvConvertor[1] = b;
-            hsvConvertor[2] = c;
-            return Color.HSVToColor(hsvConvertor);
-        case RGB:
-            return Color.rgb((int) (255f * a), (int) (255f * b), (int) (255f * c));
-        }
-        return 0;
-    }
-
-    /**
-     * Returns the color components for the division point at a specified index.
-     */
-    public float[] getDivisionPointColorComponents(int index)
-    {
-        return divisionPointColors.get(index).clone();
-    }
-
-    /**
      * Set the color components for the division point at a s specified index in the list of division points. These
      * components are the color data that is stored for each division point and that are used for interpolation between
      * division points. Note that when a color is actually computed, the component values must be in the range 0.0 to
@@ -232,39 +152,6 @@ public class Palette
         c[0] = c1;
         c[1] = c2;
         c[2] = c3;
-    }
-
-    /**
-     * Return the color type of this palette, which is one of the constants ColorType.COLOR_TYPE_RGB or
-     * ColorType.COLOR_TYPE_HSB.
-     */
-    public ColorType getColorType()
-    {
-        return colorType;
-    }
-
-    public boolean getMirrorOutOfRangeComponents()
-    {
-        return mirrorOutOfRangeComponents;
-    }
-
-    /**
-     * Sets the value of the confusing mirrorOutOfRangeComponents property. This only has an effect when a
-     * floating-point color component value that is outside the range 0.0 to 1.0 has to be transformed to a value within
-     * that range. For a Hue, the whole-number part is simply discarded. For the other components however, the
-     * transformation depends on the value of the mirrorOutOfRangeComponents property. If the property is false, the
-     * whole-number part is discarded, but this results in a discontinuity at integer values. If the property is true,
-     * this discontinuity is avoided by having the value oscillate with period 2 instead of cycle with period 1. The
-     * default value is true, and this is never changed in the Mandelbrot application. So, really, you shouldn't even be
-     * reading this.
-     */
-    public void setMirrorOutOfRangeComponents(boolean mirrorOutOfRangeComponents)
-    {
-        if (this.mirrorOutOfRangeComponents == mirrorOutOfRangeComponents)
-        {
-            return;
-        }
-        this.mirrorOutOfRangeComponents = mirrorOutOfRangeComponents;
     }
 
     private float clamp1(float x)

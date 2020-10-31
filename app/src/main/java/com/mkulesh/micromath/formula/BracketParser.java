@@ -45,11 +45,6 @@ public class BracketParser
     public ArrayList<String> arguments;
     private int bracketsIndex = ViewUtils.INVALID_INDEX;
 
-    public boolean isFunction()
-    {
-        return bracketsIndex == FUNCTION_BRACKETS;
-    }
-
     public boolean isArray()
     {
         return bracketsIndex == ARRAY_BRACKETS;

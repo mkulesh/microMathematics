@@ -55,7 +55,6 @@ public class ContextMenuHandler
     private FormulaChangeIf formulaChangeIf = null;
     private androidx.appcompat.view.ActionMode actionMode = null;
     private View actionModeOwner = null;
-    private Menu menu = null;
 
     public ContextMenuHandler(Context context)
     {
@@ -99,7 +98,6 @@ public class ContextMenuHandler
         {
             MenuInflater inflater = mode.getMenuInflater();
             inflater.inflate(R.menu.context_menu, menu);
-            ContextMenuHandler.this.menu = menu;
             for (int i = 0; i < menu.size(); i++)
             {
                 ViewUtils.updateMenuIconColor(context, menu.getItem(i));
@@ -220,17 +218,4 @@ public class ContextMenuHandler
         }
         return true;
     }
-
-    public void setMenuVisible(int id, boolean visible)
-    {
-        for (int i = 0; i < menu.size(); i++)
-        {
-            if (id == menu.getItem(i).getItemId())
-            {
-                menu.getItem(i).setVisible(visible);
-                break;
-            }
-        }
-    }
-
 }

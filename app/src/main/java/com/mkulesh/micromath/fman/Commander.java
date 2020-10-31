@@ -209,11 +209,6 @@ public class Commander extends DialogBase implements CommanderIf
         closeDialog();
     }
 
-    public FileListView getFileListView()
-    {
-        return fileListView;
-    }
-
     private AdapterIf getListAdapter()
     {
         return fileListView.getListAdapter();

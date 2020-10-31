@@ -89,26 +89,6 @@ public class PhysicalArea implements Parcelable
     }
 
     /**
-     * Copy constructor
-     */
-    public PhysicalArea(PhysicalArea area)
-    {
-        super();
-        assign(area);
-    }
-
-    /**
-     * Assign procedure
-     */
-    private void assign(PhysicalArea area)
-    {
-        min.assign(area.min);
-        max.assign(area.max);
-        dim.assign(area.dim);
-        zoom = area.zoom;
-    }
-
-    /**
      * Procedure selects the area for given min/max values
      */
     public void set(double minX, double maxX, double minY, double maxY)
@@ -167,64 +147,4 @@ public class PhysicalArea implements Parcelable
         sp.x = r.left + (int) ((double) r.width() * (fp.x - min.x) / dim.x);
         sp.y = r.bottom - (int) ((double) r.height() * (fp.y - min.y) / dim.y);
     }
-
-    /**
-     * Converts physical length to screen length along X-axe
-     */
-    public int toScreenXLength(double flength, Rect r)
-    {
-        return (int) ((double) r.width() * flength / dim.x);
-    }
-
-    /**
-     * Converts physical length to screen length along Y-axe
-     */
-    public int toScreenYLength(double flength, Rect r)
-    {
-        return (int) ((double) r.height() * flength / dim.y);
-    }
-
-    /**
-     * Procedure checks whether this area is zoomed
-     */
-    public boolean isZoomed()
-    {
-        return zoom != NO_ZOOM_FACTOR;
-    }
-
-    /**
-     * Procedure returns current zoom factor
-     */
-    public double getZoom()
-    {
-        return zoom;
-    }
-
-    /**
-     * Procedure applies new scaling parameters for this area
-     */
-    public void scale(PhysicalArea src, double scaleFactor, double maxScale, double dx, double dy)
-    {
-        // calculate new zoom factor
-        zoom = src.getDim().x / getDim().x;
-        zoom *= scaleFactor;
-        zoom = Math.max(NO_ZOOM_FACTOR, Math.min(zoom, maxScale));
-
-        // calculate new dimension
-        dim.x = src.dim.x / zoom;
-        dim.y = src.dim.y / zoom;
-
-        // calculate new focus
-        double focusX = (max.x + min.x) / 2.0 - dx * dim.x;
-        double focusY = (max.y + min.y) / 2.0 - dy * dim.y;
-        focusX = Math.max(Math.min(focusX, src.max.x - dim.x / 2), src.min.x + dim.x / 2);
-        focusY = Math.max(Math.min(focusY, src.max.y - dim.y / 2), src.min.y + dim.y / 2);
-
-        // update the area
-        min.x = (src.max.x + src.min.x) / 2.0 - dim.x / 2.0 + focusX;
-        max.x = (src.max.x + src.min.x) / 2.0 + dim.x / 2.0 + focusX;
-        min.y = (src.max.y + src.min.y) / 2.0 - dim.y / 2.0 + focusY;
-        max.y = (src.max.y + src.min.y) / 2.0 + dim.y / 2.0 + focusY;
-    }
-
 }

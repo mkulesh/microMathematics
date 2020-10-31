@@ -17,11 +17,6 @@ import java.util.Date;
 
 class FileItem extends AdapterIf.Item
 {
-    public FileItem(String name)
-    {
-        this(new File(name));
-    }
-
     public FileItem(File f)
     {
         origin = f;

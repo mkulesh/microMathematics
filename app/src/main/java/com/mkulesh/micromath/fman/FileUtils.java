@@ -287,15 +287,6 @@ public final class FileUtils
         return s != null && s.length() > 0;
     }
 
-    public static boolean equals(String s1, String s2)
-    {
-        if (s1 == null)
-        {
-            return s2 == null;
-        }
-        return s1.equals(s2);
-    }
-
     private static String escapeRest(String s)
     {
         if (!str(s))

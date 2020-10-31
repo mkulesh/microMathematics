@@ -96,7 +96,6 @@ public class DialogPaletteSettings extends DialogBase implements View.OnLongClic
     @Override
     public void onClick(View v)
     {
-        boolean isChanged = false;
         if (v.getId() == R.id.dialog_button_ok)
         {
             List<String> visibleGroups = new ArrayList<>();

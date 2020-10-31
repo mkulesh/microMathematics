@@ -21,7 +21,6 @@ final class SurfacePlotProjector
     private double scale_x, scale_y, scale_z; // 3D scaling factor
     private double distance; // distance to object
     private double _2D_scale; // 2D scaling factor
-    private double rotation, elevation; // rotation and elevation angle
     private double sin_rotation, cos_rotation; // sin and cos of rotation angle
     private double sin_elevation, cos_elevation; // sin and cos of elevation angle
     private int _2D_trans_x, _2D_trans_y; // 2D translation
@@ -70,21 +69,12 @@ final class SurfacePlotProjector
      */
     public void setRotationAngle(double angle)
     {
-        rotation = angle;
         sin_rotation = FastMath.sin(angle * DEGTORAD);
         cos_rotation = FastMath.cos(angle * DEGTORAD);
         sx_cos = -scale_x * cos_rotation;
         sx_sin = -scale_x * sin_rotation;
         sy_cos = -scale_y * cos_rotation;
         sy_sin = scale_y * sin_rotation;
-    }
-
-    /**
-     * Gets current rotation angle.
-     */
-    public double getRotationAngle()
-    {
-        return rotation;
     }
 
     /**
@@ -108,19 +98,10 @@ final class SurfacePlotProjector
      */
     public void setElevationAngle(double angle)
     {
-        elevation = angle;
         sin_elevation = FastMath.sin(angle * DEGTORAD);
         cos_elevation = FastMath.cos(angle * DEGTORAD);
         sz_cos = scale_z * cos_elevation;
         sz_sin = scale_z * sin_elevation;
-    }
-
-    /**
-     * Gets current elevation angle.
-     */
-    public double getElevationAngle()
-    {
-        return elevation;
     }
 
     /**
@@ -157,31 +138,11 @@ final class SurfacePlotProjector
     }
 
     /**
-     * Sets the scaling factor in x direction.
-     */
-    public void setXScaling(double scaling)
-    {
-        scale_x = scaling;
-        sx_cos = -scale_x * cos_rotation;
-        sx_sin = -scale_x * sin_rotation;
-    }
-
-    /**
      * Gets the scaling factor in x direction.
      */
     public double getXScaling()
     {
         return scale_x;
-    }
-
-    /**
-     * Sets the scaling factor in y direction.
-     */
-    public void setYScaling(double scaling)
-    {
-        scale_y = scaling;
-        sy_cos = -scale_y * cos_rotation;
-        sy_sin = scale_y * sin_rotation;
     }
 
     /**
@@ -193,38 +154,11 @@ final class SurfacePlotProjector
     }
 
     /**
-     * Sets the scaling factor in z direction.
-     */
-    public void setZScaling(double scaling)
-    {
-        scale_z = scaling;
-        sz_cos = scale_z * cos_elevation;
-        sz_sin = scale_z * sin_elevation;
-    }
-
-    /**
      * Gets the scaling factor in z direction.
      */
     public double getZScaling()
     {
         return scale_z;
-    }
-
-    /**
-     * Sets the scaling factor in all direction.
-     */
-    public void setScaling(double x, double y, double z)
-    {
-        scale_x = x;
-        scale_y = y;
-        scale_z = z;
-
-        sx_cos = -scale_x * cos_rotation;
-        sx_sin = -scale_x * sin_rotation;
-        sy_cos = -scale_y * cos_rotation;
-        sy_sin = scale_y * sin_rotation;
-        sz_cos = scale_z * cos_elevation;
-        sz_sin = scale_z * sin_elevation;
     }
 
     /**
@@ -269,40 +203,6 @@ final class SurfacePlotProjector
 
         trans_x = center_x + _2D_trans_x;
         trans_y = center_y + _2D_trans_y;
-    }
-
-    /**
-     * Sets the 2D x translation.
-     */
-    public void set2D_xTranslation(int x)
-    {
-        _2D_trans_x = x;
-        trans_x = center_x + _2D_trans_x;
-    }
-
-    /**
-     * Gets the 2D x translation.
-     */
-    public int get2D_xTranslation()
-    {
-        return _2D_trans_x;
-    }
-
-    /**
-     * Sets the 2D y translation.
-     */
-    public void set2D_yTranslation(int y)
-    {
-        _2D_trans_y = y;
-        trans_y = center_y + _2D_trans_y;
-    }
-
-    /**
-     * Gets the 2D y translation.
-     */
-    public int get2D_yTranslation()
-    {
-        return _2D_trans_y;
     }
 
     /**

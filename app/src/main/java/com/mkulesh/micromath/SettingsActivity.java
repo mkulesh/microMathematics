@@ -49,7 +49,7 @@ public class SettingsActivity extends AppCompatActivity
                 android.R.id.content, new MyPreferenceFragment()).commit();
     }
 
-    static class MyPreferenceFragment extends PreferenceFragmentCompat
+    public static class MyPreferenceFragment extends PreferenceFragmentCompat
     {
         @Override
         public void onCreatePreferences(Bundle bundle, String s)
