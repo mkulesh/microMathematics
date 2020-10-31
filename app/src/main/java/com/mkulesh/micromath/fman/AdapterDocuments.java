@@ -42,10 +42,10 @@ public class AdapterDocuments extends AdapterBaseImpl
     public final static String PREF_TREE_ROOT_URI = "fman_tree_root_uri";
     public final static int REQUEST_OPEN_DOCUMENT_TREE = 935;
 
-    final static String[] projection = { Document.COLUMN_DOCUMENT_ID, Document.COLUMN_DISPLAY_NAME,
+    private final static String[] projection = { Document.COLUMN_DOCUMENT_ID, Document.COLUMN_DISPLAY_NAME,
             Document.COLUMN_LAST_MODIFIED, Document.COLUMN_MIME_TYPE, Document.COLUMN_SIZE };
 
-    public final static class SAFItem extends AdapterIf.Item
+    final static class SAFItem extends AdapterIf.Item
     {
         public File f()
         {
@@ -56,7 +56,7 @@ public class AdapterDocuments extends AdapterBaseImpl
     }
 
     private Uri uri;
-    protected SAFItem[] items;
+    private SAFItem[] items;
 
     public AdapterDocuments(Context ctx_)
     {
@@ -216,12 +216,12 @@ public class AdapterDocuments extends AdapterBaseImpl
         }
     }
 
-    public final ArrayList<SAFItem> getChildren(Uri u)
+    private ArrayList<SAFItem> getChildren(Uri u)
     {
         return getChildren(ctx, u);
     }
 
-    public static ArrayList<SAFItem> getChildren(Context ctx, Uri u)
+    private static ArrayList<SAFItem> getChildren(Context ctx, Uri u)
     {
         Cursor c = null;
         try
@@ -496,7 +496,7 @@ public class AdapterDocuments extends AdapterBaseImpl
             dirUri = a.getUri();
         }
 
-        public void run()
+        void run()
         {
             if (mList == null || mList.length == 0)
             {
@@ -586,7 +586,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         }
     }
 
-    public void reSort(Item[] items_)
+    private void reSort(Item[] items_)
     {
         if (items_ == null)
             return;

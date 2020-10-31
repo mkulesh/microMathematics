@@ -27,7 +27,7 @@ import java.nio.charset.StandardCharsets;
 
 public class ClipboardManager
 {
-    public static final String CLIPBOARD_LABEL = "com.mkulesh.micromath.clipboard";
+    private static final String CLIPBOARD_LABEL = "com.mkulesh.micromath.clipboard";
     public static final String CLIPBOARD_TERM_OBJECT = "content:com.mkulesh.micromath.term";
     public static final String CLIPBOARD_LIST_OBJECT = "content:com.mkulesh.micromath.list";
 
@@ -87,7 +87,7 @@ public class ClipboardManager
         return "";
     }
 
-    public static CharSequence convertToText(Context context, ClipData.Item item)
+    private static CharSequence convertToText(Context context, ClipData.Item item)
     {
         // If this Item has a URI value, try using that.
         Uri uri = item.getUri();

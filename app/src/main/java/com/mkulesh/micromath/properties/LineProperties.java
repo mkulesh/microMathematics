@@ -27,11 +27,11 @@ import java.util.Locale;
 
 public class LineProperties implements Parcelable
 {
-    public static final String XML_PROP_COLOR = "color";
-    public static final String XML_PROP_WIDTH = "width";
-    public static final String XML_PROP_LINESTYLE = "lineStyle";
-    public static final String XML_PROP_SHAPETYPE = "shapeType";
-    public static final String XML_PROP_SHAPESIZE = "shapeSize";
+    private static final String XML_PROP_COLOR = "color";
+    private static final String XML_PROP_WIDTH = "width";
+    private static final String XML_PROP_LINESTYLE = "lineStyle";
+    private static final String XML_PROP_SHAPETYPE = "shapeType";
+    private static final String XML_PROP_SHAPESIZE = "shapeSize";
 
     public enum LineStyle
     {
@@ -62,7 +62,7 @@ public class LineProperties implements Parcelable
     /**
      * Parcelable interface
      */
-    public LineProperties(Parcel in)
+    private LineProperties(Parcel in)
     {
         super();
         readFromParcel(in);
@@ -84,7 +84,7 @@ public class LineProperties implements Parcelable
         dest.writeInt(shapeSize);
     }
 
-    public void readFromParcel(Parcel in)
+    private void readFromParcel(Parcel in)
     {
         color = in.readInt();
         width = in.readInt();

@@ -52,7 +52,7 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
     }
 
     private SymbolType symbolType = SymbolType.TEXT;
-    protected AppCompatActivity activity = null;
+    AppCompatActivity activity = null;
     protected final Paint paint = new Paint();
     private final RectF rect = new RectF();
     protected final Path path = new Path();

@@ -16,7 +16,7 @@ import android.graphics.Point;
 
 import org.apache.commons.math3.util.FastMath;
 
-public final class SurfacePlotProjector
+final class SurfacePlotProjector
 {
     private double scale_x, scale_y, scale_z; // 3D scaling factor
     private double distance; // distance to object

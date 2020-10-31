@@ -38,8 +38,8 @@ public class DialogResultDetails extends DialogBase
     // Internal Data Container used in the adapter
     private static class ArgumentValueItem
     {
-        public final CalculatedValue argument;
-        public final CalculatedValue value;
+        final CalculatedValue argument;
+        final CalculatedValue value;
 
         private ArgumentValueItem(CalculatedValue argument, CalculatedValue value)
         {
@@ -133,8 +133,8 @@ public class DialogResultDetails extends DialogBase
         private final DocumentProperties docProp;
         private final Unit targetUnit;
 
-        public ArgumentValueAdapter(Context context, ArrayList<ArgumentValueItem> list,
-                                    DocumentProperties docProp, ResultProperties resProp)
+        ArgumentValueAdapter(Context context, ArrayList<ArgumentValueItem> list,
+                             DocumentProperties docProp, ResultProperties resProp)
         {
             super(context, 0, list);
             this.docProp = docProp;

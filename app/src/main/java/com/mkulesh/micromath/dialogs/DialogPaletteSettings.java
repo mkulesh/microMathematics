@@ -33,9 +33,9 @@ import java.util.List;
 
 public class DialogPaletteSettings extends DialogBase implements View.OnLongClickListener
 {
-    final PaletteSettingsChangeIf changeIf;
-    final List<TermTypeIf.GroupType> groups;
-    final LinearLayout paletteView;
+    private final PaletteSettingsChangeIf changeIf;
+    private final List<TermTypeIf.GroupType> groups;
+    private final LinearLayout paletteView;
 
     public DialogPaletteSettings(Context context, PaletteSettingsChangeIf changeIf, List<String> visibleGroups)
     {

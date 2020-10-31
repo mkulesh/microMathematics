@@ -36,7 +36,7 @@ public class ImageProperties implements Parcelable
     private static final String XML_PROP_ORIGINAL_SIZE = "originalSize";
     private static final String XML_PROP_WIDTH = "width";
     private static final String XML_PROP_HEIGHT = "height";
-    public static final String XML_PROP_COLORTYPE = "colorType";
+    private static final String XML_PROP_COLORTYPE = "colorType";
 
     // attributes that are not stored within the state and XML
     private DisplayMetrics displayMetrics = null;
@@ -61,7 +61,7 @@ public class ImageProperties implements Parcelable
     /**
      * Parcelable interface
      */
-    public ImageProperties(Parcel in)
+    private ImageProperties(Parcel in)
     {
         super();
         readFromParcel(in);
@@ -84,7 +84,7 @@ public class ImageProperties implements Parcelable
         dest.writeString(colorType.toString());
     }
 
-    public void readFromParcel(Parcel in)
+    private void readFromParcel(Parcel in)
     {
         fileName = in.readString();
         embedded = Boolean.parseBoolean(in.readString());

@@ -35,9 +35,9 @@ public class BracketParser
     public static final int FUNCTION_BRACKETS = 0;
     public static final int ARRAY_BRACKETS = 1;
 
-    public static final int[] START_BRACKET_IDS = { R.string.formula_function_start_bracket,
+    private static final int[] START_BRACKET_IDS = { R.string.formula_function_start_bracket,
             R.string.formula_function_start_index };
-    public static final int[] END_BRACKET_IDS = { R.string.formula_function_end_bracket,
+    private static final int[] END_BRACKET_IDS = { R.string.formula_function_end_bracket,
             R.string.formula_function_end_index };
 
     public int errorId = TermField.NO_ERROR_ID;

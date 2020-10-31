@@ -34,10 +34,10 @@ import java.io.File;
 
 public class MainFragmentWorksheet extends BaseFragment
 {
-    public static final String AUTOSAVE_FILE_NAME = "autosave.mmt";
+    private static final String AUTOSAVE_FILE_NAME = "autosave.mmt";
 
     private Uri externalUri = null;
-    protected boolean invalidateFile = false;
+    private boolean invalidateFile = false;
     private int postActionId = INVALID_ACTION_ID;
     private CharSequence[] assetFilter = null;
 
@@ -215,7 +215,7 @@ public class MainFragmentWorksheet extends BaseFragment
         }
     }
 
-    public void openFile()
+    private void openFile()
     {
         Commander commander = new Commander(activity, R.string.action_open, Commander.SelectionMode.OPEN, assetFilter,
                 (uri, fileType, adapter) ->

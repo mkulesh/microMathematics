@@ -99,7 +99,7 @@ public class CommonFunctions extends FunctionBase
             return shortCutId;
         }
 
-        public int getArgNumber()
+        int getArgNumber()
         {
             return argNumber;
         }
@@ -119,7 +119,7 @@ public class CommonFunctions extends FunctionBase
             return lowerCaseName;
         }
 
-        public int getLayoutId()
+        int getLayoutId()
         {
             return layoutId;
         }

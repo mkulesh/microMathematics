@@ -546,17 +546,17 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
          */
         private class IntermediateValue
         {
-            public double value;
-            public boolean complexDetected;
+            double value;
+            boolean complexDetected;
 
-            public IntermediateValue()
+            IntermediateValue()
             {
                 value = Double.NaN;
                 complexDetected = false;
             }
         }
 
-        public void setCalculaterTask(CalculaterTask calculaterTask)
+        void setCalculaterTask(CalculaterTask calculaterTask)
         {
             this.calculaterTask = calculaterTask;
         }
@@ -564,7 +564,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         /**
          * Calculate summation
          */
-        public CalculatedValue.ValueType summation(long minValue, long maxValue, CalculatedValue outValue)
+        CalculatedValue.ValueType summation(long minValue, long maxValue, CalculatedValue outValue)
                 throws CancelException
         {
             outValue.setValue(0.0);
@@ -592,8 +592,8 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         /**
          * Calculate derivative of summation operator
          */
-        public CalculatedValue.ValueType summationDerivative(String var, long minValue, long maxValue,
-                                                             CalculatedValue outValue) throws CancelException
+        CalculatedValue.ValueType summationDerivative(String var, long minValue, long maxValue,
+                                                      CalculatedValue outValue) throws CancelException
         {
             outValue.setValue(0.0);
             for (long idx = minValue; idx <= maxValue; idx++)
@@ -620,7 +620,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         /**
          * Calculate product
          */
-        public CalculatedValue.ValueType product(long minValue, long maxValue, CalculatedValue outValue)
+        CalculatedValue.ValueType product(long minValue, long maxValue, CalculatedValue outValue)
                 throws CancelException
         {
             outValue.setValue(1.0);
@@ -648,8 +648,8 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         /**
          * Calculate derivative of product operator
          */
-        public CalculatedValue.ValueType productDerivative(String var, long minValue, long maxValue,
-                                                           CalculatedValue outValue) throws CancelException
+        CalculatedValue.ValueType productDerivative(String var, long minValue, long maxValue,
+                                                    CalculatedValue outValue) throws CancelException
         {
             outValue.setValue(0.0);
             final CalculatedValue tmp1 = new CalculatedValue();
@@ -689,8 +689,8 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         /**
          * Calculate derivative
          */
-        public CalculatedValue.ValueType derivative(DifferentiableType differentiableType, String indexName,
-                                                    CalculatedValue outValue) throws CancelException
+        CalculatedValue.ValueType derivative(DifferentiableType differentiableType, String indexName,
+                                             CalculatedValue outValue) throws CancelException
         {
             indexTerm.getValue(calculaterTask, calcVal);
             if (!calcVal.isNaN())
@@ -723,7 +723,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         /**
          * Calculate defined integral
          */
-        public ValueType integrate(int significantDigits, CalculatedValue outValue) throws CancelException
+        ValueType integrate(int significantDigits, CalculatedValue outValue) throws CancelException
         {
             final double absoluteAccuracy = FastMath.pow(10, -1.0 * significantDigits);
             final IntermediateValue re = integrateSimpsons(CalculatedValue.PartType.RE, minValue.getReal(),

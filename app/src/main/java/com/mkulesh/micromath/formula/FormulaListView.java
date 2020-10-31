@@ -551,7 +551,7 @@ public class FormulaListView
         /**
          * Procedure deletes given formula from this row
          */
-        public FormulaBase deleteFromView(FormulaBase f)
+        FormulaBase deleteFromView(FormulaBase f)
         {
             final int idx = getFormulaIndex(f.getId());
             removeView(f);
@@ -561,7 +561,7 @@ public class FormulaListView
         /**
          * Replace the given formula by the new one
          */
-        public boolean replaceFormula(FormulaBase oldFormula, FormulaBase newFormula)
+        boolean replaceFormula(FormulaBase oldFormula, FormulaBase newFormula)
         {
             boolean retValue = false;
             final int n = getChildCount();
@@ -599,7 +599,7 @@ public class FormulaListView
         /**
          * Procedure returns a formula with given offset related to the formula with given id
          */
-        public FormulaBase getFormula(int id, Position position)
+        FormulaBase getFormula(int id, Position position)
         {
             if (position == Position.BEFORE || position == Position.AFTER)
             {

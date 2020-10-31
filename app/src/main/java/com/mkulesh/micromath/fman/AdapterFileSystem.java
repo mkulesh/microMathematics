@@ -28,10 +28,10 @@ import java.util.Arrays;
 public class AdapterFileSystem extends AdapterBaseImpl
 {
     public final static String ORG_SCHEME = "file";
-    protected static final boolean HIDE_HIDDEN = false;
+    private static final boolean HIDE_HIDDEN = false;
 
     private String dirName;
-    protected FileItem[] items;
+    private FileItem[] items;
 
     public AdapterFileSystem(Context ctx_)
     {
@@ -132,7 +132,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
     }
 
     @SuppressLint("NewApi")
-    protected FileItem[] filesToItems(File[] files_)
+    private FileItem[] filesToItems(File[] files_)
     {
         int num = files_.length;
         if (HIDE_HIDDEN)
@@ -416,7 +416,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
         }
     }
 
-    public void reSort(FileItem[] items_)
+    private void reSort(FileItem[] items_)
     {
         if (items_ == null)
             return;
@@ -445,17 +445,17 @@ public class AdapterFileSystem extends AdapterBaseImpl
             pass_back_on_done = pass_back_on_done_;
         }
 
-        public File getDirFile()
+        File getDirFile()
         {
             return dir;
         }
 
-        public File[] getFiles()
+        File[] getFiles()
         {
             return files_;
         }
 
-        public void run()
+        void run()
         {
             String dir_name = a.getDir();
             while (true)
@@ -475,7 +475,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
             sendProgress(null, CommanderIf.OPERATION_COMPLETED, pass_back_on_done);
         }
 
-        public static File[] listDirWithEmulated(File f)
+        static File[] listDirWithEmulated(File f)
         {
             File[] list = f.listFiles();
 
@@ -510,7 +510,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
                 mList[i] = list[i].f();
         }
 
-        public void run()
+        void run()
         {
             if (mList == null || mList.length == 0)
             {

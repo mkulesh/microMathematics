@@ -28,11 +28,11 @@ import java.util.Locale;
 
 public class AxisProperties implements Parcelable
 {
-    public static final String XML_PROP_XLABELSNUMBER = "xLabelsNumber";
-    public static final String XML_PROP_YLABELSNUMBER = "yLabelsNumber";
-    public static final String XML_PROP_GRIDLINECOLOR = "gridLineColor";
-    public static final String XML_PROP_XTYPE = "xType";
-    public static final String XML_PROP_YTYPE = "yType";
+    private static final String XML_PROP_XLABELSNUMBER = "xLabelsNumber";
+    private static final String XML_PROP_YLABELSNUMBER = "yLabelsNumber";
+    private static final String XML_PROP_GRIDLINECOLOR = "gridLineColor";
+    private static final String XML_PROP_XTYPE = "xType";
+    private static final String XML_PROP_YTYPE = "yType";
 
     public float scaleFactor = 1;
     public int gridLineColor = Color.GRAY;
@@ -49,7 +49,7 @@ public class AxisProperties implements Parcelable
     /**
      * Parcelable interface
      */
-    public AxisProperties(Parcel in)
+    private AxisProperties(Parcel in)
     {
         super();
         readFromParcel(in);
@@ -74,7 +74,7 @@ public class AxisProperties implements Parcelable
         dest.writeInt(yType.ordinal());
     }
 
-    public void readFromParcel(Parcel in)
+    private void readFromParcel(Parcel in)
     {
         labelLineSize = in.readInt();
         labelTextSize = in.readInt();

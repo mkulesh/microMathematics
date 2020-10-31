@@ -47,25 +47,25 @@ public abstract class FunctionBase extends FormulaTerm
             this.descriptionId = descriptionId;
         }
 
-        public String getDescription(Context context)
+        String getDescription(Context context)
         {
             return context.getResources().getString(descriptionId);
         }
     }
 
-    protected CustomTextView functionTerm = null;
-    protected CalculatedValue[] argVal = null;
+    CustomTextView functionTerm = null;
+    CalculatedValue[] argVal = null;
 
     /*********************************************************
      * Constructors
      *********************************************************/
 
-    public FunctionBase(TermField owner, LinearLayout layout) throws Exception
+    FunctionBase(TermField owner, LinearLayout layout) throws Exception
     {
         super(owner, layout);
     }
 
-    public FunctionBase()
+    FunctionBase()
     {
         super();
     }
@@ -84,7 +84,7 @@ public abstract class FunctionBase extends FormulaTerm
         return functionTerm;
     }
 
-    protected void setErrorCode(ErrorCode errorCode, String addInfo)
+    void setErrorCode(ErrorCode errorCode, String addInfo)
     {
         if (functionTerm != null)
         {
@@ -113,7 +113,7 @@ public abstract class FunctionBase extends FormulaTerm
         }
     }
 
-    protected void ensureArgValSize()
+    void ensureArgValSize()
     {
         final int termsSize = terms.size();
         if (argVal == null || argVal.length != termsSize)
@@ -171,7 +171,7 @@ public abstract class FunctionBase extends FormulaTerm
         return v;
     }
 
-    protected boolean isRemainingTermOnDelete()
+    boolean isRemainingTermOnDelete()
     {
         return terms.size() <= 1 || !isNewTermEnabled();
     }
@@ -239,12 +239,12 @@ public abstract class FunctionBase extends FormulaTerm
         }
     }
 
-    protected void createGeneralFunction(int layoutId, String s, int argNumber, int idx) throws Exception
+    void createGeneralFunction(int layoutId, String s, int argNumber, int idx) throws Exception
     {
         createGeneralFunction(layoutId, s, argNumber, idx, false);
     }
 
-    protected void createGeneralFunction(int layoutId, String s, int argNumber, int idx, boolean pasteFromClipboard) throws Exception
+    void createGeneralFunction(int layoutId, String s, int argNumber, int idx, boolean pasteFromClipboard) throws Exception
     {
         inflateElements(layoutId, true);
         initializeElements(idx);

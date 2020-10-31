@@ -16,28 +16,28 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
-public class Engine
+class Engine
 {
-    protected Handler handler = null;
-    protected String errMsg = null;
+    private Handler handler = null;
+    private String errMsg = null;
 
-    protected Engine()
+    Engine()
     {
     }
 
-    public void setHandler(Handler h)
+    void setHandler(Handler h)
     {
         handler = h;
     }
 
-    protected Bundle wrap(String str)
+    private Bundle wrap(String str)
     {
         Bundle b = new Bundle(1);
         b.putString(CommanderIf.MESSAGE_STRING, str);
         return b;
     }
 
-    protected final void sendProgress(String s, int p1)
+    final void sendProgress(String s, int p1)
     {
         if (handler == null)
             return;
@@ -50,7 +50,7 @@ public class Engine
         handler.sendMessage(msg);
     }
 
-    protected final void sendProgress(String s, int p, String cookie)
+    final void sendProgress(String s, int p, String cookie)
     {
         if (handler == null)
             return;
@@ -65,7 +65,7 @@ public class Engine
         handler.sendMessage(msg);
     }
 
-    protected final void error(String err)
+    final void error(String err)
     {
         if (errMsg == null)
             errMsg = err;
@@ -73,7 +73,7 @@ public class Engine
             errMsg += "\n" + err;
     }
 
-    protected final void sendError()
+    final void sendError()
     {
         if (errMsg != null)
         {
@@ -81,7 +81,7 @@ public class Engine
         }
     }
 
-    protected final void sendResult(String report)
+    final void sendResult(String report)
     {
         if (errMsg != null)
             sendProgress(report + "\n - " + errMsg, CommanderIf.OPERATION_FAILED_REFRESH_REQUIRED);

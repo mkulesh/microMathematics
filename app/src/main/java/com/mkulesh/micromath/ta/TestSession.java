@@ -51,10 +51,10 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         TAKE_SCREENSHOTS
     }
 
-    public final static String REPORT_HTML_FILE = "autotest.html";
-    public final static String TEST_CONFIGURATION = "autotest.cfg";
-    public final static String EXPORT_DOC_DIR = "doc";
-    public final static String TAKE_SCREENSHOTS_DIR = "screenshots";
+    private final static String REPORT_HTML_FILE = "autotest.html";
+    private final static String TEST_CONFIGURATION = "autotest.cfg";
+    private final static String EXPORT_DOC_DIR = "doc";
+    private final static String TAKE_SCREENSHOTS_DIR = "screenshots";
 
     private final static int STEP_READ = 0;
     private final static int STEP_CALC = 1;
@@ -246,7 +246,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         Exporter.write(formulas, docUri, FileType.LATEX, adapter, exportParameters);
     }
 
-    public boolean takeScreenshot(String directory, String scriptName)
+    private boolean takeScreenshot(String directory, String scriptName)
     {
         final File parent = new File(context.getExternalFilesDir(null) + "/" + directory);
         parent.mkdir();
@@ -376,7 +376,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         }
     }
 
-    public int getTestCaseNumber(NumberType numberType)
+    private int getTestCaseNumber(NumberType numberType)
     {
         int n = 0;
         for (TestScript ts : testScripts)
@@ -386,7 +386,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         return n;
     }
 
-    public String getDescription()
+    private String getDescription()
     {
         final int failedNumber = getTestCaseNumber(NumberType.FAILED);
         return "Test session: number of scrips: " + testScripts.size() + ", number of test cases: "
@@ -394,7 +394,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
                 + ", failed: " + failedNumber + ", status: " + (failedNumber == 0 ? "PASSED" : "FAILED");
     }
 
-    public void publishHtmlReport(StringWriter writer) throws Exception
+    private void publishHtmlReport(StringWriter writer) throws Exception
     {
         writer.append("<!DOCTYPE html>\n");
         writer.append("<html><head>\n");

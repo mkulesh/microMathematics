@@ -28,7 +28,7 @@ public class AdapterAssets extends AdapterBaseImpl
 {
     public final static String ORG_SCHEME = "asset";
     private String dirName;
-    protected FileItem[] items;
+    private FileItem[] items;
     private final ArrayList<String> assetFilter = new ArrayList<>();
     private final AssetManager assetManager;
 
@@ -309,7 +309,7 @@ public class AdapterAssets extends AdapterBaseImpl
         }
     }
 
-    public void reSort(FileItem[] items_)
+    private void reSort(FileItem[] items_)
     {
         if (items_ == null)
             return;

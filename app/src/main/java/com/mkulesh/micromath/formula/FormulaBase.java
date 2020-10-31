@@ -72,12 +72,12 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
             this.descriptionId = descriptionId;
         }
 
-        public int getImageId()
+        int getImageId()
         {
             return imageId;
         }
 
-        public int getDescriptionId()
+        int getDescriptionId()
         {
             return descriptionId;
         }
@@ -98,9 +98,9 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     private final FormulaList formulaList;
     protected TermField parentField = null;
     protected LinearLayout layout = null;
-    protected ArrayList<View> elements = new ArrayList<>();
+    ArrayList<View> elements = new ArrayList<>();
     protected ArrayList<TermField> terms = new ArrayList<>();
-    protected final int termDepth;
+    final int termDepth;
     private boolean inRightOfPrevious = false;
 
     /*********************************************************
@@ -139,7 +139,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     /**
      * Setter for parent formula field
      */
-    public void setParentField(TermField parent)
+    void setParentField(TermField parent)
     {
         this.parentField = parent;
     }
@@ -756,7 +756,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     /**
      * Procedure collects all elements that belong to the given layout into output vector
      */
-    protected void collectElemets(LinearLayout layout, ArrayList<View> out)
+    void collectElemets(LinearLayout layout, ArrayList<View> out)
     {
         for (View v : elements)
         {
@@ -879,7 +879,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     /**
      * Returns term field object with given id
      */
-    protected TermField findTermWithId(int termId)
+    TermField findTermWithId(int termId)
     {
         for (TermField t : terms)
         {
@@ -902,7 +902,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     /**
      * Procedure searches the focused term recursively
      */
-    protected TermField findFocusedTerm()
+    TermField findFocusedTerm()
     {
         for (TermField t : terms)
         {
@@ -918,7 +918,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     /**
      * Procedure checks the given owner is the main equation owner (root view)
      */
-    static boolean isEquationOwner(View owner)
+    private static boolean isEquationOwner(View owner)
     {
         return !(owner instanceof CustomEditText);
     }

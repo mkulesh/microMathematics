@@ -306,7 +306,7 @@ public class ColorMapView extends CustomTextView
         double y = 0;
         String name = null;
 
-        public Label(double y, String name)
+        Label(double y, String name)
         {
             this.y = y;
             this.name = name;

@@ -82,7 +82,7 @@ public class UserFunctions extends FunctionBase
             return shortCutId;
         }
 
-        public int getArgNumber()
+        int getArgNumber()
         {
             return argNumber;
         }
@@ -136,7 +136,7 @@ public class UserFunctions extends FunctionBase
 
     public static final String FUNCTION_ARGS_MARKER = ":";
 
-    public static String getFunctionString(FunctionType t)
+    private static String getFunctionString(FunctionType t)
     {
         return t.isLink() ? t.getLinkObject() : t.getLowerCaseName();
     }

@@ -276,7 +276,7 @@ public final class ViewUtils
         return bitmap;
     }
 
-    public static Bitmap.Config getBitmapConfig()
+    private static Bitmap.Config getBitmapConfig()
     {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
         {

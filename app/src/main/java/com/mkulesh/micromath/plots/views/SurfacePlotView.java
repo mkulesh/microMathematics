@@ -804,7 +804,7 @@ public class SurfacePlotView extends PlotView
         }
     }
 
-    public void drawString(Canvas canvas, int x, int y, String s, int x_align, int y_align, float scale)
+    private void drawString(Canvas canvas, int x, int y, String s, int x_align, int y_align, float scale)
     {
         if (s == null)
         {
@@ -838,7 +838,7 @@ public class SurfacePlotView extends PlotView
         canvas.drawText(s, x, y, paint);
     }
 
-    protected void drawVertices(Canvas canvas, int count, int[] poly_x, int[] poly_y, int[] col)
+    private void drawVertices(Canvas canvas, int count, int[] poly_x, int[] poly_y, int[] col)
     {
         vertsValues[0] = poly_x[0];
         vertsValues[1] = poly_y[0];

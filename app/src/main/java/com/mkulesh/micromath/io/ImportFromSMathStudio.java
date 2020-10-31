@@ -51,7 +51,7 @@ import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-public class ImportFromSMathStudio
+class ImportFromSMathStudio
 {
     private final String SM_TAG_MATH_EXPRESSION = "e";
     private final String SM_TAG_MATH_OPERATOR = "operator";

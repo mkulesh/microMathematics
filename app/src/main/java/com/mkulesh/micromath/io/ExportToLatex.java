@@ -54,18 +54,18 @@ import java.util.ArrayList;
 /**
  * Export interface: export to LaTeX
  */
-public class ExportToLatex
+class ExportToLatex
 {
-    protected final Context context;
-    protected final OutputStream stream;
-    protected final StringWriter writer = new StringWriter();
-    protected final AdapterIf adapter;
-    protected final Exporter.Parameters exportParameters;
-    protected String fileName = null;
-    protected int figNumber = 1;
-    protected boolean currTextNumber = false;
+    final Context context;
+    final OutputStream stream;
+    final StringWriter writer = new StringWriter();
+    final AdapterIf adapter;
+    private final Exporter.Parameters exportParameters;
+    String fileName = null;
+    int figNumber = 1;
+    private boolean currTextNumber = false;
 
-    protected final String[][] greekTable = new String[][]{
+    final String[][] greekTable = new String[][]{
 
             { "Α", "A" }, { "α", "\\alpha" },
 
@@ -115,7 +115,7 @@ public class ExportToLatex
 
             { "Ω", "\\Omega" }, { "ω", "\\omega" } };
 
-    protected final String[][] supplementTable = new String[][]{
+    private final String[][] supplementTable = new String[][]{
             { "°", "\\degree" } };
 
     public ExportToLatex(Context context, OutputStream stream, final Uri uri, final AdapterIf adapter,
@@ -242,7 +242,7 @@ public class ExportToLatex
         stream.write(writer.toString().getBytes());
     }
 
-    protected void writeFormulaBase(FormulaBase f, boolean inLine)
+    void writeFormulaBase(FormulaBase f, boolean inLine)
     {
         if (f instanceof Equation)
         {
@@ -262,7 +262,7 @@ public class ExportToLatex
         }
     }
 
-    protected void writeEquation(Equation f, boolean inLine)
+    void writeEquation(Equation f, boolean inLine)
     {
         writer.append(inLine ? "$" : "\n\\begin{center}\\begin{tabular}{c}\n  $");
         writeTermField(f.findTermWithKey(R.string.formula_left_term_key));
@@ -271,7 +271,7 @@ public class ExportToLatex
         writer.append(inLine ? "$" : "$\n\\end{tabular}\\end{center}");
     }
 
-    protected void appendFormulaResult(FormulaResult f)
+    void appendFormulaResult(FormulaResult f)
     {
         writeTermField(f.findTermWithKey(R.string.formula_left_term_key));
         if (f.isResultVisible())
@@ -305,14 +305,14 @@ public class ExportToLatex
         }
     }
 
-    protected void writeFormulaResult(FormulaResult f, boolean inLine)
+    void writeFormulaResult(FormulaResult f, boolean inLine)
     {
         writer.append(inLine ? "$" : "\n\\begin{center}\\begin{tabular}{c}\n  $");
         appendFormulaResult(f);
         writer.append(inLine ? "$" : "$\n\\end{tabular}\\end{center}");
     }
 
-    protected void writePlotFunction(FormulaBase f, boolean inLine)
+    void writePlotFunction(FormulaBase f, boolean inLine)
     {
         Bitmap bitmap = null;
         try
@@ -364,7 +364,7 @@ public class ExportToLatex
         }
     }
 
-    protected void writeTextFragment(TextFragment f, boolean inLine)
+    void writeTextFragment(TextFragment f, boolean inLine)
     {
         final ArrayList<TermField> terms = f.getTerms();
         if (!terms.isEmpty())
@@ -420,7 +420,7 @@ public class ExportToLatex
         }
     }
 
-    public void writeTermField(TermField t)
+    void writeTermField(TermField t)
     {
         if (t == null)
         {
@@ -780,7 +780,7 @@ public class ExportToLatex
         writer.append(outStr.toString());
     }
 
-    protected boolean isPropEmpty(CharSequence prop)
+    boolean isPropEmpty(CharSequence prop)
     {
         return prop == null || prop.length() == 0;
     }

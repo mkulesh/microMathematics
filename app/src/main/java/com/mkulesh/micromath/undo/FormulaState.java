@@ -34,7 +34,7 @@ public final class FormulaState implements Parcelable
         this.data = data;
     }
 
-    public FormulaState(Parcel in)
+    private FormulaState(Parcel in)
     {
         super();
         formulaId = in.readInt();

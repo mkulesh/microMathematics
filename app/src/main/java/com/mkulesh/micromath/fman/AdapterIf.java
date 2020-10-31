@@ -29,9 +29,10 @@ public interface AdapterIf
         public Date date = null;
         public long size = -1;
         public boolean dir = false;
-        public String attr = "", mime;
+        String attr = "";
+        public String mime;
         public Object origin = null;
-        public int icon_id = -1;
+        int icon_id = -1;
 
         public Item()
         {

@@ -22,10 +22,10 @@ import org.xmlpull.v1.XmlSerializer;
 
 public class ResultProperties implements Parcelable
 {
-    public static final String XML_PROP_DISABLE_CALCULATION = "disableCalculation";
-    public static final String XML_PROP_HIDE_RESULT_FIELD = "hideResultField";
-    public static final String XML_PROP_ARRAY_LENGTH = "arrayLength";
-    public static final String XML_PROP_UNITS = "units";
+    private static final String XML_PROP_DISABLE_CALCULATION = "disableCalculation";
+    private static final String XML_PROP_HIDE_RESULT_FIELD = "hideResultField";
+    private static final String XML_PROP_ARRAY_LENGTH = "arrayLength";
+    private static final String XML_PROP_UNITS = "units";
 
     /**
      * Class members.
@@ -43,7 +43,7 @@ public class ResultProperties implements Parcelable
     /**
      * Parcelable interface
      */
-    public ResultProperties(Parcel in)
+    private ResultProperties(Parcel in)
     {
         super();
         readFromParcel(in);
@@ -64,7 +64,7 @@ public class ResultProperties implements Parcelable
         dest.writeString(units);
     }
 
-    public void readFromParcel(Parcel in)
+    private void readFromParcel(Parcel in)
     {
         disableCalculation = Boolean.parseBoolean(in.readString());
         hideResultField = Boolean.parseBoolean(in.readString());

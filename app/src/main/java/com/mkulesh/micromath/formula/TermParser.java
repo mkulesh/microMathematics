@@ -42,12 +42,12 @@ public class TermParser
 
     public static final String CONST_NAN = "NaN";
     public static final String CONST_INF = "∞";
-    public static final String CONST_E = "e";
-    public static final String CONST_PI1 = "π";
-    public static final String CONST_PI2 = "pi";
-    public static final String IMAGINARY_UNIT = "i";
-    public static final String POSITIVE_SIGN = "+";
-    public static final String NEGATIVE_SIGN = "-";
+    private static final String CONST_E = "e";
+    private static final String CONST_PI1 = "π";
+    private static final String CONST_PI2 = "pi";
+    private static final String IMAGINARY_UNIT = "i";
+    private static final String POSITIVE_SIGN = "+";
+    private static final String NEGATIVE_SIGN = "-";
     public static final String UNIT_SEPARATOR = " ";
 
     public TermParser()

@@ -63,7 +63,7 @@ public class CalculatedValue
     public final static CalculatedValue NaN = new CalculatedValue(ValueType.INVALID, Double.NaN, 0.0);
     public final static CalculatedValue ONE = new CalculatedValue(ValueType.REAL, 1.0, 0.0);
     public final static CalculatedValue MINUS_ONE = new CalculatedValue(ValueType.REAL, -1.0, 0.0);
-    public final static CalculatedValue ZERO = new CalculatedValue(ValueType.REAL, 0.0, 0.0);
+    private final static CalculatedValue ZERO = new CalculatedValue(ValueType.REAL, 0.0, 0.0);
 
     private ValueType valueType = ValueType.INVALID;
     private double real = Double.NaN;
@@ -230,7 +230,7 @@ public class CalculatedValue
         return valueType;
     }
 
-    public ValueType setComplexValue(Complex c)
+    private ValueType setComplexValue(Complex c)
     {
         real = c.getReal();
         imaginary = c.getImaginary();
@@ -949,7 +949,7 @@ public class CalculatedValue
      * the product num * magnitude, and that does not overflow. One way of resolving this is by breaking up the
      * multiplication by the factor magintude into two steps.
      */
-    public static double roundToNumberOfSignificantDigits(double num, int n)
+    private static double roundToNumberOfSignificantDigits(double num, int n)
     {
         if (num == 0)
         {

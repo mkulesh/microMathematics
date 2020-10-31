@@ -27,7 +27,7 @@ public class CalculaterTask extends AsyncTask<Void, CalculationResult, Void> imp
     {
         private static final long serialVersionUID = 4916095827341L;
 
-        public CancelException()
+        CancelException()
         {
             // empty
         }

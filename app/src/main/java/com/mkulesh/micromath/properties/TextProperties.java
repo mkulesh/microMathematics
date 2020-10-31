@@ -24,8 +24,8 @@ import java.util.Locale;
 
 public class TextProperties implements Parcelable
 {
-    public static final String XML_PROP_TEXT_STYLE = "textStyle";
-    public static final String XML_PROP_NUMBERING = "numbering";
+    private static final String XML_PROP_TEXT_STYLE = "textStyle";
+    private static final String XML_PROP_NUMBERING = "numbering";
 
     public enum TextStyle
     {
@@ -37,16 +37,16 @@ public class TextProperties implements Parcelable
     }
 
     // state- and XML-related attributes
-    public static final TextStyle DEFAULT_TEXT_STYLE = TextStyle.TEXT_BODY;
+    private static final TextStyle DEFAULT_TEXT_STYLE = TextStyle.TEXT_BODY;
     public TextStyle textStyle = DEFAULT_TEXT_STYLE;
 
-    public static final boolean DEFAULT_NUMBERING = false;
+    private static final boolean DEFAULT_NUMBERING = false;
     public boolean numbering = DEFAULT_NUMBERING;
 
     /**
      * Parcelable interface
      */
-    public TextProperties(Parcel in)
+    private TextProperties(Parcel in)
     {
         super();
         readFromParcel(in);
@@ -65,7 +65,7 @@ public class TextProperties implements Parcelable
         dest.writeString(String.valueOf(numbering));
     }
 
-    public void readFromParcel(Parcel in)
+    private void readFromParcel(Parcel in)
     {
         textStyle = TextStyle.valueOf(in.readString());
         numbering = Boolean.parseBoolean(in.readString());

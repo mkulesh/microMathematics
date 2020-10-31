@@ -22,7 +22,7 @@ import com.mkulesh.micromath.math.Vector2D;
 public class PhysicalArea implements Parcelable
 {
 
-    public static final double NO_ZOOM_FACTOR = 1.0;
+    private static final double NO_ZOOM_FACTOR = 1.0;
 
     /**
      * State attributes to be stored in Parcel
@@ -35,7 +35,7 @@ public class PhysicalArea implements Parcelable
     /**
      * Parcelable interface
      */
-    public PhysicalArea(Parcel in)
+    private PhysicalArea(Parcel in)
     {
         super();
         readFromParcel(in);
@@ -98,7 +98,7 @@ public class PhysicalArea implements Parcelable
     /**
      * Assign procedure
      */
-    public void assign(PhysicalArea area)
+    private void assign(PhysicalArea area)
     {
         min.assign(area.min);
         max.assign(area.max);

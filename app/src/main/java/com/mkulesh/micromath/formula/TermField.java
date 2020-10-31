@@ -57,7 +57,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     private static final String STATE_CODE = "_code";
     private static final String STATE_INSTANCE = "_instance";
 
-    public int MAX_LAYOUT_DEPTH = 15;
+    private int MAX_LAYOUT_DEPTH = 15;
     public static final int NO_ERROR_ID = -1;
 
     private final FormulaBase formulaRoot, parentFormula;
@@ -235,7 +235,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     /**
      * Procedure returns true if the calculation and content checking shall be skipped for this formula
      */
-    boolean disableCalculation()
+    private boolean disableCalculation()
     {
         return (getFormulaRoot() instanceof CalculationResult)
                 && ((CalculationResult) getFormulaRoot()).disableCalculation();
@@ -609,7 +609,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     /**
      * Procedure returns the context for this term field
      */
-    public Context getContext()
+    private Context getContext()
     {
         return formulaRoot.getFormulaList().getContext();
     }
@@ -873,7 +873,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     /**
      * Procedure converts this term field to an other term
      */
-    protected FormulaTerm convertToTerm(String s, Parcelable p, boolean ensureManualTrigger)
+    private FormulaTerm convertToTerm(String s, Parcelable p, boolean ensureManualTrigger)
     {
         final TermTypeIf f = TermFactory.findTerm(getContext(), text, s, ensureManualTrigger);
         return convertToTerm(f, s, p);
@@ -1207,7 +1207,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     /**
      * Procedure search an externally set error in the parent terms
      */
-    public String findErrorMsg()
+    private String findErrorMsg()
     {
         if (errorMsg != null)
         {

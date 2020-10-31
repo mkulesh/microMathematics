@@ -14,15 +14,9 @@ package com.mkulesh.micromath.utils;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * Generate a value suitable for use in {@link #setId(int)}. This value will not collide with ID values generated at
- * build time by aapt for R.id.
- *
- * @return a generated ID value
- */
 public class IdGenerator
 {
-    public static final int INITIAL_VALUE = 1000; // greater than all static views
+    private static final int INITIAL_VALUE = 1000; // greater than all static views
     private static final AtomicInteger sNextGeneratedId = new AtomicInteger(INITIAL_VALUE);
 
     public static boolean enableIdRestore = false;
@@ -32,7 +26,7 @@ public class IdGenerator
         set(INITIAL_VALUE);
     }
 
-    public static void set(int i)
+    private static void set(int i)
     {
         sNextGeneratedId.set(i + 1);
     }

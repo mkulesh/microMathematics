@@ -86,7 +86,7 @@ public class LogFunctions extends FunctionBase
             return Palette.NO_BUTTON;
         }
 
-        public int getArgNumber()
+        int getArgNumber()
         {
             return argNumber;
         }
@@ -173,7 +173,7 @@ public class LogFunctions extends FunctionBase
      * Common getters
      *********************************************************/
 
-    public FunctionType getFunctionType()
+    private FunctionType getFunctionType()
     {
         return (FunctionType) termType;
     }

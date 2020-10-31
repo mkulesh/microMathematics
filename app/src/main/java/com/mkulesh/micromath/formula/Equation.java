@@ -49,7 +49,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     {
         private CalculatedValue value = null;
 
-        public CalculatedValue getValue(CalculaterTask thread) throws CancelException
+        CalculatedValue getValue(CalculaterTask thread) throws CancelException
         {
             if (value == null)
             {
@@ -328,7 +328,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         }
     }
 
-    public void fileOperation(boolean status)
+    private void fileOperation(boolean status)
     {
         FormulaTerm t = rightTerm.getTerm();
         if (t instanceof ArrayFunctions)

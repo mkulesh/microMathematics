@@ -64,7 +64,7 @@ public class EquationArrayResult
         this.equationTerm = rightTerm;
     }
 
-    public int getDimNumber()
+    private int getDimNumber()
     {
         return dimensions == null ? ViewUtils.INVALID_INDEX : dimensions.length;
     }

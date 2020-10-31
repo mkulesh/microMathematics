@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity
 
     private static final int STORAGE_PERMISSION_REQID = 255;
     private static final int SETTINGS_ACTIVITY_REQID = 256;
-    public static final String EXIT_CONFIRM = "exit_confirm";
+    private static final String EXIT_CONFIRM = "exit_confirm";
     private static final String SHORTCUT_NEW_DOCUMENT = "com.mkulesh.micromath.plus.NEW_DOCUMENT";
 
     private Dialog storagePermissionDialog = null;
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity
     private ActionBarDrawerToggle mDrawerToggle;
     private Uri externalUri = null;
     private Toast exitToast = null;
-    int orientation;
+    private int orientation;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -289,7 +289,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void restartActivity()
+    private void restartActivity()
     {
         Intent intent = getIntent();
         finish();
@@ -538,7 +538,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @SuppressLint("RestrictedApi")
-    public BaseFragment getVisibleFragment()
+    private BaseFragment getVisibleFragment()
     {
         FragmentManager fragmentManager = MainActivity.this.getSupportFragmentManager();
         List<Fragment> fragments = fragmentManager.getFragments();
@@ -552,7 +552,7 @@ public class MainActivity extends AppCompatActivity
         return null;
     }
 
-    public void selectNavigationItem(MenuItem menuItem, int postActionId)
+    private void selectNavigationItem(MenuItem menuItem, int postActionId)
     {
         final int position = menuItem.getOrder();
         for (MenuItem m : activityMenuItems)

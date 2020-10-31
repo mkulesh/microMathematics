@@ -37,32 +37,32 @@ import java.util.Date;
 
 public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
 {
-    public static final String DEFAULT_DIR = Environment.getExternalStorageDirectory().getAbsolutePath();
+    static final String DEFAULT_DIR = Environment.getExternalStorageDirectory().getAbsolutePath();
 
-    public static final String SLS = File.separator;
-    public static final char SLC = File.separatorChar;
+    static final String SLS = File.separator;
+    static final char SLC = File.separatorChar;
     public static final String PLS = "..";
 
-    protected final Context ctx;
+    final Context ctx;
     private final LayoutInflater mInflater;
     private final java.text.DateFormat localeDateFormat;
     private final java.text.DateFormat localeTimeFormat;
     private final float density;
 
-    public CommanderIf commander = null;
+    CommanderIf commander = null;
 
-    protected int mode = 0;
-    protected boolean ascending = true;
-    protected String parentLink = SLS;
-    protected int numItems = 0;
+    int mode = 0;
+    boolean ascending = true;
+    String parentLink = SLS;
+    private int numItems = 0;
 
-    protected boolean readWriteAdapter = true;
+    boolean readWriteAdapter = true;
 
-    protected static class SimpleHandler extends Handler
+    static class SimpleHandler extends Handler
     {
         final CommanderIf cmd;
 
-        public SimpleHandler(CommanderIf c)
+        SimpleHandler(CommanderIf c)
         {
             cmd = c;
         }
@@ -81,9 +81,9 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
         }
     }
 
-    protected SimpleHandler simpleHandler = null;
+    SimpleHandler simpleHandler = null;
 
-    protected AdapterBaseImpl(Context ctx_, int mode_)
+    AdapterBaseImpl(Context ctx_, int mode_)
     {
         ctx = ctx_;
         mode = mode_;
@@ -253,7 +253,7 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
      * Implementation internal functionality
      */
 
-    protected void notify(String s, String cookie)
+    private void notify(String s, String cookie)
     {
         if (simpleHandler == null)
             return;
@@ -268,19 +268,19 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
         }
     }
 
-    protected void notify(String cookie)
+    void notify(String cookie)
     {
         notify(null, cookie);
     }
 
-    protected void notify(String s, int what, int arg1)
+    private void notify(String s, int what, int arg1)
     {
         Message msg = Message.obtain(simpleHandler, what, arg1, -1, s);
         if (msg != null)
             msg.sendToTarget();
     }
 
-    protected void notify(String s, int what)
+    void notify(String s, int what)
     {
         notify(s, what, -1);
     }
@@ -290,7 +290,7 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
         notify(null, what, -1);
     }
 
-    protected void notifyRefr(String item_name)
+    void notifyRefr(String item_name)
     {
         Message msg = simpleHandler.obtainMessage(CommanderIf.OPERATION_COMPLETED_REFRESH_REQUIRED, null);
         if (msg != null)
@@ -314,13 +314,13 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
         }
     }
 
-    public void setCount(int n)
+    void setCount(int n)
     {
         numItems = n;
         notifyDataSetChanged();
     }
 
-    protected String getLocalDateTimeStr(Date date)
+    private String getLocalDateTimeStr(Date date)
     {
         try
         {
@@ -333,12 +333,12 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
         return "(ERR)";
     }
 
-    protected int getPredictedAttributesLength()
+    int getPredictedAttributesLength()
     {
         return 0;
     }
 
-    protected View getView(View convertView, ViewGroup parent, Item item)
+    View getView(View convertView, ViewGroup parent, Item item)
     {
         View row_view = null;
         try
@@ -498,7 +498,7 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
         return row_view;
     }
 
-    public static int getIconId(String file)
+    private static int getIconId(String file)
     {
         String cat = FileUtils.getCategoryByExt(FileUtils.getFileExt(file));
         if (FileUtils.C_UNKNOWN.equals(cat))
@@ -532,12 +532,12 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
         return R.drawable.fman_file_unknown;
     }
 
-    protected void reSort()
+    void reSort()
     {
         // to override by all the derives
     }
 
-    protected final String s(int r_id)
+    final String s(int r_id)
     {
         return ctx.getString(r_id);
     }

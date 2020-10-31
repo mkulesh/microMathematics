@@ -17,7 +17,7 @@ import com.mkulesh.micromath.utils.ViewUtils;
 import java.io.StringWriter;
 import java.util.Calendar;
 
-public class TestCase
+class TestCase
 {
     public final static String BEGIN_FIELD = "begin";
     public final static String RESULT_FIELD = "result";
@@ -95,7 +95,7 @@ public class TestCase
         return null;
     }
 
-    public String getDescription()
+    private String getDescription()
     {
         final String error = getError();
         if (error != null)

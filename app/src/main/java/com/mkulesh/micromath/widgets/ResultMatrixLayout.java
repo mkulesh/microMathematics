@@ -30,13 +30,13 @@ import java.util.ArrayList;
 
 public class ResultMatrixLayout extends TableLayout
 {
-    public static final class ElementTag
+    static final class ElementTag
     {
-        public final int row;
-        public final int col;
-        public final int idx;
+        final int row;
+        final int col;
+        final int idx;
 
-        public ElementTag(int r, int c, int i)
+        ElementTag(int r, int c, int i)
         {
             row = r;
             col = c;
@@ -181,7 +181,7 @@ public class ResultMatrixLayout extends TableLayout
         }
     }
 
-    public boolean isCell(CustomEditText c)
+    private boolean isCell(CustomEditText c)
     {
         return c != null && c.getTag() != null && c.getTag() instanceof ElementTag;
     }

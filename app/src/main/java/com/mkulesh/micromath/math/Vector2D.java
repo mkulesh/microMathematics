@@ -31,7 +31,7 @@ public class Vector2D implements Parcelable
     /**
      * Parcelable interface
      */
-    public Vector2D(Parcel in)
+    private Vector2D(Parcel in)
     {
         super();
         readFromParcel(in);
@@ -159,7 +159,7 @@ public class Vector2D implements Parcelable
     /**
      * Procedure calculates vector modulus
      */
-    public double mod()
+    private double mod()
     {
         return Math.sqrt(x * x + y * y);
     }

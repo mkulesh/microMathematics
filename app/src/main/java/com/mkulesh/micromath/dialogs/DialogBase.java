@@ -45,7 +45,7 @@ public class DialogBase extends Dialog implements OnClickListener
     protected final SharedPreferences pref;
     final private TextView title;
 
-    public DialogBase(Context context, int layoutId, int titleId)
+    protected DialogBase(Context context, int layoutId, int titleId)
     {
         super(context);
         setCanceledOnTouchOutside(true);
@@ -94,7 +94,7 @@ public class DialogBase extends Dialog implements OnClickListener
         }
     }
 
-    public LinearLayout getRootLayout()
+    LinearLayout getRootLayout()
     {
         View root = this.findViewById(R.id.dialog_root_layout);
         return (root instanceof LinearLayout) ? (LinearLayout) root : null;
@@ -125,7 +125,7 @@ public class DialogBase extends Dialog implements OnClickListener
         this.getWindow().setAttributes(lp);
     }
 
-    protected void setButtonSelected(ImageButton b, boolean isSelected)
+    void setButtonSelected(ImageButton b, boolean isSelected)
     {
         b.setSelected(isSelected);
         if (b.isSelected())
@@ -141,7 +141,7 @@ public class DialogBase extends Dialog implements OnClickListener
                 b.isSelected() ? R.attr.colorAccent : R.attr.colorDialogContent);
     }
 
-    protected void setButtonEnabled(ImageButton b, boolean isEnabled)
+    void setButtonEnabled(ImageButton b, boolean isEnabled)
     {
         b.setEnabled(isEnabled);
         ViewUtils.setImageButtonColorAttr(getContext(), b,
@@ -157,7 +157,7 @@ public class DialogBase extends Dialog implements OnClickListener
         }
     }
 
-    protected ColorPicker PrepareColorPicker(int color)
+    ColorPicker PrepareColorPicker(int color)
     {
         ColorPicker cp = findViewById(R.id.dialog_colorpicker);
         if (cp != null)

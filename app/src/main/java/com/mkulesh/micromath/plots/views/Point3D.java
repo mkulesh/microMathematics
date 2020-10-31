@@ -14,7 +14,7 @@ package com.mkulesh.micromath.plots.views;
 
 import android.graphics.Point;
 
-public final class Point3D
+final class Point3D
 {
     public double x, y, z;
 

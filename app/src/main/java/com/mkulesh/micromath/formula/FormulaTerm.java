@@ -39,14 +39,14 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
      * Constructors
      *********************************************************/
 
-    public FormulaTerm(TermField owner, LinearLayout layout) throws Exception
+    protected FormulaTerm(TermField owner, LinearLayout layout) throws Exception
     {
         super(owner.getFormulaRoot().getFormulaList(), layout, owner.termDepth);
         this.formulaRoot = owner.getFormulaRoot();
         setParentField(owner);
     }
 
-    public FormulaTerm()
+    protected FormulaTerm()
     {
         super(null, null, 0);
         this.formulaRoot = null;

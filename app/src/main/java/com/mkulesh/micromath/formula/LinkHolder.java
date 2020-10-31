@@ -29,7 +29,7 @@ public abstract class LinkHolder extends FormulaBase
      * Constructors
      *********************************************************/
 
-    public LinkHolder(FormulaList formulaList, LinearLayout layout, int termDepth)
+    LinkHolder(FormulaList formulaList, LinearLayout layout, int termDepth)
     {
         super(formulaList, layout, termDepth);
     }
@@ -84,7 +84,7 @@ public abstract class LinkHolder extends FormulaBase
     /**
      * Procedure returns the list of all linked intervals
      */
-    public ArrayList<Equation> getAllIntervals()
+    ArrayList<Equation> getAllIntervals()
     {
         return allIntervals;
     }
@@ -92,7 +92,7 @@ public abstract class LinkHolder extends FormulaBase
     /**
      * Procedure returns the list of all linked functions
      */
-    public ArrayList<Equation> getAllFunctions()
+    ArrayList<Equation> getAllFunctions()
     {
         return allFunctions;
     }
@@ -100,7 +100,7 @@ public abstract class LinkHolder extends FormulaBase
     /**
      * Procedure returns the list of indirectly linked intervals
      */
-    public ArrayList<String> getIndirectIntervals()
+    protected ArrayList<String> getIndirectIntervals()
     {
         ArrayList<String> retValue = new ArrayList<>();
         if (getDirectIntervals().size() != getAllIntervals().size())
@@ -139,7 +139,7 @@ public abstract class LinkHolder extends FormulaBase
     /**
      * Procedure recursively collects linked intervals
      */
-    protected ArrayList<Equation> collectAllIntervals(ArrayList<LinkHolder> callStack)
+    ArrayList<Equation> collectAllIntervals(ArrayList<LinkHolder> callStack)
     {
         for (Equation li : directIntervals)
         {
@@ -178,7 +178,7 @@ public abstract class LinkHolder extends FormulaBase
     /**
      * Procedure recursively collects all linked functions
      */
-    protected ArrayList<Equation> collectAllFunctions(ArrayList<LinkHolder> callStack)
+    ArrayList<Equation> collectAllFunctions(ArrayList<LinkHolder> callStack)
     {
         // stack is used to prevent unlimited recursive calls
         ArrayList<LinkHolder> stack = new ArrayList<>();

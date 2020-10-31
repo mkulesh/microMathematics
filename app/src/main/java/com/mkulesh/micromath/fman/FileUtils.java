@@ -174,7 +174,7 @@ public final class FileUtils
         return C_UNKNOWN;
     }
 
-    public static String[] getTypeDescrByExt(String ext)
+    private static String[] getTypeDescrByExt(String ext)
     {
         ext = ext.toLowerCase(Locale.ENGLISH);
         int from = 0, to = mimes.length;
@@ -243,14 +243,14 @@ public final class FileUtils
         return null;
     }
 
-    static final char[] spaces = { '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0' };
+    private static final char[] spaces = { '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0' };
 
     public static String getHumanSize(long sz)
     {
         return getHumanSize(sz, true);
     }
 
-    public static String getHumanSize(long sz, boolean prepend_nbsp)
+    private static String getHumanSize(long sz, boolean prepend_nbsp)
     {
         try
         {
@@ -296,7 +296,7 @@ public final class FileUtils
         return s1.equals(s2);
     }
 
-    public static String escapeRest(String s)
+    private static String escapeRest(String s)
     {
         if (!str(s))
             return s;
@@ -395,7 +395,7 @@ public final class FileUtils
         }
     }
 
-    public static boolean isContentUri(Uri uri)
+    private static boolean isContentUri(Uri uri)
     {
         return uri != null && uri.getScheme() != null && uri.getScheme().equals("content");
     }

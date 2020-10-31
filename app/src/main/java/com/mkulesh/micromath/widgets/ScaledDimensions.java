@@ -19,7 +19,7 @@ import com.mkulesh.micromath.plus.R;
 
 public class ScaledDimensions
 {
-    public static final float MIN_SCALE_FACTOR = 0.1f;
+    private static final float MIN_SCALE_FACTOR = 0.1f;
 
     public enum Type
     {

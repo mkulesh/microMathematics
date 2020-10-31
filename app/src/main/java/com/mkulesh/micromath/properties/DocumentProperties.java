@@ -43,14 +43,14 @@ public class DocumentProperties
     /**
      * Constants used to write/read the XML file.
      */
-    public static final String EMPTY_STRING = "";
+    private static final String EMPTY_STRING = "";
     public static final String XML_PROP_VERSION = "documentVersion";
     public static final String XML_PROP_AUTHOR = "author";
     public static final String XML_PROP_TITLE = "title";
     public static final String XML_PROP_DESCRIPTION = "description";
-    public static final String XML_PROP_TEXT_WIDTH = "textWidth";
-    public static final String XML_PROP_SIGNIFICANT_DIGITS = "significantDigits";
-    public static final String XML_PROP_SCALE = "scale";
+    private static final String XML_PROP_TEXT_WIDTH = "textWidth";
+    private static final String XML_PROP_SIGNIFICANT_DIGITS = "significantDigits";
+    private static final String XML_PROP_SCALE = "scale";
     public static final String XML_PROP_REDEFINE_ALLOWED = "redefineAllowed";
 
     /**
@@ -59,7 +59,7 @@ public class DocumentProperties
     // Actual (the latest) document version
     public static final int LATEST_DOCUMENT_VERSION = 2;
     // Compatibility version: used in the read method if version is not presented in the file
-    public static final int DEFAULT_DOCUMENT_VERSION = 1;
+    private static final int DEFAULT_DOCUMENT_VERSION = 1;
 
     /**
      * Class members.

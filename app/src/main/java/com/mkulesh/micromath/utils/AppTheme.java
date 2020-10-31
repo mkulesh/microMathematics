@@ -27,7 +27,7 @@ import com.mkulesh.micromath.plus.R;
  *********************************************************/
 public final class AppTheme
 {
-    public static final String PREF_APP_THEME = "app_theme";
+    private static final String PREF_APP_THEME = "app_theme";
 
     public enum ThemeType
     {

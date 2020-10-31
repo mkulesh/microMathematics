@@ -46,7 +46,7 @@ import java.util.List;
 public class Palette implements OnClickListener, OnLongClickListener, TextChangeIf, FocusChangeIf, PaletteSettingsChangeIf
 {
     public static final int NO_BUTTON = -1;
-    public static final String VISIBLE_PALETTE_GROUPS = "visible_palette_groups";
+    private static final String VISIBLE_PALETTE_GROUPS = "visible_palette_groups";
 
     private final Context context;
     private final ListChangeIf listChangeIf;

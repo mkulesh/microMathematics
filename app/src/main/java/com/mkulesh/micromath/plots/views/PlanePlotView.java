@@ -34,16 +34,18 @@ import java.util.ArrayList;
 public abstract class PlanePlotView extends PlotView
 {
     // data
-    protected final PhysicalArea area = new PhysicalArea();
+    final PhysicalArea area = new PhysicalArea();
     private final Vector2D labelCenter = new Vector2D();
     private int arrowLength = 0, arrowStroke = 0;
     private Label[] xLabels = null;
     private Label[] yLabels = null;
 
     // temporary variables used for drawing
-    protected final Rect rect = new Rect(), tmpRect = new Rect();
-    protected final Point p1 = new Point(), p2 = new Point();
-    protected final Vector2D tmpVec = new Vector2D();
+    final Rect rect = new Rect();
+    private final Rect tmpRect = new Rect();
+    final Point p1 = new Point();
+    final Point p2 = new Point();
+    final Vector2D tmpVec = new Vector2D();
 
     /*********************************************************
      * Creating
@@ -107,7 +109,7 @@ public abstract class PlanePlotView extends PlotView
         this.yLabels = makeLabels(FunctionIf.Y, axisParameters.yLabelsNumber, axisParameters.yType);
     }
 
-    protected void getScaledPadding(Rect r)
+    private void getScaledPadding(Rect r)
     {
         arrowStroke = 2 * axisParameters.getLabelLineSize();
         arrowLength = (plotParameters.isCrossedAxes()) ? 4 * arrowStroke : 0;
@@ -284,7 +286,7 @@ public abstract class PlanePlotView extends PlotView
         }
     }
 
-    protected void drawBorder(Canvas c, Paint p)
+    private void drawBorder(Canvas c, Paint p)
     {
         p.setStyle(Paint.Style.STROKE);
         p.setColor(getPaint().getColor());
@@ -303,7 +305,7 @@ public abstract class PlanePlotView extends PlotView
         }
     }
 
-    protected void drawCross(Canvas c, Paint p)
+    private void drawCross(Canvas c, Paint p)
     {
         // horizontal line
         tmpVec.set(area.getMin().x, labelCenter.y);
@@ -324,7 +326,7 @@ public abstract class PlanePlotView extends PlotView
         drawVerArrowHead(c, p2, arrowStroke, arrowLength, p);
     }
 
-    protected void drawGrid(int idx, Canvas c, Paint p)
+    private void drawGrid(int idx, Canvas c, Paint p)
     {
         final Label[] labels = (idx == FunctionIf.X) ? xLabels : yLabels;
         if (labels == null)
@@ -348,7 +350,7 @@ public abstract class PlanePlotView extends PlotView
         }
     }
 
-    protected void drawLabeles(int idx, Canvas c, Paint p)
+    private void drawLabeles(int idx, Canvas c, Paint p)
     {
         final Label[] labels = (idx == FunctionIf.X) ? xLabels : yLabels;
         if (labels == null)
@@ -380,7 +382,7 @@ public abstract class PlanePlotView extends PlotView
         }
     }
 
-    protected void drawHorArrowHead(Canvas c, Point p0, int width, int lenght, Paint p)
+    private void drawHorArrowHead(Canvas c, Point p0, int width, int lenght, Paint p)
     {
         p.setStrokeWidth(0);
         for (int i = 0; i < lenght / 2; i++)
@@ -390,7 +392,7 @@ public abstract class PlanePlotView extends PlotView
         }
     }
 
-    protected void drawVerArrowHead(Canvas c, Point p0, int width, int lenght, Paint p)
+    private void drawVerArrowHead(Canvas c, Point p0, int width, int lenght, Paint p)
     {
         p.setStrokeWidth(0);
         for (int i = 0; i < lenght / 2; i++)

@@ -46,29 +46,29 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     public static final String EXTERNAL_URI = "external_uri";
     public static final String POST_ACTION_ID = "post_action_id";
     public static final String FRAGMENT_NUMBER = "fragment_number";
-    public static final String OPENED_FILE = "opened_file"; // Not used since version 2.14.3
+    private static final String OPENED_FILE = "opened_file"; // Not used since version 2.14.3
     public static final String OPENED_URI = "opened_uri";
-    public static final String OPENED_FILE_EMPTY = "";
-    public static final String FILE_READING_OPERATION = "file_reading_operation";
-    public static final String DEVELOPER_MODE = "developer_mode";
-    public static final String ZOOM_ENABLED = "zoom_enabled";
+    private static final String OPENED_FILE_EMPTY = "";
+    static final String FILE_READING_OPERATION = "file_reading_operation";
+    private static final String DEVELOPER_MODE = "developer_mode";
+    private static final String ZOOM_ENABLED = "zoom_enabled";
 
     /**
      * Class members.
      */
     public final static int WORKSHEET_FRAGMENT_ID = 0;
-    public final static int INVALID_FRAGMENT_ID = -1;
+    private final static int INVALID_FRAGMENT_ID = -1;
     public final static int INVALID_ACTION_ID = -1;
 
-    protected AppCompatActivity activity = null;
-    protected View rootView = null;
-    protected FormulaList formulas = null;
-    protected int fragmentNumber = INVALID_FRAGMENT_ID;
+    AppCompatActivity activity = null;
+    View rootView = null;
+    FormulaList formulas = null;
+    int fragmentNumber = INVALID_FRAGMENT_ID;
     private Menu mainMenu = null;
     private boolean inOperation = false;
     private OnClickListener stopHandler = null;
     private FloatingButtonsSet primaryButtonsSet = null, secondaryButtonsSet = null;
-    protected SharedPreferences preferences = null;
+    private SharedPreferences preferences = null;
 
     /**
      * Abstract interface
@@ -82,7 +82,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         // Empty constructor required for fragment subclasses
     }
 
-    protected void initializeFragment(int number)
+    void initializeFragment(int number)
     {
         fragmentNumber = number;
         activity = (AppCompatActivity) getActivity();
@@ -124,7 +124,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         }
     }
 
-    public Uri getOpenedFile()
+    Uri getOpenedFile()
     {
         Uri uri = null;
         // clear settings of previous version
@@ -153,7 +153,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         return uri;
     }
 
-    protected void setOpenedFile(Uri uri)
+    void setOpenedFile(Uri uri)
     {
         SharedPreferences.Editor prefEditor = preferences.edit();
         prefEditor.putString(OPENED_URI, (uri == null) ? OPENED_FILE_EMPTY : uri.toString());
@@ -170,12 +170,12 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         }
     }
 
-    protected void setWorksheetName(CharSequence name)
+    void setWorksheetName(CharSequence name)
     {
         ((MainActivity) activity).setWorksheetName(fragmentNumber, name);
     }
 
-    protected void onSaveFinished()
+    void onSaveFinished()
     {
         // Allow save button (for the case if a read-only asset is saved on SD card)
         final MenuItem saveItem = (mainMenu == null) ? null : mainMenu.findItem(R.id.action_save);
@@ -185,7 +185,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         }
     }
 
-    protected void saveFileAs(final boolean storeOpenedFileInfo)
+    void saveFileAs(final boolean storeOpenedFileInfo)
     {
         Commander commander = new Commander(activity, R.string.action_save_as, Commander.SelectionMode.SAVE_AS, null,
                 (uri, fileType, adapter) ->
@@ -204,7 +204,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         commander.show();
     }
 
-    protected void export()
+    void export()
     {
         Commander commander = new Commander(activity, R.string.action_export, Commander.SelectionMode.EXPORT, null,
                 (uri, fileType, adapter) ->
@@ -247,7 +247,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         commander.show();
     }
 
-    public void calculate()
+    private void calculate()
     {
         formulas.calculate();
     }
@@ -320,7 +320,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         return inOperation;
     }
 
-    public boolean isFirstStart()
+    boolean isFirstStart()
     {
         return !preferences.contains(OPENED_FILE) && !preferences.contains(OPENED_URI);
     }
@@ -395,7 +395,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         return fragmentNumber;
     }
 
-    public boolean isDeveloperMode()
+    boolean isDeveloperMode()
     {
         return preferences.getBoolean(DEVELOPER_MODE, false);
     }

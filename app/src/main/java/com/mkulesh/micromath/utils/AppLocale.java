@@ -28,11 +28,11 @@ import java.util.Locale;
  *********************************************************/
 public final class AppLocale
 {
-    public static final String PREF_APP_LANGUAGE = "app_language";
+    private static final String PREF_APP_LANGUAGE = "app_language";
 
     public static class ContextWrapper extends android.content.ContextWrapper
     {
-        public ContextWrapper(Context base)
+        ContextWrapper(Context base)
         {
             super(base);
         }

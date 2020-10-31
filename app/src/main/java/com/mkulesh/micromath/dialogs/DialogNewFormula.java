@@ -27,9 +27,9 @@ import java.util.Map;
 
 public class DialogNewFormula extends DialogBase implements OnLongClickListener
 {
-    public static final String LAST_INSERTED_POSITION = "last_inserted_position";
-    public static final String LAST_INSERTED_OBJECT = "last_inserted_object";
-    public static final String LAST_INSERTED_EMPTY = "empty";
+    private static final String LAST_INSERTED_POSITION = "last_inserted_position";
+    private static final String LAST_INSERTED_OBJECT = "last_inserted_object";
+    private static final String LAST_INSERTED_EMPTY = "empty";
 
     private final ListChangeIf changeIf;
     private final HashMap<ListChangeIf.Position, ImageButton> positionButtons = new HashMap<>();

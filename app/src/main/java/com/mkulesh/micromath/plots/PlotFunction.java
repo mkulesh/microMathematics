@@ -813,7 +813,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         private double[] xValues = new double[1];
         private double[] yValues = new double[1];
         private LineProperties lineParameters = new LineProperties();
-        public int index = 0;
+        int index = 0;
 
         @Override
         public Type getType()
@@ -857,12 +857,12 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             return null;
         }
 
-        public View getSettingsView()
+        View getSettingsView()
         {
             return settingsView;
         }
 
-        public void updateSettingsView()
+        void updateSettingsView()
         {
             final ScaledDimensions dim = getFormulaList().getDimen();
             lineParameters.scaleFactor = dim.getScaleFactor();
@@ -880,7 +880,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             x.bracketsType = BracketsType.NEVER;
         }
 
-        public void initializePrimaryX()
+        void initializePrimaryX()
         {
             initializeX(xDataLayout.findViewWithTag(X_FUNCTION_TAG), -1);
         }
@@ -894,14 +894,14 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             y.bracketsType = BracketsType.NEVER;
         }
 
-        public void initializePrimaryY()
+        void initializePrimaryY()
         {
             initializeY(yDataLayout.findViewWithTag(Y_FUNCTION_TAG), -1);
             settingsView = yDataLayout.findViewWithTag(Y_SETTINGS_TAG);
             settingsView.prepare(CustomTextView.SymbolType.HOR_LINE, getFormulaList().getActivity(), PlotFunction.this);
         }
 
-        public Function2D addNewAfter()
+        Function2D addNewAfter()
         {
             int xViewIndex = ViewUtils.getViewIndex(xDataLayout, xLayout);
             int yViewIndex = ViewUtils.getViewIndex(yDataLayout, settingsView);
@@ -944,7 +944,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             return f;
         }
 
-        public void erase()
+        void erase()
         {
             terms.remove(x);
             terms.remove(y);
@@ -954,7 +954,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             yDataLayout.removeView(yLayout);
         }
 
-        public void removeSeparator()
+        void removeSeparator()
         {
             if (xSeparator != null)
             {
@@ -963,7 +963,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             }
         }
 
-        public boolean isContentValid(LinkHolder linkHolder)
+        boolean isContentValid(LinkHolder linkHolder)
         {
             linkedInterval = null;
             boolean isValid = true;
@@ -999,7 +999,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             return isValid;
         }
 
-        public void calculate(CalculaterTask thread) throws CancelException
+        void calculate(CalculaterTask thread) throws CancelException
         {
             final CalculatedValue calcVal = new CalculatedValue();
             xMinMaxValues[FunctionIf.MIN] = xMinMaxValues[FunctionIf.MAX] = Double.NaN;

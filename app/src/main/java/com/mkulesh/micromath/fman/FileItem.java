@@ -15,7 +15,7 @@ package com.mkulesh.micromath.fman;
 import java.io.File;
 import java.util.Date;
 
-public class FileItem extends AdapterIf.Item
+class FileItem extends AdapterIf.Item
 {
     public FileItem(String name)
     {

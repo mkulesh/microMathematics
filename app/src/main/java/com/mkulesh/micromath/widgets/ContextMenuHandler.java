@@ -44,7 +44,7 @@ public class ContextMenuHandler
             this.resId = resId;
         }
 
-        public int getResId()
+        int getResId()
         {
             return resId;
         }
@@ -74,7 +74,7 @@ public class ContextMenuHandler
         enabled[Type.PASTE.ordinal()] = a.getBoolean(R.styleable.CustomViewExtension_contextMenuPaste, true);
     }
 
-    public boolean isMenuEmpty()
+    private boolean isMenuEmpty()
     {
         for (int i = 0; i < Type.values().length; i++)
         {

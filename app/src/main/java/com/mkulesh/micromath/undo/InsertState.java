@@ -30,7 +30,7 @@ public final class InsertState implements Parcelable
         this.selectedId = selectedId;
     }
 
-    public InsertState(Parcel in)
+    private InsertState(Parcel in)
     {
         super();
         formulaId = in.readInt();

@@ -57,13 +57,13 @@ public class Commander extends DialogBase implements CommanderIf
     }
 
     public static final String PREF_LAST_SELECTED_PATH = "fman_last_selected_path";
-    public static final String PREF_LAST_SELECTED_FILE_TYPE = "fman_last_selected_file_type";
-    public static final String PREF_ADAPTER_MODE = "fman_adapter_mode";
+    private static final String PREF_LAST_SELECTED_FILE_TYPE = "fman_last_selected_file_type";
+    private static final String PREF_ADAPTER_MODE = "fman_adapter_mode";
 
-    protected static final int HOME_SCHEMA_H = AdapterHome.ORG_SCHEME.hashCode();
-    protected static final int FILE_SCHEMA_H = AdapterFileSystem.ORG_SCHEME.hashCode();
-    protected static final int SAF_SCHEMA_H = AdapterDocuments.ORG_SCHEME.hashCode();
-    protected static final int ASSETS_SCHEMA_H = AdapterAssets.ORG_SCHEME.hashCode();
+    private static final int HOME_SCHEMA_H = AdapterHome.ORG_SCHEME.hashCode();
+    private static final int FILE_SCHEMA_H = AdapterFileSystem.ORG_SCHEME.hashCode();
+    private static final int SAF_SCHEMA_H = AdapterDocuments.ORG_SCHEME.hashCode();
+    private static final int ASSETS_SCHEMA_H = AdapterAssets.ORG_SCHEME.hashCode();
 
     private final OnFileSelectedListener listener;
     private final AppCompatActivity context;
@@ -228,7 +228,7 @@ public class Commander extends DialogBase implements CommanderIf
         return ca;
     }
 
-    public AdapterIf CreateAdapterInstance(Uri uri)
+    private AdapterIf CreateAdapterInstance(Uri uri)
     {
         String scheme = uri.getScheme();
         if (!FileUtils.str(scheme))
@@ -267,7 +267,7 @@ public class Commander extends DialogBase implements CommanderIf
         okButton.setEnabled(isFileSelected());
     }
 
-    public final void operationFinished()
+    private void operationFinished()
     {
         if (null != destAdapter)
         {
@@ -275,7 +275,7 @@ public class Commander extends DialogBase implements CommanderIf
         }
     }
 
-    public void dispatchCommand(int id)
+    private void dispatchCommand(int id)
     {
         try
         {
@@ -598,7 +598,7 @@ public class Commander extends DialogBase implements CommanderIf
         return TERMINATE;
     }
 
-    public final void showMessage(String s)
+    private void showMessage(String s)
     {
         Toast.makeText(context, s, Toast.LENGTH_LONG).show();
     }

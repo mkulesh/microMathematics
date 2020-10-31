@@ -44,26 +44,26 @@ public abstract class PlotView extends CustomTextView
     private static final String STATE_COLORMAP_PARAMETERS = "colormap_parameters";
 
     // settings
-    protected final AxisProperties axisParameters = new AxisProperties();
-    protected final PlotProperties plotParameters = new PlotProperties();
-    protected ColorMapView colorMapView = null;
+    final AxisProperties axisParameters = new AxisProperties();
+    final PlotProperties plotParameters = new PlotProperties();
+    ColorMapView colorMapView = null;
 
     // cache
-    protected Bitmap drawingCache = null;
+    Bitmap drawingCache = null;
 
     // data
-    protected ArrayList<FunctionIf> functions = null;
-    protected int significantDigits = 6;
+    ArrayList<FunctionIf> functions = null;
+    int significantDigits = 6;
 
     /*********************************************************
      * Helper class that holds labels
      *********************************************************/
-    public static final class Label
+    static final class Label
     {
         Vector2D point = null;
         String name = null;
 
-        public Label(int idx, double v, Vector2D lc)
+        Label(int idx, double v, Vector2D lc)
         {
             point = (idx == FunctionIf.X) ? new Vector2D(v, lc.y) : new Vector2D(lc.x, v);
         }
@@ -247,7 +247,7 @@ public abstract class PlotView extends CustomTextView
      * Painting
      *********************************************************/
 
-    public void clearDrawingCache()
+    void clearDrawingCache()
     {
         drawingCache = null;
     }

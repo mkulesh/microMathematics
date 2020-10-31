@@ -33,7 +33,7 @@ public final class ReplaceState implements Parcelable
         public int formulaId;
         public Parcelable data;
 
-        public EntryState(int formulaId, FormulaBase.BaseType type, Parcelable data)
+        EntryState(int formulaId, FormulaBase.BaseType type, Parcelable data)
         {
             super();
             this.formulaId = formulaId;
@@ -41,7 +41,7 @@ public final class ReplaceState implements Parcelable
             this.data = data;
         }
 
-        public EntryState(Parcel in)
+        EntryState(Parcel in)
         {
             super();
             formulaId = in.readInt();
@@ -86,7 +86,7 @@ public final class ReplaceState implements Parcelable
         super();
     }
 
-    public ReplaceState(Parcel in)
+    private ReplaceState(Parcel in)
     {
         super();
         in.readTypedList(entries, EntryState.CREATOR);

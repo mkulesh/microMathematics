@@ -27,7 +27,7 @@ public final class AxisTypeConverter
         return (type == Type.LINEAR) ? value : FastMath.log10(value);
     }
 
-    public static double toBaseType(final double value, Type type)
+    private static double toBaseType(final double value, Type type)
     {
         return (type == Type.LINEAR) ? value : FastMath.pow(10.0, value);
     }

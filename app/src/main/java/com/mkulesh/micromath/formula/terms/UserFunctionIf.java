@@ -12,7 +12,7 @@
  */
 package com.mkulesh.micromath.formula.terms;
 
-public interface UserFunctionIf extends TermTypeIf
+interface UserFunctionIf extends TermTypeIf
 {
     /* Returns whether this user function represents a link to other function */
     boolean isLink();

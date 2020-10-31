@@ -98,7 +98,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         super(context);
     }
 
-    protected void prepare(AttributeSet attrs)
+    private void prepare(AttributeSet attrs)
     {
         menuHandler = new ContextMenuHandler(getContext());
         if (attrs != null)
@@ -404,7 +404,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         }
     }
 
-    public boolean processDelKey(KeyEvent event)
+    private boolean processDelKey(KeyEvent event)
     {
         if (event.getAction() == KeyEvent.ACTION_DOWN && event.getKeyCode() == KeyEvent.KEYCODE_DEL
                 && getText().length() == 0 && !toBeDeleted)
@@ -421,7 +421,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
 
     private class TermInputConnection extends InputConnectionWrapper
     {
-        public TermInputConnection(InputConnection target, boolean mutable)
+        TermInputConnection(InputConnection target, boolean mutable)
         {
             super(target, mutable);
         }

@@ -58,7 +58,7 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
     /*
      * Constants used to save/restore the instance state.
      */
-    public static final String XML_PROP_PLOT_STYLE = "plotStyle";
+    private static final String XML_PROP_PLOT_STYLE = "plotStyle";
     private static final String STATE_PLOT_STYLE = "two_d_plot_style";
     private static final String STATE_FUNCTIONVIEW_PARAMETERS = "functionview_parameters";
 
@@ -641,7 +641,7 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
             return labels;
         }
 
-        public Function3D()
+        Function3D()
         {
             for (int i = 0; i < 3; i++)
             {
@@ -649,7 +649,7 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
             }
         }
 
-        public void calculate(CalculaterTask thread) throws CancelException
+        void calculate(CalculaterTask thread) throws CancelException
         {
             final CalculatedValue calcVal = new CalculatedValue();
             ArrayList<Equation> linkedIntervals = getDirectIntervals();

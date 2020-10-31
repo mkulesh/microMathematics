@@ -28,14 +28,14 @@ import java.util.Locale;
 
 public class PlotProperties implements Parcelable
 {
-    public static final String XML_PROP_WIDTH = "width";
-    public static final String XML_PROP_HEIGHT = "height";
-    public static final String XML_PROP_AXES_STYLE = "axes_style";
-    public static final String XML_PROP_MESH_LINES = "meshLines";
-    public static final String XML_PROP_MESH_FILL = "meshFill";
-    public static final String XML_PROP_MESH_OPACITY = "meshOpacity";
-    public static final String XML_PROP_ROTATION = "rotation";
-    public static final String XML_PROP_ELEVATION = "elevation";
+    private static final String XML_PROP_WIDTH = "width";
+    private static final String XML_PROP_HEIGHT = "height";
+    private static final String XML_PROP_AXES_STYLE = "axes_style";
+    private static final String XML_PROP_MESH_LINES = "meshLines";
+    private static final String XML_PROP_MESH_FILL = "meshFill";
+    private static final String XML_PROP_MESH_OPACITY = "meshOpacity";
+    private static final String XML_PROP_ROTATION = "rotation";
+    private static final String XML_PROP_ELEVATION = "elevation";
 
     public enum AxesStyle
     {
@@ -69,7 +69,7 @@ public class PlotProperties implements Parcelable
     /**
      * Parcelable interface
      */
-    public PlotProperties(Parcel in)
+    private PlotProperties(Parcel in)
     {
         super();
         readFromParcel(in);
@@ -94,7 +94,7 @@ public class PlotProperties implements Parcelable
         dest.writeInt(elevation);
     }
 
-    public void readFromParcel(Parcel in)
+    private void readFromParcel(Parcel in)
     {
         width = in.readInt();
         height = in.readInt();

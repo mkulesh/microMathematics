@@ -236,7 +236,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     /**
      * Check whether an operation that blocks the user interface is currently performed
      */
-    public boolean isInOperation()
+    private boolean isInOperation()
     {
         return fragment.isInOperation();
     }
@@ -674,7 +674,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     /**
      * XML interface: procedure writes this list into the given stream
      */
-    public boolean writeToStream(OutputStream stream, String name)
+    private boolean writeToStream(OutputStream stream, String name)
     {
         try
         {
@@ -901,7 +901,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     /**
      * Procedure creates a formula with given type
      */
-    public FormulaBase deleteFormula(FormulaBase f, DeleteState state)
+    private FormulaBase deleteFormula(FormulaBase f, DeleteState state)
     {
         Coordinate coordinate = formulaListView.getCoordinate(f);
         final int prewRowCount = formulaListView.getList().getChildCount();
@@ -926,7 +926,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     /**
      * Procedure creates a formula with given type and given stored date
      */
-    public FormulaBase addBaseFormula(FormulaBase.BaseType type, Parcelable p)
+    private FormulaBase addBaseFormula(FormulaBase.BaseType type, Parcelable p)
     {
         FormulaBase f = createFormula(type);
         if (f != null)

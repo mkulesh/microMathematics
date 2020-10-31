@@ -24,8 +24,8 @@ import java.util.Locale;
 
 public class ColorMapProperties implements Parcelable
 {
-    public static final String XML_PROP_ZLABELSNUMBER = "zLabelsNumber";
-    public static final String XML_PROP_COLORMAP = "colorMap";
+    private static final String XML_PROP_ZLABELSNUMBER = "zLabelsNumber";
+    private static final String XML_PROP_COLORMAP = "colorMap";
 
     public enum ColorMap
     {
@@ -44,7 +44,7 @@ public class ColorMapProperties implements Parcelable
     /**
      * Parcelable interface
      */
-    public ColorMapProperties(Parcel in)
+    private ColorMapProperties(Parcel in)
     {
         super();
         readFromParcel(in);
@@ -63,7 +63,7 @@ public class ColorMapProperties implements Parcelable
         dest.writeInt(zLabelsNumber);
     }
 
-    public void readFromParcel(Parcel in)
+    private void readFromParcel(Parcel in)
     {
         colorMap = ColorMap.valueOf(in.readString());
         zLabelsNumber = in.readInt();

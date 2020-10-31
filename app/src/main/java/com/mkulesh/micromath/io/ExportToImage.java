@@ -23,7 +23,7 @@ import com.mkulesh.micromath.utils.CompatUtils;
 
 import java.io.OutputStream;
 
-public class ExportToImage
+class ExportToImage
 {
     private final OutputStream stream;
 

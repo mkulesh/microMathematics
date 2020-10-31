@@ -599,7 +599,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         showResult();
     }
 
-    public void clearResult()
+    private void clearResult()
     {
         resultType = ResultType.NONE;
         constantResult = null;

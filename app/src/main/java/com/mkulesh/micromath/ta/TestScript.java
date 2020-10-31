@@ -38,17 +38,17 @@ public class TestScript
     {
         private State mystate = null;
 
-        public SynchronizedState()
+        SynchronizedState()
         {
             super();
         }
 
-        public State get()
+        State get()
         {
             return mystate;
         }
 
-        public void set(State mystate)
+        void set(State mystate)
         {
             synchronized (this)
             {
@@ -175,7 +175,7 @@ public class TestScript
         return n;
     }
 
-    public String getDescription()
+    private String getDescription()
     {
         final int failedNumber = getTestCaseNumber(NumberType.FAILED);
         return "Test script: " + scriptName + ", content: " + scriptContent + ", number of test cases: "
