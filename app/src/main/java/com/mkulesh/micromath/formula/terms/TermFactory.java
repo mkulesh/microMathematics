@@ -17,6 +17,7 @@ import android.content.res.Resources;
 
 import com.mkulesh.micromath.formula.Palette;
 import com.mkulesh.micromath.formula.PaletteButton;
+import com.mkulesh.micromath.formula.TermParser;
 import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
@@ -72,7 +73,27 @@ public class TermFactory
      * Helper methods
      *********************************************************/
 
-    public static TermTypeIf findTerm(Context context, CustomEditText text, String s, boolean ensureManualTrigger)
+    private static int getShortcutId(TermTypeIf f, final String s, final Resources res, boolean skipShortcutInNumeric)
+    {
+        if (f instanceof Operators.OperatorType)
+        {
+            final Operators.OperatorType ops = (Operators.OperatorType)f;
+            if (skipShortcutInNumeric && ops.isSkipShortcutInNumeric())
+            {
+                if (TermParser.isNumeric(s))
+                {
+                    return Palette.NO_BUTTON;
+                }
+                if (f.getShortCutId() != Palette.NO_BUTTON && s.startsWith(res.getString(f.getShortCutId())))
+                {
+                    return Palette.NO_BUTTON;
+                }
+            }
+        }
+        return f.getShortCutId();
+    }
+
+    public static TermTypeIf findTerm(Context context, CustomEditText text, String s, boolean ensureManualTrigger, boolean numericRestriction)
     {
         final Resources res = context.getResources();
 
@@ -83,9 +104,11 @@ public class TermFactory
                 continue;
             }
 
+            final int shortcut = getShortcutId(f, s, res, numericRestriction);
+
             if (ensureManualTrigger)
             {
-                if (f.getShortCutId() != Palette.NO_BUTTON && s.contains(res.getString(f.getShortCutId())))
+                if (shortcut != Palette.NO_BUTTON && s.contains(res.getString(shortcut)))
                 {
                     // trigger found, nothing to do
                 }
@@ -137,9 +160,9 @@ public class TermFactory
                 }
             }
 
-            if (f.getShortCutId() != Palette.NO_BUTTON)
+            if (shortcut != Palette.NO_BUTTON)
             {
-                final String operator = res.getString(f.getShortCutId());
+                final String operator = res.getString(shortcut);
                 if (s.contains(operator))
                 {
                     final String fName = s.substring(0, s.indexOf(operator)).trim();

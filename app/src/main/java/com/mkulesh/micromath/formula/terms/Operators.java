@@ -42,26 +42,40 @@ public class Operators extends FormulaTerm
      */
     public enum OperatorType implements TermTypeIf
     {
-        PLUS(R.string.formula_operator_plus, R.drawable.p_operator_plus, R.string.math_operator_plus),
-        MINUS(R.string.formula_operator_minus, R.drawable.p_operator_minus, R.string.math_operator_minus),
-        MULT(R.string.formula_operator_mult, R.drawable.p_operator_mult, R.string.math_operator_mult),
-        DIVIDE(R.string.formula_operator_divide, R.drawable.p_operator_divide, R.string.math_operator_divide),
-        DIVIDE_SLASH(
-                R.string.formula_operator_divide_slash,
+        PLUS(R.string.formula_operator_plus,
+                R.drawable.p_operator_plus,
+                R.string.math_operator_plus,
+                true),
+        MINUS(R.string.formula_operator_minus,
+                R.drawable.p_operator_minus,
+                R.string.math_operator_minus,
+                true),
+        MULT(R.string.formula_operator_mult,
+                R.drawable.p_operator_mult,
+                R.string.math_operator_mult,
+                false),
+        DIVIDE(R.string.formula_operator_divide,
+                R.drawable.p_operator_divide,
+                R.string.math_operator_divide,
+                false),
+        DIVIDE_SLASH(R.string.formula_operator_divide_slash,
                 R.drawable.p_operator_divide_slash,
-                R.string.math_operator_divide_slash);
+                R.string.math_operator_divide_slash,
+                false);
 
         private final int shortCutId;
         private final int imageId;
         private final int descriptionId;
         private final String lowerCaseName;
+        private final boolean skipShortcutInNumeric;
 
-        OperatorType(int shortCutId, int imageId, int descriptionId)
+        OperatorType(int shortCutId, int imageId, int descriptionId, boolean skipShortcutInNumeric)
         {
             this.shortCutId = shortCutId;
             this.imageId = imageId;
             this.descriptionId = descriptionId;
             this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
+            this.skipShortcutInNumeric = skipShortcutInNumeric;
         }
 
         public GroupType getGroupType()
@@ -72,6 +86,11 @@ public class Operators extends FormulaTerm
         public int getShortCutId()
         {
             return shortCutId;
+        }
+
+        public boolean isSkipShortcutInNumeric()
+        {
+            return skipShortcutInNumeric;
         }
 
         public int getImageId()

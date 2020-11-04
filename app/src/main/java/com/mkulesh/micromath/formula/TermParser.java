@@ -51,6 +51,8 @@ public class TermParser
     private static final String POSITIVE_SIGN = "+";
     private static final String NEGATIVE_SIGN = "-";
     public static final String UNIT_SEPARATOR = " ";
+    public static final String EXP_SEPARATOR1 = "E+";
+    public static final String EXP_SEPARATOR2 = "E-";
 
     public TermParser()
     {
@@ -458,5 +460,54 @@ public class TermParser
         {
             return null;
         }
+    }
+
+    public static boolean isNumeric(final String strNum)
+    {
+        if (strNum == null)
+        {
+            return false;
+        }
+
+        String text = strNum.toUpperCase();
+        if (text.contains(UNIT_SEPARATOR))
+        {
+            final int sepPos = text.indexOf(UNIT_SEPARATOR);
+            text = strNum.substring(0, sepPos).trim();
+        }
+
+        if (isIntegerBefore(text, EXP_SEPARATOR1) || isIntegerBefore(text, EXP_SEPARATOR2))
+        {
+            return true;
+        }
+
+        try
+        {
+            Double.parseDouble(text);
+        }
+        catch (NumberFormatException nfe)
+        {
+            return complexValueOf(text) != null;
+        }
+
+        return true;
+    }
+
+    private static boolean isIntegerBefore(final String text, final String sep)
+    {
+        if (text.endsWith(sep))
+        {
+            try
+            {
+                final int sepPos = text.indexOf(sep);
+                Integer.parseInt(text.substring(0, sepPos).trim());
+                return true;
+            }
+            catch (NumberFormatException nfe)
+            {
+                // nothing to do
+            }
+        }
+        return false;
     }
 }

@@ -46,8 +46,8 @@
     <!-- Formula elements used in graphical representation and by input -->
     <string name="formula_assign_definition" translatable="false">:=</string>
     <string name="formula_result_definition" translatable="false">=</string>
-    <string name="formula_operator_plus" translatable="false">++</string>
-    <string name="formula_operator_minus" translatable="false">--</string>
+    <string name="formula_operator_plus" translatable="false">+</string>
+    <string name="formula_operator_minus" translatable="false">-</string>
     <string name="formula_operator_mult" translatable="false">*</string>
     <string name="formula_operator_divide" translatable="false">÷</string>
     <string name="formula_operator_divide_slash" translatable="false">/</string>

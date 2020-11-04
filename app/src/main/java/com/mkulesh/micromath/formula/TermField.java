@@ -875,7 +875,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
      */
     private FormulaTerm convertToTerm(String s, Parcelable p, boolean ensureManualTrigger)
     {
-        final TermTypeIf f = TermFactory.findTerm(getContext(), text, s, ensureManualTrigger);
+        final TermTypeIf f = TermFactory.findTerm(getContext(), text, s, ensureManualTrigger, true);
         return convertToTerm(f, s, p);
     }
 
@@ -938,7 +938,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         }
 
         final TermTypeIf termType = TermFactory.findTerm(
-                getContext(), null, code, /*ensureManualTrigger=*/ false);
+                getContext(), null, code, false, true);
         if (termType == null)
         {
             return;
