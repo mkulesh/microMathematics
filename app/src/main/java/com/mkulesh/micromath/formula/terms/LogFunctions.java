@@ -144,9 +144,9 @@ public class LogFunctions extends FunctionBase
     // Attention: this is not thread-safety declaration!
     private final CalculatedValue a0derVal = new CalculatedValue(), tmpVal = new CalculatedValue();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private LogFunctions(FunctionType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
@@ -155,9 +155,9 @@ public class LogFunctions extends FunctionBase
         createGeneralFunction(R.layout.formula_function_named, s, getFunctionType().getArgNumber(), idx, owner.isPasteFromClipboard());
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public LogFunctions(Context context)
     {
@@ -169,18 +169,18 @@ public class LogFunctions extends FunctionBase
         super();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Common getters
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private FunctionType getFunctionType()
     {
         return (FunctionType) termType;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     protected String getFunctionLabel()

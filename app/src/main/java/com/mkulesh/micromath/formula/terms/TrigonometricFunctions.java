@@ -128,9 +128,9 @@ public class TrigonometricFunctions extends FunctionBase
     // Attention: this is not thread-safety declaration!
     private final CalculatedValue a0derVal = new CalculatedValue(), tmpVal = new CalculatedValue();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private TrigonometricFunctions(FunctionType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
@@ -139,9 +139,9 @@ public class TrigonometricFunctions extends FunctionBase
         createGeneralFunction(R.layout.formula_function_named, s, getFunctionType().getArgNumber(), idx, owner.isPasteFromClipboard());
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public TrigonometricFunctions(Context context)
     {
@@ -153,18 +153,18 @@ public class TrigonometricFunctions extends FunctionBase
         super();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Common getters
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private FunctionType getFunctionType()
     {
         return (FunctionType) termType;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     protected String getFunctionLabel()

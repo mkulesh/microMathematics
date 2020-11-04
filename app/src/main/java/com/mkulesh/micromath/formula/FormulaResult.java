@@ -74,9 +74,9 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     // undo
     private FormulaState formulaState = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public FormulaResult(FormulaList formulaList, int id)
     {
@@ -85,9 +85,9 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         onCreate();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public FormulaResult(Context context)
     {
@@ -99,9 +99,9 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         super(null, null, 0);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public BaseType getBaseType()
@@ -194,9 +194,9 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         return super.getNextFocusId(owner, focusType);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FocusChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public int onGetNextFocusId(CustomEditText owner, NextFocusType focusType)
@@ -217,9 +217,9 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         return getNextFocusId(owner, focusType);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for CalculationResult superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void invalidateResult()
@@ -408,9 +408,9 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         return properties.disableCalculation;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onDetails(View owner)
@@ -465,9 +465,9 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         return resultType == ResultType.ARRAY_1D;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Parcelable interface: procedure writes the formula state
@@ -535,9 +535,9 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         return false;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * FormulaResult-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public boolean isResultVisible()
     {

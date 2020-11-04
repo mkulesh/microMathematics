@@ -140,9 +140,9 @@ public class Operators extends FormulaTerm
     private final CalculatedValue fVal = new CalculatedValue(), gVal = new CalculatedValue(),
             fDer = new CalculatedValue(), gDer = new CalculatedValue();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private Operators(OperatorType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
@@ -151,9 +151,9 @@ public class Operators extends FormulaTerm
         onCreate(s, idx, owner.bracketsType);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public Operators(Context context)
     {
@@ -165,18 +165,18 @@ public class Operators extends FormulaTerm
         super();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Common getters
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public OperatorType getOperatorType()
     {
         return (OperatorType) termType;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
@@ -312,9 +312,9 @@ public class Operators extends FormulaTerm
         return v;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onDelete(CustomEditText owner)
@@ -332,9 +332,9 @@ public class Operators extends FormulaTerm
         getFormulaRoot().getFormulaList().onManualInput();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * FormulaTermOperator-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure creates the formula layout

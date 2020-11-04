@@ -145,9 +145,9 @@ public class NumberFunctions extends FunctionBase
     // Attention: this is not thread-safety declaration!
     private final CalculatedValue tmpVal = new CalculatedValue();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private NumberFunctions(FunctionType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
@@ -156,9 +156,9 @@ public class NumberFunctions extends FunctionBase
         createGeneralFunction(R.layout.formula_function_named, s, getFunctionType().getArgNumber(), idx, owner.isPasteFromClipboard());
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public NumberFunctions(Context context)
     {
@@ -170,18 +170,18 @@ public class NumberFunctions extends FunctionBase
         super();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Common getters
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private FunctionType getFunctionType()
     {
         return (FunctionType) termType;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     protected String getFunctionLabel()

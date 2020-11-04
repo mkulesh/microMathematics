@@ -40,9 +40,9 @@ import com.mkulesh.micromath.widgets.TextChangeIf;
 import java.util.ArrayList;
 import java.util.List;
 
-/*********************************************************
+/*--------------------------------------------------------*
  * This class implements symbol palette
- *********************************************************/
+ *--------------------------------------------------------*/
 public class Palette implements OnClickListener, OnLongClickListener, TextChangeIf, FocusChangeIf, PaletteSettingsChangeIf
 {
     public static final int NO_BUTTON = -1;

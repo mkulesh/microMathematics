@@ -87,9 +87,9 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
     // undo
     private FormulaState formulaState = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public PlotFunction(FormulaList formulaList, int id)
     {
@@ -98,9 +98,9 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         onCreate();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public PlotFunction(Context context)
     {
@@ -112,9 +112,9 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         super(null, null, 0);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public BaseType getBaseType()
@@ -171,9 +171,9 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         return true;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for CalculationResult superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void invalidateResult()
@@ -217,9 +217,9 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         functionView.invalidate();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onTermSelection(View owner, boolean isSelected, ArrayList<View> list)
@@ -418,9 +418,9 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * PlotParametersChangeIf interface implementation
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public Dimension getDimension()
@@ -487,9 +487,9 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         ViewUtils.invalidateLayout(functionView, layout);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * SizeChangedIf interface implementation
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onSizeChanged(SizeChangingLayout owner, int w, int h)
@@ -499,9 +499,9 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         cornerView.post(() -> cornerView.requestLayout());
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Parcelable interface: procedure writes the formula state
@@ -604,9 +604,9 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         return false;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * PlotFunction-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure creates the formula layout
@@ -789,9 +789,9 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         return super.setEmptyBorders(minMaxValues, f1, f2);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Helper class that implements function interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private class Function2D implements FunctionIf
     {

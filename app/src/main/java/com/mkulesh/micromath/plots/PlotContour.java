@@ -77,9 +77,9 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
     // undo
     private FormulaState formulaState = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public PlotContour(FormulaList formulaList, int id)
     {
@@ -88,9 +88,9 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
         onCreate();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public PlotContour(Context context)
     {
@@ -102,9 +102,9 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
         super(null, null, 0);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public BaseType getBaseType()
@@ -158,9 +158,9 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
         updatePlotView();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for CalculationResult superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void invalidateResult()
@@ -213,9 +213,9 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
         functionView.invalidate();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onTermSelection(View owner, boolean isSelected, ArrayList<View> list)
@@ -267,9 +267,9 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
         super.onObjectProperties(owner);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * PlotParametersChangeIf interface implementation
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public Dimension getDimension()
@@ -341,9 +341,9 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
         ViewUtils.invalidateLayout(functionView, layout);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * SizeChangedIf interface implementation
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onSizeChanged(SizeChangingLayout owner, int w, int h)
@@ -357,9 +357,9 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
         });
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Parcelable interface: procedure writes the formula state
@@ -457,9 +457,9 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
         return false;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * PlotContour-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private void setTwoDPlotStyle(TwoDPlotStyle style)
     {
@@ -586,9 +586,9 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
         return super.setEmptyBorders(function.getMinMaxValues(idx), f1, f2);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Helper class that implements function interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private class Function3D implements FunctionIf
     {

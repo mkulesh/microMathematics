@@ -26,9 +26,9 @@ public class FunctionPlotView extends PlanePlotView
     private final Path shapePath = new Path();
     private final Paint shapePaint = new Paint();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public FunctionPlotView(Context context)
     {

@@ -31,18 +31,18 @@ import androidx.annotation.NonNull;
 
 public abstract class CalculationResult extends LinkHolder
 {
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public CalculationResult(FormulaList formulaList, LinearLayout layout, int termDepth)
     {
         super(formulaList, layout, termDepth);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public CalculationResult(Context context)
     {
@@ -54,9 +54,9 @@ public abstract class CalculationResult extends LinkHolder
         super(null, null, 0);
     }
 
-    /*********************************************************
-     * Methods to be (re)implemented in derived a class
-     *********************************************************/
+    /*--------------------------------------------------------*
+     *  Methods to be (re)implemented in derived a class
+     *--------------------------------------------------------*/
 
     /**
      * Procedure performs invalidation for this object
@@ -85,9 +85,9 @@ public abstract class CalculationResult extends LinkHolder
         return false;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for Object superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @NonNull
     @Override
@@ -96,9 +96,9 @@ public abstract class CalculationResult extends LinkHolder
         return "Calculation " + getBaseType().toString() + "(Id: " + getId() + ")";
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void undo(FormulaState state)
@@ -113,9 +113,9 @@ public abstract class CalculationResult extends LinkHolder
         return true;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Helper methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     protected boolean setEmptyBorders(double[] minMaxValues, TermField fMin, TermField fMax)
     {

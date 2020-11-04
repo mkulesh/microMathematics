@@ -90,9 +90,9 @@ public class TwoDScrollView extends FrameLayout
     private EdgeEffect mEdgeGlowLeft;
     private EdgeEffect mEdgeGlowRight;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public TwoDScrollView(Context context)
     {
@@ -173,9 +173,9 @@ public class TwoDScrollView extends FrameLayout
         super.addView(child, index, params);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Drawing
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void draw(Canvas canvas)
@@ -244,9 +244,9 @@ public class TwoDScrollView extends FrameLayout
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public LinearLayout getMainLayout()
     {
@@ -258,9 +258,9 @@ public class TwoDScrollView extends FrameLayout
         this.listChangeIf = listChangeIf;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Touch processing
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event)
@@ -459,9 +459,9 @@ public class TwoDScrollView extends FrameLayout
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Realization
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     protected float getTopFadingEdgeStrength()

@@ -128,9 +128,9 @@ public class ArrayFunctions extends FunctionBase
     private FileReader fileReader = null;
     private Equation linkedArray = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private ArrayFunctions(FunctionType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
@@ -143,9 +143,9 @@ public class ArrayFunctions extends FunctionBase
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public ArrayFunctions(Context context)
     {
@@ -157,18 +157,18 @@ public class ArrayFunctions extends FunctionBase
         super();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Common getters
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private FunctionType getFunctionType()
     {
         return (FunctionType) termType;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     protected String getFunctionLabel()
@@ -302,9 +302,9 @@ public class ArrayFunctions extends FunctionBase
         return v;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Methods related to file operation
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public void prepareFileOperation()
     {

@@ -441,9 +441,9 @@ public class FormulaListView
         return null;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Helper static methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private static FormulaBase getNextFormula(LinearLayout l, int idx)
     {
@@ -499,9 +499,9 @@ public class FormulaListView
         return v;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Helper class that holds a single row
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public static final class ListRow extends CustomLayout
     {

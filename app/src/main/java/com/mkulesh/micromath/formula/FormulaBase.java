@@ -103,9 +103,9 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     final int termDepth;
     private boolean inRightOfPrevious = false;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public FormulaBase(FormulaList formulaList, LinearLayout layout, int termDepth)
     {
@@ -116,9 +116,9 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         setSaveEnabled(false);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Primitives
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure checks whether this formula is a root formula
@@ -184,9 +184,9 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         this.inRightOfPrevious = inRightOfPrevious;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for View superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void setSelected(boolean isSelected)
@@ -195,18 +195,18 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
                 (isSelected) ? R.attr.colorFormulaHighlighted : R.attr.colorFormulaBackground));
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Methods to be (re)implemented in derived a class
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Getter that returns the type of this base formula
      */
     public abstract BaseType getBaseType();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onFocus(View v, boolean hasFocus)
@@ -521,9 +521,9 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         return false;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Parcelable interface: procedure writes the formula state
@@ -666,9 +666,9 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Undo feature
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure returns undo state for this formula
@@ -705,9 +705,9 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * FormulaBase-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure inflates layout with given resource ID

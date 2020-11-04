@@ -150,9 +150,9 @@ public class UserFunctions extends FunctionBase
     // Attention: this is not thread-safety declaration!
     private final CalculatedValue a0derVal = new CalculatedValue();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private UserFunctions(FunctionType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
@@ -161,9 +161,9 @@ public class UserFunctions extends FunctionBase
         onCreate(s, idx);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public UserFunctions(Context context)
     {
@@ -175,18 +175,18 @@ public class UserFunctions extends FunctionBase
         super();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Common getters
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public FunctionType getFunctionType()
     {
         return (FunctionType) termType;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     protected String getFunctionLabel()
@@ -474,9 +474,9 @@ public class UserFunctions extends FunctionBase
         return v;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public boolean isNewTermEnabled()
@@ -520,9 +520,9 @@ public class UserFunctions extends FunctionBase
         return true;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * FormulaTermFunction-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private int getArgumentDepth()
     {

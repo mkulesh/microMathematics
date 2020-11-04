@@ -55,9 +55,9 @@ public abstract class PlotView extends CustomTextView
     ArrayList<FunctionIf> functions = null;
     int significantDigits = 6;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Helper class that holds labels
-     *********************************************************/
+     *--------------------------------------------------------*/
     static final class Label
     {
         Vector2D point = null;
@@ -69,9 +69,9 @@ public abstract class PlotView extends CustomTextView
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public PlotView(Context context)
     {
@@ -111,9 +111,9 @@ public abstract class PlotView extends CustomTextView
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Parcelable interface: procedure writes the formula state
@@ -167,9 +167,9 @@ public abstract class PlotView extends CustomTextView
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Properties
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public AxisProperties getAxisParameters()
     {
@@ -191,9 +191,9 @@ public abstract class PlotView extends CustomTextView
         this.colorMapView = colorMapView;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Data
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public abstract void setArea(double minX, double maxX, double minY, double maxY);
 
@@ -243,9 +243,9 @@ public abstract class PlotView extends CustomTextView
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Painting
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     void clearDrawingCache()
     {

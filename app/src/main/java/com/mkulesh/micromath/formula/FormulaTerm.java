@@ -37,9 +37,9 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
     protected TermTypeIf termType = null;
     protected boolean useBrackets = false;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     protected FormulaTerm(TermField owner, LinearLayout layout) throws Exception
     {
@@ -54,9 +54,9 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         this.formulaRoot = null;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Common getters
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @NonNull
     @Override
@@ -103,9 +103,9 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         return useBrackets;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Methods to be Implemented in derived a class
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Returns term type
@@ -122,9 +122,9 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
      */
     protected abstract CustomEditText initializeTerm(CustomEditText v, LinearLayout l);
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onCopyToClipboard()
@@ -152,9 +152,9 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         return super.getNextFocusId(owner, focusType);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * FormulaTerm-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * This procedure shall be called in order to prepare all visual elements

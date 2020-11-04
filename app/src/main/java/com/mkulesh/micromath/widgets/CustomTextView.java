@@ -64,9 +64,9 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
     private ContextMenuHandler menuHandler = null;
     private FormulaChangeIf formulaChangeIf = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public CustomTextView(Context context)
     {
@@ -193,9 +193,9 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
 
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Painting
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public int getBaseline()
@@ -456,9 +456,9 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
         c.drawPath(path, paint);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for OnClickListener interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onClick(View v)
@@ -469,9 +469,9 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Context menu handling
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure returns the parent action mode or null if there are no related mode

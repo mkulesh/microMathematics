@@ -20,9 +20,9 @@ import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.ArrayList;
 
-/*********************************************************
+/*--------------------------------------------------------*
  * Array result for equation
- *********************************************************/
+ *--------------------------------------------------------*/
 public class EquationArrayResult
 {
     public final static int MAX_DIMENSION = 3;

@@ -49,9 +49,9 @@ public class ResultMatrixLayout extends TableLayout
     private int colsNumber = 0;
     private final ArrayList<CustomEditText> fields = new ArrayList<>();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public ResultMatrixLayout(Context context, AttributeSet attrs)
     {

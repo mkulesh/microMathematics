@@ -65,9 +65,9 @@ public class SurfacePlotView extends PlotView
     private Label[] xLabels = null;
     private Label[] yLabels = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public SurfacePlotView(Context context)
     {
@@ -92,9 +92,9 @@ public class SurfacePlotView extends PlotView
         plotParameters.twoDPlotStyle = TwoDPlotStyle.SURFACE;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Data
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public void setArea(double minX, double maxX, double minY, double maxY)
     {
@@ -227,9 +227,9 @@ public class SurfacePlotView extends PlotView
         return retValue;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Painting
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private void getScaledPadding(Rect r)
     {

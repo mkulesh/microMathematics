@@ -100,9 +100,9 @@ public class MainFragmentWorksheet extends BaseFragment
         super.onResume();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * File handling
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private void initializeAssets(String[] stringArray)
     {

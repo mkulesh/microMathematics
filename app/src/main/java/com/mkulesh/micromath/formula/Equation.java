@@ -43,9 +43,9 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     private TermField rightTerm = null;
     private CalculatedValue[] argumentValues = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constant result
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private class EquationConstantResult
     {
@@ -65,9 +65,9 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     private EquationConstantResult constantResult = null;
     private EquationArrayResult arrayResult = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public Equation(FormulaList formulaList, int id)
     {
@@ -76,9 +76,9 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         onCreate();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public Equation(Context context)
     {
@@ -90,9 +90,9 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         super(null, null, 0);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for Object superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @NonNull
     @Override
@@ -118,9 +118,9 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         return "Formula " + getBaseType().toString() + "(Id: " + getId() + ", Name: " + n + ")";
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public BaseType getBaseType()
@@ -241,9 +241,9 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         return null;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation of ArgumentHolderIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public ArrayList<String> getArguments()
@@ -271,9 +271,9 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         return CalculatedValue.NaN;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for Calculatable interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
@@ -302,9 +302,9 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         return rightTerm.getDerivativeValue(var, thread, outValue);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Equation-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void invalidateResult()
@@ -371,9 +371,9 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Equation-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure creates the formula layout

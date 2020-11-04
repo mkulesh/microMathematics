@@ -61,9 +61,9 @@ public class CustomLayout extends LinearLayout
     private boolean customFeaturesDisabled = false;
     private int textColor = Color.BLACK;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public CustomLayout(Context context, AttributeSet attrs)
     {
@@ -156,9 +156,9 @@ public class CustomLayout extends LinearLayout
         this.customFeaturesDisabled = customFeaturesDisabled;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Painting
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private int topOfPreviousBaseLine(int currBaseLine, int currHeight, int prevBaseLine)
     {

@@ -47,9 +47,9 @@ public abstract class PlanePlotView extends PlotView
     final Point p2 = new Point();
     final Vector2D tmpVec = new Vector2D();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public PlanePlotView(Context context)
     {
@@ -66,9 +66,9 @@ public abstract class PlanePlotView extends PlotView
         super(context, attrs, defStyle);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Data
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void setArea(double minX, double maxX, double minY, double maxY)
@@ -117,9 +117,9 @@ public abstract class PlanePlotView extends PlotView
                 getPaddingBottom() + arrowStroke);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Labels
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private Label[] makeLabels(int idx, int labelNumber, AxisTypeConverter.Type axisType)
     {
@@ -194,9 +194,9 @@ public abstract class PlanePlotView extends PlotView
         return retValue;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Painting
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     protected abstract void drawContent(Canvas c, FunctionIf f);
 

@@ -147,9 +147,9 @@ public class PaletteButton extends AppCompatImageButton
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Performance optimization: fast color settings
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private int colorAttrId = Integer.MIN_VALUE;
 

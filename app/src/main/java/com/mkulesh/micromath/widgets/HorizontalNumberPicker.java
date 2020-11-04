@@ -38,9 +38,9 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
     public int minValue = 1;
     public int maxValue = Integer.MAX_VALUE;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public HorizontalNumberPicker(Context context, AttributeSet attrs)
     {

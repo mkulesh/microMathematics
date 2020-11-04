@@ -22,9 +22,9 @@ import com.mkulesh.micromath.properties.PlotProperties.TwoDPlotStyle;
 
 public class ContourPlotView extends PlanePlotView
 {
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public ContourPlotView(Context context)
     {

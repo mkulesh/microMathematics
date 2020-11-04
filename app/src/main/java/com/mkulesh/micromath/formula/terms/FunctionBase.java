@@ -56,9 +56,9 @@ public abstract class FunctionBase extends FormulaTerm
     CustomTextView functionTerm = null;
     CalculatedValue[] argVal = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     FunctionBase(TermField owner, LinearLayout layout) throws Exception
     {
@@ -70,9 +70,9 @@ public abstract class FunctionBase extends FormulaTerm
         super();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Methods to be Implemented in derived a class
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Returns function label to be used if function is deleted

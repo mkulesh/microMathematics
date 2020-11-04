@@ -271,9 +271,9 @@ class ImportFromSMathStudio
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Parser methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private void parseRegion(final Element e, final Element prevRegion, final XmlSerializer serializer) throws Exception
     {
@@ -668,9 +668,9 @@ class ImportFromSMathStudio
         serializer.endTag(FormulaList.XML_NS, FormulaList.XML_TERM_TAG);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Helper methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private static final class ExpressionProperties
     {

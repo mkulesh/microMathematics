@@ -74,9 +74,9 @@ public class MainFragmentAsset extends BaseFragment
         ((MainActivity) activity).updateFragmentInfo(this);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * File handling
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private void openAsset()
     {

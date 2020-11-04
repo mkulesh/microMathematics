@@ -77,9 +77,9 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     private ContextMenuHandler menuHandler = null;
     private FormulaChangeIf formulaChangeIf = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public CustomEditText(Context context, AttributeSet attrs, int defStyle)
     {
@@ -178,9 +178,9 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Custom content types
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public boolean isEmptyEnabled()
     {
@@ -222,9 +222,9 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         return arrayType;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public boolean isTextFragment()
     {
@@ -291,9 +291,9 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         return fileName;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Painting
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public int getBaseline()
@@ -301,9 +301,9 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         return ((this.getMeasuredHeight() - getPaddingBottom() + getPaddingTop()) / 2);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Editing
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Set the text watcher interface
@@ -493,9 +493,9 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         return super.dispatchKeyShortcutEvent(event);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Navigation
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onFocusChange(View v, boolean hasFocus)
@@ -518,9 +518,9 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Context menu handling
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure returns the parent action mode or null if there are no related mode
@@ -583,9 +583,9 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Performance optimization: fast color settings
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private int backgroundDrawableId = Integer.MIN_VALUE;
     private int backgroundAttrId = Integer.MIN_VALUE;

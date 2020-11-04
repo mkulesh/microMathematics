@@ -84,9 +84,9 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
     private int originalWidth = 0, originalHeight = 0;
     private ColorFilter colorFilter = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public CustomImageView(Context context)
     {
@@ -146,9 +146,9 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public void loadImage(ImageProperties parameters)
     {
@@ -426,9 +426,9 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Painting
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @SuppressLint("DrawAllocation")
     @Override
@@ -466,9 +466,9 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Special methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private void clear()
     {

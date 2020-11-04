@@ -22,9 +22,9 @@ import androidx.preference.PreferenceManager;
 
 import com.mkulesh.micromath.plus.R;
 
-/*********************************************************
+/*--------------------------------------------------------*
  * Handling of themes
- *********************************************************/
+ *--------------------------------------------------------*/
 public final class AppTheme
 {
     private static final String PREF_APP_THEME = "app_theme";

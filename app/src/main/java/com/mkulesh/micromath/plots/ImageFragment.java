@@ -50,9 +50,9 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
     // undo
     private FormulaState formulaState = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public ImageFragment(FormulaList formulaList, int id)
     {
@@ -61,9 +61,9 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         onCreate();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public ImageFragment(Context context)
     {
@@ -75,9 +75,9 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         super(null, null, 0);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for Object superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @NonNull
     @Override
@@ -86,9 +86,9 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         return "Formula " + getBaseType().toString() + "(Id: " + getId() + ")";
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public BaseType getBaseType()
@@ -121,9 +121,9 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         ViewUtils.invalidateLayout(imageView, layout);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onTermSelection(View owner, boolean isSelected, ArrayList<View> list)
@@ -175,9 +175,9 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         d.show();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Parcelable interface: procedure writes the formula state
@@ -252,9 +252,9 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         return false;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * ImageFragment-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure creates the formula layout

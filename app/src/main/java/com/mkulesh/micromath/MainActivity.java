@@ -305,9 +305,9 @@ public class MainActivity extends AppCompatActivity
         super.attachBaseContext(AppLocale.ContextWrapper.wrap(newBase, prefLocale));
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Instance state
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState)
@@ -348,9 +348,9 @@ public class MainActivity extends AppCompatActivity
         super.onRestoreInstanceState(inState);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Context menu handling
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public androidx.appcompat.view.ActionMode getActionMode()
     {
@@ -405,9 +405,9 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Formula clipboard
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure stores given formula into the internal clipboard
@@ -425,9 +425,9 @@ public class MainActivity extends AppCompatActivity
         return storedFormula;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Navigation drawer
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private void prepareNavigationView()
     {

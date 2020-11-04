@@ -25,27 +25,27 @@ public abstract class LinkHolder extends FormulaBase
     private final ArrayList<Equation> directFunctions = new ArrayList<>();
     private final ArrayList<Equation> allFunctions = new ArrayList<>();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     LinkHolder(FormulaList formulaList, LinearLayout layout, int termDepth)
     {
         super(formulaList, layout, termDepth);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public LinkHolder(Context context)
     {
         super(null, null, 0);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public boolean isContentValid(ValidationPassType type)
@@ -69,9 +69,9 @@ public abstract class LinkHolder extends FormulaBase
         return isValid;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * LinkHolder-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure returns the list of directly linked intervals

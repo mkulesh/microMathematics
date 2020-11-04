@@ -23,9 +23,9 @@ import androidx.preference.PreferenceManager;
 
 import java.util.Locale;
 
-/*********************************************************
+/*--------------------------------------------------------*
  * Handling of locale (language etc)
- *********************************************************/
+ *--------------------------------------------------------*/
 public final class AppLocale
 {
     private static final String PREF_APP_LANGUAGE = "app_language";

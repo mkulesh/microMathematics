@@ -152,9 +152,9 @@ public class CommonFunctions extends FunctionBase
     // Attention: this is not thread-safety declaration!
     private final CalculatedValue a0derVal = new CalculatedValue(), a1derVal = new CalculatedValue();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private CommonFunctions(FunctionType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
@@ -163,9 +163,9 @@ public class CommonFunctions extends FunctionBase
         createGeneralFunction(getFunctionType().getLayoutId(), s, getFunctionType().getArgNumber(), idx, owner.isPasteFromClipboard());
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public CommonFunctions(Context context)
     {
@@ -177,18 +177,18 @@ public class CommonFunctions extends FunctionBase
         super();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Common getters
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public FunctionType getFunctionType()
     {
         return (FunctionType) termType;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     protected String getFunctionLabel()
@@ -577,9 +577,9 @@ public class CommonFunctions extends FunctionBase
         return super.getArgumentTerm();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     protected boolean isRemainingTermOnDelete()

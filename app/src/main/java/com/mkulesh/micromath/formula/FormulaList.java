@@ -130,9 +130,9 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     @SuppressLint("UseSparseArrays")
     private final HashMap<Integer, FormulaBase> formulas = new HashMap<>();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public FormulaList(BaseFragment fragment, View rootView)
     {
@@ -157,9 +157,9 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         undoState = new UndoState(activity);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Primitives
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure return the main activity object
@@ -280,9 +280,9 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         return taSession;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Access to MainActivity
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure stores given formula into the internal clipboard
@@ -318,9 +318,9 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for interfaces
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onClick(View v)
@@ -573,9 +573,9 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure reads a file from resource folder
@@ -734,9 +734,9 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Undo feature
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure returns undo state container
@@ -832,9 +832,9 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         IdGenerator.enableIdRestore = false;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * FormulaList-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Set that an operation blocking the user interface is currently performed

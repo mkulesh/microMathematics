@@ -37,9 +37,9 @@ public class TermFactory
     private static ArrayList<TermTypeIf> allTerms;
     private static Map<String, TermTypeIf> termMap;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Factory methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public static void prepare()
     {
@@ -69,9 +69,9 @@ public class TermFactory
         return termMap;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Helper methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private static int getShortcutId(TermTypeIf f, final String s, final Resources res, boolean skipShortcutInNumeric)
     {

@@ -110,9 +110,9 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     public BracketsType bracketsType = BracketsType.ALWAYS;
     public int termDepth = 0;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public TermField(FormulaBase formulaRoot, FormulaBase parentFormula, LinearLayout layout, int termDepth,
                      CustomEditText text)
@@ -148,9 +148,9 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         updateViewColor();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Methods used recursively for the formula tree
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public void collectElemets(LinearLayout layout, ArrayList<View> out)
     {
@@ -392,9 +392,9 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation of TextChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void beforeTextChanged(String s, boolean isManualInput)
@@ -460,9 +460,9 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         return parentFormula.getNextFocusId(text, focusType);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Parcelable interface: procedure writes the formula state
@@ -579,9 +579,9 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Undo feature
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure stores undo state for this term
@@ -602,9 +602,9 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * TermField-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure returns the context for this term field

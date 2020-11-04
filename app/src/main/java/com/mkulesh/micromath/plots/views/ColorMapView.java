@@ -52,9 +52,9 @@ public class ColorMapView extends CustomTextView
             greenBluePalette = new Palette(ColorType.RGB);
     private boolean isHorizontal = false;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public ColorMapView(Context context)
     {
@@ -162,9 +162,9 @@ public class ColorMapView extends CustomTextView
         // no special settings necessary
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Properties
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public ColorMapProperties getColorMapParameters()
     {
@@ -206,9 +206,9 @@ public class ColorMapView extends CustomTextView
         this.significantDigits = significantDigits;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Painting
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     protected void onDraw(Canvas can)
@@ -298,9 +298,9 @@ public class ColorMapView extends CustomTextView
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Helper class that holds labels
-     *********************************************************/
+     *--------------------------------------------------------*/
     private static final class Label
     {
         double y = 0;

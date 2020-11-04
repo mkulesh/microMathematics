@@ -122,9 +122,9 @@ public class Intervals extends FormulaTerm
     private final CalculatedValue minValue = new CalculatedValue(), nextValue = new CalculatedValue(),
             maxValue = new CalculatedValue();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private Intervals(IntervalType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
@@ -138,9 +138,9 @@ public class Intervals extends FormulaTerm
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public Intervals(Context context)
     {
@@ -152,9 +152,9 @@ public class Intervals extends FormulaTerm
         super();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
@@ -270,9 +270,9 @@ public class Intervals extends FormulaTerm
         return v;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * FormulaTermInterval-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private Pair<Unit, Integer> compareUnits(TermField[] terms)
     {

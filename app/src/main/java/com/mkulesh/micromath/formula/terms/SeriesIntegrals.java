@@ -132,9 +132,9 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
     private final CalculatedValue minValue = new CalculatedValue(), maxValue = new CalculatedValue(),
             calcVal = new CalculatedValue(), argValue = new CalculatedValue();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private SeriesIntegrals(LoopType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
@@ -143,9 +143,9 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         onCreate(s, idx, owner.bracketsType);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public SeriesIntegrals(Context context)
     {
@@ -157,9 +157,9 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         super();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Common getters
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public LoopType getLoopType()
     {
@@ -182,9 +182,9 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         return argTerm;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
@@ -359,9 +359,9 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onDelete(CustomEditText owner)
@@ -371,9 +371,9 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         parentField.onTermDelete(removeElements(), r);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation of ArgumentHolderIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public ArrayList<String> getArguments()
@@ -409,9 +409,9 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         return argValue;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * FormulaTermLoop-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure creates the formula layout

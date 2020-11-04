@@ -49,9 +49,9 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
     // undo
     private FormulaState formulaState = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public TextFragment(FormulaList formulaList, int id)
     {
@@ -60,9 +60,9 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         onCreate();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public TextFragment(Context context)
     {
@@ -74,9 +74,9 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         super(null, null, 0);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for Object superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @NonNull
     @Override
@@ -85,9 +85,9 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         return "Formula " + getBaseType().toString() + "(Id: " + getId() + ")";
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public BaseType getBaseType()
@@ -107,9 +107,9 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         updateTextView();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onObjectProperties(View owner)
@@ -139,9 +139,9 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         formulaState = null;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Parcelable interface: procedure writes the formula state
@@ -215,9 +215,9 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * TextFragment-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure creates the formula layout

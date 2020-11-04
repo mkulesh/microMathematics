@@ -129,9 +129,9 @@ public class Comparators extends FormulaTerm
     // Attention: this is not thread-safety declaration!
     private final CalculatedValue leftTermValue = new CalculatedValue(), rightTermValue = new CalculatedValue();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private Comparators(ComparatorType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
     {
@@ -140,9 +140,9 @@ public class Comparators extends FormulaTerm
         onCreate(s, idx, owner.bracketsType);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public Comparators(Context context)
     {
@@ -154,18 +154,18 @@ public class Comparators extends FormulaTerm
         super();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Common getters
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public ComparatorType getComparatorType()
     {
         return (ComparatorType) termType;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public CalculatedValue.ValueType getValue(CalculaterTask thread, CalculatedValue outValue) throws CancelException
@@ -255,9 +255,9 @@ public class Comparators extends FormulaTerm
         return v;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onDelete(CustomEditText owner)
@@ -275,9 +275,9 @@ public class Comparators extends FormulaTerm
         getFormulaRoot().getFormulaList().onManualInput();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * FormulaTermComparator-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure creates the formula layout
