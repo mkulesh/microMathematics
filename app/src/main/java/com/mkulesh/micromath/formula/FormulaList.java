@@ -1197,6 +1197,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
      */
     public void calculate()
     {
+        formulaListView.clearFocus();
         final ArrayList<CalculationResult> fList = formulaListView.getFormulas(CalculationResult.class);
         for (CalculationResult f : fList)
         {

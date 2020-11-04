@@ -76,18 +76,14 @@ public class CompatUtils
     @SuppressWarnings("deprecation")
     public static void updateBackground(Context c, View v, @DrawableRes int drawableId)
     {
-        Drawable bg = null;
-
-        if (drawableId >= 0)
+        Drawable bg;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
         {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            {
-                bg = c.getResources().getDrawable(drawableId, c.getTheme());
-            }
-            else
-            {
-                bg = c.getResources().getDrawable(drawableId);
-            }
+            bg = c.getResources().getDrawable(drawableId, c.getTheme());
+        }
+        else
+        {
+            bg = c.getResources().getDrawable(drawableId);
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
@@ -106,18 +102,14 @@ public class CompatUtils
     @SuppressWarnings("deprecation")
     public static void updateBackgroundAttr(Context c, View v, @DrawableRes int drawableId, @AttrRes int colorAttrId)
     {
-        Drawable bg = null;
-
-        if (drawableId >= 0)
+        Drawable bg;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
         {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            {
-                bg = c.getResources().getDrawable(drawableId, c.getTheme());
-            }
-            else
-            {
-                bg = c.getResources().getDrawable(drawableId);
-            }
+            bg = c.getResources().getDrawable(drawableId, c.getTheme());
+        }
+        else
+        {
+            bg = c.getResources().getDrawable(drawableId);
         }
 
         setDrawableColorAttr(c, bg, colorAttrId);

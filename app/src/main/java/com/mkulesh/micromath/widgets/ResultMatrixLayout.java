@@ -20,6 +20,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 
 import androidx.annotation.AttrRes;
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mkulesh.micromath.utils.CompatUtils;
@@ -166,7 +167,7 @@ public class ResultMatrixLayout extends TableLayout
         }
     }
 
-    public void updateTextColor(int normalDrawable, int selectedDrawable, @AttrRes int colorAttr)
+    public void updateTextColor(@DrawableRes int normalDrawable, @DrawableRes int selectedDrawable, @AttrRes int colorAttr)
     {
         for (CustomEditText field : fields)
         {
