@@ -63,7 +63,7 @@ public interface CommanderIf
     /**
      * Procedure completion notification.
      */
-    boolean notifyMe(Message m);
+    void notifyMe(Message m);
 
     /**
      * Procedure returns the calling mode of this adapter.

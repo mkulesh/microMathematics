@@ -90,7 +90,7 @@ public interface AdapterIf
     /**
      * The "main" method to obtain the current adapter's content
      */
-    boolean readSource(Uri uri, String pass_back_on_done);
+    void readSource(Uri uri, String pass_back_on_done);
 
     /**
      * Tries to do something with the item
@@ -110,7 +110,7 @@ public interface AdapterIf
     /**
      * Renames an item
      */
-    boolean renameItem(int position, String newName);
+    void renameItem(int position, String newName);
 
     /**
      * Creates new directory

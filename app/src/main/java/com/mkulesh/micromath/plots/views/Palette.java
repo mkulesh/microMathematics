@@ -68,7 +68,7 @@ public class Palette
      * Adds a division point to the palette. The color associated to the point is obtained by interpolating between the
      * colors of the points that neighbor the new point.
      */
-    public int split(double divisionPoint)
+    void split(double divisionPoint)
     {
         if (divisionPoint <= 0 || divisionPoint >= 1 || CalculatedValue.isInvalidReal(divisionPoint))
         {
@@ -81,7 +81,7 @@ public class Palette
         }
         if (Math.abs(divisionPoint - divisionPoints.get(index)) < 1e-15)
         {
-            return -1;
+            return;
         }
         final float ratio = (float) ((divisionPoint - divisionPoints.get(index - 1)) / (divisionPoints.get(index) - divisionPoints
                 .get(index - 1)));
@@ -93,7 +93,6 @@ public class Palette
         float[] color = new float[]{ a, b, c };
         divisionPoints.add(index, divisionPoint);
         divisionPointColors.add(index, color);
-        return index;
     }
 
     /**
@@ -142,7 +141,7 @@ public class Palette
      * interpolation, and then the resulting values are transformed into the range 0.0 to 1.0 just before the color is
      * computed. This means that the value can effectively oscillate several times between two division points.
      */
-    public void setDivisionPointColorComponents(int index, float c1, float c2, float c3)
+    void setDivisionPointColorComponents(int index, float c1, float c2, float c3)
     {
         float[] c = divisionPointColors.get(index);
         if (c1 == c[0] && c2 == c[1] && c3 == c[2])

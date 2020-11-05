@@ -88,7 +88,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
     }
 
     @Override
-    public boolean readSource(Uri d, String pass_back_on_done)
+    public void readSource(Uri d, String pass_back_on_done)
     {
         try
         {
@@ -107,7 +107,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
             {
                 notify(ctx.getString(R.string.fman_error_no_such_folder, (d == null ? "null" : d.toString())),
                         CommanderIf.OPERATION_FAILED);
-                return false;
+                return;
             }
             ListEngine reader = new ListEngine(this, simpleHandler, pass_back_on_done);
             reader.run();
@@ -121,7 +121,6 @@ public class AdapterFileSystem extends AdapterBaseImpl
                     notifyDataSetChanged();
                 }
             }
-            return true;
         }
         catch (Exception e)
         {
@@ -131,7 +130,6 @@ public class AdapterFileSystem extends AdapterBaseImpl
         {
             notify(s(R.string.error_out_of_memory), CommanderIf.OPERATION_FAILED);
         }
-        return false;
     }
 
     @SuppressLint("NewApi")
@@ -271,10 +269,12 @@ public class AdapterFileSystem extends AdapterBaseImpl
     }
 
     @Override
-    public boolean renameItem(int position, String newName)
+    public void renameItem(int position, String newName)
     {
         if (position <= 0 || position > items.length)
-            return false;
+        {
+            return;
+        }
         try
         {
             boolean ok = false;
@@ -285,7 +285,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
                 if (f.equals(new_file))
                 {
                     commander.showError(ctx.getString(R.string.fman_rename_error, f.getName()));
-                    return false;
+                    return;
                 }
                 String old_ap = f.getAbsolutePath();
                 String new_ap = new_file.getAbsolutePath();
@@ -298,21 +298,26 @@ public class AdapterFileSystem extends AdapterBaseImpl
                 else
                 {
                     commander.showError(ctx.getString(R.string.fman_rename_error, f.getName()));
-                    return false;
+                    return;
                 }
             }
             else
+            {
                 ok = f.renameTo(new_file);
+            }
+
             if (ok)
+            {
                 notifyRefr(newName);
+            }
             else
+            {
                 notify(ctx.getString(R.string.fman_rename_error, f.getName()), CommanderIf.OPERATION_FAILED);
-            return ok;
+            }
         }
         catch (SecurityException e)
         {
             commander.showError(ctx.getString(R.string.fman_error_sec_err, e.getMessage()));
-            return false;
         }
     }
 

@@ -246,21 +246,21 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         Exporter.write(formulas, docUri, FileType.LATEX, adapter, exportParameters);
     }
 
-    private boolean takeScreenshot(String directory, String scriptName)
+    private void takeScreenshot(String directory, String scriptName)
     {
         final File parent = new File(context.getExternalFilesDir(null) + "/" + directory);
         parent.mkdir();
         final File file = new File(parent, scriptName + ".png");
         if (file == null)
         {
-            return false;
+            return;
         }
 
         final Uri uri = FileUtils.ensureScheme(Uri.fromFile(file));
         OutputStream stream = FileUtils.getOutputStream(context, uri);
         if (stream == null)
         {
-            return false;
+            return;
         }
 
         try
@@ -300,7 +300,6 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
             ViewUtils.Debug(context, error + ", " + e.getLocalizedMessage());
             Toast.makeText(context, error, Toast.LENGTH_LONG).show();
         }
-        return true;
     }
 
     @Override

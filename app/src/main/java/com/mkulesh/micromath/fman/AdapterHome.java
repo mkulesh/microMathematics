@@ -93,7 +93,7 @@ public class AdapterHome extends AdapterBaseImpl
     }
 
     @Override
-    public boolean readSource(Uri tmp_uri, String pbod)
+    public void readSource(Uri tmp_uri, String pbod)
     {
         try
         {
@@ -150,7 +150,6 @@ public class AdapterHome extends AdapterBaseImpl
             e.printStackTrace();
         }
         notify(pbod);
-        return true;
     }
 
     @Override

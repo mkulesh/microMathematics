@@ -311,7 +311,7 @@ public class AdapterDocuments extends AdapterBaseImpl
     }
 
     @Override
-    public boolean readSource(Uri tmp_uri, String pass_back_on_done)
+    public void readSource(Uri tmp_uri, String pass_back_on_done)
     {
         try
         {
@@ -321,13 +321,13 @@ public class AdapterDocuments extends AdapterBaseImpl
             }
             if (uri == null)
             {
-                return false;
+                return;
             }
             ArrayList<SAFItem> tmp_list = getChildren(uri);
             if (tmp_list == null)
             {
                 commander.Navigate(Uri.parse(AdapterHome.DEFAULT_LOC), null);
-                return false;
+                return;
             }
             items = new SAFItem[tmp_list.size()];
             tmp_list.toArray(items);
@@ -336,7 +336,6 @@ public class AdapterDocuments extends AdapterBaseImpl
             parentLink = isRootDoc(uri) ? SLS : PLS;
             notifyDataSetChanged();
             notify(pass_back_on_done);
-            return true;
         }
         catch (Exception e)
         {
@@ -346,7 +345,6 @@ public class AdapterDocuments extends AdapterBaseImpl
         {
             notify(s(R.string.error_out_of_memory), CommanderIf.OPERATION_FAILED);
         }
-        return false;
     }
 
     @Override
@@ -420,7 +418,7 @@ public class AdapterDocuments extends AdapterBaseImpl
     }
 
     @Override
-    public boolean renameItem(int position, String newName)
+    public void renameItem(int position, String newName)
     {
         ContentResolver cr = ctx.getContentResolver();
         Item item = items[position - 1];
@@ -432,15 +430,14 @@ public class AdapterDocuments extends AdapterBaseImpl
         catch (FileNotFoundException e)
         {
             e.printStackTrace();
-            return false;
+            return;
         }
         if (new_uri == null)
         {
-            return false;
+            return;
         }
         item.origin = new_uri;
         notifyRefr(newName);
-        return true;
     }
 
     @Override

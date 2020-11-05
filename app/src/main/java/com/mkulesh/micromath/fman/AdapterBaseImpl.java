@@ -216,9 +216,9 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
     }
 
     @Override
-    public boolean renameItem(int position, String newName)
+    public void renameItem(int position, String newName)
     {
-        return false;
+        // nothing to do
     }
 
     @Override

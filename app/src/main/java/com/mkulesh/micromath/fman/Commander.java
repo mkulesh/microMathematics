@@ -524,9 +524,8 @@ public class Commander extends DialogBase implements CommanderIf
     }
 
     @Override
-    public boolean notifyMe(Message progress)
+    public void notifyMe(Message progress)
     {
-        final boolean TERMINATE = true, CONTINUE = false;
         String string = null;
         try
         {
@@ -544,7 +543,7 @@ public class Commander extends DialogBase implements CommanderIf
 
             if (progress.what == OPERATION_IN_PROGRESS)
             {
-                return CONTINUE;
+                return;
             }
 
             operationFinished();
@@ -563,7 +562,7 @@ public class Commander extends DialogBase implements CommanderIf
                 {
                     fileListView.askRedrawList();
                 }
-                return TERMINATE;
+                return;
             case OPERATION_COMPLETED_REFRESH_REQUIRED:
                 String posto = b != null ? b.getString(NOTIFY_POSTO) : null;
                 Uri uri = b != null ? (Uri) b.getParcelable(NOTIFY_URI) : null;
@@ -591,7 +590,6 @@ public class Commander extends DialogBase implements CommanderIf
         {
             e.printStackTrace();
         }
-        return TERMINATE;
     }
 
     private void showMessage(String s)

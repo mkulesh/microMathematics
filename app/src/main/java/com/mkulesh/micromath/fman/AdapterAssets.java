@@ -80,7 +80,7 @@ public class AdapterAssets extends AdapterBaseImpl
     }
 
     @Override
-    public boolean readSource(Uri d, String pass_back_on_done)
+    public void readSource(Uri d, String pass_back_on_done)
     {
         try
         {
@@ -93,7 +93,7 @@ public class AdapterAssets extends AdapterBaseImpl
             {
                 notify(ctx.getString(R.string.fman_error_no_such_folder, (d == null ? "null" : d.toString())),
                         CommanderIf.OPERATION_FAILED);
-                return false;
+                return;
             }
             String assetsPath = dirName.replace(FileUtils.ASSET_RESOURCE_PREFIX, "");
             while (assetsPath.endsWith(SLS) && assetsPath.length() > 1)
@@ -156,7 +156,6 @@ public class AdapterAssets extends AdapterBaseImpl
                 }
                 parentLink = FileUtils.ASSET_RESOURCE_PREFIX.equals(dirName) ? SLS : PLS;
                 notifyDataSetChanged();
-                return true;
             }
         }
         catch (Exception e)
@@ -167,7 +166,6 @@ public class AdapterAssets extends AdapterBaseImpl
         {
             notify(s(R.string.error_out_of_memory), CommanderIf.OPERATION_FAILED);
         }
-        return false;
     }
 
     private boolean isPositionValid(int position)

@@ -41,7 +41,7 @@ public class ClipboardManager
         return false;
     }
 
-    public static boolean copyToClipboard(Context context, String text)
+    public static void copyToClipboard(Context context, String text)
     {
         try
         {
@@ -49,11 +49,10 @@ public class ClipboardManager
                     .getSystemService(Context.CLIPBOARD_SERVICE);
             android.content.ClipData clip = android.content.ClipData.newPlainText(CLIPBOARD_LABEL, text);
             clipboard.setPrimaryClip(clip);
-            return true;
         }
         catch (Exception e)
         {
-            return false;
+            // nothing to do
         }
     }
 
