@@ -29,6 +29,7 @@ public class DialogResultSettings extends DialogBase
     private final ResultProperties properties;
     private final AppCompatEditText units;
     private final CheckBox disableCalculation, hideResultField;
+    private final HorizontalNumberPicker radixPicker;
     private final HorizontalNumberPicker arrayLengthPicker;
 
     public DialogResultSettings(Activity context, ResultPropertiesChangeIf changeIf, ResultProperties properties)
@@ -46,6 +47,12 @@ public class DialogResultSettings extends DialogBase
 
         hideResultField = findViewById(R.id.dialog_result_hide_result_field);
         hideResultField.setChecked(properties.hideResultField);
+
+        radixPicker = findViewById(R.id.dialog_result_radix);
+        radixPicker.setVisibility(properties.showArrayLength ? View.GONE : View.VISIBLE);
+        radixPicker.setValue(properties.radix);
+        radixPicker.minValue = Character.MIN_RADIX;
+        radixPicker.maxValue = Character.MAX_RADIX;
 
         arrayLengthPicker = findViewById(R.id.dialog_result_array_length_picker);
         arrayLengthPicker.setVisibility(properties.showArrayLength ? View.VISIBLE : View.GONE);
@@ -79,6 +86,11 @@ public class DialogResultSettings extends DialogBase
                 if (properties.arrayLength != arrayLengthPicker.getValue())
                 {
                     properties.arrayLength = arrayLengthPicker.getValue();
+                    isChanged = true;
+                }
+                if (properties.radix != radixPicker.getValue())
+                {
+                    properties.radix = radixPicker.getValue();
                     isChanged = true;
                 }
             }

@@ -37,6 +37,8 @@ import javax.measure.unit.Unit;
 
 public class CalculatedValue
 {
+    private static final int DEF_RADIX = 10;
+
     public enum ErrorType
     {
         TERM_NOT_READY,
@@ -338,7 +340,14 @@ public class CalculatedValue
                 (unit == null ? "?" : unit.toString());
     }
 
-    public String getResultDescription(DocumentProperties doc)
+    @NonNull
+    public String getResultDescription(@NonNull DocumentProperties doc)
+    {
+        return getResultDescription(doc, DEF_RADIX);
+    }
+
+    @NonNull
+    public String getResultDescription(@NonNull DocumentProperties doc, int radix)
     {
         String val;
         switch (valueType)
@@ -350,7 +359,7 @@ public class CalculatedValue
             {
                 return TermParser.CONST_NAN;
             }
-            val = formatValue(real, doc, false);
+            val = formatValue(real, doc, false, radix);
             if (unit != null)
             {
                 val += " " + unit.toString();
@@ -361,7 +370,7 @@ public class CalculatedValue
             {
                 return TermParser.CONST_NAN;
             }
-            val = formatValue(real, doc, false) + formatValue(imaginary, doc, true) + "i";
+            val = formatValue(real, doc, false, DEF_RADIX) + formatValue(imaginary, doc, true, DEF_RADIX) + "i";
             if (unit != null)
             {
                 val += " " + unit.toString();
@@ -371,7 +380,7 @@ public class CalculatedValue
         return "";
     }
 
-    private String formatValue(double value, DocumentProperties doc, boolean addPlusSign)
+    private String formatValue(double value, @NonNull DocumentProperties doc, boolean addPlusSign, int radix)
     {
         if (Double.isInfinite(value))
         {
@@ -387,13 +396,15 @@ public class CalculatedValue
         else
         {
             final double roundV = roundToNumberOfSignificantDigits(value, doc.significantDigits);
-            if (roundV >= 0 && addPlusSign)
+            final boolean changeRadix = (radix != DEF_RADIX) && (roundV == Math.round(roundV));
+            final boolean addPlus = (roundV >= 0 && addPlusSign);
+            if (changeRadix)
             {
-                return "+" + roundV;
+                return addPlus ? ("+" + Integer.toString((int)roundV, radix)) : Integer.toString((int)roundV, radix);
             }
             else
             {
-                return Double.toString(roundV);
+                return addPlus ? ("+" + roundV) : Double.toString(roundV);
             }
         }
     }

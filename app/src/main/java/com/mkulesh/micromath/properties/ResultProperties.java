@@ -25,6 +25,7 @@ public class ResultProperties implements Parcelable
     private static final String XML_PROP_DISABLE_CALCULATION = "disableCalculation";
     private static final String XML_PROP_HIDE_RESULT_FIELD = "hideResultField";
     private static final String XML_PROP_ARRAY_LENGTH = "arrayLength";
+    private static final String XML_PROP_RADIX = "radix";
     private static final String XML_PROP_UNITS = "units";
 
     /**
@@ -33,6 +34,7 @@ public class ResultProperties implements Parcelable
     public boolean disableCalculation = false;
     public boolean hideResultField = false;
     public int arrayLength = 7;
+    public int radix = 10;
     public String units = "";
 
     /**
@@ -61,6 +63,7 @@ public class ResultProperties implements Parcelable
         dest.writeString(String.valueOf(disableCalculation));
         dest.writeString(String.valueOf(hideResultField));
         dest.writeInt(arrayLength);
+        dest.writeInt(radix);
         dest.writeString(units);
     }
 
@@ -69,6 +72,7 @@ public class ResultProperties implements Parcelable
         disableCalculation = Boolean.parseBoolean(in.readString());
         hideResultField = Boolean.parseBoolean(in.readString());
         arrayLength = in.readInt();
+        radix = in.readInt();
         units = in.readString();
     }
 
@@ -100,6 +104,7 @@ public class ResultProperties implements Parcelable
         disableCalculation = a.disableCalculation;
         hideResultField = a.hideResultField;
         arrayLength = a.arrayLength;
+        radix = a.radix;
         units = a.units;
     }
 
@@ -120,6 +125,11 @@ public class ResultProperties implements Parcelable
         {
             arrayLength = Integer.parseInt(attr);
         }
+        attr = parser.getAttributeValue(null, XML_PROP_RADIX);
+        if (attr != null)
+        {
+            radix = Integer.parseInt(attr);
+        }
         attr = parser.getAttributeValue(null, XML_PROP_UNITS);
         if (attr != null)
         {
@@ -132,6 +142,7 @@ public class ResultProperties implements Parcelable
         serializer.attribute(FormulaList.XML_NS, XML_PROP_DISABLE_CALCULATION, String.valueOf(disableCalculation));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_HIDE_RESULT_FIELD, String.valueOf(hideResultField));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_ARRAY_LENGTH, String.valueOf(arrayLength));
+        serializer.attribute(FormulaList.XML_NS, XML_PROP_RADIX, String.valueOf(radix));
         if (!units.isEmpty())
         {
             serializer.attribute(FormulaList.XML_NS, XML_PROP_UNITS, units);

@@ -148,6 +148,7 @@
     <string name="dialog_result_hide_result_field">Ocultar campo de resultado</string>
     <string name="dialog_result_array_length">Número de valores</string>
     <string name="dialog_result_units">Unidade</string>
+    <string name="dialog_result_radix">Radix</string>
     <string name="dialog_text_settings_title">Propriedades do texto</string>
     <string name="dialog_text_style_chapter">Capítulo</string>
     <string name="dialog_text_style_section">Seção</string>

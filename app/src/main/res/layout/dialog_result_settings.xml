@@ -64,6 +64,18 @@
                 android:checked="false"
                 android:text="@string/dialog_result_hide_result_field" />
 
+            <View
+                style="@style/HorizontalDividerStyle"
+                android:layout_marginBottom="@dimen/dialog_content_padding"
+                android:layout_marginTop="@dimen/dialog_content_padding" />
+
+            <com.mkulesh.micromath.widgets.HorizontalNumberPicker
+                android:id="@+id/dialog_result_radix"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                micromath:label="@string/dialog_result_radix" />
+
             <com.mkulesh.micromath.widgets.HorizontalNumberPicker
                 android:id="@+id/dialog_result_array_length_picker"
                 android:layout_width="match_parent"

@@ -736,7 +736,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         if (resultType == ResultType.CONSTANT)
         {
             constantResult.convertUnit(TermParser.parseUnits(properties.units), /*toBase=*/ true);
-            return constantResult.getResultDescription(getFormulaList().getDocumentSettings());
+            return constantResult.getResultDescription(getFormulaList().getDocumentSettings(), properties.radix);
         }
 
         if (isArrayResult())

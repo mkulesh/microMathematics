@@ -162,6 +162,7 @@
     <string name="dialog_result_hide_result_field">隱藏結果字段</string>
     <string name="dialog_result_array_length">值數量</string>
     <string name="dialog_result_units">輸出單元</string>
+    <string name="dialog_result_radix">基数</string>
     <string name="dialog_text_settings_title">文本屬性</string>
     <string name="dialog_text_style_chapter">章</string>
     <string name="dialog_text_style_section">節</string>

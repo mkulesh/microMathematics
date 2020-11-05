@@ -161,6 +161,7 @@
     <string name="dialog_result_hide_result_field">Ergebnisfeld ausblenden</string>
     <string name="dialog_result_array_length">Anzahl von Werten</string>
     <string name="dialog_result_units">Ergebniseinheit</string>
+    <string name="dialog_result_radix">Radix</string>
     <string name="dialog_text_settings_title">Text-Einstellungen</string>
     <string name="dialog_text_style_chapter">Kapitel</string>
     <string name="dialog_text_style_section">Abschnitt</string>
