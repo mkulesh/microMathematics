@@ -85,7 +85,10 @@
       <term key="text" text="Symbol 'i' is reserved for the imaginary&#10;unit that is not allowed in this context" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" text="1+3i" />
+      <term key="leftTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="3i" />
+      </term>
       <term key="rightTerm" text="" />
     </result>
     <equation inRightOfPrevious="true">
@@ -383,7 +386,10 @@
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="summation">
-        <term key="maxValue" text="4+5i" />
+        <term key="maxValue" code="plus">
+          <term key="leftTerm" text="4" />
+          <term key="rightTerm" text="5i" />
+        </term>
         <term key="index" text="j" />
         <term key="minValue" text="1" />
         <term key="argTerm" text="j" />
@@ -394,14 +400,20 @@
       <term key="leftTerm" code="product">
         <term key="maxValue" text="10" />
         <term key="index" text="j" />
-        <term key="minValue" text="2-i" />
+        <term key="minValue" code="minus">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" text="i" />
+        </term>
         <term key="argTerm" text="j" />
       </term>
       <term key="rightTerm" text="" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="integral">
-        <term key="maxValue" text="3+i" />
+        <term key="maxValue" code="plus">
+          <term key="leftTerm" text="3" />
+          <term key="rightTerm" text="i" />
+        </term>
         <term key="minValue" code="minus">
           <term key="leftTerm" text="3" />
           <term key="rightTerm" text="i" />
@@ -527,7 +539,7 @@
         </term>
       </term>
     </equation>
-    <plot_function width="600" height="300" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" functionsNumber="1">
+    <plot_function width="600" height="300" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="1">
       <term key="yMaxValue" text="" />
       <term key="yFunction" color="#FF0000FF" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.g:2">
         <term key="argTerm1" text="C1" />
