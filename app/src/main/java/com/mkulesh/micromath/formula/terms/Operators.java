@@ -375,6 +375,9 @@ public class Operators extends FormulaTerm
             rightTerm.bracketsType = BracketsType.NEVER;
             break;
         case DIVIDE_SLASH:
+            leftTerm.bracketsType = BracketsType.NEVER;
+            rightTerm.bracketsType = BracketsType.ALWAYS;
+            break;
         case MULT:
             leftTerm.bracketsType = BracketsType.IFNECESSARY;
             rightTerm.bracketsType = BracketsType.IFNECESSARY;
