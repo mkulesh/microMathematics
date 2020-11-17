@@ -300,7 +300,9 @@ public class TermParser
                     functionName, Equation.ARG_NUMBER_ARRAY_OR_CONSTANT);
             if (fVar != null)
             {
-                if (fVar.isArray() && editText.getArrayType() == CustomEditText.ArrayType.DISABLED)
+                final boolean isPlot = formulaRoot.getBaseType() == FormulaBase.BaseType.PLOT_CONTOUR ||
+                        formulaRoot.getBaseType() == FormulaBase.BaseType.PLOT_FUNCTION;
+                if (!isPlot && fVar.isArray() && editText.getArrayType() == CustomEditText.ArrayType.DISABLED)
                 {
                     errorId = R.string.error_forbidden_array;
                     return;

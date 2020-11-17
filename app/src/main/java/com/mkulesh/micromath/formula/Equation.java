@@ -107,7 +107,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         {
             n += getArguments().toString();
         }
-        if (isInterval())
+        if (isIntervalTerm())
         {
             n += ": interval";
         }
@@ -163,7 +163,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
                 break;
             }
             // check that the equation is an interval
-            if (isInterval())
+            if (isIntervalTerm())
             {
                 arrayResult = new EquationArrayResult(this, null);
                 break;
@@ -319,7 +319,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         {
             return;
         }
-        if (isInterval())
+        if (isIntervalTerm())
         {
             ((Intervals) rightTerm.getTerm()).getInterval(arrayResult, thread);
         }
@@ -420,6 +420,11 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
      * Procedure checks whether this root formula represents an interval
      */
     public boolean isInterval()
+    {
+        return isArray() || isIntervalTerm();
+    }
+
+    private boolean isIntervalTerm()
     {
         return (rightTerm.getTerm() != null && rightTerm.getTerm() instanceof Intervals);
     }
