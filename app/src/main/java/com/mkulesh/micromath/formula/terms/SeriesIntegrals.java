@@ -38,6 +38,8 @@ import org.apache.commons.math3.util.FastMath;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import javax.measure.unit.Unit;
+
 public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
 {
     public TermTypeIf.GroupType getGroupType()
@@ -534,7 +536,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         /**
          * Intermediate result.
          */
-        private double qtrapResult;
+        private final CalculatedValue qtrapResult = new CalculatedValue(ValueType.REAL, 0,0);
 
         /**
          * Owner calculation thread.
@@ -548,11 +550,13 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         {
             double value;
             boolean complexDetected;
+            Unit unit;
 
             IntermediateValue()
             {
                 value = Double.NaN;
                 complexDetected = false;
+                unit = null;
             }
         }
 
@@ -732,16 +736,30 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             {
                 return outValue.invalidate(CalculatedValue.ErrorType.NOT_A_NUMBER);
             }
+
+            if (minValue.getUnit() != null && maxValue.getUnit() != null &&
+                    !minValue.getUnit().equals(maxValue.getUnit()))
+            {
+                return outValue.invalidate(CalculatedValue.ErrorType.INCOMPATIBLE_UNIT);
+            }
+
+            final CalculatedValue argUnit = new CalculatedValue();
+            argUnit.assign(CalculatedValue.ONE);
+            argUnit.setUnit(minValue.getUnit());
+
+            final CalculatedValue res = new CalculatedValue();
             if (re.complexDetected)
             {
                 final IntermediateValue im = integrateSimpsons(CalculatedValue.PartType.IM, minValue.getReal(),
                         maxValue.getReal(), absoluteAccuracy);
-                return outValue.setComplexValue(re.value, im.value);
+                res.setComplexValue(re.value, im.value);
             }
             else
             {
-                return outValue.setValue(re.value);
+                res.setValue(re.value);
             }
+            res.setUnit(re.unit);
+            return outValue.multiply(res, argUnit);
         }
 
         /**
@@ -763,7 +781,17 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
                 argValue.setValue(max);
                 argTerm.getValue(calculaterTask, maxVal);
 
-                qtrapResult = 0.5 * (max - min) * (minVal.getPart(partType) + maxVal.getPart(partType));
+                qtrapResult.setValue(0.5 * (max - min) * (minVal.getPart(partType) + maxVal.getPart(partType)));
+                if (minVal.getUnit() != null && maxVal.getUnit() != null &&
+                        minVal.getUnit().equals(minVal.getUnit()))
+                {
+                    qtrapResult.setUnit(minVal.getUnit());
+                }
+                else
+                {
+                    qtrapResult.setUnit(null);
+                }
+
                 return (minVal.isComplex() || maxVal.isComplex());
             }
             else
@@ -788,7 +816,8 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
                     }
                 }
                 // add the new sum to previously calculated result
-                qtrapResult = 0.5 * (qtrapResult + sum * spacing);
+                final double r = 0.5 * (qtrapResult.getReal() + sum * spacing);
+                qtrapResult.setValue(r);
                 return complexDetexted;
             }
         }
@@ -809,14 +838,15 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             {
                 ans.complexDetected = true;
             }
-            double oldt = qtrapResult;
+            double oldt = qtrapResult.getReal();
+            ans.unit = qtrapResult.getUnit();
             for (int iter = 1; iter <= SIMPSON_MAX_ITERATIONS_COUNT; iter++)
             {
                 if (qtrapStage(partType, min, max, iter))
                 {
                     ans.complexDetected = true;
                 }
-                final double t = qtrapResult;
+                final double t = qtrapResult.getReal();
                 if (CalculatedValue.isInvalidReal(t))
                 {
                     ans.value = Double.NaN;
