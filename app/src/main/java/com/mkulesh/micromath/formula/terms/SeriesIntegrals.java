@@ -729,14 +729,6 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
          */
         ValueType integrate(int significantDigits, CalculatedValue outValue) throws CancelException
         {
-            final double absoluteAccuracy = FastMath.pow(10, -1.0 * significantDigits);
-            final IntermediateValue re = integrateSimpsons(CalculatedValue.PartType.RE, minValue.getReal(),
-                    maxValue.getReal(), absoluteAccuracy);
-            if (Double.isNaN(re.value))
-            {
-                return outValue.invalidate(CalculatedValue.ErrorType.NOT_A_NUMBER);
-            }
-
             if (minValue.getUnit() != null && maxValue.getUnit() != null &&
                     !minValue.getUnit().equals(maxValue.getUnit()))
             {
@@ -747,11 +739,19 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             argUnit.assign(CalculatedValue.ONE);
             argUnit.setUnit(minValue.getUnit());
 
+            final double absoluteAccuracy = FastMath.pow(10, -1.0 * significantDigits);
+            final IntermediateValue re = integrateSimpsons(CalculatedValue.PartType.RE, minValue.getReal(),
+                    maxValue.getReal(), absoluteAccuracy, argUnit.getUnit());
+            if (Double.isNaN(re.value))
+            {
+                return outValue.invalidate(CalculatedValue.ErrorType.NOT_A_NUMBER);
+            }
+
             final CalculatedValue res = new CalculatedValue();
             if (re.complexDetected)
             {
                 final IntermediateValue im = integrateSimpsons(CalculatedValue.PartType.IM, minValue.getReal(),
-                        maxValue.getReal(), absoluteAccuracy);
+                        maxValue.getReal(), absoluteAccuracy, argUnit.getUnit());
                 res.setComplexValue(re.value, im.value);
             }
             else
@@ -768,17 +768,17 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
          * interval is divided equally into 2^n sections rather than an arbitrary m sections because this configuration
          * can best utilize the already computed values.
          */
-        private boolean qtrapStage(CalculatedValue.PartType partType, final double min, final double max, final int n)
+        private boolean qtrapStage(CalculatedValue.PartType partType, final double min, final double max, final int n, final Unit argUnit)
                 throws CancelException
         {
             if (n == 0)
             {
                 final CalculatedValue minVal = new CalculatedValue();
-                argValue.setValue(min);
+                argValue.setValue(min, argUnit);
                 argTerm.getValue(calculaterTask, minVal);
 
                 final CalculatedValue maxVal = new CalculatedValue();
-                argValue.setValue(max);
+                argValue.setValue(max, argUnit);
                 argTerm.getValue(calculaterTask, maxVal);
 
                 qtrapResult.setValue(0.5 * (max - min) * (minVal.getPart(partType) + maxVal.getPart(partType)));
@@ -829,12 +829,12 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
          * implementation employs the basic trapezoid rule to calculate Simpson's rule.
          */
         private IntermediateValue integrateSimpsons(CalculatedValue.PartType partType, final double min,
-                                                    final double max, final double absoluteAccuracy) throws CancelException
+                                                    final double max, final double absoluteAccuracy, final Unit argUnit) throws CancelException
         {
             final IntermediateValue ans = new IntermediateValue();
             // Simpson's rule requires at least two trapezoid stages.
             double oldRes = 0;
-            if (qtrapStage(partType, min, max, 0))
+            if (qtrapStage(partType, min, max, 0, argUnit))
             {
                 ans.complexDetected = true;
             }
@@ -842,7 +842,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             ans.unit = qtrapResult.getUnit();
             for (int iter = 1; iter <= SIMPSON_MAX_ITERATIONS_COUNT; iter++)
             {
-                if (qtrapStage(partType, min, max, iter))
+                if (qtrapStage(partType, min, max, iter, argUnit))
                 {
                     ans.complexDetected = true;
                 }
