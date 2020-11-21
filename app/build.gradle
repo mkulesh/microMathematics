@@ -31,7 +31,10 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    // androidx.appcompat:appcompat:1.2.0 has a bug related to the locale settings
+    // (custom locale can not be set for older Android version)
+    // Do not increase appcompat version before the bug is not fixed
+    implementation 'androidx.appcompat:appcompat:1.0.1'
     implementation 'androidx.preference:preference:1.1.1'
     implementation 'com.google.android.material:material:1.2.1'
 

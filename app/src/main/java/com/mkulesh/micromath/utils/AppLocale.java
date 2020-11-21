@@ -40,19 +40,15 @@ public final class AppLocale
         public static Locale getPreferredLocale(Context context)
         {
             final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-            final String languageCode = pref.getString(PREF_APP_LANGUAGE, "");
+            final String languageCode = pref.getString(PREF_APP_LANGUAGE,"system");
 
-            if (languageCode.equals(""))
+            if (languageCode.equals("system"))
             {
                 return new Locale(Locale.getDefault().getLanguage());
             }
 
             String[] array = languageCode.split("-r", -1);
-            if (array == null)
-            {
-                return new Locale(Locale.getDefault().getLanguage());
-            }
-            else if (array.length == 1)
+            if (array.length == 1)
             {
                 return new Locale(array[0]);
             }

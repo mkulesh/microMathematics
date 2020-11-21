@@ -90,6 +90,7 @@
     <!-- Application settings: Languages -->
     <string name="pref_app_language">App language</string>
     <string-array name="pref_language_names" translatable="false">
+        <item>System language</item>
         <item>English</item>
         <item>Русский</item>
         <item>Deutsch</item>
@@ -99,8 +100,9 @@
         <item>简体中文</item>
     </string-array>
     <!-- Non-Translatable parameters of languages -->
-    <string name="pref_default_language_code" translatable="false">en</string>
+    <string name="pref_default_language_code" translatable="false">system</string>
     <string-array name="pref_language_codes" translatable="false">
+        <item>system</item>
         <item>en</item>
         <item>ru</item>
         <item>de</item>
