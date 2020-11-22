@@ -4,11 +4,126 @@
     <text_fragment textStyle="subsection">
       <term key="text" text="Current release:" />
     </text_fragment>
-    <text_fragment numbering="false">
-      <term key="text" text="Add Spanish translation" />
+    <text_fragment numbering="true">
+      <term key="text" text="Improved plots with indexed variable.&#10;Now it is possible to use an array as&#10;the plot argument:" />
     </text_fragment>
+    <equation>
+      <term key="leftTerm" text="k" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="500" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x[k]" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" text="k" />
+          <term key="rightTerm" code="mult">
+            <term key="leftTerm" text="2" />
+            <term key="rightTerm" text="pi" />
+          </term>
+        </term>
+        <term key="rightTerm" text="500" />
+      </term>
+    </equation>
+    <plot_function width="536" height="300" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" xType="linear" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FF0000FF" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="sin">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <text_fragment numbering="true">
+      <term key="text" text='Added support for different base&#10;calculation. Use "Result property"&#10;dialog to set the target base:' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="num" />
+      <term key="rightTerm" text="254" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" radix="16">
+      <term key="leftTerm" text="num" />
+      <term key="rightTerm" text="fe" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" radix="2">
+      <term key="leftTerm" text="num" />
+      <term key="rightTerm" text="11111110" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="Allowed to use plus and minus instead of&#10;'++' and '--'" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Added automatic parentheses around a&#10;fraction:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
+      <term key="leftTerm" code="divide_slash">
+        <term key="leftTerm" text="200" />
+        <term key="rightTerm" code="plus">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" text="8" />
+        </term>
+      </term>
+      <term key="rightTerm" text="20.0" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="Fixed a bug: calculation of the definite&#10;integral does not respect measure units" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="v(v0,a,t)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="v0" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="a" />
+          <term key="rightTerm" text="t" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="s1(s0,v0,a,t)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="s0" />
+        <term key="rightTerm" code="integral">
+          <term key="maxValue" text="t" />
+          <term key="minValue" text="0" unit="s" />
+          <term key="argTerm" code="content:com.mkulesh.micromath.link.v:3">
+            <term key="argTerm1" text="v0" />
+            <term key="argTerm2" text="a" />
+            <term key="argTerm3" text="z" />
+          </term>
+          <term key="index" text="z" />
+        </term>
+      </term>
+    </equation>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.link.s1:4">
+        <term key="argTerm1" text="10" unit="cm" />
+        <term key="argTerm2" code="divide_slash">
+          <term key="leftTerm" text="0.1" unit="m" />
+          <term key="rightTerm" text="" unit="s" />
+        </term>
+        <term key="argTerm3" code="divide_slash">
+          <term key="leftTerm" text="9.7" unit="m" />
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="" unit="s" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+        <term key="argTerm4" text="2" unit="s" />
+      </term>
+      <term key="rightTerm" text="19.7 m" />
+    </result>
     <text_fragment textStyle="subsection">
       <term key="text" text="Previous releases:" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Version 2.20.0" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Add Spanish translation" />
     </text_fragment>
     <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Version 2.19.0" />
@@ -54,11 +169,11 @@
         <term key="maxValue" text="3" />
       </term>
     </equation>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" text="r" />
       <term key="rightTerm" text="[[5.0], [0.0], [-4.0], [6.0]]" />
     </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
         <term key="argTerm" text="idx" />
       </term>
@@ -88,41 +203,41 @@
     <text_fragment numbering="true">
       <term key="text" text="Implemented SI units of information:" />
     </text_fragment>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" text="1" unit="bit" />
       <term key="rightTerm" text="1.0 bit" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" text="1" unit="bps" />
       <term key="rightTerm" text="1.0 bps" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" text="8" unit="bit" />
-      <term key="rightTerm" text="1.0 byte" />
+      <term key="rightTerm" text="8.0 bit" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" code="divide_slash">
         <term key="leftTerm" text="1" unit="byte" />
         <term key="rightTerm" text="" unit="s" />
       </term>
       <term key="rightTerm" text="8.0 bps" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" text="1" unit="kbit" />
       <term key="rightTerm" text="125.0 byte" />
     </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" text="1" unit="kB" />
       <term key="rightTerm" text="1000.0 byte" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" code="divide_slash">
         <term key="leftTerm" text="1" unit="kbit" />
         <term key="rightTerm" text="" unit="s" />
       </term>
       <term key="rightTerm" text="1000.0 bps" />
     </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" code="divide_slash">
         <term key="leftTerm" text="1" unit="kB" />
         <term key="rightTerm" text="" unit="s" />
@@ -264,13 +379,13 @@
         <term key="rightTerm" text="m" />
       </term>
     </equation>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" code="rows">
         <term key="argTerm" text="M" />
       </term>
       <term key="rightTerm" text="51.0" />
     </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" code="cols">
         <term key="argTerm" text="M" />
       </term>
@@ -437,7 +552,7 @@
         </term>
       </term>
     </equation>
-    <result disableCalculation="false" hideResultField="false" arrayLength="5">
+    <result disableCalculation="false" hideResultField="false" arrayLength="5" radix="10">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
         <term key="argTerm1" text="k" />
         <term key="argTerm2" text="m" />
@@ -618,14 +733,14 @@
         </term>
       </term>
     </equation>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
         <term key="argTerm1" text="5" />
         <term key="argTerm2" text="10" />
       </term>
       <term key="rightTerm" text="-1.39" />
     </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
         <term key="argTerm1" text="10" />
         <term key="argTerm2" text="5" />
