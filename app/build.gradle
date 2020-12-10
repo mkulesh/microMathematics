@@ -31,10 +31,11 @@ android {
 }
 
 dependencies {
-    // androidx.appcompat:appcompat:1.2.0 has a bug related to the locale settings
-    // (custom locale can not be set for older Android version)
-    // Do not increase appcompat version before the bug is not fixed
-    implementation 'androidx.appcompat:appcompat:1.0.1'
+    // Change Locale not work after migrate to androidx.appcompat:appcompat:1.2.0
+    // https://stackoverflow.com/questions/55265834/change-locale-not-work-after-migrate-to-androidx
+    // Custom locale can not be set for older Android version.
+    // Keep androidx.appcompat:appcompat:1.1.0 in order to avoid this problem
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.preference:preference:1.1.1'
     implementation 'com.google.android.material:material:1.2.1'
 
