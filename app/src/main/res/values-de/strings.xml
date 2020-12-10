@@ -93,6 +93,7 @@
     <!-- Application settings: Themes -->
     <string name="pref_app_theme">Thema</string>
     <string-array name="pref_theme_names">
+        <item>Helles (Lila und Grün)</item>
         <item>Helles (Indigo und Orange)</item>
         <item>Helles (Petrol und Dunkelorange)</item>
         <item>Helles (Blaugrau und Indigo)</item>

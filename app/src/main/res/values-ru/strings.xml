@@ -93,6 +93,7 @@
     <!-- Application settings: Themes -->
     <string name="pref_app_theme">Цветовая схема</string>
     <string-array name="pref_theme_names">
+        <item>Светлая (фиолетовая и темно-зеленая)</item>
         <item>Светлая (тёмно-синяя и оранжевая)</item>
         <item>Светлая (зеленовато-голубая и тёмно-оранжевая)</item>
         <item>Светлая (серо-голубая и тёмно-синяя)</item>

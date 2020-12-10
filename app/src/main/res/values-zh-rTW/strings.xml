@@ -94,6 +94,7 @@
     <!-- Translatable list of themes -->
     <string name="pref_app_theme">應用主題</string>
     <string-array name="pref_theme_names">
+        <item>亮（紫色和绿色）</item>
         <item>亮（群青和桔黃）</item>
         <item>亮（青藍和朱紅）</item>
         <item>亮（藍灰和群青）</item>

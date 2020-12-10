@@ -242,6 +242,7 @@
     <string name="error_forbidden_array">Array is not allowed for this field</string>
     <string name="pref_zoom_enabled">Enable zoom</string>
     <string-array name="pref_theme_names">
+        <item>Light (Purple and Green)</item>
         <item>Light (Indigo and Orange)</item>
         <item>Light (Teal and Deep Orange)</item>
         <item>Light (Blue Gray and Indigo)</item>

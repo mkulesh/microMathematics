@@ -93,6 +93,7 @@
     <!-- Application settings: Themes -->
     <string name="pref_app_theme">Tema</string>
     <string-array name="pref_theme_names">
+        <item>Claro (Morada y verde)</item>
         <item>Claro (Índigo y Naranja)</item>
         <item>Claro (Petróleo y naranja oscuro)</item>
         <item>Claro (Gris azul y añil)</item>
