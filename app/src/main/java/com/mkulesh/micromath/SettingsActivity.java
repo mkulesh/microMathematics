@@ -58,6 +58,7 @@ public class SettingsActivity extends AppCompatActivity
             addPreferencesFromResource(R.xml.preferences);
             prepareListPreference(getActivity(), findPreference("app_language"));
             prepareListPreference(getActivity(), findPreference("app_theme"));
+            prepareListPreference(getActivity(), findPreference("zoom_mode"));
             tintIcons(getActivity(), getPreferenceScreen());
         }
     }

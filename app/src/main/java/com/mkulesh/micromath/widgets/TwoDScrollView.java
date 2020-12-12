@@ -32,13 +32,11 @@ import android.widget.LinearLayout;
 import android.widget.Scroller;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
+import androidx.core.view.ScaleGestureDetectorCompat;
 import androidx.core.view.ViewCompat;
 
 import com.mkulesh.micromath.plus.R;
-
-import java.util.List;
 
 /**
  * Layout container for a view hierarchy that can be scrolled by the user, allowing it to be larger than the physical
@@ -122,8 +120,8 @@ public class TwoDScrollView extends FrameLayout
         mGestureDetector = new GestureDetectorCompat(getContext(), mGestureListener);
         if (attrs != null)
         {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CustomViewExtension, 0, 0);
-            autoScrollMargins = a.getDimensionPixelSize(R.styleable.CustomViewExtension_autoScrollMargins, 0);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.TwoDScrollView, 0, 0);
+            autoScrollMargins = a.getDimensionPixelSize(R.styleable.TwoDScrollView_autoScrollMargins, 0);
             a.recycle();
         }
         mEdgeGlowLeft = new EdgeEffect(getContext());
@@ -253,7 +251,7 @@ public class TwoDScrollView extends FrameLayout
         return (LinearLayout) getChildAt(0);
     }
 
-    public void setScaleListener(AppCompatActivity activity, ListChangeIf listChangeIf)
+    public void setScaleListener(ListChangeIf listChangeIf)
     {
         this.listChangeIf = listChangeIf;
     }
@@ -281,9 +279,10 @@ public class TwoDScrollView extends FrameLayout
         this.scaleDetectorActive = scaleDetectorActive;
     }
 
-    public void setEnableZoom(boolean enableZoom)
+    public void setZoomMode(final String zoomMode)
     {
-        this.enableZoom = enableZoom;
+        enableZoom = !"none".equals(zoomMode);
+        ScaleGestureDetectorCompat.setQuickScaleEnabled(mScaleGestureDetector, "enable-all".equals(zoomMode));
     }
 
     @Override
@@ -613,125 +612,6 @@ public class TwoDScrollView extends FrameLayout
     }
 
     /**
-     * Finds the next focusable component that fits in this View's bounds (excluding fading edges) pretending that this
-     * View's top is located at the parameter top.
-     *
-     * @param topFocus           look for a candidate is the one at the top of the bounds if topFocus is true, or at the bottom of the
-     *                           bounds if topFocus is false
-     * @param top                the top offset of the bounds in which a focusable must be found (the fading edge is assumed to start
-     *                           at this position)
-     * @param preferredFocusable the View that has highest priority and will be returned if it is within my bounds (null is valid)
-     * @return the next focusable component in the bounds or null if none can be found
-     */
-    private View findFocusableViewInMyBounds(final boolean topFocus, final int top, final boolean leftFocus,
-                                             final int left, View preferredFocusable)
-    {
-        /*
-         * The fading edge's transparent side should be considered for focus since it's mostly visible, so we divide the
-         * actual fading edge length by 2.
-         */
-        final int verticalFadingEdgeLength = getVerticalFadingEdgeLength() / 2;
-        final int topWithoutFadingEdge = top + verticalFadingEdgeLength;
-        final int bottomWithoutFadingEdge = top + getHeight() - verticalFadingEdgeLength;
-        final int horizontalFadingEdgeLength = getHorizontalFadingEdgeLength() / 2;
-        final int leftWithoutFadingEdge = left + horizontalFadingEdgeLength;
-        final int rightWithoutFadingEdge = left + getWidth() - horizontalFadingEdgeLength;
-
-        if ((preferredFocusable != null) && (preferredFocusable.getTop() < bottomWithoutFadingEdge)
-                && (preferredFocusable.getBottom() > topWithoutFadingEdge)
-                && (preferredFocusable.getLeft() < rightWithoutFadingEdge)
-                && (preferredFocusable.getRight() > leftWithoutFadingEdge))
-        {
-            return preferredFocusable;
-        }
-        return findFocusableViewInBounds(topFocus, topWithoutFadingEdge, bottomWithoutFadingEdge, leftFocus,
-                leftWithoutFadingEdge, rightWithoutFadingEdge);
-    }
-
-    /**
-     * Finds the next focusable component that fits in the specified bounds. </p>
-     *
-     * @param topFocus look for a candidate is the one at the top of the bounds if topFocus is true, or at the bottom of the
-     *                 bounds if topFocus is false
-     * @param top      the top offset of the bounds in which a focusable must be found
-     * @param bottom   the bottom offset of the bounds in which a focusable must be found
-     * @return the next focusable component in the bounds or null if none can be found
-     */
-    private View findFocusableViewInBounds(boolean topFocus, int top, int bottom, boolean leftFocus, int left, int right)
-    {
-        List<View> focusables = getFocusables(View.FOCUS_FORWARD);
-        View focusCandidate = null;
-
-        /*
-         * A fully contained focusable is one where its top is below the bound's top, and its bottom is above the
-         * bound's bottom. A partially contained focusable is one where some part of it is within the bounds, but it
-         * also has some part that is not within bounds. A fully contained focusable is preferred to a partially
-         * contained focusable.
-         */
-        boolean foundFullyContainedFocusable = false;
-
-        int count = focusables.size();
-        for (int i = 0; i < count; i++)
-        {
-            View view = focusables.get(i);
-            int viewTop = view.getTop();
-            int viewBottom = view.getBottom();
-            int viewLeft = view.getLeft();
-            int viewRight = view.getRight();
-
-            if (top < viewBottom && viewTop < bottom && left < viewRight && viewLeft < right)
-            {
-                /*
-                 * the focusable is in the target area, it is a candidate for focusing
-                 */
-                final boolean viewIsFullyContained = (top < viewTop) && (viewBottom < bottom) && (left < viewLeft)
-                        && (viewRight < right);
-                if (focusCandidate == null)
-                {
-                    /* No candidate, take this one */
-                    focusCandidate = view;
-                    foundFullyContainedFocusable = viewIsFullyContained;
-                }
-                else
-                {
-                    final boolean viewIsCloserToVerticalBoundary = (topFocus && viewTop < focusCandidate.getTop())
-                            || (!topFocus && viewBottom > focusCandidate.getBottom());
-                    final boolean viewIsCloserToHorizontalBoundary = (leftFocus && viewLeft < focusCandidate.getLeft())
-                            || (!leftFocus && viewRight > focusCandidate.getRight());
-                    if (foundFullyContainedFocusable)
-                    {
-                        if (viewIsFullyContained && viewIsCloserToVerticalBoundary && viewIsCloserToHorizontalBoundary)
-                        {
-                            /*
-                             * We're dealing with only fully contained views, so it has to be closer to the boundary to
-                             * beat our candidate
-                             */
-                            focusCandidate = view;
-                        }
-                    }
-                    else
-                    {
-                        if (viewIsFullyContained)
-                        {
-                            /* Any fully contained view beats a partially contained view */
-                            focusCandidate = view;
-                            foundFullyContainedFocusable = true;
-                        }
-                        else if (viewIsCloserToVerticalBoundary && viewIsCloserToHorizontalBoundary)
-                        {
-                            /*
-                             * Partially contained view beats another partially contained view if it's closer
-                             */
-                            focusCandidate = view;
-                        }
-                    }
-                }
-            }
-        }
-        return focusCandidate;
-    }
-
-    /**
      * Handles scrolling in response to a "home/end" shortcut press. This method will scroll the view to the top or
      * bottom and give the focus to the topmost/bottommost component in the new visible area. If no component is a good
      * candidate for focus, this scrollview reclaims the focus.
@@ -802,11 +682,7 @@ public class TwoDScrollView extends FrameLayout
         int containerLeft = getScrollX();
         int containerRight = containerLeft + width;
         boolean leftwards = directionX == View.FOCUS_UP;
-        View newFocused = findFocusableViewInBounds(up, top, bottom, leftwards, left, right);
-        if (newFocused == null)
-        {
-            newFocused = this;
-        }
+
         if ((top >= containerTop && bottom <= containerBottom) || (left >= containerLeft && right <= containerRight))
         {
             handled = false;
@@ -1382,16 +1258,6 @@ public class TwoDScrollView extends FrameLayout
             int right = getMainLayout().getWidth();
 
             mScroller.fling(getScrollX(), getScrollY(), velocityX, velocityY, 0, right - width, 0, bottom - height);
-
-            final boolean movingDown = velocityY > 0;
-            final boolean movingRight = velocityX > 0;
-
-            View newFocused = findFocusableViewInMyBounds(movingRight, mScroller.getFinalX(), movingDown,
-                    mScroller.getFinalY(), findFocus());
-            if (newFocused == null)
-            {
-                newFocused = this;
-            }
 
             awakenScrollBars(mScroller.getDuration());
             invalidate();

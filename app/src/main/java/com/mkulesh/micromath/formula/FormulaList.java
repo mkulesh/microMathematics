@@ -143,10 +143,10 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         TermFactory.prepare();
 
         formulaScrollView = rootView.findViewById(R.id.main_scroll_view);
-        formulaScrollView.setScaleListener(activity, this);
+        formulaScrollView.setScaleListener(this);
         formulaScrollView.setSaveEnabled(false);
         formulaScrollView.setScaleDetectorActive(true);
-        formulaScrollView.setEnableZoom(fragment.isZoomEnabled());
+        formulaScrollView.setZoomMode(fragment.getZoomMode());
         formulaListView = new FormulaListView(fragment.getActivity(), formulaScrollView.getMainLayout());
 
         LinearLayout paletteView = rootView.findViewById(R.id.main_palette_view);

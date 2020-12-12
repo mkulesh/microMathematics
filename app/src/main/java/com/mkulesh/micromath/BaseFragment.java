@@ -52,7 +52,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     private static final String OPENED_FILE_EMPTY = "";
     static final String FILE_READING_OPERATION = "file_reading_operation";
     private static final String DEVELOPER_MODE = "developer_mode";
-    private static final String ZOOM_ENABLED = "zoom_enabled";
+    private static final String ZOOM_MODE = "zoom_mode";
 
     /**
      * Class members.
@@ -401,8 +401,8 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         return preferences.getBoolean(DEVELOPER_MODE, false);
     }
 
-    public boolean isZoomEnabled()
+    public String getZoomMode()
     {
-        return preferences.getBoolean(ZOOM_ENABLED, true);
+        return preferences.getString(ZOOM_MODE, getString(R.string.pref_default_zoom_code));
     }
 }

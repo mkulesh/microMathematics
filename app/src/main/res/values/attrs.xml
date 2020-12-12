@@ -53,6 +53,10 @@
         <enum name="mandatory" value="2" />
     </attr>
 
+    <declare-styleable name="TwoDScrollView">
+        <attr name="autoScrollMargins" format="dimension" />
+    </declare-styleable>
+
     <declare-styleable name="CustomViewExtension">
         <attr name="contextMenuExpand" format="boolean" />
         <attr name="contextMenuCut" format="boolean" />
@@ -67,7 +71,6 @@
         <attr name="indexName" format="boolean" />
         <attr name="intermediateArgument" format="boolean" />
         <attr name="calculatedValue" format="boolean" />
-        <attr name="autoScrollMargins" format="dimension" />
         <attr name="fileName" format="boolean" />
         <!-- custom content types -->
         <attr name="emptyEnabled" format="boolean" />

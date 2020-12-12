@@ -81,14 +81,33 @@
     <string name="context_cut">Recortar</string>
     <string name="context_paste">Colar</string>
 
-    <!-- Application settings -->
-    <string name="pref_developer_mode">Opções do desenvolvedor</string>
-
     <!-- Application settings: Languages -->
     <string name="pref_app_language">Idioma do app</string>
 
     <!-- Application settings: Themes -->
     <string name="pref_app_theme">Tema do app</string>
+    <string-array name="pref_theme_names">
+        <item>Light (Purple and Green)</item>
+        <item>Light (Indigo and Orange)</item>
+        <item>Light (Teal and Deep Orange)</item>
+        <item>Light (Blue Gray and Indigo)</item>
+        <item>Strong Light (Black on White)</item>
+        <item>Dark (Dim Gray and Cyan)</item>
+        <item>Strong Dark (White on Black)</item>
+    </string-array>
+
+    <!-- Application settings: zoom mode -->
+    <string name="pref_zoom">Modo de zoom</string>
+    <string-array name="pref_zoom_names">
+        <item>Habilitar todos</item>
+        <item>Toque duas vezes desativado</item>
+        <item>Desativar tudo</item>
+    </string-array>
+
+    <!-- Other application settings -->
+    <string name="pref_developer_mode">Opções do desenvolvedor</string>
+    <string name="pref_exit_confirm">Press back button twice for exit</string>
+    <string name="action_exit_confirm">Press back button again to exit</string>
 
     <!-- Dialogs -->
     <string name="dialog_navigation_accept">OK</string>
@@ -240,18 +259,6 @@
     <string name="math_function_coth">The hyperbolic cotangent of the argument</string>
     <string name="math_function_log">Logarithm of number to the specified base</string>
     <string name="error_forbidden_array">Array is not allowed for this field</string>
-    <string name="pref_zoom_enabled">Enable zoom</string>
-    <string-array name="pref_theme_names">
-        <item>Light (Purple and Green)</item>
-        <item>Light (Indigo and Orange)</item>
-        <item>Light (Teal and Deep Orange)</item>
-        <item>Light (Blue Gray and Indigo)</item>
-        <item>Strong Light (Black on White)</item>
-        <item>Dark (Dim Gray and Cyan)</item>
-        <item>Strong Dark (White on Black)</item>
-    </string-array>
-    <string name="action_exit_confirm">Press back button again to exit</string>
-    <string name="pref_exit_confirm">Press back button twice for exit</string>
     <string name="dialog_image_settings_original_color">Original color</string>
     <string name="dialog_image_settings_auto_color">Auto-color</string>
 

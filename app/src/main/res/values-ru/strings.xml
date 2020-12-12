@@ -82,11 +82,6 @@
     <string name="context_cut">Вырезать</string>
     <string name="context_paste">Вставить</string>
 
-    <!-- Application settings -->
-    <string name="pref_zoom_enabled">Разрешить масштабирование</string>
-    <string name="pref_developer_mode">Режим разработчика</string>
-    <string name="pref_exit_confirm">Для выхода нажать кнопку \"Назад\" два раза</string>
-
     <!-- Application settings: Languages -->
     <string name="pref_app_language">Язык приложения</string>
 
@@ -101,6 +96,18 @@
         <item>Тёмная (серая и сине-зелёная)</item>
         <item>Контрасная тёмная (чёрно-белая)</item>
     </string-array>
+
+    <!-- Application settings: zoom mode -->
+    <string name="pref_zoom">Масштабирование</string>
+    <string-array name="pref_zoom_names">
+        <item>Разрешить</item>
+        <item>Отключить по двойному нажатию</item>
+        <item>Отключить</item>
+    </string-array>
+
+    <!-- Other application settings -->
+    <string name="pref_developer_mode">Режим разработчика</string>
+    <string name="pref_exit_confirm">Для выхода нажать кнопку \"Назад\" два раза</string>
 
     <!-- Dialogs -->
     <string name="dialog_navigation_accept">Согласен</string>

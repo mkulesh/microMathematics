@@ -34,12 +34,14 @@
         android:summary="%s"
         android:title="@string/pref_app_theme"/>
 
-    <SwitchPreferenceCompat
+    <ListPreference
         app:icon="@drawable/pref_zoom"
-        app:singleLineTitle="false"
-        android:defaultValue="true"
-        android:key="zoom_enabled"
-        android:title="@string/pref_zoom_enabled"/>
+        android:defaultValue="@string/pref_default_zoom_code"
+        android:entries="@array/pref_zoom_names"
+        android:entryValues="@array/pref_zoom_codes"
+        android:key="zoom_mode"
+        android:summary="%s"
+        android:title="@string/pref_zoom"/>
 
     <SwitchPreferenceCompat
         app:icon="@drawable/pref_developer"

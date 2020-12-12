@@ -82,11 +82,6 @@
     <string name="context_cut">剪切</string>
     <string name="context_paste">粘贴</string>
 
-    <!-- Application settings -->
-    <string name="pref_zoom_enabled">启用缩放</string>
-    <string name="pref_developer_mode">开发者选项</string>
-    <string name="pref_exit_confirm">按返回键两次退出</string>
-
     <!-- Application settings: Languages -->
     <string name="pref_app_language">应用语言</string>
 
@@ -102,6 +97,18 @@
         <item>暗（暗灰和松石绿）</item>
         <item>高对比度暗（黑底白字）</item>
     </string-array>
+
+    <!-- Application settings: zoom mode -->
+    <string name="pref_zoom">變焦模式</string>
+    <string-array name="pref_zoom_names">
+        <item>全部啟用</item>
+        <item>雙擊已禁用</item>
+        <item>禁用所有</item>
+    </string-array>
+
+    <!-- Other application settings -->
+    <string name="pref_developer_mode">开发者选项</string>
+    <string name="pref_exit_confirm">按返回键两次退出</string>
 
     <!-- Dialogs -->
     <string name="dialog_navigation_accept">确定</string>

@@ -82,11 +82,6 @@
     <string name="context_cut">Cut</string>
     <string name="context_paste">Paste</string>
 
-    <!-- Application settings -->
-    <string name="pref_zoom_enabled">Enable zoom</string>
-    <string name="pref_developer_mode">Developer options</string>
-    <string name="pref_exit_confirm">Press back button twice for exit</string>
-
     <!-- Application settings: Languages -->
     <string name="pref_app_language">App language</string>
     <string-array name="pref_language_names" translatable="false">
@@ -153,6 +148,25 @@
         <item>@style/SettingsThemeDarkCyan</item>
         <item>@style/SettingsThemeStrongDark</item>
     </array>
+
+    <!-- Application settings: zoom mode -->
+    <string name="pref_zoom">Zoom mode</string>
+    <string-array name="pref_zoom_names">
+        <item>Enable all</item>
+        <item>Double tap disabled</item>
+        <item>Disable all</item>
+    </string-array>
+    <!-- Non-Translatable parameters of zoom mode -->
+    <string name="pref_default_zoom_code" translatable="false">disable-double-tab</string>
+    <string-array name="pref_zoom_codes" translatable="false">
+        <item>enable-all</item>
+        <item>disable-double-tab</item>
+        <item>none</item>
+    </string-array>
+
+    <!-- Other application settings -->
+    <string name="pref_developer_mode">Developer options</string>
+    <string name="pref_exit_confirm">Press back button twice for exit</string>
 
     <!-- Dialogs -->
     <string name="dialog_navigation_accept">OK</string>
