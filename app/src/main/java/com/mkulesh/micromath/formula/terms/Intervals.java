@@ -361,9 +361,9 @@ public class Intervals extends FormulaTerm
 
     private int getNumberOfPoints(double min, double max, double delta)
     {
-        final int N = (int) FastMath.ceil(((max - min) / delta));
+        final int N = (int) FastMath.floor(((max - min) / delta));
         final double d1 = min + delta * (double) N;
-        final double d2 = max + 0.999*delta;
-        return (N > 0 && d1 > d2) ? N - 1 : N;
+        final double eps = FastMath.pow(10, -1 * (getFormulaList().getDocumentSettings().significantDigits));
+        return (max > d1 && (max - d1) > eps * d1) ? N + 1 : N;
     }
 }
