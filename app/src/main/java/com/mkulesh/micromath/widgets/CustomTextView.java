@@ -366,10 +366,10 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
 
     private void drawSummation(Canvas c)
     {
-        final int sw1 = strokeWidth;
-        final int sw2 = 2 * strokeWidth;
-        final int sw3 = 3 * strokeWidth;
-        final int sw4 = 4 * strokeWidth;
+        final float sw1 = strokeWidth;
+        final float sw2 = 2f * strokeWidth;
+        final float sw3 = 3f * strokeWidth;
+        final float sw4 = 4f * strokeWidth;
         paint.setStrokeWidth(0);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
 
@@ -380,15 +380,15 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
         path.lineTo(rect.left, rect.bottom - sw1);
         path.lineTo(rect.left, rect.bottom);
         path.lineTo(rect.right - sw1, rect.bottom);
-        path.lineTo(rect.right, rect.bottom - 2 * sw3);
-        path.lineTo(rect.right - sw1 / 2, rect.bottom - 2 * sw3 - sw1 / 2);
+        path.lineTo(rect.right, rect.bottom - 2f * sw3);
+        path.lineTo(rect.right - sw1 / 2f, rect.bottom - 2f * sw3 - sw1 / 2f);
         path.lineTo(rect.right - sw3, rect.bottom - sw3);
-        path.lineTo(rect.left + sw3 + sw1 / 2, rect.bottom - sw3);
+        path.lineTo(rect.left + sw3 + sw1 / 2f, rect.bottom - sw3);
         path.lineTo(rect.centerX() + sw3, rect.centerY() - sw1);
         path.lineTo(rect.left + sw4, rect.top + sw2);
         path.lineTo(rect.right - sw4, rect.top + sw2);
-        path.lineTo(rect.right - sw1 / 2, rect.top + 2 * sw3 + sw1 / 2);
-        path.lineTo(rect.right, rect.top + 2 * sw3);
+        path.lineTo(rect.right - sw1 / 2f, rect.top + 2f * sw3 + sw1 / 2f);
+        path.lineTo(rect.right, rect.top + 2f * sw3);
         path.lineTo(rect.right - sw1, rect.top);
         path.close();
         c.drawPath(path, paint);
@@ -396,9 +396,9 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
 
     private void drawProduct(Canvas c)
     {
-        final int sw2 = 2 * strokeWidth;
-        final int sw5 = 5 * strokeWidth;
-        final int sw7 = 7 * strokeWidth;
+        final float sw2 = 2f * strokeWidth;
+        final float sw5 = 5f * strokeWidth;
+        final float sw7 = 7f * strokeWidth;
         paint.setStrokeWidth(0);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
 
