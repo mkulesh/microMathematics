@@ -22,6 +22,7 @@ import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.TermField.ErrorNotification;
 import com.mkulesh.micromath.formula.terms.ArrayFunctions;
 import com.mkulesh.micromath.formula.terms.Intervals;
+import com.mkulesh.micromath.formula.terms.UserFunctions;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.math.EquationArrayResult;
 import com.mkulesh.micromath.plus.R;
@@ -248,6 +249,15 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     @Override
     public ArrayList<String> getArguments()
     {
+        if (leftTerm.getIndexTerm() != null)
+        {
+            final ArrayList<String> arrArgs = new ArrayList<>();
+            for (TermField t : leftTerm.getTerm().getTerms())
+            {
+                arrArgs.add(t.getText());
+            }
+            return arrArgs;
+        }
         return leftTerm.getParser().getFunctionArgs();
     }
 
@@ -404,7 +414,8 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
      */
     public String getName()
     {
-        return leftTerm.getParser().getFunctionName();
+        final UserFunctions indexTerm = leftTerm.getIndexTerm();
+        return indexTerm != null ? indexTerm.getFunctionLabel() : leftTerm.getParser().getFunctionName();
     }
 
     /**
@@ -434,7 +445,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
      */
     public boolean isArray()
     {
-        return leftTerm.getParser().isArray();
+        return leftTerm.getIndexTerm() != null || leftTerm.getParser().isArray();
     }
 
     public int[] getArrayDimensions()

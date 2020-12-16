@@ -195,10 +195,14 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         }
         contentType = ContentType.INVALID;
         parser.setText(this, formulaRoot, text);
-        if (text.isEquationName())
+        if (isEquationName())
         {
             // in this mode, only a name is allowed and shall be unique
             if (parser.getFunctionName() != null && parser.errorId == NO_ERROR_ID)
+            {
+                contentType = ContentType.EQUATION_NAME;
+            }
+            if (getIndexTerm() != null)
             {
                 contentType = ContentType.EQUATION_NAME;
             }
@@ -421,13 +425,21 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         {
             emptyOrAutoContent = isEmpty;
         }
-        if (!isEmpty && text.isConversionEnabled())
+        boolean conversionEnabled = !isEmpty && text.isConversionEnabled();
+        if (!isEmpty && isEquationName() && s.contains(getContext().getString(R.string.formula_function_start_index)))
+        {
+            conversionEnabled = true;
+        }
+        if (conversionEnabled)
         {
             term = convertToTerm(s, null, /*ensureManualTrigger=*/ true);
             if (term != null)
             {
                 converted = true;
-                requestFocus();
+                if (isManualInput)
+                {
+                    requestFocus();
+                }
             }
         }
         if (!isEmpty && !converted && text.isNewTermEnabled())
@@ -1153,6 +1165,8 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             return text.isIntervalEnabled() || text.isFileOperationEnabled();
         case CONVERSION:
             return text.isConversionEnabled();
+        case INDEX:
+            return isEquationName() || text.isConversionEnabled();
         case COMPARATOR:
             return text.isComparatorEnabled();
         }
@@ -1254,5 +1268,27 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
                 }
             }
         }
+    }
+
+    public boolean isEquationName()
+    {
+        return text.isEquationName();
+    }
+
+    public UserFunctions getIndexTerm()
+    {
+        if (isEquationName() &&
+                isTerm() &&
+                !getTerm().isEmpty() &&
+                !getTerm().getTerms().isEmpty() &&
+                getTerm() instanceof UserFunctions)
+        {
+            final UserFunctions f = (UserFunctions) getTerm();
+            if (f.getFunctionType() == UserFunctions.FunctionType.FUNCTION_INDEX)
+            {
+                return f;
+            }
+        }
+        return null;
     }
 }

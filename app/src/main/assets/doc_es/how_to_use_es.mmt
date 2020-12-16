@@ -294,20 +294,29 @@
       <term key="text" text="Matriz" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text="Las matrices son funciones especiales&#10;con las siguientes propiedades:&#10;&#10;a) los elementos de la matriz pueden&#10;asignarse usando un índice dado en [ ]&#10;en lugar de ( ). Cualquier elemento no&#10;asignado es  establecido por defecto a&#10;cero:" />
+      <term key="text" text='Las matrices son funciones especiales&#10;con las siguientes propiedades:&#10;&#10;a) los elementos de la matriz pueden&#10;asignarse usando un índice en lugar &#10;de ( ). Para crear un índice inferior,&#10;ponga "[" después del nombre de la &#10;matriz:' />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="r[0]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+        <term key="argTerm" text="0" />
+      </term>
       <term key="rightTerm" text="5" />
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="r[3]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+        <term key="argTerm" text="3" />
+      </term>
       <term key="rightTerm" text="6" />
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="r[2]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+        <term key="argTerm" text="2" />
+      </term>
       <term key="rightTerm" text="-4" />
     </equation>
+    <text_fragment>
+      <term key="text" text="Cualquier elemento no asignado es  &#10;establecido por defecto a cero:" />
+    </text_fragment>
     <equation>
       <term key="leftTerm" text="idx" />
       <term key="rightTerm" code="equidistant_interval">
@@ -342,7 +351,10 @@
       </term>
     </equation>
     <equation>
-      <term key="leftTerm" text="M[k,m]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
       <term key="rightTerm" code="minus">
         <term key="leftTerm" code="power">
           <term key="leftTerm" code="sin">
@@ -367,7 +379,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text='c) los elementos de la matriz se&#10;calculan y se guardan en una memoria&#10;que reduce el tiempo de acceso a estos&#10;valores&#10;&#10;d) sólo se puede acceder a los&#10;elementos de la matriz utilizando un&#10;índice inferior. Para crear un índice&#10;inferior, ponga "[" después del nombre&#10;de la matriz:' />
+      <term key="text" text="c) los elementos de la matriz se&#10;calculan y se guardan en una memoria&#10;que reduce el tiempo de acceso a estos&#10;valores&#10;&#10;d) sólo se puede acceder a los&#10;elementos de la matriz utilizando un&#10;índice inferior:" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
@@ -384,7 +396,10 @@
       <term key="rightTerm" text="" />
     </result>
     <equation>
-      <term key="leftTerm" text="P[k,m]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.P:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
       <term key="rightTerm" code="floor">
         <term key="argTerm" code="mult">
           <term key="leftTerm" text="-10" />

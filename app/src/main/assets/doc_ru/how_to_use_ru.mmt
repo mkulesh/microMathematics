@@ -294,20 +294,29 @@
       <term key="text" text="Формула-массив" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text='Массивы - это специальные объекты,&#10;похожие на функции, но имеющие&#10;следующие отличия:&#10;&#10;а) чтобы задать значения элементов&#10;массива, можно использовать индексы&#10;в квадратных скобках "[ ]" (а не&#10;в круглых). Любой не заданный&#10;элемент массива имеет по-умолчанию&#10;нулевое значение:' />
+      <term key="text" text='Массивы - это специальные объекты,&#10;похожие на функции, но имеющие&#10;следующие отличия:&#10;&#10;а) чтобы задать значения элементов&#10;массива, нужно использовать&#10;индекс, а не скобки. Для этого&#10;введите с клавиатуры символ "["&#10;после имени массива:' />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="r[0]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+        <term key="argTerm" text="0" />
+      </term>
       <term key="rightTerm" text="5" />
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="r[3]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+        <term key="argTerm" text="3" />
+      </term>
       <term key="rightTerm" text="6" />
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="r[2]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+        <term key="argTerm" text="2" />
+      </term>
       <term key="rightTerm" text="-4" />
     </equation>
+    <text_fragment>
+      <term key="text" text="Любой не заданный элемент массива&#10;имеет по-умолчанию нулевое&#10;значение:" />
+    </text_fragment>
     <equation>
       <term key="leftTerm" text="idx" />
       <term key="rightTerm" code="equidistant_interval">
@@ -342,7 +351,10 @@
       </term>
     </equation>
     <equation>
-      <term key="leftTerm" text="M[k,m]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
       <term key="rightTerm" code="minus">
         <term key="leftTerm" code="power">
           <term key="leftTerm" code="sin">
@@ -367,7 +379,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text='в) элементы массива сохраняются&#10;после вычисления в памяти, что&#10;обеспечивает более быстрый доступ&#10;к ним&#10;&#10;г) обращаться к элементам массива&#10;можно только по индексу. Чтобы&#10;создать индекс, введите с&#10;клавиатуры символ "[" после имени&#10;массива:' />
+      <term key="text" text="в) элементы массива сохраняются&#10;после вычисления в памяти, что&#10;обеспечивает более быстрый доступ&#10;к ним&#10;&#10;г) обращаться к элементам массива&#10;можно только по индексу:" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
@@ -384,7 +396,10 @@
       <term key="rightTerm" text="" />
     </result>
     <equation>
-      <term key="leftTerm" text="P[k,m]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.P:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
       <term key="rightTerm" code="floor">
         <term key="argTerm" code="mult">
           <term key="leftTerm" text="-10" />
@@ -545,7 +560,7 @@
     <text_fragment>
       <term key="text" text="Появится поле графика с шестью&#10;пустыми полями. Функция, для&#10;которой строится график, задаётся&#10;в левом среднем поле, а аргумент&#10;функции указывается в нижнем&#10;среднем поле:" />
     </text_fragment>
-    <plot_function width="680" height="600" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#FF838383" functionsNumber="2">
+    <plot_function width="680" height="600" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="2">
       <term key="yMaxValue" text="0.26" />
       <term key="yFunction1" color="#FFB10016" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
         <term key="argTerm" code="divide">
@@ -592,7 +607,7 @@
         <term key="maxValue" text="10" />
       </term>
     </equation>
-    <plot_contour plotStyle="surface" width="680" height="600" axes_style="boxed" meshLines="true" meshFill="true" meshOpacity="165" rotation="35" elevation="20" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" zLabelsNumber="10" colorMap="coldhot">
+    <plot_contour plotStyle="surface" width="680" height="600" axes_style="boxed" meshLines="true" meshFill="true" meshOpacity="165" rotation="35" elevation="20" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" zLabelsNumber="10" colorMap="coldhot">
       <term key="yMaxValue" text="10" />
       <term key="yMinValue" text="-10" />
       <term key="xMinValue" text="-10" />
@@ -605,7 +620,7 @@
     <text_fragment>
       <term key="text" text="В центральное поле внизу графика&#10;вводится или имя функции с двумя&#10;аргументами, или выражение,&#10;которое явно зависит от двух&#10;переменных интервального типа.&#10;Также можно использовать двумерный&#10;массив:" />
     </text_fragment>
-    <plot_contour plotStyle="contour" width="680" height="500" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" zLabelsNumber="10" colorMap="rainbow">
+    <plot_contour plotStyle="contour" width="680" height="500" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" zLabelsNumber="10" colorMap="rainbow">
       <term key="yMaxValue" text="" />
       <term key="yMinValue" text="" />
       <term key="xMinValue" text="" />

@@ -23,14 +23,14 @@ public interface TermTypeIf
 {
     enum GroupType
     {
-        OPERATORS(10, true),
+        OPERATORS(20, true),
         COMPARATORS(90, true),
         ARRAY_FUNCTIONS(70, false),
         COMMON_FUNCTIONS(30, true),
         TRIGONOMETRIC_FUNCTIONS(40, false),
         LOG_FUNCTIONS(50, false),
         NUMBER_FUNCTIONS(60, false),
-        USER_FUNCTIONS(20, true),
+        USER_FUNCTIONS(10, true),
         INTERVALS(0, true),
         SERIES_INTEGRALS(80, true);
 

@@ -241,6 +241,11 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         return indexName;
     }
 
+    public void setIndexName(boolean indexName)
+    {
+        this.indexName = indexName;
+    }
+
     public boolean isIntermediateArgument()
     {
         return intermediateArgument;

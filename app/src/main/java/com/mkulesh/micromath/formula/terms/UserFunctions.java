@@ -48,10 +48,10 @@ public class UserFunctions extends FunctionBase
      */
     public enum FunctionType implements UserFunctionIf
     {
-        IDENTITY(1, R.drawable.p_function_identity, R.string.math_function_identity,
-                R.string.formula_function_start_bracket, null),
         FUNCTION_INDEX(-1, R.drawable.p_function_index, R.string.math_function_index,
                 R.string.formula_function_start_index, "content:com.mkulesh.micromath.index"),
+        IDENTITY(1, R.drawable.p_function_identity, R.string.math_function_identity,
+                R.string.formula_function_start_bracket, null),
         FUNCTION_LINK(-1, Palette.NO_BUTTON, Palette.NO_BUTTON,
                 R.string.formula_function_start_bracket, "content:com.mkulesh.micromath.link");
 
@@ -124,7 +124,7 @@ public class UserFunctions extends FunctionBase
 
         public PaletteButton.Category getPaletteCategory()
         {
-            return PaletteButton.Category.CONVERSION;
+            return this == FUNCTION_INDEX ? PaletteButton.Category.INDEX : PaletteButton.Category.CONVERSION;
         }
 
         public FormulaTerm createTerm(
@@ -189,7 +189,7 @@ public class UserFunctions extends FunctionBase
      *--------------------------------------------------------*/
 
     @Override
-    protected String getFunctionLabel()
+    public String getFunctionLabel()
     {
         switch (getFunctionType())
         {
@@ -369,7 +369,7 @@ public class UserFunctions extends FunctionBase
         case VALIDATE_SINGLE_FORMULA:
             linkedFunction = null;
             isValid = super.isContentValid(type);
-            if (isValid && getFunctionType().isLink())
+            if (isValid && !parentField.isEquationName() && getFunctionType().isLink())
             {
                 Equation f = getFormulaRoot().searchLinkedEquation(functionLinkName, terms.size(), false);
                 if (f == null)
@@ -459,6 +459,7 @@ public class UserFunctions extends FunctionBase
             {
                 final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, getArgumentDepth());
                 t.bracketsType = TermField.BracketsType.NEVER;
+                t.getEditText().setIndexName(parentField != null && parentField.isEquationName());
             }
             else if (termType != FunctionType.FUNCTION_INDEX
                     && val.equals(getContext().getResources().getString(R.string.formula_arg_term_key)))
@@ -506,6 +507,7 @@ public class UserFunctions extends FunctionBase
         {
             return true;
         }
+        newArg.getEditText().setIndexName(parentField != null && parentField.isEquationName());
 
         updateTextSize();
         if (owner.getText().contains(sep))

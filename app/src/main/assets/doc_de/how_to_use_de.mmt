@@ -294,20 +294,29 @@
       <term key="text" text="Array" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text='Arrays sind besondere Funktionen, die&#10;folgende Eigenschaften haben:&#10;&#10;a) man kann die Array-Elemente mit&#10;Hilfe von einem Index zuweisen. Die&#10;Argumente des Arrays sind in eckigen&#10;Klammern "[ ]" anstelle der runden&#10;Klammern "( )" geschrieben. Nicht&#10;definierte Elemente haben einen &#10;vorgegebenen Wert "0":' />
+      <term key="text" text='Arrays sind besondere Funktionen, die&#10;folgende Eigenschaften haben:&#10;&#10;a) man kann die Array-Elemente mit&#10;Hilfe von einem Index anstelle der &#10;runden Klammern "( )" zuweisen. Um&#10;solchen Index zu erzeugen, geben Sie&#10;"[" nach dem Array-Namen:' />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="r[0]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+        <term key="argTerm" text="0" />
+      </term>
       <term key="rightTerm" text="5" />
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="r[3]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+        <term key="argTerm" text="3" />
+      </term>
       <term key="rightTerm" text="6" />
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="r[2]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+        <term key="argTerm" text="2" />
+      </term>
       <term key="rightTerm" text="-4" />
     </equation>
+    <text_fragment>
+      <term key="text" text='Nicht definierte Elemente haben einen &#10;vorgegebenen Wert "0":' />
+    </text_fragment>
     <equation>
       <term key="leftTerm" text="idx" />
       <term key="rightTerm" code="equidistant_interval">
@@ -342,7 +351,10 @@
       </term>
     </equation>
     <equation>
-      <term key="leftTerm" text="M[k,m]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
       <term key="rightTerm" code="minus">
         <term key="leftTerm" code="power">
           <term key="leftTerm" code="sin">
@@ -367,7 +379,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text='c) die Array-Elemente werden berechnet&#10;und gespeichert. Dadurch ist der&#10;Zugriff auf diese Elemente viel&#10;schneller.&#10;&#10;d) man kann die Array-Elemente nur&#10;mittels eines Index zugreifen. Um&#10;solchen Index zu erzeugen, geben Sie&#10;"[" nach dem Array-Namen:' />
+      <term key="text" text="c) die Array-Elemente werden berechnet&#10;und gespeichert. Dadurch ist der&#10;Zugriff auf diese Elemente viel&#10;schneller.&#10;&#10;d) man kann die Array-Elemente nur&#10;mittels eines Index zugreifen:" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
@@ -384,7 +396,10 @@
       <term key="rightTerm" text="" />
     </result>
     <equation>
-      <term key="leftTerm" text="P[k,m]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.P:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
       <term key="rightTerm" code="floor">
         <term key="argTerm" code="mult">
           <term key="leftTerm" text="-10" />
@@ -545,7 +560,7 @@
     <text_fragment>
       <term key="text" text="Eine Panel mit sechs lehre Feldern wird&#10;erstellt. Die darzustellenden&#10;Funktionen sollen im linken mittleren&#10;Feld sein und das Funktionsargument im&#10;mittleren unteren Feld." />
     </text_fragment>
-    <plot_function width="680" height="600" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#FF838383" functionsNumber="2">
+    <plot_function width="680" height="600" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="2">
       <term key="yMaxValue" text="0.26" />
       <term key="yFunction1" color="#FFB10016" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
         <term key="argTerm" code="divide">
@@ -592,7 +607,7 @@
         <term key="maxValue" text="10" />
       </term>
     </equation>
-    <plot_contour plotStyle="surface" width="680" height="600" axes_style="boxed" meshLines="true" meshFill="true" meshOpacity="165" rotation="35" elevation="20" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" zLabelsNumber="10" colorMap="coldhot">
+    <plot_contour plotStyle="surface" width="680" height="600" axes_style="boxed" meshLines="true" meshFill="true" meshOpacity="165" rotation="35" elevation="20" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" zLabelsNumber="10" colorMap="coldhot">
       <term key="yMaxValue" text="10" />
       <term key="yMinValue" text="-10" />
       <term key="xMinValue" text="-10" />
@@ -605,7 +620,7 @@
     <text_fragment>
       <term key="text" text="Fügen Sie im unteren Zentrum den&#10;Funktionsname oder eine Gleichung ein,&#10;die genau zwei zuvor definierte&#10;Intervalle enthält. Sie können hier&#10;auch ein Array benuzen:" />
     </text_fragment>
-    <plot_contour plotStyle="contour" width="680" height="500" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" zLabelsNumber="10" colorMap="rainbow">
+    <plot_contour plotStyle="contour" width="680" height="500" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" zLabelsNumber="10" colorMap="rainbow">
       <term key="yMaxValue" text="" />
       <term key="yMinValue" text="" />
       <term key="xMinValue" text="" />

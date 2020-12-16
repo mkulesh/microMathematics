@@ -33,6 +33,7 @@ public class PaletteButton extends AppCompatImageButton
         NEW_TERM,
         TOP_LEVEL_TERM,
         CONVERSION,
+        INDEX,
         COMPARATOR
     }
 
