@@ -17,7 +17,7 @@ public interface TextChangeIf
     /**
      * Procedure is called before text change
      */
-    void beforeTextChanged(String s, boolean isManualInput);
+    void beforeTextChanged(boolean isManualInput);
 
     /**
      * Procedure is called on text change

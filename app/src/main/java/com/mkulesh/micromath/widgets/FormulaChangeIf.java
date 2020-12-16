@@ -38,7 +38,7 @@ public interface FormulaChangeIf
     /**
      * Procedure will be called if current selection shall be expanded
      */
-    FormulaChangeIf onExpandSelection(View owner, ContextMenuHandler handler);
+    FormulaChangeIf onExpandSelection(View owner);
 
     /**
      * Procedure will be called if a term shall be copied to clipboard
@@ -68,7 +68,7 @@ public interface FormulaChangeIf
     /**
      * Procedure will be called if a details for given owner term shall be displayed
      */
-    void onDetails(View owner);
+    void onDetails();
 
     /**
      * Procedure will be called if the given field obtains a command aimed to be expanded by a new term

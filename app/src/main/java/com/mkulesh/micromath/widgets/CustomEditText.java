@@ -362,7 +362,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
             }
             if (textChangeIf != null)
             {
-                textChangeIf.beforeTextChanged(s.toString(), true);
+                textChangeIf.beforeTextChanged(true);
             }
         }
 

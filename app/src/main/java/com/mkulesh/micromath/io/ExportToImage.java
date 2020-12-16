@@ -12,10 +12,8 @@
  */
 package com.mkulesh.micromath.io;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.net.Uri;
 import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.formula.FormulaListView;
@@ -27,7 +25,7 @@ class ExportToImage
 {
     private final OutputStream stream;
 
-    public ExportToImage(Context context, OutputStream stream, final Uri uri)
+    public ExportToImage(OutputStream stream)
     {
         this.stream = stream;
     }

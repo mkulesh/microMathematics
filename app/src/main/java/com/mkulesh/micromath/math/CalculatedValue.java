@@ -184,6 +184,7 @@ public class CalculatedValue
         convertUnit(sourceUnit, newUnit == null ? sourceUnit.getStandardUnit() : newUnit);
     }
 
+    @SuppressWarnings("unused")
     public ValueType invalidate(ErrorType errorType)
     {
         valueType = ValueType.INVALID;

@@ -122,7 +122,7 @@ public class CustomLayout extends LinearLayout
         return SpecialAllignment.NONE;
     }
 
-    public void updateTextSize(ScaledDimensions dimen, int termDepth)
+    public void updateTextSize(ScaledDimensions dimen)
     {
         if (customFeaturesDisabled)
         {

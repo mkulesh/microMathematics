@@ -362,7 +362,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
     }
 
     @Override
-    public void onDetails(View owner)
+    public void onDetails()
     {
         if (!enableDetails())
         {
@@ -492,7 +492,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
      *--------------------------------------------------------*/
 
     @Override
-    public void onSizeChanged(SizeChangingLayout owner, int w, int h)
+    public void onHeightChanged(int h)
     {
         cornerView.getLayoutParams().width = LayoutParams.MATCH_PARENT;
         cornerView.getLayoutParams().height = h;

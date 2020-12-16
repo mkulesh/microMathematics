@@ -170,7 +170,7 @@ public class ContextMenuHandler
         switch (itemId)
         {
         case R.id.context_menu_expand:
-            FormulaChangeIf newIf = formulaChangeIf.onExpandSelection(actionModeOwner, this);
+            FormulaChangeIf newIf = formulaChangeIf.onExpandSelection(actionModeOwner);
             if (newIf != null)
             {
                 formulaChangeIf = newIf;

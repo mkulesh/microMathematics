@@ -109,7 +109,7 @@ public class Intervals extends FormulaTerm
         public FormulaTerm createTerm(
                 TermField termField, LinearLayout layout, String s, int textIndex) throws Exception
         {
-            return new Intervals(this, termField, layout, s, textIndex);
+            return new Intervals(this, termField, layout, textIndex);
         }
     }
 
@@ -126,7 +126,7 @@ public class Intervals extends FormulaTerm
      * Constructors
      *--------------------------------------------------------*/
 
-    private Intervals(IntervalType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    private Intervals(IntervalType type, TermField owner, LinearLayout layout, int idx) throws Exception
     {
         super(owner, layout);
         termType = type;

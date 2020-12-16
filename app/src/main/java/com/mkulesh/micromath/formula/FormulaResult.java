@@ -413,7 +413,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
      *--------------------------------------------------------*/
 
     @Override
-    public void onDetails(View owner)
+    public void onDetails()
     {
         if (enableDetails())
         {

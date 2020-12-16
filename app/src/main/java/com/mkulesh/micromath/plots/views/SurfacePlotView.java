@@ -77,16 +77,16 @@ public class SurfacePlotView extends PlotView
     public SurfacePlotView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
-        this.prepare(attrs);
+        this.prepare();
     }
 
     public SurfacePlotView(Context context, AttributeSet attrs, int defStyle)
     {
         super(context, attrs, defStyle);
-        this.prepare(attrs);
+        this.prepare();
     }
 
-    private void prepare(AttributeSet attrs)
+    private void prepare()
     {
         setLayerType(View.LAYER_TYPE_NONE, null);
         plotParameters.twoDPlotStyle = TwoDPlotStyle.SURFACE;
@@ -782,7 +782,7 @@ public class SurfacePlotView extends PlotView
         paint.setStyle(Paint.Style.FILL);
         if (count == 4)
         {
-            drawVertices(canvas, count, poly_x, poly_y, col);
+            drawVertices(canvas, poly_x, poly_y, col);
             return;
         }
         path.reset();
@@ -838,7 +838,7 @@ public class SurfacePlotView extends PlotView
         canvas.drawText(s, x, y, paint);
     }
 
-    private void drawVertices(Canvas canvas, int count, int[] poly_x, int[] poly_y, int[] col)
+    private void drawVertices(Canvas canvas, int[] poly_x, int[] poly_y, int[] col)
     {
         vertsValues[0] = poly_x[0];
         vertsValues[1] = poly_y[0];

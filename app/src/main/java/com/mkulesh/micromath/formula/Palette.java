@@ -230,7 +230,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
     }
 
     @Override
-    public void beforeTextChanged(String s, boolean isManualInput)
+    public void beforeTextChanged(boolean isManualInput)
     {
         // empty
     }

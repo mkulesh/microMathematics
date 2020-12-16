@@ -29,7 +29,6 @@ import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.IdGenerator;
 import com.mkulesh.micromath.utils.ViewUtils;
-import com.mkulesh.micromath.widgets.ContextMenuHandler;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomLayout;
 import com.mkulesh.micromath.widgets.CustomTextView;
@@ -354,7 +353,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     }
 
     @Override
-    public FormulaChangeIf onExpandSelection(View owner, ContextMenuHandler handler)
+    public FormulaChangeIf onExpandSelection(View owner)
     {
         FormulaBase retValue = null;
         if (isRootFormula() && (owner == null || isEquationOwner(owner)))
@@ -504,7 +503,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     }
 
     @Override
-    public void onDetails(View owner)
+    public void onDetails()
     {
         // empty
     }
@@ -1000,7 +999,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         }
         if (v instanceof CustomLayout)
         {
-            ((CustomLayout) v).updateTextSize(dimen, termDepth);
+            ((CustomLayout) v).updateTextSize(dimen);
         }
         if (v instanceof ViewGroup)
         {

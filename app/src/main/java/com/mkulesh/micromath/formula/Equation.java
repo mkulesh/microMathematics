@@ -15,7 +15,6 @@ package com.mkulesh.micromath.formula;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
-import android.view.View;
 
 import com.mkulesh.micromath.dialogs.DialogResultDetails;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
@@ -370,7 +369,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     }
 
     @Override
-    public void onDetails(View owner)
+    public void onDetails()
     {
         if (enableDetails())
         {

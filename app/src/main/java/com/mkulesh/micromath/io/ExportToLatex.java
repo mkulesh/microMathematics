@@ -18,7 +18,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.net.Uri;
-import android.util.DisplayMetrics;
 import android.view.View;
 
 import com.mkulesh.micromath.fman.AdapterIf;
@@ -346,8 +345,6 @@ class ExportToLatex
             ViewUtils.Debug(this, "cannot save picture: " + e);
             return;
         }
-        final DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        final int densityDpi = (int) (metrics.density * 160f);
         if (!inLine)
         {
             writer.append("\n\\begin{center}");

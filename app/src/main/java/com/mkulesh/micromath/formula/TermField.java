@@ -401,7 +401,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
      *--------------------------------------------------------*/
 
     @Override
-    public void beforeTextChanged(String s, boolean isManualInput)
+    public void beforeTextChanged(boolean isManualInput)
     {
         if (isManualInput)
         {

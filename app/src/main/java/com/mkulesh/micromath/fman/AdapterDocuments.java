@@ -48,12 +48,7 @@ public class AdapterDocuments extends AdapterBaseImpl
 
     final static class SAFItem extends AdapterIf.Item
     {
-        public File f()
-        {
-            Uri u = (Uri) origin;
-            String path = AdapterDocuments.getPath(u, this.dir);
-            return new File(path);
-        }
+        // empty
     }
 
     private Uri uri;
@@ -485,14 +480,12 @@ public class AdapterDocuments extends AdapterBaseImpl
     {
         private final AdapterDocuments a;
         private final Item[] mList;
-        private final Uri dirUri;
 
         DeleteEngine(AdapterDocuments a, Handler h, Item[] list)
         {
             setHandler(h);
             this.a = a;
             mList = list;
-            dirUri = a.getUri();
         }
 
         void run()
@@ -503,7 +496,7 @@ public class AdapterDocuments extends AdapterBaseImpl
             }
             try
             {
-                int cnt = deleteFiles(dirUri, mList);
+                int cnt = deleteFiles(mList);
                 if (cnt == 0)
                 {
                     sendError();
@@ -519,7 +512,7 @@ public class AdapterDocuments extends AdapterBaseImpl
             }
         }
 
-        private int deleteFiles(Uri dir_uri, Item[] l) throws Exception
+        private int deleteFiles(Item[] l) throws Exception
         {
             int cnt = 0;
             for (Item item : l)

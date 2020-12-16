@@ -1284,7 +1284,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         }
         if (manipulator == Manipulator.DETAILS && f != null)
         {
-            f.onDetails(f);
+            f.onDetails();
         }
     }
 

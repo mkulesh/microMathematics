@@ -30,17 +30,12 @@ public interface AdapterIf
         public long size = -1;
         public boolean dir = false;
         String attr = "";
-        public String mime;
         public Object origin = null;
         int icon_id = -1;
 
         public Item()
         {
-        }
-
-        public Item(String name_)
-        {
-            name = name_;
+            // empty
         }
     }
 

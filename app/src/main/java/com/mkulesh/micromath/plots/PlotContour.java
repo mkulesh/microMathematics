@@ -346,7 +346,7 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
      *--------------------------------------------------------*/
 
     @Override
-    public void onSizeChanged(SizeChangingLayout owner, int w, int h)
+    public void onHeightChanged(int h)
     {
         cornerView1.getLayoutParams().height = h;
         cornerView2.getLayoutParams().height = h;

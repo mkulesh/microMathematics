@@ -34,16 +34,16 @@ public class ContourPlotView extends PlanePlotView
     public ContourPlotView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
-        this.prepare(attrs);
+        this.prepare();
     }
 
     public ContourPlotView(Context context, AttributeSet attrs, int defStyle)
     {
         super(context, attrs, defStyle);
-        this.prepare(attrs);
+        this.prepare();
     }
 
-    private void prepare(AttributeSet attrs)
+    private void prepare()
     {
         plotParameters.twoDPlotStyle = TwoDPlotStyle.CONTOUR;
     }
