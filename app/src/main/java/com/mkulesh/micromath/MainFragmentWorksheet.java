@@ -123,7 +123,7 @@ public class MainFragmentWorksheet extends BaseFragment
         }
         if (isFirstStart())
         {
-            if (TestSession.isAutotestOnStart(activity))
+            if (((MainActivity) activity).isAutotestOnStart())
             {
                 if (((MainActivity) activity).checkStoragePermission(R.id.action_dev_autotest))
                 {
@@ -190,11 +190,7 @@ public class MainFragmentWorksheet extends BaseFragment
         Uri uri = getOpenedFile();
         if (uri != null)
         {
-            if (FileUtils.isAssetUri(uri))
-            {
-                // no need to save an asset: just ignore this case
-            }
-            else
+            if (!FileUtils.isAssetUri(uri))
             {
                 formulas.writeToFile(uri);
             }
@@ -205,7 +201,7 @@ public class MainFragmentWorksheet extends BaseFragment
         }
         else
         {
-            File file = new File(getActivity().getExternalFilesDir(null), AUTOSAVE_FILE_NAME);
+            File file = CompatUtils.getStorageFile(activity, AUTOSAVE_FILE_NAME);
             if (file != null)
             {
                 uri = Uri.fromFile(file);
@@ -280,19 +276,19 @@ public class MainFragmentWorksheet extends BaseFragment
             break;
         case R.id.action_dev_autotest:
         {
-            TestSession at = new TestSession(formulas, TestSession.Mode.TEST_SCRIPS);
+            TestSession at = new TestSession(formulas, TestSession.Mode.TEST_SCRIPS, ((MainActivity) activity).isAutotestOnStart());
             CompatUtils.executeAsyncTask(at);
             break;
         }
         case R.id.action_dev_export_doc:
         {
-            TestSession at = new TestSession(formulas, TestSession.Mode.EXPORT_DOC);
+            TestSession at = new TestSession(formulas, TestSession.Mode.EXPORT_DOC, false);
             CompatUtils.executeAsyncTask(at);
             break;
         }
         case R.id.action_dev_take_screenshot:
         {
-            TestSession at = new TestSession(formulas, TestSession.Mode.TAKE_SCREENSHOTS);
+            TestSession at = new TestSession(formulas, TestSession.Mode.TAKE_SCREENSHOTS, false);
             CompatUtils.executeAsyncTask(at);
             break;
         }

@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity
     private static final int SETTINGS_ACTIVITY_REQID = 256;
     private static final String EXIT_CONFIRM = "exit_confirm";
     private static final String SHORTCUT_NEW_DOCUMENT = "com.mkulesh.micromath.plus.NEW_DOCUMENT";
+    private static final String SHORTCUT_AUTOTEST = "com.mkulesh.micromath.plus.AUTOTEST";
 
     private Dialog storagePermissionDialog = null;
     private int storagePermissionAction = ViewUtils.INVALID_INDEX;
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity
     private final ArrayList<MenuItem> activityMenuItems = new ArrayList<>();
     private ActionBarDrawerToggle mDrawerToggle;
     private Uri externalUri = null;
+    private boolean autotestOnStart = false;
     private Toast exitToast = null;
     private int orientation;
 
@@ -115,7 +117,14 @@ public class MainActivity extends AppCompatActivity
         boolean intentProcessed = false;
         if (intent != null)
         {
-            if (SHORTCUT_NEW_DOCUMENT.equals(intent.getAction()))
+            if (SHORTCUT_AUTOTEST.equals(intent.getAction()))
+            {
+                ViewUtils.Debug(this, "Called in autotest mode: " + intent.toString());
+                autotestOnStart = true;
+                selectWorksheet(BaseFragment.INVALID_ACTION_ID);
+                intentProcessed = true;
+            }
+            else if (SHORTCUT_NEW_DOCUMENT.equals(intent.getAction()))
             {
                 ViewUtils.Debug(this, "Called with shortcut intent: " + intent.toString());
                 selectWorksheet(R.id.action_new_document);
@@ -137,6 +146,11 @@ public class MainActivity extends AppCompatActivity
         {
             selectWorksheet(BaseFragment.INVALID_ACTION_ID);
         }
+    }
+
+    public boolean isAutotestOnStart()
+    {
+        return autotestOnStart;
     }
 
     @Override

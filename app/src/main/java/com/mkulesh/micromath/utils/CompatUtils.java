@@ -26,6 +26,7 @@ import android.view.View;
 import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -197,5 +198,29 @@ public class CompatUtils
             return new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
         }
         return null;
+    }
+
+    public static File getStorageDir(final @NonNull Context context, final @NonNull String directory)
+    {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q)
+        {
+            return new File(context.getFilesDir() + "/" + directory);
+        }
+        else
+        {
+            return new File(context.getExternalFilesDir(null) + "/" + directory);
+        }
+    }
+
+    public static File getStorageFile(final @NonNull Context context, final @NonNull String file)
+    {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q)
+        {
+            return new File(context.getFilesDir(), file);
+        }
+        else
+        {
+            return new File(context.getExternalFilesDir(null), file);
+        }
     }
 }

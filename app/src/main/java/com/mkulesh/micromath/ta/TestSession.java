@@ -13,7 +13,6 @@
 package com.mkulesh.micromath.ta;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.graphics.Bitmap;
@@ -33,6 +32,7 @@ import com.mkulesh.micromath.io.Exporter;
 import com.mkulesh.micromath.io.XmlLoaderTask;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.ta.TestScript.NumberType;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.SynchronizedBoolean;
 import com.mkulesh.micromath.utils.ViewUtils;
 
@@ -52,7 +52,6 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
     }
 
     private final static String REPORT_HTML_FILE = "autotest.html";
-    private final static String TEST_CONFIGURATION = "autotest.cfg";
     private final static String EXPORT_DOC_DIR = "doc";
     private final static String TAKE_SCREENSHOTS_DIR = "screenshots";
 
@@ -63,13 +62,14 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
     private final FormulaList formulas;
     private final Activity context;
     private final CharSequence[] scripts;
+    private final boolean isAutotestOnStart;
     private final SynchronizedBoolean isPublishRuns = new SynchronizedBoolean();
     private final ArrayList<TestScript> testScripts = new ArrayList<>();
     private final Mode mode;
     private TestScript testScript = null;
     private long readingStartTime;
 
-    public TestSession(FormulaList formulas, Mode mode)
+    public TestSession(FormulaList formulas, Mode mode, boolean isAutotestOnStart)
     {
         this.formulas = formulas;
         context = formulas.getActivity();
@@ -90,12 +90,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
             break;
         }
         formulas.setTaSession(this);
-    }
-
-    public static boolean isAutotestOnStart(Context context)
-    {
-        final File cfgFile = new File(context.getExternalFilesDir(null), TEST_CONFIGURATION);
-        return cfgFile.exists();
+        this.isAutotestOnStart = isAutotestOnStart;
     }
 
     @Override
@@ -225,14 +220,14 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
     private void exportLatex(String directory, String scriptName)
     {
         // Document directory and file
-        final File docDir = new File(context.getExternalFilesDir(null) + "/" + directory);
+        final File docDir = CompatUtils.getStorageDir(context, directory);
         docDir.mkdir();
         final File docFile = new File(docDir, scriptName + ".tex");
         final Uri docUri = FileUtils.ensureScheme(Uri.fromFile(docFile));
 
         // Graphics directory
         final String GRAPHICS_DIRECTORY = "graphics";
-        final File graphicsDir = new File(context.getExternalFilesDir(null) + "/" + directory + "/" + GRAPHICS_DIRECTORY);
+        final File graphicsDir = CompatUtils.getStorageDir(context, directory + "/" + GRAPHICS_DIRECTORY);
         graphicsDir.mkdir();
         final Uri graphicsUri = FileUtils.ensureScheme(Uri.fromFile(graphicsDir));
         final AdapterFileSystem adapter = new AdapterFileSystem(context);
@@ -248,7 +243,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
 
     private void takeScreenshot(String directory, String scriptName)
     {
-        final File parent = new File(context.getExternalFilesDir(null) + "/" + directory);
+        final File parent = CompatUtils.getStorageDir(context, directory);
         parent.mkdir();
         final File file = new File(parent, scriptName + ".png");
         if (file == null)
@@ -310,7 +305,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         {
             return;
         }
-        File file = new File(context.getExternalFilesDir(null), REPORT_HTML_FILE);
+        File file = CompatUtils.getStorageFile(context, REPORT_HTML_FILE);
         try
         {
             if (file != null)
@@ -332,7 +327,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
             Toast.makeText(context, error, Toast.LENGTH_LONG).show();
             file = null;
         }
-        if (isAutotestOnStart(context))
+        if (isAutotestOnStart)
         {
             formulas.getActivity().finish();
         }
