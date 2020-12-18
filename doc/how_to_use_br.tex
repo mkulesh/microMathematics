@@ -1,5 +1,5 @@
 % This is auto-generated file: do not edit!
-% Exported from microMathematics Plus, version 2.20.0
+% Exported from microMathematics Plus, version 2.21.0
 
 
 Este app é um poderoso programa
@@ -225,29 +225,43 @@ Você também pode usar o lado direito
 ou outras funções embutidas ou
 previamente definidas. Para inserir um
 função entre o nome dela, toque no
-abre parênteses
- ''('' e então entre o argumento. Este
-argumento também pode ser uma fórmula,
-que contém quaisquer outras operações
-e funções.
+abre parênteses ''('' e então entre o
+argumento. Este argumento também pode
+ser uma fórmula, que contém quaisquer
+outras operações e funções.
 
 \subsubsection{Array}
 
 Arranjos são funções especiais com as
 seguintes propriedades:
 
-a) apenas um intervalo previamente
+a) elementos de arranjos podem ser
+atribuídos usando um índice inferior
+em vez de ''( )''. Para criar um índice
+menor, coloque ''['' após o nome do
+arranjo:
+\begin{center}\begin{tabular}{ccc}
+  $r_{0}  := 5$ &
+  $r_{3}  := 6$ &
+  $r_{2}  := -4$ \cr
+\end{tabular}\end{center}
+
+Qualquer elemento não atribuído é
+definido por padrão como zero:
+\begin{center}\begin{tabular}{cc}
+  $idx := \left[ 0,\, 1 \,..\, 3 \right]$ &
+  $r_{idx}  = \begin{bmatrix}5.0\\0.0\\-4.0\\6.0\\\end{bmatrix}$ \cr
+\end{tabular}\end{center}
+
+b) apenas um intervalo previamente
 definido pode ser usado como um
 argumento de arranjo:
 \begin{center}\begin{tabular}{cc}
   $k := \left[ 0,\, 1 \,..\, 100 \right]$ &
   $m := \left[ 0,\, 1 \,..\, 200 \right]$ \cr
 \end{tabular}\end{center}
-
-a) argumentos de arranjos são dados
-entre [ ] ao invés de ( ):
 \begin{center}\begin{tabular}{c}
-  $M[k,m] := {sin \left( k / 10\right) }^{2} - 3 \cdot  \left| cos \left( m / 10\right)  \right| $
+  $M_{k,\, m}  := {sin \left( k / 10\right) }^{2} - 3 \cdot  \left| cos \left( m / 10\right)  \right| $
 \end{tabular}\end{center}
 
 c) elementos de arranjos são calculados
@@ -256,14 +270,13 @@ tempo de acesso à esses valores
 
 d) elementos de arranjos podem ser
 acessados apenas usando um índice
-menor. Para criar um índice menor,
-coloque ''['' após o nome do arranjo:
+menor:
 \begin{center}\begin{tabular}{cc}
   $M_{5,\, 10}  = -1.39106$ &
   $M_{10,\, 5}  = -1.92467$ \cr
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $P[k,m] := floor \left( -10 \cdot M_{k,\, m} \right) $
+  $P_{k,\, m}  := floor \left( -10 \cdot M_{k,\, m} \right) $
 \end{tabular}\end{center}
 
 e) se qualquer índice do arranjo for

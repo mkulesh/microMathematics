@@ -1,5 +1,5 @@
 % This is auto-generated file: do not edit!
-% Exported from microMathematics Plus, version 2.20.0
+% Exported from microMathematics Plus, version 2.21.0
 
 
 Este ejemplo muestra gráficos en 3D
@@ -100,19 +100,19 @@ mejorar el tiempo de cálculo:
   $y2 := 15$ \cr
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $x[n] := {\left( x1 +  \left( x2 - x1\right)  \cdot n / N \right)}^{2}$
+  $x_{n}  := {\left( x1 +  \left( x2 - x1\right)  \cdot n / N \right)}^{2}$
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $y[m] := {\left( y1 +  \left( y2 - y1\right)  \cdot m / M \right)}^{2}$
+  $y_{m}  := {\left( y1 +  \left( y2 - y1\right)  \cdot m / M \right)}^{2}$
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $r[n,m] := 0.04 \cdot x_{n}  + 0.02 \cdot y_{m} $
+  $r_{n,\, m}  := 0.04 \cdot x_{n}  + 0.02 \cdot y_{m} $
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $t[n,m] := \left( x_{n}  + 0.05 \cdot y_{m}  \right) \cdot exp \left( 1 - r_{n,\, m} \right) $
+  $t_{n,\, m}  := \left( x_{n}  + 0.05 \cdot y_{m}  \right) \cdot exp \left( 1 - r_{n,\, m} \right) $
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $F[n,m] := \frac{sin \left( x_{n}  + 0.1 \cdot y_{m} \right) }{0.15 + r_{n,\, m} } + \frac{t_{n,\, m} }{10}$
+  $F_{n,\, m}  := \frac{sin \left( x_{n}  + 0.1 \cdot y_{m} \right) }{0.15 + r_{n,\, m} } + \frac{t_{n,\, m} }{10}$
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/three_d_plot_fig4.png} \end{tabular}\end{center}
 

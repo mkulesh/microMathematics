@@ -1,5 +1,5 @@
 % This is auto-generated file: do not edit!
-% Exported from microMathematics Plus, version 2.20.0
+% Exported from microMathematics Plus, version 2.21.0
 
 
 This app is a powerful calculation
@@ -258,14 +258,17 @@ Arrays are special functions with
 following properties:
 
 a) array elements can be assigned
-using an index given in [ ] instead
-of ( ). Any not assigned element is 
-set by default to zero:
+using lower index instead of ''( )''. 
+To create an index, put ''['' after the 
+array name:
 \begin{center}\begin{tabular}{ccc}
-  $r[0] := 5$ &
-  $r[3] := 6$ &
-  $r[2] := -4$ \cr
+  $r_{0}  := 5$ &
+  $r_{3}  := 6$ &
+  $r_{2}  := -4$ \cr
 \end{tabular}\end{center}
+
+Any not assigned element is  set by
+default to zero:
 \begin{center}\begin{tabular}{cc}
   $idx := \left[ 0,\, 1 \,..\, 3 \right]$ &
   $r_{idx}  = \begin{bmatrix}5.0\\0.0\\-4.0\\6.0\\\end{bmatrix}$ \cr
@@ -278,7 +281,7 @@ can be used as array argument:
   $m := \left[ 0,\, 1 \,..\, 200 \right]$ \cr
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $M[k,m] := {sin \left( k / 10\right) }^{2} - 3 \cdot  \left| cos \left( m / 10\right)  \right| $
+  $M_{k,\, m}  := {sin \left( k / 10\right) }^{2} - 3 \cdot  \left| cos \left( m / 10\right)  \right| $
 \end{tabular}\end{center}
 
 c) array elements are calculated and
@@ -286,15 +289,13 @@ stored in memory that reduces the
 access time to these values
 
 d) array elements can be only accessed
-by using a lower index. To create
-lower index, put ''['' after the array
-name:
+by using a lower index:
 \begin{center}\begin{tabular}{cc}
   $M_{5,\, 10}  = -1.39106$ &
   $M_{10,\, 5}  = -1.92467$ \cr
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $P[k,m] := floor \left( -10 \cdot M_{k,\, m} \right) $
+  $P_{k,\, m}  := floor \left( -10 \cdot M_{k,\, m} \right) $
 \end{tabular}\end{center}
 
 e) if any array index is complex or

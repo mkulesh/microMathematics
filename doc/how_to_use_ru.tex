@@ -1,5 +1,5 @@
 % This is auto-generated file: do not edit!
-% Exported from microMathematics Plus, version 2.20.0
+% Exported from microMathematics Plus, version 2.21.0
 
 
 Данное приложение является мощным
@@ -283,16 +283,19 @@ LaTeX или изображение.
 следующие отличия:
 
 а) чтобы задать значения элементов
-массива, можно использовать индексы
-в квадратных скобках ''[ ]'' (а не
-в круглых). Любой не заданный
-элемент массива имеет по-умолчанию
-нулевое значение:
+массива, нужно использовать
+индекс, а не скобки. Для этого
+введите с клавиатуры символ ''[''
+после имени массива:
 \begin{center}\begin{tabular}{ccc}
-  $r[0] := 5$ &
-  $r[3] := 6$ &
-  $r[2] := -4$ \cr
+  $r_{0}  := 5$ &
+  $r_{3}  := 6$ &
+  $r_{2}  := -4$ \cr
 \end{tabular}\end{center}
+
+Любой не заданный элемент массива
+имеет по-умолчанию нулевое
+значение:
 \begin{center}\begin{tabular}{cc}
   $idx := \left[ 0,\, 1 \,..\, 3 \right]$ &
   $r_{idx}  = \begin{bmatrix}5.0\\0.0\\-4.0\\6.0\\\end{bmatrix}$ \cr
@@ -307,7 +310,7 @@ LaTeX или изображение.
   $m := \left[ 0,\, 1 \,..\, 200 \right]$ \cr
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $M[k,m] := {sin \left( k / 10\right) }^{2} - 3 \cdot  \left| cos \left( m / 10\right)  \right| $
+  $M_{k,\, m}  := {sin \left( k / 10\right) }^{2} - 3 \cdot  \left| cos \left( m / 10\right)  \right| $
 \end{tabular}\end{center}
 
 в) элементы массива сохраняются
@@ -316,16 +319,13 @@ LaTeX или изображение.
 к ним
 
 г) обращаться к элементам массива
-можно только по индексу. Чтобы
-создать индекс, введите с
-клавиатуры символ ''['' после имени
-массива:
+можно только по индексу:
 \begin{center}\begin{tabular}{cc}
   $M_{5,\, 10}  = -1.39106$ &
   $M_{10,\, 5}  = -1.92467$ \cr
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $P[k,m] := floor \left( -10 \cdot M_{k,\, m} \right) $
+  $P_{k,\, m}  := floor \left( -10 \cdot M_{k,\, m} \right) $
 \end{tabular}\end{center}
 
 д) если значение индекса

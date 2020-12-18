@@ -1,5 +1,5 @@
 % This is auto-generated file: do not edit!
-% Exported from microMathematics Plus, version 2.20.0
+% Exported from microMathematics Plus, version 2.21.0
 
 
 Esta app es un potente software de
@@ -274,15 +274,18 @@ Las matrices son funciones especiales
 con las siguientes propiedades:
 
 a) los elementos de la matriz pueden
-asignarse usando un índice dado en [ ]
-en lugar de ( ). Cualquier elemento no
-asignado es  establecido por defecto a
-cero:
+asignarse usando un índice en lugar 
+de ( ). Para crear un índice inferior,
+ponga ''['' después del nombre de la 
+matriz:
 \begin{center}\begin{tabular}{ccc}
-  $r[0] := 5$ &
-  $r[3] := 6$ &
-  $r[2] := -4$ \cr
+  $r_{0}  := 5$ &
+  $r_{3}  := 6$ &
+  $r_{2}  := -4$ \cr
 \end{tabular}\end{center}
+
+Cualquier elemento no asignado es  
+establecido por defecto a cero:
 \begin{center}\begin{tabular}{cc}
   $idx := \left[ 0,\, 1 \,..\, 3 \right]$ &
   $r_{idx}  = \begin{bmatrix}5.0\\0.0\\-4.0\\6.0\\\end{bmatrix}$ \cr
@@ -296,7 +299,7 @@ matriz:
   $m := \left[ 0,\, 1 \,..\, 200 \right]$ \cr
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $M[k,m] := {sin \left( k / 10\right) }^{2} - 3 \cdot  \left| cos \left( m / 10\right)  \right| $
+  $M_{k,\, m}  := {sin \left( k / 10\right) }^{2} - 3 \cdot  \left| cos \left( m / 10\right)  \right| $
 \end{tabular}\end{center}
 
 c) los elementos de la matriz se
@@ -306,15 +309,13 @@ valores
 
 d) sólo se puede acceder a los
 elementos de la matriz utilizando un
-índice inferior. Para crear un índice
-inferior, ponga ''['' después del nombre
-de la matriz:
+índice inferior:
 \begin{center}\begin{tabular}{cc}
   $M_{5,\, 10}  = -1.39106$ &
   $M_{10,\, 5}  = -1.92467$ \cr
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $P[k,m] := floor \left( -10 \cdot M_{k,\, m} \right) $
+  $P_{k,\, m}  := floor \left( -10 \cdot M_{k,\, m} \right) $
 \end{tabular}\end{center}
 
 e) si algún índice de la matriz es
