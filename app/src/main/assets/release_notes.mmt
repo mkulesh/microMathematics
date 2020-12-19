@@ -5,6 +5,30 @@
       <term key="text" text="Current release:" />
     </text_fragment>
     <text_fragment numbering="true">
+      <term key="text" text="Added new purple-green theme" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Added possibility to use an index on the&#10;left side of an equation" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Improved swiping and scrolling controls" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Fixed a bug: locale change does not work&#10;for older Android versions" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Fixed lost point from the interval when&#10;using some decimal prefixes" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Fixed write permission for Android 11" />
+    </text_fragment>
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Previous releases:" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Version 2.20.1" />
+    </text_fragment>
+    <text_fragment numbering="true">
       <term key="text" text="Improved plots with indexed variable.&#10;Now it is possible to use an array as&#10;the plot argument:" />
     </text_fragment>
     <equation>
@@ -16,7 +40,9 @@
       </term>
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="x[k]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
+        <term key="argTerm" text="k" />
+      </term>
       <term key="rightTerm" code="divide_slash">
         <term key="leftTerm" code="mult">
           <term key="leftTerm" text="k" />
@@ -116,9 +142,6 @@
       </term>
       <term key="rightTerm" text="19.7 m" />
     </result>
-    <text_fragment textStyle="subsection">
-      <term key="text" text="Previous releases:" />
-    </text_fragment>
     <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Version 2.20.0" />
     </text_fragment>
@@ -147,15 +170,21 @@
       <term key="text" text="Array elements can be assigned using an&#10;index given in [ ] instead of ( ). Any&#10;not assigned elements are set by&#10;default to zero:" />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="r[0]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+        <term key="argTerm" text="0" />
+      </term>
       <term key="rightTerm" text="5" />
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="r[3]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+        <term key="argTerm" text="3" />
+      </term>
       <term key="rightTerm" text="6" />
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="r[2]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+        <term key="argTerm" text="2" />
+      </term>
       <term key="rightTerm" text="-4" />
     </equation>
     <text_fragment numbering="true">
@@ -213,7 +242,7 @@
     </result>
     <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" text="8" unit="bit" />
-      <term key="rightTerm" text="8.0 bit" />
+      <term key="rightTerm" text="1.0 byte" />
     </result>
     <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" code="divide_slash">
@@ -373,7 +402,10 @@
       </term>
     </equation>
     <equation>
-      <term key="leftTerm" text="M[k,m]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
       <term key="rightTerm" code="plus">
         <term key="leftTerm" text="k" />
         <term key="rightTerm" text="m" />
@@ -459,7 +491,10 @@
       </term>
     </equation>
     <equation>
-      <term key="leftTerm" text="S[k,m]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.S:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
       <term key="rightTerm" code="read">
         <term key="argTerm" text="asset:/examples/three_component_signal.dat" />
       </term>
@@ -528,7 +563,10 @@
       </term>
     </equation>
     <equation>
-      <term key="leftTerm" text="M[k,m]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
       <term key="rightTerm" code="minus">
         <term key="leftTerm" code="power">
           <term key="leftTerm" code="sin">
@@ -709,7 +747,10 @@
       </term>
     </equation>
     <equation>
-      <term key="leftTerm" text="M[k,m]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
       <term key="rightTerm" code="minus">
         <term key="leftTerm" code="power">
           <term key="leftTerm" code="sin">
