@@ -1054,10 +1054,12 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text="Define 1-D array" />
+      <term key="text" text='Define 1-D array (enter "[")' />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="z[n]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.z">
+        <term key="argTerm" text="n" />
+      </term>
       <term key="rightTerm" code="plus">
         <term key="leftTerm" text="x1" />
         <term key="rightTerm" code="mult">
@@ -1081,7 +1083,9 @@
       </term>
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="G[n]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.G">
+        <term key="argTerm" text="n" />
+      </term>
       <term key="rightTerm" code="content:com.mkulesh.micromath.link.f">
         <term key="argTerm" code="content:com.mkulesh.micromath.index.z">
           <term key="argTerm" text="n" />
@@ -1107,11 +1111,13 @@
       <term key="text" text="Assign value by index" />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="z[5]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.z">
+        <term key="argTerm" text="5" />
+      </term>
       <term key="rightTerm" text="-10" />
     </equation>
     <text_fragment>
-      <term key="text" text='Show values of single elements of array ("[")' />
+      <term key="text" text="Show values of single elements of array " />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.z">
@@ -1141,7 +1147,10 @@
       </term>
     </equation>
     <equation>
-      <term key="leftTerm" text="G2[n,m]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.G2:2">
+        <term key="argTerm1" text="n" />
+        <term key="argTerm2" text="m" />
+      </term>
       <term key="rightTerm" code="round">
         <term key="argTerm1" code="sin">
           <term key="argTerm" code="mult">

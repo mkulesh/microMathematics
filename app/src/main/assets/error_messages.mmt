@@ -19,10 +19,6 @@
       <term key="rightTerm" text="0" />
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="M[x" />
-      <term key="rightTerm" text="0" />
-    </equation>
-    <equation inRightOfPrevious="true">
       <term key="leftTerm" text="Mx]" />
       <term key="rightTerm" text="0" />
     </equation>
@@ -44,19 +40,11 @@
       <term key="leftTerm" text="f)x(" />
       <term key="rightTerm" text="0" />
     </equation>
-    <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="M]x[" />
-      <term key="rightTerm" text="0" />
-    </equation>
     <text_fragment numbering="true">
       <term key="text" text="Function shall have an argument" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="f()" />
-      <term key="rightTerm" text="0" />
-    </equation>
-    <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="M[]" />
       <term key="rightTerm" text="0" />
     </equation>
     <text_fragment numbering="true">
@@ -67,11 +55,7 @@
       <term key="rightTerm" text="0" />
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="F[~x]" />
-      <term key="rightTerm" text="0" />
-    </equation>
-    <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="F([x,y])" />
+      <term key="leftTerm" text="F(x1!)" />
       <term key="rightTerm" text="5" />
     </equation>
     <text_fragment numbering="true">
@@ -382,55 +366,13 @@
       <term key="rightTerm" text="" />
     </result>
     <text_fragment numbering="true">
-      <term key="text" text="Complex number is not allowed for this&#10;field" />
-    </text_fragment>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="summation">
-        <term key="maxValue" code="plus">
-          <term key="leftTerm" text="4" />
-          <term key="rightTerm" text="5i" />
-        </term>
-        <term key="index" text="j" />
-        <term key="minValue" text="1" />
-        <term key="argTerm" text="j" />
-      </term>
-      <term key="rightTerm" text="" />
-    </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="product">
-        <term key="maxValue" text="10" />
-        <term key="index" text="j" />
-        <term key="minValue" code="minus">
-          <term key="leftTerm" text="2" />
-          <term key="rightTerm" text="i" />
-        </term>
-        <term key="argTerm" text="j" />
-      </term>
-      <term key="rightTerm" text="" />
-    </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="integral">
-        <term key="maxValue" code="plus">
-          <term key="leftTerm" text="3" />
-          <term key="rightTerm" text="i" />
-        </term>
-        <term key="minValue" code="minus">
-          <term key="leftTerm" text="3" />
-          <term key="rightTerm" text="i" />
-        </term>
-        <term key="argTerm" code="power">
-          <term key="leftTerm" text="t" />
-          <term key="rightTerm" text="2" />
-        </term>
-        <term key="index" text="t" />
-      </term>
-      <term key="rightTerm" text="" />
-    </result>
-    <text_fragment numbering="true">
       <term key="text" text="Array is not allowed for this field" />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="A[C1,C2]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.A:2">
+        <term key="argTerm1" text="C1" />
+        <term key="argTerm2" text="C2" />
+      </term>
       <term key="rightTerm" code="plus">
         <term key="leftTerm" text="C1" />
         <term key="rightTerm" text="C2" />
@@ -449,7 +391,10 @@
       <term key="text" text="Array &lt;name&gt; is not defined" />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="F1[C1,C2]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.F1:2">
+        <term key="argTerm1" text="C1" />
+        <term key="argTerm2" text="C2" />
+      </term>
       <term key="rightTerm" code="content:com.mkulesh.micromath.index.M:2">
         <term key="argTerm1" text="C1" />
         <term key="argTerm2" text="C2" />
@@ -465,7 +410,9 @@
       <term key="text" text="&lt;name&gt; can not be accessed by value since&#10;it is not a function" />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="M1[C1]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M1">
+        <term key="argTerm" text="C1" />
+      </term>
       <term key="rightTerm" code="plus">
         <term key="leftTerm" code="power">
           <term key="leftTerm" text="C1" />
@@ -484,7 +431,12 @@
       <term key="text" text="Arrays of dimension &lt;num&gt; is not yet&#10;supported" />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="M2[C1,C1,C2,C2]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M2:4">
+        <term key="argTerm1" text="C1" />
+        <term key="argTerm2" text="C1" />
+        <term key="argTerm3" text="C2" />
+        <term key="argTerm4" text="C2" />
+      </term>
       <term key="rightTerm" code="plus">
         <term key="leftTerm" text="C1" />
         <term key="rightTerm" text="C2" />
@@ -494,7 +446,9 @@
       <term key="text" text="Interval &lt;name&gt; referenced but not&#10;declared as index" />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="W1[k]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.W1">
+        <term key="argTerm" text="k" />
+      </term>
       <term key="rightTerm" code="plus">
         <term key="leftTerm" code="power">
           <term key="leftTerm" text="C1" />
@@ -507,7 +461,9 @@
       <term key="text" text="Index &lt;name&gt; is not a known interval" />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="W2[x]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.W2">
+        <term key="argTerm" text="x" />
+      </term>
       <term key="rightTerm" code="power">
         <term key="leftTerm" text="x" />
         <term key="rightTerm" text="2" />
@@ -517,7 +473,10 @@
       <term key="text" text="Can not open file &lt;name&gt;" />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="D[C1,C2]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.D:2">
+        <term key="argTerm1" text="C1" />
+        <term key="argTerm2" text="C2" />
+      </term>
       <term key="rightTerm" code="read">
         <term key="argTerm" text="any_file.txt" />
       </term>

@@ -25,44 +25,55 @@
       <term key="rightTerm" text="60" />
     </equation>
     <equation>
-      <term key="leftTerm" text="S[k,n]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.S:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="n" />
+      </term>
       <term key="rightTerm" code="read">
         <term key="argTerm" text="asset:/examples/three_component_signal.dat" />
       </term>
     </equation>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" text="S" />
       <term key="rightTerm" text="" />
     </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" code="rows">
         <term key="argTerm" text="S" />
       </term>
       <term key="rightTerm" text="" />
     </result>
     <equation>
-      <term key="leftTerm" text="t[k]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.t">
+        <term key="argTerm" text="k" />
+      </term>
       <term key="rightTerm" code="content:com.mkulesh.micromath.index.S:2">
         <term key="argTerm1" text="k" />
         <term key="argTerm2" text="0" />
       </term>
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="x[k]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.x">
+        <term key="argTerm" text="k" />
+      </term>
       <term key="rightTerm" code="content:com.mkulesh.micromath.index.S:2">
         <term key="argTerm1" text="k" />
         <term key="argTerm2" text="1" />
       </term>
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="y[k]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.y">
+        <term key="argTerm" text="k" />
+      </term>
       <term key="rightTerm" code="content:com.mkulesh.micromath.index.S:2">
         <term key="argTerm1" text="k" />
         <term key="argTerm2" text="2" />
       </term>
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="z[k]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.z">
+        <term key="argTerm" text="k" />
+      </term>
       <term key="rightTerm" code="content:com.mkulesh.micromath.index.S:2">
         <term key="argTerm1" text="k" />
         <term key="argTerm2" text="3" />

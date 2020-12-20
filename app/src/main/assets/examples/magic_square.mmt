@@ -35,7 +35,10 @@
       <term key="text" text="Calculate all elements of the square" />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="A[0,0]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.A:2">
+        <term key="argTerm1" text="0" />
+        <term key="argTerm2" text="0" />
+      </term>
       <term key="rightTerm" code="plus">
         <term key="leftTerm" code="minus">
           <term key="leftTerm" text="n" />
@@ -45,7 +48,10 @@
       </term>
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="A[0,1]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.A:2">
+        <term key="argTerm1" text="0" />
+        <term key="argTerm2" text="1" />
+      </term>
       <term key="rightTerm" code="minus">
         <term key="leftTerm" code="mult">
           <term key="leftTerm" text="2" />
@@ -55,7 +61,10 @@
       </term>
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="A[0,2]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.A:2">
+        <term key="argTerm1" text="0" />
+        <term key="argTerm2" text="2" />
+      </term>
       <term key="rightTerm" code="minus">
         <term key="leftTerm" code="mult">
           <term key="leftTerm" text="2" />
@@ -65,7 +74,10 @@
       </term>
     </equation>
     <equation>
-      <term key="leftTerm" text="A[1,0]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.A:2">
+        <term key="argTerm1" text="1" />
+        <term key="argTerm2" text="0" />
+      </term>
       <term key="rightTerm" code="minus">
         <term key="leftTerm" code="mult">
           <term key="leftTerm" text="2" />
@@ -75,19 +87,31 @@
       </term>
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="A[1,1]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.A:2">
+        <term key="argTerm1" text="1" />
+        <term key="argTerm2" text="1" />
+      </term>
       <term key="rightTerm" text="n" />
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="A[1,2]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.A:2">
+        <term key="argTerm1" text="1" />
+        <term key="argTerm2" text="2" />
+      </term>
       <term key="rightTerm" text="f" />
     </equation>
     <equation>
-      <term key="leftTerm" text="A[2,0]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.A:2">
+        <term key="argTerm1" text="2" />
+        <term key="argTerm2" text="0" />
+      </term>
       <term key="rightTerm" text="g" />
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="A[2,1]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.A:2">
+        <term key="argTerm1" text="2" />
+        <term key="argTerm2" text="1" />
+      </term>
       <term key="rightTerm" code="plus">
         <term key="leftTerm" code="mult">
           <term key="leftTerm" text="2" />
@@ -102,7 +126,10 @@
       </term>
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="A[2,2]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.A:2">
+        <term key="argTerm1" text="2" />
+        <term key="argTerm2" text="2" />
+      </term>
       <term key="rightTerm" code="plus">
         <term key="leftTerm" text="n" />
         <term key="rightTerm" code="minus">
@@ -114,15 +141,17 @@
     <text_fragment>
       <term key="text" text="This is the resulting square:" />
     </text_fragment>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
       <term key="leftTerm" text="A" />
-      <term key="rightTerm" text="[[6.0, -2.0, 5.0], [2.0, 3.0, 4.0], [1.0, 8.0, 0.0]]" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text="Check the sum of elements in each row, column, and&#10;diagonals:" />
     </text_fragment>
     <equation>
-      <term key="leftTerm" text="R[0]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.R">
+        <term key="argTerm" text="0" />
+      </term>
       <term key="rightTerm" code="summation">
         <term key="maxValue" text="2" />
         <term key="index" text="k" />
@@ -134,7 +163,9 @@
       </term>
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="R[1]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.R">
+        <term key="argTerm" text="1" />
+      </term>
       <term key="rightTerm" code="summation">
         <term key="maxValue" text="2" />
         <term key="index" text="k" />
@@ -146,7 +177,9 @@
       </term>
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="R[2]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.R">
+        <term key="argTerm" text="2" />
+      </term>
       <term key="rightTerm" code="summation">
         <term key="maxValue" text="2" />
         <term key="index" text="k" />
@@ -158,7 +191,9 @@
       </term>
     </equation>
     <equation>
-      <term key="leftTerm" text="R[3]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.R">
+        <term key="argTerm" text="3" />
+      </term>
       <term key="rightTerm" code="summation">
         <term key="maxValue" text="2" />
         <term key="index" text="k" />
@@ -170,7 +205,9 @@
       </term>
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="R[4]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.R">
+        <term key="argTerm" text="4" />
+      </term>
       <term key="rightTerm" code="summation">
         <term key="maxValue" text="2" />
         <term key="index" text="k" />
@@ -182,7 +219,9 @@
       </term>
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="R[5]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.R">
+        <term key="argTerm" text="5" />
+      </term>
       <term key="rightTerm" code="summation">
         <term key="maxValue" text="2" />
         <term key="index" text="k" />
@@ -194,7 +233,9 @@
       </term>
     </equation>
     <equation>
-      <term key="leftTerm" text="R[6]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.R">
+        <term key="argTerm" text="6" />
+      </term>
       <term key="rightTerm" code="summation">
         <term key="maxValue" text="2" />
         <term key="index" text="k" />
@@ -206,7 +247,9 @@
       </term>
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" text="R[7]" />
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.R">
+        <term key="argTerm" text="7" />
+      </term>
       <term key="rightTerm" code="summation">
         <term key="maxValue" text="2" />
         <term key="index" text="k" />
@@ -220,9 +263,9 @@
         </term>
       </term>
     </equation>
-    <result disableCalculation="false" hideResultField="false" arrayLength="8">
+    <result disableCalculation="false" hideResultField="false" arrayLength="8" radix="10">
       <term key="leftTerm" text="R" />
-      <term key="rightTerm" text="[[9.0], [9.0], [9.0], [9.0], [9.0], [9.0], [9.0], [9.0]]" />
+      <term key="rightTerm" text="" />
     </result>
   </formulaList>
 </micromath>
