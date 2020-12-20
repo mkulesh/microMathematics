@@ -718,12 +718,7 @@ public class MainActivity extends AppCompatActivity
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == AdapterDocuments.REQUEST_OPEN_DOCUMENT_TREE && data != null)
         {
-            Uri uri = data.getData();
-            AdapterDocuments.saveTreeRootURI(this, uri);
-            if (uri != null)
-            {
-                selectWorksheet(R.id.action_open);
-            }
+            AdapterDocuments.saveTreeRootURI(this, data.getData());
         }
         else if (requestCode == SETTINGS_ACTIVITY_REQID)
         {
