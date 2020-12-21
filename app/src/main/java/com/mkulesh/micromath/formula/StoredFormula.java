@@ -37,13 +37,13 @@ public class StoredFormula
         public String termCode;
         public Parcelable data;
 
-        public StoredTerm(Parcel in)
+        StoredTerm(Parcel in)
         {
             super();
             readFromParcel(in);
         }
 
-        public StoredTerm(FormulaBase.BaseType baseType, String termCode, Parcelable data)
+        StoredTerm(FormulaBase.BaseType baseType, String termCode, Parcelable data)
         {
             super();
             this.baseType = baseType;
@@ -65,7 +65,7 @@ public class StoredFormula
             dest.writeParcelable(data, 0);
         }
 
-        public void readFromParcel(Parcel in)
+        void readFromParcel(Parcel in)
         {
             baseType = FormulaBase.BaseType.valueOf(in.readString());
             termCode = in.readString();
@@ -94,9 +94,9 @@ public class StoredFormula
     private ContentType contentType;
     private StoredTerm[] data;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public StoredFormula()
     {
@@ -127,9 +127,9 @@ public class StoredFormula
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Parcelable interface: procedure writes the formula state
@@ -159,9 +159,9 @@ public class StoredFormula
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * StoredFormula-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public ContentType getContentType()
     {

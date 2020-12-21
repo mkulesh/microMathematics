@@ -18,20 +18,21 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.LocaleList;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
 
 import java.util.Locale;
 
-/*********************************************************
+/*--------------------------------------------------------*
  * Handling of locale (language etc)
- *********************************************************/
+ *--------------------------------------------------------*/
 public final class AppLocale
 {
-    public static final String PREF_APP_LANGUAGE = "app_language";
+    private static final String PREF_APP_LANGUAGE = "app_language";
 
     public static class ContextWrapper extends android.content.ContextWrapper
     {
-        public ContextWrapper(Context base)
+        ContextWrapper(Context base)
         {
             super(base);
         }
@@ -39,19 +40,15 @@ public final class AppLocale
         public static Locale getPreferredLocale(Context context)
         {
             final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-            final String languageCode = pref.getString(PREF_APP_LANGUAGE, "");
+            final String languageCode = pref.getString(PREF_APP_LANGUAGE,"system");
 
-            if (languageCode.equals(""))
+            if (languageCode.equals("system"))
             {
                 return new Locale(Locale.getDefault().getLanguage());
             }
 
             String[] array = languageCode.split("-r", -1);
-            if (array == null)
-            {
-                return new Locale(Locale.getDefault().getLanguage());
-            }
-            else if (array.length == 1)
+            if (array.length == 1)
             {
                 return new Locale(array[0]);
             }
@@ -83,8 +80,8 @@ public final class AppLocale
             else
             {
                 configuration.locale = newLocale;
-                res.updateConfiguration(configuration, res.getDisplayMetrics());
             }
+            res.updateConfiguration(configuration, res.getDisplayMetrics());
             return new ContextWrapper(context);
         }
     }

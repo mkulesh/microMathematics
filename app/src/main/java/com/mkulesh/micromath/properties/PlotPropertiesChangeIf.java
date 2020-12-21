@@ -14,7 +14,7 @@ package com.mkulesh.micromath.properties;
 
 public interface PlotPropertiesChangeIf
 {
-    public enum Dimension
+    enum Dimension
     {
         ONE_D,
         TWO_D

@@ -14,6 +14,17 @@ package com.mkulesh.micromath.properties;
 
 public interface AxisPropertiesChangeIf
 {
+    enum AxisType
+    {
+        LINEAR,
+        EXTENDED
+    }
+
+    /**
+     * Procedure returns supported axis type of this interface
+     */
+    AxisType getAxisType();
+
     /**
      * Procedure will be called if axis parameters are changed
      */

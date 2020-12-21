@@ -17,14 +17,12 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -35,6 +33,9 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mkulesh.micromath.dialogs.DialogBase;
 import com.mkulesh.micromath.dialogs.DialogRadioGroup;
@@ -57,18 +58,17 @@ public class Commander extends DialogBase implements CommanderIf
     }
 
     public static final String PREF_LAST_SELECTED_PATH = "fman_last_selected_path";
-    public static final String PREF_LAST_SELECTED_FILE_TYPE = "fman_last_selected_file_type";
-    public static final String PREF_ADAPTER_MODE = "fman_adapter_mode";
+    private static final String PREF_LAST_SELECTED_FILE_TYPE = "fman_last_selected_file_type";
+    private static final String PREF_ADAPTER_MODE = "fman_adapter_mode";
 
-    protected static final int HOME_SCHEMA_H = AdapterHome.ORG_SCHEME.hashCode();
-    protected static final int FILE_SCHEMA_H = AdapterFileSystem.ORG_SCHEME.hashCode();
-    protected static final int SAF_SCHEMA_H = AdapterDocuments.ORG_SCHEME.hashCode();
-    protected static final int ASSETS_SCHEMA_H = AdapterAssets.ORG_SCHEME.hashCode();
+    private static final int HOME_SCHEMA_H = AdapterHome.ORG_SCHEME.hashCode();
+    private static final int FILE_SCHEMA_H = AdapterFileSystem.ORG_SCHEME.hashCode();
+    private static final int SAF_SCHEMA_H = AdapterDocuments.ORG_SCHEME.hashCode();
+    private static final int ASSETS_SCHEMA_H = AdapterAssets.ORG_SCHEME.hashCode();
 
     private final OnFileSelectedListener listener;
     private final AppCompatActivity context;
     private final FileListView fileListView;
-    private final ImageButton homeButton;
     private final SelectionMode selectionMode;
     private final CharSequence[] assetFilter;
 
@@ -93,16 +93,10 @@ public class Commander extends DialogBase implements CommanderIf
         fileListView.adapterMode = pref.getInt(PREF_ADAPTER_MODE, 0);
         fileListView.applySettings();
 
-        homeButton = findViewById(R.id.fman_action_home);
+        ImageButton homeButton = findViewById(R.id.fman_action_home);
         homeButton.setOnClickListener(this);
-        ViewUtils.setButtonIconColor(context, homeButton, R.color.dialog_content_color);
-        homeButton.setOnLongClickListener(new OnLongClickListener()
-        {
-            public boolean onLongClick(View v)
-            {
-                return ViewUtils.showButtonDescription(getContext(), v);
-            }
-        });
+        ViewUtils.setImageButtonColorAttr(context, homeButton, R.attr.colorDialogContent);
+        homeButton.setOnLongClickListener(v -> ViewUtils.showButtonDescription(getContext(), v));
 
         this.selectionMode = selectionMode;
         this.assetFilter = assetFilter;
@@ -131,13 +125,8 @@ public class Commander extends DialogBase implements CommanderIf
             (findViewById(R.id.dialog_file_new_name_layout)).setVisibility(View.VISIBLE);
             fileTypeButton = findViewById(R.id.fman_file_type_button);
             fileTypeButton.setOnClickListener(this);
-            fileTypeButton.setOnLongClickListener(new OnLongClickListener()
-            {
-                public boolean onLongClick(View v)
-                {
-                    return ViewUtils.showButtonDescription(getContext(), v);
-                }
-            });
+            fileTypeButton.setOnLongClickListener(v -> ViewUtils.showButtonDescription(getContext(), v));
+            prepareButtonImage(fileTypeButton);
             fileName.requestFocus();
             break;
         }
@@ -220,11 +209,6 @@ public class Commander extends DialogBase implements CommanderIf
         closeDialog();
     }
 
-    public FileListView getFileListView()
-    {
-        return fileListView;
-    }
-
     private AdapterIf getListAdapter()
     {
         return fileListView.getListAdapter();
@@ -240,7 +224,7 @@ public class Commander extends DialogBase implements CommanderIf
         return ca;
     }
 
-    public AdapterIf CreateAdapterInstance(Uri uri)
+    private AdapterIf CreateAdapterInstance(Uri uri)
     {
         String scheme = uri.getScheme();
         if (!FileUtils.str(scheme))
@@ -273,13 +257,13 @@ public class Commander extends DialogBase implements CommanderIf
         fileListView.adapterMode = ca.getMode() & (AdapterIf.MODE_SORTING | AdapterIf.MODE_SORT_DIR);
     }
 
-    private final void NavigateInternal(Uri uri, String posTo)
+    private void NavigateInternal(Uri uri, String posTo)
     {
         fileListView.Navigate(uri, posTo);
         okButton.setEnabled(isFileSelected());
     }
 
-    public final void operationFinished()
+    private void operationFinished()
     {
         if (null != destAdapter)
         {
@@ -287,7 +271,7 @@ public class Commander extends DialogBase implements CommanderIf
         }
     }
 
-    public void dispatchCommand(int id)
+    private void dispatchCommand(int id)
     {
         try
         {
@@ -345,7 +329,7 @@ public class Commander extends DialogBase implements CommanderIf
                     {
                         final ImageView image = dLayout.findViewById(R.id.fman_message_dialog_icon);
                         d.setImage(image, R.drawable.ic_action_content_discard,
-                                CompatUtils.getColor(context, R.color.dialog_content_color));
+                                CompatUtils.getThemeColorAttr(context, R.attr.colorDialogContent));
                         final TextView prompt = dLayout.findViewById(R.id.fman_message_dialog_prompt);
                         prompt.setText(context.getString(R.string.fman_delete_dialog_prompt, selectedItem));
                     }
@@ -444,7 +428,7 @@ public class Commander extends DialogBase implements CommanderIf
     }
 
     @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item)
+    public boolean onMenuItemSelected(int featureId, @NonNull MenuItem item)
     {
         if (featureId != Window.FEATURE_CONTEXT_MENU)
         {
@@ -540,9 +524,8 @@ public class Commander extends DialogBase implements CommanderIf
     }
 
     @Override
-    public boolean notifyMe(Message progress)
+    public void notifyMe(Message progress)
     {
-        final boolean TERMINATE = true, CONTINUE = false;
         String string = null;
         try
         {
@@ -560,7 +543,7 @@ public class Commander extends DialogBase implements CommanderIf
 
             if (progress.what == OPERATION_IN_PROGRESS)
             {
-                return CONTINUE;
+                return;
             }
 
             operationFinished();
@@ -579,7 +562,7 @@ public class Commander extends DialogBase implements CommanderIf
                 {
                     fileListView.askRedrawList();
                 }
-                return TERMINATE;
+                return;
             case OPERATION_COMPLETED_REFRESH_REQUIRED:
                 String posto = b != null ? b.getString(NOTIFY_POSTO) : null;
                 Uri uri = b != null ? (Uri) b.getParcelable(NOTIFY_URI) : null;
@@ -607,10 +590,9 @@ public class Commander extends DialogBase implements CommanderIf
         {
             e.printStackTrace();
         }
-        return TERMINATE;
     }
 
-    public final void showMessage(String s)
+    private void showMessage(String s)
     {
         Toast.makeText(context, s, Toast.LENGTH_LONG).show();
     }
@@ -671,7 +653,7 @@ public class Commander extends DialogBase implements CommanderIf
                     {
                         final ImageView image = dLayout.findViewById(R.id.fman_message_dialog_icon);
                         d.setImage(image, R.drawable.ic_action_content_save,
-                                CompatUtils.getColor(context, R.color.dialog_content_color));
+                                CompatUtils.getThemeColorAttr(context, R.attr.colorDialogContent));
                         final TextView prompt = dLayout.findViewById(R.id.fman_message_dialog_prompt);
                         prompt.setText(context.getString(R.string.fman_overwrite_file, fileName));
                     }

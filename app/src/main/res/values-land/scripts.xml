@@ -12,9 +12,9 @@
   ~ Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <string-array name="take_screenshots_scripts" translatable="false">
+    <string-array name="take_screenshots_scripts" translatable="false" tools:ignore="InconsistentArrays">
         <item>asset:/examples/rayleigh_wave.mmt</item>
         <item>asset:/examples/polar_plot_1.mmt</item>
     </string-array>

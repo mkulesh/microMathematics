@@ -16,32 +16,38 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
-import com.google.android.material.navigation.NavigationView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceManager;
+
+import com.google.android.material.navigation.NavigationView;
 import com.mkulesh.micromath.fman.AdapterDocuments;
 import com.mkulesh.micromath.formula.StoredFormula;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.AppLocale;
+import com.mkulesh.micromath.utils.AppTheme;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
@@ -49,7 +55,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuVisibilityListener
+public class MainActivity extends AppCompatActivity
 {
     /*
      * Constants used to save/restore the instance state.
@@ -59,6 +65,9 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
 
     private static final int STORAGE_PERMISSION_REQID = 255;
     private static final int SETTINGS_ACTIVITY_REQID = 256;
+    private static final String EXIT_CONFIRM = "exit_confirm";
+    private static final String SHORTCUT_NEW_DOCUMENT = "com.mkulesh.micromath.NEW_DOCUMENT";
+    private static final String SHORTCUT_AUTOTEST = "com.mkulesh.micromath.AUTOTEST";
 
     private Dialog storagePermissionDialog = null;
     private int storagePermissionAction = ViewUtils.INVALID_INDEX;
@@ -74,17 +83,20 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     private final ArrayList<MenuItem> activityMenuItems = new ArrayList<>();
     private ActionBarDrawerToggle mDrawerToggle;
     private Uri externalUri = null;
-    private String versionName = null;
-    int orientation;
+    private boolean autotestOnStart = false;
+    private Toast exitToast = null;
+    private int orientation;
 
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        setTheme(AppTheme.getTheme(this, AppTheme.ThemeType.MAIN_THEME));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         orientation = getResources().getConfiguration().orientation;
+        String versionName;
         try
         {
             final PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
@@ -94,7 +106,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         catch (PackageManager.NameNotFoundException e)
         {
             ViewUtils.Debug(this, "Starting application");
-            versionName = null;
         }
 
         initGUI();
@@ -103,14 +114,43 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         activeActionModes = new ArrayList<>();
 
         Intent intent = getIntent();
+        boolean intentProcessed = false;
         if (intent != null)
         {
-            externalUri = intent.getData();
+            if (SHORTCUT_AUTOTEST.equals(intent.getAction()))
+            {
+                ViewUtils.Debug(this, "Called in autotest mode: " + intent.toString());
+                autotestOnStart = true;
+                selectWorksheet(BaseFragment.INVALID_ACTION_ID);
+                intentProcessed = true;
+            }
+            else if (SHORTCUT_NEW_DOCUMENT.equals(intent.getAction()))
+            {
+                ViewUtils.Debug(this, "Called with shortcut intent: " + intent.toString());
+                selectWorksheet(R.id.action_new_document);
+                intentProcessed = true;
+            }
+            else if (intent.getData() != null)
+            {
+                ViewUtils.Debug(this, "Called with external UIR: " + intent.toString());
+                externalUri = intent.getData();
+                selectWorksheet(BaseFragment.INVALID_ACTION_ID);
+                intentProcessed = true;
+            }
+            else
+            {
+                ViewUtils.Debug(this, "Called with unknown indent: " + intent.toString());
+            }
         }
-        if (savedInstanceState == null)
+        if (!intentProcessed && savedInstanceState == null)
         {
             selectWorksheet(BaseFragment.INVALID_ACTION_ID);
         }
+    }
+
+    public boolean isAutotestOnStart()
+    {
+        return autotestOnStart;
     }
 
     @Override
@@ -135,6 +175,14 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setElevation(5.0f);
+        }
+        // activate toolbar separator, if necessary
+        {
+            final int sepColor = CompatUtils.getThemeColorAttr(this, R.attr.colorToolBarSeparator);
+            if (sepColor != Color.TRANSPARENT && findViewById(R.id.toolbar_separator) != null)
+            {
+                findViewById(R.id.toolbar_separator).setVisibility(View.VISIBLE);
+            }
         }
 
         // Action bar drawer
@@ -177,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem)
+    public boolean onOptionsItemSelected(@NonNull MenuItem menuItem)
     {
         storagePermissionAction = ViewUtils.INVALID_INDEX;
 
@@ -226,15 +274,37 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
             return true;
         }
         case R.id.action_exit:
-        case android.R.id.home:
             finish();
             return true;
+        case android.R.id.home:
+            onBackPressed();
+            return false;
         default:
             return super.onOptionsItemSelected(menuItem);
         }
     }
 
-    public void restartActivity()
+    @Override
+    public void onBackPressed()
+    {
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if (!preferences.getBoolean(EXIT_CONFIRM, false))
+        {
+            finish();
+        }
+        else if (exitToast != null && exitToast.getView().isShown())
+        {
+            exitToast.cancel();
+            finish();
+        }
+        else
+        {
+            exitToast = Toast.makeText(this, R.string.action_exit_confirm, Toast.LENGTH_LONG);
+            exitToast.show();
+        }
+    }
+
+    private void restartActivity()
     {
         Intent intent = getIntent();
         finish();
@@ -249,12 +319,26 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         super.attachBaseContext(AppLocale.ContextWrapper.wrap(newBase, prefLocale));
     }
 
-    /*********************************************************
+    @Override
+    public void applyOverrideConfiguration(android.content.res.Configuration overrideConfiguration)
+    {
+        // See https://stackoverflow.com/questions/55265834/change-locale-not-work-after-migrate-to-androidx:
+        // There is an issue in new app compat libraries related to night mode that is causing to
+        // override the configuration on android 21 to 25. This can be fixed as follows
+        if (overrideConfiguration != null) {
+            int uiMode = overrideConfiguration.uiMode;
+            overrideConfiguration.setTo(getBaseContext().getResources().getConfiguration());
+            overrideConfiguration.uiMode = uiMode;
+        }
+        super.applyOverrideConfiguration(overrideConfiguration);
+    }
+
+    /*--------------------------------------------------------*
      * Instance state
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
-    protected void onSaveInstanceState(Bundle outState)
+    protected void onSaveInstanceState(@NonNull Bundle outState)
     {
         if (storedFormula != null)
         {
@@ -268,7 +352,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle inState)
+    protected void onRestoreInstanceState(@NonNull Bundle inState)
     {
         try
         {
@@ -292,9 +376,9 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         super.onRestoreInstanceState(inState);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Context menu handling
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public androidx.appcompat.view.ActionMode getActionMode()
     {
@@ -306,7 +390,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     }
 
     @Override
-    public void onSupportActionModeStarted(androidx.appcompat.view.ActionMode mode)
+    public void onSupportActionModeStarted(@NonNull androidx.appcompat.view.ActionMode mode)
     {
         mToolbar.setVisibility(View.INVISIBLE);
         super.onSupportActionModeStarted(mode);
@@ -319,7 +403,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     }
 
     @Override
-    public void onSupportActionModeFinished(androidx.appcompat.view.ActionMode mode)
+    public void onSupportActionModeFinished(@NonNull androidx.appcompat.view.ActionMode mode)
     {
         super.onSupportActionModeFinished(mode);
         mToolbar.setVisibility(View.VISIBLE);
@@ -349,9 +433,9 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Formula clipboard
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure stores given formula into the internal clipboard
@@ -369,9 +453,9 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         return storedFormula;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Navigation drawer
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private void prepareNavigationView()
     {
@@ -408,14 +492,10 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         }
 
         navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener()
+                menuItem ->
                 {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem)
-                    {
-                        selectNavigationItem(menuItem, BaseFragment.INVALID_ACTION_ID);
-                        return true;
-                    }
+                    selectNavigationItem(menuItem, BaseFragment.INVALID_ACTION_ID);
+                    return true;
                 });
 
         updateVersionInfo();
@@ -426,7 +506,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         TextView versionInfo = null;
         for (int i = 0; i < navigationView.getHeaderCount(); i++)
         {
-            versionInfo = (TextView)navigationView.getHeaderView(i).findViewById(R.id.navigation_view_header_version);
+            versionInfo = navigationView.getHeaderView(i).findViewById(R.id.navigation_view_header_version);
             if (versionInfo != null)
             {
                 break;
@@ -437,7 +517,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
             try
             {
                 final PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
-                final String verInfo = "v." + pi.versionName + "/" + pi.versionCode;
+                final String verInfo = "v." + pi.versionName;
                 versionInfo.setText(verInfo);
             }
             catch (Exception e)
@@ -487,7 +567,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     }
 
     @SuppressLint("RestrictedApi")
-    public BaseFragment getVisibleFragment()
+    private BaseFragment getVisibleFragment()
     {
         FragmentManager fragmentManager = MainActivity.this.getSupportFragmentManager();
         List<Fragment> fragments = fragmentManager.getFragments();
@@ -501,7 +581,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         return null;
     }
 
-    public void selectNavigationItem(MenuItem menuItem, int postActionId)
+    private void selectNavigationItem(MenuItem menuItem, int postActionId)
     {
         final int position = menuItem.getOrder();
         for (MenuItem m : activityMenuItems)
@@ -511,7 +591,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         mDrawerLayout.closeDrawers();
 
         Fragment fragment = null;
-        final CharSequence res = (position >= 0 && position < activityResources.length)?
+        final CharSequence res = (position >= 0 && position < activityResources.length) ?
                 activityResources[position] : null;
         if (position == BaseFragment.WORKSHEET_FRAGMENT_ID)
         {
@@ -583,23 +663,12 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
                 alert.setTitle(getString(R.string.allow_storage_access_title));
                 alert.setMessage(getString(R.string.allow_storage_access_description));
                 alert.setNegativeButton(getString(R.string.dialog_navigation_cancel),
-                        new DialogInterface.OnClickListener()
+                        (dialog, whichButton) ->
                         {
-                            @Override
-                            public void onClick(DialogInterface dialog, int whichButton)
-                            {
-                                // nothing to do
-                            }
+                            // nothing to do
                         });
                 alert.setPositiveButton(getString(R.string.allow_storage_access_grant),
-                        new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface dialog, int whichButton)
-                            {
-                                requestStoragePermission();
-                            }
-                        });
+                        (dialog, whichButton) -> requestStoragePermission());
                 storagePermissionDialog = alert.show();
             }
             else
@@ -620,11 +689,9 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
     {
-        switch (requestCode)
-        {
-        case STORAGE_PERMISSION_REQID:
+        if (requestCode == STORAGE_PERMISSION_REQID)
         {
             // If request is cancelled, the result arrays are empty.
             if (storagePermissionAction != ViewUtils.INVALID_INDEX && grantResults.length > 0
@@ -642,10 +709,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
                 String error = getResources().getString(R.string.allow_storage_access_description);
                 Toast.makeText(this, error, Toast.LENGTH_LONG).show();
             }
-            return;
-        }
-        default:
-            // nothing to do
         }
     }
 
@@ -655,26 +718,11 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnMenuV
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == AdapterDocuments.REQUEST_OPEN_DOCUMENT_TREE && data != null)
         {
-            Uri uri = data.getData();
-            AdapterDocuments.saveTreeRootURI(this, uri);
-            if (uri != null)
-            {
-                selectWorksheet(R.id.action_open);
-            }
+            AdapterDocuments.saveTreeRootURI(this, data.getData());
         }
         else if (requestCode == SETTINGS_ACTIVITY_REQID)
         {
             restartActivity();
-        }
-    }
-
-    @Override
-    public void onMenuVisibilityChanged(boolean state)
-    {
-        final BaseFragment f = getVisibleFragment();
-        if (state && f != null)
-        {
-            f.hideKeyboard();
         }
     }
 }

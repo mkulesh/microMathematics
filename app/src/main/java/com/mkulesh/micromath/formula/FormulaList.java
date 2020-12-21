@@ -14,11 +14,11 @@ package com.mkulesh.micromath.formula;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Xml;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,13 +26,18 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+
 import com.mkulesh.micromath.BaseFragment;
 import com.mkulesh.micromath.MainActivity;
-import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.StoredFormula.StoredTerm;
+import com.mkulesh.micromath.formula.terms.TermFactory;
+import com.mkulesh.micromath.io.XmlLoaderTask;
 import com.mkulesh.micromath.plots.ImageFragment;
 import com.mkulesh.micromath.plots.PlotFunction;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.properties.DocumentPropertiesChangeIf;
 import com.mkulesh.micromath.properties.TextProperties;
@@ -76,7 +81,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
      * Constants used to write/read the XML file.
      */
     public static final String XML_NS = null;
-    public static final String XML_HTTP = "http://micromath.mkulesh.com";
+    public static final String XML_MMT_SCHEMA = "http://micromath.mkulesh.com";
     public static final String XML_PROP_MMT = "mmt";
     public static final String XML_PROP_KEY = "key";
     public static final String XML_PROP_CODE = "code";
@@ -106,13 +111,13 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
      * Class members.
      */
     private FormulaBase selectedTerm = null;
-    private final ArrayList<FormulaBase> selectedEquations = new ArrayList<FormulaBase>();
+    private final ArrayList<FormulaBase> selectedEquations = new ArrayList<>();
 
     private final BaseFragment fragment;
     private final AppCompatActivity activity;
     private final TwoDScrollView formulaScrollView;
     private final FormulaListView formulaListView;
-    private final DocumentProperties documentSettings;
+    private DocumentProperties documentSettings;
     private final Palette palette;
     private int selectedFormulaId = ViewUtils.INVALID_INDEX;
     private XmlLoaderTask xmlLoaderTask = null;
@@ -120,11 +125,11 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     private TestSession taSession = null;
 
     @SuppressLint("UseSparseArrays")
-    private final HashMap<Integer, FormulaBase> formulas = new HashMap<Integer, FormulaBase>();
+    private final HashMap<Integer, FormulaBase> formulas = new HashMap<>();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public FormulaList(BaseFragment fragment, View rootView)
     {
@@ -132,12 +137,16 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         this.fragment = fragment;
         this.activity = (AppCompatActivity) fragment.getActivity();
 
-        formulaScrollView = (TwoDScrollView) rootView.findViewById(R.id.main_scroll_view);
-        formulaScrollView.setScaleListener(activity, this);
+        TermFactory.prepare();
+
+        formulaScrollView = rootView.findViewById(R.id.main_scroll_view);
+        formulaScrollView.setScaleListener(this);
         formulaScrollView.setSaveEnabled(false);
+        formulaScrollView.setScaleDetectorActive(true);
+        formulaScrollView.setZoomMode(fragment.getZoomMode());
         formulaListView = new FormulaListView(fragment.getActivity(), formulaScrollView.getMainLayout());
 
-        LinearLayout paletteView = (LinearLayout) rootView.findViewById(R.id.main_palette_view);
+        LinearLayout paletteView = rootView.findViewById(R.id.main_palette_view);
         palette = new Palette(getContext(), paletteView, this);
         updatePalette();
 
@@ -145,9 +154,9 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         undoState = new UndoState(activity);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Primitives
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure return the main activity object
@@ -224,7 +233,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     /**
      * Check whether an operation that blocks the user interface is currently performed
      */
-    public boolean isInOperation()
+    private boolean isInOperation()
     {
         return fragment.isInOperation();
     }
@@ -268,9 +277,9 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         return taSession;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Access to MainActivity
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure stores given formula into the internal clipboard
@@ -306,9 +315,9 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for interfaces
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onClick(View v)
@@ -454,8 +463,8 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
             return false;
         }
         ClipboardManager.copyToClipboard(getContext(), ClipboardManager.CLIPBOARD_LIST_OBJECT);
-        ArrayList<FormulaBase.BaseType> types = new ArrayList<FormulaBase.BaseType>();
-        ArrayList<Parcelable> data = new ArrayList<Parcelable>();
+        ArrayList<FormulaBase.BaseType> types = new ArrayList<>();
+        ArrayList<Parcelable> data = new ArrayList<>();
         final ArrayList<FormulaBase> fList = formulaListView.getFormulas(FormulaBase.class);
         for (FormulaBase f : fList)
         {
@@ -558,9 +567,9 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure reads a file from resource folder
@@ -571,11 +580,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         {
             return;
         }
-        InputStream is = FileUtils.getInputStream(activity, uri);
-        if (is != null)
-        {
-            readFromStream(is, FileUtils.getFileName(activity, uri), postAction);
-        }
+        readFromUri(uri, postAction);
     }
 
     /**
@@ -636,9 +641,9 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     /**
      * XML interface: procedure reads this list from the given input stream
      */
-    public void readFromStream(InputStream stream, String name, XmlLoaderTask.PostAction postAction)
+    private void readFromUri(Uri uri, XmlLoaderTask.PostAction postAction)
     {
-        xmlLoaderTask = new XmlLoaderTask(this, stream, name, postAction);
+        xmlLoaderTask = new XmlLoaderTask(this, uri, postAction);
         ViewUtils.Debug(this, "started XML loader task: " + xmlLoaderTask.toString());
         getUndoState().clear();
         CompatUtils.executeAsyncTask(xmlLoaderTask);
@@ -652,7 +657,8 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         InputStream is = FileUtils.getInputStream(activity, uri);
         if (is != null)
         {
-            readFromStream(is, FileUtils.getFileName(activity, uri), XmlLoaderTask.PostAction.NONE);
+            FileUtils.closeStream(is);
+            readFromUri(uri, XmlLoaderTask.PostAction.NONE);
             // do not close is since it will be closed by reading thread
             return true;
         }
@@ -662,7 +668,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     /**
      * XML interface: procedure writes this list into the given stream
      */
-    public boolean writeToStream(OutputStream stream, String name)
+    private boolean writeToStream(OutputStream stream, String name)
     {
         try
         {
@@ -671,7 +677,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
             serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
             serializer.setOutput(writer);
             serializer.startDocument("UTF-8", true);
-            serializer.setPrefix(FormulaList.XML_PROP_MMT, FormulaList.XML_HTTP);
+            serializer.setPrefix(FormulaList.XML_PROP_MMT, FormulaList.XML_MMT_SCHEMA);
             serializer.startTag(FormulaList.XML_NS, FormulaList.XML_MAIN_TAG);
             serializer.startTag(FormulaList.XML_NS, XML_LIST_TAG);
             documentSettings.writeToXml(serializer);
@@ -722,9 +728,9 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Undo feature
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure returns undo state container
@@ -820,9 +826,9 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         IdGenerator.enableIdRestore = false;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * FormulaList-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Set that an operation blocking the user interface is currently performed
@@ -836,7 +842,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         if (!inOperation && owner instanceof XmlLoaderTask)
         {
             XmlLoaderTask t = (XmlLoaderTask) owner;
-            fragment.setXmlReadingResult(t.error == null);
+            fragment.setXmlReadingResult(t.isMmtOpened());
             if (t.error != null)
             {
                 isContentValid();
@@ -859,12 +865,19 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
                 ViewUtils.Debug(this, "terminated XML loader task: " + xmlLoaderTask.toString());
                 xmlLoaderTask = null;
             }
+            formulaScrollView.setScaleDetectorActive(true);
             updatePalette();
         }
         if (taSession != null)
         {
             taSession.setInOperation(owner, inOperation);
         }
+    }
+
+    public void newDocument()
+    {
+        clear();
+        documentSettings = new DocumentProperties(getContext());
     }
 
     /**
@@ -882,7 +895,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     /**
      * Procedure creates a formula with given type
      */
-    public FormulaBase deleteFormula(FormulaBase f, DeleteState state)
+    private FormulaBase deleteFormula(FormulaBase f, DeleteState state)
     {
         Coordinate coordinate = formulaListView.getCoordinate(f);
         final int prewRowCount = formulaListView.getList().getChildCount();
@@ -907,7 +920,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     /**
      * Procedure creates a formula with given type and given stored date
      */
-    public FormulaBase addBaseFormula(FormulaBase.BaseType type, Parcelable p)
+    private FormulaBase addBaseFormula(FormulaBase.BaseType type, Parcelable p)
     {
         FormulaBase f = createFormula(type);
         if (f != null)
@@ -951,18 +964,6 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
             f.setOnClickListener(this);
         }
         return f;
-    }
-
-    /**
-     * Procedure searches a root formula with given properties
-     */
-    public FormulaBase getFormula(String name, int argNumber, int rootId, boolean excludeRoot)
-    {
-        if (name == null)
-        {
-            return null;
-        }
-        return getFormulaListView().getFormula(name, argNumber, rootId, excludeRoot, !documentSettings.redefineAllowed);
     }
 
     /**
@@ -1023,7 +1024,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
             }
             break;
         case CLEAR:
-            if (f != null && f.isRootFormula() && selectedEquations.contains(f))
+            if (f != null && f.isRootFormula())
             {
                 selectedEquations.remove(f);
             }
@@ -1031,11 +1032,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         case CLEAR_ALL:
             if (!selectedEquations.isEmpty())
             {
-                ArrayList<FormulaBase> toBeCleared = new ArrayList<FormulaBase>();
-                for (FormulaBase e : selectedEquations)
-                {
-                    toBeCleared.add(e);
-                }
+                ArrayList<FormulaBase> toBeCleared = new ArrayList<>(selectedEquations);
                 selectedEquations.clear();
                 for (FormulaBase e : toBeCleared)
                 {
@@ -1146,7 +1143,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     {
         boolean isValid = true;
         final ArrayList<FormulaBase> fList = formulaListView.getFormulas(FormulaBase.class);
-        ArrayList<Integer> invalidFormulas = new ArrayList<Integer>();
+        ArrayList<Integer> invalidFormulas = new ArrayList<>();
         // first pass - validate single formulas
         for (FormulaBase m : fList)
         {
@@ -1191,6 +1188,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
      */
     public void calculate()
     {
+        formulaListView.clearFocus();
         final ArrayList<CalculationResult> fList = formulaListView.getFormulas(CalculationResult.class);
         for (CalculationResult f : fList)
         {
@@ -1206,6 +1204,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     /**
      * This procedure is used to enable/disable palette buttons related to current mode/selection
      */
+    @Override
     public void updatePalette()
     {
         FormulaBase s = formulas.get(selectedFormulaId);
@@ -1276,7 +1275,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         }
         if (manipulator == Manipulator.DETAILS && f != null)
         {
-            f.onDetails(f);
+            f.onDetails();
         }
     }
 
@@ -1296,5 +1295,13 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
             ViewUtils.Debug(this, "request to hide keyboard");
             imm.hideSoftInputFromWindow(formulaListView.getList().getWindowToken(), 0);
         }
+    }
+
+    public Uri getParentDirectory()
+    {
+        final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        final String str = pref.getString(BaseFragment.OPENED_URI, null);
+        final Uri docUri = str == null ? null : Uri.parse(str);
+        return FileUtils.getParentUri(docUri);
     }
 }

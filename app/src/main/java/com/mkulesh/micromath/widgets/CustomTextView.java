@@ -18,13 +18,14 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.mkulesh.micromath.R;
 
@@ -51,7 +52,7 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
     }
 
     private SymbolType symbolType = SymbolType.TEXT;
-    protected AppCompatActivity activity = null;
+    AppCompatActivity activity = null;
     protected final Paint paint = new Paint();
     private final RectF rect = new RectF();
     protected final Path path = new Path();
@@ -63,9 +64,9 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
     private ContextMenuHandler menuHandler = null;
     private FormulaChangeIf formulaChangeIf = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public CustomTextView(Context context)
     {
@@ -165,17 +166,16 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
                 setWidth(20 * strokeWidth);
                 setHeight(60 * strokeWidth);
                 setPadding(p2, 0, p2, 0);
-            default:
-                final int p3 = dimen.get(ScaledDimensions.Type.HOR_SYMBOL_PADDING);
+            case TEXT:
+                final int p3 = dimen.get(ScaledDimensions.Type.HOR_TEXT_PADDING);
                 setPadding(p3, 0, p3, 0);
+                break;
+            default:
+                final int p4 = dimen.get(ScaledDimensions.Type.HOR_SYMBOL_PADDING);
+                setPadding(p4, 0, p4, 0);
                 break;
             }
         }
-    }
-
-    public SymbolType getSymbolType()
-    {
-        return symbolType;
     }
 
     public void setExternalPaint(Paint p)
@@ -193,14 +193,14 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
 
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Painting
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public int getBaseline()
     {
-        return (int) ((this.getMeasuredHeight() - getPaddingBottom() + getPaddingTop()) / 2);
+        return ((this.getMeasuredHeight() - getPaddingBottom() + getPaddingTop()) / 2);
     }
 
     @Override
@@ -366,10 +366,10 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
 
     private void drawSummation(Canvas c)
     {
-        final int sw1 = strokeWidth;
-        final int sw2 = 2 * strokeWidth;
-        final int sw3 = 3 * strokeWidth;
-        final int sw4 = 4 * strokeWidth;
+        final float sw1 = strokeWidth;
+        final float sw2 = 2f * strokeWidth;
+        final float sw3 = 3f * strokeWidth;
+        final float sw4 = 4f * strokeWidth;
         paint.setStrokeWidth(0);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
 
@@ -380,15 +380,15 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
         path.lineTo(rect.left, rect.bottom - sw1);
         path.lineTo(rect.left, rect.bottom);
         path.lineTo(rect.right - sw1, rect.bottom);
-        path.lineTo(rect.right, rect.bottom - 2 * sw3);
-        path.lineTo(rect.right - sw1 / 2, rect.bottom - 2 * sw3 - sw1 / 2);
+        path.lineTo(rect.right, rect.bottom - 2f * sw3);
+        path.lineTo(rect.right - sw1 / 2f, rect.bottom - 2f * sw3 - sw1 / 2f);
         path.lineTo(rect.right - sw3, rect.bottom - sw3);
-        path.lineTo(rect.left + sw3 + sw1 / 2, rect.bottom - sw3);
+        path.lineTo(rect.left + sw3 + sw1 / 2f, rect.bottom - sw3);
         path.lineTo(rect.centerX() + sw3, rect.centerY() - sw1);
         path.lineTo(rect.left + sw4, rect.top + sw2);
         path.lineTo(rect.right - sw4, rect.top + sw2);
-        path.lineTo(rect.right - sw1 / 2, rect.top + 2 * sw3 + sw1 / 2);
-        path.lineTo(rect.right, rect.top + 2 * sw3);
+        path.lineTo(rect.right - sw1 / 2f, rect.top + 2f * sw3 + sw1 / 2f);
+        path.lineTo(rect.right, rect.top + 2f * sw3);
         path.lineTo(rect.right - sw1, rect.top);
         path.close();
         c.drawPath(path, paint);
@@ -396,9 +396,9 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
 
     private void drawProduct(Canvas c)
     {
-        final int sw2 = 2 * strokeWidth;
-        final int sw5 = 5 * strokeWidth;
-        final int sw7 = 7 * strokeWidth;
+        final float sw2 = 2f * strokeWidth;
+        final float sw5 = 5f * strokeWidth;
+        final float sw7 = 7f * strokeWidth;
         paint.setStrokeWidth(0);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
 
@@ -456,9 +456,9 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
         c.drawPath(path, paint);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for OnClickListener interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onClick(View v)
@@ -469,9 +469,9 @@ public class CustomTextView extends AppCompatTextView implements OnLongClickList
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Context menu handling
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure returns the parent action mode or null if there are no related mode

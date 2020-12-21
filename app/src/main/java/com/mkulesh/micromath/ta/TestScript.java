@@ -34,21 +34,21 @@ public class TestScript
         CALCULATE_FINISHED
     }
 
-    private class SynchronizedState
+    private static class SynchronizedState
     {
         private State mystate = null;
 
-        public SynchronizedState()
+        SynchronizedState()
         {
             super();
         }
 
-        public State get()
+        State get()
         {
             return mystate;
         }
 
-        public void set(State mystate)
+        void set(State mystate)
         {
             synchronized (this)
             {
@@ -61,8 +61,9 @@ public class TestScript
     private final String scriptName;
     private String scriptContent = null;
     private final SynchronizedState state = new SynchronizedState();
-    private final ArrayList<TestCase> testCases = new ArrayList<TestCase>();
+    private final ArrayList<TestCase> testCases = new ArrayList<>();
     private TestCase testCase = null;
+    private long readingDuration;
 
     public TestScript(String scriptName)
     {
@@ -82,6 +83,11 @@ public class TestScript
     public void setScriptContent(String content)
     {
         this.scriptContent = content;
+    }
+
+    public void setReadingDuration(long readingDuration)
+    {
+        this.readingDuration = readingDuration;
     }
 
     public void setResult(String name, String value)
@@ -169,7 +175,7 @@ public class TestScript
         return n;
     }
 
-    public String getDescription()
+    private String getDescription()
     {
         final int failedNumber = getTestCaseNumber(NumberType.FAILED);
         return "Test script: " + scriptName + ", content: " + scriptContent + ", number of test cases: "
@@ -180,15 +186,17 @@ public class TestScript
     public void publishHtmlReport(StringWriter writer)
     {
         final int failedNumber = getTestCaseNumber(NumberType.FAILED);
-        writer.append("\n\n<h1>" + scriptContent + "</h1>\n");
-        writer.append("<p><b>Name</b>: " + scriptName + "</p>\n");
-        writer.append("<p><b>Number of test cases</b>: " + getTestCaseNumber(NumberType.TOTAL) + "</p>\n");
+        writer.append("\n\n<h1>").append(scriptContent).append("</h1>\n");
+        writer.append("<p><b>Name</b>: ").append(scriptName).append("</p>\n");
+        writer.append("<p><b>Number of test cases</b>: ").append(String.valueOf(getTestCaseNumber(NumberType.TOTAL))).append("</p>\n");
+        writer.append("<p><b>Reading duration</b>: ").append(String.valueOf(readingDuration)).append("ms</p>\n");
         writer.append("<table border = \"1\" cellspacing=\"0\" cellpadding=\"5\">\n");
-        String title = "    <tr>";
+        StringBuilder titleBuilder = new StringBuilder("    <tr>");
         for (String t : TestCase.PARAMETERS)
         {
-            title += "<td><b>" + t + "</b></td>";
+            titleBuilder.append("<td><b>").append(t).append("</b></td>");
         }
+        String title = titleBuilder.toString();
         title += "</tr>\n";
         writer.append(title);
         for (TestCase tc : testCases)

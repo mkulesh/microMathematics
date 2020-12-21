@@ -14,12 +14,48 @@
 
 <resources>
 
+    <attr name="themeMicroMathToolBar" format="reference" />
+    <attr name="themeMicroMathPopup" format="reference" />
+    <attr name="colorMicroMathNavigator" format="color" />
+    <attr name="colorMicroMathIcon" format="color" />
+    <attr name="colorMicroMathFloatingIcon" format="color" />
+    <attr name="drawableAppHeader" format="reference" />
+    <attr name="drawableDialogWindow" format="reference" />
+    <attr name="drawableDialogPanel" format="reference" />
+    <attr name="colorToolBarSeparator" format="color" />
+    <attr name="colorDialogTitle" format="color" />
+    <attr name="colorDialogDivider" format="color" />
+    <attr name="colorDialogContent" format="color" />
+    <attr name="colorDialogDisabledElement" format="color" />
+    <attr name="colorDialogEditText" format="color" />
+    <attr name="colorDialogHighlighted" format="color" />
+    <attr name="colorFormulaBackground" format="color" />
+    <attr name="colorFormulaHighlighted" format="color" />
+    <attr name="colorFormulaNormal" format="color" />
+    <attr name="colorFormulaEmpty" format="color" />
+    <attr name="colorFormulaInvalid" format="color" />
+    <attr name="colorFormulaSelected" format="color" />
+    <attr name="colorFormulaCalculatedValue" format="color" />
+    <attr name="colorFormulaTextFragment" format="color" />
+    <attr name="colorPlotGridLine" format="color" />
+
     <attr name="specialAlignment">
         <enum name="none" value="0" />
         <enum name="top_of_previous" value="1" />
         <enum name="top_of_next" value="2" />
         <enum name="below_the_next" value="3" />
+        <enum name="below_the_previous" value="4" />
     </attr>
+
+    <attr name="arrayType">
+        <enum name="disabled" value="0" />
+        <enum name="optional" value="1" />
+        <enum name="mandatory" value="2" />
+    </attr>
+
+    <declare-styleable name="TwoDScrollView">
+        <attr name="autoScrollMargins" format="dimension" />
+    </declare-styleable>
 
     <declare-styleable name="CustomViewExtension">
         <attr name="contextMenuExpand" format="boolean" />
@@ -30,23 +66,23 @@
         <attr name="verticalTermPadding" format="boolean" />
         <attr name="specialAlignment"/>
         <attr name="symbolViewIndex" format="integer" />
-        <attr name="emptyEnabled" format="boolean" />
-        <attr name="intervalEnabled" format="boolean" />
-        <attr name="complexEnabled" format="boolean" />
-        <attr name="comparatorEnabled" format="boolean" />
         <attr name="textFragment" format="boolean" />
         <attr name="equationName" format="boolean" />
         <attr name="indexName" format="boolean" />
         <attr name="intermediateArgument" format="boolean" />
         <attr name="calculatedValue" format="boolean" />
+        <attr name="fileName" format="boolean" />
+        <!-- custom content types -->
+        <attr name="emptyEnabled" format="boolean" />
+        <attr name="intervalEnabled" format="boolean" />
+        <attr name="complexEnabled" format="boolean" />
         <attr name="newTermEnabled" format="boolean" />
-        <attr name="autoScrollMargins" format="dimension" />
+        <attr name="fileOperationEnabled" format="boolean" />
+        <attr name="arrayType"/>
     </declare-styleable>
     <declare-styleable name="PlotViewExtension">
         <attr name="gridLineColor" format="color" />
         <attr name="gridLineWidth" format="dimension" />
-        <attr name="functionLineColor" format="color" />
-        <attr name="functionLineWidth" format="dimension" />
         <attr name="labelLineSize" format="dimension" />
         <attr name="labelTextSize" format="dimension" />
         <attr name="xLabelsNumber" format="integer" />
@@ -56,14 +92,18 @@
         <attr name="label" format="string" />
         <attr name="minWidth" format="dimension" />
     </declare-styleable>
-
+    <declare-styleable name="ColorMapViewExtension">
+        <attr name="isHorizontal" format="boolean" />
+        <attr name="paletteName" format="string" />
+    </declare-styleable>
+    
     <!-- AndroidSVG library -->
     <declare-styleable name="SVGImageView">
         <!-- Location of the SVG document. -->
         <attr name="svg" format="reference|string"/>
         <attr name="css" format="string"/>
     </declare-styleable>
-
+    
     <!-- HoloColorPicker library -->
     <declare-styleable name="ColorPicker">
         <attr name="color_wheel_radius" format="dimension" />

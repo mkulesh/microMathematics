@@ -13,25 +13,26 @@
 package com.mkulesh.micromath.ta;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.Toast;
 
-import com.mkulesh.micromath.R;
-import com.mkulesh.micromath.export.Exporter;
 import com.mkulesh.micromath.fman.AdapterFileSystem;
 import com.mkulesh.micromath.fman.FileType;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.formula.TextFragment;
-import com.mkulesh.micromath.formula.XmlLoaderTask;
+import com.mkulesh.micromath.io.Exporter;
+import com.mkulesh.micromath.io.XmlLoaderTask;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.ta.TestScript.NumberType;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.SynchronizedBoolean;
 import com.mkulesh.micromath.utils.ViewUtils;
 
@@ -50,10 +51,9 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         TAKE_SCREENSHOTS
     }
 
-    public final static String REPORT_HTML_FILE = "autotest.html";
-    public final static String TEST_CONFIGURATION = "autotest.cfg";
-    public final static String EXPORT_DOC_DIR = "doc";
-    public final static String TAKE_SCREENSHOTS_DIR = "screenshots";
+    private final static String REPORT_HTML_FILE = "autotest.html";
+    private final static String EXPORT_DOC_DIR = "doc";
+    private final static String TAKE_SCREENSHOTS_DIR = "screenshots";
 
     private final static int STEP_READ = 0;
     private final static int STEP_CALC = 1;
@@ -62,12 +62,14 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
     private final FormulaList formulas;
     private final Activity context;
     private final CharSequence[] scripts;
+    private final boolean isAutotestOnStart;
     private final SynchronizedBoolean isPublishRuns = new SynchronizedBoolean();
-    private final ArrayList<TestScript> testScripts = new ArrayList<TestScript>();
+    private final ArrayList<TestScript> testScripts = new ArrayList<>();
     private final Mode mode;
     private TestScript testScript = null;
+    private long readingStartTime;
 
-    public TestSession(FormulaList formulas, Mode mode)
+    public TestSession(FormulaList formulas, Mode mode, boolean isAutotestOnStart)
     {
         this.formulas = formulas;
         context = formulas.getActivity();
@@ -88,12 +90,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
             break;
         }
         formulas.setTaSession(this);
-    }
-
-    public static boolean isAutotestOnStart(Context context)
-    {
-        final File cfgFile = new File(context.getExternalFilesDir(null), TEST_CONFIGURATION);
-        return cfgFile.exists();
+        this.isAutotestOnStart = isAutotestOnStart;
     }
 
     @Override
@@ -168,8 +165,9 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         {
         case STEP_READ:
         {
+            readingStartTime = System.currentTimeMillis();
             final String scriptName = (String) scripts[script];
-            formulas.clear();
+            formulas.newDocument();
             formulas.readFromResource(Uri.parse(scriptName), XmlLoaderTask.PostAction.NONE);
             break;
         }
@@ -177,12 +175,23 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         {
             final String scriptName = (String) scripts[script];
             testScript.setScriptContent(scriptName);
-            if (mode == Mode.TEST_SCRIPS && formulas.getFormulaListView().getList().getChildCount() > 0)
+            testScript.setReadingDuration(System.currentTimeMillis() - readingStartTime);
+            if (mode == Mode.TEST_SCRIPS)
             {
-                final View v = formulas.getFormulaListView().getList().getChildAt(0);
-                if (v instanceof TextFragment)
+                final CharSequence docTitle = formulas.getDocumentSettings().title;
+                if (docTitle != null && docTitle.length() > 0)
                 {
-                    testScript.setScriptContent(((TextFragment) v).getTerms().get(0).getText());
+                    // first, try to use document title
+                    testScript.setScriptContent(docTitle.toString());
+                }
+                else if (formulas.getFormulaListView().getList().getChildCount() > 0)
+                {
+                    // fallback to the first text area
+                    final View v = formulas.getFormulaListView().getList().getChildAt(0);
+                    if (v instanceof TextFragment)
+                    {
+                        testScript.setScriptContent(((TextFragment) v).getTerms().get(0).getText());
+                    }
                 }
             }
             ViewUtils.Debug(this, "Calculating test script: " + scriptName);
@@ -211,14 +220,14 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
     private void exportLatex(String directory, String scriptName)
     {
         // Document directory and file
-        final File docDir = new File(context.getExternalFilesDir(null) + "/" + directory);
+        final File docDir = CompatUtils.getStorageDir(context, directory);
         docDir.mkdir();
         final File docFile = new File(docDir, scriptName + ".tex");
         final Uri docUri = FileUtils.ensureScheme(Uri.fromFile(docFile));
 
         // Graphics directory
         final String GRAPHICS_DIRECTORY = "graphics";
-        final File graphicsDir = new File(context.getExternalFilesDir(null) + "/" + directory + "/" + GRAPHICS_DIRECTORY);
+        final File graphicsDir = CompatUtils.getStorageDir(context, directory + "/" + GRAPHICS_DIRECTORY);
         graphicsDir.mkdir();
         final Uri graphicsUri = FileUtils.ensureScheme(Uri.fromFile(graphicsDir));
         final AdapterFileSystem adapter = new AdapterFileSystem(context);
@@ -232,39 +241,48 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         Exporter.write(formulas, docUri, FileType.LATEX, adapter, exportParameters);
     }
 
-    public boolean takeScreenshot(String directory, String scriptName)
+    private void takeScreenshot(String directory, String scriptName)
     {
-        final File parent = new File(context.getExternalFilesDir(null) + "/" + directory);
+        final File parent = CompatUtils.getStorageDir(context, directory);
         parent.mkdir();
         final File file = new File(parent, scriptName + ".png");
         if (file == null)
         {
-            return false;
+            return;
         }
 
         final Uri uri = FileUtils.ensureScheme(Uri.fromFile(file));
         OutputStream stream = FileUtils.getOutputStream(context, uri);
         if (stream == null)
         {
-            return false;
+            return;
         }
 
         try
         {
             /* grab whole window */
             final View v1 = context.getWindow().getDecorView().getRootView();
-            v1.setDrawingCacheEnabled(true);
-            final Bitmap bitmap1 = Bitmap.createBitmap(v1.getDrawingCache());
-            v1.setDrawingCacheEnabled(false);
 
-            /* skip status bar in screenshot */
-            final int contentViewTop = ViewUtils.getStatusBarHeight(context);
-            final Bitmap bitmap2 = Bitmap.createBitmap(
-                    bitmap1, 0, contentViewTop, bitmap1.getWidth(), bitmap1.getHeight() - contentViewTop, null, true);
+            try
+            {
+                final Bitmap bitmap1 = Bitmap.createBitmap(v1.getMeasuredWidth(), v1.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+                final Canvas canvas = new Canvas(bitmap1);
+                v1.draw(canvas);
 
-            /* write into file */
-            bitmap2.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            stream.flush();
+                /* skip status bar in screenshot */
+                final int contentViewTop = ViewUtils.getStatusBarHeight(context);
+                final Bitmap bitmap2 = Bitmap.createBitmap(
+                        bitmap1, 0, contentViewTop, bitmap1.getWidth(), bitmap1.getHeight() - contentViewTop, null, true);
+
+                /* write into file */
+                bitmap2.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                stream.flush();
+            }
+            catch (OutOfMemoryError e)
+            {
+                throw new Exception(e.getLocalizedMessage());
+            }
+
             stream.close();
 
             final String message = String.format(context.getResources().getString(R.string.message_file_written),
@@ -277,7 +295,6 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
             ViewUtils.Debug(context, error + ", " + e.getLocalizedMessage());
             Toast.makeText(context, error, Toast.LENGTH_LONG).show();
         }
-        return true;
     }
 
     @Override
@@ -288,7 +305,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         {
             return;
         }
-        File file = new File(context.getExternalFilesDir(null), REPORT_HTML_FILE);
+        File file = CompatUtils.getStorageFile(context, REPORT_HTML_FILE);
         try
         {
             if (file != null)
@@ -310,7 +327,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
             Toast.makeText(context, error, Toast.LENGTH_LONG).show();
             file = null;
         }
-        if (isAutotestOnStart(context))
+        if (isAutotestOnStart)
         {
             formulas.getActivity().finish();
         }
@@ -353,7 +370,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         }
     }
 
-    public int getTestCaseNumber(NumberType numberType)
+    private int getTestCaseNumber(NumberType numberType)
     {
         int n = 0;
         for (TestScript ts : testScripts)
@@ -363,7 +380,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         return n;
     }
 
-    public String getDescription()
+    private String getDescription()
     {
         final int failedNumber = getTestCaseNumber(NumberType.FAILED);
         return "Test session: number of scrips: " + testScripts.size() + ", number of test cases: "
@@ -371,7 +388,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
                 + ", failed: " + failedNumber + ", status: " + (failedNumber == 0 ? "PASSED" : "FAILED");
     }
 
-    public void publishHtmlReport(StringWriter writer) throws Exception
+    private void publishHtmlReport(StringWriter writer) throws Exception
     {
         writer.append("<!DOCTYPE html>\n");
         writer.append("<html><head>\n");
@@ -379,13 +396,22 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         writer.append("<title>Test session</title>\n");
         writer.append("</head><body>");
 
-        writer.append("<p>Device information: " + android.os.Build.DEVICE + ", model " + android.os.Build.MODEL
-                + ", OS version " + System.getProperty("os.version") + ", API level "
-                + Integer.toString(android.os.Build.VERSION.SDK_INT) + "</p>");
+        writer.append("<p>Device information: ")
+                .append(android.os.Build.DEVICE)
+                .append(", model ")
+                .append(android.os.Build.MODEL)
+                .append(", OS version ")
+                .append(System.getProperty("os.version"))
+                .append(", API level ")
+                .append(Integer.toString(android.os.Build.VERSION.SDK_INT))
+                .append("</p>");
 
         final PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-        writer.append("<p>App version: " + context.getResources().getString(pi.applicationInfo.labelRes) + ", "
-                + pi.versionName + "</p>");
+        writer.append("<p>App version: ")
+                .append(context.getResources().getString(pi.applicationInfo.labelRes))
+                .append(", ")
+                .append(pi.versionName)
+                .append("</p>");
 
         for (TestScript ts : testScripts)
         {
@@ -394,10 +420,10 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
 
         writer.append("\n\n<h1>Summary</h1>\n");
         final int failedNumber = getTestCaseNumber(NumberType.FAILED);
-        writer.append("<p><b>Number of scrips</b>: " + testScripts.size() + "</p>\n");
-        writer.append("<p><b>Number of test cases</b>: " + getTestCaseNumber(NumberType.TOTAL) + "</p>\n");
-        writer.append("<p><b>Passed</b>: " + getTestCaseNumber(NumberType.PASSED) + "</p>\n");
-        writer.append("<p><b>Failed</b>: " + failedNumber + "</p>\n");
+        writer.append("<p><b>Number of scrips</b>: ").append(String.valueOf(testScripts.size())).append("</p>\n");
+        writer.append("<p><b>Number of test cases</b>: ").append(String.valueOf(getTestCaseNumber(NumberType.TOTAL))).append("</p>\n");
+        writer.append("<p><b>Passed</b>: ").append(String.valueOf(getTestCaseNumber(NumberType.PASSED))).append("</p>\n");
+        writer.append("<p><b>Failed</b>: ").append(String.valueOf(failedNumber)).append("</p>\n");
         String status = "<p><b>Status</b>: ";
         if (failedNumber == 0)
         {

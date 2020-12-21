@@ -27,13 +27,13 @@ import java.util.Map;
 
 public class DialogNewFormula extends DialogBase implements OnLongClickListener
 {
-    public static final String LAST_INSERTED_POSITION = "last_inserted_position";
-    public static final String LAST_INSERTED_OBJECT = "last_inserted_object";
-    public static final String LAST_INSERTED_EMPTY = "empty";
+    private static final String LAST_INSERTED_POSITION = "last_inserted_position";
+    private static final String LAST_INSERTED_OBJECT = "last_inserted_object";
+    private static final String LAST_INSERTED_EMPTY = "empty";
 
     private final ListChangeIf changeIf;
-    private final HashMap<ListChangeIf.Position, ImageButton> positionButtons = new HashMap<ListChangeIf.Position, ImageButton>();
-    private final HashMap<ListChangeIf.FormulaType, ImageButton> objectButtons = new HashMap<ListChangeIf.FormulaType, ImageButton>();
+    private final HashMap<ListChangeIf.Position, ImageButton> positionButtons = new HashMap<>();
+    private final HashMap<ListChangeIf.FormulaType, ImageButton> objectButtons = new HashMap<>();
 
     public DialogNewFormula(Activity context, ListChangeIf listChangeIf)
     {
@@ -46,7 +46,7 @@ public class DialogNewFormula extends DialogBase implements OnLongClickListener
         positionButtons.put(ListChangeIf.Position.RIGHT, (ImageButton) findViewById(R.id.dialog_button_insert_right));
         for (ImageButton b : positionButtons.values())
         {
-            b.setSelected(false);
+            setButtonSelected(b, false);
             b.setOnClickListener(this);
             b.setOnLongClickListener(this);
         }
@@ -54,11 +54,11 @@ public class DialogNewFormula extends DialogBase implements OnLongClickListener
         try
         {
             ListChangeIf.Position insertType = ListChangeIf.Position.valueOf(str);
-            positionButtons.get(insertType).setSelected(true);
+            setButtonSelected(positionButtons.get(insertType), true);
         }
         catch (Exception e)
         {
-            positionButtons.get(ListChangeIf.Position.AFTER).setSelected(true);
+            setButtonSelected(positionButtons.get(ListChangeIf.Position.AFTER), true);
         }
 
         // object buttons
@@ -73,7 +73,7 @@ public class DialogNewFormula extends DialogBase implements OnLongClickListener
                 (ImageButton) findViewById(R.id.dialog_button_new_image_fragment));
         for (ImageButton b : objectButtons.values())
         {
-            b.setSelected(false);
+            setButtonSelected(b, false);
             b.setOnClickListener(this);
             b.setOnLongClickListener(this);
         }
@@ -81,11 +81,11 @@ public class DialogNewFormula extends DialogBase implements OnLongClickListener
         try
         {
             ListChangeIf.FormulaType formulaType = ListChangeIf.FormulaType.valueOf(str);
-            objectButtons.get(formulaType).setSelected(true);
+            setButtonSelected(objectButtons.get(formulaType), true);
         }
         catch (Exception e)
         {
-            objectButtons.get(ListChangeIf.FormulaType.EQUATION).setSelected(true);
+            setButtonSelected(objectButtons.get(ListChangeIf.FormulaType.EQUATION), true);
         }
 
         this.changeIf = listChangeIf;
@@ -99,7 +99,7 @@ public class DialogNewFormula extends DialogBase implements OnLongClickListener
             // position buttons
             for (ImageButton b : positionButtons.values())
             {
-                b.setSelected(v == b);
+                setButtonSelected(b, v == b);
             }
             return;
         }
@@ -108,7 +108,7 @@ public class DialogNewFormula extends DialogBase implements OnLongClickListener
             // object buttons
             for (ImageButton b : objectButtons.values())
             {
-                b.setSelected(v == b);
+                setButtonSelected(b, v == b);
             }
             return;
         }
@@ -140,7 +140,7 @@ public class DialogNewFormula extends DialogBase implements OnLongClickListener
             }
             changeIf.onNewFormula(insertType, formulaType);
         }
-        closeDialog();
+        closeDialog(/*hideKeyboard=*/ false);
     }
 
     @Override

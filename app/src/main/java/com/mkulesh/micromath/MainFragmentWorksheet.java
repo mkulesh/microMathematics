@@ -22,23 +22,24 @@ import android.view.ViewGroup;
 
 import com.mkulesh.micromath.dialogs.DialogDocumentSettings;
 import com.mkulesh.micromath.dialogs.DialogNewFormula;
-import com.mkulesh.micromath.fman.AdapterIf;
 import com.mkulesh.micromath.fman.Commander;
-import com.mkulesh.micromath.fman.FileType;
 import com.mkulesh.micromath.fman.FileUtils;
-import com.mkulesh.micromath.formula.XmlLoaderTask;
+import com.mkulesh.micromath.io.XmlLoaderTask;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.ta.TestSession;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.io.File;
 
+import androidx.annotation.NonNull;
+
 public class MainFragmentWorksheet extends BaseFragment
 {
-    public static final String AUTOSAVE_FILE_NAME = "autosave.mmt";
+    private static final String AUTOSAVE_FILE_NAME = "autosave.mmt";
 
     private Uri externalUri = null;
-    protected boolean invalidateFile = false;
+    private boolean invalidateFile = false;
     private int postActionId = INVALID_ACTION_ID;
     private CharSequence[] assetFilter = null;
 
@@ -64,7 +65,7 @@ public class MainFragmentWorksheet extends BaseFragment
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater)
     {
         super.onCreateOptionsMenu(menu, inflater);
         menu.findItem(R.id.action_open).setVisible(true);
@@ -99,17 +100,14 @@ public class MainFragmentWorksheet extends BaseFragment
         super.onResume();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * File handling
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private void initializeAssets(String[] stringArray)
     {
         assetFilter = new CharSequence[isDeveloperMode() ? stringArray.length + 1 : stringArray.length];
-        for (int i = 0; i < stringArray.length; i++)
-        {
-            assetFilter[i] = stringArray[i];
-        }
+        System.arraycopy(stringArray, 0, assetFilter, 0, stringArray.length);
         if (isDeveloperMode())
         {
             assetFilter[stringArray.length] = getResources().getString(R.string.autotest_directory);
@@ -125,7 +123,7 @@ public class MainFragmentWorksheet extends BaseFragment
         }
         if (isFirstStart())
         {
-            if (TestSession.isAutotestOnStart(activity))
+            if (((MainActivity) activity).isAutotestOnStart())
             {
                 if (((MainActivity) activity).checkStoragePermission(R.id.action_dev_autotest))
                 {
@@ -192,11 +190,7 @@ public class MainFragmentWorksheet extends BaseFragment
         Uri uri = getOpenedFile();
         if (uri != null)
         {
-            if (FileUtils.isAssetUri(uri))
-            {
-                // no need to save an asset: just ignore this case
-            }
-            else
+            if (!FileUtils.isAssetUri(uri))
             {
                 formulas.writeToFile(uri);
             }
@@ -207,7 +201,7 @@ public class MainFragmentWorksheet extends BaseFragment
         }
         else
         {
-            File file = new File(getActivity().getExternalFilesDir(null), AUTOSAVE_FILE_NAME);
+            File file = CompatUtils.getStorageFile(activity, AUTOSAVE_FILE_NAME);
             if (file != null)
             {
                 uri = Uri.fromFile(file);
@@ -219,23 +213,20 @@ public class MainFragmentWorksheet extends BaseFragment
         }
     }
 
-    public void openFile()
+    private void openFile()
     {
         Commander commander = new Commander(activity, R.string.action_open, Commander.SelectionMode.OPEN, assetFilter,
-                new Commander.OnFileSelectedListener()
+                (uri, fileType, adapter) ->
                 {
-                    public void onSelectFile(Uri uri, FileType fileType, final AdapterIf adapter)
+                    saveFile(false);
+                    uri = FileUtils.ensureScheme(uri);
+                    if (formulas.readFromFile(uri))
                     {
-                        saveFile(false);
-                        uri = FileUtils.ensureScheme(uri);
-                        if (formulas.readFromFile(uri))
-                        {
-                            setOpenedFile(uri);
-                        }
-                        else
-                        {
-                            setOpenedFile(null);
-                        }
+                        setOpenedFile(uri);
+                    }
+                    else
+                    {
+                        setOpenedFile(null);
                     }
                 });
         commander.show();
@@ -268,7 +259,7 @@ public class MainFragmentWorksheet extends BaseFragment
                 // asset and we do not need to save anything
                 saveFile(false);
             }
-            formulas.clear();
+            formulas.newDocument();
             setOpenedFile(null);
             break;
         case R.id.action_open:
@@ -285,19 +276,19 @@ public class MainFragmentWorksheet extends BaseFragment
             break;
         case R.id.action_dev_autotest:
         {
-            TestSession at = new TestSession(formulas, TestSession.Mode.TEST_SCRIPS);
+            TestSession at = new TestSession(formulas, TestSession.Mode.TEST_SCRIPS, ((MainActivity) activity).isAutotestOnStart());
             CompatUtils.executeAsyncTask(at);
             break;
         }
         case R.id.action_dev_export_doc:
         {
-            TestSession at = new TestSession(formulas, TestSession.Mode.EXPORT_DOC);
+            TestSession at = new TestSession(formulas, TestSession.Mode.EXPORT_DOC, false);
             CompatUtils.executeAsyncTask(at);
             break;
         }
         case R.id.action_dev_take_screenshot:
         {
-            TestSession at = new TestSession(formulas, TestSession.Mode.TAKE_SCREENSHOTS);
+            TestSession at = new TestSession(formulas, TestSession.Mode.TAKE_SCREENSHOTS, false);
             CompatUtils.executeAsyncTask(at);
             break;
         }

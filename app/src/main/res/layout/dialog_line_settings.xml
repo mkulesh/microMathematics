@@ -41,7 +41,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_line_style_solid"
                     style="@style/RadioButtonStyle"
                     android:checked="true" />
@@ -53,9 +53,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingRight="10dp"
+                    android:background="?attr/selectableItemBackground"
                     micromath:symbol="HOR_LINE" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_line_style_dotted"
                     style="@style/RadioButtonStyle" />
 
@@ -66,6 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingRight="10dp"
+                    android:background="?attr/selectableItemBackground"
                     micromath:symbol="HOR_LINE" />
             </LinearLayout>
 
@@ -75,7 +77,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_line_style_dashed"
                     style="@style/RadioButtonStyle" />
 
@@ -86,9 +88,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingRight="10dp"
+                    android:background="?attr/selectableItemBackground"
                     micromath:symbol="HOR_LINE" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_line_style_dash_dot"
                     style="@style/RadioButtonStyle" />
 
@@ -99,24 +102,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingRight="10dp"
+                    android:background="?attr/selectableItemBackground"
                     micromath:symbol="HOR_LINE" />
             </LinearLayout>
 
-            <com.larswerkman.holocolorpicker.ColorPicker
-                android:id="@+id/dialog_color_picker"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center" />
-
-            <com.larswerkman.holocolorpicker.ValueBar
-                android:id="@+id/dialog_color_valuebar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <com.larswerkman.holocolorpicker.OpacityBar
-                android:id="@+id/dialog_color_opacity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            <include layout="@layout/color_picker"/>
 
             <View
                 style="@style/HorizontalDividerStyle"
@@ -131,7 +121,7 @@
                 android:paddingBottom="@dimen/dialog_content_padding"
                 android:paddingTop="@dimen/dialog_content_padding" >
 
-                <CheckBox
+                <androidx.appcompat.widget.AppCompatCheckBox
                     android:id="@+id/dialog_plot_point_shapes"
                     style="@style/CheckBoxStyle"
                     android:checked="false"
@@ -151,27 +141,27 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
-                <ImageButton
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/dialog_plot_point_square"
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_plot_point_square"
                     android:src="@drawable/ic_plot_point_square" />
 
-                <ImageButton
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/dialog_plot_point_circle"
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_plot_point_circle"
                     android:src="@drawable/ic_plot_point_circle" />
 
-                <ImageButton
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/dialog_plot_point_diamond"
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_plot_point_diamond"
                     android:src="@drawable/ic_plot_point_diamond" />
 
-                <ImageButton
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/dialog_plot_point_cross"
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_plot_point_cross"
                     android:src="@drawable/ic_plot_point_cross" />
             </LinearLayout>

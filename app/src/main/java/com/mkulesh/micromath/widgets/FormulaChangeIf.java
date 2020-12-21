@@ -14,15 +14,12 @@ package com.mkulesh.micromath.widgets;
 
 import android.view.View;
 
+import com.mkulesh.micromath.formula.TermField;
+
 import java.util.ArrayList;
 
 public interface FormulaChangeIf
 {
-    /**
-     * Procedure will be called if the context menu is activated
-     */
-    void onCreateContextMenu(View owner, ContextMenuHandler handler);
-
     /**
      * Procedure will be called if a term is focused
      */
@@ -41,7 +38,7 @@ public interface FormulaChangeIf
     /**
      * Procedure will be called if current selection shall be expanded
      */
-    FormulaChangeIf onExpandSelection(View owner, ContextMenuHandler handler);
+    FormulaChangeIf onExpandSelection(View owner);
 
     /**
      * Procedure will be called if a term shall be copied to clipboard
@@ -56,7 +53,7 @@ public interface FormulaChangeIf
     /**
      * Procedure will be called if the formula is newly created by manual input
      */
-    public void onNewFormula();
+    void onNewFormula();
 
     /**
      * Procedure will be called if a term shall be deleted
@@ -71,7 +68,12 @@ public interface FormulaChangeIf
     /**
      * Procedure will be called if a details for given owner term shall be displayed
      */
-    void onDetails(View owner);
+    void onDetails();
+
+    /**
+     * Procedure will be called if the given field obtains a command aimed to be expanded by a new term
+     */
+    boolean onNewTerm(TermField owner, String s, boolean requestFocus);
 
     /**
      * Procedure returns whether the object properties are enabled for this formula

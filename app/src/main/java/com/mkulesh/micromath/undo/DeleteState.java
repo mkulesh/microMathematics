@@ -29,11 +29,11 @@ public final class DeleteState implements Parcelable
      */
     public static class EntryState implements Parcelable
     {
-        public FormulaBase.BaseType type;
-        public Coordinate coordinate;
-        public Parcelable data;
+        public final FormulaBase.BaseType type;
+        public final Coordinate coordinate;
+        public final Parcelable data;
 
-        public EntryState(FormulaBase.BaseType type, Coordinate coordinate, Parcelable data)
+        EntryState(FormulaBase.BaseType type, Coordinate coordinate, Parcelable data)
         {
             super();
             this.type = type;
@@ -41,7 +41,7 @@ public final class DeleteState implements Parcelable
             this.data = data;
         }
 
-        public EntryState(Parcel in)
+        EntryState(Parcel in)
         {
             super();
             type = FormulaBase.BaseType.values()[in.readInt()];
@@ -79,14 +79,14 @@ public final class DeleteState implements Parcelable
         };
     }
 
-    private final ArrayList<EntryState> entries = new ArrayList<EntryState>();
+    private final ArrayList<EntryState> entries = new ArrayList<>();
 
     public DeleteState()
     {
         super();
     }
 
-    public DeleteState(Parcel in)
+    private DeleteState(Parcel in)
     {
         super();
         in.readTypedList(entries, EntryState.CREATOR);

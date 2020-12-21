@@ -12,21 +12,22 @@
  */
 package com.mkulesh.micromath.utils;
 
-import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.net.Uri;
+import android.os.Build;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 public class ClipboardManager
 {
-    public static final String CLIPBOARD_LABEL = "com.mkulesh.micromath.clipboard";
+    private static final String CLIPBOARD_LABEL = "com.mkulesh.micromath.clipboard";
     public static final String CLIPBOARD_TERM_OBJECT = "content:com.mkulesh.micromath.term";
     public static final String CLIPBOARD_LIST_OBJECT = "content:com.mkulesh.micromath.list";
 
@@ -40,78 +41,52 @@ public class ClipboardManager
         return false;
     }
 
-    @SuppressLint("NewApi")
-    @SuppressWarnings("deprecation")
-    public static boolean copyToClipboard(Context context, String text)
+    public static void copyToClipboard(Context context, String text)
     {
         try
         {
-            int sdk = android.os.Build.VERSION.SDK_INT;
-            if (sdk < android.os.Build.VERSION_CODES.HONEYCOMB)
-            {
-                android.text.ClipboardManager clipboard = (android.text.ClipboardManager) context
-                        .getSystemService(Context.CLIPBOARD_SERVICE);
-                clipboard.setText(text);
-            }
-            else
-            {
-                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) context
-                        .getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clip = android.content.ClipData.newPlainText(CLIPBOARD_LABEL, text);
-                clipboard.setPrimaryClip(clip);
-            }
-            return true;
+            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) context
+                    .getSystemService(Context.CLIPBOARD_SERVICE);
+            android.content.ClipData clip = android.content.ClipData.newPlainText(CLIPBOARD_LABEL, text);
+            clipboard.setPrimaryClip(clip);
         }
         catch (Exception e)
         {
-            return false;
+            // nothing to do
         }
     }
 
-    @SuppressWarnings("deprecation")
-    @SuppressLint("NewApi")
     public static String readFromClipboard(Context context, boolean textOnly)
     {
-        int sdk = android.os.Build.VERSION.SDK_INT;
-        if (sdk < android.os.Build.VERSION_CODES.HONEYCOMB)
+        android.content.ClipboardManager clipboard = (android.content.ClipboardManager) context
+                .getSystemService(Context.CLIPBOARD_SERVICE);
+        android.content.ClipData clip = clipboard.getPrimaryClip();
+        if (clip != null)
         {
-            android.text.ClipboardManager clipboard = (android.text.ClipboardManager) context
-                    .getSystemService(Context.CLIPBOARD_SERVICE);
-            return clipboard.getText().toString();
-        }
-        else
-        {
-            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) context
-                    .getSystemService(Context.CLIPBOARD_SERVICE);
-            android.content.ClipData clip = clipboard.getPrimaryClip();
-            if (clip != null)
+            ClipData.Item item = clip.getItemAt(0);
+            if (item != null)
             {
-                ClipData.Item item = clip.getItemAt(0);
-                if (item != null)
+                // If this Item has an explicit textual value, simply return that.
+                CharSequence text = item.getText();
+                if (text != null)
                 {
-                    // If this Item has an explicit textual value, simply return that.
-                    CharSequence text = item.getText();
-                    if (text != null)
-                    {
-                        return text.toString();
-                    }
-                    if (!textOnly)
-                    {
-                        text = convertToText(context, item);
-                    }
-                    if (text != null)
-                    {
-                        return text.toString();
-                    }
+                    return text.toString();
                 }
-                return null;
+                if (!textOnly)
+                {
+                    text = convertToText(context, item);
+                }
+                if (text != null)
+                {
+                    return text.toString();
+                }
             }
+            return null;
         }
         return "";
     }
 
-    @SuppressLint("NewApi")
-    public static CharSequence convertToText(Context context, ClipData.Item item)
+    private static CharSequence convertToText(Context context, ClipData.Item item)
     {
         // If this Item has a URI value, try using that.
         Uri uri = item.getUri();
@@ -127,7 +102,15 @@ public class ClipboardManager
                 AssetFileDescriptor descr = context.getContentResolver().openTypedAssetFileDescriptor(uri, "text/*",
                         null);
                 stream = descr.createInputStream();
-                InputStreamReader reader = new InputStreamReader(stream, "UTF-8");
+                InputStreamReader reader;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+                {
+                    reader = new InputStreamReader(stream, StandardCharsets.UTF_8);
+                }
+                else
+                {
+                    reader = new InputStreamReader(stream, "UTF-8");
+                }
 
                 // Got it... copy the stream into a local string and return it.
                 StringBuilder builder = new StringBuilder(128);
@@ -158,6 +141,7 @@ public class ClipboardManager
                     }
                     catch (IOException e)
                     {
+                        // empty
                     }
                 }
             }

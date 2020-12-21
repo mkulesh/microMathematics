@@ -22,14 +22,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.mkulesh.micromath.io.XmlUtils;
 import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.IdGenerator;
 import com.mkulesh.micromath.utils.ViewUtils;
-import com.mkulesh.micromath.utils.XmlUtils;
-import com.mkulesh.micromath.widgets.ContextMenuHandler;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomLayout;
 import com.mkulesh.micromath.widgets.CustomTextView;
@@ -42,6 +41,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class FormulaBase extends CustomLayout implements FormulaChangeIf
 {
@@ -59,23 +59,23 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         PLOT_FUNCTION(R.drawable.p_plot_function, R.string.math_new_function_plot),
         TEXT_FRAGMENT(R.drawable.p_text_fragment, R.string.math_new_text_fragment),
         IMAGE_FRAGMENT(R.drawable.p_image_fragment, R.string.math_new_image_fragment),
-        TERM(Palette.NO_BUTTON, Palette.NO_BUTTON);
+        TERM(R.drawable.p_new_term, R.string.math_new_term);
 
         private final int imageId;
         private final int descriptionId;
 
-        private BaseType(int imageId, int descriptionId)
+        BaseType(int imageId, int descriptionId)
         {
             this.imageId = imageId;
             this.descriptionId = descriptionId;
         }
 
-        public int getImageId()
+        int getImageId()
         {
             return imageId;
         }
 
-        public int getDescriptionId()
+        int getDescriptionId()
         {
             return descriptionId;
         }
@@ -96,14 +96,14 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     private final FormulaList formulaList;
     protected TermField parentField = null;
     protected LinearLayout layout = null;
-    protected ArrayList<View> elements = new ArrayList<View>();
-    protected ArrayList<TermField> terms = new ArrayList<TermField>();
-    protected final int termDepth;
+    final ArrayList<View> elements = new ArrayList<>();
+    protected final ArrayList<TermField> terms = new ArrayList<>();
+    final int termDepth;
     private boolean inRightOfPrevious = false;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public FormulaBase(FormulaList formulaList, LinearLayout layout, int termDepth)
     {
@@ -114,9 +114,9 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         setSaveEnabled(false);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Primitives
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure checks whether this formula is a root formula
@@ -137,7 +137,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     /**
      * Setter for parent formula field
      */
-    public void setParentField(TermField parent)
+    void setParentField(TermField parent)
     {
         this.parentField = parent;
     }
@@ -159,6 +159,14 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     }
 
     /**
+     * Procedure returns whether a new term is enabled for this formula
+     */
+    public boolean isNewTermEnabled()
+    {
+        return false;
+    }
+
+    /**
      * Procedure returns whether this formula shall be placed in right of the previous formula
      */
     public boolean isInRightOfPrevious()
@@ -174,41 +182,39 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         this.inRightOfPrevious = inRightOfPrevious;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for View superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void setSelected(boolean isSelected)
     {
-        final int selectionColor = (isSelected) ? CompatUtils.getColor(getContext(),
-                R.color.formula_selected_root_color) : CompatUtils.getColor(getContext(),
-                R.color.formula_background_color);
-        setBackgroundColor(selectionColor);
+        setBackgroundColor(CompatUtils.getThemeColorAttr(getContext(),
+                (isSelected) ? R.attr.colorFormulaHighlighted : R.attr.colorFormulaBackground));
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Methods to be (re)implemented in derived a class
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Getter that returns the type of this base formula
      */
     public abstract BaseType getBaseType();
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
-
-    @Override
-    public void onCreateContextMenu(View owner, ContextMenuHandler handler)
-    {
-        // empty
-    }
+     *--------------------------------------------------------*/
 
     @Override
     public void onFocus(View v, boolean hasFocus)
     {
+        if (v instanceof CustomEditText)
+        {
+            // Its hard to edit document that could be zoomed if mistakenly touch screen by two
+            // fingers during editing. So, disable zooming in editing mode.
+            getFormulaList().getFormulaScrollView().setScaleDetectorActive(!hasFocus);
+        }
         if (hasFocus)
         {
             if (!(v instanceof CustomEditText))
@@ -272,7 +278,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         // In this case, it shall be marked as selected
         if (list == null)
         {
-            list = new ArrayList<View>();
+            list = new ArrayList<>();
             collectElemets(layout, list);
         }
 
@@ -307,10 +313,14 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
             {
                 v.setSelected(isSelected);
             }
+            else if (isSelected)
+            {
+                CompatUtils.updateBackgroundAttr(getContext(), v,
+                        R.drawable.formula_term_background, R.attr.colorFormulaSelected);
+            }
             else
             {
-                final int resId = (isSelected) ? R.drawable.formula_selected_term : R.drawable.formula_filled_border;
-                CompatUtils.updateBackground(getContext(), v, resId);
+                CompatUtils.updateBackground(getContext(), v, R.drawable.formula_term);
             }
         }
         if (isRootFormula())
@@ -342,14 +352,14 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     }
 
     @Override
-    public FormulaChangeIf onExpandSelection(View owner, ContextMenuHandler handler)
+    public FormulaChangeIf onExpandSelection(View owner)
     {
         FormulaBase retValue = null;
         if (isRootFormula() && (owner == null || isEquationOwner(owner)))
         {
             getFormulaList().selectAll();
         }
-        else if (owner != null && owner instanceof CustomEditText)
+        else if (owner instanceof CustomEditText)
         {
             retValue = this;
         }
@@ -384,7 +394,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         }
 
         TermField t = null;
-        final boolean pasteIntoEditText = (owner != null && owner instanceof CustomEditText);
+        final boolean pasteIntoEditText = (owner instanceof CustomEditText);
         if (pasteIntoEditText)
         {
             // paste into text edit
@@ -414,7 +424,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
                 if (s.getSingleData().baseType == BaseType.TERM)
                 {
                     // restore TERM
-                    final boolean restoreFocos = (pasteIntoEditText && ((CustomEditText) owner).isFocused());
+                    final boolean restoreFocos = (pasteIntoEditText && owner.isFocused());
                     if (pasteIntoEditText)
                     {
                         // we shall store the term state before operation
@@ -458,7 +468,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
                     t.onTermDelete(removeElements(), null);
                 }
                 // restore text
-                t.setText(content);
+                t.pasteFromClipboard(content);
             }
         }
         getFormulaList().onManualInput();
@@ -492,9 +502,15 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     }
 
     @Override
-    public void onDetails(View owner)
+    public void onDetails()
     {
         // empty
+    }
+
+    @Override
+    public boolean onNewTerm(TermField field, String s, boolean requestFocus)
+    {
+        return false;
     }
 
     @Override
@@ -503,9 +519,9 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         return false;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Parcelable interface: procedure writes the formula state
@@ -562,7 +578,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
             String attr = parser.getAttributeValue(null, FormulaList.XML_PROP_INRIGHTOFPREVIOUS);
             if (attr != null)
             {
-                inRightOfPrevious = Boolean.valueOf(attr);
+                inRightOfPrevious = Boolean.parseBoolean(attr);
             }
         }
         return false;
@@ -594,7 +610,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
                 final String key = parser.getAttributeValue(null, FormulaList.XML_PROP_KEY);
                 for (TermField t : terms)
                 {
-                    if (t.getTermKey() != null && key != null && t.getTermKey().equals(key))
+                    if (t.getTermKey() != null && t.getTermKey().equals(key))
                     {
                         t.readFromXml(parser);
                         termFound = true;
@@ -637,6 +653,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
             serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_KEY, t.getTermKey());
             if (onStartWriteXmlTag(serializer, t.getTermKey()))
             {
+                serializer.endTag(FormulaList.XML_NS, FormulaList.XML_TERM_TAG);
                 continue;
             }
             if (t.isWritable)
@@ -647,9 +664,9 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Undo feature
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure returns undo state for this formula
@@ -686,9 +703,9 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * FormulaBase-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure inflates layout with given resource ID
@@ -710,16 +727,24 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
      */
     protected void inflateElements(int resId, boolean removeFromLayout)
     {
+        inflateElements(elements, resId, removeFromLayout);
+    }
+
+    /**
+     * Procedure inflates elements from the given resource into the given vector
+     */
+    protected void inflateElements(ArrayList<View> out, int resId, boolean removeFromLayout)
+    {
         final int lastIdx = layout.getChildCount();
         final LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(resId, layout);
         for (int i = lastIdx; i < layout.getChildCount(); i++)
         {
-            elements.add(layout.getChildAt(i));
+            out.add(layout.getChildAt(i));
         }
         if (removeFromLayout)
         {
-            for (View v : elements)
+            for (View v : out)
             {
                 layout.removeView(v);
             }
@@ -729,11 +754,11 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     /**
      * Procedure collects all elements that belong to the given layout into output vector
      */
-    protected void collectElemets(LinearLayout layout, ArrayList<View> out)
+    void collectElemets(LinearLayout layout, ArrayList<View> out)
     {
         for (View v : elements)
         {
-            if ((View) v.getParent() == layout)
+            if (v.getParent() == layout)
             {
                 if (!out.contains(v))
                 {
@@ -753,7 +778,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     protected int removeElements()
     {
         int minIdx = layout.getChildCount() + 1;
-        ArrayList<View> toRemove = new ArrayList<View>();
+        ArrayList<View> toRemove = new ArrayList<>();
         collectElemets(layout, toRemove);
         for (View v : toRemove)
         {
@@ -852,7 +877,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     /**
      * Returns term field object with given id
      */
-    protected TermField findTermWithId(int termId)
+    TermField findTermWithId(int termId)
     {
         for (TermField t : terms)
         {
@@ -875,7 +900,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     /**
      * Procedure searches the focused term recursively
      */
-    protected TermField findFocusedTerm()
+    TermField findFocusedTerm()
     {
         for (TermField t : terms)
         {
@@ -891,7 +916,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     /**
      * Procedure checks the given owner is the main equation owner (root view)
      */
-    static boolean isEquationOwner(View owner)
+    private static boolean isEquationOwner(View owner)
     {
         return !(owner instanceof CustomEditText);
     }
@@ -973,7 +998,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         }
         if (v instanceof CustomLayout)
         {
-            ((CustomLayout) v).updateTextSize(dimen, termDepth);
+            ((CustomLayout) v).updateTextSize(dimen);
         }
         if (v instanceof ViewGroup)
         {
@@ -1093,5 +1118,49 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
             }
         }
         return R.id.main_list_view;
+    }
+
+    public static void addToPalette(Context context, List<PaletteButton> paletteLayout)
+    {
+        for (int i = 0; i < BaseType.values().length; i++)
+        {
+            final BaseType t = BaseType.values()[i];
+            if (t.getImageId() != Palette.NO_BUTTON)
+            {
+                if (t == BaseType.TERM)
+                {
+                    PaletteButton p = new PaletteButton(context,
+                            FormulaBase.class.getSimpleName(), t.toString(),
+                            t.getImageId(), t.getDescriptionId(), R.string.formula_term_separator);
+                    p.setCategories(new PaletteButton.Category[]
+                            { PaletteButton.Category.NEW_TERM, PaletteButton.Category.CONVERSION });
+                    paletteLayout.add(p);
+                }
+                else
+                {
+                    PaletteButton p = new PaletteButton(context,
+                            FormulaBase.class.getSimpleName(), t.toString(),
+                            t.getImageId(), t.getDescriptionId(), Palette.NO_BUTTON);
+                    paletteLayout.add(p);
+                }
+            }
+        }
+    }
+
+    public Equation searchLinkedEquation(String name, int argNumber)
+    {
+        return searchLinkedEquation(name, argNumber, true);
+    }
+
+    public Equation searchLinkedEquation(String name, int argNumber, boolean excludeRoot)
+    {
+        final boolean redefineAllowed = getFormulaList().getDocumentSettings().redefineAllowed;
+        final FormulaBase f = getFormulaList().getFormulaListView().getFormula(
+                name, argNumber, getId(), excludeRoot, !redefineAllowed);
+        if (f == null)
+        {
+            return null;
+        }
+        return (f instanceof Equation) ? (Equation) f : null;
     }
 }

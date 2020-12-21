@@ -15,11 +15,7 @@ package com.mkulesh.micromath;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,12 +24,16 @@ import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.mkulesh.micromath.export.Exporter;
-import com.mkulesh.micromath.fman.AdapterIf;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
+
 import com.mkulesh.micromath.fman.Commander;
-import com.mkulesh.micromath.fman.FileType;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.FormulaList;
+import com.mkulesh.micromath.io.Exporter;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.FloatingButtonsSet;
 
@@ -47,28 +47,29 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     public static final String EXTERNAL_URI = "external_uri";
     public static final String POST_ACTION_ID = "post_action_id";
     public static final String FRAGMENT_NUMBER = "fragment_number";
-    public static final String OPENED_FILE = "opened_file"; // Not used since version 2.14.3
+    private static final String OPENED_FILE = "opened_file"; // Not used since version 2.14.3
     public static final String OPENED_URI = "opened_uri";
-    public static final String OPENED_FILE_EMPTY = "";
-    public static final String FILE_READING_OPERATION = "file_reading_operation";
-    public static final String DEVELOPER_MODE = "developer_mode";
+    private static final String OPENED_FILE_EMPTY = "";
+    static final String FILE_READING_OPERATION = "file_reading_operation";
+    private static final String DEVELOPER_MODE = "developer_mode";
+    private static final String ZOOM_MODE = "zoom_mode";
 
     /**
      * Class members.
      */
     public final static int WORKSHEET_FRAGMENT_ID = 0;
-    public final static int INVALID_FRAGMENT_ID = -1;
+    private final static int INVALID_FRAGMENT_ID = -1;
     public final static int INVALID_ACTION_ID = -1;
 
-    protected AppCompatActivity activity = null;
-    protected View rootView = null;
-    protected FormulaList formulas = null;
-    protected int fragmentNumber = INVALID_FRAGMENT_ID;
+    AppCompatActivity activity = null;
+    View rootView = null;
+    FormulaList formulas = null;
+    int fragmentNumber = INVALID_FRAGMENT_ID;
     private Menu mainMenu = null;
     private boolean inOperation = false;
     private OnClickListener stopHandler = null;
     private FloatingButtonsSet primaryButtonsSet = null, secondaryButtonsSet = null;
-    protected SharedPreferences preferences = null;
+    private SharedPreferences preferences = null;
 
     /**
      * Abstract interface
@@ -82,22 +83,24 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         // Empty constructor required for fragment subclasses
     }
 
-    protected void initializeFragment(int number)
+    void initializeFragment(int number)
     {
         fragmentNumber = number;
         activity = (AppCompatActivity) getActivity();
+        if (activity != null)
+        {
+            preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        }
         formulas = new FormulaList(this, rootView);
 
         setHasOptionsMenu(true);
 
-        primaryButtonsSet = (FloatingButtonsSet) rootView.findViewById(R.id.main_flb_set_primary);
-        secondaryButtonsSet = (FloatingButtonsSet) rootView.findViewById(R.id.main_flb_set_secondary);
-
-        preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        primaryButtonsSet = rootView.findViewById(R.id.main_flb_set_primary);
+        secondaryButtonsSet = rootView.findViewById(R.id.main_flb_set_secondary);
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater)
     {
         super.onCreateOptionsMenu(menu, inflater);
         boolean delayedSetInOperationCall = (mainMenu != menu);
@@ -109,7 +112,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState)
+    public void onSaveInstanceState(@NonNull Bundle outState)
     {
         if (formulas.getXmlLoaderTask() != null)
         {
@@ -122,7 +125,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         }
     }
 
-    public Uri getOpenedFile()
+    Uri getOpenedFile()
     {
         Uri uri = null;
         // clear settings of previous version
@@ -151,7 +154,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         return uri;
     }
 
-    protected void setOpenedFile(Uri uri)
+    void setOpenedFile(Uri uri)
     {
         SharedPreferences.Editor prefEditor = preferences.edit();
         prefEditor.putString(OPENED_URI, (uri == null) ? OPENED_FILE_EMPTY : uri.toString());
@@ -168,12 +171,12 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         }
     }
 
-    protected void setWorksheetName(CharSequence name)
+    void setWorksheetName(CharSequence name)
     {
         ((MainActivity) activity).setWorksheetName(fragmentNumber, name);
     }
 
-    protected void onSaveFinished()
+    void onSaveFinished()
     {
         // Allow save button (for the case if a read-only asset is saved on SD card)
         final MenuItem saveItem = (mainMenu == null) ? null : mainMenu.findItem(R.id.action_save);
@@ -183,75 +186,69 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         }
     }
 
-    protected void saveFileAs(final boolean storeOpenedFileInfo)
+    void saveFileAs(final boolean storeOpenedFileInfo)
     {
         Commander commander = new Commander(activity, R.string.action_save_as, Commander.SelectionMode.SAVE_AS, null,
-                new Commander.OnFileSelectedListener()
+                (uri, fileType, adapter) ->
                 {
-                    public void onSelectFile(Uri uri, FileType fileType, final AdapterIf adapter)
+                    uri = FileUtils.ensureScheme(uri);
+                    if (formulas.writeToFile(uri))
                     {
-                        uri = FileUtils.ensureScheme(uri);
-                        if (formulas.writeToFile(uri))
+                        if (storeOpenedFileInfo)
                         {
-                            if (storeOpenedFileInfo)
-                            {
-                                setOpenedFile(uri);
-                            }
-                            onSaveFinished();
+                            setOpenedFile(uri);
                         }
+                        onSaveFinished();
                     }
                 });
         commander.setFileName(((MainActivity) activity).getWorksheetName());
         commander.show();
     }
 
-    protected void export()
+    void export()
     {
         Commander commander = new Commander(activity, R.string.action_export, Commander.SelectionMode.EXPORT, null,
-                new Commander.OnFileSelectedListener()
+                (uri, fileType, adapter) ->
                 {
-                    public void onSelectFile(Uri uri, FileType fileType, final AdapterIf adapter)
+                    uri = FileUtils.ensureScheme(uri);
+                    formulas.setSelectedFormula(ViewUtils.INVALID_INDEX, false);
+                    final boolean res = Exporter.write(formulas, uri, fileType, adapter, null);
+                    String mime = null;
+                    if (res)
                     {
-                        uri = FileUtils.ensureScheme(uri);
-                        formulas.setSelectedFormula(ViewUtils.INVALID_INDEX, false);
-                        final boolean res = Exporter.write(formulas, uri, fileType, adapter, null);
-                        String mime = null;
-                        if (res)
+                        switch (fileType)
                         {
-                            switch (fileType)
-                            {
-                            case JPEG_IMAGE:
-                                mime = "image/jpeg";
-                                break;
-                            case LATEX:
-                                break;
-                            case MATHJAX:
-                                mime = "text/html";
-                                break;
-                            case PNG_IMAGE:
-                                mime = "image/png";
-                                break;
-                            }
+                        case JPEG_IMAGE:
+                            mime = "image/jpeg";
+                            break;
+                        case LATEX:
+                            break;
+                        case MATHJAX:
+                            mime = "text/html";
+                            break;
+                        case PNG_IMAGE:
+                            mime = "image/png";
+                            break;
                         }
-                        if (mime != null)
+                    }
+                    if (mime != null)
+                    {
+                        try
                         {
-                            try
-                            {
-                                Intent intent = new Intent(Intent.ACTION_VIEW);
-                                intent.setDataAndType(uri, mime);
-                                startActivity(intent);
-                            }
-                            catch (Exception e)
-                            {
-                                Toast.makeText(getActivity(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-                            }
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            intent.setDataAndType(uri, mime);
+                            startActivity(intent);
+                        }
+                        catch (Exception e)
+                        {
+                            Toast.makeText(getActivity(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 });
         commander.show();
     }
 
-    public void calculate()
+    private void calculate()
     {
         formulas.calculate();
     }
@@ -291,7 +288,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
                 m.setVisible(!FileUtils.isAssetUri(uri));
             }
             // update buttons background
-            ViewUtils.setMenuIconColor(activity, m, R.color.micromath_icons);
+            ViewUtils.updateMenuIconColor(activity, m);
         }
 
         // update floating buttons
@@ -312,7 +309,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         }
 
         // update progress bar
-        final ProgressBar progressBar = (ProgressBar) activity.findViewById(R.id.main_progress_bar);
+        final ProgressBar progressBar = activity.findViewById(R.id.main_progress_bar);
         if (progressBar != null)
         {
             progressBar.setVisibility(inOperation ? View.VISIBLE : View.GONE);
@@ -324,7 +321,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         return inOperation;
     }
 
-    public boolean isFirstStart()
+    boolean isFirstStart()
     {
         return !preferences.contains(OPENED_FILE) && !preferences.contains(OPENED_URI);
     }
@@ -375,7 +372,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
             }
             else
             {
-                mode.setTitle(String.valueOf(selected) + "/" + String.valueOf(total));
+                mode.setTitle(selected + "/" + total);
             }
             Menu m = mode.getMenu();
             if (m != null)
@@ -394,20 +391,18 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         formulas.showSoftKeyboard(false);
     }
 
-    public boolean isDeveloperMode()
-    {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-        {
-            if (preferences.getBoolean(DEVELOPER_MODE, false))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public int getFragmentNumber()
     {
         return fragmentNumber;
+    }
+
+    boolean isDeveloperMode()
+    {
+        return preferences.getBoolean(DEVELOPER_MODE, false);
+    }
+
+    public String getZoomMode()
+    {
+        return preferences.getString(ZOOM_MODE, getString(R.string.pref_default_zoom_code));
     }
 }

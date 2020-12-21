@@ -22,9 +22,9 @@ import org.xmlpull.v1.XmlSerializer;
 
 public class ResultProperties implements Parcelable
 {
-    public static final String XML_PROP_DISABLE_CALCULATION = "disableCalculation";
-    public static final String XML_PROP_HIDE_RESULT_FIELD = "hideResultField";
-    public static final String XML_PROP_ARRAY_LENGTH = "arrayLength";
+    private static final String XML_PROP_DISABLE_CALCULATION = "disableCalculation";
+    private static final String XML_PROP_HIDE_RESULT_FIELD = "hideResultField";
+    private static final String XML_PROP_ARRAY_LENGTH = "arrayLength";
 
     /**
      * Class members.
@@ -36,12 +36,12 @@ public class ResultProperties implements Parcelable
     /**
      * Temporary attributes that are not a part of state
      */
-    public boolean showArrayLenght = false;
+    public boolean showArrayLength = false;
 
     /**
      * Parcelable interface
      */
-    public ResultProperties(Parcel in)
+    private ResultProperties(Parcel in)
     {
         super();
         readFromParcel(in);
@@ -61,10 +61,10 @@ public class ResultProperties implements Parcelable
         dest.writeInt(arrayLength);
     }
 
-    public void readFromParcel(Parcel in)
+    private void readFromParcel(Parcel in)
     {
-        disableCalculation = Boolean.valueOf(in.readString());
-        hideResultField = Boolean.valueOf(in.readString());
+        disableCalculation = Boolean.parseBoolean(in.readString());
+        hideResultField = Boolean.parseBoolean(in.readString());
         arrayLength = in.readInt();
     }
 

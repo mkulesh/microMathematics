@@ -13,14 +13,23 @@
 package com.mkulesh.micromath.formula;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.text.InputType;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 
-import com.mkulesh.micromath.R;
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.preference.PreferenceManager;
+
+import com.mkulesh.micromath.dialogs.DialogPaletteSettings;
 import com.mkulesh.micromath.formula.PaletteButton.Category;
+import com.mkulesh.micromath.formula.terms.TermFactory;
+import com.mkulesh.micromath.formula.terms.TermTypeIf;
+import com.mkulesh.micromath.formula.terms.UserFunctions;
+import com.mkulesh.micromath.R;
+import com.mkulesh.micromath.properties.PaletteSettingsChangeIf;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
@@ -29,20 +38,24 @@ import com.mkulesh.micromath.widgets.ListChangeIf;
 import com.mkulesh.micromath.widgets.TextChangeIf;
 
 import java.util.ArrayList;
+import java.util.List;
 
-/*********************************************************
+/*--------------------------------------------------------*
  * This class implements symbol palette
- *********************************************************/
-public class Palette implements OnClickListener, OnLongClickListener, TextChangeIf, FocusChangeIf
+ *--------------------------------------------------------*/
+public class Palette implements OnClickListener, OnLongClickListener, TextChangeIf, FocusChangeIf, PaletteSettingsChangeIf
 {
-    static final int NO_BUTTON = -1;
+    public static final int NO_BUTTON = -1;
+    private static final String VISIBLE_PALETTE_GROUPS = "visible_palette_groups";
 
     private final Context context;
     private final ListChangeIf listChangeIf;
     private final ArrayList<ArrayList<PaletteButton>> paletteBlock = new ArrayList<>();
+    private final List<PaletteButton> termButtons = new ArrayList<>();
     private final LinearLayout paletteLayout;
     private final CustomEditText hiddenInput;
     private String lastHiddenInput = "";
+    private List<String> visibleGroups = new ArrayList<>();
 
     public Palette(Context context, LinearLayout paletteLayout, ListChangeIf listChangeIf)
     {
@@ -50,52 +63,89 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         this.listChangeIf = listChangeIf;
         this.paletteLayout = paletteLayout;
 
-        hiddenInput = (CustomEditText) paletteLayout.findViewById(R.id.hidden_edit_text);
+        AppCompatImageButton paletteSettingsButton = paletteLayout.findViewById(R.id.palette_settings_button);
+        paletteSettingsButton.setOnLongClickListener(this);
+        paletteSettingsButton.setOnClickListener(this);
+        ViewUtils.setImageButtonColorAttr(context, paletteSettingsButton, R.attr.colorMicroMathIcon);
+
+        hiddenInput = paletteLayout.findViewById(R.id.hidden_edit_text);
         hiddenInput.setChangeIf(this, this);
-        hiddenInput.setVisibility(View.GONE);
         hiddenInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        enableHiddenInput(false);
 
-        for (int i = 0; i < Category.values().length; i++)
+        final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        final String visibleGroupsStr = pref.getString(VISIBLE_PALETTE_GROUPS, "");
+        ViewUtils.Debug(this, "Default visible palette groups: " + visibleGroupsStr);
+        if (visibleGroupsStr.isEmpty() || visibleGroupsStr.contains(FormulaBase.class.getSimpleName()))
         {
-            paletteBlock.add(new ArrayList<PaletteButton>());
+            visibleGroups.add(FormulaBase.class.getSimpleName());
         }
-
-        // list operations
-        for (int i = 0; i < FormulaBase.BaseType.values().length; i++)
+        for (TermTypeIf.GroupType g : TermFactory.collectPaletteGroups())
         {
-            final FormulaBase.BaseType t = FormulaBase.BaseType.values()[i];
-            if (t.getImageId() != NO_BUTTON)
+            if ((visibleGroupsStr.isEmpty() && g.isShowByDefault()) || visibleGroupsStr.contains(g.toString()))
             {
-                PaletteButton p = new PaletteButton(context,
-                        NO_BUTTON, t.getImageId(), t.getDescriptionId(), t.toString());
-                paletteLayout.addView(p);
+                visibleGroups.add(g.toString());
+            }
+        }
+        addButtonsToPalette();
+    }
+
+    private void addButtonsToPalette()
+    {
+        // clear previous state
+        termButtons.clear();
+        paletteBlock.clear();
+        for (int i = paletteLayout.getChildCount() - 1; i > 0; i--)
+        {
+            if (paletteLayout.getChildAt(i) instanceof PaletteButton)
+            {
+                paletteLayout.removeViewAt(i);
             }
         }
 
-        FormulaTermInterval.addToPalette(context, paletteLayout,
-                new Category[]{ Category.INTERVAL, Category.CONVERSION });
-        FormulaTermOperator.addToPalette(context, paletteLayout,
-                new Category[]{ Category.CONVERSION });
-        FormulaTermFunction.addToPalette(context, paletteLayout,
-                new Category[]{ Category.CONVERSION });
+        // Add elements
+        FormulaBase.addToPalette(context, termButtons);
+        for (TermTypeIf.GroupType g : TermFactory.collectPaletteGroups())
+        {
+            TermFactory.addToPalette(context, termButtons, false, g);
+        }
 
         // prepare all buttons
-        for (int i = 0; i < paletteLayout.getChildCount(); i++)
+        for (int i = 0; i < Category.values().length; i++)
         {
-            View b = paletteLayout.getChildAt(i);
-            if (b instanceof PaletteButton)
+            paletteBlock.add(new ArrayList<>());
+        }
+        for (PaletteButton pb : termButtons)
+        {
+            if (pb.getCategories() != null)
             {
-                final PaletteButton pb = (PaletteButton) b;
-                if (pb.getCategories() != null)
+                for (Category cat : pb.getCategories())
                 {
-                    for (Category cat : pb.getCategories())
-                    {
-                        paletteBlock.get(cat.ordinal()).add(pb);
-                    }
+                    paletteBlock.get(cat.ordinal()).add(pb);
                 }
+            }
+            if (pb.hasImage() && visibleGroups.contains(pb.getGroup()))
+            {
                 pb.setOnLongClickListener(this);
                 pb.setOnClickListener(this);
+                paletteLayout.addView(pb);
             }
+        }
+    }
+
+    @Override
+    public void onPaletteVisibleChange(List<String> visibleGroups)
+    {
+        ViewUtils.Debug(this, "Visible palette groups: " + visibleGroups.toString());
+        final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor prefEditor = pref.edit();
+        prefEditor.putString(VISIBLE_PALETTE_GROUPS, visibleGroups.toString());
+        prefEditor.commit();
+        this.visibleGroups = visibleGroups;
+        addButtonsToPalette();
+        if (listChangeIf != null)
+        {
+            listChangeIf.updatePalette();
         }
     }
 
@@ -125,32 +175,35 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
      */
     private void updateButtonsColor()
     {
-        for (int i = 0; i < paletteLayout.getChildCount(); i++)
+        for (PaletteButton b : termButtons)
         {
-            if (!(paletteLayout.getChildAt(i) instanceof PaletteButton))
-            {
-                continue;
-            }
-            PaletteButton b = (PaletteButton) paletteLayout.getChildAt(i);
             final boolean isEnabled = b.isEnabled() && paletteLayout.isEnabled();
-            ViewUtils.setButtonIconColor(context, b, isEnabled? R.color.micromath_icons : R.color.micromath_primary_dark);
+            b.setColorAttr(isEnabled ? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark);
         }
     }
 
     @Override
     public void onClick(View b)
     {
-        if (b instanceof PaletteButton && listChangeIf != null)
+        if (b instanceof AppCompatImageButton)
         {
-            final PaletteButton pb = (PaletteButton) b;
-            listChangeIf.onPalettePressed(pb.getCode());
+            if (b.getId() == R.id.palette_settings_button)
+            {
+                DialogPaletteSettings d = new DialogPaletteSettings(context, this, visibleGroups);
+                d.show();
+            }
+            else if (listChangeIf != null)
+            {
+                final PaletteButton pb = (PaletteButton) b;
+                listChangeIf.onPalettePressed(pb.getCode());
+            }
         }
     }
 
     @Override
     public boolean onLongClick(View b)
     {
-        if (b instanceof PaletteButton)
+        if (b instanceof AppCompatImageButton)
         {
             return ViewUtils.showButtonDescription(context, b);
         }
@@ -172,10 +225,12 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             hiddenInput.requestFocus();
             hiddenInput.setTextWatcher(true);
         }
+        final LinearLayout hiddenInputPanel = paletteLayout.findViewById(R.id.hidden_edit_text_panel);
+        hiddenInputPanel.setVisibility(hiddenInput.getVisibility());
     }
 
     @Override
-    public void beforeTextChanged(String s, boolean isManualInput)
+    public void beforeTextChanged(boolean isManualInput)
     {
         // empty
     }
@@ -203,31 +258,29 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             return;
         }
 
-        final String code = FormulaTerm
-                .getOperatorCode(context, s, FormulaTermFunction.isConversionEnabled(context, s));
+        final String termSep = context.getResources().getString(R.string.formula_term_separator);
+        final TermTypeIf term = TermFactory.findTerm(context, null, s, true, false);
+        final String code = (termSep.equals(s)) ? FormulaBase.BaseType.TERM.toString() :
+                ((term != null) ? term.getLowerCaseName() : null);
         if (code == null)
         {
             return;
         }
 
-        if (FormulaTermFunction.FunctionType.FUNCTION_LINK.toString().equalsIgnoreCase(code))
+        if (UserFunctions.FunctionType.FUNCTION_LINK.toString().equalsIgnoreCase(code))
         {
             hiddenInput.setTextWatcher(false);
             listChangeIf.onPalettePressed(s);
             return;
         }
 
-        for (int i = 0; i < paletteLayout.getChildCount(); i++)
+        for (PaletteButton b : termButtons)
         {
-            if (paletteLayout.getChildAt(i) instanceof PaletteButton)
+            if (b.isEnabled() && b.getCode() != null && b.getCode().equalsIgnoreCase(code))
             {
-                PaletteButton b = (PaletteButton) paletteLayout.getChildAt(i);
-                if (b.isEnabled() && b.getCode() != null && b.getCode().equalsIgnoreCase(code))
-                {
-                    hiddenInput.setTextWatcher(false);
-                    listChangeIf.onPalettePressed(b.getCode());
-                    break;
-                }
+                hiddenInput.setTextWatcher(false);
+                listChangeIf.onPalettePressed(b.getCode());
+                break;
             }
         }
     }

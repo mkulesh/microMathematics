@@ -24,7 +24,7 @@ public final class FormulaState implements Parcelable
 {
     public int formulaId = ViewUtils.INVALID_INDEX;
     public int termId = ViewUtils.INVALID_INDEX;
-    public Parcelable data;
+    public final Parcelable data;
 
     public FormulaState(int formulaId, int termId, Parcelable data)
     {
@@ -34,7 +34,7 @@ public final class FormulaState implements Parcelable
         this.data = data;
     }
 
-    public FormulaState(Parcel in)
+    private FormulaState(Parcel in)
     {
         super();
         formulaId = in.readInt();

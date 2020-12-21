@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -33,7 +31,7 @@
      x="12.850301"
      y="0.28100163"
      id="rect3644"
-     style="fill:#ff8000;fill-opacity:1;stroke:none" />
+     style="fill:#ff5722;fill-opacity:1;stroke:none" />
   <g
      transform="matrix(0.18191764,0.22336433,-0.26958493,0.1708351,282.30196,-139.3942)"
      id="g3915-6-3-7">
@@ -71,7 +69,7 @@
        style="text-indent:0;text-transform:none;block-progression:tb;opacity:0.7;color:#000000" />
   </g>
   <g
-     transform="translate(15.667554,2.4736691)"
+     transform="matrix(0.87730853,0,0,1,15.686933,2.4736691)"
      id="g3629">
     <text
        x="-1.9407928"
@@ -79,7 +77,7 @@
        transform="scale(0.91651628,1.0910881)"
        id="text3080"
        xml:space="preserve"
-       style="font-size:37.63205338px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#353535;fill-opacity:0.8;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:37.63205338px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#353535;fill-opacity:0.8;stroke:none"><tspan
          x="-1.9407928"
          y="32.209019"
          id="tspan3082">[...]</tspan></text>

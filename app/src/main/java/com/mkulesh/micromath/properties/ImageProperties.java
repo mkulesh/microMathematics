@@ -25,25 +25,35 @@ import com.mkulesh.micromath.utils.ViewUtils;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
 
+import java.util.Locale;
+
 public class ImageProperties implements Parcelable
 {
-    public static final int DEFAULT_SIZE = 100;
-    public static final String EMPTY_FILE_NAME = "";
-    public static final String XML_PROP_FILE_NAME = "fileName";
-    public static final String XML_PROP_EMBEDDED = "embedded";
-    public static final String XML_PROP_ORIGINAL_SIZE = "originalSize";
-    public static final String XML_PROP_WIDTH = "width";
-    public static final String XML_PROP_HEIGHT = "height";
+    private static final int DEFAULT_SIZE = 100;
+    private static final String EMPTY_FILE_NAME = "";
+    private static final String XML_PROP_FILE_NAME = "fileName";
+    private static final String XML_PROP_EMBEDDED = "embedded";
+    private static final String XML_PROP_ORIGINAL_SIZE = "originalSize";
+    private static final String XML_PROP_WIDTH = "width";
+    private static final String XML_PROP_HEIGHT = "height";
+    private static final String XML_PROP_COLORTYPE = "colorType";
 
     // attributes that are not stored within the state and XML
     private DisplayMetrics displayMetrics = null;
 
+    public enum ColorType
+    {
+        ORIGINAL,
+        AUTO
+    }
+
     // state- and XML-related attributes
     public String fileName = EMPTY_FILE_NAME;
-    public boolean embedded = true;
+    public boolean embedded = false;
     public boolean originalSize = true;
     public int width = DEFAULT_SIZE;
     public int height = DEFAULT_SIZE;
+    public ColorType colorType = ColorType.ORIGINAL;
 
     // temporary properties
     public Uri parentDirectory = null;
@@ -51,7 +61,7 @@ public class ImageProperties implements Parcelable
     /**
      * Parcelable interface
      */
-    public ImageProperties(Parcel in)
+    private ImageProperties(Parcel in)
     {
         super();
         readFromParcel(in);
@@ -71,15 +81,17 @@ public class ImageProperties implements Parcelable
         dest.writeString(String.valueOf(originalSize));
         dest.writeInt(width);
         dest.writeInt(height);
+        dest.writeString(colorType.toString());
     }
 
-    public void readFromParcel(Parcel in)
+    private void readFromParcel(Parcel in)
     {
         fileName = in.readString();
-        embedded = Boolean.valueOf(in.readString());
-        originalSize = Boolean.valueOf(in.readString());
+        embedded = Boolean.parseBoolean(in.readString());
+        originalSize = Boolean.parseBoolean(in.readString());
         width = in.readInt();
         height = in.readInt();
+        colorType = ColorType.valueOf(in.readString());
     }
 
     public static final Parcelable.Creator<ImageProperties> CREATOR = new Parcelable.Creator<ImageProperties>()
@@ -112,6 +124,7 @@ public class ImageProperties implements Parcelable
         originalSize = a.originalSize;
         width = a.width;
         height = a.height;
+        colorType = a.colorType;
     }
 
     public void initialize(Context context)
@@ -126,12 +139,12 @@ public class ImageProperties implements Parcelable
         attr = parser.getAttributeValue(null, XML_PROP_EMBEDDED);
         if (attr != null)
         {
-            embedded = Boolean.valueOf(attr);
+            embedded = Boolean.parseBoolean(attr);
         }
         attr = parser.getAttributeValue(null, XML_PROP_ORIGINAL_SIZE);
         if (attr != null)
         {
-            originalSize = Boolean.valueOf(attr);
+            originalSize = Boolean.parseBoolean(attr);
         }
         attr = parser.getAttributeValue(null, XML_PROP_WIDTH);
         if (attr != null)
@@ -142,6 +155,18 @@ public class ImageProperties implements Parcelable
         if (attr != null)
         {
             height = ViewUtils.dpToPx(displayMetrics, Integer.parseInt(attr));
+        }
+        attr = parser.getAttributeValue(null, XML_PROP_COLORTYPE);
+        if (attr != null)
+        {
+            try
+            {
+                colorType = ColorType.valueOf(attr.toUpperCase(Locale.ENGLISH));
+            }
+            catch (Exception e)
+            {
+                // nothing to do
+            }
         }
     }
 
@@ -154,6 +179,8 @@ public class ImageProperties implements Parcelable
                 String.valueOf(ViewUtils.pxToDp(displayMetrics, width)));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_HEIGHT,
                 String.valueOf(ViewUtils.pxToDp(displayMetrics, height)));
+        serializer.attribute(FormulaList.XML_NS, XML_PROP_COLORTYPE,
+                colorType.toString().toLowerCase(Locale.ENGLISH));
     }
 
     public boolean isAsset()

@@ -14,5 +14,5 @@ package com.mkulesh.micromath.properties;
 
 public interface ImagePropertiesChangeIf
 {
-    void onImagePropertiesChange(boolean isFileChanged, boolean isSizeChanged);
+    void onImagePropertiesChange(boolean isFileChanged, boolean isImageChanged);
 }

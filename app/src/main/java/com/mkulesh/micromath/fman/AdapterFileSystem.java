@@ -25,13 +25,15 @@ import com.mkulesh.micromath.utils.CompatUtils;
 import java.io.File;
 import java.util.Arrays;
 
+import androidx.annotation.NonNull;
+
 public class AdapterFileSystem extends AdapterBaseImpl
 {
     public final static String ORG_SCHEME = "file";
-    protected static final boolean HIDE_HIDDEN = false;
+    private static final boolean HIDE_HIDDEN = false;
 
     private String dirName;
-    protected FileItem[] items;
+    private FileItem[] items;
 
     public AdapterFileSystem(Context ctx_)
     {
@@ -46,6 +48,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
         return "";
     }
 
+    @NonNull
     @Override
     public String toString()
     {
@@ -85,7 +88,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
     }
 
     @Override
-    public boolean readSource(Uri d, String pass_back_on_done)
+    public void readSource(Uri d, String pass_back_on_done)
     {
         try
         {
@@ -104,7 +107,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
             {
                 notify(ctx.getString(R.string.fman_error_no_such_folder, (d == null ? "null" : d.toString())),
                         CommanderIf.OPERATION_FAILED);
-                return false;
+                return;
             }
             ListEngine reader = new ListEngine(this, simpleHandler, pass_back_on_done);
             reader.run();
@@ -118,7 +121,6 @@ public class AdapterFileSystem extends AdapterBaseImpl
                     notifyDataSetChanged();
                 }
             }
-            return true;
         }
         catch (Exception e)
         {
@@ -128,27 +130,25 @@ public class AdapterFileSystem extends AdapterBaseImpl
         {
             notify(s(R.string.error_out_of_memory), CommanderIf.OPERATION_FAILED);
         }
-        return false;
     }
 
     @SuppressLint("NewApi")
-    protected FileItem[] filesToItems(File[] files_)
+    private FileItem[] filesToItems(File[] files_)
     {
-        int num_files = files_.length;
-        int num = num_files;
+        int num = files_.length;
         if (HIDE_HIDDEN)
         {
             int cnt = 0;
-            for (int i = 0; i < num_files; i++)
-                if (!files_[i].isHidden())
+            for (File file : files_)
+                if (!file.isHidden())
                     cnt++;
             num = cnt;
         }
         FileItem[] items_ = new FileItem[num];
         int j = 0;
-        for (int i = 0; i < num_files; i++)
+        for (File file : files_)
         {
-            File f = files_[i];
+            File f = file;
             if (!f.isHidden() || !HIDE_HIDDEN)
             {
                 String fn = null;
@@ -186,7 +186,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
                     }
                     else
                     {
-                        f_item.attr = Integer.toString(subFiles.length) + " "
+                        f_item.attr = subFiles.length + " "
                                 + ctx.getString(R.string.dialog_list_items);
                     }
                 }
@@ -269,10 +269,12 @@ public class AdapterFileSystem extends AdapterBaseImpl
     }
 
     @Override
-    public boolean renameItem(int position, String newName)
+    public void renameItem(int position, String newName)
     {
         if (position <= 0 || position > items.length)
-            return false;
+        {
+            return;
+        }
         try
         {
             boolean ok = false;
@@ -283,7 +285,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
                 if (f.equals(new_file))
                 {
                     commander.showError(ctx.getString(R.string.fman_rename_error, f.getName()));
-                    return false;
+                    return;
                 }
                 String old_ap = f.getAbsolutePath();
                 String new_ap = new_file.getAbsolutePath();
@@ -296,21 +298,26 @@ public class AdapterFileSystem extends AdapterBaseImpl
                 else
                 {
                     commander.showError(ctx.getString(R.string.fman_rename_error, f.getName()));
-                    return false;
+                    return;
                 }
             }
             else
+            {
                 ok = f.renameTo(new_file);
+            }
+
             if (ok)
+            {
                 notifyRefr(newName);
+            }
             else
+            {
                 notify(ctx.getString(R.string.fman_rename_error, f.getName()), CommanderIf.OPERATION_FAILED);
-            return ok;
+            }
         }
         catch (SecurityException e)
         {
             commander.showError(ctx.getString(R.string.fman_error_sec_err, e.getMessage()));
-            return false;
         }
     }
 
@@ -417,7 +424,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
         }
     }
 
-    public void reSort(FileItem[] items_)
+    private void reSort(FileItem[] items_)
     {
         if (items_ == null)
             return;
@@ -434,8 +441,8 @@ public class AdapterFileSystem extends AdapterBaseImpl
 
     private static class ListEngine extends Engine
     {
-        private String pass_back_on_done;
-        private AdapterFileSystem a;
+        private final String pass_back_on_done;
+        private final AdapterFileSystem a;
         private File[] files_ = null;
         private File dir = null;
 
@@ -446,17 +453,17 @@ public class AdapterFileSystem extends AdapterBaseImpl
             pass_back_on_done = pass_back_on_done_;
         }
 
-        public File getDirFile()
+        File getDirFile()
         {
             return dir;
         }
 
-        public File[] getFiles()
+        File[] getFiles()
         {
             return files_;
         }
 
-        public void run()
+        void run()
         {
             String dir_name = a.getDir();
             while (true)
@@ -476,7 +483,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
             sendProgress(null, CommanderIf.OPERATION_COMPLETED, pass_back_on_done);
         }
 
-        public static File[] listDirWithEmulated(File f)
+        static File[] listDirWithEmulated(File f)
         {
             File[] list = f.listFiles();
 
@@ -499,8 +506,8 @@ public class AdapterFileSystem extends AdapterBaseImpl
 
     private static class DeleteEngine extends Engine
     {
-        private AdapterFileSystem a;
-        private File[] mList;
+        private final AdapterFileSystem a;
+        private final File[] mList;
 
         DeleteEngine(AdapterFileSystem a, Handler h, FileItem[] list)
         {
@@ -511,7 +518,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
                 mList[i] = list[i].f();
         }
 
-        public void run()
+        void run()
         {
             if (mList == null || mList.length == 0)
             {
@@ -535,12 +542,11 @@ public class AdapterFileSystem extends AdapterBaseImpl
             }
         }
 
-        private final int deleteFiles(File[] l) throws Exception
+        private int deleteFiles(File[] l) throws Exception
         {
             int cnt = 0;
-            for (int i = 0; i < l.length; i++)
+            for (File f : l)
             {
-                File f = l[i];
                 if (f.isDirectory() && f.listFiles() != null)
                 {
                     cnt += deleteFiles(f.listFiles());
@@ -568,7 +574,7 @@ public class AdapterFileSystem extends AdapterBaseImpl
         }
         for (FileItem fi : items)
         {
-            if (fi.name != null && name != null && fi.name.equals(name))
+            if (fi.name != null && fi.name.equals(name))
             {
                 return Uri.fromFile(fi.f());
             }

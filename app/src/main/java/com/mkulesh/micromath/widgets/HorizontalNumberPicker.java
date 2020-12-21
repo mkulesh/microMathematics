@@ -14,8 +14,6 @@ package com.mkulesh.micromath.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -40,9 +38,9 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
     public int minValue = 1;
     public int maxValue = Integer.MAX_VALUE;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public HorizontalNumberPicker(Context context, AttributeSet attrs)
     {
@@ -63,7 +61,7 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
         setOrientation(HORIZONTAL);
         final LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.horizontal_number_picker, this);
-        editText = ((EditText) findViewById(R.id.edit_text_value));
+        editText = findViewById(R.id.edit_text_value);
         if (attrs != null)
         {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.HorizontalNumberPicker, 0, 0);
@@ -76,17 +74,17 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
             a.recycle();
         }
 
-        bDecrease = (ImageButton) findViewById(R.id.button_decrease);
+        bDecrease = findViewById(R.id.button_decrease);
         bDecrease.setOnClickListener(this);
         bDecrease.setOnLongClickListener(this);
         updateViewColor(bDecrease);
 
-        bIncrease = (ImageButton) findViewById(R.id.button_increase);
+        bIncrease = findViewById(R.id.button_increase);
         bIncrease.setOnClickListener(this);
         bIncrease.setOnLongClickListener(this);
         updateViewColor(bIncrease);
 
-        description = (TextView) findViewById(R.id.label_text);
+        description = findViewById(R.id.label_text);
     }
 
     @Override
@@ -116,12 +114,12 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
     {
         try
         {
-            final int r = Integer.valueOf(field.length() > 0? field.toString() : "") + inc;
-            return ((r < minValue) ? minValue : ((r > maxValue) ? maxValue : r));
+            final int r = Integer.parseInt(field.length() > 0 ? field.toString() : "") + inc;
+            return ((r < minValue) ? minValue : (Math.min(r, maxValue)));
         }
         catch (Exception e)
         {
-            return inc > 0? maxValue : minValue;
+            return inc > 0 ? maxValue : minValue;
         }
     }
 
@@ -141,20 +139,15 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
 
     private void updateViewColor(View v)
     {
+        final int attrId = v.isEnabled() ? R.attr.colorDialogContent : R.attr.colorDialogDisabledElement;
         if (v instanceof ImageButton)
         {
-            ImageButton b = (ImageButton) v;
-            b.clearColorFilter();
-            if (!b.isEnabled() || !v.isEnabled())
-            {
-                b.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
-            }
+            ViewUtils.setImageButtonColorAttr(getContext(), (ImageButton) v, attrId);
         }
         else if (v instanceof TextView)
         {
-            TextView b = (TextView) v;
-            b.setTextColor(b.isEnabled() ? CompatUtils.getColor(getContext(), R.color.dialog_content_color)
-                    : Color.GRAY);
+            final TextView b = (TextView) v;
+            b.setTextColor(CompatUtils.getThemeColorAttr(getContext(), attrId));
         }
     }
 

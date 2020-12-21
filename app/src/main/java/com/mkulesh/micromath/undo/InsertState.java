@@ -20,7 +20,7 @@ import android.os.Parcelable;
  */
 public final class InsertState implements Parcelable
 {
-    public int formulaId;
+    public final int formulaId;
     public final int selectedId;
 
     public InsertState(int formulaIds, int selectedId)
@@ -30,7 +30,7 @@ public final class InsertState implements Parcelable
         this.selectedId = selectedId;
     }
 
-    public InsertState(Parcel in)
+    private InsertState(Parcel in)
     {
         super();
         formulaId = in.readInt();

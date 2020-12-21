@@ -42,23 +42,28 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
-                <EditText
-                    android:id="@+id/dialog_file_name"
-                    style="@style/DialogTextEditStyle"
+                <LinearLayout
+                    style="@style/DialogTextEditBackgroundStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:maxLines="9999"
-                    android:inputType="textMultiLine"
-                    android:layout_weight="1" />
+                    android:layout_weight="1">
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/dialog_file_name"
+                        style="@style/DialogTextEditStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="9999"
+                        android:inputType="textMultiLine"/>
+                </LinearLayout>
 
-                <ImageButton
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/dialog_button_select_file"
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogImageButtonStyle"
                     android:contentDescription="@string/dialog_image_settings_select_file"
                     android:src="@drawable/ic_action_content_open" />
             </LinearLayout>
 
-            <CheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/dialog_checkbox_embedded"
                 style="@style/CheckBoxStyle"
                 android:checked="false"
@@ -74,12 +79,12 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical" >
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_original_size"
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_image_settings_original_size" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_button_custom_size"
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_image_settings_custom_size" />
@@ -100,6 +105,28 @@
                 android:orientation="horizontal"
                 micromath:label="@string/dialog_image_settings_height"
                 micromath:minWidth="80dp" />
+
+            <View
+                style="@style/HorizontalDividerStyle"
+                android:layout_marginBottom="@dimen/dialog_content_padding"
+                android:layout_marginTop="@dimen/dialog_content_padding" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical" >
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/dialog_button_original_color"
+                    style="@style/RadioButtonStyle"
+                    android:text="@string/dialog_image_settings_original_color" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/dialog_button_auto_color"
+                    style="@style/RadioButtonStyle"
+                    android:text="@string/dialog_image_settings_auto_color" />
+            </RadioGroup>
+
         </LinearLayout>
     </ScrollView>
 

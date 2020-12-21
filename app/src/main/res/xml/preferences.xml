@@ -12,9 +12,12 @@
   ~ Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ListPreference
+        app:icon="@drawable/pref_language"
         android:defaultValue="@string/pref_default_language_code"
         android:entries="@array/pref_language_names"
         android:entryValues="@array/pref_language_codes"
@@ -22,10 +25,27 @@
         android:summary="%s"
         android:title="@string/pref_app_language"/>
 
-    <CheckBoxPreference
+    <ListPreference
+        app:icon="@drawable/pref_zoom"
+        android:defaultValue="@string/pref_default_zoom_code"
+        android:entries="@array/pref_zoom_names"
+        android:entryValues="@array/pref_zoom_codes"
+        android:key="zoom_mode"
+        android:summary="%s"
+        android:title="@string/pref_zoom"/>
+
+    <SwitchPreferenceCompat
+        app:icon="@drawable/pref_developer"
+        app:singleLineTitle="false"
         android:defaultValue="false"
         android:key="developer_mode"
-        android:title="@string/pref_developer_mode"
-        android:widgetLayout="@layout/pref_check_box"/>
+        android:title="@string/pref_developer_mode"/>
+
+    <SwitchPreferenceCompat
+        app:icon="@drawable/pref_exit"
+        app:singleLineTitle="false"
+        android:defaultValue="false"
+        android:key="exit_confirm"
+        android:title="@string/pref_exit_confirm"/>
 
 </PreferenceScreen>

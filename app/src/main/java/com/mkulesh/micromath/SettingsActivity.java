@@ -12,42 +12,82 @@
  */
 package com.mkulesh.micromath;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceGroup;
+
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.AppLocale;
+import com.mkulesh.micromath.utils.AppTheme;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.Locale;
 
-public class SettingsActivity extends AppCompatPreferenceActivity
+public class SettingsActivity extends AppCompatActivity
 {
     @Override
-    @SuppressWarnings("deprecation")
     protected void onCreate(Bundle savedInstanceState)
     {
+        setTheme(AppTheme.getTheme(this, AppTheme.ThemeType.SETTINGS_THEME));
         super.onCreate(savedInstanceState);
         setupActionBar();
-        addPreferencesFromResource(R.xml.preferences);
-        prepareListPreference((ListPreference) findPreference("app_language"));
+        getSupportFragmentManager().beginTransaction().replace(
+                android.R.id.content, new MyPreferenceFragment()).commit();
+        setTitle(R.string.action_app_settings);
+    }
+
+    public static class MyPreferenceFragment extends PreferenceFragmentCompat
+    {
+        @Override
+        public void onCreatePreferences(Bundle bundle, String s)
+        {
+            addPreferencesFromResource(R.xml.preferences);
+            prepareListPreference(getActivity(), findPreference("app_language"));
+            prepareListPreference(getActivity(), findPreference("app_theme"));
+            prepareListPreference(getActivity(), findPreference("zoom_mode"));
+            tintIcons(getActivity(), getPreferenceScreen());
+        }
+    }
+
+    private static void tintIcons(final Context c, Preference preference)
+    {
+        if (preference instanceof PreferenceGroup)
+        {
+            PreferenceGroup group = ((PreferenceGroup) preference);
+            for (int i = 0; i < group.getPreferenceCount(); i++)
+            {
+                tintIcons(c, group.getPreference(i));
+            }
+        }
+        else
+        {
+            CompatUtils.setDrawableColorAttr(c, preference.getIcon(), android.R.attr.textColorSecondary);
+        }
     }
 
     private void setupActionBar()
     {
-        ViewGroup rootView = (ViewGroup) findViewById(R.id.action_bar_root); //id from appcompat
+        ViewGroup rootView = findViewById(R.id.action_bar_root); //id from appcompat
         if (rootView != null)
         {
             View view = getLayoutInflater().inflate(R.layout.activity_toolbar, rootView, false);
             rootView.addView(view, 0);
 
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            Toolbar toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
         }
 
@@ -56,7 +96,15 @@ public class SettingsActivity extends AppCompatPreferenceActivity
         {
             // Show the Up button in the action bar.
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle(R.string.action_app_settings);
+        }
+
+        // activate toolbar separator, if necessary
+        {
+            final int sepColor = CompatUtils.getThemeColorAttr(this, R.attr.colorToolBarSeparator);
+            if (sepColor != Color.TRANSPARENT && findViewById(R.id.toolbar_separator) != null)
+            {
+                findViewById(R.id.toolbar_separator).setVisibility(View.VISIBLE);
+            }
         }
     }
 
@@ -66,6 +114,20 @@ public class SettingsActivity extends AppCompatPreferenceActivity
         final Locale prefLocale = AppLocale.ContextWrapper.getPreferredLocale(newBase);
         ViewUtils.Debug(this, "Settings locale: " + prefLocale.toString());
         super.attachBaseContext(AppLocale.ContextWrapper.wrap(newBase, prefLocale));
+    }
+
+    @Override
+    public void applyOverrideConfiguration(android.content.res.Configuration overrideConfiguration)
+    {
+        // See https://stackoverflow.com/questions/55265834/change-locale-not-work-after-migrate-to-androidx:
+        // There is an issue in new app compat libraries related to night mode that is causing to
+        // override the configuration on android 21 to 25. This can be fixed as follows
+        if (overrideConfiguration != null) {
+            int uiMode = overrideConfiguration.uiMode;
+            overrideConfiguration.setTo(getBaseContext().getResources().getConfiguration());
+            overrideConfiguration.uiMode = uiMode;
+        }
+        super.applyOverrideConfiguration(overrideConfiguration);
     }
 
     @Override
@@ -80,7 +142,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity
         return super.onOptionsItemSelected(item);
     }
 
-    private void prepareListPreference(final ListPreference listPreference)
+    private static void prepareListPreference(final Activity activity, final ListPreference listPreference)
     {
         if (listPreference == null)
         {
@@ -94,16 +156,21 @@ public class SettingsActivity extends AppCompatPreferenceActivity
             listPreference.setValueIndex(0);
         }
 
-        listPreference.setSummary(listPreference.getEntry().toString());
-        listPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
+        if (listPreference.getEntry() != null)
         {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue)
+            listPreference.setSummary(listPreference.getEntry().toString());
+        }
+        listPreference.setOnPreferenceChangeListener((preference, newValue) ->
+        {
+            listPreference.setValue(newValue.toString());
+            preference.setSummary(listPreference.getEntry().toString());
+            if (activity != null)
             {
-                listPreference.setValue(newValue.toString());
-                preference.setSummary(listPreference.getEntry().toString());
-                return true;
+                final Intent intent = activity.getIntent();
+                activity.finish();
+                activity.startActivity(intent);
             }
+            return true;
         });
     }
 }

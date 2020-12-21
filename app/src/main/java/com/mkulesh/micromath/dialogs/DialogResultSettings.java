@@ -35,14 +35,14 @@ public class DialogResultSettings extends DialogBase
         this.changeIf = changeIf;
         this.properties = properties;
 
-        disableCalculation = ((CheckBox) findViewById(R.id.dialog_result_disable_calculation));
+        disableCalculation = findViewById(R.id.dialog_result_disable_calculation);
         disableCalculation.setChecked(properties.disableCalculation);
 
-        hideResultField = ((CheckBox) findViewById(R.id.dialog_result_hide_result_field));
+        hideResultField = findViewById(R.id.dialog_result_hide_result_field);
         hideResultField.setChecked(properties.hideResultField);
 
-        arrayLengthPicker = (HorizontalNumberPicker) findViewById(R.id.dialog_result_array_length_picker);
-        arrayLengthPicker.setVisibility(properties.showArrayLenght ? View.VISIBLE : View.GONE);
+        arrayLengthPicker = findViewById(R.id.dialog_result_array_length_picker);
+        arrayLengthPicker.setVisibility(properties.showArrayLength ? View.VISIBLE : View.GONE);
         arrayLengthPicker.setValue(properties.arrayLength);
         arrayLengthPicker.minValue = 2;
     }

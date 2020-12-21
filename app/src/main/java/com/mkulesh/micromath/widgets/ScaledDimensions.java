@@ -19,7 +19,7 @@ import com.mkulesh.micromath.R;
 
 public class ScaledDimensions
 {
-    public static final float MIN_SCALE_FACTOR = 0.1f;
+    private static final float MIN_SCALE_FACTOR = 0.1f;
 
     public enum Type
     {
@@ -34,12 +34,13 @@ public class ScaledDimensions
         HOR_SYMBOL_PADDING,
         HOR_BRAKET_PADDING,
         VERT_TERM_PADDING,
-        HEADER_PADDING
+        HEADER_PADDING,
+        MATRIX_COLUMN_PADDING
     }
 
     private float scaleFactor = 1.0f;
-    private float depthStepSize;
-    private float[] dimen;
+    private final float depthStepSize;
+    private final float[] dimen;
 
     public ScaledDimensions(Context context)
     {
@@ -61,6 +62,7 @@ public class ScaledDimensions
         dimen[Type.HOR_BRAKET_PADDING.ordinal()] = r.getDimension(R.dimen.formula_hor_bracket_padding);
         dimen[Type.VERT_TERM_PADDING.ordinal()] = r.getDimension(R.dimen.formula_vert_term_padding);
         dimen[Type.HEADER_PADDING.ordinal()] = r.getDimension(R.dimen.formula_header_padding);
+        dimen[Type.MATRIX_COLUMN_PADDING.ordinal()] = r.getDimension(R.dimen.formula_matrix_column_padding);
     }
 
     /**

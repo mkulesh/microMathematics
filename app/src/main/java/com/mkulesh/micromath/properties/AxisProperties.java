@@ -17,22 +17,30 @@ import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.formula.FormulaList;
+import com.mkulesh.micromath.math.AxisTypeConverter;
+import com.mkulesh.micromath.R;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
 
+import java.util.Locale;
+
 public class AxisProperties implements Parcelable
 {
-    public static final String XML_PROP_XLABELSNUMBER = "xLabelsNumber";
-    public static final String XML_PROP_YLABELSNUMBER = "yLabelsNumber";
-    public static final String XML_PROP_GRIDLINECOLOR = "gridLineColor";
+    private static final String XML_PROP_XLABELSNUMBER = "xLabelsNumber";
+    private static final String XML_PROP_YLABELSNUMBER = "yLabelsNumber";
+    private static final String XML_PROP_GRIDLINECOLOR = "gridLineColor";
+    private static final String XML_PROP_XTYPE = "xType";
+    private static final String XML_PROP_YTYPE = "yType";
 
     public float scaleFactor = 1;
     public int gridLineColor = Color.GRAY;
     public int xLabelsNumber = 3;
     public int yLabelsNumber = 3;
+
+    public AxisTypeConverter.Type xType = AxisTypeConverter.Type.LINEAR;
+    public AxisTypeConverter.Type yType = AxisTypeConverter.Type.LINEAR;
 
     private int labelLineSize = 5;
     private int labelTextSize = 20;
@@ -41,7 +49,7 @@ public class AxisProperties implements Parcelable
     /**
      * Parcelable interface
      */
-    public AxisProperties(Parcel in)
+    private AxisProperties(Parcel in)
     {
         super();
         readFromParcel(in);
@@ -62,9 +70,11 @@ public class AxisProperties implements Parcelable
         dest.writeInt(gridLineWidth);
         dest.writeInt(xLabelsNumber);
         dest.writeInt(yLabelsNumber);
+        dest.writeInt(xType.ordinal());
+        dest.writeInt(yType.ordinal());
     }
 
-    public void readFromParcel(Parcel in)
+    private void readFromParcel(Parcel in)
     {
         labelLineSize = in.readInt();
         labelTextSize = in.readInt();
@@ -72,6 +82,8 @@ public class AxisProperties implements Parcelable
         gridLineWidth = in.readInt();
         xLabelsNumber = in.readInt();
         yLabelsNumber = in.readInt();
+        xType = AxisTypeConverter.Type.values()[in.readInt()];
+        yType = AxisTypeConverter.Type.values()[in.readInt()];
     }
 
     public static final Parcelable.Creator<AxisProperties> CREATOR = new Parcelable.Creator<AxisProperties>()
@@ -104,6 +116,8 @@ public class AxisProperties implements Parcelable
         labelLineSize = a.labelLineSize;
         labelTextSize = a.labelTextSize;
         gridLineWidth = a.gridLineWidth;
+        xType = a.xType;
+        yType = a.yType;
     }
 
     public void initialize(TypedArray a)
@@ -114,6 +128,8 @@ public class AxisProperties implements Parcelable
         gridLineWidth = a.getDimensionPixelSize(R.styleable.PlotViewExtension_gridLineWidth, gridLineWidth);
         xLabelsNumber = a.getInt(R.styleable.PlotViewExtension_xLabelsNumber, xLabelsNumber);
         yLabelsNumber = a.getInt(R.styleable.PlotViewExtension_yLabelsNumber, yLabelsNumber);
+        xType = AxisTypeConverter.Type.LINEAR;
+        yType = AxisTypeConverter.Type.LINEAR;
     }
 
     public void readFromXml(XmlPullParser parser)
@@ -133,6 +149,30 @@ public class AxisProperties implements Parcelable
         {
             gridLineColor = Color.parseColor(attr);
         }
+        attr = parser.getAttributeValue(null, XML_PROP_XTYPE);
+        if (attr != null)
+        {
+            try
+            {
+                xType = AxisTypeConverter.Type.valueOf(attr.toUpperCase(Locale.ENGLISH));
+            }
+            catch (Exception e)
+            {
+                // nothing to do
+            }
+        }
+        attr = parser.getAttributeValue(null, XML_PROP_YTYPE);
+        if (attr != null)
+        {
+            try
+            {
+                yType = AxisTypeConverter.Type.valueOf(attr.toUpperCase(Locale.ENGLISH));
+            }
+            catch (Exception e)
+            {
+                // nothing to do
+            }
+        }
     }
 
     public void writeToXml(XmlSerializer serializer) throws Exception
@@ -140,6 +180,8 @@ public class AxisProperties implements Parcelable
         serializer.attribute(FormulaList.XML_NS, XML_PROP_XLABELSNUMBER, String.valueOf(xLabelsNumber));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_YLABELSNUMBER, String.valueOf(yLabelsNumber));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_GRIDLINECOLOR, String.format("#%08X", gridLineColor));
+        serializer.attribute(FormulaList.XML_NS, XML_PROP_XTYPE, xType.toString().toLowerCase(Locale.ENGLISH));
+        serializer.attribute(FormulaList.XML_NS, XML_PROP_YTYPE, yType.toString().toLowerCase(Locale.ENGLISH));
     }
 
     public int getLabelLineSize()

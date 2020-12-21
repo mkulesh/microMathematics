@@ -83,7 +83,7 @@ public class FormulaListView
     @SuppressWarnings("unchecked")
     public <T> ArrayList<T> getFormulas(Class<T> c)
     {
-        ArrayList<T> retValue = new ArrayList<T>();
+        ArrayList<T> retValue = new ArrayList<>();
         final int n = list.getChildCount();
         for (int i = 0; i < n; i++)
         {
@@ -230,10 +230,10 @@ public class FormulaListView
             {
                 row.addView(f, colIdx);
             }
-            if (f != null && f instanceof FormulaBase)
+            if (f != null)
             {
                 // check that the current formula depth has no conflicts with allowed formula depth
-                ((FormulaBase) f).checkFormulaDepth();
+                f.checkFormulaDepth();
             }
             if (termDeleted)
             {
@@ -363,7 +363,7 @@ public class FormulaListView
             }
             else if (v instanceof FormulaBase)
             {
-                if (((FormulaBase) v).getId() == id)
+                if (v.getId() == id)
                 {
                     return i;
                 }
@@ -396,6 +396,10 @@ public class FormulaListView
      */
     public FormulaBase getFormula(String name, int argNumber, int rootId, boolean excludeRoot, boolean searchAll)
     {
+        if (name == null)
+        {
+            return null;
+        }
         int idx = getRowIndex(rootId);
         if (idx == ViewUtils.INVALID_INDEX || searchAll)
         {
@@ -437,9 +441,9 @@ public class FormulaListView
         return null;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Helper static methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private static FormulaBase getNextFormula(LinearLayout l, int idx)
     {
@@ -495,11 +499,11 @@ public class FormulaListView
         return v;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Helper class that holds a single row
-     *********************************************************/
+     *--------------------------------------------------------*/
 
-    public final class ListRow extends CustomLayout
+    public static final class ListRow extends CustomLayout
     {
         /**
          * Default constructor
@@ -547,7 +551,7 @@ public class FormulaListView
         /**
          * Procedure deletes given formula from this row
          */
-        public FormulaBase deleteFromView(FormulaBase f)
+        FormulaBase deleteFromView(FormulaBase f)
         {
             final int idx = getFormulaIndex(f.getId());
             removeView(f);
@@ -557,7 +561,7 @@ public class FormulaListView
         /**
          * Replace the given formula by the new one
          */
-        public boolean replaceFormula(FormulaBase oldFormula, FormulaBase newFormula)
+        boolean replaceFormula(FormulaBase oldFormula, FormulaBase newFormula)
         {
             boolean retValue = false;
             final int n = getChildCount();
@@ -595,7 +599,7 @@ public class FormulaListView
         /**
          * Procedure returns a formula with given offset related to the formula with given id
          */
-        public FormulaBase getFormula(int id, Position position)
+        FormulaBase getFormula(int id, Position position)
         {
             if (position == Position.BEFORE || position == Position.AFTER)
             {
@@ -605,7 +609,7 @@ public class FormulaListView
             if (idx != ViewUtils.INVALID_INDEX)
             {
                 View v = getNextView(this, idx, position);
-                if (v != null && v instanceof FormulaBase)
+                if (v instanceof FormulaBase)
                 {
                     return (FormulaBase) v;
                 }
@@ -624,7 +628,7 @@ public class FormulaListView
                 final View v = getChildAt(i);
                 if (v instanceof FormulaBase)
                 {
-                    if (((FormulaBase) v).getId() == id)
+                    if (v.getId() == id)
                     {
                         return i;
                     }

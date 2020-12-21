@@ -16,10 +16,11 @@ import com.mkulesh.micromath.fman.AdapterIf.Item;
 
 import java.util.Comparator;
 
-public class ItemComparator implements Comparator<Item>
+class ItemComparator implements Comparator<Item>
 {
-    int type;
-    boolean case_ignore, ascending;
+    private final int type;
+    private final boolean case_ignore;
+    private final boolean ascending;
 
     public ItemComparator(int type_, boolean case_ignore_, boolean ascending_)
     {

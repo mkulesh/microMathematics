@@ -24,11 +24,16 @@
         android:id="@+id/fman_input_dialog_prompt"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent" />
-            
-    <EditText
-        style="@style/DialogTextEditStyle"
-        android:id="@+id/fman_input_dialog_edit_field"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent" />
+
+    <LinearLayout
+        style="@style/DialogTextEditBackgroundStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatEditText
+            style="@style/DialogTextEditStyle"
+            android:id="@+id/fman_input_dialog_edit_field"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
+    </LinearLayout>
 </LinearLayout>
      

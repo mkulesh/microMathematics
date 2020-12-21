@@ -14,10 +14,10 @@ package com.mkulesh.micromath.dialogs;
 
 import android.app.Activity;
 import android.view.View;
+import android.widget.CheckBox;
 
 import com.larswerkman.holocolorpicker.ColorPicker;
-import com.larswerkman.holocolorpicker.OpacityBar;
-import com.larswerkman.holocolorpicker.ValueBar;
+import com.mkulesh.micromath.math.AxisTypeConverter;
 import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.properties.AxisProperties;
 import com.mkulesh.micromath.properties.AxisPropertiesChangeIf;
@@ -29,24 +29,36 @@ public class DialogAxisSettings extends DialogBase
     private final AxisProperties parameters;
     private final HorizontalNumberPicker xLabelsPicker, yLabelsPicker;
     private final ColorPicker gridLineColor;
+    private final CheckBox xTypeCheckBox, yTypeCheckBox;
 
     public DialogAxisSettings(Activity context, AxisPropertiesChangeIf changeIf, AxisProperties parameters)
     {
         super(context, R.layout.dialog_axis_settings, R.string.dialog_axis_settings_title);
         this.parameters = parameters;
 
-        xLabelsPicker = (HorizontalNumberPicker) findViewById(R.id.dialog_xlabels_number);
+        xLabelsPicker = findViewById(R.id.dialog_xlabels_number);
         xLabelsPicker.setValue(parameters.xLabelsNumber);
         xLabelsPicker.minValue = 0;
-        yLabelsPicker = (HorizontalNumberPicker) findViewById(R.id.dialog_ylabels_number);
+        yLabelsPicker = findViewById(R.id.dialog_ylabels_number);
         yLabelsPicker.setValue(parameters.yLabelsNumber);
         yLabelsPicker.minValue = 0;
 
-        gridLineColor = (ColorPicker) findViewById(R.id.dialog_color_picker);
-        gridLineColor.addValueBar((ValueBar) findViewById(R.id.dialog_color_valuebar));
-        gridLineColor.addOpacityBar((OpacityBar) findViewById(R.id.dialog_color_opacity));
-        gridLineColor.setColor(parameters.gridLineColor);
-        gridLineColor.setOldCenterColor(parameters.gridLineColor);
+        gridLineColor = PrepareColorPicker(parameters.gridLineColor);
+
+        xTypeCheckBox = findViewById(R.id.dialog_xtype);
+        yTypeCheckBox = findViewById(R.id.dialog_ytype);
+        if (changeIf.getAxisType() == AxisPropertiesChangeIf.AxisType.EXTENDED)
+        {
+            xTypeCheckBox.setVisibility(View.VISIBLE);
+            xTypeCheckBox.setChecked(parameters.xType == AxisTypeConverter.Type.LOG10);
+            yTypeCheckBox.setVisibility(View.VISIBLE);
+            yTypeCheckBox.setChecked(parameters.yType == AxisTypeConverter.Type.LOG10);
+        }
+        else
+        {
+            xTypeCheckBox.setVisibility(View.GONE);
+            yTypeCheckBox.setVisibility(View.GONE);
+        }
 
         this.changeIf = changeIf;
     }
@@ -74,8 +86,33 @@ public class DialogAxisSettings extends DialogBase
                 isChanged = true;
                 parameters.yLabelsNumber = yLabelsPicker.getValue();
             }
+
+            if (changeIf.getAxisType() == AxisPropertiesChangeIf.AxisType.EXTENDED)
+            {
+                // X-axis type
+                {
+                    final AxisTypeConverter.Type type = xTypeCheckBox.isChecked() ?
+                            AxisTypeConverter.Type.LOG10 : AxisTypeConverter.Type.LINEAR;
+                    if (parameters.xType != type)
+                    {
+                        isChanged = true;
+                        parameters.xType = type;
+                    }
+                }
+
+                // Y-axis type
+                {
+                    final AxisTypeConverter.Type type = yTypeCheckBox.isChecked() ?
+                            AxisTypeConverter.Type.LOG10 : AxisTypeConverter.Type.LINEAR;
+                    if (parameters.yType != type)
+                    {
+                        isChanged = true;
+                        parameters.yType = type;
+                    }
+                }
+            }
+            changeIf.onAxisPropertiesChange(isChanged);
         }
-        changeIf.onAxisPropertiesChange(isChanged);
         closeDialog();
     }
 }

@@ -44,19 +44,24 @@
     <!-- Formula elements used in graphical representation and by input -->
     <string name="formula_assign_definition" translatable="false">:=</string>
     <string name="formula_result_definition" translatable="false">=</string>
-    <string name="formula_operator_plus" translatable="false">++</string>
-    <string name="formula_operator_minus" translatable="false">--</string>
+    <string name="formula_operator_plus" translatable="false">+</string>
+    <string name="formula_operator_minus" translatable="false">-</string>
     <string name="formula_operator_mult" translatable="false">*</string>
     <string name="formula_operator_divide" translatable="false">÷</string>
     <string name="formula_operator_divide_slash" translatable="false">/</string>
     <string name="formula_function_power" translatable="false">^</string>
     <string name="formula_function_start_bracket" translatable="false">(</string>
     <string name="formula_function_end_bracket" translatable="false">)</string>
+    <string name="formula_function_start_index" translatable="false">[</string>
+    <string name="formula_function_end_index" translatable="false">]</string>
     <string name="formula_function_sqrt_layout" translatable="false">#</string>
+    <string name="formula_function_nthrt_layout" translatable="false">$</string>
     <string name="formula_function_abs_layout" translatable="false">|</string>
     <string name="formula_function_factorial_layout" translatable="false">!</string>
+    <string name="formula_function_conjugate_layout" translatable="false">~</string>
     <string name="formula_quidistant_interval" translatable="false">:</string>
     <string name="formula_interval_first_separator" translatable="false">,</string>
     <string name="formula_interval_second_separator" translatable="false"> .. </string>
+    <string name="formula_term_separator" translatable="false">,</string>
 
 </resources>

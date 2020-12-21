@@ -15,15 +15,20 @@ package com.mkulesh.micromath.utils;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
+import android.util.TypedValue;
 import android.view.View;
-import android.widget.TextView;
+
+import androidx.annotation.AttrRes;
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import java.io.File;
 import java.text.DecimalFormat;
@@ -41,42 +46,14 @@ public class CompatUtils
     }
 
     /**
-     * Sets the text color, size, style, hint color, and highlight color from the specified TextAppearance resource.
-     *
-     * This method was deprecated in API level 23.
+     * Procedure returns theme color
      */
-    @SuppressWarnings("deprecation")
-    public static final void setTextAppearance(Context context, TextView t, int resId)
+    @ColorInt
+    public static int getThemeColorAttr(final Context context, @AttrRes int resId)
     {
-        if (isMarshMallowOrLater())
-        {
-            t.setTextAppearance(resId);
-        }
-        else
-        {
-            t.setTextAppearance(context, resId);
-        }
-    }
-
-    /**
-     * Returns a color associated with a particular resource ID.
-     *
-     * This method was deprecated in API level 23. Starting in M, the returned color will be styled for the specified
-     * Context's theme.
-     *
-     * Note: Starting from Android Support Library 23, a new getColor() method has been added to ContextCompat.
-     */
-    @SuppressWarnings("deprecation")
-    public static final int getColor(Context context, int id)
-    {
-        if (isMarshMallowOrLater())
-        {
-            return context.getColor(id);
-        }
-        else
-        {
-            return context.getResources().getColor(id);
-        }
+        final TypedValue value = new TypedValue();
+        context.getTheme().resolveAttribute(resId, value, true);
+        return value.data;
     }
 
     @SuppressWarnings("deprecation")
@@ -94,37 +71,20 @@ public class CompatUtils
         }
     }
 
-    @SuppressWarnings("deprecation")
-    public static Drawable getDrawable(Context context, int icon)
-    {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-        {
-            return context.getResources().getDrawable(icon, context.getTheme());
-        }
-        else
-        {
-            return context.getResources().getDrawable(icon);
-        }
-    }
-
     /**
      * Procedure sets the background for given view as a drawable with given resource id
      */
     @SuppressWarnings("deprecation")
-    public static void updateBackground(Context c, View v, int resId)
+    public static void updateBackground(Context c, View v, @DrawableRes int drawableId)
     {
-        Drawable bg = null;
-
-        if (resId >= 0)
+        Drawable bg;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
         {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            {
-                bg = c.getResources().getDrawable(resId, c.getTheme());
-            }
-            else
-            {
-                bg = c.getResources().getDrawable(resId);
-            }
+            bg = c.getResources().getDrawable(drawableId, c.getTheme());
+        }
+        else
+        {
+            bg = c.getResources().getDrawable(drawableId);
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
@@ -137,37 +97,52 @@ public class CompatUtils
         }
     }
 
-    @SafeVarargs
-    public static <T> void executeAsyncTask(AsyncTask<T, ?, ?> asyncTask, T... params)
+    /**
+     * Procedure sets the background for given view as a drawable with given resource id
+     */
+    @SuppressWarnings("deprecation")
+    public static void updateBackgroundAttr(Context c, View v, @DrawableRes int drawableId, @AttrRes int colorAttrId)
     {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+        Drawable bg;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
         {
-            asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+            bg = c.getResources().getDrawable(drawableId, c.getTheme());
         }
         else
         {
-            asyncTask.execute(params);
+            bg = c.getResources().getDrawable(drawableId);
+        }
+
+        setDrawableColorAttr(c, bg, colorAttrId);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+        {
+            v.setBackground(bg);
+        }
+        else
+        {
+            v.setBackgroundDrawable(bg);
         }
     }
 
-    public static void addOnMenuVisibilityListener(ActionBar actionBar, ActionBar.OnMenuVisibilityListener listener)
+    public static void setDrawableColorAttr(Context c, Drawable drawable, @AttrRes int resId)
     {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+        if (drawable != null)
         {
-            actionBar.addOnMenuVisibilityListener(listener);
+            drawable.clearColorFilter();
+            drawable.setColorFilter(getThemeColorAttr(c, resId), PorterDuff.Mode.SRC_ATOP);
         }
+    }
+
+    @SafeVarargs
+    public static <T> void executeAsyncTask(AsyncTask<T, ?, ?> asyncTask, T... params)
+    {
+        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
     }
 
     public static boolean isExternalStorageEmulated()
     {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-        {
-            return Environment.isExternalStorageEmulated();
-        }
-        else
-        {
-            return false;
-        }
+        return Environment.isExternalStorageEmulated();
     }
 
     /**
@@ -178,10 +153,7 @@ public class CompatUtils
         DecimalFormat df = new DecimalFormat(format);
         DecimalFormatSymbols dfs = new DecimalFormatSymbols();
         dfs.setDecimalSeparator('.');
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD)
-        {
-            dfs.setExponentSeparator("e");
-        }
+        dfs.setExponentSeparator("e");
         df.setDecimalFormatSymbols(dfs);
         return df;
     }
@@ -226,5 +198,29 @@ public class CompatUtils
             return new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
         }
         return null;
+    }
+
+    public static File getStorageDir(final @NonNull Context context, final @NonNull String directory)
+    {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q)
+        {
+            return new File(context.getFilesDir() + "/" + directory);
+        }
+        else
+        {
+            return new File(context.getExternalFilesDir(null) + "/" + directory);
+        }
+    }
+
+    public static File getStorageFile(final @NonNull Context context, final @NonNull String file)
+    {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q)
+        {
+            return new File(context.getFilesDir(), file);
+        }
+        else
+        {
+            return new File(context.getExternalFilesDir(null), file);
+        }
     }
 }

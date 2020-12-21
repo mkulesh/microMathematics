@@ -19,8 +19,8 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.dialogs.DialogTextSettings;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.properties.TextProperties;
 import com.mkulesh.micromath.properties.TextProperties.TextStyle;
 import com.mkulesh.micromath.properties.TextPropertiesChangeIf;
@@ -32,6 +32,8 @@ import com.mkulesh.micromath.widgets.ScaledDimensions;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
+
+import androidx.annotation.NonNull;
 
 public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
 {
@@ -47,9 +49,9 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
     // undo
     private FormulaState formulaState = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public TextFragment(FormulaList formulaList, int id)
     {
@@ -58,9 +60,9 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         onCreate();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public TextFragment(Context context)
     {
@@ -72,19 +74,20 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         super(null, null, 0);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for Object superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
+    @NonNull
     @Override
     public String toString()
     {
         return "Formula " + getBaseType().toString() + "(Id: " + getId() + ")";
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public BaseType getBaseType()
@@ -104,9 +107,9 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         updateTextView();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onObjectProperties(View owner)
@@ -136,9 +139,9 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         formulaState = null;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Parcelable interface: procedure writes the formula state
@@ -170,7 +173,7 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         if (state instanceof Bundle)
         {
             Bundle bundle = (Bundle) state;
-            parameters.assign((TextProperties) bundle.getParcelable(STATE_TEXT_PARAMETERS));
+            parameters.assign(bundle.getParcelable(STATE_TEXT_PARAMETERS));
             super.onRestoreInstanceState(bundle);
             updateTextView();
         }
@@ -212,9 +215,9 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * TextFragment-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure creates the formula layout
@@ -222,9 +225,9 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
     private void onCreate()
     {
         inflateRootLayout(R.layout.text_fragment, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        textField = (CustomEditText) layout.findViewById(R.id.text_fragment_text);
+        textField = layout.findViewById(R.id.text_fragment_text);
         addTerm(this, layout, textField, this, false);
-        numberField = (CustomTextView) layout.findViewById(R.id.text_fragment_number);
+        numberField = layout.findViewById(R.id.text_fragment_number);
         numberField.prepare(CustomTextView.SymbolType.TEXT, getFormulaList().getActivity(), this);
     }
 
@@ -260,7 +263,7 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
             {
                 number[i] = 0;
             }
-            String nuberStr = "";
+            StringBuilder nuberStr = new StringBuilder();
             for (int i = 0; i <= idx; i++)
             {
                 if (number[i] == 0)
@@ -269,12 +272,12 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
                 }
                 if (nuberStr.length() != 0)
                 {
-                    nuberStr += ".";
+                    nuberStr.append(".");
                 }
-                nuberStr += Integer.toString(number[i]);
+                nuberStr.append(number[i]);
             }
             numberField.setVisibility(View.VISIBLE);
-            numberField.setText(nuberStr);
+            numberField.setText(nuberStr.toString());
         }
         else
         {
@@ -351,7 +354,7 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         for (int i = 0; i < chars.length; i++)
         {
             final int currWidth = i - lineStartIdx;
-            final int charCode = (int) chars[i];
+            final int charCode = chars[i];
             if (!Character.isWhitespace(chars[i]))
             {
                 textStart = true;
@@ -373,7 +376,6 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
                 textStart = false;
                 lineStartIdx = lastSpaceIdx;
                 lastSpaceIdx = -1;
-                continue;
             }
         }
 

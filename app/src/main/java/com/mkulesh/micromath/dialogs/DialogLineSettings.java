@@ -13,8 +13,6 @@
 package com.mkulesh.micromath.dialogs;
 
 import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.CheckBox;
@@ -22,8 +20,6 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 
 import com.larswerkman.holocolorpicker.ColorPicker;
-import com.larswerkman.holocolorpicker.OpacityBar;
-import com.larswerkman.holocolorpicker.ValueBar;
 import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.properties.LineProperties;
 import com.mkulesh.micromath.properties.LinePropertiesChangeIf;
@@ -46,37 +42,33 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
 
     private final CheckBox pointShapesBox;
     private final HorizontalNumberPicker shapeSizePicker;
-    private final HashMap<LineProperties.ShapeType, ImageButton> shapeTypeButtons = new HashMap<LineProperties.ShapeType, ImageButton>();
+    private final HashMap<LineProperties.ShapeType, ImageButton> shapeTypeButtons = new HashMap<>();
 
     public DialogLineSettings(Activity context, LinePropertiesChangeIf changeIf, LineProperties parameters)
     {
         super(context, R.layout.dialog_line_settings, R.string.dialog_line_settings_title);
         this.parameters = parameters;
 
-        widthPicker = (HorizontalNumberPicker) findViewById(R.id.dialog_number_picker);
+        widthPicker = findViewById(R.id.dialog_number_picker);
         widthPicker.setValue(parameters.width);
         widthPicker.minValue = 1;
 
-        colorPicker = (ColorPicker) findViewById(R.id.dialog_color_picker);
-        colorPicker.addValueBar((ValueBar) findViewById(R.id.dialog_color_valuebar));
-        colorPicker.addOpacityBar((OpacityBar) findViewById(R.id.dialog_color_opacity));
-        colorPicker.setColor(parameters.color);
-        colorPicker.setOldCenterColor(parameters.color);
+        colorPicker = PrepareColorPicker(parameters.color);
 
         radioButtons = new RadioButton[4];
-        radioButtons[0] = (RadioButton) findViewById(R.id.dialog_button_line_style_solid);
-        radioButtons[1] = (RadioButton) findViewById(R.id.dialog_button_line_style_dotted);
-        radioButtons[2] = (RadioButton) findViewById(R.id.dialog_button_line_style_dashed);
-        radioButtons[3] = (RadioButton) findViewById(R.id.dialog_button_line_style_dash_dot);
+        radioButtons[0] = findViewById(R.id.dialog_button_line_style_solid);
+        radioButtons[1] = findViewById(R.id.dialog_button_line_style_dotted);
+        radioButtons[2] = findViewById(R.id.dialog_button_line_style_dashed);
+        radioButtons[3] = findViewById(R.id.dialog_button_line_style_dash_dot);
 
         radioLines = new CustomTextView[radioButtons.length];
-        radioLines[0] = (CustomTextView) findViewById(R.id.dialog_marker_line_style_solid);
-        radioLines[1] = (CustomTextView) findViewById(R.id.dialog_marker_line_style_dotted);
-        radioLines[2] = (CustomTextView) findViewById(R.id.dialog_marker_line_style_dashed);
-        radioLines[3] = (CustomTextView) findViewById(R.id.dialog_marker_line_style_dash_dot);
+        radioLines[0] = findViewById(R.id.dialog_marker_line_style_solid);
+        radioLines[1] = findViewById(R.id.dialog_marker_line_style_dotted);
+        radioLines[2] = findViewById(R.id.dialog_marker_line_style_dashed);
+        radioLines[3] = findViewById(R.id.dialog_marker_line_style_dash_dot);
 
         LineProperties l = new LineProperties();
-        l.color = CompatUtils.getColor(getContext(), R.color.dialog_content_color);
+        l.color = CompatUtils.getThemeColorAttr(getContext(), R.attr.colorDialogContent);
         l.width = ViewUtils.dpToPx(getContext().getResources().getDisplayMetrics(), 2);
 
         for (int i = 0; i < radioButtons.length; i++)
@@ -89,11 +81,11 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
             radioButtons[i].setOnClickListener(this);
         }
 
-        pointShapesBox = (CheckBox) findViewById(R.id.dialog_plot_point_shapes);
+        pointShapesBox = findViewById(R.id.dialog_plot_point_shapes);
         pointShapesBox.setOnClickListener(this);
         pointShapesBox.setChecked(parameters.shapeType != LineProperties.ShapeType.NONE);
 
-        shapeSizePicker = (HorizontalNumberPicker) findViewById(R.id.dialog_plot_point_shape_size);
+        shapeSizePicker = findViewById(R.id.dialog_plot_point_shape_size);
         shapeSizePicker.setValue(parameters.shapeSize);
         shapeSizePicker.minValue = 100;
         shapeSizePicker.setEnabled(pointShapesBox.isChecked());
@@ -108,23 +100,16 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
         for (Map.Entry<LineProperties.ShapeType, ImageButton> e : shapeTypeButtons.entrySet())
         {
             ImageButton b = e.getValue();
-            b.setSelected(e.getKey() == parameters.shapeType);
             b.setOnClickListener(this);
             b.setOnLongClickListener(this);
-            setEnabled(b, pointShapesBox.isChecked());
+            setButtonEnabled(b, pointShapesBox.isChecked());
+            if (b.isEnabled())
+            {
+                setButtonSelected(b, e.getKey() == parameters.shapeType);
+            }
         }
 
         this.changeIf = changeIf;
-    }
-
-    public void setEnabled(ImageButton b, boolean enabled)
-    {
-        b.setEnabled(enabled);
-        b.clearColorFilter();
-        if (!b.isEnabled())
-        {
-            b.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
-        }
     }
 
     @Override
@@ -155,7 +140,7 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
                 shapeSizePicker.setEnabled(pointShapesBox.isChecked());
                 for (ImageButton b : shapeTypeButtons.values())
                 {
-                    setEnabled(b, pointShapesBox.isChecked());
+                    setButtonEnabled(b, pointShapesBox.isChecked());
                 }
             }
             return;
@@ -164,7 +149,7 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
         {
             for (ImageButton b : shapeTypeButtons.values())
             {
-                b.setSelected(v == b);
+                setButtonSelected(b, v == b);
             }
             return;
         }

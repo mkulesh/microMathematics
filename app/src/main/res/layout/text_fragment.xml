@@ -25,7 +25,7 @@
             style="@style/FormulaTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textColor="@color/formula_text_fragment_color"
+            android:textColor="?attr/colorFormulaTextFragment"
             android:visibility="gone"
             micromath:symbol="TEXT" />
 
@@ -38,7 +38,7 @@
             android:inputType="text|textMultiLine|textAutoCorrect"
             android:maxLines="9999"
             android:text="@string/text_fragment"
-            android:textColor="@color/formula_text_fragment_color"
+            android:textColor="?attr/colorFormulaTextFragment"
             micromath:emptyEnabled="true"
             micromath:textFragment="true" />
     </com.mkulesh.micromath.widgets.CustomLayout>

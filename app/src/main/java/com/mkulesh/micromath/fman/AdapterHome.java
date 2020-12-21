@@ -16,11 +16,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import android.view.ContextMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+
+import androidx.annotation.NonNull;
+import androidx.preference.PreferenceManager;
 
 import com.mkulesh.micromath.fman.CommanderIf.SelectionMode;
 import com.mkulesh.micromath.R;
@@ -74,6 +76,7 @@ public class AdapterHome extends AdapterBaseImpl
         return mode;
     }
 
+    @NonNull
     @Override
     public String toString()
     {
@@ -90,7 +93,7 @@ public class AdapterHome extends AdapterBaseImpl
     }
 
     @Override
-    public boolean readSource(Uri tmp_uri, String pbod)
+    public void readSource(Uri tmp_uri, String pbod)
     {
         try
         {
@@ -105,13 +108,13 @@ public class AdapterHome extends AdapterBaseImpl
                 String[] dirs = CompatUtils.getStorageDirs(ctx);
                 if (dirs != null)
                 {
-                    for (int i = 0; i < dirs.length; i++)
+                    for (String dir : dirs)
                     {
-                        if (!FileUtils.str(dirs[i]))
+                        if (!FileUtils.str(dir))
                             continue;
-                        if (fs.equals(dirs[i]))
+                        if (fs.equals(dir))
                             continue;
-                        Item item = makeItem(EXTERNAL, dirs[i]);
+                        Item item = makeItem(EXTERNAL, dir);
                         ia.add(item);
                     }
                 }
@@ -147,7 +150,6 @@ public class AdapterHome extends AdapterBaseImpl
             e.printStackTrace();
         }
         notify(pbod);
-        return true;
     }
 
     @Override

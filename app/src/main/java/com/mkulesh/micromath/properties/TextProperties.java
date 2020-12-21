@@ -24,8 +24,8 @@ import java.util.Locale;
 
 public class TextProperties implements Parcelable
 {
-    public static final String XML_PROP_TEXT_STYLE = "textStyle";
-    public static final String XML_PROP_NUMBERING = "numbering";
+    private static final String XML_PROP_TEXT_STYLE = "textStyle";
+    private static final String XML_PROP_NUMBERING = "numbering";
 
     public enum TextStyle
     {
@@ -37,16 +37,16 @@ public class TextProperties implements Parcelable
     }
 
     // state- and XML-related attributes
-    public static final TextStyle DEFAULT_TEXT_STYLE = TextStyle.TEXT_BODY;
+    private static final TextStyle DEFAULT_TEXT_STYLE = TextStyle.TEXT_BODY;
     public TextStyle textStyle = DEFAULT_TEXT_STYLE;
 
-    public static final boolean DEFAULT_NUMBERING = false;
+    private static final boolean DEFAULT_NUMBERING = false;
     public boolean numbering = DEFAULT_NUMBERING;
 
     /**
      * Parcelable interface
      */
-    public TextProperties(Parcel in)
+    private TextProperties(Parcel in)
     {
         super();
         readFromParcel(in);
@@ -65,10 +65,10 @@ public class TextProperties implements Parcelable
         dest.writeString(String.valueOf(numbering));
     }
 
-    public void readFromParcel(Parcel in)
+    private void readFromParcel(Parcel in)
     {
         textStyle = TextStyle.valueOf(in.readString());
-        numbering = Boolean.valueOf(in.readString());
+        numbering = Boolean.parseBoolean(in.readString());
     }
 
     public static final Parcelable.Creator<TextProperties> CREATOR = new Parcelable.Creator<TextProperties>()
@@ -117,7 +117,7 @@ public class TextProperties implements Parcelable
         attr = parser.getAttributeValue(null, XML_PROP_NUMBERING);
         if (attr != null)
         {
-            numbering = Boolean.valueOf(attr);
+            numbering = Boolean.parseBoolean(attr);
         }
     }
 
@@ -144,7 +144,7 @@ public class TextProperties implements Parcelable
         return textStyle != TextStyle.TEXT_BODY;
     }
 
-    public static final int[] getInitialNumber()
+    public static int[] getInitialNumber()
     {
         final int[] initialNumber = new int[TextStyle.values().length];
         for (int i = 0; i < initialNumber.length; i++)

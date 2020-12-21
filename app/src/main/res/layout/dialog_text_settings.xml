@@ -32,27 +32,27 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical" >
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_text_style_chapter"
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_text_style_chapter" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_text_style_section"
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_text_style_section" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_text_style_subsection"
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_text_style_subsection" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_text_style_subsubsection"
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_text_style_subsubsection" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/dialog_text_style_text_body"
                     style="@style/RadioButtonStyle"
                     android:text="@string/dialog_text_style_text_body" />
@@ -63,7 +63,7 @@
                 android:layout_marginBottom="@dimen/dialog_content_padding"
                 android:layout_marginTop="@dimen/dialog_content_padding" />
 
-            <CheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/dialog_text_style_numbering"
                 style="@style/CheckBoxStyle"
                 android:checked="false"

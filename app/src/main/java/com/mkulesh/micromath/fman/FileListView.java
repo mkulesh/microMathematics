@@ -14,6 +14,7 @@ package com.mkulesh.micromath.fman;
 
 import android.net.Uri;
 import android.os.Build;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -45,7 +46,9 @@ public class FileListView implements AdapterView.OnItemClickListener
         listView.setOnItemClickListener(this);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
         {
-            listView.setSelector(R.drawable.clickable_background_no_padding);
+            TypedValue outValue = new TypedValue();
+            commander.getContext().getTheme().resolveAttribute(R.attr.selectableItemBackground, outValue, true);
+            listView.setSelector(outValue.resourceId);
         }
         commander.registerForContextMenu(listView);
         statusPanel = commander.findViewById(R.id.fman_status_panel);
@@ -139,13 +142,7 @@ public class FileListView implements AdapterView.OnItemClickListener
     {
         final ListView flv$ = listView;
         final int position$ = i, y$ = y_;
-        flv$.post(new Runnable()
-        {
-            public void run()
-            {
-                flv$.setSelectionFromTop(position$, y$ > 0 ? y$ : flv$.getHeight() / 2);
-            }
-        });
+        flv$.post(() -> flv$.setSelectionFromTop(position$, y$ > 0 ? y$ : flv$.getHeight() / 2));
         currentPosition = i;
     }
 
@@ -182,7 +179,7 @@ public class FileListView implements AdapterView.OnItemClickListener
             if (FileUtils.str(item_name))
                 setSelection(item_name);
             else
-                setSelection(currentPosition > 0 ? currentPosition : 0, 0);
+                setSelection(Math.max(currentPosition, 0), 0);
         }
         catch (Exception e)
         {

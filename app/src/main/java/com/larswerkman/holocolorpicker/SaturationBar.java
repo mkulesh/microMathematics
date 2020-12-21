@@ -16,8 +16,6 @@
 
 package com.larswerkman.holocolorpicker;
 
-import com.mkulesh.micromath.R;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -32,6 +30,8 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.mkulesh.micromath.R;
 
 public class SaturationBar extends View {
 
@@ -155,7 +155,7 @@ public class SaturationBar extends View {
 	private int oldChangedListenerSaturation;
 
 	public interface OnSaturationChangedListener {
-		public void onSaturationChanged(int saturation);
+		void onSaturationChanged(int saturation);
 	}
 
 	public void setOnSaturationChangedListener(
@@ -330,7 +330,7 @@ public class SaturationBar extends View {
 		canvas.drawCircle(cX, cY, mBarPointerHaloRadius, mBarPointerHaloPaint);
 		// Draw the pointer.
 		canvas.drawCircle(cX, cY, mBarPointerRadius, mBarPointerPaint);
-	};
+	}
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {

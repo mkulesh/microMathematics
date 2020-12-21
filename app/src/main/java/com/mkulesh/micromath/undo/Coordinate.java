@@ -30,14 +30,7 @@ public final class Coordinate implements Parcelable
         super();
     }
 
-    public Coordinate(int row, int col, boolean newRow)
-    {
-        super();
-        this.row = row;
-        this.col = col;
-    }
-
-    public Coordinate(Parcel in)
+    private Coordinate(Parcel in)
     {
         super();
         row = in.readInt();

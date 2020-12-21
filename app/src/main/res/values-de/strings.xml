@@ -56,11 +56,12 @@
     
     <!-- Permissions -->
     <string name="allow_storage_access_title">Zugriff auf Arbeitsblatt-Dateien erlauben</string>
-    <string name="allow_storage_access_description">microMathematics benötigt von Ihnen die Genehmigung zum Zugriff auf die Arbeitsblatt-Dateien auf diesem Gerät</string>
+    <string name="allow_storage_access_description">microMathematics Plus benötigt von Ihnen die Genehmigung zum Zugriff auf die Arbeitsblatt-Dateien auf diesem Gerät</string>
     <string name="allow_storage_access_grant">Genehmigung erteilen</string>
-
+    
     <!-- Main menu -->
     <string name="action_exit">Beenden</string>
+    <string name="action_exit_confirm">Zum Verlassen die Zurück-Taste erneut drücken</string>
     <string name="action_play">Berechnen</string>
     <string name="action_stop">Berechnungen abbrechen</string>
     <string name="action_object_properties">Objekteinstellungen</string>
@@ -81,14 +82,20 @@
     <string name="context_cut">Ausschneiden</string>
     <string name="context_paste">Einfügen</string>
 
-    <!-- Application settings -->
+    <!-- Application settings: Languages -->
     <string name="pref_app_language">Sprache</string>
-    <string name="pref_developer_mode">Entwicklermodus</string>
-    <string-array name="pref_language_names">
-        <item>Englisch</item>
-        <item>Russisch</item>
-        <item>Deutsch</item>
+
+    <!-- Application settings: zoom mode -->
+    <string name="pref_zoom">Zoom-Funktion</string>
+    <string-array name="pref_zoom_names">
+        <item>Alle aktivieren</item>
+        <item>Doppeltippen deaktiviert</item>
+        <item>Alle deaktivieren</item>
     </string-array>
+
+    <!-- Other application settings -->
+    <string name="pref_developer_mode">Entwicklermodus</string>
+    <string name="pref_exit_confirm">Zurücktaste 2x drücken, um App zu beenden</string>
 
     <!-- Dialogs -->
     <string name="dialog_navigation_accept">OK</string>
@@ -104,6 +111,7 @@
     <string name="dialog_axis_settings_title">Rastereinstellungen</string>
     <string name="dialog_axis_settings_xlabels">Anzahl von X-Bezeichnungen</string>
     <string name="dialog_axis_settings_ylabels">Anzahl von Y-Bezeichnungen</string>
+    <string name="dialog_axis_settings_type_log10">Logarithmische Darstellung</string>
     <string name="dialog_plot_settings_title">Plot Einstellungen</string>
     <string name="dialog_plot_settings_width">Plot Breite</string>
     <string name="dialog_plot_settings_height">Plot Höhe</string>
@@ -116,6 +124,16 @@
     <string name="dialog_plot_point_circle">Kreisförmige Punkte</string>
     <string name="dialog_plot_point_diamond">Rautenförmige Punkte</string>
     <string name="dialog_plot_point_cross">X-förmige Punkte</string>
+    <string name="dialog_surface_settings_contour">Konturdiagramm</string>
+    <string name="dialog_surface_settings_surface">3D farbige Oberfläche</string>
+    <string name="dialog_surface_settings_mesh_lines">Netzlinien einblenden</string>
+    <string name="dialog_surface_settings_mesh_fill">Mit Farbe füllen</string>
+    <string name="dialog_surface_settings_mesh_opacity">Transparenz</string>
+    <string name="dialog_surface_settings_rotation">Drehwinkel</string>
+    <string name="dialog_surface_settings_elevation">Neigung</string>
+    <string name="dialog_document_settings_author">Autor</string>
+    <string name="dialog_document_settings_document_title">Titel</string>
+    <string name="dialog_document_settings_description">Beschreibung</string>
     <string name="dialog_document_settings_reformat">Text formatieren</string>
     <string name="dialog_document_settings_width_size">Zeilenlänge</string>
     <string name="dialog_document_settings_significant_digits">Signifikante Ziffern im Ergebnis</string>
@@ -130,6 +148,8 @@
     <string name="dialog_image_settings_custom_size">Benutzerdefinierte Größe</string>
     <string name="dialog_image_settings_width">Bild Breite</string>
     <string name="dialog_image_settings_height">Bild Höhe</string>
+    <string name="dialog_image_settings_original_color">Originalfarbe</string>
+    <string name="dialog_image_settings_auto_color">Auto-Farbe</string>
     <string name="dialog_result_title">Ergebnisansicht</string>
     <string name="dialog_result_disable_calculation">Nicht berechnen</string>
     <string name="dialog_result_hide_result_field">Ergebnisfeld ausblenden</string>
@@ -142,15 +162,19 @@
     <string name="dialog_text_style_text_body">Text</string>
     <string name="dialog_text_style_numbering">Numerierung</string>
     <string name="dialog_list_items">element (e)</string>
-
+    <string name="dialog_function_selection">Funktion</string>
+    <string name="dialog_palette_settings_title">Einstellungen der Werkzeugleiste</string>
+    
     <!-- Mathematical elements -->
     <string name="math_new_element">Neu</string>
     <string name="math_new_equation">Gleichung hinzufügen</string>
     <string name="math_new_result">Ergebnisansicht hinzufügen</string>
     <string name="math_new_function_plot">Funktionsgraph hinzufügen</string>
+    <string name="math_new_contour_plot">3D Plot hinzufügen</string>
     <string name="math_new_text_fragment">Textfragment hinzufügen</string>
     <string name="math_new_image_fragment">Bild aus Datei hinzufügen</string>
     <string name="image_fragment_text">Langes Gedrückthalten um Bild hinzufügen</string>
+    <string name="math_new_term">Argument hinzufügen</string>
     <string name="math_equidistant_interval">Äquidistantes Intervall</string>
     <string name="math_operator_plus">Addition</string>
     <string name="math_operator_minus">Subtraktion</string>
@@ -160,7 +184,11 @@
     <string name="math_function_identity">Runde Klammern</string>
     <string name="math_function_power">Potenzzeichen</string>
     <string name="math_function_abs">Betrag des Arguments</string>
+    <string name="math_function_conjugate">Konjugiert komplexe Zahl des Arguments</string>
+    <string name="math_function_re">Realteil der komplexen Zahl</string>
+    <string name="math_function_im">Imaginärteil der komplexen Zahl</string>
     <string name="math_function_sqrt">Quadratwurzel des Arguments</string>
+    <string name="math_function_nthrt">N-te Wurzel des Arguments</string>
     <string name="math_function_sin">Sinus des Arguments</string>
     <string name="math_function_asin">Arcus-Sinus des Arguments im Interval [-pi/2..pi/2]</string>
     <string name="math_function_sinh">Hyperbelsinus des Arguments</string>
@@ -169,14 +197,32 @@
     <string name="math_function_cosh">Hyperbelkosinus des Arguments</string>
     <string name="math_function_tan">Tangens des Arguments</string>
     <string name="math_function_atan">Arcus-Tangens des Arguments im Interval [-pi/2..pi/2]</string>
+    <string name="math_function_atan2">Arcus-Tangens des y/x im Interval [-pi..pi]</string>
     <string name="math_function_tanh">Hyperbeltangens des Arguments</string>
     <string name="math_function_exp">Liefert den Exponentialwert von x zur Basis \'e\'</string>
-    <string name="math_function_log">Berechnet den natürliche Logarithmus zur Basis \'e\'</string>
+    <string name="math_function_ln">Berechnet den natürliche Logarithmus zur Basis \'e\'</string>
+    <string name="math_function_log">Der Logarithmus einer Zahl zur given Basis</string>
     <string name="math_function_log10">Berechnet den Logarithmus zur Basis 10</string>
     <string name="math_function_ceil">Rundet auf die nächsthöhere Ganzzahl ab</string>
     <string name="math_function_floor">Rundet auf die nächstniedrigere Ganzzahl ab</string>
-    <string name="math_function_rnd">Zufallszahlen zwischen größer gleich 0,0 und echt kleiner als Argument</string>
+    <string name="math_function_random">Zufallszahlen zwischen größer gleich 0,0 und echt kleiner als Argument</string>
     <string name="math_function_factorial">Produkt aller natürlichen Zahlen kleiner und gleich des Arguments</string>
+    <string name="math_function_max">Liefert den größeren von zwei übergebenen Werten</string>
+    <string name="math_function_min">Liefert den kleineren von zwei übergebenen Werten</string>
+    <string name="math_function_mod">Berechnet den verbleibenden Rest bei der Division zweier Zahlen</string>
+    <string name="math_function_perc">Berechnet einen Prozentsatz</string>
+    <string name="math_function_round">Rundet einen Dezimalwert auf die angegebene Anzahl von Nachkommastellen</string>
+    <string name="math_function_trunc">Berechnet den ganzzahligen Teil einer angegebenen Zahl</string>
+    <string name="math_function_sign">Gibt eine ganze Zahl zurück, die das Vorzeichen einer Zahl angibt</string>
+    <string name="math_function_csc">Kosekansfunktion des Arguments (Kehrwert des Sinus)</string>
+    <string name="math_function_sec">Sekansfunktion des Arguments (Kehrwert des Kosinus)</string>
+    <string name="math_function_cot">Kotangensfunktion des Arguments (Kehrwert des Tangens)</string>
+    <string name="math_function_acsc">Arcus-Kosekansfunktion des Arguments</string>
+    <string name="math_function_asec">Arcus-Sekansfunktion des Arguments</string>
+    <string name="math_function_acot">Arcus-Kotangensfunktion des Arguments</string>
+    <string name="math_function_csch">Hyperbelkosekans des Arguments</string>
+    <string name="math_function_sech">Hyperbelsekans des Arguments</string>
+    <string name="math_function_coth">Hyperbelkotangens des Arguments</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Der Grenzwert für die Layouttiefe für diese Android Version ist erreicht</string>
@@ -184,7 +230,13 @@
     <string name="error_invalid_variable_name">Ungültige Variablenname</string>
     <string name="error_unknown_variable">Das Symbol ist weder bekannte Variable noch Argument</string>
     <string name="error_unknown_function">Die Funktion %s ist weder definiert noch eine integrierte Funktion</string>
-    <string name="error_recursive_call">Die Funktion ist aus sein Definition rekursiv angerufen</string>
+    <string name="error_unknown_array">Das Array %s ist nicht definiert</string>
+    <string name="error_not_an_array">Index-Zugriff ist nicht erlaubt, weil %s kein Array ist</string>
+    <string name="error_not_a_function">Benutzung des Arguments ist nicht erlaubt, weil %s keine Funktion ist</string>
+    <string name="error_invalid_array_dimension">Array-Dimension %s wird noch nicht unterstützt</string>
+    <string name="error_invalid_array_interval">Intervall %s ist referenziert, aber nicht als Index deklariert</string>
+    <string name="error_invalid_array_index">Index %s ist kein bekanntes Intervall</string>
+    <string name="error_recursive_call">Die Bezeichnung ist aus seiner Definition rekursiv aufgerufen</string>
     <string name="error_not_differentiable">Die Funktion ist nicht durch %s differenzierbar</string>
     <string name="error_invalid_brackets_order">Reihenfolge der Klammern ist falsch</string>
     <string name="error_empty_argument_list">Die Argumentliste der Funktion ist leer</string>
@@ -192,10 +244,13 @@
     <string name="error_empty_argument">Das Argument ist nicht gegeben</string>
     <string name="error_invalid_argument">Das Argument der Funktion darf nur Buchstaben und Zahlen enthalten</string>
     <string name="error_ensure_single_interval">Verwendung von zwei oder mehr Intervalle ist nicht erlaubt</string>
-    <string name="error_ensure_single_argument">Verwendung von zwei oder mehr Argumente ist nicht erlaubt</string>
+    <string name="error_ensure_double_interval">Die Funktion muss zwei intervallähnliche Argumente haben</string>
     <string name="error_indirect_intervals">Die Intervalle %s sind indirekt ausgewiesenen</string>
     <string name="error_duplicated_identifier">Diese Bezeichnung ist bereits verwendet</string>
+    <string name="error_forbidden_arguments">Argumente sind hier nicht erlaubt</string>
+    <string name="error_forbidden_complex">Eine komplexe Zahl ist hier nicht erlaubt</string>
     <string name="error_forbidden_imaginary_unit">Zeichen \'i\' ist als die imaginäre Einheit reserviert</string>
+    <string name="error_forbidden_array">Das Array ist hier nicht erlaubt</string>
     <string name="error_nan_value">Term erhält einen Wert, der keine Zahl ist</string>
     <string name="error_unknown_file_format">Das Format der Datei %s ist unbekannt</string>
     <string name="error_file_read">Die Datei %s kann nicht geöffnet werden</string>
@@ -212,8 +267,8 @@
     <string name="fman_external_descr">Öffnen und Speichern der Dateien auf eine externe SD-Karte</string>
     <string name="fman_saf">Dokumente</string>
     <string name="fman_saf_descr">Zugang zu den Dokumenten aus der Dokumentablage</string>
-    <string name="fman_assets">Hilfsmittel der \"microMathematics\"</string>
-    <string name="fman_assets_descr">Dokumentation und Anwendungsbeispiele, die mit der \"microMathematics\" ausgeliefert sind</string>
+    <string name="fman_assets">Hilfsmittel der \"microMathematics Plus\"</string>
+    <string name="fman_assets_descr">Dokumentation und Anwendungsbeispiele, die mit der \"microMathematics Plus\" ausgeliefert sind</string>
     <string name="fman_home">Startbildschirm</string>
     <string name="fman_sort_by_name">Nach Namen sortieren</string>
     <string name="fman_sort_by_ext">Nach Dateityp sortieren</string>
@@ -247,7 +302,7 @@
 
     <!-- Messages -->
     <string name="message_file_written">Die Datei %s ist gespeichert</string>
-
+    
     <!-- Developer options -->
     <string name="action_dev_autotest">Automatischer Test</string>
     <string name="action_dev_export_doc">Handbuch exportieren</string>

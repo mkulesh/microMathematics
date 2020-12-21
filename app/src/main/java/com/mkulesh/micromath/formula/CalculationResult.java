@@ -17,26 +17,32 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
+import com.mkulesh.micromath.math.AxisTypeConverter;
+import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plots.FunctionIf;
+import com.mkulesh.micromath.plots.views.PlotView;
+import com.mkulesh.micromath.properties.AxisProperties;
 import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import org.apache.commons.math3.util.FastMath;
 
+import androidx.annotation.NonNull;
+
 public abstract class CalculationResult extends LinkHolder
 {
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public CalculationResult(FormulaList formulaList, LinearLayout layout, int termDepth)
     {
         super(formulaList, layout, termDepth);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public CalculationResult(Context context)
     {
@@ -48,9 +54,9 @@ public abstract class CalculationResult extends LinkHolder
         super(null, null, 0);
     }
 
-    /*********************************************************
-     * Methods to be (re)implemented in derived a class
-     *********************************************************/
+    /*--------------------------------------------------------*
+     *  Methods to be (re)implemented in derived a class
+     *--------------------------------------------------------*/
 
     /**
      * Procedure performs invalidation for this object
@@ -79,19 +85,20 @@ public abstract class CalculationResult extends LinkHolder
         return false;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for Object superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
+    @NonNull
     @Override
     public String toString()
     {
         return "Calculation " + getBaseType().toString() + "(Id: " + getId() + ")";
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void undo(FormulaState state)
@@ -106,9 +113,9 @@ public abstract class CalculationResult extends LinkHolder
         return true;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Helper methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     protected boolean setEmptyBorders(double[] minMaxValues, TermField fMin, TermField fMax)
     {
@@ -125,17 +132,18 @@ public abstract class CalculationResult extends LinkHolder
         final boolean updateMax = fMax.isEmptyOrAutoContent();
         if (updateMin || updateMax)
         {
+            final CalculatedValue calcVal = new CalculatedValue();
             // inspect minimum value
-            final double min = minMaxValues[FunctionIf.MIN];
-            String strMin = TermParser.doubleToString(min, getFormulaList().getDocumentSettings());
-            if (updateMin && TermParser.isInvalidReal(min))
+            calcVal.setValue(minMaxValues[FunctionIf.MIN]);
+            String strMin = calcVal.getResultDescription(getFormulaList().getDocumentSettings());
+            if (updateMin && calcVal.isNaN())
             {
                 isValid = false;
             }
             // inspect maximum value
-            final double max = minMaxValues[FunctionIf.MAX];
-            String strMax = TermParser.doubleToString(max, getFormulaList().getDocumentSettings());
-            if (updateMax && TermParser.isInvalidReal(max))
+            calcVal.setValue(minMaxValues[FunctionIf.MAX]);
+            String strMax = calcVal.getResultDescription(getFormulaList().getDocumentSettings());
+            if (updateMax && calcVal.isNaN())
             {
                 isValid = false;
             }
@@ -175,6 +183,37 @@ public abstract class CalculationResult extends LinkHolder
                 minMaxValues[FunctionIf.MIN] = val - delta;
                 minMaxValues[FunctionIf.MAX] = val + delta;
             }
+        }
+    }
+
+    protected void updatePlotBoundaries(PlotView view, TermField xMinTerm, TermField xMaxTerm, TermField yMinTerm,
+                                        TermField yMaxTerm, AxisProperties prop)
+    {
+        try
+        {
+            final CalculatedValue xMinVal = new CalculatedValue();
+            final CalculatedValue xMaxVal = new CalculatedValue();
+            final CalculatedValue yMinVal = new CalculatedValue();
+            final CalculatedValue yMaxVal = new CalculatedValue();
+            xMinVal.processRealTerm(null, xMinTerm);
+            xMaxVal.processRealTerm(null, xMaxTerm);
+            yMinVal.processRealTerm(null, yMinTerm);
+            yMaxVal.processRealTerm(null, yMaxTerm);
+            if (prop != null)
+            {
+                view.setArea(AxisTypeConverter.toSpecialType(xMinVal.getReal(), prop.xType),
+                        AxisTypeConverter.toSpecialType(xMaxVal.getReal(), prop.xType),
+                        AxisTypeConverter.toSpecialType(yMinVal.getReal(), prop.yType),
+                        AxisTypeConverter.toSpecialType(yMaxVal.getReal(), prop.yType));
+            }
+            else
+            {
+                view.setArea(xMinVal.getReal(), xMaxVal.getReal(), yMinVal.getReal(), yMaxVal.getReal());
+            }
+        }
+        catch (CancelException e)
+        {
+            // nothing to do
         }
     }
 }

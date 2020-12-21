@@ -22,44 +22,44 @@ public interface FunctionIf
         FUNCTION_3D
     }
 
-    public final static int X = 0;
-    public final static int Y = 1;
-    public final static int Z = 2;
-    public final static int MIN = 0;
-    public final static int MAX = 1;
+    int X = 0;
+    int Y = 1;
+    int Z = 2;
+    int MIN = 0;
+    int MAX = 1;
 
     /**
      * Procedure returns the type of the function
      */
-    public Type getType();
+    Type getType();
 
     /**
      * Procedure returns the list of x values
      */
-    public double[] getXValues();
+    double[] getXValues();
 
     /**
      * Procedure returns the list of y values
      */
-    public double[] getYValues();
+    double[] getYValues();
 
     /**
      * Procedure returns the list of x values
      */
-    public double[][] getZValues();
+    double[][] getZValues();
 
     /**
      * Procedure returns minimum and maximum values of the function
      */
-    public double[] getMinMaxValues(int idx);
+    double[] getMinMaxValues(int idx);
 
     /**
      * Procedure returns the line parameters for this function
      */
-    public LineProperties getLineParameters();
+    LineProperties getLineParameters();
 
     /**
      * Procedure returns symbolic labels for all three axes
      */
-    public String[] getLabels();
+    String[] getLabels();
 }

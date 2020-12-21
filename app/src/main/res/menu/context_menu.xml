@@ -13,7 +13,9 @@
   -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:micromath="http://schemas.android.com/apk/res-auto" >
+    xmlns:micromath="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="AlwaysShowAction">
 
     <item
         android:id="@+id/context_menu_expand"

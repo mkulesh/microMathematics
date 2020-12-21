@@ -16,8 +16,6 @@
 
 package com.larswerkman.holocolorpicker;
 
-import com.mkulesh.micromath.R;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -32,6 +30,8 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.mkulesh.micromath.R;
 
 public class OpacityBar extends View {
 
@@ -145,7 +145,7 @@ public class OpacityBar extends View {
 	private int oldChangedListenerOpacity;
 
 	public interface OnOpacityChangedListener {
-		public void onOpacityChanged(int opacity);
+		void onOpacityChanged(int opacity);
 	}
 
 	public void setOnOpacityChangedListener(OnOpacityChangedListener listener) {
@@ -326,7 +326,7 @@ public class OpacityBar extends View {
 		canvas.drawCircle(cX, cY, mBarPointerHaloRadius, mBarPointerHaloPaint);
 		// Draw the pointer.
 		canvas.drawCircle(cX, cY, mBarPointerRadius, mBarPointerPaint);
-	};
+	}
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {

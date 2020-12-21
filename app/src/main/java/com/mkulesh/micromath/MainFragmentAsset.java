@@ -21,7 +21,8 @@ import android.view.ViewGroup;
 
 import com.mkulesh.micromath.dialogs.DialogDocumentSettings;
 import com.mkulesh.micromath.dialogs.DialogNewFormula;
-import com.mkulesh.micromath.formula.XmlLoaderTask;
+import com.mkulesh.micromath.io.XmlLoaderTask;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 public class MainFragmentAsset extends BaseFragment
@@ -73,9 +74,9 @@ public class MainFragmentAsset extends BaseFragment
         ((MainActivity) activity).updateFragmentInfo(this);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * File handling
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private void openAsset()
     {
@@ -123,6 +124,7 @@ public class MainFragmentAsset extends BaseFragment
     @Override
     protected void onSaveFinished()
     {
+        super.onSaveFinished();
         ((MainActivity) activity).selectWorksheet(INVALID_ACTION_ID);
     }
 

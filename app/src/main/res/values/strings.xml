@@ -56,11 +56,12 @@
 
     <!-- Permissions -->
     <string name="allow_storage_access_title">Allow to access worksheet files</string>
-    <string name="allow_storage_access_description">microMathematics needs you to grant permission to access the worksheet files on this device</string>
+    <string name="allow_storage_access_description">This app needs you to grant permission to access the worksheet files on this device</string>
     <string name="allow_storage_access_grant">Grant permission</string>
-
+    
     <!-- Main menu -->
     <string name="action_exit">Exit</string>
+    <string name="action_exit_confirm">Press back button again to exit</string>
     <string name="action_play">Calculate worksheet</string>
     <string name="action_stop">Stop calculation</string>
     <string name="action_object_properties">Object properties</string>
@@ -81,20 +82,54 @@
     <string name="context_cut">Cut</string>
     <string name="context_paste">Paste</string>
 
-    <!-- Application settings -->
+    <!-- Application settings: Languages -->
     <string name="pref_app_language">App language</string>
-    <string name="pref_developer_mode">Developer options</string>
-    <string name="pref_default_language_code" translatable="false">en</string>
+    <string-array name="pref_language_names" translatable="false">
+        <item>System language</item>
+        <item>English</item>
+        <item>Русский</item>
+        <item>Deutsch</item>
+    </string-array>
+    <!-- Non-Translatable parameters of languages -->
+    <string name="pref_default_language_code" translatable="false">system</string>
     <string-array name="pref_language_codes" translatable="false">
+        <item>system</item>
         <item>en</item>
         <item>ru</item>
         <item>de</item>
     </string-array>
-    <string-array name="pref_language_names">
-        <item>English</item>
-        <item>Russian</item>
-        <item>German</item>
+
+    <!-- Application settings: Themes -->
+    <!-- Non-Translatable parameters of themes -->
+    <string name="pref_default_theme_code" translatable="false">teal-deep-orange</string>
+    <string-array name="pref_theme_codes" translatable="false">
+        <item>teal-deep-orange</item>
     </string-array>
+    <array name="main_themes" translatable="false">
+        <item>@style/MainThemeTealDeepOrange</item>
+    </array>
+    <array name="settings_themes" translatable="false">
+        <item>@style/SettingsThemeTealDeepOrange</item>
+    </array>
+
+    <!-- Application settings: zoom mode -->
+    <string name="pref_zoom">Zoom mode</string>
+    <string-array name="pref_zoom_names">
+        <item>Enable all</item>
+        <item>Double tap disabled</item>
+        <item>Disable all</item>
+    </string-array>
+    <!-- Non-Translatable parameters of zoom mode -->
+    <string name="pref_default_zoom_code" translatable="false">disable-double-tab</string>
+    <string-array name="pref_zoom_codes" translatable="false">
+        <item>enable-all</item>
+        <item>disable-double-tab</item>
+        <item>none</item>
+    </string-array>
+
+    <!-- Other application settings -->
+    <string name="pref_developer_mode">Developer options</string>
+    <string name="pref_exit_confirm">Press back button twice for exit</string>
 
     <!-- Dialogs -->
     <string name="dialog_navigation_accept">OK</string>
@@ -109,6 +144,7 @@
     <string name="dialog_line_settings_widthlabel">Line width and style</string>
     <string name="dialog_axis_settings_title">Grid settings</string>
     <string name="dialog_axis_settings_xlabels">Number of X-labels</string>
+    <string name="dialog_axis_settings_type_log10">Logarithmic scale</string>
     <string name="dialog_axis_settings_ylabels">Number of Y-labels</string>
     <string name="dialog_plot_settings_title">Plot settings</string>
     <string name="dialog_plot_settings_width">Plot width</string>
@@ -122,6 +158,16 @@
     <string name="dialog_plot_point_circle">Circle-shaped points</string>
     <string name="dialog_plot_point_diamond">Diamond-shaped points</string>
     <string name="dialog_plot_point_cross">X-shaped points</string>
+    <string name="dialog_surface_settings_contour">Contour plot</string>
+    <string name="dialog_surface_settings_surface">Surface plot</string>
+    <string name="dialog_surface_settings_mesh_lines">Show mesh lines</string>
+    <string name="dialog_surface_settings_mesh_fill">Fill mesh with color</string>
+    <string name="dialog_surface_settings_mesh_opacity">Opacity</string>
+    <string name="dialog_surface_settings_rotation">Rotation angle</string>
+    <string name="dialog_surface_settings_elevation">Elevation angle</string>
+    <string name="dialog_document_settings_author">Author</string>
+    <string name="dialog_document_settings_document_title">Title</string>
+    <string name="dialog_document_settings_description">Description</string>
     <string name="dialog_document_settings_reformat">Format text fragment</string>
     <string name="dialog_document_settings_width_size">Line length</string>
     <string name="dialog_document_settings_significant_digits">Significant digits in result</string>
@@ -136,6 +182,8 @@
     <string name="dialog_image_settings_custom_size">Custom size</string>
     <string name="dialog_image_settings_width">Image width</string>
     <string name="dialog_image_settings_height">Image height</string>
+    <string name="dialog_image_settings_original_color">Original color</string>
+    <string name="dialog_image_settings_auto_color">Auto-color</string>
     <string name="dialog_result_title">Result properties</string>
     <string name="dialog_result_disable_calculation">Do not calculate</string>
     <string name="dialog_result_hide_result_field">Hide result field</string>
@@ -148,15 +196,22 @@
     <string name="dialog_text_style_text_body">Text body</string>
     <string name="dialog_text_style_numbering">Numbering</string>
     <string name="dialog_list_items">item (s)</string>
+    <string name="dialog_function_selection">Function</string>
+    <string name="dialog_color_picker_saturation" translatable="false">S:</string>
+    <string name="dialog_color_picker_value" translatable="false">L:</string>
+    <string name="dialog_color_picker_opacity" translatable="false">A:</string>
+    <string name="dialog_palette_settings_title">Tool bar settings</string>
 
     <!-- Mathematical elements -->
     <string name="math_new_element">New element</string>
     <string name="math_new_equation">Add equation</string>
     <string name="math_new_result">Add result view</string>
     <string name="math_new_function_plot">Add function plot</string>
+    <string name="math_new_contour_plot">Add 3D plot</string>
     <string name="math_new_text_fragment">Add text fragment</string>
     <string name="math_new_image_fragment">Add image from file</string>
     <string name="image_fragment_text">Long press to import image</string>
+    <string name="math_new_term">Add new argument</string>
     <string name="math_equidistant_interval">Equidistant interval</string>
     <string name="math_operator_plus">Addition</string>
     <string name="math_operator_minus">Subtraction</string>
@@ -164,9 +219,13 @@
     <string name="math_operator_divide">Division</string>
     <string name="math_operator_divide_slash">Division</string>
     <string name="math_function_identity">Parenthesis</string>
-    <string name="math_function_abs">The absolute value of the argument</string>
     <string name="math_function_power">Raise to power</string>
+    <string name="math_function_abs">The absolute value of the real or complex argument</string>
+    <string name="math_function_conjugate">The complex conjugate of the complex argument</string>
+    <string name="math_function_re">The real part of the complex argument</string>
+    <string name="math_function_im">The imaginary part of the complex argument</string>
     <string name="math_function_sqrt">The square root of the argument</string>
+    <string name="math_function_nthrt">The n-th root of the argument</string>
     <string name="math_function_sin">The sine of the argument</string>
     <string name="math_function_asin">The arc sine of the argument within the range [-pi/2..pi/2]</string>
     <string name="math_function_sinh">The hyperbolic sine of the argument</string>
@@ -175,14 +234,32 @@
     <string name="math_function_cosh">The hyperbolic cosine of the argument</string>
     <string name="math_function_tan">The tangent of the argument</string>
     <string name="math_function_atan">The arc tangent of the argument within the range [-pi/2..pi/2]</string>
+    <string name="math_function_atan2">The arc tangent of y/x within the range [-pi..pi]</string>
     <string name="math_function_tanh">The hyperbolic tangent of the argument</string>
     <string name="math_function_exp">The raising \'e\' to the power of the argument</string>
-    <string name="math_function_log">The natural logarithm of the argument</string>
+    <string name="math_function_ln">The natural logarithm of the argument</string>
+    <string name="math_function_log">Logarithm of number to the specified base</string>
     <string name="math_function_log10">The base 10 logarithm of the argument</string>
     <string name="math_function_ceil">The most negative (closest to negative infinity) integer value greater than or equal to the argument</string>
     <string name="math_function_floor">The most positive (closest to positive infinity) integer value less than or equal to the argument</string>
-    <string name="math_function_rnd">The a pseudo-random value between zero and the argument</string>
+    <string name="math_function_random">The pseudo-random value between zero and the argument</string>
     <string name="math_function_factorial">The product of all positive integers less than or equal to the argument</string>
+    <string name="math_function_max">The most positive (closest to positive infinity) of the two arguments</string>
+    <string name="math_function_min">The most negative (closest to negative infinity) of the two arguments</string>
+    <string name="math_function_mod">Returns the remainder on dividing the first argument by the second</string>
+    <string name="math_function_perc">Calculates percentage</string>
+    <string name="math_function_round">Rounds the real number x to n places</string>
+    <string name="math_function_trunc">Returns the integer part of a real number by removing the fractional part</string>
+    <string name="math_function_sign">Returns 0 if x=0, 1 if x>0, and -1 otherwise</string>
+    <string name="math_function_csc">The cosecant (the reciprocal of sin) of the argument</string>
+    <string name="math_function_sec">The secant (the reciprocal of cos) of the argument</string>
+    <string name="math_function_cot">The cotangent (the reciprocal of tan) of the argument</string>
+    <string name="math_function_acsc">The arc cosecant of the argument</string>
+    <string name="math_function_asec">The arc secant of the argument</string>
+    <string name="math_function_acot">The arc cotangent of the argument</string>
+    <string name="math_function_csch">The hyperbolic cosecant of the argument</string>
+    <string name="math_function_sech">The hyperbolic secant of the argument</string>
+    <string name="math_function_coth">The hyperbolic cotangent of the argument</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Reached layout depth limit for this Android version</string>
@@ -190,7 +267,13 @@
     <string name="error_invalid_variable_name">Invalid variable name</string>
     <string name="error_unknown_variable">Symbol is not a known variable or argument</string>
     <string name="error_unknown_function">Function %s is not defined and is not a built-in function</string>
-    <string name="error_recursive_call">Function is called recursively from its definition</string>
+    <string name="error_unknown_array">Array %s is not defined</string>
+    <string name="error_not_an_array">%s can not be accessed by index since it is not an array</string>
+    <string name="error_not_a_function">%s can not be accessed by value since it is not a function</string>
+    <string name="error_invalid_array_dimension">Arrays of dimension %s is not yet supported</string>
+    <string name="error_invalid_array_interval">Interval %s referenced but not declared as index</string>
+    <string name="error_invalid_array_index">Index %s is not a known interval</string>
+    <string name="error_recursive_call">Equation is called recursively from its definition</string>
     <string name="error_not_differentiable">Function is not a differentiable function of %s</string>
     <string name="error_invalid_brackets_order">Invalid brackets order</string>
     <string name="error_empty_argument_list">Function shall have an argument</string>
@@ -198,10 +281,13 @@
     <string name="error_empty_argument">An argument can not be empty</string>
     <string name="error_invalid_argument">Function argument shall contain letters or digits only</string>
     <string name="error_ensure_single_interval">Function shall depend on one interval only</string>
-    <string name="error_ensure_single_argument">Function shall have one argument only</string>
+    <string name="error_ensure_double_interval">Function shall depend on two intervals</string>
     <string name="error_indirect_intervals">There are indirectly referenced intervals: %s</string>
     <string name="error_duplicated_identifier">This identifier is already used</string>
+    <string name="error_forbidden_arguments">Arguments are not allowed for this identifier</string>
+    <string name="error_forbidden_complex">Complex number is not allowed for this field</string>
     <string name="error_forbidden_imaginary_unit">Symbol \'i\' is reserved for the imaginary unit that is not allowed in this context</string>
+    <string name="error_forbidden_array">Array is not allowed for this field</string>
     <string name="error_nan_value">Field contains value that is not a number</string>
     <string name="error_unknown_file_format">Format of the file %s is unknown</string>
     <string name="error_file_read">Can not open file %s</string>
@@ -218,7 +304,7 @@
     <string name="fman_external_descr">Access files on the physically inserted SD card. It may be read-only on some devices</string>
     <string name="fman_saf">Documents</string>
     <string name="fman_saf_descr">Access files in the document storage</string>
-    <string name="fman_assets">Resources of \"microMathematics\"</string>
+    <string name="fman_assets">Resources of \"microMathematics Plus\"</string>
     <string name="fman_assets_descr">Documentation and examples delivered with this app</string>
     <string name="fman_home">Home</string>
     <string name="fman_sort_by_name">Sort by name</string>
@@ -253,7 +339,7 @@
     
     <!-- Messages -->
     <string name="message_file_written">File %s is written</string>
-
+    
     <!-- Developer options -->
     <string name="action_dev_autotest">Automatic test</string>
     <string name="action_dev_export_doc">Export documentation</string>

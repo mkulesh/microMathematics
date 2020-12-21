@@ -13,20 +13,15 @@
 package com.mkulesh.micromath.plots;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.mkulesh.micromath.BaseFragment;
-import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.dialogs.DialogImageSettings;
-import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.FormulaBase;
 import com.mkulesh.micromath.formula.FormulaList;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.properties.ImageProperties;
 import com.mkulesh.micromath.properties.ImagePropertiesChangeIf;
 import com.mkulesh.micromath.undo.FormulaState;
@@ -38,6 +33,8 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
 
 import java.util.ArrayList;
+
+import androidx.annotation.NonNull;
 
 public class ImageFragment extends FormulaBase implements ImagePropertiesChangeIf
 {
@@ -53,9 +50,9 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
     // undo
     private FormulaState formulaState = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Constructors
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public ImageFragment(FormulaList formulaList, int id)
     {
@@ -64,9 +61,9 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         onCreate();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * GUI constructors to avoid lint warning
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public ImageFragment(Context context)
     {
@@ -78,19 +75,20 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         super(null, null, 0);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for Object superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
+    @NonNull
     @Override
     public String toString()
     {
         return "Formula " + getBaseType().toString() + "(Id: " + getId() + ")";
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase superclass
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public BaseType getBaseType()
@@ -123,9 +121,9 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         ViewUtils.invalidateLayout(imageView, layout);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public void onTermSelection(View owner, boolean isSelected, ArrayList<View> list)
@@ -151,10 +149,10 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
     }
 
     @Override
-    public void onImagePropertiesChange(boolean isFileChanged, boolean isSizeChanged)
+    public void onImagePropertiesChange(boolean isFileChanged, boolean isImageChanged)
     {
         getFormulaList().finishActiveActionMode();
-        if (isFileChanged || isSizeChanged)
+        if (isFileChanged || isImageChanged)
         {
             if (formulaState != null)
             {
@@ -177,9 +175,9 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         d.show();
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Parcelable interface: procedure writes the formula state
@@ -213,7 +211,7 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         {
             Bundle bundle = (Bundle) state;
             imageView.onRestoreInstanceState(bundle.getParcelable(STATE_IMAGE_VIEW));
-            parameters.assign((ImageProperties) bundle.getParcelable(STATE_IMAGE_PARAMETERS));
+            parameters.assign(bundle.getParcelable(STATE_IMAGE_PARAMETERS));
             super.onRestoreInstanceState(bundle);
             updateImageView();
         }
@@ -254,9 +252,9 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         return false;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * ImageFragment-specific methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure creates the formula layout
@@ -264,18 +262,14 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
     private void onCreate()
     {
         inflateRootLayout(R.layout.image_fragment, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        imageView = (CustomImageView) layout.findViewById(R.id.image_view);
+        imageView = layout.findViewById(R.id.image_view);
         imageView.prepare(getFormulaList().getActivity(), this);
         parameters.initialize(getContext());
         parameters.width = imageView.getOriginalWidth();
         parameters.height = imageView.getOriginalHeight();
 
         // obtain parent document
-        parameters.parentDirectory = null;
-        final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getFormulaList().getActivity());
-        final String str = pref.getString(BaseFragment.OPENED_URI, null);
-        final Uri docUri = str == null ? null : Uri.parse(str);
-        parameters.parentDirectory = FileUtils.getParentUri(docUri);
+        parameters.parentDirectory = getFormulaList().getParentDirectory();
 
         updateTextSize();
     }
@@ -292,6 +286,7 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         }
         imageView.getLayoutParams().width = Math.round(width * scale);
         imageView.getLayoutParams().height = Math.round(height * scale);
+        imageView.setColorType(parameters.colorType);
         ((CustomLayout) layout).setContentValid(imageView.getImageType() != CustomImageView.ImageType.NONE);
     }
 }

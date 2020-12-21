@@ -14,6 +14,6 @@
 
 <merge xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <RadioButton style="@style/RadioButtonStyle" />
+    <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonStyle" />
 
 </merge>

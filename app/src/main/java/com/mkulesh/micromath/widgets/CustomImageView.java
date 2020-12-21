@@ -15,15 +15,15 @@ package com.mkulesh.micromath.widgets;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.RectF;
-import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.util.Base64;
 import android.util.DisplayMetrics;
@@ -31,12 +31,15 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.caverock.androidsvg.SVG;
 import com.caverock.androidsvg.SVGParseException;
-import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.FormulaList;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.properties.ImageProperties;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -56,6 +59,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
      * Constants used to save/restore the instance state.
      */
     private static final String STATE_IMAGE_TYPE = "image_type";
+    private static final String STATE_IMAGE_URI = "image_uri";
     private static final String STATE_IMAGE_BITMAP = "image_bitmap";
     private static final String STATE_IMAGE_SVG = "image_svg";
     private static final String XML_PROP_BIN_ENCODING = "binEncoding";
@@ -72,15 +76,17 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
     }
 
     private ImageType imageType = ImageType.NONE;
+    private Uri externalUri = null;
     private Bitmap bitmap = null;
     private SVG svg = null;
     private String svgData = null;
     private final RectF rect = new RectF();
     private int originalWidth = 0, originalHeight = 0;
+    private ColorFilter colorFilter = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public CustomImageView(Context context)
     {
@@ -126,9 +132,23 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         return originalHeight + 2 * strokeWidth;
     }
 
-    /*********************************************************
+    public void setColorType(ImageProperties.ColorType colorType)
+    {
+        if (colorType == ImageProperties.ColorType.AUTO)
+        {
+            colorFilter = new PorterDuffColorFilter(
+                    CompatUtils.getThemeColorAttr(getContext(), R.attr.colorFormulaNormal),
+                    PorterDuff.Mode.SRC_IN);
+        }
+        else
+        {
+            colorFilter = null;
+        }
+    }
+
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public void loadImage(ImageProperties parameters)
     {
@@ -142,7 +162,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
             return;
         }
 
-        Uri imageUri = null;
+        Uri imageUri;
         if (parameters.isAsset())
         {
             imageUri = Uri.parse(fileName);
@@ -166,7 +186,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         if (fileExt.equals(".svg"))
         {
             // first, try to load image as SVG
-            if (!loadSVG(imageUri))
+            if (!loadSVG(imageUri, parameters.embedded))
             {
                 return;
             }
@@ -175,7 +195,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         if (imageType == ImageType.NONE)
         {
             // second, try to load image as a bitmap
-            if (!loadBitmap(imageUri))
+            if (!loadBitmap(imageUri, parameters.embedded))
             {
                 return;
             }
@@ -184,7 +204,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         if (imageType == ImageType.NONE)
         {
             // finally, try to load image as SVG
-            loadSVG(imageUri);
+            loadSVG(imageUri, parameters.embedded);
         }
 
         // error if nothing loaded
@@ -205,23 +225,17 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
     {
         Bundle bundle = new Bundle();
         bundle.putString(STATE_IMAGE_TYPE, imageType.toString());
-        switch (imageType)
+        if (externalUri != null)
         {
-        case NONE:
-            // nothing to do
-            break;
-        case BITMAP:
-            if (bitmap != null)
-            {
-                bundle.putString(STATE_IMAGE_BITMAP, getEncodedImage(bitmap));
-            }
-            break;
-        case SVG:
-            if (svgData != null)
-            {
-                bundle.putString(STATE_IMAGE_SVG, svgData);
-            }
-            break;
+            bundle.putString(STATE_IMAGE_URI, externalUri.toString());
+        }
+        else if (imageType == ImageType.BITMAP && bitmap != null)
+        {
+            bundle.putString(STATE_IMAGE_BITMAP, getEncodedImage(bitmap));
+        }
+        else if (imageType == ImageType.SVG && svgData != null)
+        {
+            bundle.putString(STATE_IMAGE_SVG, svgData);
         }
         return bundle;
     }
@@ -241,16 +255,37 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         {
             Bundle bundle = (Bundle) state;
             final ImageType type = ImageType.valueOf(bundle.getString(STATE_IMAGE_TYPE));
+
+            Uri uri = null;
+            final String uriStr = bundle.getString(STATE_IMAGE_URI);
+            if (uriStr != null)
+            {
+                uri = Uri.parse(uriStr);
+            }
             switch (type)
             {
             case NONE:
                 // nothing to do
                 break;
             case BITMAP:
-                setBitmap(getDecodedImage(bundle.getString(STATE_IMAGE_BITMAP)));
+                if (uri != null)
+                {
+                    loadBitmap(uri, /*isEmbedded=*/ false);
+                }
+                else
+                {
+                    setBitmap(getDecodedImage(bundle.getString(STATE_IMAGE_BITMAP)));
+                }
                 break;
             case SVG:
-                setSvg(bundle.getString(STATE_IMAGE_SVG));
+                if (uri != null)
+                {
+                    loadSVG(uri, /*isEmbedded=*/ false);
+                }
+                else
+                {
+                    setSvg(bundle.getString(STATE_IMAGE_SVG));
+                }
                 break;
             }
         }
@@ -261,7 +296,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         try
         {
             final ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            b.compress(Bitmap.CompressFormat.PNG,100,stream);
+            b.compress(Bitmap.CompressFormat.PNG, 100, stream);
             final String encodedImage = Base64.encodeToString(stream.toByteArray(), BASE64_OPTIONS);
             stream.close();
             return encodedImage;
@@ -314,13 +349,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
                     serializer.cdsect(encodedImage);
                     stream.close();
                 }
-                catch (OutOfMemoryError ex)
-                {
-                    String error = getContext().getResources().getString(R.string.error_out_of_memory);
-                    Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
-                    return;
-                }
-                catch (Exception ex)
+                catch (OutOfMemoryError | Exception ex)
                 {
                     String error = getContext().getResources().getString(R.string.error_out_of_memory);
                     Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
@@ -397,9 +426,9 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Painting
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @SuppressLint("DrawAllocation")
     @Override
@@ -415,42 +444,36 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
             {
                 final int width = (int) rect.width();
                 final int height = (int) rect.height();
-                final PictureDrawable pictureDrawable = new PictureDrawable(svg.renderToPicture(width, height));
-                bitmap = Bitmap.createBitmap(width, height, Config.ARGB_8888);
-                final Canvas c1 = new Canvas(bitmap);
-                c1.drawPicture(pictureDrawable.getPicture());
+                bitmap = ViewUtils.pictureToBitmap(svg.renderToPicture(width, height), width, height);
+                paint.setColorFilter(colorFilter);
                 c.drawBitmap(bitmap, null, rect, paint);
             }
             else if (imageType == ImageType.BITMAP && bitmap != null)
             {
+                paint.setColorFilter(colorFilter);
                 c.drawBitmap(bitmap, null, rect, paint);
             }
             else
             {
+                // do not set color filter for text image
                 super.onDraw(c);
             }
         }
-        catch (OutOfMemoryError ex)
+        catch (OutOfMemoryError | Exception ex)
         {
             String error = getContext().getResources().getString(R.string.error_out_of_memory);
             Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
-            return;
-        }
-        catch (Exception ex)
-        {
-            String error = getContext().getResources().getString(R.string.error_out_of_memory);
-            Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
-            return;
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Special methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     private void clear()
     {
         imageType = ImageType.NONE;
+        externalUri = null;
         bitmap = null;
         svg = null;
         svgData = null;
@@ -495,7 +518,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         imageType = this.svg == null ? ImageType.NONE : ImageType.SVG;
     }
 
-    private boolean loadBitmap(Uri imageUri)
+    private boolean loadBitmap(Uri imageUri, boolean isEmbedded)
     {
         InputStream stream = FileUtils.getInputStream(getContext(), imageUri);
         if (stream != null)
@@ -503,6 +526,10 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
             try
             {
                 setBitmap(BitmapFactory.decodeStream(stream));
+                if (!isEmbedded)
+                {
+                    externalUri = imageUri;
+                }
             }
             catch (OutOfMemoryError ex)
             {
@@ -532,7 +559,7 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
         return total.toString();
     }
 
-    private boolean loadSVG(Uri imageUri)
+    private boolean loadSVG(Uri imageUri, boolean isEmbedded)
     {
         InputStream stream = FileUtils.getInputStream(getContext(), imageUri);
         if (stream != null)
@@ -540,6 +567,10 @@ public class CustomImageView extends CustomTextView implements OnLongClickListen
             try
             {
                 setSvg(getStringFromInputStream(stream));
+                if (!isEmbedded)
+                {
+                    externalUri = imageUri;
+                }
             }
             catch (Exception e)
             {

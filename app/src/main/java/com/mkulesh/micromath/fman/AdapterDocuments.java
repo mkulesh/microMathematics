@@ -20,9 +20,11 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.provider.DocumentsContract;
 import android.provider.DocumentsContract.Document;
+
+import androidx.annotation.NonNull;
+import androidx.preference.PreferenceManager;
 
 import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.CompatUtils;
@@ -41,21 +43,16 @@ public class AdapterDocuments extends AdapterBaseImpl
     public final static String PREF_TREE_ROOT_URI = "fman_tree_root_uri";
     public final static int REQUEST_OPEN_DOCUMENT_TREE = 935;
 
-    final static String[] projection = { Document.COLUMN_DOCUMENT_ID, Document.COLUMN_DISPLAY_NAME,
+    private final static String[] projection = { Document.COLUMN_DOCUMENT_ID, Document.COLUMN_DISPLAY_NAME,
             Document.COLUMN_LAST_MODIFIED, Document.COLUMN_MIME_TYPE, Document.COLUMN_SIZE };
 
-    public final static class SAFItem extends AdapterIf.Item
+    final static class SAFItem extends AdapterIf.Item
     {
-        public File f()
-        {
-            Uri u = (Uri) origin;
-            String path = AdapterDocuments.getPath(u, this.dir);
-            return new File(path);
-        }
+        // empty
     }
 
     private Uri uri;
-    protected SAFItem[] items;
+    private SAFItem[] items;
 
     public AdapterDocuments(Context ctx_)
     {
@@ -68,6 +65,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         return AdapterDocuments.ORG_SCHEME;
     }
 
+    @NonNull
     @Override
     public String toString()
     {
@@ -95,7 +93,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         return "com.android.externalstorage.documents".equals(uri.getAuthority());
     }
 
-    public static final String getPath(Uri u, boolean dir)
+    public static String getPath(Uri u, boolean dir)
     {
         try
         {
@@ -159,7 +157,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         final int n = paths.size();
         if (n < 4)
             return null;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n - 1; i++)
         {
             sb.append("/");
@@ -215,12 +213,12 @@ public class AdapterDocuments extends AdapterBaseImpl
         }
     }
 
-    public final ArrayList<SAFItem> getChildren(Uri u)
+    private ArrayList<SAFItem> getChildren(Uri u)
     {
         return getChildren(ctx, u);
     }
 
-    public final static ArrayList<SAFItem> getChildren(Context ctx, Uri u)
+    private static ArrayList<SAFItem> getChildren(Context ctx, Uri u)
     {
         Cursor c = null;
         try
@@ -255,7 +253,7 @@ public class AdapterDocuments extends AdapterBaseImpl
                     if (item.dir)
                     {
                         item.size = -1;
-                        item.attr = Integer.toString(getDirItemsNumber(ctx, (Uri) item.origin)) + " "
+                        item.attr = getDirItemsNumber(ctx, (Uri) item.origin) + " "
                                 + ctx.getString(R.string.dialog_list_items);
                     }
                     tmp_list.add(item);
@@ -308,7 +306,7 @@ public class AdapterDocuments extends AdapterBaseImpl
     }
 
     @Override
-    public boolean readSource(Uri tmp_uri, String pass_back_on_done)
+    public void readSource(Uri tmp_uri, String pass_back_on_done)
     {
         try
         {
@@ -318,13 +316,13 @@ public class AdapterDocuments extends AdapterBaseImpl
             }
             if (uri == null)
             {
-                return false;
+                return;
             }
             ArrayList<SAFItem> tmp_list = getChildren(uri);
             if (tmp_list == null)
             {
                 commander.Navigate(Uri.parse(AdapterHome.DEFAULT_LOC), null);
-                return false;
+                return;
             }
             items = new SAFItem[tmp_list.size()];
             tmp_list.toArray(items);
@@ -333,7 +331,6 @@ public class AdapterDocuments extends AdapterBaseImpl
             parentLink = isRootDoc(uri) ? SLS : PLS;
             notifyDataSetChanged();
             notify(pass_back_on_done);
-            return true;
         }
         catch (Exception e)
         {
@@ -343,7 +340,6 @@ public class AdapterDocuments extends AdapterBaseImpl
         {
             notify(s(R.string.error_out_of_memory), CommanderIf.OPERATION_FAILED);
         }
-        return false;
     }
 
     @Override
@@ -417,7 +413,7 @@ public class AdapterDocuments extends AdapterBaseImpl
     }
 
     @Override
-    public boolean renameItem(int position, String newName)
+    public void renameItem(int position, String newName)
     {
         ContentResolver cr = ctx.getContentResolver();
         Item item = items[position - 1];
@@ -429,15 +425,14 @@ public class AdapterDocuments extends AdapterBaseImpl
         catch (FileNotFoundException e)
         {
             e.printStackTrace();
-            return false;
+            return;
         }
         if (new_uri == null)
         {
-            return false;
+            return;
         }
         item.origin = new_uri;
         notifyRefr(newName);
-        return true;
     }
 
     @Override
@@ -481,21 +476,19 @@ public class AdapterDocuments extends AdapterBaseImpl
         return false;
     }
 
-    class DeleteEngine extends Engine
+    static class DeleteEngine extends Engine
     {
-        private AdapterDocuments a;
-        private Item[] mList;
-        private Uri dirUri;
+        private final AdapterDocuments a;
+        private final Item[] mList;
 
         DeleteEngine(AdapterDocuments a, Handler h, Item[] list)
         {
             setHandler(h);
             this.a = a;
             mList = list;
-            dirUri = a.getUri();
         }
 
-        public void run()
+        void run()
         {
             if (mList == null || mList.length == 0)
             {
@@ -503,7 +496,7 @@ public class AdapterDocuments extends AdapterBaseImpl
             }
             try
             {
-                int cnt = deleteFiles(dirUri, mList);
+                int cnt = deleteFiles(mList);
                 if (cnt == 0)
                 {
                     sendError();
@@ -519,12 +512,11 @@ public class AdapterDocuments extends AdapterBaseImpl
             }
         }
 
-        private final int deleteFiles(Uri dir_uri, Item[] l) throws Exception
+        private int deleteFiles(Item[] l) throws Exception
         {
             int cnt = 0;
-            for (int i = 0; i < l.length; i++)
+            for (Item item : l)
             {
-                Item item = l[i];
                 DocumentsContract.deleteDocument(a.ctx.getContentResolver(), (Uri) item.origin);
                 cnt++;
             }
@@ -586,7 +578,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         }
     }
 
-    public void reSort(Item[] items_)
+    private void reSort(Item[] items_)
     {
         if (items_ == null)
             return;
@@ -627,7 +619,7 @@ public class AdapterDocuments extends AdapterBaseImpl
     {
         for (SAFItem fi : items)
         {
-            if (fi.name != null && name != null && fi.name.equals(name))
+            if (fi.name != null && fi.name.equals(name))
             {
                 return (Uri) fi.origin;
             }
@@ -640,7 +632,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         ArrayList<SAFItem> entries = getChildren(ctx, parent);
         for (SAFItem fi : entries)
         {
-            if (fi.name != null && name != null && fi.name.equals(name))
+            if (fi.name != null && fi.name.equals(name))
             {
                 return (Uri) fi.origin;
             }

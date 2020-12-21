@@ -17,7 +17,6 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MenuItem;
 
-import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class UndoState
     private static final String ENTRY_NUMBER = "entry_number";
     private static final String ENTRY_STATE = "entry_state";
 
-    private final ArrayList<Parcelable> entrys = new ArrayList<Parcelable>();
+    private final ArrayList<Parcelable> entrys = new ArrayList<>();
     private MenuItem menuItem = null;
     private final Context context;
 
@@ -41,9 +40,9 @@ public class UndoState
         this.context = context;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Read/write interface
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Parcelable interface: procedure writes the state
@@ -80,9 +79,9 @@ public class UndoState
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Store/undo methods
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure adds the entry to the stack
@@ -133,7 +132,7 @@ public class UndoState
         if (menuItem != null)
         {
             menuItem.setEnabled(!entrys.isEmpty());
-            ViewUtils.setMenuIconColor(context, menuItem, R.color.micromath_icons);
+            ViewUtils.updateMenuIconColor(context, menuItem);
         }
     }
 

@@ -12,12 +12,11 @@
   ~ Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- TA scenarios -->
     <string name="autotest_directory" translatable="false">ta</string>
 
-    <!-- TA scenarios -->
     <string-array name="autotest_scripts" translatable="false">
         <item>asset:/ta/ts_intervals.xml</item>
         <item>asset:/ta/ts_operators.xml</item>
@@ -26,7 +25,7 @@
         <item>asset:/ta/ts_redefinition.xml</item>
         <item>asset:/ta/ts_random_const.xml</item>
     </string-array>
-
+    
     <string-array name="doc_export_scripts" translatable="false">
         <item>asset:/doc_en/how_to_use.xml</item>
         <item>asset:/doc_en/function_plot.xml</item>
@@ -47,7 +46,7 @@
         <item>images</item>
     </string-array>
 
-    <string-array name="take_screenshots_scripts" translatable="false">
+    <string-array name="take_screenshots_scripts" translatable="false" tools:ignore="InconsistentArrays">
         <item>asset:/examples/polar_plot_2.mmt</item>
         <item>asset:/examples/simple_calculation.mmt</item>
         <item>asset:/examples/wavelet_plot_1.mmt</item>

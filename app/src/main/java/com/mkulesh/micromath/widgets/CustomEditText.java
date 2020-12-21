@@ -12,12 +12,9 @@
  */
 package com.mkulesh.micromath.widgets;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -34,38 +31,55 @@ import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputConnectionWrapper;
 import android.widget.Toast;
 
+import androidx.annotation.AttrRes;
+import androidx.annotation.DrawableRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatEditText;
+
 import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.CompatUtils;
 
 public class CustomEditText extends AppCompatEditText implements OnLongClickListener, OnFocusChangeListener
 {
+    public enum ArrayType
+    {
+        DISABLED,
+        OPTIONAL,
+        MANDATORY
+    }
+
     private AppCompatActivity activity = null;
     private TextChangeIf textChangeIf = null;
     private FocusChangeIf focusChangeIf = null;
-    private TextWatcher textWatcher = new EditTextWatcher();
+    private final TextWatcher textWatcher = new EditTextWatcher();
     private boolean textWatcherActive = true;
 
     private boolean toBeDeleted = false;
-    private boolean emptyEnabled = false;
-    private boolean intervalEnabled = false;
-    private boolean complexEnabled = true;
-    private boolean comparatorEnabled = false;
     private boolean textFragment = false;
     private boolean equationName = false;
     private boolean indexName = false;
     private boolean intermediateArgument = false;
     private boolean calculatedValue = false;
-    private boolean newTermEnabled = false;
     private boolean requesFocusEnabled = true;
+    private boolean fileName = false;
+
+    // custom content types
+    private boolean emptyEnabled = false;
+    private boolean intervalEnabled = false;
+    private boolean complexEnabled = true;
+    private boolean comparatorEnabled = false;
+    private boolean newTermEnabled = false;
+    private boolean fileOperationEnabled = false;
+    private ArrayType arrayType = ArrayType.DISABLED;
 
     // context menu handling
     private ContextMenuHandler menuHandler = null;
     private FormulaChangeIf formulaChangeIf = null;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public CustomEditText(Context context, AttributeSet attrs, int defStyle)
     {
@@ -84,22 +98,31 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         super(context);
     }
 
-    protected void prepare(AttributeSet attrs)
+    private void prepare(AttributeSet attrs)
     {
         menuHandler = new ContextMenuHandler(getContext());
         if (attrs != null)
         {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CustomViewExtension, 0, 0);
-            emptyEnabled = a.getBoolean(R.styleable.CustomViewExtension_emptyEnabled, false);
-            intervalEnabled = a.getBoolean(R.styleable.CustomViewExtension_intervalEnabled, false);
-            complexEnabled = a.getBoolean(R.styleable.CustomViewExtension_complexEnabled, true);
-            comparatorEnabled = a.getBoolean(R.styleable.CustomViewExtension_comparatorEnabled, false);
             textFragment = a.getBoolean(R.styleable.CustomViewExtension_textFragment, false);
             equationName = a.getBoolean(R.styleable.CustomViewExtension_equationName, false);
             indexName = a.getBoolean(R.styleable.CustomViewExtension_indexName, false);
             intermediateArgument = a.getBoolean(R.styleable.CustomViewExtension_intermediateArgument, false);
             calculatedValue = a.getBoolean(R.styleable.CustomViewExtension_calculatedValue, false);
+            fileName = a.getBoolean(R.styleable.CustomViewExtension_fileName, false);
+            // custom content types
+            emptyEnabled = a.getBoolean(R.styleable.CustomViewExtension_emptyEnabled, false);
+            intervalEnabled = a.getBoolean(R.styleable.CustomViewExtension_intervalEnabled, false);
+            complexEnabled = a.getBoolean(R.styleable.CustomViewExtension_complexEnabled, true);
             newTermEnabled = a.getBoolean(R.styleable.CustomViewExtension_newTermEnabled, false);
+            fileOperationEnabled = a.getBoolean(R.styleable.CustomViewExtension_fileOperationEnabled, false);
+            final int arrayTypeInt = a.getInteger(R.styleable.CustomViewExtension_arrayType, -1);
+            if (arrayTypeInt >= 0 && arrayTypeInt < ArrayType.values().length)
+            {
+                arrayType = ArrayType.values()[arrayTypeInt];
+            }
+
+            // menu
             menuHandler.initialize(a);
             a.recycle();
         }
@@ -155,9 +178,9 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         }
     }
 
-    /*********************************************************
-     * Interface
-     *********************************************************/
+    /*--------------------------------------------------------*
+     * Custom content types
+     *--------------------------------------------------------*/
 
     public boolean isEmptyEnabled()
     {
@@ -184,6 +207,25 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         this.comparatorEnabled = comparatorEnabled;
     }
 
+    public boolean isNewTermEnabled()
+    {
+        return newTermEnabled;
+    }
+
+    public boolean isFileOperationEnabled()
+    {
+        return fileOperationEnabled;
+    }
+
+    public ArrayType getArrayType()
+    {
+        return arrayType;
+    }
+
+    /*--------------------------------------------------------*
+     * Interface
+     *--------------------------------------------------------*/
+
     public boolean isTextFragment()
     {
         return textFragment;
@@ -199,6 +241,11 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         return indexName;
     }
 
+    public void setIndexName(boolean indexName)
+    {
+        this.indexName = indexName;
+    }
+
     public boolean isIntermediateArgument()
     {
         return intermediateArgument;
@@ -209,15 +256,10 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         return calculatedValue;
     }
 
-    public boolean isNewTermEnabled()
-    {
-        return newTermEnabled;
-    }
-
     public boolean isConversionEnabled()
     {
         return !isEquationName() && !isIndexName() && !isIntermediateArgument() && !isTextFragment()
-                && !isCalculatedValue();
+                && !isCalculatedValue() && !isFileName();
     }
 
     public void updateTextSize(ScaledDimensions dimen, int termDepth, ScaledDimensions.Type paddingType)
@@ -230,7 +272,13 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
 
     public void updateMinimumWidth(ScaledDimensions dimen)
     {
-        setMinimumWidth(length() == 0 ? dimen.get(ScaledDimensions.Type.TEXT_MIN_WIDTH) : 0);
+        final int newWidth = length() == 0 ? dimen.get(ScaledDimensions.Type.TEXT_MIN_WIDTH) : 0;
+        final int prevWidth = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN ?
+                getMinimumWidth() : Integer.MIN_VALUE;
+        if (prevWidth != newWidth)
+        {
+            setMinimumWidth(newWidth);
+        }
     }
 
     public void setRequestFocusEnabled(boolean requestFocusEnabled)
@@ -243,19 +291,24 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         return requesFocusEnabled;
     }
 
-    /*********************************************************
+    public boolean isFileName()
+    {
+        return fileName;
+    }
+
+    /*--------------------------------------------------------*
      * Painting
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     @Override
     public int getBaseline()
     {
-        return (int) ((this.getMeasuredHeight() - getPaddingBottom() + getPaddingTop()) / 2);
+        return ((this.getMeasuredHeight() - getPaddingBottom() + getPaddingTop()) / 2);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Editing
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Set the text watcher interface
@@ -309,7 +362,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
             }
             if (textChangeIf != null)
             {
-                textChangeIf.beforeTextChanged(s.toString(), true);
+                textChangeIf.beforeTextChanged(true);
             }
         }
 
@@ -356,7 +409,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         }
     }
 
-    public boolean processDelKey(KeyEvent event)
+    private boolean processDelKey(KeyEvent event)
     {
         if (event.getAction() == KeyEvent.ACTION_DOWN && event.getKeyCode() == KeyEvent.KEYCODE_DEL
                 && getText().length() == 0 && !toBeDeleted)
@@ -373,7 +426,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
 
     private class TermInputConnection extends InputConnectionWrapper
     {
-        public TermInputConnection(InputConnection target, boolean mutable)
+        TermInputConnection(InputConnection target, boolean mutable)
         {
             super(target, mutable);
         }
@@ -445,11 +498,10 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         return super.dispatchKeyShortcutEvent(event);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Navigation
-     *********************************************************/
+     *--------------------------------------------------------*/
 
-    @SuppressLint("NewApi")
     @Override
     public void onFocusChange(View v, boolean hasFocus)
     {
@@ -463,10 +515,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
             setNextFocusLeftId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_LEFT));
             setNextFocusRightId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_RIGHT));
             setNextFocusUpId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_UP));
-            if (Build.VERSION.SDK_INT >= 11)
-            {
-                setNextFocusForwardId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_RIGHT));
-            }
+            setNextFocusForwardId(focusChangeIf.onGetNextFocusId(this, FocusChangeIf.NextFocusType.FOCUS_RIGHT));
         }
         if (formulaChangeIf != null)
         {
@@ -474,9 +523,9 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         }
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Context menu handling
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     /**
      * Procedure returns the parent action mode or null if there are no related mode
@@ -536,6 +585,27 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
             // null for input view means that we will start ActionMode without owner:
             // the root formula will be selected instead of owner term
             this.onLongClick(null);
+        }
+    }
+
+    /*--------------------------------------------------------*
+     * Performance optimization: fast color settings
+     *--------------------------------------------------------*/
+
+    private int backgroundDrawableId = Integer.MIN_VALUE;
+    private int backgroundAttrId = Integer.MIN_VALUE;
+
+    public void setBackgroundAttr(@DrawableRes int drawableId, @AttrRes int attrId)
+    {
+        if (this.backgroundDrawableId != drawableId)
+        {
+            this.backgroundDrawableId = drawableId;
+            setBackgroundResource(drawableId);
+        }
+        if (this.backgroundAttrId != attrId)
+        {
+            this.backgroundAttrId = attrId;
+            CompatUtils.updateBackgroundAttr(getContext(), this, drawableId, attrId);
         }
     }
 }

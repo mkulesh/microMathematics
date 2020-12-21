@@ -14,13 +14,11 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="MmdActionBarTheme" parent="AppBaseTheme">
-        <item name="android:actionBarItemBackground">@drawable/clickable_background</item>
+    <style name="AppBaseThemeLight" parent="BaseThemeLight">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="windowActionModeOverlay">true</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
     </style>
-    
+
     <style name="CustomProgressBarTheme" parent="Theme.AppCompat.Light">
         <item name="colorAccent">@color/material_grey_600</item>
         <item name="android:progressBackgroundTint">@color/material_grey_50</item>

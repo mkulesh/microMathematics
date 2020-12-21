@@ -18,12 +18,11 @@
     <dimen name="activity_horizontal_margin">8dp</dimen>
     <dimen name="activity_vertical_margin">1dp</dimen>
     <dimen name="activity_toolbar_height">@dimen/abc_action_bar_default_height_material</dimen>
-    <dimen name="activity_flb_margin">16dp</dimen>
     <dimen name="activity_flb_size">56dp</dimen>
     <dimen name="activity_main_list_padding_bottom">72dp</dimen> <!-- flb top offset related to tool bar -->
     <dimen name="activity_hidden_text_height">32dp</dimen>
-    <dimen name="activity_palette_button_padding">@dimen/abc_action_bar_default_padding_start_material</dimen>
     <dimen name="activity_palette_vertical_padding">@dimen/abc_action_bar_default_padding_start_material</dimen>
+    <dimen name="activity_palette_horizontal_padding">16dp</dimen>
 
     <!-- Dialogs -->
     <dimen name="dialog_title_text_size">@dimen/abc_text_size_subhead_material</dimen>
@@ -46,18 +45,19 @@
     <dimen name="formula_text_size">@dimen/abc_text_size_display_1_material</dimen>
     <dimen name="formula_text_minwidth">25dp</dimen>
     <dimen name="formula_hor_text_padding">3dp</dimen>
-    <dimen name="formula_big_symbol_size">48dp</dimen>
+    <dimen name="formula_big_symbol_size">52sp</dimen>
     <dimen name="formula_small_symbol_size">18dp</dimen>
     <dimen name="formula_hor_symbol_padding">4dp</dimen>
     <dimen name="formula_hor_bracket_padding">0dp</dimen>
     <dimen name="formula_vert_term_padding">4dp</dimen>
+    <dimen name="formula_matrix_column_padding">4dp</dimen>
 
     <!-- Function plot -->
     <dimen name="plot_grid_line_width">0.5dp</dimen>
     <dimen name="plot_label_line_size">3dp</dimen>
     <dimen name="plot_label_text_size">@dimen/abc_text_size_medium_material</dimen>
 
-    <!-- Number picker: Standart dimens for the buttons -->
+    <!-- Number picker: Standard dimens for the buttons -->
     <dimen name="number_picker_height">40dp</dimen>
     <dimen name="number_picker_number_size">@dimen/abc_text_size_large_material</dimen>
 

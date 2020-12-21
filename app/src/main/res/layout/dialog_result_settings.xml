@@ -28,13 +28,13 @@
             android:paddingBottom="@dimen/dialog_content_padding"
             android:paddingTop="@dimen/dialog_content_padding" >
 
-            <CheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/dialog_result_disable_calculation"
                 style="@style/CheckBoxStyle"
                 android:checked="false"
                 android:text="@string/dialog_result_disable_calculation" />
 
-            <CheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/dialog_result_hide_result_field"
                 style="@style/CheckBoxStyle"
                 android:checked="false"
@@ -44,7 +44,6 @@
                 android:id="@+id/dialog_result_array_length_picker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
                 android:orientation="horizontal"
                 android:visibility="gone"
                 micromath:label="@string/dialog_result_array_length" />

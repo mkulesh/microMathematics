@@ -43,7 +43,8 @@ public class CustomLayout extends LinearLayout
         NONE,
         TOP_OF_PREVIOUS,
         TOP_OF_NEXT,
-        BELOW_THE_NEXT
+        BELOW_THE_NEXT,
+        BELOW_THE_PREVIOUS
     }
 
     private SpecialAllignment specialAllignment = SpecialAllignment.NONE;
@@ -60,9 +61,9 @@ public class CustomLayout extends LinearLayout
     private boolean customFeaturesDisabled = false;
     private int textColor = Color.BLACK;
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public CustomLayout(Context context, AttributeSet attrs)
     {
@@ -103,7 +104,7 @@ public class CustomLayout extends LinearLayout
             verticalTermPadding = a.getBoolean(R.styleable.CustomViewExtension_verticalTermPadding, false);
             a.recycle();
         }
-        textColor = CompatUtils.getColor(getContext(), R.color.formula_text_color);
+        textColor = CompatUtils.getThemeColorAttr(getContext(), R.attr.colorFormulaNormal);
         paint.setStyle(Paint.Style.STROKE);
         paint.setColor(textColor);
         paint.setAntiAlias(true);
@@ -121,7 +122,7 @@ public class CustomLayout extends LinearLayout
         return SpecialAllignment.NONE;
     }
 
-    public void updateTextSize(ScaledDimensions dimen, int termDepth)
+    public void updateTextSize(ScaledDimensions dimen)
     {
         if (customFeaturesDisabled)
         {
@@ -143,8 +144,11 @@ public class CustomLayout extends LinearLayout
 
     public void setContentValid(boolean contentValid)
     {
-        this.contentValid = contentValid;
-        invalidate();
+        if (this.contentValid != contentValid)
+        {
+            this.contentValid = contentValid;
+            invalidate();
+        }
     }
 
     public void setCustomFeaturesDisabled(boolean customFeaturesDisabled)
@@ -152,13 +156,19 @@ public class CustomLayout extends LinearLayout
         this.customFeaturesDisabled = customFeaturesDisabled;
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Painting
-     *********************************************************/
+     *--------------------------------------------------------*/
 
-    private int baseLineForAllignedToTopOfChild(int currBaseLine, int currHeight, int prevBaseLine)
+    private int topOfPreviousBaseLine(int currBaseLine, int currHeight, int prevBaseLine)
     {
         return currBaseLine + Math.max(0, (currHeight - currBaseLine) - prevBaseLine);
+    }
+
+    private int belowThePreviousBaseLine(int currHeight, int currBaseLine, int prevHeight, int prevBaseLine)
+    {
+        final int bl = currBaseLine + 2 * (currHeight - currBaseLine) / 3;
+        return bl - Math.max(0, bl - (prevHeight - prevBaseLine));
     }
 
     @Override
@@ -174,7 +184,8 @@ public class CustomLayout extends LinearLayout
         {
             final View child = getChildAt(i);
             final SpecialAllignment spAl = getSpecialAllignment(child);
-            if (child.getVisibility() == GONE || spAl == SpecialAllignment.BELOW_THE_NEXT)
+            if (child.getVisibility() == GONE || spAl == SpecialAllignment.BELOW_THE_NEXT
+                    || spAl == SpecialAllignment.BELOW_THE_PREVIOUS)
             {
                 continue;
             }
@@ -182,7 +193,7 @@ public class CustomLayout extends LinearLayout
             if (spAl == SpecialAllignment.TOP_OF_PREVIOUS)
             {
                 final int tmpBaseLine = prevBaseLine
-                        + baseLineForAllignedToTopOfChild(currBaseLine, child.getMeasuredHeight(), prevBaseLine);
+                        + topOfPreviousBaseLine(currBaseLine, child.getMeasuredHeight(), prevBaseLine);
                 baseLine = Math.max(baseLine, tmpBaseLine + getPaddingTop());
             }
             else if (spAl == SpecialAllignment.TOP_OF_NEXT && (i + 1) < getChildCount())
@@ -192,7 +203,7 @@ public class CustomLayout extends LinearLayout
                 {
                     final int nextBaseLine = nextChild.getBaseline();
                     final int tmpBaseLine = nextBaseLine
-                            + baseLineForAllignedToTopOfChild(currBaseLine, child.getMeasuredHeight(), nextBaseLine);
+                            + topOfPreviousBaseLine(currBaseLine, child.getMeasuredHeight(), nextBaseLine);
                     baseLine = Math.max(baseLine, tmpBaseLine + getPaddingTop());
                 }
             }
@@ -220,7 +231,7 @@ public class CustomLayout extends LinearLayout
         final int count = getChildCount();
 
         // Measurement will ultimately be computing these values.
-        int m1 = 0, m2 = 0, maxHeight = 0, maxWidth = 0, childState = 0, prevBaseLine = 0;
+        int m1 = 0, m2 = 0, maxHeight = 0, maxWidth = 0, childState = 0, prevBaseLine = 0, prevHeight = 0;
 
         // The first pass: measure all children
         for (int i = 0; i < count; i++)
@@ -255,18 +266,24 @@ public class CustomLayout extends LinearLayout
             final LayoutParams lp = (LayoutParams) child.getLayoutParams();
             maxWidth += (child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin);
 
-            // calculate height depending on the layout parameters 
+            // calculate height depending on the layout parameters
             if (lp.height == ViewGroup.LayoutParams.MATCH_PARENT)
             {
                 continue;
             }
             final int currBaseLine = child.getBaseline();
+            final int currHeight = child.getMeasuredHeight();
             if (spAl == SpecialAllignment.TOP_OF_PREVIOUS)
             {
-                final int tmpBaseLine = prevBaseLine
-                        + baseLineForAllignedToTopOfChild(currBaseLine, child.getMeasuredHeight(), prevBaseLine);
+                final int tmpBaseLine = prevBaseLine + topOfPreviousBaseLine(currBaseLine, currHeight, prevBaseLine);
                 m1 = Math.max(m1, tmpBaseLine);
-                m2 = Math.max(m2, child.getMeasuredHeight() - tmpBaseLine);
+                m2 = Math.max(m2, currHeight - tmpBaseLine);
+            }
+            else if (spAl == SpecialAllignment.BELOW_THE_PREVIOUS)
+            {
+                final int tmpBaseLine = belowThePreviousBaseLine(currHeight, currBaseLine, prevHeight, prevBaseLine);
+                m1 = Math.max(m1, tmpBaseLine);
+                m2 = Math.max(m2, prevHeight - prevBaseLine + currHeight - tmpBaseLine);
             }
             else if (spAl == SpecialAllignment.TOP_OF_NEXT && (i + 1) < getChildCount())
             {
@@ -276,17 +293,18 @@ public class CustomLayout extends LinearLayout
                 {
                     final int nextBaseLine = nextChild.getBaseline();
                     final int tmpBaseLine = nextBaseLine
-                            + baseLineForAllignedToTopOfChild(currBaseLine, child.getMeasuredHeight(), nextBaseLine);
+                            + topOfPreviousBaseLine(currBaseLine, currHeight, nextBaseLine);
                     m1 = Math.max(m1, tmpBaseLine);
-                    m2 = Math.max(m2, child.getMeasuredHeight() - tmpBaseLine);
+                    m2 = Math.max(m2, currHeight - tmpBaseLine);
                 }
             }
             else
             {
                 m1 = Math.max(m1, currBaseLine);
-                m2 = Math.max(m2, child.getMeasuredHeight() - currBaseLine);
+                m2 = Math.max(m2, currHeight - currBaseLine);
             }
             prevBaseLine = currBaseLine;
+            prevHeight = currHeight;
         }
 
         // Check against our minimum height and width
@@ -340,7 +358,7 @@ public class CustomLayout extends LinearLayout
         final int baseLine = getBaseline();
 
         // These are the far left and right edges in which we are performing layout.
-        int prevLeftPos = getPaddingLeft(), prevTopPos = baseLine, prevBaseLine = 0;
+        int prevLeftPos = getPaddingLeft(), prevTopPos = baseLine, prevBottomPos = baseLine, prevBaseLine = 0;
 
         // the first pass
         boolean isAllignToTopOfNext = false, isAllignBelowTheNext = false;
@@ -359,15 +377,14 @@ public class CustomLayout extends LinearLayout
             mTmpContainerRect.left = prevLeftPos + lp.leftMargin;
             mTmpContainerRect.right = prevLeftPos + width + lp.rightMargin;
 
-            // calculate height depending on the layout parameters 
-            final int height = child.getMeasuredHeight();
+            // calculate height depending on the layout parameters
+            final int currHeight = child.getMeasuredHeight();
             if (lp.height != LayoutParams.MATCH_PARENT)
             {
                 final int currBaseLine = child.getBaseline();
                 if (spAl == SpecialAllignment.TOP_OF_PREVIOUS)
                 {
-                    final int tmpBaseLine = baseLineForAllignedToTopOfChild(currBaseLine, child.getMeasuredHeight(),
-                            prevBaseLine);
+                    final int tmpBaseLine = topOfPreviousBaseLine(currBaseLine, currHeight, prevBaseLine);
                     mTmpContainerRect.top = prevTopPos - tmpBaseLine - lp.topMargin;
                     prevBaseLine = currBaseLine;
                 }
@@ -380,14 +397,21 @@ public class CustomLayout extends LinearLayout
                 else if (spAl == SpecialAllignment.BELOW_THE_NEXT)
                 {
                     isAllignBelowTheNext = true;
-                    mTmpContainerRect.top = parentBottom - height;
+                    mTmpContainerRect.top = parentBottom - currHeight;
+                }
+                else if (spAl == SpecialAllignment.BELOW_THE_PREVIOUS)
+                {
+                    final int tmpBaseLine = belowThePreviousBaseLine(currHeight, currBaseLine, prevBottomPos
+                            - prevTopPos, prevBaseLine);
+                    mTmpContainerRect.top = prevBottomPos - tmpBaseLine;
+                    prevBaseLine = currBaseLine;
                 }
                 else
                 {
                     mTmpContainerRect.top = baseLine - currBaseLine - lp.topMargin;
                     prevBaseLine = currBaseLine;
                 }
-                mTmpContainerRect.bottom = mTmpContainerRect.top + height + lp.bottomMargin;
+                mTmpContainerRect.bottom = mTmpContainerRect.top + currHeight + lp.bottomMargin;
             }
             else
             {
@@ -397,18 +421,19 @@ public class CustomLayout extends LinearLayout
 
             // Use the child's gravity and size to determine its final
             // frame within its container.
-            Gravity.apply(lp.gravity, width, height, mTmpContainerRect, mTmpChildRect);
+            Gravity.apply(lp.gravity, width, currHeight, mTmpContainerRect, mTmpChildRect);
 
             // Place the child.
             child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
             if (spAl != SpecialAllignment.BELOW_THE_NEXT)
             {
                 prevTopPos = mTmpChildRect.top;
+                prevBottomPos = mTmpChildRect.bottom;
                 prevLeftPos = mTmpContainerRect.right;
             }
         }
 
-        // the second pass if there is a child aligned to top of next 
+        // the second pass if there is a child aligned to top of next
         if (isAllignToTopOfNext)
         {
             for (int i = 0; (i < count) && (i + 1 < count); i++)
@@ -420,8 +445,8 @@ public class CustomLayout extends LinearLayout
                         && lp.height == ViewGroup.LayoutParams.WRAP_CONTENT && nextChild.getVisibility() != GONE
                         && nextChild.getLayoutParams().height == ViewGroup.LayoutParams.WRAP_CONTENT)
                 {
-                    final int tmpBaseLine = baseLineForAllignedToTopOfChild(child.getBaseline(),
-                            child.getMeasuredHeight(), nextChild.getBaseline());
+                    final int tmpBaseLine = topOfPreviousBaseLine(child.getBaseline(), child.getMeasuredHeight(),
+                            nextChild.getBaseline());
                     final int width = child.getMeasuredWidth();
                     final int height = child.getMeasuredHeight();
                     mTmpContainerRect.left = child.getLeft();
@@ -434,7 +459,7 @@ public class CustomLayout extends LinearLayout
             }
         }
 
-        // the third pass if there is a child aligned below the next 
+        // the third pass if there is a child aligned below the next
         if (isAllignBelowTheNext)
         {
             for (int i = 0; (i < count) && (i + 1 < count); i++)
@@ -466,13 +491,9 @@ public class CustomLayout extends LinearLayout
 
         if (symbolType != null)
         {
-            switch (symbolType)
+            if (symbolType == SymbolType.SQRT)
             {
-            case SQRT:
                 drawSqrt(c);
-                break;
-            default:
-                break;
             }
         }
 
@@ -480,7 +501,7 @@ public class CustomLayout extends LinearLayout
         {
             paint.setStyle(Style.STROKE);
             paint.setStrokeWidth(ViewUtils.dpToPx(getContext().getResources().getDisplayMetrics(), 1));
-            paint.setColor(CompatUtils.getColor(getContext(), R.color.formula_invalid_content_color));
+            paint.setColor(CompatUtils.getThemeColorAttr(getContext(), R.attr.colorFormulaInvalid));
             c.drawRect(1, 1, this.getRight() - this.getLeft() - 1, this.getBottom() - this.getTop() - 1, paint);
         }
 

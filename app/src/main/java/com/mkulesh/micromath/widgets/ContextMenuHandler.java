@@ -14,12 +14,13 @@ package com.mkulesh.micromath.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
 
 import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.ClipboardManager;
@@ -38,12 +39,12 @@ public class ContextMenuHandler
 
         private final int resId;
 
-        private Type(int resId)
+        Type(int resId)
         {
             this.resId = resId;
         }
 
-        public int getResId()
+        int getResId()
         {
             return resId;
         }
@@ -54,7 +55,6 @@ public class ContextMenuHandler
     private FormulaChangeIf formulaChangeIf = null;
     private androidx.appcompat.view.ActionMode actionMode = null;
     private View actionModeOwner = null;
-    private Menu menu = null;
 
     public ContextMenuHandler(Context context)
     {
@@ -73,7 +73,7 @@ public class ContextMenuHandler
         enabled[Type.PASTE.ordinal()] = a.getBoolean(R.styleable.CustomViewExtension_contextMenuPaste, true);
     }
 
-    public boolean isMenuEmpty()
+    private boolean isMenuEmpty()
     {
         for (int i = 0; i < Type.values().length; i++)
         {
@@ -90,7 +90,7 @@ public class ContextMenuHandler
         return actionMode;
     }
 
-    private ActionMode.Callback actionModeCallback = new ActionMode.Callback()
+    private final ActionMode.Callback actionModeCallback = new ActionMode.Callback()
     {
         // Called when the action mode is created; startActionMode() was called
         @Override
@@ -98,18 +98,13 @@ public class ContextMenuHandler
         {
             MenuInflater inflater = mode.getMenuInflater();
             inflater.inflate(R.menu.context_menu, menu);
-            ContextMenuHandler.this.menu = menu;
             for (int i = 0; i < menu.size(); i++)
             {
-                ViewUtils.setMenuIconColor(context, menu.getItem(i), R.color.micromath_icons);
+                ViewUtils.updateMenuIconColor(context, menu.getItem(i));
             }
             for (int i = 0; i < Type.values().length; i++)
             {
                 menu.findItem(Type.values()[i].getResId()).setVisible(enabled[i]);
-            }
-            if (formulaChangeIf != null)
-            {
-                formulaChangeIf.onCreateContextMenu(actionModeOwner, ContextMenuHandler.this);
             }
             return true;
         }
@@ -156,7 +151,7 @@ public class ContextMenuHandler
         ArrayList<View> list = null;
         if (this.actionModeOwner != null && this.actionModeOwner instanceof CustomEditText)
         {
-            list = new ArrayList<View>();
+            list = new ArrayList<>();
             list.add(this.actionModeOwner);
         }
 
@@ -175,7 +170,7 @@ public class ContextMenuHandler
         switch (itemId)
         {
         case R.id.context_menu_expand:
-            FormulaChangeIf newIf = formulaChangeIf.onExpandSelection(actionModeOwner, this);
+            FormulaChangeIf newIf = formulaChangeIf.onExpandSelection(actionModeOwner);
             if (newIf != null)
             {
                 formulaChangeIf = newIf;
@@ -223,17 +218,4 @@ public class ContextMenuHandler
         }
         return true;
     }
-
-    public void setMenuVisible(int id, boolean visible)
-    {
-        for (int i = 0; i < menu.size(); i++)
-        {
-            if (id == menu.getItem(i).getItemId())
-            {
-                menu.getItem(i).setVisible(visible);
-                break;
-            }
-        }
-    }
-
 }

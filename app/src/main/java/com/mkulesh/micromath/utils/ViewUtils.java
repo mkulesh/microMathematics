@@ -16,8 +16,12 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Picture;
 import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
+import android.graphics.drawable.PictureDrawable;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -28,15 +32,12 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.mkulesh.micromath.R;
+import androidx.annotation.AttrRes;
+
 import com.mkulesh.micromath.formula.FormulaBase;
+import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.widgets.TwoDScrollView;
 
-import org.apache.commons.math3.util.FastMath;
-
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -105,13 +106,12 @@ public final class ViewUtils
     /**
      * Procedure returns an array of formatted values
      */
-    public static String[] catValues(double[] values, int significantDigits)
+    public static String[] catValues(double[] values, final int significantDigits)
     {
-        final int strMaxLength = significantDigits;
         final int decMaxLength = Math.max(0, significantDigits - 2);
         final int expMaxLength = Math.max(0, significantDigits - 2);
         String[] strValues = new String[values.length];
-        Set<String> trial = new HashSet<String>();
+        Set<String> trial = new HashSet<>();
 
         // First run: try to find suitable simple decimal format
         // Second run: we shall use exponential format to ensure given maximum length
@@ -121,11 +121,12 @@ public final class ViewUtils
             boolean resultFound = false;
             for (int pos = 0; pos <= maxLength; pos++)
             {
-                String format = (pos < 1) ? "0" : "0.";
+                StringBuilder formatBuilder = new StringBuilder((pos < 1) ? "0" : "0.");
                 for (int k = 0; k < pos; k++)
                 {
-                    format += "0";
+                    formatBuilder.append("0");
                 }
+                String format = formatBuilder.toString();
                 if (run == 1)
                 {
                     format += "E0";
@@ -137,7 +138,7 @@ public final class ViewUtils
                 for (int i = 0; i < values.length; i++)
                 {
                     String fValue = (values[i] != 0.0) ? df.format(values[i]) : "0";
-                    if (fValue != null && (format.equals(fValue) || ("-" + format).equals(fValue)))
+                    if (format.equals(fValue) || ("-" + format).equals(fValue))
                     {
                         fValue = "0";
                     }
@@ -152,84 +153,13 @@ public final class ViewUtils
                 {
                     return strValues;
                 }
-                if (!hasDuplicate && trialLength <= strMaxLength)
+                if (!hasDuplicate && trialLength <= significantDigits)
                 {
                     resultFound = true;
                 }
             }
         }
         return strValues;
-    }
-
-    /**
-     * Procedure checks duplicate elements
-     */
-    public static boolean checkDuplicate(String[] input)
-    {
-        Set<String> tempSet = new HashSet<String>();
-        for (String str : input)
-        {
-            if (!tempSet.add(str))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Procedure rounds the given value to the given number of significant digits see
-     * http://stackoverflow.com/questions/202302
-     *
-     * Note: The maximum double value in Java is on the order of 10^308, while the minimum value is on the order of
-     * 10^-324. Therefore, you can run into trouble when applying the function roundToSignificantFigures to something
-     * that's within a few powers of ten of Double.MIN_VALUE.
-     *
-     * Consequently, the variable magnitude may become Infinity, and it's all garbage from then on out. Fortunately,
-     * this is not an insurmountable problem: it is only the factor magnitude that's overflowing. What really matters is
-     * the product num * magnitude, and that does not overflow. One way of resolving this is by breaking up the
-     * multiplication by the factor magintude into two steps.
-     */
-    public static double roundToNumberOfSignificantDigits(double num, int n)
-    {
-        final double maxPowerOfTen = FastMath.floor(FastMath.log10(Double.MAX_VALUE));
-
-        if (num == 0)
-        {
-            return 0;
-        }
-
-        try
-        {
-            return new BigDecimal(num).round(new MathContext(n, RoundingMode.HALF_EVEN)).doubleValue();
-        }
-        catch (ArithmeticException ex)
-        {
-            // nothing to do
-        }
-
-        final double d = FastMath.ceil(FastMath.log10(num < 0 ? -num : num));
-        final int power = n - (int) d;
-
-        double firstMagnitudeFactor = 1.0;
-        double secondMagnitudeFactor = 1.0;
-        if (power > maxPowerOfTen)
-        {
-            firstMagnitudeFactor = FastMath.pow(10.0, maxPowerOfTen);
-            secondMagnitudeFactor = FastMath.pow(10.0, (double) power - maxPowerOfTen);
-        }
-        else
-        {
-            firstMagnitudeFactor = FastMath.pow(10.0, (double) power);
-        }
-
-        double toBeRounded = num * firstMagnitudeFactor;
-        toBeRounded *= secondMagnitudeFactor;
-
-        final long shifted = FastMath.round(toBeRounded);
-        double rounded = ((double) shifted) / firstMagnitudeFactor;
-        rounded /= secondMagnitudeFactor;
-        return rounded;
     }
 
     /**
@@ -296,33 +226,24 @@ public final class ViewUtils
     public static void invalidateLayout(View v, final LinearLayout l)
     {
         v.invalidate();
-        l.post(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                l.requestLayout();
-            }
-        });
+        l.post(l::requestLayout);
     }
 
     /**
      * Procedure updates menu item color depends its enabled state
      */
-    public static void setMenuIconColor(Context context, MenuItem m, int color)
+    public static void updateMenuIconColor(Context context, MenuItem m)
     {
-        Drawable drawable = m.getIcon();
-        if (drawable != null)
-        {
-            final int c = CompatUtils.getColor(context, m.isEnabled()? color : R.color.micromath_primary_dark);
-            drawable.clearColorFilter();
-            drawable.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
-        }
+        CompatUtils.setDrawableColorAttr(context, m.getIcon(),
+                m.isEnabled() ? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark);
     }
 
-    public static void setButtonIconColor(Context context, ImageButton b, int color)
+    /**
+     * Procedure sets ImageButton color given by attribute ID
+     */
+    public static void setImageButtonColorAttr(Context context, ImageButton b, @AttrRes int resId)
     {
-        final int c = CompatUtils.getColor(context, b.isEnabled()? color : R.color.micromath_primary_dark);
+        final int c = CompatUtils.getThemeColorAttr(context, resId);
         b.clearColorFilter();
         b.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
     }
@@ -344,5 +265,23 @@ public final class ViewUtils
             result = activity.getResources().getDimensionPixelSize(resourceId);
         }
         return result;
+    }
+
+    public static Bitmap pictureToBitmap(final Picture picture, final int w, final int h)
+    {
+        final PictureDrawable pd = new PictureDrawable(picture);
+        final Bitmap bitmap = Bitmap.createBitmap(w, h, getBitmapConfig());
+        final Canvas canvas = new Canvas(bitmap);
+        canvas.drawPicture(pd.getPicture());
+        return bitmap;
+    }
+
+    private static Bitmap.Config getBitmapConfig()
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            return Bitmap.Config.RGBA_F16;
+        }
+        return Bitmap.Config.ARGB_8888;
     }
 }

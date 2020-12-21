@@ -18,9 +18,9 @@ import android.widget.LinearLayout;
 
 public class SizeChangingLayout extends LinearLayout
 {
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Creating
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public SizeChangingLayout(Context context, AttributeSet attrs)
     {
@@ -32,13 +32,13 @@ public class SizeChangingLayout extends LinearLayout
         super(context);
     }
 
-    /*********************************************************
+    /*--------------------------------------------------------*
      * Size change monitoring
-     *********************************************************/
+     *--------------------------------------------------------*/
 
     public interface SizeChangedIf
     {
-        void onSizeChanged(SizeChangingLayout owner, int w, int h);
+        void onHeightChanged(int h);
     }
 
     private SizeChangedIf sizeChangedIf = null;
@@ -54,7 +54,7 @@ public class SizeChangingLayout extends LinearLayout
         super.onSizeChanged(w, h, oldw, oldh);
         if (sizeChangedIf != null)
         {
-            sizeChangedIf.onSizeChanged(this, w, h);
+            sizeChangedIf.onHeightChanged(h);
         }
     }
 

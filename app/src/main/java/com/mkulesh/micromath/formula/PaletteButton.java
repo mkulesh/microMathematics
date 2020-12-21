@@ -13,10 +13,14 @@
 package com.mkulesh.micromath.formula;
 
 import android.content.Context;
-import androidx.appcompat.widget.AppCompatImageButton;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.ViewGroup;
 
+import androidx.annotation.AttrRes;
+import androidx.appcompat.widget.AppCompatImageButton;
+
+import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.ViewUtils;
 
@@ -26,12 +30,16 @@ public class PaletteButton extends AppCompatImageButton
 {
     public enum Category
     {
-        INTERVAL,
-        CONVERSION
+        NEW_TERM,
+        TOP_LEVEL_TERM,
+        CONVERSION,
+        INDEX,
+        COMPARATOR
     }
 
+    private String group = "";
     private String code = null;
-    private String shortCut = null;
+    private int imageId = Palette.NO_BUTTON;
     private Category[] categories = null;
     private final boolean[] enabled = new boolean[Category.values().length];
 
@@ -47,14 +55,34 @@ public class PaletteButton extends AppCompatImageButton
         enableAll();
     }
 
-    public PaletteButton(Context context, int shortCutId, int imageId, int descriptionId, String code)
+    public PaletteButton(Context context, TermTypeIf b)
+    {
+        this(context, b.getGroupType().toString(), b.getLowerCaseName(),
+                b.getImageId(), b.getDescriptionId(), b.getShortCutId());
+        this.categories = new Category[1];
+        this.categories[0] = b.getPaletteCategory();
+    }
+
+    public PaletteButton(Context context, String group, String code, int imageId, int descriptionId, int shortCutId)
     {
         super(context);
         final int buttonSize = context.getResources().getDimensionPixelSize(R.dimen.activity_toolbar_height) - 2
                 * context.getResources().getDimensionPixelSize(R.dimen.activity_palette_vertical_padding);
-        setImageResource(imageId);
-        setBackgroundResource(R.drawable.clickable_background);
         setLayoutParams(new ViewGroup.LayoutParams(buttonSize, buttonSize));
+
+        TypedValue outValue = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.selectableItemBackground, outValue, true);
+        setBackgroundResource(outValue.resourceId);
+
+        this.group = group;
+        this.code = code;
+        this.imageId = imageId;
+        if (hasImage())
+        {
+            setImageResource(imageId);
+        }
+
+        String shortCut = null;
         if (shortCutId != Palette.NO_BUTTON)
         {
             shortCut = context.getResources().getString(shortCutId);
@@ -71,9 +99,14 @@ public class PaletteButton extends AppCompatImageButton
             setContentDescription(description);
             setLongClickable(true);
         }
-        this.code = code;
         enableAll();
-        ViewUtils.setButtonIconColor(getContext(), this, R.color.micromath_icons);
+        ViewUtils.setImageButtonColorAttr(getContext(), this,
+                isEnabled() ? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark);
+    }
+
+    public String getGroup()
+    {
+        return group;
     }
 
     public String getCode()
@@ -81,9 +114,9 @@ public class PaletteButton extends AppCompatImageButton
         return code;
     }
 
-    public String getShortCut()
+    public boolean hasImage()
     {
-        return shortCut;
+        return imageId != Palette.NO_BUTTON;
     }
 
     public Category[] getCategories()
@@ -112,6 +145,21 @@ public class PaletteButton extends AppCompatImageButton
                 super.setEnabled(false);
                 break;
             }
+        }
+    }
+
+    /*--------------------------------------------------------*
+     * Performance optimization: fast color settings
+     *--------------------------------------------------------*/
+
+    private int colorAttrId = Integer.MIN_VALUE;
+
+    public void setColorAttr(@AttrRes int attrId)
+    {
+        if (this.colorAttrId != attrId)
+        {
+            this.colorAttrId = attrId;
+            ViewUtils.setImageButtonColorAttr(getContext(), this, attrId);
         }
     }
 }

@@ -39,9 +39,9 @@
         android:layout_height="match_parent"
         android:layout_width="wrap_content"
         android:layout_gravity="start"
-        android:background="@color/micromath_background"
+        android:background="?attr/colorMicroMathNavigator"
         app:itemTextColor="@color/drawer_text_color"
-        app:itemIconTint="@color/micromath_secondary_text"
+        app:itemIconTint="?attr/android:textColorSecondary"
         app:headerLayout="@layout/activity_drawer_header"
         app:menu="@menu/activity_drawer_items"/>
 

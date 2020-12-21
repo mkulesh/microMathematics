@@ -56,11 +56,12 @@
     
     <!-- Permissions -->
     <string name="allow_storage_access_title">Разрешить обращаться к файлам документов</string>
-    <string name="allow_storage_access_description">microMathematics запрашивает разрешение, чтобы обращаться к файлам документов на вашем устройстве</string>
+    <string name="allow_storage_access_description">microMathematics Plus запрашивает разрешение, чтобы обращаться к файлам документов на вашем устройстве</string>
     <string name="allow_storage_access_grant">Дать разрешение</string>
-
+    
     <!-- Main menu -->
     <string name="action_exit">Выйти</string>
+    <string name="action_exit_confirm">Для выхода нажмите кнопку \"Назад\" ещё раз</string>
     <string name="action_play">Вычислить</string>
     <string name="action_stop">Прервать вычисления</string>
     <string name="action_object_properties">Настройки объекта</string>
@@ -81,14 +82,20 @@
     <string name="context_cut">Вырезать</string>
     <string name="context_paste">Вставить</string>
 
-    <!-- Application settings -->
+    <!-- Application settings: Languages -->
     <string name="pref_app_language">Язык приложения</string>
-    <string name="pref_developer_mode">Режим разработчика</string>
-    <string-array name="pref_language_names">
-        <item>Английский</item>
-        <item>Русский</item>
-        <item>Немецкий</item>
+
+    <!-- Application settings: zoom mode -->
+    <string name="pref_zoom">Масштабирование</string>
+    <string-array name="pref_zoom_names">
+        <item>Разрешить</item>
+        <item>Отключить по двойному нажатию</item>
+        <item>Отключить</item>
     </string-array>
+
+    <!-- Other application settings -->
+    <string name="pref_developer_mode">Режим разработчика</string>
+    <string name="pref_exit_confirm">Для выхода нажать кнопку \"Назад\" два раза</string>
 
     <!-- Dialogs -->
     <string name="dialog_navigation_accept">Согласен</string>
@@ -104,6 +111,7 @@
     <string name="dialog_axis_settings_title">Настройка сетки</string>
     <string name="dialog_axis_settings_xlabels">Количество по X</string>
     <string name="dialog_axis_settings_ylabels">Количество по Y</string>
+    <string name="dialog_axis_settings_type_log10">Логарифмический масштаб</string>
     <string name="dialog_plot_settings_title">Настройка графика</string>
     <string name="dialog_plot_settings_width">Ширина</string>
     <string name="dialog_plot_settings_height">Высота</string>
@@ -116,6 +124,16 @@
     <string name="dialog_plot_point_circle">Круг</string>
     <string name="dialog_plot_point_diamond">Ромб</string>
     <string name="dialog_plot_point_cross">Крест</string>
+    <string name="dialog_surface_settings_contour">Контурный график</string>
+    <string name="dialog_surface_settings_surface">Поверхность</string>
+    <string name="dialog_surface_settings_mesh_lines">Показывать линии сетки</string>
+    <string name="dialog_surface_settings_mesh_fill">Заливка цветом</string>
+    <string name="dialog_surface_settings_mesh_opacity">Прозрачность</string>
+    <string name="dialog_surface_settings_rotation">Угол поворота</string>
+    <string name="dialog_surface_settings_elevation">Угол наклона</string>
+    <string name="dialog_document_settings_author">Автор</string>
+    <string name="dialog_document_settings_document_title">Заголовок</string>
+    <string name="dialog_document_settings_description">Описание</string>
     <string name="dialog_document_settings_reformat">Форматировать текст</string>
     <string name="dialog_document_settings_width_size">Длина строки</string>
     <string name="dialog_document_settings_significant_digits">Значимые цифры в результате</string>
@@ -130,6 +148,8 @@
     <string name="dialog_image_settings_custom_size">Задать размер</string>
     <string name="dialog_image_settings_width">Ширина</string>
     <string name="dialog_image_settings_height">Высота</string>
+    <string name="dialog_image_settings_original_color">Оригинальный цвет</string>
+    <string name="dialog_image_settings_auto_color">Автоматический цвет</string>
     <string name="dialog_result_title">Текстовый результат</string>
     <string name="dialog_result_disable_calculation">Не вычислять</string>
     <string name="dialog_result_hide_result_field">Скрыть поле с результатом</string>
@@ -142,15 +162,19 @@
     <string name="dialog_text_style_text_body">Основной текст</string>
     <string name="dialog_text_style_numbering">Нумеровать</string>
     <string name="dialog_list_items">элемент (ов)</string>
-
+    <string name="dialog_function_selection">Функция</string>
+    <string name="dialog_palette_settings_title">Настройка панели инструментов</string>
+    
     <!-- Mathematical elements -->
     <string name="math_new_element">Вставить</string>
     <string name="math_new_equation">Вставить формулу</string>
     <string name="math_new_result">Вставить текстовый результат</string>
     <string name="math_new_function_plot">Вставить график функции</string>
+    <string name="math_new_contour_plot">Вставить 3D график</string>
     <string name="math_new_text_fragment">Вставить текстовое поле</string>
     <string name="math_new_image_fragment">Вставить изображение из файла</string>
     <string name="image_fragment_text">Долгое нажатие для настройки изображения</string>
+    <string name="math_new_term">Вставить аргумент</string>
     <string name="math_equidistant_interval">Интервал</string>
     <string name="math_operator_plus">Сложение</string>
     <string name="math_operator_minus">Вычитание</string>
@@ -159,8 +183,12 @@
     <string name="math_operator_divide_slash">Деление</string>
     <string name="math_function_identity">Круглые скобки</string>
     <string name="math_function_power">Возведение в степень</string>
-    <string name="math_function_abs">Модуль аргумента</string>
+    <string name="math_function_abs">Модуль вещественного или комплексного числа</string>
+    <string name="math_function_conjugate">Комплексно-сопряжённое значение аргумента</string>
+    <string name="math_function_re">Вещественная часть комплексного аргумента</string>
+    <string name="math_function_im">Мнимая часть комплексного аргумента</string>
     <string name="math_function_sqrt">Квадратный корень аргумента</string>
+    <string name="math_function_nthrt">Корень произвольной степени от аргумента</string>
     <string name="math_function_sin">Синус аргумента</string>
     <string name="math_function_asin">Обратный синус аргумента в интервале [-pi/2..pi/2]</string>
     <string name="math_function_sinh">Гиперболический синус аргумента</string>
@@ -169,14 +197,32 @@
     <string name="math_function_cosh">Гиперболический косинус аргумента</string>
     <string name="math_function_tan">Тангенс аргумента</string>
     <string name="math_function_atan">Обратный тангенс аргумента в интервале [-pi/2..pi/2]</string>
+    <string name="math_function_atan2">Обратный тангенс y/x в интервале [-pi..pi]</string>
     <string name="math_function_tanh">Гиперболический тангенс аргумента</string>
     <string name="math_function_exp">Возведение \'e\' в степень аргумента</string>
-    <string name="math_function_log">Натуральный логарифм аргумента</string>
+    <string name="math_function_ln">Натуральный логарифм аргумента</string>
+    <string name="math_function_log">Логарифм аргумента по произвольному основанию</string>
     <string name="math_function_log10">Десятичный логарифм аргумента</string>
     <string name="math_function_ceil">Ближайшее (справа) целое значение, которое больше или равно значению аргумента</string>
     <string name="math_function_floor">Ближайшее (слева) целое значение, которое меньше или равно значению аргумента</string>
-    <string name="math_function_rnd">Псевдослучайное число между нулём и значением аргумента</string>
+    <string name="math_function_random">Псевдослучайное число между нулём и значением аргумента</string>
     <string name="math_function_factorial">Факториал: произведение всех позитивных целых чисел меньше или равных аргументу</string>
+    <string name="math_function_max">Наибольшее значение из двух аргументов</string>
+    <string name="math_function_min">Наименьшее значение из двух аргументов</string>
+    <string name="math_function_mod">Врзвращает остаток от деления первого аргумента на второй</string>
+    <string name="math_function_perc">Вычисляет процент (заданный вторым аргументом) от первого аргумента</string>
+    <string name="math_function_round">Округляет первый аргумент до указанного числа дробных разрядов</string>
+    <string name="math_function_trunc">Вычисляет целую часть аргумента</string>
+    <string name="math_function_sign">Возвращает целое число, указывающее знак аргумента</string>
+    <string name="math_function_csc">Косеканс аргумента</string>
+    <string name="math_function_sec">Секанс аргумента</string>
+    <string name="math_function_cot">Котангенс аргумента</string>
+    <string name="math_function_acsc">Обратный косеканс аргумента</string>
+    <string name="math_function_asec">Обратный секанс аргумента</string>
+    <string name="math_function_acot">Обратный котангенс аргумента</string>
+    <string name="math_function_csch">Гиперболический косеканс аргумента</string>
+    <string name="math_function_sech">Гиперболический секанс аргумента</string>
+    <string name="math_function_coth">Гиперболический котангенс аргумента</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">К сожалению, достигнут предел глубины формулы для данной версии Android</string>
@@ -184,7 +230,13 @@
     <string name="error_invalid_variable_name">Недопустимое имя</string>
     <string name="error_unknown_variable">Символ не является известной переменной или аргументом</string>
     <string name="error_unknown_function">Функция %s не является встроенной и не определена ранее</string>
-    <string name="error_recursive_call">Функция вызывается рекурсивно из своего определения</string>
+    <string name="error_unknown_array">Массив %s не определён</string>
+    <string name="error_not_an_array">Недопустимое использование индекса, так как %s не является массивом</string>
+    <string name="error_not_a_function">Недопустимое использование аргумента, так как %s не является функцией</string>
+    <string name="error_invalid_array_dimension">Массивы размерностью %s пока не поддерживаются</string>
+    <string name="error_invalid_array_interval">Интервал %s используется, однако не указан как индекс</string>
+    <string name="error_invalid_array_index">Индекс %s не является известным интервалом</string>
+    <string name="error_recursive_call">Выражение вызывается рекурсивно из своего определения</string>
     <string name="error_not_differentiable">Функция не является дифференциируемой по %s</string>
     <string name="error_invalid_brackets_order">Неверный порядок скобок</string>
     <string name="error_empty_argument_list">Необходимо указать аргументы функции</string>
@@ -192,10 +244,13 @@
     <string name="error_empty_argument">Необходимо указать имя аргумента</string>
     <string name="error_invalid_argument">Имя аргумента должно содержать только цифры и буквы</string>
     <string name="error_ensure_single_interval">Функция должна зависеть только от одного интервала</string>
-    <string name="error_ensure_single_argument">Функция должна зависеть только от одного аргумента</string>
+    <string name="error_ensure_double_interval">Функция должна зависеть только от двух интервалов</string>
     <string name="error_indirect_intervals">Недопустимо использовать интервал(ы) %s неявно</string>
     <string name="error_duplicated_identifier">Такой идентификатор уже используется</string>
+    <string name="error_forbidden_arguments">Данный идентификатор не может содержать аргументы</string>
+    <string name="error_forbidden_complex">Это поле не может содержать комплексное число</string>
     <string name="error_forbidden_imaginary_unit">Символ \'i\' зарезервирован для обозначения комплексных чисел</string>
+    <string name="error_forbidden_array">Аргумент типа массив не разрешен для данной функции</string>
     <string name="error_nan_value">Поле содержит значение, которое не является числом</string>
     <string name="error_unknown_file_format">Неизвестный формат файла %s</string>
     <string name="error_file_read">Ошибка чтения файла %s</string>
@@ -212,7 +267,7 @@
     <string name="fman_external_descr">Доступ к файлам на внешней карте памяти. Может быть только для чтения на некоторых устройствах</string>
     <string name="fman_saf">Документы</string>
     <string name="fman_saf_descr">Доступ к файлам в хранилище документов</string>
-    <string name="fman_assets">Ресурсы \"microMathematics\"</string>
+    <string name="fman_assets">Ресурсы \"microMathematics Plus\"</string>
     <string name="fman_assets_descr">Документация и примеры, идущие вместе с приложением</string>
     <string name="fman_home">Стартовая страница</string>
     <string name="fman_sort_by_name">Сорт. по имени</string>
@@ -247,7 +302,7 @@
         
     <!-- Messages -->
     <string name="message_file_written">Файл %s успешно записан</string>
-
+    
     <!-- Developer options -->
     <string name="action_dev_autotest">Автоматический тест</string>
     <string name="action_dev_export_doc">Экспорт документации</string>

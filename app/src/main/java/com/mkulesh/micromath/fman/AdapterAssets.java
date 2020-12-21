@@ -24,11 +24,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
+import androidx.annotation.NonNull;
+
 public class AdapterAssets extends AdapterBaseImpl
 {
     public final static String ORG_SCHEME = "asset";
     private String dirName;
-    protected FileItem[] items;
+    private FileItem[] items;
     private final ArrayList<String> assetFilter = new ArrayList<>();
     private final AssetManager assetManager;
 
@@ -54,6 +56,7 @@ public class AdapterAssets extends AdapterBaseImpl
         return AdapterDocuments.ORG_SCHEME;
     }
 
+    @NonNull
     @Override
     public String toString()
     {
@@ -77,7 +80,7 @@ public class AdapterAssets extends AdapterBaseImpl
     }
 
     @Override
-    public boolean readSource(Uri d, String pass_back_on_done)
+    public void readSource(Uri d, String pass_back_on_done)
     {
         try
         {
@@ -90,7 +93,7 @@ public class AdapterAssets extends AdapterBaseImpl
             {
                 notify(ctx.getString(R.string.fman_error_no_such_folder, (d == null ? "null" : d.toString())),
                         CommanderIf.OPERATION_FAILED);
-                return false;
+                return;
             }
             String assetsPath = dirName.replace(FileUtils.ASSET_RESOURCE_PREFIX, "");
             while (assetsPath.endsWith(SLS) && assetsPath.length() > 1)
@@ -134,7 +137,7 @@ public class AdapterAssets extends AdapterBaseImpl
                         {
                             FileItem fi = new FileItem(new File(asset));
                             fi.dir = true;
-                            fi.attr = Integer.toString(subAssets.length) + " "
+                            fi.attr = subAssets.length + " "
                                     + ctx.getString(R.string.dialog_list_items);
                             fi.date = new Date(appTimeStamp);
                             fi.size = -1;
@@ -153,7 +156,6 @@ public class AdapterAssets extends AdapterBaseImpl
                 }
                 parentLink = FileUtils.ASSET_RESOURCE_PREFIX.equals(dirName) ? SLS : PLS;
                 notifyDataSetChanged();
-                return true;
             }
         }
         catch (Exception e)
@@ -164,7 +166,6 @@ public class AdapterAssets extends AdapterBaseImpl
         {
             notify(s(R.string.error_out_of_memory), CommanderIf.OPERATION_FAILED);
         }
-        return false;
     }
 
     private boolean isPositionValid(int position)
@@ -309,7 +310,7 @@ public class AdapterAssets extends AdapterBaseImpl
         }
     }
 
-    public void reSort(FileItem[] items_)
+    private void reSort(FileItem[] items_)
     {
         if (items_ == null)
             return;
@@ -326,7 +327,7 @@ public class AdapterAssets extends AdapterBaseImpl
         }
         for (FileItem fi : items)
         {
-            if (fi.name != null && name != null && fi.name.equals(name))
+            if (fi.name != null && fi.name.equals(name))
             {
                 return Uri.parse(toString() + name);
             }
