@@ -1,0 +1,387 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Test of function: round" description="Automated only" textWidth="35" significantDigits="6" scale="0.50000" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text='Rounding mode to round towards &#10;"nearest neighbor" unless both &#10;neighbors are equidistant, in which&#10;case round up (HALF_UP).' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: rounding half-up for positive number" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="round">
+        <term key="argTerm1" text="5.5" />
+        <term key="argTerm2" text="0" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="6" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: rounding up for positive number" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="round">
+        <term key="argTerm1" text="1.6" />
+        <term key="argTerm2" text="0" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="2" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: rounding down for positive number" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="round">
+        <term key="argTerm1" text="1.1" />
+        <term key="argTerm2" text="0" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="1" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: rounding for positive integer number" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="round">
+        <term key="argTerm1" text="1" />
+        <term key="argTerm2" text="0" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="1" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: rounding for infinity" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="round">
+        <term key="argTerm1" code="divide_slash">
+          <term key="leftTerm" text="1" />
+          <term key="rightTerm" text="0" />
+        </term>
+        <term key="argTerm2" text="0" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="0" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: rounding half-up for negative number" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="round">
+        <term key="argTerm1" text="-5.5" />
+        <term key="argTerm2" text="0" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="-6" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: rounding up for negative number" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="round">
+        <term key="argTerm1" text="-1.6" />
+        <term key="argTerm2" text="0" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="-2" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: rounding down for negative number" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="round">
+        <term key="argTerm1" text="-1.1" />
+        <term key="argTerm2" text="0" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="-1" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: rounding for negative integer number" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="round">
+        <term key="argTerm1" text="-1" />
+        <term key="argTerm2" text="0" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="-1" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+  </formulaList>
+</micromath>

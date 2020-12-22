@@ -1,0 +1,317 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Test of operator: summation" description="Automated only" textWidth="60" significantDigits="5" scale="0.50000" redefineAllowed="true">
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="a" />
+      <term key="rightTerm" text="25" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="b" />
+      <term key="rightTerm" text="-5" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="Nan" />
+      <term key="rightTerm" code="factorial">
+        <term key="argTerm" text="-5" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="100" />
+    </equation>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: summation of positive numbers" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="1.0" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="4" />
+        <term key="rightTerm" text="8" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="12.0" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="12" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="12.0" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="1.0" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: summation of negative numbers" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="2.0" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="-4" />
+        <term key="rightTerm" text="-8" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="-12.0" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="-12" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="-12.0" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="2.0" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: summation of constants" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="3.0" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="a" />
+        <term key="rightTerm" text="b" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="20.0" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="20" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="20.0" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="3.0" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: summation with NaN" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="4.0" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="a" />
+        <term key="rightTerm" text="Nan" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="NaN" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="Nan" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="NaN" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="4.0" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: summation of functions" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="5.0" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="f1(x)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" text="x" />
+        </term>
+        <term key="rightTerm" text="x" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="f2(x)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="3" />
+        <term key="rightTerm" text="x" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="abs_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.link.f1">
+            <term key="argTerm" text="1" />
+          </term>
+          <term key="rightTerm" code="content:com.mkulesh.micromath.link.f2">
+            <term key="argTerm" text="1" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="0.0" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="0.0" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="5.0" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: summation of several valid numbers" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="6.0" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="i" />
+        <term key="rightTerm" code="plus">
+          <term key="leftTerm" text="-i" />
+          <term key="rightTerm" code="plus">
+            <term key="leftTerm" text="2i" />
+            <term key="rightTerm" code="plus">
+              <term key="leftTerm" text="-3i" />
+              <term key="rightTerm" code="plus">
+                <term key="leftTerm" code="plus">
+                  <term key="leftTerm" text="1" />
+                  <term key="rightTerm" text="2i" />
+                </term>
+                <term key="rightTerm" code="plus">
+                  <term key="leftTerm" text="-2-2i" />
+                  <term key="rightTerm" text="2" />
+                </term>
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="1.0-1.0i" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="i" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="1.0-1.0i" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="6.0" />
+    </result>
+  </formulaList>
+</micromath>

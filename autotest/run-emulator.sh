@@ -2,11 +2,14 @@
 # C-shell script used to run microMathematics Plus in a given emulator
 
 setenv EMU_NAME ${1}
-setenv APK_DATA /sdcard/Android/data
 
 setenv APK_PACK com.mkulesh.micromath
 setenv APK_ACT MainActivity
 setenv APK_FILE ${2}
+
+setenv APK_DATA ${3}
+
+setenv APK_FLAG ${4}
 
 setenv TOOLS_PATH ${ANDROID_HOME}/tools
 setenv EMU_PORT 5558
@@ -35,12 +38,11 @@ ${ADB_CMD} uninstall ${APK_PACK}
 ${ADB_CMD} shell pm list packages | grep ${APK_PACK}
 
 echo Installing ${APK_FILE}...
-${ADB_CMD} install -r ${3} ${APK_FILE}
+${ADB_CMD} install -r ${APK_FLAG} ${APK_FILE}
 ${ADB_CMD} shell pm list packages | grep ${APK_PACK}
 
 echo Starting app...
-${ADB_CMD} push ./autotest.cfg ${APK_DATA}/${APK_PACK}/files/autotest.cfg
-${ADB_CMD} shell am start -S -W -n ${APK_PACK}/.${APK_ACT}
+${ADB_CMD} shell am start -S -W -n ${APK_PACK}/.${APK_ACT} -a com.mkulesh.micromath.AUTOTEST
 
 echo Waiting until app is finished...
 while ("`${ADB_CMD} shell dumpsys activity | grep top-activity | grep -c ${APK_PACK} | tr -d '\r' `" != "0")
@@ -50,7 +52,6 @@ sleep 1
 
 echo Collect results
 ${ADB_CMD} pull ${APK_DATA}/${APK_PACK}/files/autotest.html ${1}.html
-${ADB_CMD} uninstall ${APK_PACK}
 
 echo Stopping emulator...
 ${ADB_CMD} -e emu kill
