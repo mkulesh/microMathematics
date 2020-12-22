@@ -102,7 +102,7 @@
         </term>
       </term>
     </equation>
-    <plot_function width="600" height="400" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="1">
+    <plot_function width="600" height="400" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" xType="linear" yType="linear" functionsNumber="1">
       <term key="yMaxValue" code="divide_slash">
         <term key="leftTerm" text="pi" />
         <term key="rightTerm" text="2" />
@@ -411,7 +411,7 @@
       </term>
     </equation>
     <equation>
-      <term key="leftTerm" text="2result" />
+      <term key="leftTerm" text="S" />
       <term key="rightTerm" code="summation">
         <term key="maxValue" text="N" />
         <term key="index" text="k" />
@@ -430,6 +430,21 @@
             </term>
           </term>
         </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="S" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="less">
+          <term key="leftTerm" text="S" />
+          <term key="rightTerm" text="3E-14" />
+        </term>
+        <term key="argTerm2" text="0" />
+        <term key="argTerm3" text="S" />
       </term>
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
@@ -543,7 +558,7 @@
       <term key="leftTerm" text="result" />
       <term key="rightTerm" text="" />
     </result>
-    <plot_function width="600" height="300" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" functionsNumber="2">
+    <plot_function width="600" height="300" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" xType="linear" yType="linear" functionsNumber="2">
       <term key="yMaxValue" text="0" />
       <term key="yFunction1" color="#FF0000FF" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f1">
         <term key="argTerm" text="x" />
