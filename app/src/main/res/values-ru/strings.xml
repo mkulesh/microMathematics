@@ -85,6 +85,18 @@
     <!-- Application settings: Languages -->
     <string name="pref_app_language">Язык приложения</string>
 
+    <!-- Application settings: Themes -->
+    <string name="pref_app_theme">Цветовая схема</string>
+    <string-array name="pref_theme_names">
+        <item>Светлая (фиолетовая и темно-зеленая)</item>
+        <item>Светлая (тёмно-синяя и оранжевая)</item>
+        <item>Светлая (зеленовато-голубая и тёмно-оранжевая)</item>
+        <item>Светлая (серо-голубая и тёмно-синяя)</item>
+        <item>Контрасная светлая (чёрно-белая)</item>
+        <item>Тёмная (серая и сине-зелёная)</item>
+        <item>Контрасная тёмная (чёрно-белая)</item>
+    </string-array>
+
     <!-- Application settings: zoom mode -->
     <string name="pref_zoom">Масштабирование</string>
     <string-array name="pref_zoom_names">

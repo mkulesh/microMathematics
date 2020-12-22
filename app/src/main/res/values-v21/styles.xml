@@ -19,6 +19,11 @@
         <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
     </style>
 
+    <style name="AppBaseThemeDark" parent="BaseThemeDark">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
+    </style>
+
     <style name="CustomProgressBarTheme" parent="Theme.AppCompat.Light">
         <item name="colorAccent">@color/material_grey_600</item>
         <item name="android:progressBackgroundTint">@color/material_grey_50</item>

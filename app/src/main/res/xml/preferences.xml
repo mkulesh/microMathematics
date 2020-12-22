@@ -26,6 +26,15 @@
         android:title="@string/pref_app_language"/>
 
     <ListPreference
+        app:icon="@drawable/pref_theme"
+        android:defaultValue="@string/pref_default_theme_code"
+        android:entries="@array/pref_theme_names"
+        android:entryValues="@array/pref_theme_codes"
+        android:key="app_theme"
+        android:summary="%s"
+        android:title="@string/pref_app_theme"/>
+
+    <ListPreference
         app:icon="@drawable/pref_zoom"
         android:defaultValue="@string/pref_default_zoom_code"
         android:entries="@array/pref_zoom_names"

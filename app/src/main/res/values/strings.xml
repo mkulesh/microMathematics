@@ -100,16 +100,45 @@
     </string-array>
 
     <!-- Application settings: Themes -->
+    <!-- Translatable list of themes -->
+    <string name="pref_app_theme">App theme</string>
+    <string-array name="pref_theme_names">
+        <item>Light (Purple and Green)</item>
+        <item>Light (Indigo and Orange)</item>
+        <item>Light (Teal and Deep Orange)</item>
+        <item>Light (Blue Gray and Indigo)</item>
+        <item>Strong Light (Black on White)</item>
+        <item>Dark (Dim Gray and Cyan)</item>
+        <item>Strong Dark (White on Black)</item>
+    </string-array>
     <!-- Non-Translatable parameters of themes -->
     <string name="pref_default_theme_code" translatable="false">teal-deep-orange</string>
     <string-array name="pref_theme_codes" translatable="false">
+        <item>purple-green</item>
+        <item>indigo-orange</item>
         <item>teal-deep-orange</item>
+        <item>gray-indigo</item>
+        <item>strong-light</item>
+        <item>dark-cyan</item>
+        <item>strong-dark</item>
     </string-array>
     <array name="main_themes" translatable="false">
+        <item>@style/MainThemePurpleGreen</item>
+        <item>@style/MainThemeIndigoOrange</item>
         <item>@style/MainThemeTealDeepOrange</item>
+        <item>@style/MainThemeGrayIndigo</item>
+        <item>@style/MainThemeStrongLight</item>
+        <item>@style/MainThemeDarkCyan</item>
+        <item>@style/MainThemeStrongDark</item>
     </array>
     <array name="settings_themes" translatable="false">
+        <item>@style/SettingsThemePurpleGreen</item>
+        <item>@style/SettingsThemeIndigoOrange</item>
         <item>@style/SettingsThemeTealDeepOrange</item>
+        <item>@style/SettingsThemeGrayIndigo</item>
+        <item>@style/SettingsThemeStrongLight</item>
+        <item>@style/SettingsThemeDarkCyan</item>
+        <item>@style/SettingsThemeStrongDark</item>
     </array>
 
     <!-- Application settings: zoom mode -->

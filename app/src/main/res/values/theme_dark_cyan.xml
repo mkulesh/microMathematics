@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2014-2018 Mikhail Kulesh
+  ~
+  ~ This program is free software: you can redistribute it and/or modify it under the terms of the GNU
+  ~ General Public License as published by the Free Software Foundation, either version 3 of the License,
+  ~ or (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+  ~ even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details. You should have received a copy of the GNU General
+  ~ Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Dark theme with cyan accent -->
+    <style name="BaseThemeDarkCyan" parent="AppBaseThemeDark">
+        <item name="colorPrimary">@color/material_grey_800</item>
+        <item name="colorPrimaryDark">@color/background_material_dark</item>
+        <item name="colorAccent">#00BCD4</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@color/material_grey_300</item>
+        <item name="colorMicroMathIcon">@android:color/white</item>
+        <item name="colorMicroMathFloatingIcon">?attr/colorMicroMathIcon</item>
+        <item name="drawableAppHeader">@drawable/app_header_dark_cyan</item>
+        <!-- Dialog style -->
+        <item name="drawableDialogWindow">@drawable/dialog_window_dark</item>
+        <item name="drawableDialogPanel">@drawable/dialog_panel_dark</item>
+        <item name="colorDialogTitle">?attr/colorAccent</item>
+        <item name="colorDialogDivider">@color/material_grey_800</item>
+        <item name="colorDialogContent">@android:color/white</item>
+        <item name="colorDialogDisabledElement">@color/material_grey_600</item>
+        <item name="colorDialogEditText">@color/material_grey_800</item>
+        <item name="colorDialogHighlighted">@color/material_grey_800</item>
+        <!-- Formula style -->
+        <item name="colorFormulaBackground">@android:color/transparent</item>
+        <item name="colorFormulaHighlighted">@color/material_grey_800</item>
+        <item name="colorFormulaNormal">@android:color/white</item>
+        <item name="colorFormulaEmpty">@color/material_deep_teal_200</item>
+        <item name="colorFormulaInvalid">#ffff0000</item>
+        <item name="colorFormulaSelected">@color/highlighted_text_material_dark</item>
+        <item name="colorFormulaCalculatedValue">@android:color/darker_gray</item>
+        <item name="colorFormulaTextFragment">@android:color/white</item>
+        <item name="colorPlotGridLine">#FF787878</item>
+        <!-- Other elements -->
+        <item name="actionModeBackground">?attr/colorPrimary</item>
+    </style>
+
+    <style name="MainThemeDarkCyan" parent="BaseThemeDarkCyan">
+        <!-- No settings -->
+    </style>
+
+    <style name="SettingsThemeDarkCyan" parent="BaseThemeDarkCyan">
+        <!-- For preference activity, de-activate overlay -->
+        <item name="windowActionModeOverlay">false</item>
+    </style>
+
+</resources>

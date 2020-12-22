@@ -25,9 +25,22 @@
         <item name="colorToolBarSeparator">@android:color/transparent</item>
     </style>
 
+    <style name="BaseThemeDark" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">@color/background_material_dark</item>
+        <item name="themeMicroMathToolBar">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="themeMicroMathPopup">@style/ThemeOverlay.AppCompat.Dark</item>
+        <item name="colorMicroMathNavigator">@color/background_material_dark</item>
+        <item name="colorToolBarSeparator">@android:color/transparent</item>
+    </style>
+
     <!-- Theme definition that is re-defined for API v.21 -->
 
     <style name="AppBaseThemeLight" parent="BaseThemeLight">
+        <!-- see values-v21/styles -->
+    </style>
+
+    <style name="AppBaseThemeDark" parent="BaseThemeDark">
         <!-- see values-v21/styles -->
     </style>
 

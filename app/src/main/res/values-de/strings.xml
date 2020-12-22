@@ -85,6 +85,18 @@
     <!-- Application settings: Languages -->
     <string name="pref_app_language">Sprache</string>
 
+    <!-- Application settings: Themes -->
+    <string name="pref_app_theme">Thema</string>
+    <string-array name="pref_theme_names">
+        <item>Helles (Lila und Grün)</item>
+        <item>Helles (Indigo und Orange)</item>
+        <item>Helles (Petrol und Dunkelorange)</item>
+        <item>Helles (Blaugrau und Indigo)</item>
+        <item>Kontrastreiches helles (Schwarz auf Weiß)</item>
+        <item>Dunkles (Dunkelgrau und Türkis)</item>
+        <item>Kontrastreiches dunkles (Weiß auf Schwarz)</item>
+    </string-array>
+
     <!-- Application settings: zoom mode -->
     <string name="pref_zoom">Zoom-Funktion</string>
     <string-array name="pref_zoom_names">
