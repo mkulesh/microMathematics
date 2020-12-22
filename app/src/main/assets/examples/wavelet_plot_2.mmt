@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="" title="" description="" textWidth="60" significantDigits="6" scale="0.29573" redefineAllowed="false">
+    <image_fragment fileName="asset:/images/landscape_orientation.png" embedded="false" originalSize="false" width="113" height="67" colorType="auto" />
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="Use landscape orientation for this example" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="σ" />
+      <term key="rightTerm" text="1.6" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="g(t)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="sin">
+          <term key="argTerm" code="mult">
+            <term key="leftTerm" text="2" />
+            <term key="rightTerm" code="mult">
+              <term key="leftTerm" text="pi" />
+              <term key="rightTerm" text="t" />
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="exp">
+          <term key="argTerm" code="mult">
+            <term key="leftTerm" text="-1" />
+            <term key="rightTerm" code="divide">
+              <term key="leftTerm" code="power">
+                <term key="leftTerm" text="t" />
+                <term key="rightTerm" text="2" />
+              </term>
+              <term key="rightTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" code="power">
+                  <term key="leftTerm" text="σ" />
+                  <term key="rightTerm" text="2" />
+                </term>
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="G(t,τ,α)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="divide">
+          <term key="leftTerm" text="1" />
+          <term key="rightTerm" text="α" />
+        </term>
+        <term key="rightTerm" code="content:com.mkulesh.micromath.link.g">
+          <term key="argTerm" code="divide">
+            <term key="leftTerm" code="minus">
+              <term key="leftTerm" text="τ" />
+              <term key="rightTerm" text="t" />
+            </term>
+            <term key="rightTerm" text="α" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="t" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="-10" />
+        <term key="nextValue" text="-9.99" />
+        <term key="maxValue" text="10" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="γ" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="-20" />
+        <term key="nextValue" text="-19.99" />
+        <term key="maxValue" text="20" />
+      </term>
+    </equation>
+    <plot_function width="1000" height="600" axes_style="crossed" xLabelsNumber="7" yLabelsNumber="7" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="3">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction1" color="#FF008A08" width="7" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.G:3">
+        <term key="argTerm1" text="t" />
+        <term key="argTerm2" text="-1" />
+        <term key="argTerm3" text="0.5" />
+      </term>
+      <term key="yFunction2" color="#FFFF000D" width="7" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.G:3">
+        <term key="argTerm1" text="t" />
+        <term key="argTerm2" text="5" />
+        <term key="argTerm3" text="0.9" />
+      </term>
+      <term key="yFunction3" color="#FF0000FF" width="7" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.G:3">
+        <term key="argTerm1" text="t" />
+        <term key="argTerm2" text="-6" />
+        <term key="argTerm3" text="0.3" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction1" text="t" />
+      <term key="xFunction2" text="t" />
+      <term key="xFunction3" text="t" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <plot_function inRightOfPrevious="true" width="1000" height="600" axes_style="crossed" xLabelsNumber="7" yLabelsNumber="7" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="3">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction1" color="#FF008A08" width="7" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.G:3">
+        <term key="argTerm1" text="γ" />
+        <term key="argTerm2" text="-10" />
+        <term key="argTerm3" text="0.2" />
+      </term>
+      <term key="yFunction2" color="#FFFF000D" width="7" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.G:3">
+        <term key="argTerm1" text="γ" />
+        <term key="argTerm2" text="10" />
+        <term key="argTerm3" text="1" />
+      </term>
+      <term key="yFunction3" color="#FF0000FF" width="7" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.G:3">
+        <term key="argTerm1" text="γ" />
+        <term key="argTerm2" text="0" />
+        <term key="argTerm3" text="0.5" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction1" text="γ" />
+      <term key="xFunction2" text="γ" />
+      <term key="xFunction3" text="γ" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+  </formulaList>
+</micromath>

@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="ken" title="catenary" description="MacCluer CoV Example 04.03" textWidth="60" significantDigits="6" scale="0.40391" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="Catenary &#10;Chain of length lng hanging between -a and +a&#10;&#10;The plot is based on c, the low point on the chain.&#10;c is numerically calculated from a and the length.&#10;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="y(x,c)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="c" />
+        <term key="rightTerm" code="cosh">
+          <term key="argTerm" code="divide">
+            <term key="leftTerm" text="x" />
+            <term key="rightTerm" text="c" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="a" />
+      <term key="rightTerm" text="4" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="lng" />
+      <term key="rightTerm" text="10" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="-a" />
+        <term key="nextValue" code="minus">
+          <term key="leftTerm" code="divide">
+            <term key="leftTerm" text="a" />
+            <term key="rightTerm" text="100" />
+          </term>
+          <term key="rightTerm" text="a" />
+        </term>
+        <term key="maxValue" text="a" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="approximate c given length &gt; 2*a" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="c1(l1)" />
+      <term key="rightTerm" code="sqrt_layout">
+        <term key="argTerm" code="identity">
+          <term key="argTerm" code="divide_slash">
+            <term key="leftTerm" code="plus">
+              <term key="leftTerm" code="divide">
+                <term key="leftTerm" code="power">
+                  <term key="leftTerm" text="a" />
+                  <term key="rightTerm" text="3" />
+                </term>
+                <term key="rightTerm" text="3" />
+              </term>
+              <term key="rightTerm" code="sqrt_layout">
+                <term key="argTerm" code="identity">
+                  <term key="argTerm" code="plus">
+                    <term key="leftTerm" code="divide">
+                      <term key="leftTerm" code="power">
+                        <term key="leftTerm" text="a" />
+                        <term key="rightTerm" text="6" />
+                      </term>
+                      <term key="rightTerm" text="9" />
+                    </term>
+                    <term key="rightTerm" code="mult">
+                      <term key="leftTerm" code="mult">
+                        <term key="leftTerm" text="4" />
+                        <term key="rightTerm" code="minus">
+                          <term key="leftTerm" text="l1" />
+                          <term key="rightTerm" code="mult">
+                            <term key="leftTerm" text="2" />
+                            <term key="rightTerm" text="a" />
+                          </term>
+                        </term>
+                      </term>
+                      <term key="rightTerm" code="divide">
+                        <term key="leftTerm" code="power">
+                          <term key="leftTerm" text="a" />
+                          <term key="rightTerm" text="5" />
+                        </term>
+                        <term key="rightTerm" text="60" />
+                      </term>
+                    </term>
+                  </term>
+                </term>
+              </term>
+            </term>
+            <term key="rightTerm" code="identity">
+              <term key="argTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" code="minus">
+                  <term key="leftTerm" text="l1" />
+                  <term key="rightTerm" code="mult">
+                    <term key="leftTerm" text="2" />
+                    <term key="rightTerm" text="a" />
+                  </term>
+                </term>
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="c" />
+      <term key="rightTerm" code="content:com.mkulesh.micromath.link.c1">
+        <term key="argTerm" text="lng" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="c" />
+      <term key="rightTerm" text="3.3785" />
+    </result>
+    <text_fragment>
+      <term key="text" text="exact length given c" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="len(c)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" text="c" />
+        </term>
+        <term key="rightTerm" code="sinh">
+          <term key="argTerm" code="divide">
+            <term key="leftTerm" text="a" />
+            <term key="rightTerm" text="c" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.link.len">
+        <term key="argTerm" text="c" />
+      </term>
+      <term key="rightTerm" text="10.0045" />
+    </result>
+    <text_fragment>
+      <term key="text" text="refine c" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="lerr" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" code="content:com.mkulesh.micromath.link.len">
+          <term key="argTerm" text="c" />
+        </term>
+        <term key="rightTerm" text="lng" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="dc" />
+      <term key="rightTerm" code="identity">
+        <term key="argTerm" code="mult">
+          <term key="leftTerm" text="lerr" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" text="c" />
+            <term key="rightTerm" code="identity">
+              <term key="argTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" code="minus">
+                  <term key="leftTerm" code="mult">
+                    <term key="leftTerm" text="a" />
+                    <term key="rightTerm" code="cosh">
+                      <term key="argTerm" code="divide">
+                        <term key="leftTerm" text="a" />
+                        <term key="rightTerm" text="c" />
+                      </term>
+                    </term>
+                  </term>
+                  <term key="rightTerm" code="mult">
+                    <term key="leftTerm" text="c" />
+                    <term key="rightTerm" code="sinh">
+                      <term key="argTerm" code="divide">
+                        <term key="leftTerm" text="a" />
+                        <term key="rightTerm" text="c" />
+                      </term>
+                    </term>
+                  </term>
+                </term>
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="c" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="c" />
+        <term key="rightTerm" text="dc" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="c" />
+      <term key="rightTerm" text="3.38201" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.link.len">
+        <term key="argTerm" text="c" />
+      </term>
+      <term key="rightTerm" text="10.0" />
+    </result>
+    <text_fragment>
+      <term key="text" text="chain hanging" />
+    </text_fragment>
+    <plot_function width="810" height="677" axes_style="boxed" xLabelsNumber="7" yLabelsNumber="4" gridLineColor="#FF787878" xType="linear" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FF0000FF" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.y:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="c" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text="equal x and y scale" />
+    </text_fragment>
+    <plot_function width="810" height="677" axes_style="boxed" xLabelsNumber="7" yLabelsNumber="7" gridLineColor="#FF787878" xType="linear" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" code="plus">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" text="a" />
+        </term>
+        <term key="rightTerm" text="c" />
+      </term>
+      <term key="yFunction" color="#FF0000FF" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.y:2">
+        <term key="argTerm1" text="x" />
+        <term key="argTerm2" text="c" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+  </formulaList>
+</micromath>

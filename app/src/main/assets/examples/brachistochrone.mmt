@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="60" significantDigits="6" scale="0.36860" redefineAllowed="true">
+  <formulaList documentVersion="2" author="ken" title="Brachistochrone" description="MacCluer CoV problem 4.45" textWidth="60" significantDigits="6" scale="0.36275" redefineAllowed="true">
     <text_fragment>
       <term key="text" text="Brachistochrone&#10;&#10;Quickest path under gravity for frictionless&#10;mass sliding from 0,0 to x1,-y1&#10;" />
     </text_fragment>
@@ -199,15 +199,15 @@
           <term key="argTerm" text="p1" />
         </term>
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="0.3" />
     </result>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="yx1" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="0.3" />
     </result>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="p1" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="4.17628" />
     </result>
     <text_fragment>
       <term key="text" text="&#10;gam is a scaling constant determined by y1 and p1&#10;time is seconds to reach x1,y1 in meters&#10;" />
@@ -226,7 +226,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="gam" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="3.97142" />
     </result>
     <equation>
       <term key="leftTerm" text="time" />
@@ -247,7 +247,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="time" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="1.87894" />
     </result>
     <equation>
       <term key="leftTerm" text="p" />
@@ -289,12 +289,15 @@
     </text_fragment>
     <equation>
       <term key="leftTerm" text="mx" />
-      <term key="rightTerm" text="10" />
+      <term key="rightTerm" code="max">
+        <term key="argTerm1" text="x1" />
+        <term key="argTerm2" text="y1" />
+      </term>
     </equation>
     <text_fragment>
       <term key="text" text="&#10;Quickest Path " />
     </text_fragment>
-    <plot_function width="677" height="677" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878">
+    <plot_function width="677" height="677" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" xType="linear" yType="linear" functionsNumber="1">
       <term key="yMaxValue" text="" />
       <term key="yFunction" color="#FF0000FF" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.y">
         <term key="argTerm" text="p" />
@@ -352,7 +355,7 @@
     </equation>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="time2" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="2.72166" />
     </result>
   </formulaList>
 </micromath>
