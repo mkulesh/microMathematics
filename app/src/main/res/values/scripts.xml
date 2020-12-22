@@ -53,15 +53,15 @@
     </string-array>
     
     <string-array name="doc_export_scripts" translatable="false">
-        <item>asset:/doc_en/how_to_use.xml</item>
-        <item>asset:/doc_en/function_plot.xml</item>
-        <item>asset:/doc_en/polar_plot.xml</item>
-        <item>asset:/doc_de/how_to_use_de.xml</item>
-        <item>asset:/doc_de/function_plot_de.xml</item>
-        <item>asset:/doc_de/polar_plot_de.xml</item>
-        <item>asset:/doc_ru/how_to_use_ru.xml</item>
-        <item>asset:/doc_ru/function_plot_ru.xml</item>
-        <item>asset:/doc_ru/polar_plot_ru.xml</item>
+        <item>asset:/doc_en/how_to_use.mmt</item>
+        <item>asset:/doc_en/function_plot.mmt</item>
+        <item>asset:/doc_en/polar_plot.mmt</item>
+        <item>asset:/doc_de/how_to_use_de.mmt</item>
+        <item>asset:/doc_de/function_plot_de.mmt</item>
+        <item>asset:/doc_de/polar_plot_de.mmt</item>
+        <item>asset:/doc_ru/how_to_use_ru.mmt</item>
+        <item>asset:/doc_ru/function_plot_ru.mmt</item>
+        <item>asset:/doc_ru/polar_plot_ru.mmt</item>
     </string-array>
 
     <string-array name="asset_filter" translatable="false">

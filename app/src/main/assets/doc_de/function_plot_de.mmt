@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="false">
+    <text_fragment>
+      <term key="text" text="Dieses Beispiel demonstriert, wie man&#10;die graphische Darstellung einer&#10;Funktion vorbereitet und anpasst.&#10;Nehmen wir an, wir wollen folgende&#10;Funktion aufzeichnen:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f(x)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="25" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="10" />
+          <term key="rightTerm" code="sin">
+            <term key="argTerm" code="sqrt_layout">
+              <term key="argTerm" code="abs_layout">
+                <term key="argTerm" text="x" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Das Funktionsargument, das die x-Werte&#10;repräsentiert, wird für N Punkte&#10;innerhalb des Intervalls [x1, x2]&#10;eingesetzt:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="300" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x1" />
+      <term key="rightTerm" text="-30" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x2" />
+      <term key="rightTerm" text="30" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="x1" />
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" text="x1" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" code="minus">
+              <term key="leftTerm" text="x2" />
+              <term key="rightTerm" text="x1" />
+            </term>
+            <term key="rightTerm" text="N" />
+          </term>
+        </term>
+        <term key="maxValue" text="x2" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text='Ist die Funktion und das Argument&#10;definiert, können Sie die Plot Box&#10;hinzufügen indem Sie den "Neu" Button&#10;der Menüleiste oder den&#10;"Funktionsgraph hinzufügen" Button in&#10;der Werkzeugleiste wählen:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_plot_function.svg" embedded="false" originalSize="false" width="400" height="90" />
+    <plot_function width="680" height="600" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#7F000000">
+      <term key="yMaxValue" text="40" />
+      <term key="yFunction" color="#FF0000FF" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="10" />
+      <term key="xMinValue" text="-30" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="30" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text='Die darzustellende Funktion soll ins&#10;linke Mittelfeld eingefügt werden. Es&#10;kann ebenfalls eine integrierte oder&#10;zuvor definierte Funktion sein sowie&#10;ein mathematischer Ausdruck, der jeden&#10;anderen Operator oder Funktion&#10;enthalten kann.&#10;&#10;Das Funktionsargument, das die x-Werte&#10;repräsentiert, wird in das untere&#10;Mittelfeld eingesetzt. Dies kann eine&#10;Variable eines Intervalltyps oder ein&#10;mathematischer Ausdruck sein, der eine&#10;Intervallvariable enthält.&#10;&#10;Die vier anderen Felder definieren die&#10;Plot Grenzen. Falls diese Elemente&#10;leer bleiben, wird das Programm die&#10;entsprechenden Werte automatisch&#10;berechnen. Allerdings können Sie diese&#10;Felder zu jedem Zeitpunkt bearbeiten&#10;und die Werte einsetzten, die Sie&#10;benötigen.&#10;&#10;Wenn Sie lange auf die Mitte des Plot&#10;Bereichs drücken, ein Action Button&#10;"Objekteinstellungen" erscheint:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/plot_parameters.svg" embedded="false" originalSize="false" width="600" height="500" />
+    <text_fragment>
+      <term key="text" text='Ein Tap auf diesen Button öffnet das&#10;Dialogfenster "Plot Einstellungen".&#10;Hier können die Größe und das Aussehen&#10;des Graphen verändert werden. Ein&#10;verschränkter Graph sieht&#10;beispielsweise so aus:' />
+    </text_fragment>
+    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#7F000000">
+      <term key="yMaxValue" text="40" />
+      <term key="yFunction" color="#FF00B821" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="10" />
+      <term key="xMinValue" text="-30" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="30" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text='Sie können Strichfarbe, -weite und&#10;-stil im "Stricheinstellungen" Dialog&#10;ändern. Es erscheint zudem, wenn Sie&#10;lange auf den grünen Marker unterhalb&#10;des Funktionsnamens auf der linken&#10;Seite des Plot Bereiches drücken:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/line_parameters.svg" embedded="false" originalSize="false" width="600" height="500" />
+    <text_fragment>
+      <term key="text" text="Zum Beispiel, man kann gestrichelte&#10;Linien benutzen:" />
+    </text_fragment>
+    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#7F000000">
+      <term key="yMaxValue" text="40" />
+      <term key="yFunction" color="#FFE2000A" width="5" lineStyle="dotted" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="10" />
+      <term key="xMinValue" text="-30" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="30" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text='Die Anzahl von Achsenbezeichnungen und&#10;Rasterlinienfarben kann in den&#10;"Rastereinstellungen" Dialog verändert&#10;werden. Es erscheint, wenn Sie lange&#10;auf den Freiraum zwischen dem&#10;minimalem x-Wert (-30) und dem&#10;Argumentsymbol (x) oder zwischen das&#10;x-Symbol und den maximalen x-Wert (30)&#10;unterhalb des Plot Bereichs drücken:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/grid_parameters.svg" embedded="false" originalSize="false" width="600" height="500" />
+    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="10" yLabelsNumber="7" gridLineColor="#89005EFF">
+      <term key="yMaxValue" text="40" />
+      <term key="yFunction" color="#FFE2000A" width="5" lineStyle="dotted" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="10" />
+      <term key="xMinValue" text="-30" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="30" />
+    </plot_function>
+  </formulaList>
+</micromath>

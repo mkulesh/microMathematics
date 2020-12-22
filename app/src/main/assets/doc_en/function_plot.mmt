@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="false">
+    <text_fragment>
+      <term key="text" text="This example demonstrates how to&#10;prepare and adjust a graphical&#10;representation of a function. For&#10;example, we want to plot following&#10;function:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f(x)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="25" />
+        <term key="rightTerm" code="mult">
+          <term key="leftTerm" text="10" />
+          <term key="rightTerm" code="sin">
+            <term key="argTerm" code="sqrt_layout">
+              <term key="argTerm" code="abs_layout">
+                <term key="argTerm" text="x" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="The function argument that represents&#10;the x-values will be taken for N&#10;points within the interval [x1, x2]:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="300" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x1" />
+      <term key="rightTerm" text="-30" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x2" />
+      <term key="rightTerm" text="30" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="x1" />
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" text="x1" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" code="minus">
+              <term key="leftTerm" text="x2" />
+              <term key="rightTerm" text="x1" />
+            </term>
+            <term key="rightTerm" text="N" />
+          </term>
+        </term>
+        <term key="maxValue" text="x2" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text='After the function and its argument are&#10;defined, you can add the plot box&#10;using the "New element" button in the&#10;action bar or "Add function plot"&#10;button from the tool bar:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/toolbar_plot_function.svg" embedded="false" originalSize="false" width="400" height="90" />
+    <plot_function width="680" height="600" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#7F000000">
+      <term key="yMaxValue" text="40" />
+      <term key="yFunction" color="#FF0000FF" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="10" />
+      <term key="xMinValue" text="-30" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="30" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text='The function to be plotted will be put&#10;in the middle-left field. It can also&#10;be a built-in or previously declared&#10;function as well as a mathematical&#10;expression that contains any other&#10;operators and functions.&#10;&#10;The function input, which represents&#10;the x-values will be put in the&#10;middle-bottom field. It can be a&#10;variable of interval type or a&#10;mathematical expression that contains&#10;an interval variable.&#10;&#10;All other four fields describe the&#10;plot boundaries. If these elements&#10;remain empty, the program will&#10;calculate corresponding values&#10;automatically. However, you can edit&#10;these fields at any time and put there&#10;the values you want.&#10;&#10;By long click on the middle of plot&#10;area, the context menu and the&#10;floating button "Object properties"&#10;will appear:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/plot_parameters.svg" embedded="false" originalSize="false" width="600" height="500" />
+    <text_fragment>
+      <term key="text" text='If you press this floating button, the&#10;"Plot Settings" dialog will be&#10;displayed. Here, you can change size&#10;and style of the plot area. For&#10;example, the crossed graph looks like&#10;this:' />
+    </text_fragment>
+    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#7F000000">
+      <term key="yMaxValue" text="40" />
+      <term key="yFunction" color="#FF00B821" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="10" />
+      <term key="xMinValue" text="-30" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="30" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text='You can also change the plot line&#10;color, width and style in the "Line&#10;Settings" dialog. It appears by long&#10;click on the line marker below the&#10;function name on the left of plot&#10;area:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/line_parameters.svg" embedded="false" originalSize="false" width="600" height="500" />
+    <text_fragment>
+      <term key="text" text="For example, we can use dotted lines:" />
+    </text_fragment>
+    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#7F000000">
+      <term key="yMaxValue" text="40" />
+      <term key="yFunction" color="#FFE2000A" width="5" lineStyle="dotted" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="10" />
+      <term key="xMinValue" text="-30" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="30" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text='The number of axis labels and grid line&#10;color can be changed in the "Grid&#10;Settings" dialog. It appears by long&#10;click on the free space between the x&#10;minimum value (-30) and the argument&#10;(x) symbol or between the x symbol and&#10;the x maximum value (30) below the&#10;plot area:' />
+    </text_fragment>
+    <image_fragment fileName="asset:/images/grid_parameters.svg" embedded="false" originalSize="false" width="600" height="500" />
+    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="10" yLabelsNumber="7" gridLineColor="#89005EFF">
+      <term key="yMaxValue" text="40" />
+      <term key="yFunction" color="#FFE2000A" width="5" lineStyle="dotted" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="10" />
+      <term key="xMinValue" text="-30" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="30" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text="To hide grid completely just set the&#10;number of grid lines to zero for both&#10;vertical and horizontal axes." />
+    </text_fragment>
+  </formulaList>
+</micromath>

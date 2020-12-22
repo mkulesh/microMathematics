@@ -604,7 +604,7 @@ public class MainActivity extends AppCompatActivity
             args.putInt(MainFragmentWorksheet.POST_ACTION_ID, postActionId);
             fragment.setArguments(args);
         }
-        else if (res != null && res.toString().contains(".xml"))
+        else if (res != null && res.toString().contains(".mmt"))
         {
             fragment = new MainFragmentAsset();
             Bundle args = new Bundle();

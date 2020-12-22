@@ -43,16 +43,16 @@
     </string-array>
     <string-array name="activity_resources">
         <item></item>
-        <item>asset:/doc_ru/how_to_use_ru.xml</item>
-        <item>asset:/doc_ru/function_plot_ru.xml</item>
-        <item>asset:/doc_ru/polar_plot_ru.xml</item>
-        <item>asset:/doc_ru/about_micromath_ru.xml</item>
+        <item>asset:/doc_ru/how_to_use_ru.mmt</item>
+        <item>asset:/doc_ru/function_plot_ru.mmt</item>
+        <item>asset:/doc_ru/polar_plot_ru.mmt</item>
+        <item>asset:/doc_ru/about_micromath_ru.mmt</item>
         <item>https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v1.20-ru.pdf</item>
         <item>https://play.google.com/store/apps/details?id=com.mkulesh.micromath</item>
         <item>https://play.google.com/store/apps/details?id=com.mkulesh.micromath.plus</item>
     </string-array>
     <string name="activity_example">Примеры</string>
-    <string name="activity_welcome">asset:/doc_ru/welcome_ru.xml</string>
+    <string name="activity_welcome">asset:/doc_ru/welcome_ru.mmt</string>
     
     <!-- Permissions -->
     <string name="allow_storage_access_title">Разрешить обращаться к файлам документов</string>

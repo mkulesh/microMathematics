@@ -43,16 +43,16 @@
      </string-array>
     <string-array name="activity_resources">
         <item></item>
-        <item>asset:/doc_de/how_to_use_de.xml</item>
-        <item>asset:/doc_de/function_plot_de.xml</item>
-        <item>asset:/doc_de/polar_plot_de.xml</item>
-        <item>asset:/doc_de/about_micromath_de.xml</item>
+        <item>asset:/doc_de/how_to_use_de.mmt</item>
+        <item>asset:/doc_de/function_plot_de.mmt</item>
+        <item>asset:/doc_de/polar_plot_de.mmt</item>
+        <item>asset:/doc_de/about_micromath_de.mmt</item>
         <item>https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v1.20-de.pdf</item>
         <item>https://play.google.com/store/apps/details?id=com.mkulesh.micromath</item>
         <item>https://play.google.com/store/apps/details?id=com.mkulesh.micromath.plus</item>
     </string-array>
     <string name="activity_example">Beispiele</string>
-    <string name="activity_welcome">asset:/doc_de/welcome_de.xml</string>
+    <string name="activity_welcome">asset:/doc_de/welcome_de.mmt</string>
     
     <!-- Permissions -->
     <string name="allow_storage_access_title">Zugriff auf Arbeitsblatt-Dateien erlauben</string>
