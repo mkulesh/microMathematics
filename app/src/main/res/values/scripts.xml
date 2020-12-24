@@ -70,6 +70,7 @@
         <item>doc_de</item>
         <item>examples</item>
         <item>images</item>
+        <item>functions_overview.mmt</item>
     </string-array>
 
     <string-array name="take_screenshots_scripts" translatable="false" tools:ignore="InconsistentArrays">

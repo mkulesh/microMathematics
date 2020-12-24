@@ -29,7 +29,7 @@
         <item>Info zu</item>
         <item>Dokumentation</item>
         <item>App bewerten</item>
-        <item>Mehr Mathematik?</item>
+        <item>Premium-Version kaufen</item>
     </string-array>
     <string-array name="activity_subtitles">
         <item>Mein Dokument</item>
@@ -38,8 +38,8 @@
         <item>Plot einer Polarfunktion</item>
         <item>microMathematics</item>
         <item>PDF herunterladen</item>
-        <item></item>
-        <item>"Plus" Version kaufen</item>
+        <item>App bewerten</item>
+        <item>Premium-Version kaufen</item>
      </string-array>
     <string-array name="activity_resources">
         <item></item>
@@ -56,7 +56,7 @@
     
     <!-- Permissions -->
     <string name="allow_storage_access_title">Zugriff auf Arbeitsblatt-Dateien erlauben</string>
-    <string name="allow_storage_access_description">microMathematics Plus benötigt von Ihnen die Genehmigung zum Zugriff auf die Arbeitsblatt-Dateien auf diesem Gerät</string>
+    <string name="allow_storage_access_description">microMathematics benötigt von Ihnen die Genehmigung zum Zugriff auf die Arbeitsblatt-Dateien auf diesem Gerät</string>
     <string name="allow_storage_access_grant">Genehmigung erteilen</string>
     
     <!-- Main menu -->
@@ -279,8 +279,8 @@
     <string name="fman_external_descr">Öffnen und Speichern der Dateien auf eine externe SD-Karte</string>
     <string name="fman_saf">Dokumente</string>
     <string name="fman_saf_descr">Zugang zu den Dokumenten aus der Dokumentablage</string>
-    <string name="fman_assets">Hilfsmittel der \"microMathematics Plus\"</string>
-    <string name="fman_assets_descr">Dokumentation und Anwendungsbeispiele, die mit der \"microMathematics Plus\" ausgeliefert sind</string>
+    <string name="fman_assets">Hilfsmittel der \"microMathematics\"</string>
+    <string name="fman_assets_descr">Dokumentation und Anwendungsbeispiele, die mit der \"microMathematics\" ausgeliefert sind</string>
     <string name="fman_home">Startbildschirm</string>
     <string name="fman_sort_by_name">Nach Namen sortieren</string>
     <string name="fman_sort_by_ext">Nach Dateityp sortieren</string>

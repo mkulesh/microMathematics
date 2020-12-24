@@ -29,7 +29,7 @@
         <item>About</item>
         <item>Documentation</item>
         <item>Rate this app</item>
-        <item>Need more?</item>
+        <item>Get Premium version</item>
     </string-array>
     <string-array name="activity_subtitles">
         <item>My Document</item>
@@ -38,8 +38,8 @@
         <item>Polar Function Plot</item>
         <item>microMathematics</item>
         <item>Download PDF</item>
-        <item></item>
-        <item>Buy Plus Version</item>
+        <item>Rate this app</item>
+        <item>Get Premium version</item>
      </string-array>
     <string-array name="activity_resources">
         <item></item>
@@ -333,7 +333,7 @@
     <string name="fman_external_descr">Access files on the physically inserted SD card. It may be read-only on some devices</string>
     <string name="fman_saf">Documents</string>
     <string name="fman_saf_descr">Access files in the document storage</string>
-    <string name="fman_assets">Resources of \"microMathematics Plus\"</string>
+    <string name="fman_assets">Resources of \"microMathematics\"</string>
     <string name="fman_assets_descr">Documentation and examples delivered with this app</string>
     <string name="fman_home">Home</string>
     <string name="fman_sort_by_name">Sort by name</string>
