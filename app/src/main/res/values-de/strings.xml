@@ -182,7 +182,6 @@
     <string name="math_new_equation">Gleichung hinzufügen</string>
     <string name="math_new_result">Ergebnisansicht hinzufügen</string>
     <string name="math_new_function_plot">Funktionsgraph hinzufügen</string>
-    <string name="math_new_contour_plot">3D Plot hinzufügen</string>
     <string name="math_new_text_fragment">Textfragment hinzufügen</string>
     <string name="math_new_image_fragment">Bild aus Datei hinzufügen</string>
     <string name="image_fragment_text">Langes Gedrückthalten um Bild hinzufügen</string>

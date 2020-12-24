@@ -182,7 +182,6 @@
     <string name="math_new_equation">Вставить формулу</string>
     <string name="math_new_result">Вставить текстовый результат</string>
     <string name="math_new_function_plot">Вставить график функции</string>
-    <string name="math_new_contour_plot">Вставить 3D график</string>
     <string name="math_new_text_fragment">Вставить текстовое поле</string>
     <string name="math_new_image_fragment">Вставить изображение из файла</string>
     <string name="image_fragment_text">Долгое нажатие для настройки изображения</string>

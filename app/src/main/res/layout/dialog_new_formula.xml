@@ -91,11 +91,6 @@
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     style="@style/DialogImageButtonStyle"
-                    android:contentDescription="@string/math_new_contour_plot"
-                    android:src="@drawable/p_plot_contour" />
-                
-                <androidx.appcompat.widget.AppCompatImageButton
-                    style="@style/DialogImageButtonStyle"
                     android:id="@+id/dialog_button_new_text_fragment"
                     android:contentDescription="@string/math_new_text_fragment"
                     android:src="@drawable/p_text_fragment" />

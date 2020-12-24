@@ -236,7 +236,6 @@
     <string name="math_new_equation">Add equation</string>
     <string name="math_new_result">Add result view</string>
     <string name="math_new_function_plot">Add function plot</string>
-    <string name="math_new_contour_plot">Add 3D plot</string>
     <string name="math_new_text_fragment">Add text fragment</string>
     <string name="math_new_image_fragment">Add image from file</string>
     <string name="image_fragment_text">Long press to import image</string>
