@@ -18,7 +18,7 @@ Features und Vorteile:
 - Export in LaTeX- oder Bild-Format
 - erleichterte Einführung durch ausführliche Dokumentation und viele Beispiele
 
-microMathematics unterstützt die einfachen mathematischen Berechnungen. Wenn diese App Sie überzeugt hat und Sie mehr mathematische Funktionalität nutzen möchten (komplexe Zahlen, Funktionen mit mehreren Argumenten, grafische Darstellungen von mehreren Funktionen, 3D-Grafiken, Addition und Multiplikation, Ableitungen, Integrale, logische Operatoren, Wurzeln n-tes Grades u.v.m.), dann probieren Sie die kostenpflichtige Version microMathematics Plus aus.
+microMathematics unterstützt die einfachen mathematischen Berechnungen. Wenn diese App Sie überzeugt hat und Sie mehr mathematische Funktionalität nutzen möchten (3D-Grafiken, Addition und Multiplikation, Ableitungen, Integrale, logische Operatoren, Einheiten), dann probieren Sie die kostenpflichtige Premium-Version aus.
 
 Der Code ist komplett quell-offen. Du kannst ihn herunterladen, kennen lernen, weiterentwickeln unter https://github.com/mkulesh/microMathematics/tree/light
 Dort kannst Du auch Bugs melden oder mit entwickeln.

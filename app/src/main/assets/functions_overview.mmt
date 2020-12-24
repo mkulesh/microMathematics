@@ -1,0 +1,776 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Functions Overview" description="This document summarizes functions supported by microMathmatics" textWidth="45" significantDigits="6" scale="0.45627" redefineAllowed="true">
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Constants" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Set a value" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="a" />
+      <term key="rightTerm" text="10" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="b" />
+      <term key="rightTerm" text="60" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="Get value" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="a" />
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="b" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Build-in constants" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="e" />
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="π" />
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="pi" />
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="i" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Operators" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text='Addition ("+")' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="d" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="10" />
+        <term key="rightTerm" text="70" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="d" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="c" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="i" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="c" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text='Subtraction ("-")' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="d" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" text="10" />
+        <term key="rightTerm" text="70" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="d" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="c" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="i" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="c" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text='Multiplication ("*")' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="d" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="10" />
+        <term key="rightTerm" text="70" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="d" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="c" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="i" />
+        <term key="rightTerm" text="i" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="c" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text='Division ("/" or "÷")' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="d" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" text="a" />
+        <term key="rightTerm" text="b" />
+      </term>
+    </equation>
+    <text_fragment inRightOfPrevious="true">
+      <term key="text" text="or" />
+    </text_fragment>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="d" />
+      <term key="rightTerm" code="divide">
+        <term key="leftTerm" text="a" />
+        <term key="rightTerm" text="b" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="c" />
+      <term key="rightTerm" code="divide_slash">
+        <term key="leftTerm" text="i" />
+        <term key="rightTerm" text="2" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="c" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Parenthesis" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="identity">
+        <term key="argTerm" text="e" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Complex operators:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="minus">
+        <term key="leftTerm" code="mult">
+          <term key="leftTerm" code="plus">
+            <term key="leftTerm" text="a" />
+            <term key="rightTerm" text="b" />
+          </term>
+          <term key="rightTerm" code="minus">
+            <term key="leftTerm" text="a" />
+            <term key="rightTerm" text="b" />
+          </term>
+        </term>
+        <term key="rightTerm" code="identity">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="mult">
+              <term key="leftTerm" text="a" />
+              <term key="rightTerm" text="a" />
+            </term>
+            <term key="rightTerm" code="mult">
+              <term key="leftTerm" text="b" />
+              <term key="rightTerm" text="b" />
+            </term>
+          </term>
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Common functions" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text='Raise to power ("^")' />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="power">
+        <term key="leftTerm" text="100" />
+        <term key="rightTerm" text="0" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="power">
+        <term key="leftTerm" text="2" />
+        <term key="rightTerm" text="2" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text='The square root of the argument ("#" or&#10;"sqrt")' />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sqrt_layout">
+        <term key="argTerm" text="25" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sqrt_layout">
+        <term key="argTerm" text="-1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sqrt">
+        <term key="argTerm" text="10" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text='The n-th root of the argument ("$")' />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="nthrt_layout">
+        <term key="leftTerm" text="3" />
+        <term key="rightTerm" text="125" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text='The product of all positive integers less&#10;than or equal to the argument ("!")' />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="factorial">
+        <term key="argTerm" text="5" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text='The absolute value of the real or complex&#10;argument ("|" or "abs")' />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="abs_layout">
+        <term key="argTerm" text="10" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="abs_layout">
+        <term key="argTerm" text="-10" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="abs">
+        <term key="argTerm" text="i" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text='The complex conjugate of the complex argument&#10;("~")' />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="conjugate_layout">
+        <term key="argTerm" code="plus">
+          <term key="leftTerm" text="3" />
+          <term key="rightTerm" text="5i" />
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="conjugate_layout">
+        <term key="argTerm" code="minus">
+          <term key="leftTerm" text="1" />
+          <term key="rightTerm" text="2i" />
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="The real and imaginary parts of the complex&#10;argument" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="re">
+        <term key="argTerm" code="plus">
+          <term key="leftTerm" text="3" />
+          <term key="rightTerm" text="5i" />
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="im">
+        <term key="argTerm" code="plus">
+          <term key="leftTerm" text="3" />
+          <term key="rightTerm" text="5i" />
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Trigonometric functions" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Sine, cosine, tangent" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sin">
+        <term key="argTerm" code="divide_slash">
+          <term key="leftTerm" text="π" />
+          <term key="rightTerm" text="2" />
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="cos">
+        <term key="argTerm" text="π" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="tan">
+        <term key="argTerm" text="0" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Cosecant, secant, cotangent" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="csc">
+        <term key="argTerm" code="divide_slash">
+          <term key="leftTerm" text="π" />
+          <term key="rightTerm" text="2" />
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sec">
+        <term key="argTerm" text="-π" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="cot">
+        <term key="argTerm" code="divide_slash">
+          <term key="leftTerm" text="π" />
+          <term key="rightTerm" text="4" />
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Inverse sine, cosine, tangent" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="asin">
+        <term key="argTerm" text="1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="acos">
+        <term key="argTerm" text="-1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="atan">
+        <term key="argTerm" text="0" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Inverse cosecant, secant, cotangent" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="acsc">
+        <term key="argTerm" text="1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="asec">
+        <term key="argTerm" text="-1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="acot">
+        <term key="argTerm" text="1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="The arc tangent of y/x within the range&#10;[-pi..pi]" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="atan2">
+        <term key="argTerm1" text="1" />
+        <term key="argTerm2" text="5" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Hyperbolic functions and logarithms" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="The raising 'e' to the power of the argument" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="exp">
+        <term key="argTerm" text="3" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="power">
+        <term key="leftTerm" text="e" />
+        <term key="rightTerm" text="3" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="The natural logarithm of the argument" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="ln">
+        <term key="argTerm" code="power">
+          <term key="leftTerm" text="e" />
+          <term key="rightTerm" text="5" />
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Logarithm of number to the specified base" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="log">
+        <term key="argTerm1" text="256" />
+        <term key="argTerm2" text="2" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="The base 10 logarithm of the argument" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="log10">
+        <term key="argTerm" code="power">
+          <term key="leftTerm" text="10" />
+          <term key="rightTerm" text="5" />
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Hyperbolic sine, cosine, tangent" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sinh">
+        <term key="argTerm" text="0" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="cosh">
+        <term key="argTerm" text="0" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="tanh">
+        <term key="argTerm" text="0" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Hyperbolic cosecant, secant, cotangent" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="csch">
+        <term key="argTerm" text="1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sech">
+        <term key="argTerm" text="0" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="coth">
+        <term key="argTerm" text="1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Functions for real numbers" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="The most positive (closest to positive&#10;infinity) of the two arguments" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="max">
+        <term key="argTerm1" text="1" />
+        <term key="argTerm2" text="2" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="max">
+        <term key="argTerm1" text="2" />
+        <term key="argTerm2" text="1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="The most negative (closest to negative&#10;infinity) of the two arguments" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="min">
+        <term key="argTerm1" text="1" />
+        <term key="argTerm2" text="2" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="min">
+        <term key="argTerm1" text="2" />
+        <term key="argTerm2" text="1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="The remainder on dividing the first argument&#10;by the second" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="mod">
+        <term key="argTerm1" text="11" />
+        <term key="argTerm2" text="2" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="mod">
+        <term key="argTerm1" text="e" />
+        <term key="argTerm2" text="2" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Calculates percentage (for example, 5% of 20)" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="perc">
+        <term key="argTerm1" text="20" />
+        <term key="argTerm2" text="5" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="The pseudo-random value between zero and the&#10;argument" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="random">
+        <term key="argTerm" text="1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="random">
+        <term key="argTerm" text="10" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="The most negative (closest to negative&#10;infinity) integer value greater than or&#10;equal to the argument" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="ceil">
+        <term key="argTerm" text="1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="ceil">
+        <term key="argTerm" text="1.25" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="ceil">
+        <term key="argTerm" text="1.75" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="ceil">
+        <term key="argTerm" text="2" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="The most positive (closest to positive&#10;infinity) integer value less than or equal&#10;to the argument" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="floor">
+        <term key="argTerm" text="1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="floor">
+        <term key="argTerm" text="1.25" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="floor">
+        <term key="argTerm" text="1.75" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="floor">
+        <term key="argTerm" text="2" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Rounds the real number x to n places" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="round">
+        <term key="argTerm1" text="π" />
+        <term key="argTerm2" text="2" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Returns the integer part of a real number by&#10;removing the fractional part" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="trunc">
+        <term key="argTerm" text="π" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Compute the signum of a number: -1 for&#10;negative numbers, +1 for positive numbers&#10;and 0 otherwise:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sign">
+        <term key="argTerm" text="-5" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sign">
+        <term key="argTerm" text="0" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="sign">
+        <term key="argTerm" text="e" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Function plots" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="The first x-value:" />
+    </text_fragment>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x1" />
+      <term key="rightTerm" text="-10" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="The last x-value:" />
+    </text_fragment>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x2" />
+      <term key="rightTerm" text="10" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="The sampling step:" />
+    </text_fragment>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="dx" />
+      <term key="rightTerm" text="0.1" />
+    </equation>
+    <text_fragment>
+      <term key="text" text='X-values, interval (":")' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="x1" />
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" text="x1" />
+          <term key="rightTerm" text="dx" />
+        </term>
+        <term key="maxValue" text="x2" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Y-values, a function of X" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f(x)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="power">
+          <term key="leftTerm" text="e" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" text="-x" />
+            <term key="rightTerm" text="10" />
+          </term>
+        </term>
+        <term key="rightTerm" code="sin">
+          <term key="argTerm" text="x" />
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="A plot with automatically calculated&#10;boundaries:" />
+    </text_fragment>
+    <plot_function width="680" height="500" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FFFF2A36" width="4" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text="A plot with manually defined boundaries:" />
+    </text_fragment>
+    <plot_function width="680" height="500" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" text="1" />
+      <term key="yFunction" color="#FFFF2A36" width="4" lineStyle="dashed" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="x" />
+      </term>
+      <term key="yMinValue" text="0" />
+      <term key="xMinValue" text="0" />
+      <term key="xFunction" text="x" />
+      <term key="xMaxValue" text="8" />
+    </plot_function>
+  </formulaList>
+</micromath>

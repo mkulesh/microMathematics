@@ -17,7 +17,7 @@ Benefits and features:
 - SD card on Android 6+ is also supported
 - The app contains detailed "How to use" page and several examples
 
-microMathematics supports basic level of mathematical calculations. If you find microMathematics useful or need more mathematics (like support of complex numbers, functions with many arguments, plots for several functions, 3D plots, summation and product operations, derivative and definite integrals, logical operators, n-th root), please consider purchasing microMathematics Plus to support further development. Thank you.
+microMathematics supports basic level of mathematical calculations. If you find microMathematics useful or need more mathematics (like plots for several functions, 3D plots, summation and product operations, derivative and definite integrals, logical operators, units), please consider purchasing the premium version to support further development. Thank you.
 
 The app is 100% open source. Please feel free to download, explore, fork or contribute to it on https://github.com/mkulesh/microMathematics/tree/light
 

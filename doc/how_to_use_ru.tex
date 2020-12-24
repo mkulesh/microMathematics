@@ -1,5 +1,5 @@
 % This is auto-generated file: do not edit!
-% Exported from microMathematics, version 1.20
+% Exported from microMathematics, version 1.21
 
 
 Данное приложение является мощным
@@ -28,13 +28,13 @@ LaTeX или изображение.
 
 \subsection{Редактирование}
 
-Большинство объектов содержат
-поля, которые можно редактировать.
-Для редактирования используйте
-кнопки на нижней панели
-инструментов, с их помощью можно
-вводить математические символы в
-поля объекта.
+Большинство объектов содержат поля,
+которые можно редактировать. Для
+редактирования используйте кнопки
+на нижней панели инструментов, с
+их помощью можно вводить
+математические символы в поля
+объекта.
 
 Символы с этой панели также можно
 ввести и с клавиатуры. Чтобы
@@ -56,7 +56,7 @@ LaTeX или изображение.
 Для отмены неудачного действия
 можно использовать команду
 главного меню ''Отменить ввод'':
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig1.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig1.png} \end{tabular}\end{center}
 
 \subsection{Формула}
 
@@ -65,11 +65,11 @@ LaTeX или изображение.
 добавления формулы используйте
 кнопку ''Вставить'' на верхней
 панели инструментов
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig2.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig2.png} \end{tabular}\end{center}
 
 или кнопку ''Вставить формулу'' на
 нижней панели:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig3.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig3.png} \end{tabular}\end{center}
 
 После этого появится объект с двумя
 пустыми полями, обязательными для
@@ -87,7 +87,7 @@ LaTeX или изображение.
 Из верхней панели инструментов
 можно вызвать окно ''Свойства
 документа'': 
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig4.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig4.png} \end{tabular}\end{center}
 
 В зависимости от параметра
 ''Разрешить переопределение
@@ -140,6 +140,13 @@ LaTeX или изображение.
   $NPi2 := N \cdot Pi2$
 \end{tabular}\end{center}
 
+Для обозначения комплексной
+константы используйте символ
+мнимой единицы i:
+\begin{center}\begin{tabular}{c}
+  $z := 5 + 3i$
+\end{tabular}\end{center}
+
 \subsubsection{Формула - интервал}
 
 Формула интервального типа задаёт
@@ -156,7 +163,7 @@ LaTeX или изображение.
 '':'' или нажмите на кнопку
 ''Интервал'' на нижней панели
 инструментов:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig5.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig5.png} \end{tabular}\end{center}
 
 Первый элемент с индексом 0
 определяет начальное значение,
@@ -169,17 +176,17 @@ LaTeX или изображение.
 \end{tabular}\end{center}
 
 Обращаться к элементам интервала
-можно следующим образом:
+нужно по индексу:
 \begin{center}\begin{tabular}{ccc}
   $x \left( 0\right)  = 0.0$ &
   $x \left( 1\right)  = 0.1$ &
   $x \left( 100\right)  = 10.0$ \cr
 \end{tabular}\end{center}
 
-Шаг определятся как разница второго
-и первого элементов:
+Шаг определятся как разница двух
+соседних элементов:
 \begin{center}\begin{tabular}{c}
-  $x \left( 1\right)  - x \left( 0\right)  = 0.1$
+  $x \left( 2\right)  - x \left( 1\right)  = 0.1$
 \end{tabular}\end{center}
 
 К примеру, задать интервал с
@@ -189,36 +196,48 @@ LaTeX или изображение.
 таким образом:
 \begin{center}\begin{tabular}{cc}
   $dy := 0.05$ &
-  $y := \left[ 0,\, dy \,..\, dy \cdot \left( N - 1 \right) \right]$ \cr
+  $y := \left[ 0,\, dy \,..\, dy \cdot N \right]$ \cr
 \end{tabular}\end{center}
 
 \subsubsection{Формула - функция}
 
 Функция определяет зависимость
-между одним аргументом и областью
-значений, где каждое значение
-аргумента даёт нам только одно
-итоговое значение функции.
+между одним или несколькими
+аргументами и областью значений,
+где каждое значение вещественного
+или комплексного аргумента или
+комбинации аргументов даёт нам
+только одно итоговое значение
+функции.
 
-Имя функции и её аргумент (в
-круглых скобках) указываются в
-левом поле. Переменную,
-обозначающую аргумент, не
-обязательно определять ранее -
+Имя функции и её аргументы (в
+круглых скобках через запятую)
+указываются в левом поле.
+Переменную, обозначающую аргумент,
+не обязательно определять ранее -
 можно использовать любое
 обозначение, содержащее буквы и
 цифры:
 \begin{center}\begin{tabular}{c}
   $f(t) := sin \left( t\right)  \cdot cos \left( t\right)  / 2$
 \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+  $w(z) := {e}^{2i \cdot {\pi} \cdot z}$
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+  $H(x,y) := \sqrt{{x}^{2} + {y}^{2}} $
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+  $g(x,y) := \frac{sin \left( H \left( x,\, y\right) \right) }{H \left( x,\, y / 2\right)  + 1}$
+\end{tabular}\end{center}
 
 Правая часть такого объекта
 содержит математическое выражение
 для вычисления функции. Если
-правая часть не содержит аргумент
-из левой части, то такая функция
-будет интерпретироваться как
-константа.
+правая часть не содержит ни одного
+аргумента из левой части, то такая
+функция будет интерпретироваться
+как константа.
 
 В правой части можно использовать
 другие функции, как встроенные,
@@ -227,6 +246,11 @@ LaTeX или изображение.
 символ ''('', а затем её аргумент.
 Аргумент также может быть формулой
 с любыми операторами и функциями.
+
+Список всех встроенных функций
+содержится в документе
+''functions\_overview.mmt'', который
+находится в ресурсах приложения.
 
 \subsection{Текстовый результат}
 
@@ -239,7 +263,7 @@ LaTeX или изображение.
 инструментов или кнопку ''Вставить
 текстовый результат'' на нижней
 панели:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig6.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig6.png} \end{tabular}\end{center}
 
 После этого появится объект с двумя
 пустыми полями, где левое поле
@@ -262,26 +286,33 @@ LaTeX или изображение.
   ${e}^{{\pi}} \cdot f \left( NPi2\right)  = 2.27286E-14$
 \end{tabular}\end{center}
 
-Если левая часть не содержит
+Если левая часть не зависит от
 переменных интервального типа, то
 результатом вычислений будет одно
+вещественное или комплексное
 число:
 \begin{center}\begin{tabular}{c}
   $y \left( N - 1\right)  - y \left( 0\right)  = 9.95$
 \end{tabular}\end{center}
-
-Если же слева используется
-интервал, то результат будет
-массивом чисел, соответствующих
-интервалу. Ввиду ограниченности
-дисплея, будут показаны только
-шесть первых и последнее число из
-этого массива:
-\begin{center}\begin{tabular}{c}
-  $x = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, ..., 10.0]$
+\begin{center}\begin{tabular}{ccc}
+  $\Re\left( z \right)  = 5.0$ &
+  $\Im\left( z \right)  = 3.0$ &
+  $ \left| z \right|  = 5.83095$ \cr
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $2 \cdot y = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, ..., 19.9]$
+  $\sqrt{sin \left( \frac{3}{2} \cdot {\pi}\right) }  = 0.0+1.0i$
+\end{tabular}\end{center}
+
+Если слева используется интервал,
+то результат будет массивом чисел,
+соответствующих интервалу. Ввиду
+ограниченности дисплея, будут
+показаны только несколько первых и
+последнее число из этого массива:
+\begin{center}\begin{tabular}{ccc}
+  $x = \begin{bmatrix}0.0\\0.1\\0.2\\0.3\\0.4\\0.5\\\dots\\10.0\\\end{bmatrix}$ &
+  $y = \begin{bmatrix}0.0\\0.05\\0.1\\0.15\\0.2\\0.25\\\dots\\10.0\\\end{bmatrix}$ &
+  $2 \cdot y = \begin{bmatrix}0.0\\0.1\\0.2\\0.3\\0.4\\0.5\\\dots\\20.0\\\end{bmatrix}$ \cr
 \end{tabular}\end{center}
 
 Количество показанных элементов, а
@@ -293,7 +324,7 @@ LaTeX или изображение.
 появится плавающая кнопка
 ''Настройки объекта'', по нажатии на
 которую и откроется окно настроек:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig7.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig7.png} \end{tabular}\end{center}
 
 Также появится вторая плавающая
 кнопка - ''Подробности''. При
@@ -310,13 +341,13 @@ LaTeX или изображение.
 \subsection{График функции}
 
 Данный элемент предназначен для
-отображения графика функции одной
+отображения графиков функций одной
 переменной. Для добавления
 используйте кнопку ''Вставить'' на
 верхней панели инструментов или
 кнопку ''Вставить график функции''
 на нижней панели:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig8.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig8.png} \end{tabular}\end{center}
 
 Появится поле графика с шестью
 пустыми полями. Функция, для
@@ -324,7 +355,7 @@ LaTeX или изображение.
 в левом среднем поле, а аргумент
 функции указывается в нижнем
 среднем поле:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig9.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig9.png} \end{tabular}\end{center}
 
 Для более подробного ознакомления с
 графиком функции см. примеры
@@ -335,23 +366,22 @@ LaTeX или изображение.
 
 Этот элемент служит для ввода
 простого текста. Добавить
-текстовое поле также можно по
-команде главного меню ''Вставить''
-или кнопкой ''Вставить текстовое
-поле'' на нижней панели
-инструментов:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig10.png} \end{tabular}\end{center}
+текстовое поле можно кнопкой
+''Вставить'' на верхней панели
+инструментов или кнопкой ''Вставить
+текстовое поле'' на нижней панели:
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig10.png} \end{tabular}\end{center}
 
 Если при помощи контекстного меню
 ''Выбрать всё'' выделить весь текст
-фрагмента, то  появится плавающая
+фрагмента, то появится плавающая
 кнопка ''Настройки объекта''. 
 
 При нажатии на эту кнопку
 откроется окно настроек текста,
 где можно изменить его стиль и
 нумерацию. Например, заголовки
-глав в данном документе  имеют тип
+глав в данном документе имеют тип
 ''Глава'' со включенной
 автоматической нумерацией.
 
@@ -365,7 +395,7 @@ LaTeX или изображение.
 верхней панели инструментов или
 кнопку ''Вставить изображение из
 файла'' на нижней панели:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig11.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig11.png} \end{tabular}\end{center}
 
 После этого откроется окно
 настройки изображения, где можно

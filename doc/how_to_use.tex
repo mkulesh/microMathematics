@@ -1,5 +1,5 @@
 % This is auto-generated file: do not edit!
-% Exported from microMathematics, version 1.20
+% Exported from microMathematics, version 1.21
 
 
 This app is a powerful calculation
@@ -47,7 +47,7 @@ The ''Undo'' command is available in the
 action bar. It erases the last change
 done to the document and reverts it to
 an older state:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig1.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig1.png} \end{tabular}\end{center}
 
 \subsection{Equation}
 
@@ -55,11 +55,11 @@ An equation defines a numerical
 constant, an interval or a function.
 To create an equation, use the ''New
 element'' button in the action bar
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig2.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig2.png} \end{tabular}\end{center}
 
 or the ''Add equation'' button from the
 tool bar:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig3.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig3.png} \end{tabular}\end{center}
 
 An equation with two empty fields
 appears. These fields shall be filled:
@@ -75,7 +75,7 @@ this equation.
 
 From the action bar, you can open
 ''Document settings'' dialog window: 
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig4.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig4.png} \end{tabular}\end{center}
 
 Depending on the parameter ''Allow to
 re-define equations'' in this dialog,
@@ -121,6 +121,13 @@ be used:
   $NPi2 := N \cdot Pi2$
 \end{tabular}\end{center}
 
+You can also use the symbol ''i'' as
+imaginary unit in order to define a
+complex number:
+\begin{center}\begin{tabular}{c}
+  $z := 5 + 3i$
+\end{tabular}\end{center}
+
 \subsubsection{Interval}
 
 An interval type equation defines a
@@ -137,7 +144,7 @@ equation. On the right side of this
 equation, put either a symbol '':'', or
 click the button ''Equidistant
 interval'' from the tool bar:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig5.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig5.png} \end{tabular}\end{center}
 
 Here, the first element is the interval
 start point, the next element is the
@@ -147,8 +154,8 @@ the interval end point:
   $x := \left[ 0,\, 0.1 \,..\, 10 \right]$
 \end{tabular}\end{center}
 
-The interval elements can be accessed
-as follows:
+The interval elements shall be accessed
+by index:
 \begin{center}\begin{tabular}{ccc}
   $x \left( 0\right)  = 0.0$ &
   $x \left( 1\right)  = 0.1$ &
@@ -156,9 +163,9 @@ as follows:
 \end{tabular}\end{center}
 
 The increment is the difference between
-the second and the first value:
+two neighbours values:
 \begin{center}\begin{tabular}{c}
-  $x \left( 1\right)  - x \left( 0\right)  = 0.1$
+  $x \left( 2\right)  - x \left( 1\right)  = 0.1$
 \end{tabular}\end{center}
 
 For example, we can define an
@@ -168,17 +175,17 @@ where the interval start is zero as
 follows:
 \begin{center}\begin{tabular}{cc}
   $dy := 0.05$ &
-  $y := \left[ 0,\, dy \,..\, dy \cdot \left( N - 1 \right) \right]$ \cr
+  $y := \left[ 0,\, dy \,..\, dy \cdot N \right]$ \cr
 \end{tabular}\end{center}
 
 \subsubsection{Function}
 
-A function is a relation between given
-argument and a set of permissible
-outputs with the property, that each
-argument value is related to exactly
-one output. Currently, only functions
-of single argument are supported.
+A function is a relation between one or
+more arguments and a set of
+permissible outputs with the property,
+that each argument value (real or
+complex) or arguments combination is
+related to exactly one output.
 
 The function name and the function
 argument in brackets are given on the
@@ -189,6 +196,15 @@ define it as you want, but using
 letters or digits only:
 \begin{center}\begin{tabular}{c}
   $f(t) := sin \left( t\right)  \cdot cos \left( t\right)  / 2$
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+  $w(z) := {e}^{2i \cdot {\pi} \cdot z}$
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+  $H(x,y) := \sqrt{{x}^{2} + {y}^{2}} $
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+  $g(x,y) := \frac{sin \left( H \left( x,\, y\right) \right) }{H \left( x,\, y / 2\right)  + 1}$
 \end{tabular}\end{center}
 
 The right side of the function contains
@@ -207,6 +223,11 @@ argument. This argument can also be a
 formula, which contains any other
 operations and functions.
 
+The document ''functions\_overview.mmt'',
+stored within the ''Resources of
+microMathematic'', provides the
+list of all available functions.
+
 \subsection{Result View}
 
 This element is aimed to represent a
@@ -215,7 +236,7 @@ table. To add this element, use the
 ''New element'' button on the action bar
 or the ''Add result view'' button from
 the tool bar:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig6.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig6.png} \end{tabular}\end{center}
 
 An equation with two fields appears,
 where the left field shall be filled:
@@ -239,9 +260,18 @@ functions:
 
 If the left part does not contain any
 ''interval-like'' variables, the
-calculation result is just a number:
+calculation result is just a real or
+complex number:
 \begin{center}\begin{tabular}{c}
   $y \left( N - 1\right)  - y \left( 0\right)  = 9.95$
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{ccc}
+  $\Re\left( z \right)  = 5.0$ &
+  $\Im\left( z \right)  = 3.0$ &
+  $ \left| z \right|  = 5.83095$ \cr
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+  $\sqrt{sin \left( \frac{3}{2} \cdot {\pi}\right) }  = 0.0+1.0i$
 \end{tabular}\end{center}
 
 If the left part contains an interval
@@ -251,11 +281,10 @@ interval. Due to free space limit on
 the display, only the first six and
 the last elements of the vector will
 be displayed:
-\begin{center}\begin{tabular}{c}
-  $x = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, ..., 10.0]$
-\end{tabular}\end{center}
-\begin{center}\begin{tabular}{c}
-  $2 \cdot y = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, ..., 19.9]$
+\begin{center}\begin{tabular}{ccc}
+  $x = \begin{bmatrix}0.0\\0.1\\0.2\\0.3\\0.4\\0.5\\\dots\\10.0\\\end{bmatrix}$ &
+  $y = \begin{bmatrix}0.0\\0.05\\0.1\\0.15\\0.2\\0.25\\\dots\\10.0\\\end{bmatrix}$ &
+  $2 \cdot y = \begin{bmatrix}0.0\\0.1\\0.2\\0.3\\0.4\\0.5\\\dots\\20.0\\\end{bmatrix}$ \cr
 \end{tabular}\end{center}
 
 Number of displayed elements and the
@@ -267,7 +296,7 @@ formula is selected, the floating
 button ''Object properties'' appears. If
 you click this button, the result
 properties dialog will be displayed:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig7.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig7.png} \end{tabular}\end{center}
 
 The second floating button, ''Details'',
 will also appear. If you click on this
@@ -288,14 +317,14 @@ a single argument. To create a plot,
 use the ''New element'' button in the
 action bar or the ''Add function plot''
 button from the tool bar:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig8.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig8.png} \end{tabular}\end{center}
 
 Plot panel with six empty fields
 appears. The function to be plot shall
 be put in the middle-left field and
 the function argument in the
 middle-bottom field:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig9.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig9.png} \end{tabular}\end{center}
 
 For more details see ''Function Plot''
 and ''Polar Function Plot'' examples
@@ -308,9 +337,9 @@ simple text like this one. To add a
 text fragment, use the ''New element''
 button in the action bar or ''Add text
 fragment'' button from the tool bar:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig10.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig10.png} \end{tabular}\end{center}
 
-If the whole text within a fregment is 
+If the whole text within a fragment is 
 selected using the context menu
 ''Select all'', a floating button
 ''Object properties'' appears in the
@@ -322,7 +351,7 @@ where you can select the text style
 and activate the numbering. For
 example, the titles in this document
 have the style ''Subsection'' with
-activated  numbering.
+activated numbering.
 
 \subsection{Image}
 
@@ -331,7 +360,7 @@ image file. To do it, use the ''New
 element'' button from the action bar or
 the ''Add image from file'' button from
 the tool bar:
-\begin{center}\begin{tabular}{c} \includegraphics[resolution=320]{graphics/how_to_use_fig11.png} \end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig11.png} \end{tabular}\end{center}
 
 The ''Image settings'' dialog will
 appear. There you can select a file
