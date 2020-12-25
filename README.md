@@ -33,9 +33,9 @@ This app is not only for students. Anyone who enjoys mathematics or requires mor
 
 ## Screenshots:
 
-![Example of a function plot](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/rayleigh_wave.png)
-![Example of a 3D plot](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/valentine.png)
-![Example of calculation with complex numbers](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/fourie_transform.png)
+![Example of a function plot](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/android-phone/cosine_transform.png)
+![Example of a 3D plot](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/android-phone/valentine.png)
+![Toolbar](https://github.com/mkulesh/microMathematics/blob/master/images/screenshots/android-10-inch/toolbar_settings.png)
 
 For more screenshots, see directory images/screenshots.
 
@@ -82,7 +82,7 @@ For more screenshots, see directory images/screenshots.
 
 This software is published under the *GNU General Public License, Version 3*
 
-Copyright (C) 2014-2018 Mikhail Kulesh
+Copyright (C) 2014-2020 Mikhail Kulesh
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
