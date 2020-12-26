@@ -13,7 +13,6 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fman_file_item_layout"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="4dp"

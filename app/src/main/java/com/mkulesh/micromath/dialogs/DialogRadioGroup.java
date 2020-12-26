@@ -68,7 +68,7 @@ public class DialogRadioGroup extends DialogBase
     @Override
     public void onClick(View v)
     {
-        final RadioButton selectedButton = findViewById(radioGroup.getCheckedRadioButtonId());
+        final RadioButton selectedButton = radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
         if (v instanceof RadioButton && eventHandler != null && selectedButton != null)
         {
             eventHandler.onClick(selectedButton.getId() - radioGroup.getId() - 1);
