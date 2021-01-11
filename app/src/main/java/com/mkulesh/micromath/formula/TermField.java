@@ -888,11 +888,16 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
      */
     private FormulaTerm convertToTerm(String s, Parcelable p, boolean ensureManualTrigger)
     {
-        final TermTypeIf f = TermFactory.findTerm(getContext(), text, s, ensureManualTrigger, true);
-        return convertToTerm(f, s, p);
+        return convertToTerm(s, p, ensureManualTrigger, null);
     }
 
-    private FormulaTerm convertToTerm(final TermTypeIf f, String s, Parcelable p)
+    private FormulaTerm convertToTerm(String s, Parcelable p, boolean ensureManualTrigger, Object extraPar)
+    {
+        final TermTypeIf f = TermFactory.findTerm(getContext(), text, s, ensureManualTrigger, true);
+        return convertToTermType(f, s, p, extraPar);
+    }
+
+    private FormulaTerm convertToTermType(final TermTypeIf f, String s, Parcelable p, Object extraPar)
     {
         term = null;
         if (f != null)
@@ -910,7 +915,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
                 {
                     throw new Exception("cannot create " + f.toString() + " for invalid insertion index " + textIndex);
                 }
-                term = f.createTerm(this, layout, s, textIndex);
+                term = f.createTerm(this, layout, s, textIndex, extraPar);
                 term.updateTextSize();
             }
             catch (Exception ex)
@@ -993,7 +998,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             writeToBundle(savedState, "savedState");
             clear();
         }
-        convertToTerm(termType, newText, null);
+        convertToTermType(termType, newText, null, null);
 
         if (isTerm() && !term.getTerms().isEmpty() && savedState != null)
         {

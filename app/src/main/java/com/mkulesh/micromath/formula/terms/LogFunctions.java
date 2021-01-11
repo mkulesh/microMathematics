@@ -132,9 +132,9 @@ public class LogFunctions extends FunctionBase
         }
 
         public FormulaTerm createTerm(
-                TermField termField, LinearLayout layout, String s, int textIndex) throws Exception
+                TermField termField, LinearLayout layout, String text, int textIndex, Object par) throws Exception
         {
-            return new LogFunctions(this, termField, layout, s, textIndex);
+            return new LogFunctions(this, termField, layout, text, textIndex);
         }
     }
 

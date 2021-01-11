@@ -107,7 +107,7 @@ public class Intervals extends FormulaTerm
         }
 
         public FormulaTerm createTerm(
-                TermField termField, LinearLayout layout, String s, int textIndex) throws Exception
+                TermField termField, LinearLayout layout, String text, int textIndex, Object par) throws Exception
         {
             return new Intervals(this, termField, layout, textIndex);
         }

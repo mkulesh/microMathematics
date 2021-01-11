@@ -111,9 +111,9 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         }
 
         public FormulaTerm createTerm(
-                TermField termField, LinearLayout layout, String s, int textIndex) throws Exception
+                TermField termField, LinearLayout layout, String text, int textIndex, Object par) throws Exception
         {
-            return new SeriesIntegrals(this, termField, layout, s, textIndex);
+            return new SeriesIntegrals(this, termField, layout, text, textIndex);
         }
     }
 
