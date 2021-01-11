@@ -117,9 +117,9 @@ public class TrigonometricFunctions extends FunctionBase
         }
 
         public FormulaTerm createTerm(
-                TermField termField, LinearLayout layout, String s, int textIndex) throws Exception
+                TermField termField, LinearLayout layout, String text, int textIndex, Object par) throws Exception
         {
-            return new TrigonometricFunctions(this, termField, layout, s, textIndex);
+            return new TrigonometricFunctions(this, termField, layout, text, textIndex);
         }
     }
 

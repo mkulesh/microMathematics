@@ -83,5 +83,5 @@ public interface TermTypeIf
     PaletteButton.Category getPaletteCategory();
 
     /* Creates and returns associated view for this term  */
-    FormulaTerm createTerm(TermField termField, LinearLayout layout, String s, int textIndex) throws Exception;
+    FormulaTerm createTerm(TermField termField, LinearLayout layout, String text, int textIndex, Object par) throws Exception;
 }
