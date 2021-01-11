@@ -80,7 +80,7 @@ public class EquationArrayResult
         return values;
     }
 
-    public void calculate(CalculaterTask thread, ArrayList<String> arguments, final EquationArrayResult mergedArray) throws CancelException
+    public void calculate(CalculaterTask thread, ArrayList<String> arguments, boolean useArgsAsDimension, final EquationArrayResult mergedArray) throws CancelException
     {
         values = null;
 
@@ -116,14 +116,14 @@ public class EquationArrayResult
                 {
                     return;
                 }
-                final int size = numIndex + 1;
+                final int size = useArgsAsDimension ? numIndex : numIndex + 1;
                 dimValues[dim] = size;
                 final CalculatedValue[] interval = new CalculatedValue[size];
                 for (int i = 0; i < size; i++)
                 {
                     interval[i] = new CalculatedValue(CalculatedValue.ValueType.REAL, i, 0.0);
                 }
-                fixedIndex[dim] = numIndex;
+                fixedIndex[dim] = useArgsAsDimension ? Integer.MIN_VALUE : numIndex;
                 intervalValues.add(interval);
             }
             else

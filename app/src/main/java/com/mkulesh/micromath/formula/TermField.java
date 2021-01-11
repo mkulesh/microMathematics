@@ -31,6 +31,7 @@ import com.mkulesh.micromath.formula.terms.UserFunctions;
 import com.mkulesh.micromath.io.XmlUtils;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.R;
+import com.mkulesh.micromath.properties.MatrixProperties;
 import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.IdGenerator;
@@ -646,7 +647,6 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
 
     public void pasteFromClipboard(CharSequence s)
     {
-        ViewUtils.Debug(this, "pasteFromClipboard, s = " + s);
         pasteFromClipboard = true;
         setText(s);
         pasteFromClipboard = false;
@@ -1236,7 +1236,19 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         return text.isEquationName();
     }
 
-    public UserFunctions getIndexTerm()
+    UserFunctions getIndexTerm()
+    {
+        // premium version only
+        return null;
+    }
+
+    boolean isArray()
+    {
+        // premium version only
+        return false;
+    }
+
+    MatrixProperties getArrayDimension()
     {
         // premium version only
         return null;
