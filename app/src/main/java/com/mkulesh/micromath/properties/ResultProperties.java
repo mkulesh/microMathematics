@@ -142,7 +142,10 @@ public class ResultProperties implements Parcelable
         serializer.attribute(FormulaList.XML_NS, XML_PROP_DISABLE_CALCULATION, String.valueOf(disableCalculation));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_HIDE_RESULT_FIELD, String.valueOf(hideResultField));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_ARRAY_LENGTH, String.valueOf(arrayLength));
-        serializer.attribute(FormulaList.XML_NS, XML_PROP_RADIX, String.valueOf(radix));
+        if (radix != 10)
+        {
+            serializer.attribute(FormulaList.XML_NS, XML_PROP_RADIX, String.valueOf(radix));
+        }
         if (!units.isEmpty())
         {
             serializer.attribute(FormulaList.XML_NS, XML_PROP_UNITS, units);

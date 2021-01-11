@@ -54,7 +54,7 @@
         micromath:contextMenuCut="false"
         micromath:contextMenuPaste="false" />
 
-    <com.mkulesh.micromath.widgets.ResultMatrixLayout
+    <com.mkulesh.micromath.widgets.MatrixLayout
         android:id="@+id/formula_result_table"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
