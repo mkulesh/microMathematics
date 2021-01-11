@@ -20,6 +20,7 @@ import com.mkulesh.micromath.formula.Equation;
 import com.mkulesh.micromath.formula.FormulaBase;
 import com.mkulesh.micromath.formula.TermParser;
 import com.mkulesh.micromath.math.CalculatedValue;
+import com.mkulesh.micromath.properties.MatrixProperties;
 
 import org.apache.commons.math3.complex.Complex;
 
@@ -38,11 +39,17 @@ final class FileReader
     private final Context context;
     private final FormulaBase rootFormula;
     private final ArrayList<ArrayList<String>> fileBuffer = new ArrayList<>();
+    private final MatrixProperties dim = new MatrixProperties();
 
     FileReader(Context context, FormulaBase rootFormula)
     {
         this.context = context;
         this.rootFormula = rootFormula;
+    }
+
+    MatrixProperties getDim()
+    {
+        return dim;
     }
 
     InputStream openStream(final String name)
@@ -102,6 +109,8 @@ final class FileReader
                     }
                 }
                 fileBuffer.add(tokenList);
+                dim.rows = fileBuffer.size();
+                dim.cols = Math.max(dim.cols, tokenList.size());
             }
         }
         catch (IOException e)
@@ -117,24 +126,17 @@ final class FileReader
         fileBuffer.clear();
     }
 
-    CalculatedValue.ValueType getFileElement(CalculatedValue outValue)
+    CalculatedValue.ValueType getFileElement(CalculatedValue outValue, int a0, int a1)
     {
         if (rootFormula instanceof Equation)
         {
-            Equation eq = (Equation) rootFormula;
-            final int argNumber = eq.getArguments() != null ? eq.getArguments().size() : 0;
             String strValue = null;
-            if (argNumber == 1 || argNumber == 2)
+            if (a0 >= 0 && a0 < fileBuffer.size())
             {
-                final int a0 = eq.getArgumentValue(0).getInteger();
-                if (a0 < fileBuffer.size())
+                final ArrayList<String> line = fileBuffer.get(a0);
+                if (a1 >= 0 && a1 < line.size())
                 {
-                    final ArrayList<String> line = fileBuffer.get(a0);
-                    final int a1 = (argNumber == 1) ? 0 : eq.getArgumentValue(1).getInteger();
-                    if (a1 < line.size())
-                    {
-                        strValue = line.get(a1);
-                    }
+                    strValue = line.get(a1);
                 }
             }
             if (strValue != null)

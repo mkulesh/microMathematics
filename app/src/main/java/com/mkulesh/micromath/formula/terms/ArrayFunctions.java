@@ -28,6 +28,7 @@ import com.mkulesh.micromath.formula.PaletteButton;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.properties.MatrixProperties;
 import com.mkulesh.micromath.widgets.CustomEditText;
 
 import java.io.InputStream;
@@ -139,7 +140,7 @@ public class ArrayFunctions extends FunctionBase
         createGeneralFunction(getFunctionType().getLayoutId(), s, getFunctionType().getArgNumber(), idx);
         if (argTerm == null)
         {
-            throw new Exception("cannot initialize function terms");
+            throw new Exception("cannot initialize array terms");
         }
     }
 
@@ -166,6 +167,21 @@ public class ArrayFunctions extends FunctionBase
         return (FunctionType) termType;
     }
 
+    private boolean isFile()
+    {
+        return getFunctionType() == FunctionType.READ && fileReader != null;
+    }
+
+    public boolean isArray()
+    {
+        return isFile();
+    }
+
+    public MatrixProperties getArrayDimension()
+    {
+        return isFile() ? fileReader.getDim() : null;
+    }
+
     /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
      *--------------------------------------------------------*/
@@ -182,9 +198,9 @@ public class ArrayFunctions extends FunctionBase
         switch (getFunctionType())
         {
         case READ:
-            if (fileReader != null)
+            if (isFile())
             {
-                return fileReader.getFileElement(outValue);
+                return fileReader.getFileElement(outValue, getFirstIndex(), getSecondIndex());
             }
             break;
         case ROWS:
@@ -303,12 +319,40 @@ public class ArrayFunctions extends FunctionBase
     }
 
     /*--------------------------------------------------------*
-     * Methods related to file operation
+     * Methods implementing array operations
      *--------------------------------------------------------*/
+
+    private int getFirstIndex()
+    {
+        if (getFormulaRoot() instanceof Equation)
+        {
+            Equation eq = (Equation) getFormulaRoot();
+            final int argNumber = eq.getArgumentValues() != null ? eq.getArgumentValues().length : 0;
+            if (argNumber == 1 || argNumber == 2)
+            {
+                return eq.getArgumentValue(0).getInteger();
+            }
+        }
+        return -1;
+    }
+
+    private int getSecondIndex()
+    {
+        if (getFormulaRoot() instanceof Equation)
+        {
+            Equation eq = (Equation) getFormulaRoot();
+            final int argNumber = eq.getArgumentValues() != null ? eq.getArgumentValues().length : 0;
+            if (argNumber == 1 || argNumber == 2)
+            {
+                return (argNumber == 1) ? 0 : eq.getArgumentValue(1).getInteger();
+            }
+        }
+        return -1;
+    }
 
     public void prepareFileOperation()
     {
-        if (getFunctionType() == FunctionType.READ && fileReader != null)
+        if (isFile())
         {
             fileReader.prepare(argTerm.getText());
         }
@@ -316,7 +360,7 @@ public class ArrayFunctions extends FunctionBase
 
     public void finishFileOperation()
     {
-        if (getFunctionType() == FunctionType.READ && fileReader != null)
+        if (isFile())
         {
             fileReader.clear();
         }

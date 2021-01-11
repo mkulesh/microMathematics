@@ -5,11 +5,29 @@
       <term key="text" text="Three-component seismogram from an ASCII file:" />
     </text_fragment>
     <equation>
+      <term key="leftTerm" text="F" />
+      <term key="rightTerm" code="read">
+        <term key="argTerm" text="asset:/examples/three_component_signal.dat" />
+      </term>
+    </equation>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="rows">
+        <term key="argTerm" text="F" />
+      </term>
+      <term key="rightTerm" text="2000.0" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="cols">
+        <term key="argTerm" text="F" />
+      </term>
+      <term key="rightTerm" text="4.0" />
+    </result>
+    <equation>
       <term key="leftTerm" text="k" />
       <term key="rightTerm" code="equidistant_interval">
         <term key="minValue" text="0" />
         <term key="nextValue" text="1" />
-        <term key="maxValue" text="1999" />
+        <term key="maxValue" text="1499" />
       </term>
     </equation>
     <equation inRightOfPrevious="true">
@@ -29,15 +47,16 @@
         <term key="argTerm1" text="k" />
         <term key="argTerm2" text="n" />
       </term>
-      <term key="rightTerm" code="read">
-        <term key="argTerm" text="asset:/examples/three_component_signal.dat" />
+      <term key="rightTerm" code="content:com.mkulesh.micromath.index.F:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="n" />
       </term>
     </equation>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="S" />
       <term key="rightTerm" text="" />
     </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" radix="10">
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="rows">
         <term key="argTerm" text="S" />
       </term>

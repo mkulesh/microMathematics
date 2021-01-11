@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.FormulaBase.FocusType;
 import com.mkulesh.micromath.formula.PaletteButton.Category;
+import com.mkulesh.micromath.formula.terms.ArrayFunctions;
 import com.mkulesh.micromath.formula.terms.Comparators;
 import com.mkulesh.micromath.formula.terms.Intervals;
 import com.mkulesh.micromath.formula.terms.TermFactory;
@@ -31,6 +32,7 @@ import com.mkulesh.micromath.formula.terms.UserFunctions;
 import com.mkulesh.micromath.io.XmlUtils;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.properties.MatrixProperties;
 import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.IdGenerator;
@@ -672,7 +674,6 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
 
     public void pasteFromClipboard(CharSequence s)
     {
-        ViewUtils.Debug(this, "pasteFromClipboard, s = " + s);
         pasteFromClipboard = true;
         setText(s);
         pasteFromClipboard = false;
@@ -1275,7 +1276,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         return text.isEquationName();
     }
 
-    public UserFunctions getIndexTerm()
+    UserFunctions getIndexTerm()
     {
         if (isEquationName() &&
                 isTerm() &&
@@ -1290,5 +1291,15 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             }
         }
         return null;
+    }
+
+    boolean isArray()
+    {
+        return isTerm() && getTerm() instanceof ArrayFunctions && ((ArrayFunctions) getTerm()).isArray();
+    }
+
+    MatrixProperties getArrayDimension()
+    {
+        return isArray() ? ((ArrayFunctions) getTerm()).getArrayDimension() : null;
     }
 }

@@ -25,6 +25,7 @@ import com.mkulesh.micromath.formula.terms.UserFunctions;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.math.EquationArrayResult;
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.properties.MatrixProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
@@ -196,7 +197,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     {
         final ArrayList<Equation> linkedIntervals = getAllIntervals();
         final ArrayList<String> arguments = getArguments();
-        return linkedIntervals.isEmpty() && (arguments == null || arguments.isEmpty());
+        return linkedIntervals.isEmpty() && (arguments == null || arguments.isEmpty()) && !rightTerm.isArray();
     }
 
     private String checkArrayResult()
@@ -204,6 +205,12 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         final Resources res = getContext().getResources();
 
         final ArrayList<String> arguments = getArguments();
+        if (arguments == null)
+        {
+            // no arguments are expected when right term holds a matrix
+            return null;
+        }
+
         if (arguments.size() > EquationArrayResult.MAX_DIMENSION)
         {
             // error: invalid array dimension
@@ -280,6 +287,12 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         return CalculatedValue.NaN;
     }
 
+    public CalculatedValue[] getArgumentValues()
+    {
+        return argumentValues;
+    }
+
+
     /*--------------------------------------------------------*
      * Re-implementation for methods for Calculatable interface
      *--------------------------------------------------------*/
@@ -335,7 +348,18 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         else
         {
             fileOperation(true);
-            arrayResult.calculate(thread, getArguments(), findPreviousArray());
+            final MatrixProperties mp = rightTerm.getArrayDimension();
+            if (getArguments() == null && mp != null)
+            {
+                final ArrayList<String> arguments = new ArrayList<>();
+                arguments.add(String.valueOf(mp.rows));
+                arguments.add(String.valueOf(mp.cols));
+                arrayResult.calculate(thread, arguments, true, null);
+            }
+            else
+            {
+                arrayResult.calculate(thread, getArguments(), false, findPreviousArray());
+            }
             fileOperation(false);
         }
     }
@@ -444,7 +468,7 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
      */
     public boolean isArray()
     {
-        return leftTerm.getIndexTerm() != null || leftTerm.getParser().isArray();
+        return leftTerm.getIndexTerm() != null || leftTerm.getParser().isArray() || rightTerm.isArray();
     }
 
     public int[] getArrayDimensions()
