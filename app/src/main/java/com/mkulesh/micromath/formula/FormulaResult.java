@@ -32,9 +32,10 @@ import com.mkulesh.micromath.ta.TestSession;
 import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
+import com.mkulesh.micromath.widgets.CustomLayout;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.FocusChangeIf;
-import com.mkulesh.micromath.widgets.ResultMatrixLayout;
+import com.mkulesh.micromath.widgets.MatrixLayout;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
@@ -65,7 +66,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
 
     // Array and matrix results
     private EquationArrayResult arrayArgument = null, arrayResult = null;
-    private ResultMatrixLayout arrayResultMatrix = null;
+    private MatrixLayout arrayResultMatrix = null;
+    private final ArrayList<TermField> arrayResultTerms = new ArrayList<>();
     private CustomTextView leftBracket = null, rightBracket = null;
 
     private final ResultProperties properties = new ResultProperties();
@@ -171,8 +173,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         super.updateTextColor();
         if (isArrayResult())
         {
-            arrayResultMatrix.updateTextColor(R.drawable.formula_term,
-                    R.drawable.formula_term_background, R.attr.colorFormulaSelected);
+            arrayResultMatrix.updateTextColor();
         }
     }
 
@@ -181,14 +182,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     {
         if (isArrayResult())
         {
-            if (owner == leftTerm.getEditText() && focusType == FocusChangeIf.NextFocusType.FOCUS_RIGHT)
-            {
-                return arrayResultMatrix.getFirstFocusId();
-            }
-            if (owner == null && focusType == FocusChangeIf.NextFocusType.FOCUS_LEFT)
-            {
-                return arrayResultMatrix.getLastFocusId();
-            }
+            return super.getNextFocusId(owner, focusType, arrayResultTerms);
         }
         return super.getNextFocusId(owner, focusType);
     }
@@ -203,15 +197,6 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         if (owner == null)
         {
             return R.id.main_list_view;
-        }
-        if (arrayResultMatrix != null)
-        {
-            int id = arrayResultMatrix.getNextFocusId(owner, focusType);
-            if (id == ViewUtils.INVALID_INDEX)
-            {
-                id = getNextFocusId(constantResultField.getEditText(), focusType);
-            }
-            return id;
         }
         return getNextFocusId(owner, focusType);
     }
@@ -394,8 +379,6 @@ public class FormulaResult extends CalculationResult implements ResultProperties
             arrayResultMatrix.setVisibility(visibility);
             rightBracket.setVisibility(visibility);
             fillResultMatrix();
-            arrayResultMatrix.prepare(getFormulaList().getActivity(), this, this);
-            arrayResultMatrix.updateTextSize(getFormulaList().getDimen());
             break;
         }
         }
@@ -608,6 +591,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
 
     private void fillResultMatrix()
     {
+        arrayResultTerms.clear();
         if (!isArrayResult())
         {
             return;
@@ -617,7 +601,18 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         final int yValuesNumber = arrayResult.getDimensions()[1];
         final int colsNumber = Math.min(yValuesNumber, properties.arrayLength + 1);
 
-        arrayResultMatrix.resize(rowsNumber, colsNumber, R.layout.formula_result_cell);
+        arrayResultMatrix.resize(rowsNumber, colsNumber, R.layout.formula_result_cell,
+            (int row, int col, final CustomLayout layout, final CustomEditText text) -> {
+                final TermField tf = new TermField(this, this, layout, 0, text);
+                text.prepare(getFormulaList().getActivity(), this);
+                text.setTextWatcher(false);
+                text.setChangeIf(tf, this);
+                return tf;
+            },
+            getFormulaList().getDimen());
+        arrayResultTerms.add(leftTerm);
+        arrayResultTerms.addAll(arrayResultMatrix.getTerms());
+
         for (int r = 0; r < rowsNumber; r++)
         {
             int dataRowIdx = r;

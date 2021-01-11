@@ -14,16 +14,22 @@
   -->
 
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-       xmlns:micromath="http://schemas.android.com/apk/res-auto" >
+    xmlns:micromath="http://schemas.android.com/apk/res-auto">
 
-    <com.mkulesh.micromath.widgets.CustomEditText
-        style="@style/FormulaTextEditStyle"
+    <com.mkulesh.micromath.widgets.CustomLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="?attr/colorFormulaCalculatedValue"
-        micromath:calculatedValue="true"
-        micromath:emptyEnabled="true"
-        micromath:contextMenuCut="false"
-        micromath:contextMenuPaste="false"/>
+        android:orientation="horizontal">
+
+        <com.mkulesh.micromath.widgets.CustomEditText
+            style="@style/FormulaTextEditStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/colorFormulaCalculatedValue"
+            micromath:calculatedValue="true"
+            micromath:emptyEnabled="true"
+            micromath:contextMenuCut="false"
+            micromath:contextMenuPaste="false" />
+    </com.mkulesh.micromath.widgets.CustomLayout>
 
 </merge>

@@ -985,13 +985,18 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     /**
      * Procedure recursively updates the text size of the given view
      */
+    public void setLayoutPadding(ScaledDimensions dimen, ScaledDimensions.Type hType, ScaledDimensions.Type vType)
+    {
+        final int hor = dimen.get(hType);
+        final int vert = dimen.get(vType);
+        layout.setPadding(hor, vert, hor, vert);
+    }
+
     private void updateTextSize(View v, ScaledDimensions dimen)
     {
         if (isRootFormula())
         {
-            final int hor = dimen.get(ScaledDimensions.Type.HOR_ROOT_PADDING);
-            final int vert = dimen.get(ScaledDimensions.Type.VERT_ROOT_PADDING);
-            layout.setPadding(hor, vert, hor, vert);
+            setLayoutPadding(dimen, ScaledDimensions.Type.HOR_ROOT_PADDING, ScaledDimensions.Type.VERT_ROOT_PADDING);
         }
         if (v instanceof CustomTextView)
         {
@@ -1043,6 +1048,11 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
      */
     public int getNextFocusId(CustomEditText owner, FocusChangeIf.NextFocusType focusType)
     {
+        return getNextFocusId(owner, focusType, terms);
+    }
+
+    protected int getNextFocusId(CustomEditText owner, FocusChangeIf.NextFocusType focusType, final ArrayList<TermField> terms)
+    {
         FormulaBase f = null;
         // Process UP/DOWN
         if (isRootFormula() && owner != null)
@@ -1062,7 +1072,7 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         }
         // Process LEFT/RIGHT
         final int n = terms.size();
-        int i = 0;
+        int i;
         for (i = 0; i < n; i++)
         {
             TermField t = terms.get(i);
