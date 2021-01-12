@@ -180,7 +180,10 @@
     <string name="dialog_list_items">элемент (ов)</string>
     <string name="dialog_function_selection">Функция</string>
     <string name="dialog_palette_settings_title">Настройка панели инструментов</string>
-    
+    <string name="dialog_matrix_title">Размер матрицы</string>
+    <string name="dialog_matrix_rows">Количество строк</string>
+    <string name="dialog_matrix_cols">Количество столбцов</string>
+
     <!-- Mathematical elements -->
     <string name="math_new_element">Вставить</string>
     <string name="math_new_equation">Вставить формулу</string>
@@ -258,6 +261,7 @@
     <string name="math_function_csch">Гиперболический косеканс аргумента</string>
     <string name="math_function_sech">Гиперболический секанс аргумента</string>
     <string name="math_function_coth">Гиперболический котангенс аргумента</string>
+    <string name="math_function_matrix">Создать матрицу</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">К сожалению, достигнут предел глубины формулы для данной версии Android</string>

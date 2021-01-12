@@ -1174,4 +1174,11 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
         }
         return (f instanceof Equation) ? (Equation) f : null;
     }
+
+    protected void clearAllTerms()
+    {
+        terms.clear();
+        removeElements();
+        elements.clear();
+    }
 }

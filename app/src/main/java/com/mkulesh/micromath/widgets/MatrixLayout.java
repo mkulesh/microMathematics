@@ -21,8 +21,11 @@ import android.widget.TableRow;
 
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.properties.MatrixProperties;
+import com.mkulesh.micromath.undo.FormulaState;
 
 import java.util.ArrayList;
+
+import androidx.annotation.NonNull;
 
 public class MatrixLayout extends TableLayout
 {
@@ -75,7 +78,7 @@ public class MatrixLayout extends TableLayout
         return height / 2;
     }
 
-    public void resize(int rows, int cols, int cellLayoutId, final TermCreationListener listener)
+    public void resize(int rows, int cols, int cellLayoutId, final TermCreationListener listener, ScaledDimensions dimen)
     {
         if (dim.rows == rows && dim.cols == cols)
         {
@@ -92,6 +95,9 @@ public class MatrixLayout extends TableLayout
 
         final LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
+
+        final int horPadding = dimen.get(ScaledDimensions.Type.MATRIX_COLUMN_PADDING);
+        final int vertPadding = dimen.get(ScaledDimensions.Type.VERT_TERM_PADDING);
 
         for (int row = 0; row < dim.rows; row++)
         {
@@ -118,9 +124,15 @@ public class MatrixLayout extends TableLayout
                 final CustomLayout layout = (CustomLayout) tableRow.getChildAt(col);
                 if (layout != null && layout.getChildCount() > 0)
                 {
+                    layout.setPadding(horPadding, vertPadding, horPadding, vertPadding);
                     final CustomEditText text = (CustomEditText) layout.getChildAt(0);
                     text.setTag(new ElementTag(row, col, fields.size()));
-                    fields.add(listener.onTermCreation(row, col, layout, text));
+                    final TermField field = listener.onTermCreation(row, col, layout, text);
+                    if (field != null)
+                    {
+                        updateTextSize(field, dimen);
+                        fields.add(field);
+                    }
                 }
             }
         }
@@ -169,18 +181,23 @@ public class MatrixLayout extends TableLayout
     {
         for (TermField field : fields)
         {
-            field.updateTextSize();
-            if (field.isTerm())
-            {
-                field.getTerm().setLayoutPadding(dimen,
-                        ScaledDimensions.Type.MATRIX_COLUMN_PADDING,
-                        ScaledDimensions.Type.VERT_TERM_PADDING);
-            }
-            else
-            {
-                field.getEditText().updateTextSize(dimen, 0,
-                        ScaledDimensions.Type.MATRIX_COLUMN_PADDING);
-            }
+            updateTextSize(field, dimen);
+        }
+    }
+
+    private void updateTextSize(final TermField field, final ScaledDimensions dimen)
+    {
+        field.updateTextSize();
+        if (field.isTerm())
+        {
+            final int horPadding = dimen.get(ScaledDimensions.Type.MATRIX_COLUMN_PADDING);
+            final int vertPadding = dimen.get(ScaledDimensions.Type.VERT_TERM_PADDING);
+            field.getLayout().setPadding(horPadding, vertPadding, horPadding, vertPadding);
+        }
+        else
+        {
+            field.getEditText().updateTextSize(dimen, 0,
+                    ScaledDimensions.Type.MATRIX_COLUMN_PADDING);
         }
     }
 
@@ -203,6 +220,39 @@ public class MatrixLayout extends TableLayout
         {
             field.setText(s);
             field.getEditText().updateTextSize(dimen, 0, ScaledDimensions.Type.MATRIX_COLUMN_PADDING);
+        }
+    }
+
+    @NonNull
+    public FormulaState[][] getTermState()
+    {
+        final FormulaState[][] state = new FormulaState[getDim().rows][getDim().cols];
+        for (int row = 0; row < getDim().rows; row++)
+        {
+            for (int col = 0; col < getDim().cols; col++)
+            {
+                final TermField cell = getTerm(row, col);
+                if (cell != null)
+                {
+                    state[row][col] = cell.getState();
+                }
+            }
+        }
+        return state;
+    }
+
+    public void setTermState(@NonNull final FormulaState[][] state)
+    {
+        for (int row = 0; row < Math.min(getDim().rows, state.length); row++)
+        {
+            for (int col = 0; col < Math.min(getDim().cols, state[row].length); col++)
+            {
+                final TermField cell = getTerm(row, col);
+                if (cell != null && state[row][col] != null)
+                {
+                    cell.undo(state[row][col]);
+                }
+            }
         }
     }
 }

@@ -30,6 +30,7 @@ import com.mkulesh.micromath.formula.FormulaResult;
 import com.mkulesh.micromath.formula.FormulaTerm;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TextFragment;
+import com.mkulesh.micromath.formula.terms.ArrayFunctions;
 import com.mkulesh.micromath.formula.terms.CommonFunctions;
 import com.mkulesh.micromath.formula.terms.Comparators;
 import com.mkulesh.micromath.formula.terms.FunctionBase;
@@ -45,6 +46,7 @@ import com.mkulesh.micromath.plots.PlotFunction;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.TextProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
+import com.mkulesh.micromath.widgets.MatrixLayout;
 
 import java.io.OutputStream;
 import java.io.StringWriter;
@@ -446,6 +448,8 @@ class ExportToLatex
                 writeTermComparator((Comparators) term);
                 break;
             case ARRAY_FUNCTIONS:
+                writeArrayFunctions((ArrayFunctions) term);
+                break;
             case TRIGONOMETRIC_FUNCTIONS:
             case LOG_FUNCTIONS:
             case NUMBER_FUNCTIONS:
@@ -547,6 +551,28 @@ class ExportToLatex
         if (f.isUseBrackets())
         {
             writer.append(" \\right)");
+        }
+    }
+
+    private void writeArrayFunctions(ArrayFunctions f)
+    {
+        if (f.isMatrix())
+        {
+            final MatrixLayout matrix = f.getMatrixLayout();
+            writer.append("\\begin{bmatrix}");
+            for (int r = 0; r < matrix.getDim().rows; r++)
+            {
+                for (int c = 0; c < matrix.getDim().cols; c++)
+                {
+                    writeTermField(matrix.getTerm(r,c));
+                    writer.append(c + 1 < matrix.getDim().cols ? "&" : "\\\\");
+                }
+            }
+            writer.append("\\end{bmatrix}");
+        }
+        else
+        {
+            writeTermFunctionBase(f);
         }
     }
 

@@ -308,10 +308,19 @@ public class EquationArrayResult
         return values[getIndex(idx1, idx2)];
     }
 
-    public CalculatedValue getValue(CalculatedValue[] argValues)
+    public CalculatedValue getValue(final CalculatedValue[] args)
     {
         final int dimNumber = getDimNumber();
-        if (values == null || argValues.length != dimNumber)
+        CalculatedValue[] argValues = args.length == dimNumber ? args : null;
+
+        // allow to access a vector stored in matrix by one index
+        if (isVectorAsMatrix() && args.length == 1)
+        {
+            argValues = dimensions[0] == 1 ?
+                    new CalculatedValue[]{ CalculatedValue.ZERO, args[0] } :
+                    new CalculatedValue[]{ args[0], CalculatedValue.ZERO };
+        }
+        if (values == null || argValues == null)
         {
             return CalculatedValue.NaN;
         }
@@ -346,5 +355,10 @@ public class EquationArrayResult
     public boolean isArray1D()
     {
         return getDimNumber() == 1 && values != null && values.length > 0;
+    }
+
+    private boolean isVectorAsMatrix()
+    {
+        return getDimNumber() == 2 && (dimensions[0] == 1 || dimensions[1] == 1);
     }
 }

@@ -177,7 +177,12 @@
     <string name="dialog_text_style_numbering">Numeração</string>
     <string name="dialog_list_items">item (ns)</string>
     <string name="dialog_function_selection">Função</string>
+    <string name="dialog_image_settings_original_color">Original color</string>
+    <string name="dialog_image_settings_auto_color">Auto-color</string>
     <string name="dialog_palette_settings_title">Configuração da barra</string>
+    <string name="dialog_matrix_title">Configuração de matriz</string>
+    <string name="dialog_matrix_rows">Numero de linhas</string>
+    <string name="dialog_matrix_cols">Numero de colunas</string>
 
     <!-- Mathematical elements -->
     <string name="math_new_element">Novo elemento</string>
@@ -258,9 +263,7 @@
     <string name="math_function_sech">The hyperbolic secant of the argument</string>
     <string name="math_function_coth">The hyperbolic cotangent of the argument</string>
     <string name="math_function_log">Logarithm of number to the specified base</string>
-    <string name="error_forbidden_array">Array is not allowed for this field</string>
-    <string name="dialog_image_settings_original_color">Original color</string>
-    <string name="dialog_image_settings_auto_color">Auto-color</string>
+    <string name="math_function_matrix">Create matrix</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Chegou ao limite da profundidade do layout para esta versão do Android</string>
@@ -296,6 +299,7 @@
     <string name="error_paste_root_into_term">Não pode colar uma equação raiz em um termo</string>
     <string name="error_paste_term_into_text">Não pode colar um termo pois o conteúdo não é permitido para este campo</string>
     <string name="error_out_of_memory">Sem memória suficiente para exibir traçado</string>
+    <string name="error_forbidden_array">Array is not allowed for this field</string>
 
     <!-- File manager -->
     <string name="fman_local">Armazenamento interno</string>

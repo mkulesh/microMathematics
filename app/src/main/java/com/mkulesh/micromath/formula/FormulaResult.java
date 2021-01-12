@@ -611,8 +611,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                 text.setTextWatcher(false);
                 text.setChangeIf(tf, this);
                 return tf;
-            });
-        arrayResultMatrix.updateTextSize(getFormulaList().getDimen());
+            },
+            getFormulaList().getDimen());
         arrayResultTerms.add(leftTerm);
         arrayResultTerms.addAll(arrayResultMatrix.getTerms());
 

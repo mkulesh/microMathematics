@@ -181,6 +181,9 @@
     <string name="dialog_list_items">项</string>
     <string name="dialog_function_selection">函数</string>
     <string name="dialog_palette_settings_title">工具栏设置</string>
+    <string name="dialog_matrix_title">矩陣設定</string>
+    <string name="dialog_matrix_rows">行數</string>
+    <string name="dialog_matrix_cols">列數</string>
 
     <!-- Mathematical elements -->
     <string name="math_new_element">新元素</string>
@@ -259,6 +262,7 @@
     <string name="math_function_csch">参数的双曲余割</string>
     <string name="math_function_sech">参数的双曲正割</string>
     <string name="math_function_coth">参数的双曲余切</string>
+    <string name="math_function_matrix">創建矩陣</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">已达到此 Android 版本的布局深度限制</string>

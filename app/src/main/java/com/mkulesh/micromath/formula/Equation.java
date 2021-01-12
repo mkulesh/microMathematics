@@ -15,6 +15,7 @@ package com.mkulesh.micromath.formula;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
+import android.view.View;
 
 import com.mkulesh.micromath.dialogs.DialogResultDetails;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
@@ -132,7 +133,16 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
     @Override
     public boolean enableObjectProperties()
     {
-        return false;
+        return rightTerm != null && rightTerm.isTerm() && rightTerm.getTerm().enableObjectProperties();
+    }
+
+    @Override
+    public void onObjectProperties(View owner)
+    {
+        if (enableObjectProperties())
+        {
+            rightTerm.getTerm().onObjectProperties(rightTerm.getTerm());
+        }
     }
 
     @Override

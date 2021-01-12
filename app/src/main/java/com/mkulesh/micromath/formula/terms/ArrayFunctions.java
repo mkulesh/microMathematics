@@ -14,8 +14,10 @@ package com.mkulesh.micromath.formula.terms;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.LinearLayout;
 
+import com.mkulesh.micromath.dialogs.DialogMatrixSettings;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.CalculatableIf;
 import com.mkulesh.micromath.formula.CalculaterTask;
@@ -29,13 +31,22 @@ import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.MatrixProperties;
+import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.widgets.CustomEditText;
+import com.mkulesh.micromath.widgets.CustomLayout;
+import com.mkulesh.micromath.widgets.CustomTextView;
+import com.mkulesh.micromath.widgets.FocusChangeIf;
+import com.mkulesh.micromath.widgets.MatrixLayout;
 
 import java.io.InputStream;
 import java.util.Locale;
 
-public class ArrayFunctions extends FunctionBase
+import androidx.annotation.NonNull;
+
+public class ArrayFunctions extends FunctionBase implements FocusChangeIf
 {
+    private static final String XML_PROP_ELEMENT = "element";
+
     public TermTypeIf.GroupType getGroupType()
     {
         return TermTypeIf.GroupType.ARRAY_FUNCTIONS;
@@ -46,6 +57,7 @@ public class ArrayFunctions extends FunctionBase
      */
     public enum FunctionType implements TermTypeIf
     {
+        MATRIX(-1, R.drawable.p_function_matrix, R.string.math_function_matrix, R.layout.formula_matrix),
         READ(1, R.drawable.p_function_read, R.string.math_function_read, R.layout.formula_function_read),
         ROWS(1, R.drawable.p_function_rows, R.string.math_function_rows, R.layout.formula_function_array),
         COLS(1, R.drawable.p_function_cols, R.string.math_function_cols, R.layout.formula_function_array);
@@ -54,7 +66,7 @@ public class ArrayFunctions extends FunctionBase
         private final int imageId;
         private final int descriptionId;
         private final int layoutId;
-        private final String lowerCaseName;
+        public final String lowerCaseName;
 
         FunctionType(int argNumber, int imageId, int descriptionId, int layoutId)
         {
@@ -72,7 +84,7 @@ public class ArrayFunctions extends FunctionBase
 
         public int getShortCutId()
         {
-            return Palette.NO_BUTTON;
+            return this == MATRIX ? R.string.formula_array_matrix : Palette.NO_BUTTON;
         }
 
         int getArgNumber()
@@ -112,19 +124,22 @@ public class ArrayFunctions extends FunctionBase
 
         public PaletteButton.Category getPaletteCategory()
         {
-            return this == READ ? PaletteButton.Category.TOP_LEVEL_TERM : PaletteButton.Category.CONVERSION;
+            return this == MATRIX || this == READ ?
+                    PaletteButton.Category.TOP_LEVEL_TERM : PaletteButton.Category.CONVERSION;
         }
 
         public FormulaTerm createTerm(
                 TermField termField, LinearLayout layout, String text, int textIndex, Object par) throws Exception
         {
-            return new ArrayFunctions(this, termField, layout, text, textIndex);
+            return new ArrayFunctions(this, termField, layout, text, textIndex, par);
         }
     }
 
     /**
      * Private attributes
      */
+    private int startIndex = 0;
+    private MatrixLayout matrix = null;
     private TermField argTerm = null;
     private FileReader fileReader = null;
     private Equation linkedArray = null;
@@ -133,12 +148,30 @@ public class ArrayFunctions extends FunctionBase
      * Constructors
      *--------------------------------------------------------*/
 
-    private ArrayFunctions(FunctionType type, TermField owner, LinearLayout layout, String s, int idx) throws Exception
+    private ArrayFunctions(FunctionType type, TermField owner, LinearLayout layout, String s, int idx, Object par) throws Exception
     {
         super(owner, layout);
         termType = type;
-        createGeneralFunction(getFunctionType().getLayoutId(), s, getFunctionType().getArgNumber(), idx);
-        if (argTerm == null)
+        startIndex = idx;
+        if (getFunctionType() == FunctionType.MATRIX)
+        {
+            if (par instanceof MatrixProperties)
+            {
+                initMatrix((MatrixProperties)par);
+            }
+            else
+            {
+                final MatrixProperties dim = new MatrixProperties();
+                dim.rows = 3;
+                dim.cols = 3;
+                initMatrix(dim);
+            }
+        }
+        else
+        {
+            createGeneralFunction(getFunctionType().getLayoutId(), s, getFunctionType().getArgNumber(), idx);
+        }
+        if (argTerm == null && matrix == null)
         {
             throw new Exception("cannot initialize array terms");
         }
@@ -162,9 +195,14 @@ public class ArrayFunctions extends FunctionBase
      * Common getters
      *--------------------------------------------------------*/
 
-    private FunctionType getFunctionType()
+    public FunctionType getFunctionType()
     {
         return (FunctionType) termType;
+    }
+
+    public boolean isMatrix()
+    {
+        return getFunctionType() == FunctionType.MATRIX && matrix != null;
     }
 
     private boolean isFile()
@@ -174,17 +212,101 @@ public class ArrayFunctions extends FunctionBase
 
     public boolean isArray()
     {
-        return isFile();
+        return isMatrix() || isFile();
     }
 
     public MatrixProperties getArrayDimension()
     {
-        return isFile() ? fileReader.getDim() : null;
+        return isMatrix() ? matrix.getDim() : (isFile() ? fileReader.getDim() : null);
+    }
+
+    public MatrixLayout getMatrixLayout()
+    {
+        return matrix;
+    }
+
+    /*--------------------------------------------------------*
+     * Implementation for methods for FocusChangeIf interface
+     *--------------------------------------------------------*/
+
+    @Override
+    public int onGetNextFocusId(CustomEditText owner, NextFocusType focusType)
+    {
+        return getNextFocusId(owner, focusType);
     }
 
     /*--------------------------------------------------------*
      * Re-implementation for methods for FormulaBase and FormulaTerm superclass's
      *--------------------------------------------------------*/
+
+    @Override
+    public boolean enableObjectProperties()
+    {
+        return isMatrix();
+    }
+
+    @Override
+    public void onObjectProperties(View owner)
+    {
+        if (isMatrix())
+        {
+            final FormulaState formulaState = getState();
+            final MatrixProperties dim = new MatrixProperties();
+            dim.assign(matrix.getDim());
+            final DialogMatrixSettings d = new DialogMatrixSettings(getFormulaList().getActivity(), isChanged ->
+            {
+                getFormulaList().finishActiveActionMode();
+                if (!isChanged)
+                {
+                    return;
+                }
+                if (formulaState != null)
+                {
+                    getFormulaList().getUndoState().addEntry(formulaState);
+                }
+                if (dim.rows != matrix.getDim().rows || dim.cols != matrix.getDim().cols)
+                {
+                    final FormulaState[][] terms = matrix.getTermState();
+                    clearAllTerms();
+                    initMatrix(dim);
+                    matrix.setTermState(terms);
+                }
+                updateTextSize();
+            },
+                    dim);
+            d.show();
+        }
+    }
+
+    @Override
+    public void updateTextSize()
+    {
+        super.updateTextSize();
+        if (isMatrix())
+        {
+            matrix.updateTextSize(getFormulaList().getDimen());
+        }
+    }
+
+    @Override
+    public void updateTextColor()
+    {
+        super.updateTextColor();
+        if (isMatrix())
+        {
+            matrix.updateTextColor();
+        }
+    }
+
+    @Override
+    public int getNextFocusId(CustomEditText owner, FocusChangeIf.NextFocusType focusType)
+    {
+        if (isMatrix())
+        {
+            return super.getNextFocusId(owner, focusType, matrix.getTerms());
+        }
+        return super.getNextFocusId(owner, focusType);
+    }
 
     @Override
     protected String getFunctionLabel()
@@ -197,6 +319,16 @@ public class ArrayFunctions extends FunctionBase
     {
         switch (getFunctionType())
         {
+        case MATRIX:
+            if (isMatrix())
+            {
+                final TermField tf = matrix.getTerm(getFirstIndex(), getSecondIndex());
+                if (tf != null)
+                {
+                    return tf.getValue(thread, outValue);
+                }
+            }
+            break;
         case READ:
             if (isFile())
             {
@@ -257,7 +389,11 @@ public class ArrayFunctions extends FunctionBase
                     return false;
                 }
             }
-            if (getFunctionType() == FunctionType.READ)
+            if (getFunctionType() == FunctionType.MATRIX)
+            {
+                // no special checks currently
+            }
+            else if (getFunctionType() == FunctionType.READ)
             {
                 if (fileReader == null)
                 {
@@ -316,6 +452,52 @@ public class ArrayFunctions extends FunctionBase
             }
         }
         return v;
+    }
+
+    @Override
+    protected CustomTextView initializeSymbol(CustomTextView v)
+    {
+        if (getFunctionType() == FunctionType.MATRIX && v.getText() != null)
+        {
+            String t = v.getText().toString();
+            if (t.equals(getContext().getResources().getString(R.string.formula_left_bracket_key)))
+            {
+                v.prepare(CustomTextView.SymbolType.LEFT_SQR_BRACKET, getFormulaRoot().getFormulaList().getActivity(),
+                        this);
+                v.setText("."); // this text defines view width/height
+            }
+            else if (t.equals(getContext().getResources().getString(R.string.formula_right_bracket_key)))
+            {
+                v.prepare(CustomTextView.SymbolType.RIGHT_SQR_BRACKET, getFormulaRoot().getFormulaList().getActivity(),
+                        this);
+                v.setText("."); // this text defines view width/height
+            }
+        }
+        else
+        {
+            super.initializeSymbol(v);
+        }
+        return v;
+    }
+
+    private void initMatrix(@NonNull final MatrixProperties dim)
+    {
+        inflateElements(getFunctionType().getLayoutId(), true);
+        initializeElements(startIndex);
+        matrix = layout.findViewWithTag(getContext().getResources().getString(R.string.formula_matrix_key));
+        if (matrix != null)
+        {
+            matrix.resize(dim.rows, dim.cols, R.layout.formula_matrix_cell,
+                (int row, int col, final CustomLayout layout, final CustomEditText text) -> {
+                    final TermField tf = addTerm(getFormulaRoot(), layout, -1, text, this, 0);
+                    tf.bracketsType = TermField.BracketsType.NEVER;
+                    tf.setTermKey(XML_PROP_ELEMENT + "[" + row + "][" + col + "]");
+                    text.setTextWatcher(false);
+                    text.setChangeIf(tf, this);
+                    return tf;
+                },
+                getFormulaList().getDimen());
+        }
     }
 
     /*--------------------------------------------------------*

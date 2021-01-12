@@ -180,7 +180,10 @@
     <string name="dialog_list_items">elemento (e)</string>
     <string name="dialog_function_selection">Función</string>
     <string name="dialog_palette_settings_title">Configuración de la barra de herramientas</string>
-    
+    <string name="dialog_matrix_title">Configuración de la matriz</string>
+    <string name="dialog_matrix_rows">Número de filas</string>
+    <string name="dialog_matrix_cols">Número de columnas</string>
+
     <!-- Mathematical elements -->
     <string name="math_new_element">Nuevo elemento</string>
     <string name="math_new_equation">Añadir ecucación</string>
@@ -258,6 +261,7 @@
     <string name="math_function_csch">Cosecante hiperbólico del argumento</string>
     <string name="math_function_sech">Secante hiperbólico del argumento</string>
     <string name="math_function_coth">Cotangente hiperbólico del argumento</string>
+    <string name="math_function_matrix">Crear matriz</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">El líｭmite de profundidad de diseño para esta versión de Android ha sido alcanzado</string>

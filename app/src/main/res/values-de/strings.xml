@@ -180,7 +180,10 @@
     <string name="dialog_list_items">element (e)</string>
     <string name="dialog_function_selection">Funktion</string>
     <string name="dialog_palette_settings_title">Einstellungen der Werkzeugleiste</string>
-    
+    <string name="dialog_matrix_title">Matrixeinstellungen</string>
+    <string name="dialog_matrix_rows">Anzahl der Zeilen</string>
+    <string name="dialog_matrix_cols">Anzahl der Spalten</string>
+
     <!-- Mathematical elements -->
     <string name="math_new_element">Neu</string>
     <string name="math_new_equation">Gleichung hinzufügen</string>
@@ -258,6 +261,7 @@
     <string name="math_function_csch">Hyperbelkosekans des Arguments</string>
     <string name="math_function_sech">Hyperbelsekans des Arguments</string>
     <string name="math_function_coth">Hyperbelkotangens des Arguments</string>
+    <string name="math_function_matrix">Matrix erstellen</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Der Grenzwert für die Layouttiefe für diese Android Version ist erreicht</string>
