@@ -58,7 +58,7 @@ public class CalculatedValue
     public final static CalculatedValue NaN = new CalculatedValue(ValueType.INVALID, Double.NaN, 0.0);
     public final static CalculatedValue ONE = new CalculatedValue(ValueType.REAL, 1.0, 0.0);
     public final static CalculatedValue MINUS_ONE = new CalculatedValue(ValueType.REAL, -1.0, 0.0);
-    private final static CalculatedValue ZERO = new CalculatedValue(ValueType.REAL, 0.0, 0.0);
+    public final static CalculatedValue ZERO = new CalculatedValue(ValueType.REAL, 0.0, 0.0);
 
     private ValueType valueType = ValueType.INVALID;
     private double real = Double.NaN;

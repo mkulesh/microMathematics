@@ -231,6 +231,9 @@
     <string name="dialog_color_picker_value" translatable="false">L:</string>
     <string name="dialog_color_picker_opacity" translatable="false">A:</string>
     <string name="dialog_palette_settings_title">Tool bar settings</string>
+    <string name="dialog_matrix_title">Matrix settings</string>
+    <string name="dialog_matrix_rows">Number of rows</string>
+    <string name="dialog_matrix_cols">Number of columns</string>
 
     <!-- Mathematical elements -->
     <string name="math_new_element">New element</string>
@@ -289,6 +292,7 @@
     <string name="math_function_csch">The hyperbolic cosecant of the argument</string>
     <string name="math_function_sech">The hyperbolic secant of the argument</string>
     <string name="math_function_coth">The hyperbolic cotangent of the argument</string>
+    <string name="math_function_matrix">Create matrix</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Reached layout depth limit for this Android version</string>

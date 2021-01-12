@@ -57,6 +57,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     private static final String STATE_TEXT = "_text";
     private static final String STATE_CODE = "_code";
     private static final String STATE_INSTANCE = "_instance";
+    private static final String STATE_DIMENSION = "_dimension";
 
     private int MAX_LAYOUT_DEPTH = 15;
     public static final int NO_ERROR_ID = -1;
@@ -479,6 +480,10 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             bundle.putString(pref + STATE_TEXT, "");
             bundle.putString(pref + STATE_CODE, term.getTermCode());
             bundle.putParcelable(pref + STATE_INSTANCE, term.onSaveInstanceState());
+            if (isArrayTerm(term.getTermCode()))
+            {
+                bundle.putParcelable(pref + STATE_DIMENSION, getArrayDimension());
+            }
         }
     }
 
@@ -496,7 +501,14 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         final String termCode = bundle.getString(pref + STATE_CODE);
         if (termCode != null && termCode.length() > 0)
         {
-            term = convertToTerm(termCode, bundle.getParcelable(pref + STATE_INSTANCE), /*ensureManualTrigger=*/ false);
+            final Parcelable p = bundle.getParcelable(pref + STATE_INSTANCE);
+            Object extraPar = null;
+            if (isArrayTerm(termCode))
+            {
+                final MatrixProperties dim = bundle.getParcelable(pref + STATE_DIMENSION);
+                extraPar = dim;
+            }
+            term = convertToTerm(termCode, p, /*ensureManualTrigger=*/ false, extraPar);
         }
     }
 
@@ -522,7 +534,15 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         }
         else
         {
-            term = convertToTerm(termCode, null, /*ensureManualTrigger=*/ false);
+            // read extra parameters for some terms
+            Object extraPar = null;
+            if (isArrayTerm(termCode))
+            {
+                final MatrixProperties dim = new MatrixProperties();
+                dim.readFromXml(parser);
+                extraPar = dim;
+            }
+            term = convertToTerm(termCode, null, /*ensureManualTrigger=*/ false, extraPar);
             setText("");
             if (isTerm())
             {
@@ -562,6 +582,11 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         else
         {
             serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_CODE, term.getTermCode());
+            final MatrixProperties dim = getArrayDimension();
+            if (isArrayTerm(term.getTermCode()) && dim != null)
+            {
+                dim.writeToXml(serializer);
+            }
             term.writeToXml(serializer, getTermKey());
         }
     }
@@ -1240,6 +1265,12 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     {
         // premium version only
         return null;
+    }
+
+    private boolean isArrayTerm(final String code)
+    {
+        // premium version only
+        return false;
     }
 
     boolean isArray()

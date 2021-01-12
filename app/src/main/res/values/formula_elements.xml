@@ -39,6 +39,9 @@
     <string name="formula_y_function_key" translatable="false">yFunction</string>
     <string name="formula_y_min_value_key" translatable="false">yMinValue</string>
     <string name="formula_y_max_value_key" translatable="false">yMaxValue</string>
+    <string name="formula_z_function_key" translatable="false">zFunction</string>
+    <string name="formula_index_key" translatable="false">index</string>
+    <string name="formula_matrix_key" translatable="false">matrix</string>
     <string name="text_fragment" translatable="false">text</string>
     <string name="function_main_layout" translatable="false">functionMainLayout</string>
     
