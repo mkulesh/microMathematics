@@ -79,7 +79,7 @@ public class ArrayFunctions extends FunctionBase implements FocusChangeIf
 
         public GroupType getGroupType()
         {
-            return GroupType.ARRAY_FUNCTIONS;
+            return this == MATRIX ? GroupType.USER_FUNCTIONS : GroupType.ARRAY_FUNCTIONS;
         }
 
         public int getShortCutId()

@@ -29,6 +29,7 @@ import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.MatrixProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
+import com.mkulesh.micromath.widgets.CustomLayout;
 import com.mkulesh.micromath.widgets.CustomTextView;
 
 import java.util.ArrayList;
@@ -195,7 +196,11 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
                 }
                 else
                 {
-                    leftTerm.setError(errorMsg, ErrorNotification.LAYOUT_BORDER, null);
+                    final CustomLayout termLayout = leftTerm.isTerm() ?
+                            leftTerm.getTerm().getFunctionMainLayout() : null;
+                    leftTerm.setError(errorMsg,
+                            termLayout != null ? ErrorNotification.PARENT_LAYOUT : ErrorNotification.LAYOUT_BORDER,
+                            termLayout);
                 }
             }
             break;
@@ -219,6 +224,11 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         {
             // no arguments are expected when right term holds a matrix
             return null;
+        }
+
+        if (!arguments.isEmpty() && rightTerm.isArray() && TermField.isArrayTerm(rightTerm.getTerm().getTermCode()))
+        {
+            return getContext().getResources().getString(R.string.error_forbidden_arguments);
         }
 
         if (arguments.size() > EquationArrayResult.MAX_DIMENSION)
@@ -603,8 +613,17 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
             {
                 break;
             }
-            if (eq.isArray() && eq.getArguments() != null &&
+            if (!eq.isArray())
+            {
+                continue;
+            }
+            if (eq.getArguments() != null &&
                     isEqual(eq.getName(), eq.getArguments().size(), eq.getId(), true))
+            {
+                prevArray = eq;
+            }
+            if (eq.getArguments() == null && eq.rightTerm.getArrayDimension() != null &&
+                    isEqual(eq.getName(), eq.rightTerm.getArrayDimension().getDimension(), eq.getId(), true))
             {
                 prevArray = eq;
             }

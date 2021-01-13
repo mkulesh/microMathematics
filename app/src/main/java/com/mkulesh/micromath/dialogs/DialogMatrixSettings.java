@@ -65,8 +65,8 @@ public class DialogMatrixSettings extends DialogBase
                     isChanged = true;
                 }
             }
+            changeIf.onMatrixPropertiesChange(isChanged);
         }
-        changeIf.onMatrixPropertiesChange(isChanged);
         closeDialog();
     }
 }

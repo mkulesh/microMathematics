@@ -102,4 +102,9 @@ public class MatrixProperties implements Parcelable
         serializer.attribute(FormulaList.XML_NS, XML_PROP_ROWS, String.valueOf(rows));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_COLS, String.valueOf(cols));
     }
+
+    public int getDimension()
+    {
+        return (rows == 1 || cols == 1) ? 1 : 2;
+    }
 }
