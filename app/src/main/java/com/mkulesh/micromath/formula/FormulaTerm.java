@@ -434,4 +434,9 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
         return false;
     }
+
+    CustomLayout getFunctionMainLayout()
+    {
+        return functionMainLayout;
+    }
 }

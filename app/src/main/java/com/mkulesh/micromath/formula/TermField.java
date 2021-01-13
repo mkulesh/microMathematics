@@ -930,7 +930,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     /**
      * Procedure adds the given operator code to this term
      */
-    public void addOperatorCode(String code)
+    public void addOperatorCode(String code, final Object extPar)
     {
         if (FormulaBase.BaseType.TERM.toString().equals(code.toUpperCase(Locale.ENGLISH)))
         {
@@ -978,7 +978,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             writeToBundle(savedState, "savedState");
             clear();
         }
-        convertToTermType(termType, newText, null, null);
+        convertToTermType(termType, newText, null, extPar);
 
         if (isTerm() && !term.getTerms().isEmpty() && savedState != null)
         {
@@ -1267,7 +1267,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         return null;
     }
 
-    private boolean isArrayTerm(final String code)
+    public static boolean isArrayTerm(final String code)
     {
         // premium version only
         return false;

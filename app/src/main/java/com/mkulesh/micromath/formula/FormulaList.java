@@ -32,6 +32,7 @@ import androidx.preference.PreferenceManager;
 
 import com.mkulesh.micromath.BaseFragment;
 import com.mkulesh.micromath.MainActivity;
+import com.mkulesh.micromath.dialogs.DialogMatrixSettings;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.StoredFormula.StoredTerm;
 import com.mkulesh.micromath.formula.terms.TermFactory;
@@ -41,6 +42,7 @@ import com.mkulesh.micromath.plots.PlotFunction;
 import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.properties.DocumentPropertiesChangeIf;
+import com.mkulesh.micromath.properties.MatrixProperties;
 import com.mkulesh.micromath.properties.TextProperties;
 import com.mkulesh.micromath.ta.TestSession;
 import com.mkulesh.micromath.undo.Coordinate;
@@ -124,6 +126,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     private XmlLoaderTask xmlLoaderTask = null;
     private final UndoState undoState;
     private TestSession taSession = null;
+    private final MatrixProperties matrixProperties = new MatrixProperties();
 
     @SuppressLint("UseSparseArrays")
     private final HashMap<Integer, FormulaBase> formulas = new HashMap<>();
@@ -153,6 +156,10 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
 
         documentSettings = new DocumentProperties(getContext());
         undoState = new UndoState(activity);
+
+        // Default size of the matrix
+        matrixProperties.rows = 3;
+        matrixProperties.cols = 3;
     }
 
     /*--------------------------------------------------------*
@@ -445,9 +452,15 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
                     {
                         tf.getTerm().onPasteFromClipboard(null, code);
                     }
+                    else if (TermField.isArrayTerm(code))
+                    {
+                        final DialogMatrixSettings d = new DialogMatrixSettings(getActivity(),
+                            isChanged -> tf.addOperatorCode(code, matrixProperties), matrixProperties);
+                        d.show();
+                    }
                     else
                     {
-                        tf.addOperatorCode(code);
+                        tf.addOperatorCode(code, null);
                     }
                 }
             }
