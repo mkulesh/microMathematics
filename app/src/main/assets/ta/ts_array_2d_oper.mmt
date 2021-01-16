@@ -1,0 +1,410 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="2D arrays: linear algebra" description="Example demonstrates how to implement vector and matrix operations using arrays" textWidth="60" significantDigits="6" scale="0.49759" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="TC demonstrates how to implement matrix&#10;operations using arrays in 3D" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="k" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="2" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="m" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="2" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="M1" />
+      <term key="rightTerm" code="matrix" rows="3" cols="3">
+        <term key="element[0][0]" text="1" />
+        <term key="element[0][1]" text="2" />
+        <term key="element[0][2]" text="3" />
+        <term key="element[1][0]" text="4" />
+        <term key="element[1][1]" text="5" />
+        <term key="element[1][2]" text="6" />
+        <term key="element[2][0]" text="7" />
+        <term key="element[2][1]" text="8" />
+        <term key="element[2][2]" text="9" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="M2" />
+      <term key="rightTerm" code="matrix" rows="3" cols="3">
+        <term key="element[0][0]" text="-1" />
+        <term key="element[0][1]" text="-2" />
+        <term key="element[0][2]" text="-3" />
+        <term key="element[1][0]" text="-4" />
+        <term key="element[1][1]" text="-5" />
+        <term key="element[1][2]" text="-6" />
+        <term key="element[2][0]" text="-7" />
+        <term key="element[2][1]" text="-8" />
+        <term key="element[2][2]" text="-9" />
+      </term>
+    </equation>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="M1" />
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="M2" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: Summation of two matrices" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="content:com.mkulesh.micromath.index.M1:2">
+          <term key="argTerm1" text="k" />
+          <term key="argTerm2" text="m" />
+        </term>
+        <term key="rightTerm" code="content:com.mkulesh.micromath.index.M2:2">
+          <term key="argTerm1" text="k" />
+          <term key="argTerm2" text="m" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="matrix" rows="3" cols="3">
+        <term key="element[0][0]" text="0" />
+        <term key="element[0][1]" text="0" />
+        <term key="element[0][2]" text="0" />
+        <term key="element[1][0]" text="0" />
+        <term key="element[1][1]" text="0" />
+        <term key="element[1][2]" text="0" />
+        <term key="element[2][0]" text="0" />
+        <term key="element[2][1]" text="0" />
+        <term key="element[2][2]" text="0" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: Subtraction of two matrices" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="minus">
+        <term key="leftTerm" code="content:com.mkulesh.micromath.index.M1:2">
+          <term key="argTerm1" text="k" />
+          <term key="argTerm2" text="m" />
+        </term>
+        <term key="rightTerm" code="content:com.mkulesh.micromath.index.M2:2">
+          <term key="argTerm1" text="k" />
+          <term key="argTerm2" text="m" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="matrix" rows="3" cols="3">
+        <term key="element[0][0]" text="2" />
+        <term key="element[0][1]" text="4" />
+        <term key="element[0][2]" text="6" />
+        <term key="element[1][0]" text="8" />
+        <term key="element[1][1]" text="10" />
+        <term key="element[1][2]" text="12" />
+        <term key="element[2][0]" text="14" />
+        <term key="element[2][1]" text="16" />
+        <term key="element[2][2]" text="18" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: Multiplication with a constant" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="10" />
+        <term key="rightTerm" code="content:com.mkulesh.micromath.index.M1:2">
+          <term key="argTerm1" text="k" />
+          <term key="argTerm2" text="m" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="matrix" rows="3" cols="3">
+        <term key="element[0][0]" text="10" />
+        <term key="element[0][1]" text="20" />
+        <term key="element[0][2]" text="30" />
+        <term key="element[1][0]" text="40" />
+        <term key="element[1][1]" text="50" />
+        <term key="element[1][2]" text="60" />
+        <term key="element[2][0]" text="70" />
+        <term key="element[2][1]" text="80" />
+        <term key="element[2][2]" text="90" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: Scalar product of two matrices" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="2" />
+        <term key="index" text="n" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="summation">
+          <term key="maxValue" text="2" />
+          <term key="index" text="p" />
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="mult">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.index.M1:2">
+              <term key="argTerm1" text="n" />
+              <term key="argTerm2" text="p" />
+            </term>
+            <term key="rightTerm" code="content:com.mkulesh.micromath.index.M2:2">
+              <term key="argTerm1" text="n" />
+              <term key="argTerm2" text="p" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="-285" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: L1 norm of the vector" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="summation">
+        <term key="maxValue" text="2" />
+        <term key="index" text="n" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="summation">
+          <term key="maxValue" text="2" />
+          <term key="index" text="p" />
+          <term key="minValue" text="0" />
+          <term key="argTerm" code="abs_layout">
+            <term key="argTerm" code="content:com.mkulesh.micromath.index.M1:2">
+              <term key="argTerm1" text="n" />
+              <term key="argTerm2" text="p" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="45" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="TC: Matrix assignment and modification" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="begin" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="begin" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M1:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
+      <term key="rightTerm" code="content:com.mkulesh.micromath.index.M2:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M1:2">
+        <term key="argTerm1" text="1" />
+        <term key="argTerm2" text="1" />
+      </term>
+      <term key="rightTerm" text="100" />
+    </equation>
+    <equation>
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" code="content:com.mkulesh.micromath.index.M1:2">
+        <term key="argTerm1" text="k" />
+        <term key="argTerm2" text="m" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="result" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" code="matrix" rows="3" cols="3">
+        <term key="element[0][0]" text="-1" />
+        <term key="element[0][1]" text="-2" />
+        <term key="element[0][2]" text="-3" />
+        <term key="element[1][0]" text="-4" />
+        <term key="element[1][1]" text="100" />
+        <term key="element[1][2]" text="-6" />
+        <term key="element[2][0]" text="-7" />
+        <term key="element[2][1]" text="-8" />
+        <term key="element[2][2]" text="-9" />
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="desired" />
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="begin" />
+    </equation>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" text="end" />
+      <term key="rightTerm" text="" />
+    </result>
+  </formulaList>
+</micromath>
