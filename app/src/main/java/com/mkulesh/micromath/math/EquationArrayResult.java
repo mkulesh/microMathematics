@@ -80,9 +80,24 @@ public class EquationArrayResult
         return values;
     }
 
-    public void calculate(CalculaterTask thread, ArrayList<String> arguments, boolean useArgsAsDimension, final EquationArrayResult mergedArray) throws CancelException
+    public void calculate(CalculaterTask thread, ArrayList<String> args, boolean useArgsAsDimension, final EquationArrayResult mergedArray) throws CancelException
     {
         values = null;
+
+        final ArrayList<String> arguments = new ArrayList<>(args);
+
+        // allow to access a vector stored in matrix by one index
+        if (mergedArray != null && mergedArray.isVectorAsMatrix() && arguments.size() == 1)
+        {
+            if (mergedArray.dimensions[0] == 1)
+            {
+                arguments.add(0, "0");
+            }
+            else
+            {
+                arguments.add( "0");
+            }
+        }
 
         final int dimNumber = arguments.size();
         if (dimNumber < 1 || dimNumber > MAX_DIMENSION)
@@ -315,7 +330,7 @@ public class EquationArrayResult
         CalculatedValue[] argValues = args.length == dimNumber ? args : null;
 
         // allow to access a vector stored in matrix by one index
-        if (isVectorAsMatrix() && args.length == 1)
+        if (dimensions != null && isVectorAsMatrix() && args.length == 1)
         {
             argValues = dimensions[0] == 1 ?
                     new CalculatedValue[]{ CalculatedValue.ZERO, args[0] } :
