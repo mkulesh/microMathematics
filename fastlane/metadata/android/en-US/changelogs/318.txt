@@ -1,0 +1,2 @@
+• "read" function can now be used without an index
+• 1D and 2D array can now be defined as a vector or a matrix
