@@ -59,7 +59,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     private static final String STATE_TEXT = "_text";
     private static final String STATE_CODE = "_code";
     private static final String STATE_INSTANCE = "_instance";
-    private static final String STATE_DIMENSION = "_dimension";
+    public static final String STATE_DIMENSION = "_dimension";
 
     private int MAX_LAYOUT_DEPTH = 15;
     public static final int NO_ERROR_ID = -1;
@@ -1046,7 +1046,15 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
     {
         if (text.isConversionEnabled())
         {
-            term = convertToTerm(s.getSingleData().termCode, s.getSingleData().data, /*ensureManualTrigger=*/ false);
+            final String termCode = s.getSingleData().termCode;
+            final Parcelable p = s.getSingleData().data;
+            Object extraPar = null;
+            if (isArrayTerm(termCode) && p instanceof Bundle)
+            {
+                final MatrixProperties dim = ((Bundle) p).getParcelable(STATE_DIMENSION);
+                extraPar = dim;
+            }
+            term = convertToTerm(termCode, p, /*ensureManualTrigger=*/ false, extraPar);
         }
         else if (showError)
         {

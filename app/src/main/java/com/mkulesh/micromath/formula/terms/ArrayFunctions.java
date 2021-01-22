@@ -14,6 +14,8 @@
 package com.mkulesh.micromath.formula.terms;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -479,6 +481,16 @@ public class ArrayFunctions extends FunctionBase implements FocusChangeIf
             super.initializeSymbol(v);
         }
         return v;
+    }
+
+    public Parcelable onSaveInstanceState()
+    {
+        final Parcelable p = super.onSaveInstanceState();
+        if (isArray() && p instanceof Bundle)
+        {
+            ((Bundle) p).putParcelable(TermField.STATE_DIMENSION, getArrayDimension());
+        }
+        return p;
     }
 
     private void initMatrix(@NonNull final MatrixProperties dim)
