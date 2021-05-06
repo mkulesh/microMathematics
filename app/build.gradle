@@ -7,8 +7,8 @@ android {
         applicationId "com.mkulesh.micromath.plus"
         minSdkVersion 14
         targetSdkVersion 29
-        versionCode 318
-        versionName "2.21.1"
+        versionCode 319
+        versionName "2.22.0"
         setProperty("archivesBaseName", "microMathematics-v" + versionName)
     }
     buildTypes {
