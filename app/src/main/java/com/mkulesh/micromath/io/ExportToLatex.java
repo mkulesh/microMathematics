@@ -759,6 +759,7 @@ class ExportToLatex
         for (int i = 0; i < text.length(); i++)
         {
             final char c = text.charAt(i);
+            final char nextC = i + 1 < text.length() ? text.charAt(i + 1) : ' ';
             boolean processed = false;
 
             final Character.UnicodeBlock block = Character.UnicodeBlock.of(c);
@@ -795,6 +796,14 @@ class ExportToLatex
             {
                 outStr.append("''");
                 processed = true;
+            }
+            else if (inEquation && c == ' ')
+            {
+                if (nextC != '°' && nextC != '\'' && nextC != '"')
+                {
+                    outStr.append("\\ ");
+                    processed = true;
+                }
             }
             if (!processed)
             {
