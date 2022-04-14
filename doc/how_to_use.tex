@@ -27,8 +27,7 @@ worksheet: equations, result views,
 plots, text fragments and images.
 These are inserted by using the
 buttons in the toolbar, or the ''New
-element'' button in the action bar:
-\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig2.png} \end{tabular}\end{center}
+element'' button in the action bar.
 
 Note: the content of the action bar
 depends on the screen resolution and
@@ -71,8 +70,11 @@ An equation defines a numerical
 constant, an interval, a function, or
 an array/matrix. To create an
 equation, use the ''New element'' button
-in the action bar or the ''Add equation
-button from the tool bar:
+in the action bar
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig2.png} \end{tabular}\end{center}
+
+or the ''Add equation'' button from the
+tool bar:
 \begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig3.png} \end{tabular}\end{center}
 
 An equation with two empty fields
@@ -275,17 +277,17 @@ given in lower index by putting ''[''
 after array name.
 
 The argument can be a constant, or a
-previously defined interval. 
+previously defined interval:
 \begin{center}\begin{tabular}{ccc}
-  $r_{0,\, 0}  := 5$ &
-  $r_{3,\, 0}  := 6$ &
+  $r_{0}  := 5$ &
+  $r_{3}  := 6$ &
   $r_{2,\, 0}  := -4$ \cr
 \end{tabular}\end{center}
 
 Like a function, right side of array
 can be either a constant or a
 mathematical formula based on the
-array argument. 
+array argument:
 \begin{center}\begin{tabular}{cc}
   $idx := \left[ 0,\, 1 \,..\, 3 \right]$ &
   $r_{idx,\, 1}  := 5 + idx$ \cr
@@ -300,7 +302,9 @@ array argument.
 
 Additionally, array can also be defined
 by putting a matrix on right side of
-an argumentless name on left.
+an argumentless name on left using
+''Create matrix'' button from the
+toolbar:
 \begin{center}\begin{tabular}{c}
   $reading := \begin{bmatrix}2&4&6&8\\11&10&5&2\\\end{bmatrix}$
 \end{tabular}\end{center}
@@ -318,22 +322,25 @@ only accessed by using a lower index:
 b) Any not assigned element is set by
 default to zero.
 
-c) if any array index is complex or
+c) If any array index is complex or
 negative or greater than the upper
 bound of the corresponding interval,
 the invalid number will be returned:
 \begin{center}\begin{tabular}{cc}
-  $jdx := \left[ 0,\, 1 \,..\, 2 \right]$ &
-  $r_{idx,\, jdx}  = \begin{bmatrix}5.0&5.0&NaN\\0.0&6.0&NaN\\-4.0&7.0&NaN\\6.0&8.0&NaN\\\end{bmatrix}$ \cr
+  $i1 := \left[ 0,\, 1 \,..\, 2 \right]$ &
+  $i2 := \left[ 0,\, 1 \,..\, 2 \right]$ \cr
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+  $r_{i1,\, i2}  = \begin{bmatrix}0.0&5.0&NaN\\0.0&6.0&NaN\\-4.0&7.0&NaN\\\end{bmatrix}$
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{cc}
   $M_{10i,\, 100}  = NaN$ &
   $M_{90,\, 210}  = NaN$ \cr
 \end{tabular}\end{center}
 
-d) array elements are calculated and
+d) Array elements are calculated and
 stored in memory that reduces the
-access time to these values
+access time to these values.
 
 \subsection{Result View}
 

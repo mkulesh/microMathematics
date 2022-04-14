@@ -8,7 +8,7 @@ In order to build the documentation, the LaTeX (texlive) and following latex pac
 - as the root user:
 ```
 # yum install texlive
-# yum install texlive-lipsum texlive-sectsty texlive-t2 texlive-lastpage texlive-lettrine texlive-titling texlive-fonts-tlwg babel
+# yum install texlive-lipsum texlive-sectsty texlive-t2 texlive-lastpage texlive-lettrine texlive-titling texlive-fonts-tlwg babel texlive-minifp
 # yum install texlive-cyrillic texlive-babel-russian texlive-hyphen-russian texlive-lh 
 # yum install texlive-babel-german texlive-hyphen-german
 # yum install texlive-babel-portuges texlive-hyphen-portuguese
