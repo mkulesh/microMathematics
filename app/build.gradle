@@ -8,7 +8,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 29
         versionCode 39
-        versionName "1.21"
+        versionName "1.22"
         setProperty("archivesBaseName", "microMathematics-v" + versionName)
     }
 
