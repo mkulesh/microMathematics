@@ -13,14 +13,17 @@
  */
 package com.mkulesh.micromath.utils;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
+import android.provider.Settings;
 import android.util.TypedValue;
 import android.view.View;
 
@@ -29,6 +32,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import java.io.File;
@@ -44,6 +48,11 @@ public class CompatUtils
     public static boolean isMarshMallowOrLater()
     {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
+    }
+
+    public static boolean isROrLater()
+    {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.R;
     }
 
     /**
@@ -222,6 +231,30 @@ public class CompatUtils
         else
         {
             return new File(context.getExternalFilesDir(null), file);
+        }
+    }
+
+    public static void requestStoragePermission(AppCompatActivity a, int reqId)
+    {
+        if (isROrLater())
+        {
+            ViewUtils.Debug(a, "requesting storage permissions for Android R");
+            Intent in = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+            in.setData(Uri.parse("package:" + a.getApplicationContext().getPackageName()));
+            try
+            {
+                a.startActivity(in);
+            }
+            catch (Exception e)
+            {
+                ViewUtils.Debug(a, "requesting storage permissions failed: " + e.getLocalizedMessage());
+            }
+        }
+        else if (isMarshMallowOrLater())
+        {
+            ViewUtils.Debug(a, "requesting storage permissions for Android M");
+            a.requestPermissions(new String[]{ Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE }, reqId);
         }
     }
 }

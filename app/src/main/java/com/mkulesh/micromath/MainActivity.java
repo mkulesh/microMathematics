@@ -24,6 +24,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -642,7 +643,15 @@ public class MainActivity extends AppCompatActivity
     @SuppressLint("NewApi")
     public boolean checkStoragePermission(int action)
     {
-        if (CompatUtils.isMarshMallowOrLater())
+        if (CompatUtils.isROrLater())
+        {
+            if (storagePermissionDialog == null && !Environment.isExternalStorageManager())
+            {
+                showPermissionDialog();
+                return false;
+            }
+        }
+        else if (CompatUtils.isMarshMallowOrLater())
         {
             final boolean granted = checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
                     && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
@@ -658,35 +667,32 @@ public class MainActivity extends AppCompatActivity
                 {
                     return false;
                 }
-                AlertDialog.Builder alert = new AlertDialog.Builder(this);
-                alert.setIcon(storagePermissionAction == R.id.action_open ? R.drawable.ic_action_content_open
-                        : R.drawable.ic_action_content_save);
-                alert.setTitle(getString(R.string.allow_storage_access_title));
-                alert.setMessage(getString(R.string.allow_storage_access_description));
-                alert.setNegativeButton(getString(R.string.dialog_navigation_cancel),
-                        (dialog, whichButton) ->
-                        {
-                            // nothing to do
-                        });
-                alert.setPositiveButton(getString(R.string.allow_storage_access_grant),
-                        (dialog, whichButton) -> requestStoragePermission());
-                storagePermissionDialog = alert.show();
+                showPermissionDialog();
             }
             else
             {
-                requestStoragePermission();
+                CompatUtils.requestStoragePermission(this, STORAGE_PERMISSION_REQID);
             }
             return false;
         }
         return true;
     }
 
-    @SuppressLint("NewApi")
-    private void requestStoragePermission()
+    private void showPermissionDialog()
     {
-        ViewUtils.Debug(this, "requesting storage permissions");
-        requestPermissions(new String[]{ Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE }, STORAGE_PERMISSION_REQID);
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setIcon(storagePermissionAction == R.id.action_open ? R.drawable.ic_action_content_open
+                : R.drawable.ic_action_content_save);
+        alert.setTitle(getString(R.string.allow_storage_access_title));
+        alert.setMessage(getString(R.string.allow_storage_access_description));
+        alert.setNegativeButton(getString(R.string.dialog_navigation_cancel),
+                (dialog, whichButton) ->
+                {
+                    // nothing to do
+                });
+        alert.setPositiveButton(getString(R.string.allow_storage_access_grant),
+                (dialog, whichButton) -> CompatUtils.requestStoragePermission(this, STORAGE_PERMISSION_REQID));
+        storagePermissionDialog = alert.show();
     }
 
     @Override
