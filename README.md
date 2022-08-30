@@ -1,4 +1,5 @@
-[![License](https://img.shields.io/badge/license-GNU_GPLv3-orange.svg)](https://github.com/mkulesh/microMathematics/blob/master/LICENSE) [![Build Status](https://travis-ci.org/mkulesh/microMathematics.svg?branch=master)](https://travis-ci.org/mkulesh/microMathematics) [![Download unsigned APK from latest autobuild](https://img.shields.io/badge/APK-autobuild-blue.svg)](https://github.com/mkulesh/microMathematics/raw/autobuild/autobuild/microMathematics-v2.22.1-debug.apk)
+[![License](https://img.shields.io/badge/license-GNU_GPLv3-orange.svg)](https://github.com/mkulesh/microMathematics/blob/master/LICENSE)
+![Release Status](https://img.shields.io/github/v/release/mkulesh/microMathematics)
 
 # <img src="https://github.com/mkulesh/microMathematics/blob/master/images/icon.png" align="center" height="48" width="48"> "microMathematics Plus - Extended Visual Calculator"
 
