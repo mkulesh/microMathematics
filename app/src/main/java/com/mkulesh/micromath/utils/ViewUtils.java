@@ -25,12 +25,14 @@ import android.graphics.drawable.PictureDrawable;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.AttrRes;
@@ -201,24 +203,46 @@ public final class ViewUtils
     @SuppressLint("RtlHardcoded")
     public static boolean showButtonDescription(Context context, View button)
     {
-        CharSequence contentDesc = button.getContentDescription();
-        if (contentDesc != null && contentDesc.length() > 0)
+        final CharSequence contentDesc = button.getContentDescription();
+        final ViewGroup dummyView = null;
+        //noinspection ConstantConditions
+        final LinearLayout toastView = (LinearLayout) LayoutInflater.from(context).
+                inflate(R.layout.widget_toast, dummyView, false);
+        final TextView textView = toastView != null ? toastView.findViewById(R.id.toast_message) : null;
+
+        if (contentDesc != null && contentDesc.length() > 0 && textView != null)
         {
+            textView.setText(contentDesc);
+
             int[] pos = new int[2];
             button.getLocationOnScreen(pos);
 
-            Toast t = Toast.makeText(context, contentDesc, Toast.LENGTH_SHORT);
+            final Toast t = new Toast(context);
+            t.setView(toastView);
+            t.setDuration(Toast.LENGTH_SHORT);
             t.setGravity(Gravity.TOP | Gravity.LEFT, 0, 0);
-            t.getView().measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
-                    MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-            final int x = pos[0] + button.getMeasuredWidth() / 2 - (t.getView().getMeasuredWidth() / 2);
-            final int y = pos[1] - button.getMeasuredHeight() / 2 - t.getView().getMeasuredHeight()
+            toastView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+            final int x = pos[0] + button.getMeasuredWidth() / 2 - (toastView.getMeasuredWidth() / 2);
+            final int y = pos[1] - 2 * toastView.getMeasuredHeight()
                     - context.getResources().getDimensionPixelSize(R.dimen.activity_vertical_margin);
             t.setGravity(Gravity.TOP | Gravity.LEFT, x, y);
             t.show();
             return true;
         }
         return false;
+    }
+
+    public static boolean isToastVisible(Toast toast)
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+        {
+            return toast != null;
+        }
+        else
+        {
+            return toast != null && toast.getView() != null && toast.getView().isShown();
+        }
     }
 
     /**

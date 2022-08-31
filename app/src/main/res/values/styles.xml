@@ -24,6 +24,8 @@
         <item name="themeMicroMathPopup">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="colorMicroMathNavigator">@color/background_material_light</item>
         <item name="colorToolBarSeparator">@android:color/transparent</item>
+        <item name="toastFrame">@drawable/toast_frame_light</item>
+        <item name="colorTooltipText">@android:color/white</item>
     </style>
 
     <style name="BaseThemeDark" parent="@style/Theme.AppCompat.NoActionBar">
@@ -33,6 +35,8 @@
         <item name="themeMicroMathPopup">@style/ThemeOverlay.AppCompat.Dark</item>
         <item name="colorMicroMathNavigator">@color/background_material_dark</item>
         <item name="colorToolBarSeparator">@android:color/transparent</item>
+        <item name="toastFrame">@drawable/toast_frame_dark</item>
+        <item name="colorTooltipText">@android:color/black</item>
     </style>
 
     <!-- Theme definition that is re-defined for API v.21 -->

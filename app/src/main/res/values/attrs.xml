@@ -39,6 +39,8 @@
     <attr name="colorFormulaCalculatedValue" format="color" />
     <attr name="colorFormulaTextFragment" format="color" />
     <attr name="colorPlotGridLine" format="color" />
+    <attr name="toastFrame" format="reference" />
+    <attr name="colorTooltipText" format="color" />
 
     <attr name="specialAlignment">
         <enum name="none" value="0" />
