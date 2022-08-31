@@ -1,13 +1,17 @@
 apply plugin: 'com.android.application'
 
+// How to fix "Installed Build Tools revision 31.0.0 is corrupted. Remove and install again using the SDK Manager":
+// see https://stackoverflow.com/questions/68397703/installed-build-tools-revision-31-0-0-is-corrupted-remove-and-install-again-usi
+// sdk/build-tools/31.0.0]# ln -s d8 dx
+// sdk/build-tools/31.0.0/lib]# ln -s d8.jar dx.jar
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 31
+    buildToolsVersion "31.0.0"
     defaultConfig {
         applicationId "com.mkulesh.micromath.plus"
         minSdkVersion 14
-        targetSdkVersion 30
-        versionCode 319
+        targetSdkVersion 31
+        versionCode 320
         versionName "2.22.1"
         setProperty("archivesBaseName", "microMathematics-v" + versionName)
     }
