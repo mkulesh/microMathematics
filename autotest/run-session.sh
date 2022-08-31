@@ -21,6 +21,8 @@ echo APK to be tested: ${1}
 ./run-emulator.sh android_9.0.0 ${1} /sdcard/Android/data -g
 ./run-emulator.sh android_10.0.0 ${1} /sdcard/Android/data -g
 ./run-emulator.sh android_11.0.0 ${1} /data/user/0 -g
+./run-emulator.sh android_12.0.0 ${1} /data/user/0 -g
+./run-emulator.sh android_12.1.0 ${1} /data/user/0 -g
 
 firefox *.html
 
