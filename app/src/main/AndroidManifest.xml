@@ -37,7 +37,8 @@
             android:label="@string/app_short_name"
             android:launchMode="singleTask"
             android:windowSoftInputMode="stateHidden"
-            android:configChanges="orientation|screenSize|layoutDirection|keyboardHidden" >
+            android:configChanges="orientation|screenSize|layoutDirection|keyboardHidden"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
