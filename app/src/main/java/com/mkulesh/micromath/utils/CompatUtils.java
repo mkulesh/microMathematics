@@ -26,12 +26,14 @@ import android.os.Environment;
 import android.provider.Settings;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -64,6 +66,28 @@ public class CompatUtils
         final TypedValue value = new TypedValue();
         context.getTheme().resolveAttribute(resId, value, true);
         return value.data;
+    }
+
+    /**
+     * Fix dialog icon color after dialog creation. Necessary for older Android Versions
+     */
+    public static void fixIconColor(@NonNull AlertDialog dialog, @AttrRes int resId)
+    {
+        final ImageView imageView = dialog.findViewById(android.R.id.icon);
+        if (imageView != null)
+        {
+            setImageViewColorAttr(dialog.getContext(), imageView, resId);
+        }
+    }
+
+    /**
+     * Procedure sets ImageView background color given by attribute ID
+     */
+    public static void setImageViewColorAttr(Context context, ImageView b, @AttrRes int resId)
+    {
+        final int c = getThemeColorAttr(context, resId);
+        b.clearColorFilter();
+        b.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
     }
 
     @SuppressWarnings("deprecation")
