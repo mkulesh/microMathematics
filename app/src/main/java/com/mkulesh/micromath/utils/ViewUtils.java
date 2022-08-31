@@ -233,18 +233,6 @@ public final class ViewUtils
         return false;
     }
 
-    public static boolean isToastVisible(Toast toast)
-    {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
-        {
-            return toast != null;
-        }
-        else
-        {
-            return toast != null && toast.getView() != null && toast.getView().isShown();
-        }
-    }
-
     /**
      * Procedure updates given view and a given parent layout
      */
