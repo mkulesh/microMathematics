@@ -643,6 +643,10 @@ public class MainActivity extends AppCompatActivity
     @SuppressLint("NewApi")
     public boolean checkStoragePermission(int action)
     {
+        if (isAutotestOnStart())
+        {
+            return true;
+        }
         if (CompatUtils.isROrLater())
         {
             if (storagePermissionDialog == null && !Environment.isExternalStorageManager())
