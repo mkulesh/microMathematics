@@ -15,7 +15,6 @@ package com.mkulesh.micromath;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -295,7 +294,7 @@ public class MainActivity extends AppCompatActivity
         {
             finish();
         }
-        else if (ViewUtils.isToastVisible(exitToast))
+        else if (CompatUtils.isToastVisible(exitToast))
         {
             exitToast.cancel();
             exitToast = null;

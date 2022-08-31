@@ -27,6 +27,7 @@ import android.provider.Settings;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
@@ -279,6 +280,19 @@ public class CompatUtils
             ViewUtils.Debug(a, "requesting storage permissions for Android M");
             a.requestPermissions(new String[]{ Manifest.permission.READ_EXTERNAL_STORAGE,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE }, reqId);
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    public static boolean isToastVisible(Toast toast)
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+        {
+            return toast != null;
+        }
+        else
+        {
+            return toast != null && toast.getView() != null && toast.getView().isShown();
         }
     }
 }
