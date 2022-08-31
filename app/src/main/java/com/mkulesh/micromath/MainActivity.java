@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity
     private static final String SHORTCUT_NEW_DOCUMENT = "com.mkulesh.micromath.NEW_DOCUMENT";
     private static final String SHORTCUT_AUTOTEST = "com.mkulesh.micromath.AUTOTEST";
 
-    private Dialog storagePermissionDialog = null;
+    private AlertDialog storagePermissionDialog = null;
     private int storagePermissionAction = ViewUtils.INVALID_INDEX;
 
     private StoredFormula storedFormula = null;
@@ -667,7 +667,7 @@ public class MainActivity extends AppCompatActivity
         {
             if (storagePermissionDialog == null && !Environment.isExternalStorageManager())
             {
-                showPermissionDialog();
+                showPermissionDialog(action);
                 return false;
             }
         }
@@ -687,7 +687,7 @@ public class MainActivity extends AppCompatActivity
                 {
                     return false;
                 }
-                showPermissionDialog();
+                showPermissionDialog(action);
             }
             else
             {
@@ -698,21 +698,22 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void showPermissionDialog()
+    private void showPermissionDialog(int action)
     {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setIcon(storagePermissionAction == R.id.action_open ? R.drawable.ic_action_content_open
+        alert.setIcon(action == R.id.action_open ? R.drawable.ic_action_content_open
                 : R.drawable.ic_action_content_save);
         alert.setTitle(getString(R.string.allow_storage_access_title));
         alert.setMessage(getString(R.string.allow_storage_access_description));
         alert.setNegativeButton(getString(R.string.dialog_navigation_cancel),
                 (dialog, whichButton) ->
                 {
-                    // nothing to do
+                    storagePermissionDialog = null;
                 });
         alert.setPositiveButton(getString(R.string.allow_storage_access_grant),
                 (dialog, whichButton) -> CompatUtils.requestStoragePermission(this, STORAGE_PERMISSION_REQID));
         storagePermissionDialog = alert.show();
+        CompatUtils.fixIconColor(storagePermissionDialog, android.R.attr.textColorSecondary);
     }
 
     @Override
