@@ -5,12 +5,12 @@ apply plugin: 'com.android.application'
 // sdk/build-tools/31.0.0]# ln -s d8 dx
 // sdk/build-tools/31.0.0/lib]# ln -s d8.jar dx.jar
 android {
-    compileSdkVersion 31
-    buildToolsVersion "31.0.0"
+    compileSdkVersion 32
+    buildToolsVersion "32.0.0"
     defaultConfig {
         applicationId "com.mkulesh.micromath"
         minSdkVersion 14
-        targetSdkVersion 31
+        targetSdkVersion 32
         versionCode 40
         versionName "1.22"
         setProperty("archivesBaseName", "microMathematics-v" + versionName)
