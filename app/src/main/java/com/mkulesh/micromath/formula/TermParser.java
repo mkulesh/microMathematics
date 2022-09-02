@@ -404,7 +404,7 @@ public class TermParser
 
         String text = strNum.toUpperCase();
 
-        if (isIntegerBefore(text, EXP_SEPARATOR1) || isIntegerBefore(text, EXP_SEPARATOR2))
+        if (isNumericBefore(text, EXP_SEPARATOR1) || isNumericBefore(text, EXP_SEPARATOR2))
         {
             return true;
         }
@@ -421,14 +421,14 @@ public class TermParser
         return true;
     }
 
-    private static boolean isIntegerBefore(final String text, final String sep)
+    private static boolean isNumericBefore(final String text, final String sep)
     {
         if (text.endsWith(sep))
         {
             try
             {
                 final int sepPos = text.indexOf(sep);
-                Integer.parseInt(text.substring(0, sepPos).trim());
+                Double.parseDouble(text.substring(0, sepPos).trim());
                 return true;
             }
             catch (NumberFormatException nfe)
