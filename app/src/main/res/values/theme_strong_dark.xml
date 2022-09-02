@@ -19,15 +19,15 @@
     <style name="BaseThemeStrongDark" parent="BaseThemeDark">
         <!-- Parent styles -->
         <item name="android:windowBackground">@android:color/black</item>
-        <item name="colorMicroMathNavigator">@color/background_material_dark</item>
+        <item name="colorMicroMathNavigator">@color/material_grey_800</item>
         <item name="colorToolBarSeparator">@color/material_grey_800</item>
         <!-- Activity colors -->
         <item name="colorPrimary">@android:color/black</item>
-        <item name="colorPrimaryDark">@color/background_material_dark</item>
-        <item name="colorAccent">@android:color/white</item>
+        <item name="colorPrimaryDark">@color/material_grey_800</item>
+        <item name="colorAccent">#cddc39</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textColorSecondary">@color/material_grey_300</item>
-        <item name="colorMicroMathIcon">@android:color/white</item>
+        <item name="android:textColorSecondary">?attr/colorAccent</item>
+        <item name="colorMicroMathIcon">?attr/colorAccent</item>
         <item name="colorMicroMathFloatingIcon">@android:color/black</item>
         <item name="drawableAppHeader">@drawable/app_header_dark_cyan</item>
         <!-- Dialog style -->
@@ -43,11 +43,11 @@
         <item name="colorFormulaBackground">@android:color/transparent</item>
         <item name="colorFormulaHighlighted">@color/material_grey_900</item>
         <item name="colorFormulaNormal">@android:color/white</item>
-        <item name="colorFormulaEmpty">@color/material_grey_300</item>
-        <item name="colorFormulaInvalid">@android:color/white</item>
-        <item name="colorFormulaSelected">@color/material_grey_600</item>
+        <item name="colorFormulaEmpty">#607d8b</item>
+        <item name="colorFormulaInvalid">#ffff0000</item>
+        <item name="colorFormulaSelected">#afb42b</item>
         <item name="colorFormulaCalculatedValue">@color/material_grey_300</item>
-        <item name="colorFormulaTextFragment">@android:color/white</item>
+        <item name="colorFormulaTextFragment">#cfd8dc</item>
         <item name="colorPlotGridLine">#FF787878</item>
         <!-- Other elements -->
         <item name="actionModeBackground">?attr/colorPrimary</item>
