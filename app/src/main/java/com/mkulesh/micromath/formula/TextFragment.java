@@ -140,6 +140,16 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         formulaState = null;
     }
 
+    @Override
+    public void onNewFormula()
+    {
+        for (TermField t : terms)
+        {
+            // call checkContentType in order to prevent an invalid content flag
+            t.checkContentType(false);
+        }
+    }
+
     /*--------------------------------------------------------*
      * Read/write interface
      *--------------------------------------------------------*/
@@ -381,5 +391,13 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         }
 
         terms.get(0).setText(new String(chars));
+    }
+
+    public void setText(String content)
+    {
+        if (textField != null)
+        {
+            textField.setText(content);
+        }
     }
 }

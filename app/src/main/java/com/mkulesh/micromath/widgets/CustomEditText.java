@@ -167,6 +167,10 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
                     if (isTextFragment() && getText().length() == 0)
                     {
                         onLongClick(null);
+                        // Issue #122:
+                        // disable system context menu for an empty field since
+                        // "paste" from this menu has no effect
+                        return false;
                     }
                     return true;
                 }
