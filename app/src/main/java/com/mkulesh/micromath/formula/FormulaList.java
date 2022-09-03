@@ -482,7 +482,18 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     @Override
     public boolean onPasteFromClipboard(String content)
     {
-        if (selectedEquations.isEmpty() || !content.contains(ClipboardManager.CLIPBOARD_LIST_OBJECT))
+        final boolean mmtObject = content.contains(ClipboardManager.CLIPBOARD_LIST_OBJECT);
+        // Issue #122: If clipboard data are raw text, and a single selected formula is a text fragment,
+        // paste this text as raw text
+        final FormulaBase singleFormula = selectedEquations.size() == 1 ? selectedEquations.get(0) : null;
+        if (singleFormula != null && singleFormula.getBaseType() == FormulaBase.BaseType.TEXT_FRAGMENT && !mmtObject)
+        {
+            final TextFragment tf = (TextFragment) singleFormula;
+            tf.setText(content);
+            return true;
+        }
+
+        if (selectedEquations.isEmpty() || !mmtObject)
         {
             return false;
         }
