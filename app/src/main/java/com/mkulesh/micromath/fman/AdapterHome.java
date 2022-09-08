@@ -101,32 +101,35 @@ public class AdapterHome extends AdapterBaseImpl
             items = null;
             ArrayList<Item> ia = new ArrayList<>();
 
-            ia.add(makeItem(LOCAL, AdapterFileSystem.ORG_SCHEME));
-
-            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+            if (CompatUtils.manageExternalStorage())
             {
-                final String fs = FileUtils.mbAddSl(DEFAULT_DIR);
-                String[] dirs = CompatUtils.getStorageDirs(ctx);
-                if (dirs != null)
+                ia.add(makeItem(LOCAL, AdapterFileSystem.ORG_SCHEME));
+
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
                 {
-                    for (String dir : dirs)
+                    final String fs = FileUtils.mbAddSl(DEFAULT_DIR);
+                    String[] dirs = CompatUtils.getStorageDirs(ctx);
+                    if (dirs != null)
                     {
-                        if (!FileUtils.str(dir))
-                            continue;
-                        if (fs.equals(dir))
-                            continue;
-                        Item item = makeItem(EXTERNAL, dir);
-                        ia.add(item);
+                        for (String dir : dirs)
+                        {
+                            if (!FileUtils.str(dir))
+                                continue;
+                            if (fs.equals(dir))
+                                continue;
+                            Item item = makeItem(EXTERNAL, dir);
+                            ia.add(item);
+                        }
                     }
                 }
+                else
+                {
+                    String sec_st = FileUtils.getSecondaryStorage();
+                    if (FileUtils.str(sec_st))
+                        ia.add(makeItem(EXTERNAL, sec_st));
+                }
             }
-            else
-            {
-                String sec_st = FileUtils.getSecondaryStorage();
-                if (FileUtils.str(sec_st))
-                    ia.add(makeItem(EXTERNAL, sec_st));
 
-            }
             if (CompatUtils.isMarshMallowOrLater())
             {
                 Item item = makeItem(SAF, AdapterDocuments.ORG_SCHEME);

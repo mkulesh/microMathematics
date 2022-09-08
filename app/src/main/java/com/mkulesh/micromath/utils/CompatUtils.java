@@ -48,6 +48,13 @@ import java.text.DecimalFormatSymbols;
 @SuppressLint("NewApi")
 public class CompatUtils
 {
+    public static boolean manageExternalStorage()
+    {
+        // Processing of permission:
+        // <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
+        return !isROrLater();
+    }
+
     public static boolean isMarshMallowOrLater()
     {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
@@ -261,7 +268,7 @@ public class CompatUtils
 
     public static void requestStoragePermission(AppCompatActivity a, int reqId)
     {
-        if (isROrLater())
+        if (isROrLater() && manageExternalStorage())
         {
             ViewUtils.Debug(a, "requesting storage permissions for Android R");
             Intent in = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);

@@ -662,7 +662,9 @@ public class MainActivity extends AppCompatActivity
         {
             return true;
         }
-        if (CompatUtils.isROrLater())
+
+        storagePermissionAction = action;
+        if (CompatUtils.isROrLater() && CompatUtils.manageExternalStorage())
         {
             if (storagePermissionDialog == null && !Environment.isExternalStorageManager())
             {
@@ -679,7 +681,6 @@ public class MainActivity extends AppCompatActivity
                 return true;
             }
             ViewUtils.Debug(this, "storage permissions are not granted");
-            storagePermissionAction = action;
             if (shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE))
             {
                 if (isFinishing() || (storagePermissionDialog != null && storagePermissionDialog.isShowing()))
@@ -746,6 +747,15 @@ public class MainActivity extends AppCompatActivity
         if (requestCode == AdapterDocuments.REQUEST_OPEN_DOCUMENT_TREE && data != null)
         {
             AdapterDocuments.saveTreeRootURI(this, data.getData());
+            if (storagePermissionAction != ViewUtils.INVALID_INDEX)
+            {
+                ViewUtils.Debug(this, "SAF permission was granted, performing file operation action");
+                final BaseFragment f = getVisibleFragment();
+                if (f != null)
+                {
+                    f.performAction(storagePermissionAction);
+                }
+            }
         }
         else if (requestCode == SETTINGS_ACTIVITY_REQID)
         {
