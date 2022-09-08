@@ -231,8 +231,8 @@ public class Commander extends DialogBase implements CommanderIf
         if (!FileUtils.str(scheme))
             return new AdapterFileSystem(context);
         final int scheme_h = scheme.hashCode();
-        if (selectionMode == SelectionMode.OPEN && ASSETS_SCHEMA_H == scheme_h)
-            return new AdapterAssets(context, assetFilter);
+        if (ASSETS_SCHEMA_H == scheme_h)
+            return selectionMode == SelectionMode.OPEN? new AdapterAssets(context, assetFilter) : new AdapterHome(context);
         if (FILE_SCHEMA_H == scheme_h)
             return new AdapterFileSystem(context);
         if (HOME_SCHEMA_H == scheme_h)
