@@ -78,7 +78,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.mkulesh.micromath.plus.fileprovider"
+            android:authorities="com.mkulesh.micromath.fileprovider"
             android:grantUriPermissions="true"
             android:exported="false">
             <meta-data
