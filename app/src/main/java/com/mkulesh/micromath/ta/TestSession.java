@@ -337,11 +337,13 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
             try
             {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setDataAndType(Uri.fromFile(file), "text/html");
+                intent.setDataAndType(FileUtils.uriFromFile(context, file), "text/html");
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 formulas.getActivity().startActivity(intent);
             }
             catch (Exception e)
             {
+                ViewUtils.Debug(this, e.getLocalizedMessage());
                 Toast.makeText(context, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
         }

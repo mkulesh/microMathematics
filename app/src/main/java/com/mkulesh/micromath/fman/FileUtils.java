@@ -25,6 +25,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.io.Closeable;
@@ -34,6 +35,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+import androidx.core.content.FileProvider;
 
 public final class FileUtils
 {
@@ -395,6 +398,25 @@ public final class FileUtils
     public static boolean isAssetUri(Uri uri)
     {
         return uri != null && uri.getScheme() != null && uri.getScheme().equals("asset");
+    }
+
+    public static boolean isFileUri(Uri uri)
+    {
+        return uri != null && uri.getScheme() != null && uri.getScheme().equals("file");
+    }
+
+    public static Uri uriFromFile(Context context, File file)
+    {
+        Uri uri;
+        if (CompatUtils.isMarshMallowOrLater())
+        {
+            uri = FileProvider.getUriForFile(context, context.getPackageName() + ".fileprovider", file);
+        }
+        else
+        {
+            uri = Uri.fromFile(file);
+        }
+        return uri;
     }
 
     public static String getFileName(final Context c, final Uri uri)
