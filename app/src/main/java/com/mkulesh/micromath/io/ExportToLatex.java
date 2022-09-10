@@ -376,22 +376,23 @@ class ExportToLatex
                 writer.append("\n\n");
             }
             String endTag = "";
+            final String astrix = f.isNumbering()? "" : "*";
             switch (f.getTextStyle())
             {
             case CHAPTER:
-                writer.append("\\chapter{");
+                writer.append("\\chapter").append(astrix).append("{");
                 endTag = "}";
                 break;
             case SECTION:
-                writer.append("\\section{");
+                writer.append("\\section").append(astrix).append("{");
                 endTag = "}";
                 break;
             case SUBSECTION:
-                writer.append("\\subsection{");
+                writer.append("\\subsection").append(astrix).append("{");
                 endTag = "}";
                 break;
             case SUBSUBSECTION:
-                writer.append("\\subsubsection{");
+                writer.append("\\subsubsection").append(astrix).append("{");
                 endTag = "}";
                 break;
             case TEXT_BODY:
