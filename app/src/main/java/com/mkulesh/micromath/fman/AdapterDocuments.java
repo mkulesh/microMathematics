@@ -107,8 +107,10 @@ public class AdapterDocuments extends AdapterBaseImpl
             volume = paths.get(1);
             sub_path = path_part.substring(col_pos + 1);
 
-            if (volume.startsWith("primary"))
+            if (volume.startsWith("primary") && !CompatUtils.isROrLater())
+            {
                 return DEFAULT_DIR + "/" + sub_path;
+            }
             else
             {
                 try
@@ -152,38 +154,40 @@ public class AdapterDocuments extends AdapterBaseImpl
 
     public static Uri getParent(Uri u)
     {
-        if (u == null)
-            return null;
+        if (u == null) return null;
         final List<String> paths = u.getPathSegments();
         final int n = paths.size();
-        if (n < 4)
-            return null;
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n - 1; i++)
-        {
-            sb.append("/");
-            sb.append(paths.get(i));
+        if (n != 4) return null;
+        String doc_segm = paths.get(3);
+        int doc_col_pos = doc_segm.lastIndexOf(':');
+        if (doc_col_pos < 0)
+        { // not a system storage
+            int last_sl_pos = doc_segm.lastIndexOf('/');
+            if (last_sl_pos < 0)
+                return null;
+            doc_segm = doc_segm.substring(0, last_sl_pos);
+            return u.buildUpon().path(null).appendPath(paths.get(0)).appendPath(paths.get(1)).appendPath(paths.get(2)).appendPath(doc_segm).build();
         }
-        if (n == 4)
+        if (doc_col_pos == doc_segm.length() - 1)
+            return null;    // already the top
+        String doc_subpath = doc_segm.substring(doc_col_pos + 1);
+
+        String tree_segm = paths.get(1);
+        int tree_col_pos = tree_segm.lastIndexOf(':');
+        if (tree_col_pos > 0)
         {
-            String last = paths.get(n - 1);
-            int col_pos = last.lastIndexOf(':');
-            if (!(col_pos <= 0 || col_pos == last.length() - 1))
-            {
-                sb.append("/");
-                sb.append(last.substring(0, col_pos + 1));
-                String subpath = last.substring(col_pos + 1);
-                subpath = Uri.decode(subpath);
-                int sl_pos = subpath.lastIndexOf(SLC);
-                if (sl_pos > 0)
-                {
-                    subpath = subpath.substring(0, sl_pos);
-                    sb.append(Uri.encode(subpath));
-                }
+            String tree_subpath = tree_segm.substring(tree_col_pos + 1);
+            if (tree_subpath.equals(doc_subpath))
+            {  // will that work? modifying the tree path...
+                int sl_pos = tree_subpath.lastIndexOf(SLC);
+                tree_subpath = sl_pos > 0 ? tree_subpath.substring(0, sl_pos) : "";
+                tree_segm = tree_segm.substring(0, tree_col_pos + 1) + tree_subpath;
             }
-            return u.buildUpon().encodedPath(sb.toString()).build();
         }
-        return null;
+        int sl_pos = doc_subpath.lastIndexOf(SLC);
+        doc_subpath = sl_pos > 0 ? doc_subpath.substring(0, sl_pos) : "";
+        doc_segm = doc_segm.substring(0, doc_col_pos + 1) + doc_subpath;
+        return u.buildUpon().path(null).appendPath(paths.get(0)).appendPath(tree_segm).appendPath(paths.get(2)).appendPath(doc_segm).build();
     }
 
     @Override

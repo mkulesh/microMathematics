@@ -236,12 +236,18 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
                     {
                         try
                         {
-                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            final Intent intent = new Intent(Intent.ACTION_VIEW);
+                            if (uri.getPath() != null && FileUtils.isFileUri(uri))
+                            {
+                                uri = FileUtils.uriFromFile(getContext(), new File(uri.getPath()));
+                            }
                             intent.setDataAndType(uri, mime);
+                            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                             startActivity(intent);
                         }
                         catch (Exception e)
                         {
+                            ViewUtils.Debug(this, e.getLocalizedMessage());
                             Toast.makeText(getActivity(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
