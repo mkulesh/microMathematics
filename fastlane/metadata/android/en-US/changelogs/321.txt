@@ -1,0 +1,4 @@
+• Improved English documentation
+• Fixed a bug: text paste in an empty text fragment does not work
+• Fixed a bug: entering values like "1.6E-6 J" leads to a state where the negative exponent is parsed as a regular "-" operand
+• The app is adapted for Android 12
