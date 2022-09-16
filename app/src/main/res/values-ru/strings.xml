@@ -238,7 +238,6 @@
     <string name="math_function_csch">Гиперболический косеканс аргумента</string>
     <string name="math_function_sech">Гиперболический секанс аргумента</string>
     <string name="math_function_coth">Гиперболический котангенс аргумента</string>
-    <string name="math_function_matrix">Создать матрицу</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">К сожалению, достигнут предел глубины формулы для данной версии Android</string>

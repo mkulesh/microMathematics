@@ -292,7 +292,6 @@
     <string name="math_function_csch">The hyperbolic cosecant of the argument</string>
     <string name="math_function_sech">The hyperbolic secant of the argument</string>
     <string name="math_function_coth">The hyperbolic cotangent of the argument</string>
-    <string name="math_function_matrix">Create matrix</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Reached layout depth limit for this Android version</string>

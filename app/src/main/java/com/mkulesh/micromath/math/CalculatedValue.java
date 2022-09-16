@@ -238,7 +238,7 @@ public class CalculatedValue
     }
 
     @NonNull
-    private String getResultDescription(@NonNull DocumentProperties doc, int radix)
+    public String getResultDescription(@NonNull DocumentProperties doc, int radix)
     {
         String val;
         switch (valueType)

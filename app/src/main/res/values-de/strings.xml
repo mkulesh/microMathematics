@@ -238,7 +238,6 @@
     <string name="math_function_csch">Hyperbelkosekans des Arguments</string>
     <string name="math_function_sech">Hyperbelsekans des Arguments</string>
     <string name="math_function_coth">Hyperbelkotangens des Arguments</string>
-    <string name="math_function_matrix">Matrix erstellen</string>
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Der Grenzwert für die Layouttiefe für diese Android Version ist erreicht</string>
