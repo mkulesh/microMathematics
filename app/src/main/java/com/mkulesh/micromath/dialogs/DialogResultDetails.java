@@ -14,6 +14,8 @@
 package com.mkulesh.micromath.dialogs;
 
 import androidx.annotation.NonNull;
+
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -110,6 +112,7 @@ public class DialogResultDetails extends DialogBase
         initialize(calculatedItems, doc, resProp);
     }
 
+    @SuppressLint("SetTextI18n")
     private void initialize(ArrayList<ArgumentValueItem> calculatedItems,
                             DocumentProperties docProp, ResultProperties resProp)
     {

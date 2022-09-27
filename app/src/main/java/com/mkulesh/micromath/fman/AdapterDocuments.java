@@ -600,7 +600,7 @@ public class AdapterDocuments extends AdapterBaseImpl
         {
             editor.putString(Commander.PREF_LAST_SELECTED_PATH, uri.toString());
         }
-        editor.commit();
+        editor.apply();
     }
 
     @Override

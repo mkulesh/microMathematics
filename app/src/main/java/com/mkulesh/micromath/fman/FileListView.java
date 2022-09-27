@@ -14,7 +14,6 @@
 package com.mkulesh.micromath.fman;
 
 import android.net.Uri;
-import android.os.Build;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
@@ -45,7 +44,6 @@ public class FileListView implements AdapterView.OnItemClickListener
         listView.setFocusableInTouchMode(true);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView.setOnItemClickListener(this);
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
         {
             TypedValue outValue = new TypedValue();
             commander.getContext().getTheme().resolveAttribute(R.attr.selectableItemBackground, outValue, true);

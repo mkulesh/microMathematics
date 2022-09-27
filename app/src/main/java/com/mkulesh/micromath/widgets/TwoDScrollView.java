@@ -13,6 +13,7 @@
  */
 package com.mkulesh.micromath.widgets;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -286,6 +287,7 @@ public class TwoDScrollView extends FrameLayout
         ScaleGestureDetectorCompat.setQuickScaleEnabled(mScaleGestureDetector, "enable-all".equals(zoomMode));
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
