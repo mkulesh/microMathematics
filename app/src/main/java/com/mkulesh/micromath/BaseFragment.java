@@ -137,7 +137,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
             prefEditor.putString(OPENED_FILE, null);
             prefEditor.putString("default_directory", null);
             prefEditor.putString("last_selected_file_type", null);
-            prefEditor.commit();
+            prefEditor.apply();
             if (str != null && !str.equals(OPENED_FILE_EMPTY))
             {
                 uri = Uri.fromFile(new File(str));
@@ -159,7 +159,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
     {
         SharedPreferences.Editor prefEditor = preferences.edit();
         prefEditor.putString(OPENED_URI, (uri == null) ? OPENED_FILE_EMPTY : uri.toString());
-        prefEditor.commit();
+        prefEditor.apply();
         if (uri == null)
         {
             String[] subtitles = getResources().getStringArray(R.array.activity_subtitles);

@@ -126,7 +126,7 @@ public class DialogNewFormula extends DialogBase implements OnLongClickListener
                     insertType = e.getKey();
                     SharedPreferences.Editor prefEditor = pref.edit();
                     prefEditor.putString(LAST_INSERTED_POSITION, insertType.toString());
-                    prefEditor.commit();
+                    prefEditor.apply();
                 }
             }
             // inspect object buttons
@@ -138,7 +138,7 @@ public class DialogNewFormula extends DialogBase implements OnLongClickListener
                     formulaType = e.getKey();
                     SharedPreferences.Editor prefEditor = pref.edit();
                     prefEditor.putString(LAST_INSERTED_OBJECT, formulaType.toString());
-                    prefEditor.commit();
+                    prefEditor.apply();
                 }
             }
             changeIf.onNewFormula(insertType, formulaType);

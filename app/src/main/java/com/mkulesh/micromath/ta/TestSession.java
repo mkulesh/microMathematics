@@ -61,7 +61,6 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
     private final static int STEP_EXPORT = 2;
 
     private final FormulaList formulas;
-    private final Activity context;
     private final CharSequence[] scripts;
     private final boolean isAutotestOnStart;
     private final SynchronizedBoolean isPublishRuns = new SynchronizedBoolean();
@@ -73,7 +72,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
     public TestSession(FormulaList formulas, Mode mode, boolean isAutotestOnStart)
     {
         this.formulas = formulas;
-        context = formulas.getActivity();
+        final Activity context = formulas.getActivity();
         this.mode = mode;
         switch (mode)
         {
@@ -220,6 +219,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
 
     private void exportLatex(String directory, String scriptName)
     {
+        final Activity context = formulas.getActivity();
         // Document directory and file
         final File docDir = CompatUtils.getStorageDir(context, directory);
         docDir.mkdir();
@@ -244,6 +244,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
 
     private void takeScreenshot(String directory, String scriptName)
     {
+        final Activity context = formulas.getActivity();
         final File parent = CompatUtils.getStorageDir(context, directory);
         parent.mkdir();
         final File file = new File(parent, scriptName + ".png");
@@ -302,6 +303,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
     protected void onPostExecute(Void result)
     {
         super.onPostExecute(result);
+        final Activity context = formulas.getActivity();
         if (mode == Mode.EXPORT_DOC || mode == Mode.TAKE_SCREENSHOTS)
         {
             return;
@@ -393,6 +395,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
 
     private void publishHtmlReport(StringWriter writer) throws Exception
     {
+        final Activity context = formulas.getActivity();
         writer.append("<!DOCTYPE html>\n");
         writer.append("<html><head>\n");
         writer.append("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n");

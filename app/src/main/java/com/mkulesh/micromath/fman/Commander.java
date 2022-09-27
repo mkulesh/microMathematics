@@ -692,7 +692,7 @@ public class Commander extends DialogBase implements CommanderIf
         editor.putString(PREF_LAST_SELECTED_PATH, getListAdapter().getUri().toString());
         editor.putString(PREF_LAST_SELECTED_FILE_TYPE, fileType.toString());
         editor.putInt(PREF_ADAPTER_MODE, fileListView.adapterMode);
-        editor.commit();
+        editor.apply();
     }
 
     public SelectionMode getSelectionMode()

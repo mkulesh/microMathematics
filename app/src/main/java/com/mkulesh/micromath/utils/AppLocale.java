@@ -13,6 +13,7 @@
  */
 package com.mkulesh.micromath.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -59,7 +60,7 @@ public final class AppLocale
             }
         }
 
-        @SuppressWarnings("deprecation")
+        @SuppressLint("AppBundleLocaleChanges")
         public static ContextWrapper wrap(Context context, Locale newLocale)
         {
             final Resources res = context.getResources();

@@ -30,7 +30,7 @@ android {
         checkReleaseBuilds false
         abortOnError false
         disable "RtlHardcoded", "RtlSymmetry", "RtlEnabled",
-                "ApplySharedPref", "PrivateResource", "SetTextI18n"
+                "NonConstantResourceId", "CustomViewStyleable"
     }
 }
 

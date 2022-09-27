@@ -430,7 +430,8 @@ public final class FileUtils
                 cursor = c.getContentResolver().query(uri, null, null, null, null);
                 if (cursor != null && cursor.moveToFirst())
                 {
-                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                    final int columnIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+                    result = columnIndex < 0 ? null : cursor.getString(columnIndex);
                 }
             }
             catch (Exception e)

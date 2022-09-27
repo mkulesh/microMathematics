@@ -141,7 +141,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor prefEditor = pref.edit();
         prefEditor.putString(VISIBLE_PALETTE_GROUPS, visibleGroups.toString());
-        prefEditor.commit();
+        prefEditor.apply();
         this.visibleGroups = visibleGroups;
         addButtonsToPalette();
         if (listChangeIf != null)

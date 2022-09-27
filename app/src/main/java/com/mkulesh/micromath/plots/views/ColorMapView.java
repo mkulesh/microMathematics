@@ -13,6 +13,7 @@
  */
 package com.mkulesh.micromath.plots.views;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -172,6 +173,7 @@ public class ColorMapView extends CustomTextView
         return colorMapParameters;
     }
 
+    @SuppressLint("SetTextI18n")
     public void setFunction(FunctionIf function)
     {
         this.function = function;

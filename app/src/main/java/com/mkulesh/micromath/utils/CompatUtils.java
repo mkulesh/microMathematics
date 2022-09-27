@@ -116,7 +116,6 @@ public class CompatUtils
     /**
      * Procedure sets the background for given view as a drawable with given resource id
      */
-    @SuppressWarnings("deprecation")
     public static void updateBackground(Context c, View v, @DrawableRes int drawableId)
     {
         Drawable bg;
@@ -142,7 +141,6 @@ public class CompatUtils
     /**
      * Procedure sets the background for given view as a drawable with given resource id
      */
-    @SuppressWarnings("deprecation")
     public static void updateBackgroundAttr(Context c, View v, @DrawableRes int drawableId, @AttrRes int colorAttrId)
     {
         Drawable bg;
