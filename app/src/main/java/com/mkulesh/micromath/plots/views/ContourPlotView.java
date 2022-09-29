@@ -15,6 +15,7 @@ package com.mkulesh.micromath.plots.views;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 
@@ -121,7 +122,9 @@ public class ContourPlotView extends PlanePlotView
                 // z
                 if (colorMapView != null)
                 {
-                    p.setColor(colorMapView.getPaletteColor(zVal[i][j], f.getMinMaxValues(FunctionIf.Z), 255));
+                    final int color = Double.isNaN(zVal[i][j]) ? Color.TRANSPARENT :
+                            colorMapView.getPaletteColor(zVal[i][j], f.getMinMaxValues(FunctionIf.Z), 255);
+                    p.setColor(color);
                 }
 
                 // draw

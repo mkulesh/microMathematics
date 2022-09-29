@@ -171,6 +171,10 @@ public class SurfacePlotView extends PlotView
             {
                 final double y = function.getYValues()[j];
                 double v = function.getZValues()[i][j];
+                if (Double.isNaN(v))
+                {
+                    v = get1dValue(function.getZValues(), i, j);
+                }
                 if (Double.isInfinite(v))
                 {
                     v = Double.NaN;
@@ -195,6 +199,19 @@ public class SurfacePlotView extends PlotView
         }
         projector.setZRange(function.getMinMaxValues(FunctionIf.Z)[FunctionIf.MIN],
                 function.getMinMaxValues(FunctionIf.Z)[FunctionIf.MAX]);
+    }
+
+    private double get1dValue(final double[][] zValues, int i, int j)
+    {
+        if (i > 0 && !Double.isNaN(zValues[i - 1][j]))
+        {
+            return zValues[i - 1][j];
+        }
+        if (j > 0 && !Double.isNaN(zValues[i][j - 1]))
+        {
+            return zValues[i][j - 1];
+        }
+        return Double.NaN;
     }
 
     public boolean isRendered()
@@ -384,14 +401,13 @@ public class SurfacePlotView extends PlotView
      */
     private void drawBoxGridsLabels(Canvas canvas)
     {
-        boolean x_left = false, y_left = false;
         int i;
 
         factor_x = factor_y = 1;
         projector.project(p1, 0, 0, -10);
         poly_x[0] = p1.x;
         projector.project(p1, 10.5f, 0, -10);
-        y_left = p1.x > poly_x[0];
+        boolean y_left = p1.x > poly_x[0];
         i = p1.y;
         projector.project(p1, -10.5f, 0, -10);
         if (p1.y > i)
@@ -400,7 +416,7 @@ public class SurfacePlotView extends PlotView
             y_left = p1.x > poly_x[0];
         }
         projector.project(p1, 0, 10.5f, -10);
-        x_left = p1.x > poly_x[0];
+        boolean x_left = p1.x > poly_x[0];
         i = p1.y;
         projector.project(p1, 0, -10.5f, -10);
         if (p1.y > i)

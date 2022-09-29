@@ -653,11 +653,12 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
         void calculate(CalculaterTask thread) throws CancelException
         {
             final CalculatedValue calcVal = new CalculatedValue();
-            ArrayList<Equation> linkedIntervals = getDirectIntervals();
-            if (linkedIntervals.size() != 2)
+            final ArrayList<Equation> linkedIntervals = getDirectIntervals();
+            if (linkedIntervals.size() != 1 && linkedIntervals.size() != 2)
             {
                 return;
             }
+            final boolean isFunction1D = linkedIntervals.size() == 1;
 
             // prepare axis and minimum and maximum values
             minMaxValues[FunctionIf.X][FunctionIf.MIN] = Double.NEGATIVE_INFINITY;
@@ -672,7 +673,8 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
                 calcVal.processRealTerm(thread, xMax);
                 minMaxValues[FunctionIf.X][FunctionIf.MAX] = calcVal.getReal();
             }
-            xValues = linkedIntervals.get(0).fillBoundedInterval(xValues, minMaxValues[FunctionIf.X]);
+            final Equation xValuesEq = linkedIntervals.get(0);
+            xValues = xValuesEq.fillBoundedInterval(xValues, minMaxValues[FunctionIf.X]);
             if (xValues == null)
             {
                 return;
@@ -690,15 +692,16 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
                 calcVal.processRealTerm(thread, yMax);
                 minMaxValues[FunctionIf.Y][FunctionIf.MAX] = calcVal.getReal();
             }
-            yValues = linkedIntervals.get(1).fillBoundedInterval(yValues, minMaxValues[FunctionIf.Y]);
+            final Equation yValuesEq = isFunction1D ? linkedIntervals.get(0) : linkedIntervals.get(1);
+            yValues = yValuesEq.fillBoundedInterval(yValues, minMaxValues[FunctionIf.Y]);
             if (yValues == null)
             {
                 return;
             }
 
             // labels
-            labels[FunctionIf.X] = linkedIntervals.get(0).getName();
-            labels[FunctionIf.Y] = linkedIntervals.get(1).getName();
+            labels[FunctionIf.X] = xValuesEq.getName();
+            labels[FunctionIf.Y] = yValuesEq.getName();
             labels[FunctionIf.Z] = "";
 
             // calculate z values
@@ -708,14 +711,57 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
                 argValues[1][0] = new CalculatedValue();
             }
             zValues = new double[xValues.length][yValues.length];
+            if (isFunction1D)
+            {
+                calculate1D(xValuesEq, thread);
+            }
+            else
+            {
+                calculate2D(xValuesEq, yValuesEq, thread);
+            }
+            updateEqualBorders(minMaxValues[FunctionIf.Z]);
+        }
+
+        private void calculate1D(Equation xValuesEq, CalculaterTask thread) throws CancelException
+        {
+            final CalculatedValue calcVal = new CalculatedValue();
+            for (int i = 0; i < xValues.length; i++)
+            {
+                for (int j = 0; j < yValues.length; j++)
+                {
+                    zValues[i][j] = Double.NaN;
+                }
+
+                argValues[0][0].setValue(xValues[i]);
+                xValuesEq.setArgumentValues(argValues[0]);
+                calcVal.processRealTerm(thread, functionTerm);
+                final double zVal = calcVal.getReal();
+                zValues[i][i] = zVal;
+                if (i == 0)
+                {
+                    minMaxValues[FunctionIf.Z][FunctionIf.MIN] = minMaxValues[FunctionIf.Z][FunctionIf.MAX] = zVal;
+                }
+                else
+                {
+                    minMaxValues[FunctionIf.Z][FunctionIf.MIN] = Math.min(
+                            minMaxValues[FunctionIf.Z][FunctionIf.MIN], zVal);
+                    minMaxValues[FunctionIf.Z][FunctionIf.MAX] = Math.max(
+                            minMaxValues[FunctionIf.Z][FunctionIf.MAX], zVal);
+                }
+            }
+        }
+
+        private void calculate2D(Equation xValuesEq, Equation yValuesEq, CalculaterTask thread) throws CancelException
+        {
+            final CalculatedValue calcVal = new CalculatedValue();
             for (int i = 0; i < xValues.length; i++)
             {
                 argValues[0][0].setValue(xValues[i]);
-                linkedIntervals.get(0).setArgumentValues(argValues[0]);
+                xValuesEq.setArgumentValues(argValues[0]);
                 for (int j = 0; j < yValues.length; j++)
                 {
                     argValues[1][0].setValue(yValues[j]);
-                    linkedIntervals.get(1).setArgumentValues(argValues[1]);
+                    yValuesEq.setArgumentValues(argValues[1]);
                     calcVal.processRealTerm(thread, functionTerm);
                     final double zVal = calcVal.getReal();
                     zValues[i][j] = zVal;
@@ -732,7 +778,6 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
                     }
                 }
             }
-            updateEqualBorders(minMaxValues[FunctionIf.Z]);
         }
     }
 }
