@@ -27,6 +27,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
@@ -1304,7 +1305,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         }
     }
 
-    public void showSoftKeyboard(boolean flag)
+    public void showSoftKeyboard(boolean flag, @Nullable View view)
     {
         if (ViewUtils.isHardwareKeyboardAvailable(getContext()))
         {
@@ -1313,7 +1314,14 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (flag)
         {
-            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+            if (view != null)
+            {
+                imm.showSoftInput(view, 0);
+            }
+            else
+            {
+                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+            }
         }
         else
         {

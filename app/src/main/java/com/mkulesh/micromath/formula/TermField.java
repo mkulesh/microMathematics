@@ -347,7 +347,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         else if (type == FormulaBase.FocusType.FIRST_EDITABLE || isEmpty())
         {
             text.requestFocus();
-            formulaRoot.getFormulaList().showSoftKeyboard(true);
+            formulaRoot.getFormulaList().showSoftKeyboard(true, text);
             return true;
         }
         return false;

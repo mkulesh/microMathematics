@@ -395,7 +395,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
 
     public void hideKeyboard()
     {
-        formulas.showSoftKeyboard(false);
+        formulas.showSoftKeyboard(false, null);
     }
 
     public int getFragmentNumber()
