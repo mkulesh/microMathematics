@@ -203,6 +203,11 @@ public class MainActivity extends AppCompatActivity
             public void onDrawerOpened(View drawerView)
             {
                 super.onDrawerOpened(drawerView);
+                final BaseFragment baseFragment = getVisibleFragment();
+                if (baseFragment != null)
+                {
+                    baseFragment.hideKeyboard();
+                }
             }
         };
         CompatUtils.setDrawerListener(mDrawerLayout, mDrawerToggle);
