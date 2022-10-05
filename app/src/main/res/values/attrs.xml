@@ -61,6 +61,7 @@
     </declare-styleable>
 
     <declare-styleable name="CustomViewExtension">
+        <attr name="contextMenuInsertBefore" format="boolean" />
         <attr name="contextMenuExpand" format="boolean" />
         <attr name="contextMenuCut" format="boolean" />
         <attr name="contextMenuCopy" format="boolean" />

@@ -334,7 +334,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         }
 
         // create and prepare new function
-        Function2D f = ownerFunc.addNewAfter();
+        Function2D f = ownerFunc.addNewFunction(getFormulaList().getDocumentSettings().insertBefore);
         if (f == null)
         {
             return true;
@@ -708,7 +708,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         }
         while (functions.size() < number)
         {
-            functions.add(ownerFunc.addNewAfter());
+            functions.add(ownerFunc.addNewFunction(false));
         }
         reIndexTerms();
         updateTextSize();
@@ -803,7 +803,6 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
 
         private LinearLayout xLayout = null;
         private TermField x = null;
-        private CustomTextView xSeparator = null;
         private LinearLayout yLayout = null;
         private TermField y = null;
         private CustomTextView settingsView = null;
@@ -902,7 +901,7 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             settingsView.prepare(CustomTextView.SymbolType.HOR_LINE, getFormulaList().getActivity(), PlotFunction.this);
         }
 
-        Function2D addNewAfter()
+        Function2D addNewFunction(final boolean insertBefore)
         {
             int xViewIndex = ViewUtils.getViewIndex(xDataLayout, xLayout);
             int yViewIndex = ViewUtils.getViewIndex(yDataLayout, settingsView);
@@ -920,8 +919,17 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
                 final String tag = (String) t.getTag();
                 if (Y_FUNCTION_TAG.equals(tag) && t instanceof LinearLayout)
                 {
-                    f.initializeY((LinearLayout) t, terms.indexOf(y) + 1);
-                    yDataLayout.addView(t, ++yViewIndex);
+                    final int idx = insertBefore ? terms.indexOf(y) : terms.indexOf(y) + 1;
+                    f.initializeY((LinearLayout) t, idx);
+                    if (insertBefore)
+                    {
+                        yViewIndex--;
+                    }
+                    else
+                    {
+                        yViewIndex++;
+                    }
+                    yDataLayout.addView(t, yViewIndex);
                 }
                 else if (Y_SETTINGS_TAG.equals(tag) && t instanceof CustomTextView)
                 {
@@ -932,14 +940,23 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
                 }
                 else if (X_SEPARATOR_TAG.equals(tag) && t instanceof CustomTextView)
                 {
-                    f.xSeparator = (CustomTextView) t;
-                    f.xSeparator.setText(getContext().getResources().getString(R.string.formula_term_separator));
-                    xDataLayout.addView(t, ++xViewIndex);
+                    final CustomTextView xSeparator = (CustomTextView) t;
+                    xSeparator.setText(getContext().getResources().getString(R.string.formula_term_separator));
+                    if (!insertBefore)
+                    {
+                        xViewIndex++;
+                    }
+                    xDataLayout.addView(t, xViewIndex);
                 }
                 else if (X_FUNCTION_TAG.equals(tag) && t instanceof LinearLayout)
                 {
-                    f.initializeX((LinearLayout) t, terms.indexOf(x) + 1);
-                    xDataLayout.addView(t, ++xViewIndex);
+                    final int idx = insertBefore ? terms.indexOf(x) : terms.indexOf(x) + 1;
+                    f.initializeX((LinearLayout) t, idx);
+                    if (!insertBefore)
+                    {
+                        xViewIndex++;
+                    }
+                    xDataLayout.addView(t, xViewIndex);
                 }
             }
             return f;
@@ -949,18 +966,22 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         {
             terms.remove(x);
             terms.remove(y);
-            xDataLayout.removeView(xLayout);
             removeSeparator();
+            xDataLayout.removeView(xLayout);
             yDataLayout.removeView(settingsView);
             yDataLayout.removeView(yLayout);
         }
 
         void removeSeparator()
         {
-            if (xSeparator != null)
+            for (int i = 1; i < xDataLayout.getChildCount(); i++)
             {
-                xDataLayout.removeView(xSeparator);
-                xSeparator = null;
+                if (xDataLayout.getChildAt(i) == xLayout &&
+                        X_SEPARATOR_TAG.equals(xDataLayout.getChildAt(i - 1).getTag()))
+                {
+                    xDataLayout.removeViewAt(i - 1);
+                    break;
+                }
             }
         }
 

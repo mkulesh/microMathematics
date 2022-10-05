@@ -19,6 +19,11 @@
     tools:ignore="AlwaysShowAction">
 
     <item
+        android:id="@+id/context_menu_insert_before"
+        android:icon="@drawable/ic_add_left"
+        android:title="@string/dialog_new_formula_insert_left"
+        micromath:showAsAction="always"/>
+    <item
         android:id="@+id/context_menu_expand"
         android:icon="@drawable/ic_action_content_expand"
         android:title="@string/context_expand"

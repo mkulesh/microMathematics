@@ -23,6 +23,7 @@
         android:layout_height="100dp"
         android:maxLines="9999"
         android:text="@string/image_fragment_text"
+        micromath:contextMenuInsertBefore="false"
         micromath:contextMenuCopy="true"
         micromath:contextMenuCut="true"
         micromath:contextMenuExpand="true"

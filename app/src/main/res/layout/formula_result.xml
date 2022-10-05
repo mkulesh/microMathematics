@@ -36,6 +36,7 @@
         style="@style/FormulaTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        micromath:contextMenuInsertBefore="false"
         android:text="@string/formula_result_definition" />
 
     <com.mkulesh.micromath.widgets.CustomTextView

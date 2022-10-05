@@ -376,6 +376,21 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         }
     }
 
+    public TermField getInsertionRefTerm()
+    {
+        if (getTerms().size() == 2)
+        {
+            // put whole text into the term that depends on "insertBefore" flag
+            return formulaRoot.getFormulaList().getDocumentSettings().insertBefore ?
+                    getTerms().get(1) : getTerms().get(0);
+        }
+        else
+        {
+            // put whole text into the first term
+            return getArgumentTerm();
+        }
+    }
+
     protected boolean splitIntoTerms(final String src, final TermTypeIf t, boolean pasteFromClipboard)
     {
         if (src == null || src.isEmpty() || (t != null && t.getLowerCaseName().equals(src.toLowerCase(Locale.ENGLISH))))
@@ -401,8 +416,8 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
             }
             if (sepPosition < 0)
             {
-                // no separator found: put whole text into the first term
-                final TermField term = getArgumentTerm();
+                // no separator found:
+                final TermField term = getInsertionRefTerm();
                 if (term != null)
                 {
                     term.setText(src);

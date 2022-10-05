@@ -75,6 +75,9 @@ public class DocumentProperties
     private ScaledDimensions scaledDimensions = null;
     public boolean redefineAllowed = true;
 
+    // flag that controls term insertion mode: not saved in state, set from the context menu
+    public boolean insertBefore = false;
+
     /**
      * Default constructor
      */

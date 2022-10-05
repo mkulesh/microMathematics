@@ -22,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/formula_left_term_key"
+        micromath:contextMenuInsertBefore="false"
         micromath:equationName="true" />
 
     <com.mkulesh.micromath.widgets.CustomTextView
@@ -29,6 +30,7 @@
         style="@style/FormulaTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        micromath:contextMenuInsertBefore="false"
         android:text="@string/formula_assign_definition" />
 
     <com.mkulesh.micromath.widgets.CustomEditText
