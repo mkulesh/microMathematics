@@ -982,7 +982,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
 
         if (isTerm() && !term.getTerms().isEmpty() && savedState != null)
         {
-            final TermField tf = term.getArgumentTerm();
+            final TermField tf = term.getInsertionRefTerm();
             if (tf != null && tf.getEditText() != null && tf.getEditText().isConversionEnabled())
             {
                 tf.readFromBundle(savedState, "savedState");

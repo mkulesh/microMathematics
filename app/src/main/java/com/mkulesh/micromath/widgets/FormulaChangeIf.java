@@ -85,4 +85,14 @@ public interface FormulaChangeIf
      * Procedure returns whether the object details view is enabled for this formula
      */
     boolean enableDetails();
+
+    /**
+     * Procedure checks whether this formula is a root formula
+     */
+    boolean isRootFormula();
+
+    /**
+     * Procedure sets the flag that a new term shall be added before existing term
+     */
+    void setInsertBefore(boolean insertBefore);
 }

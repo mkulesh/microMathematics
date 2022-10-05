@@ -20,6 +20,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 
@@ -33,6 +35,7 @@ public class ContextMenuHandler
 {
     enum Type
     {
+        INSERT_BEFORE(R.id.context_menu_insert_before),
         EXPAND(R.id.context_menu_expand),
         CUT(R.id.context_menu_cut),
         COPY(R.id.context_menu_copy),
@@ -55,6 +58,7 @@ public class ContextMenuHandler
     private final Context context;
     private FormulaChangeIf formulaChangeIf = null;
     private androidx.appcompat.view.ActionMode actionMode = null;
+    private Menu contextMenu = null;
     private View actionModeOwner = null;
 
     public ContextMenuHandler(Context context)
@@ -68,6 +72,7 @@ public class ContextMenuHandler
 
     public void initialize(TypedArray a)
     {
+        enabled[Type.INSERT_BEFORE.ordinal()] = a.getBoolean(R.styleable.CustomViewExtension_contextMenuInsertBefore, true);
         enabled[Type.EXPAND.ordinal()] = a.getBoolean(R.styleable.CustomViewExtension_contextMenuExpand, true);
         enabled[Type.CUT.ordinal()] = a.getBoolean(R.styleable.CustomViewExtension_contextMenuCut, true);
         enabled[Type.COPY.ordinal()] = a.getBoolean(R.styleable.CustomViewExtension_contextMenuCopy, true);
@@ -115,6 +120,7 @@ public class ContextMenuHandler
         @Override
         public boolean onPrepareActionMode(ActionMode mode, Menu menu)
         {
+            contextMenu = menu;
             return false; // Return false if nothing is done
         }
 
@@ -124,7 +130,7 @@ public class ContextMenuHandler
         {
             if (formulaChangeIf != null)
             {
-                if (processMenu(item.getItemId()))
+                if (processMenu(item))
                 {
                     mode.finish();
                 }
@@ -137,9 +143,11 @@ public class ContextMenuHandler
         public void onDestroyActionMode(ActionMode mode)
         {
             actionMode = null;
+            contextMenu = null;
             if (formulaChangeIf != null)
             {
                 formulaChangeIf.finishActionMode(actionModeOwner);
+                formulaChangeIf.setInsertBefore(false);
             }
         }
     };
@@ -148,6 +156,7 @@ public class ContextMenuHandler
     {
         this.actionModeOwner = actionModeOwner;
         this.formulaChangeIf = formulaChangeIf;
+        formulaChangeIf.setInsertBefore(false);
 
         ArrayList<View> list = null;
         if (this.actionModeOwner != null && this.actionModeOwner instanceof CustomEditText)
@@ -166,10 +175,26 @@ public class ContextMenuHandler
         actionMode = activity.startSupportActionMode(actionModeCallback);
     }
 
-    private boolean processMenu(int itemId)
+    @Nullable MenuItem getMenuItem(Type t)
     {
-        switch (itemId)
+        return contextMenu != null ? contextMenu.findItem(t.getResId()) : null;
+    }
+
+    private boolean processMenu(final @NonNull MenuItem item)
+    {
+        switch (item.getItemId())
         {
+        case R.id.context_menu_insert_before:
+        {
+            final MenuItem m = getMenuItem(Type.INSERT_BEFORE);
+            if (m != null)
+            {
+                m.setChecked(!m.isChecked());
+                formulaChangeIf.setInsertBefore(m.isChecked());
+                ViewUtils.updateMenuIconColor(context, m);
+            }
+            return false;
+        }
         case R.id.context_menu_expand:
             FormulaChangeIf newIf = formulaChangeIf.onExpandSelection(actionModeOwner);
             if (newIf != null)
@@ -177,6 +202,18 @@ public class ContextMenuHandler
                 formulaChangeIf = newIf;
                 formulaChangeIf.onTermSelection(null, true, null);
                 actionModeOwner = null;
+            }
+            else
+            {
+                item.setVisible(false);
+            }
+            if (newIf == null || newIf.isRootFormula())
+            {
+                final MenuItem m = getMenuItem(Type.INSERT_BEFORE);
+                if (m != null)
+                {
+                    m.setVisible(false);
+                }
             }
             return false;
         case R.id.context_menu_cut:

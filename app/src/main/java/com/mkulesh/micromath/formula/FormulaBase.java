@@ -120,14 +120,6 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
      *--------------------------------------------------------*/
 
     /**
-     * Procedure checks whether this formula is a root formula
-     */
-    public boolean isRootFormula()
-    {
-        return getBaseType() != BaseType.TERM;
-    }
-
-    /**
      * Getter for parent list of formulas
      */
     public FormulaList getFormulaList()
@@ -518,6 +510,18 @@ public abstract class FormulaBase extends CustomLayout implements FormulaChangeI
     public boolean enableDetails()
     {
         return false;
+    }
+
+    @Override
+    public boolean isRootFormula()
+    {
+        return getBaseType() != BaseType.TERM;
+    }
+
+    @Override
+    public void setInsertBefore(boolean insertBefore)
+    {
+        formulaList.getDocumentSettings().insertBefore = insertBefore;
     }
 
     /*--------------------------------------------------------*
