@@ -512,7 +512,7 @@ public class CommonFunctions extends FunctionBase
             else if (termType == FunctionType.NTHRT_LAYOUT
                     && val.equals(getContext().getResources().getString(R.string.formula_left_term_key)))
             {
-                final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 3);
+                final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 2);
                 t.bracketsType = TermField.BracketsType.NEVER;
             }
             else if (termType == FunctionType.NTHRT_LAYOUT
@@ -530,7 +530,7 @@ public class CommonFunctions extends FunctionBase
             else if (termType == FunctionType.POWER
                     && val.equals(getContext().getResources().getString(R.string.formula_right_term_key)))
             {
-                final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 3);
+                final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 2);
                 t.bracketsType = TermField.BracketsType.NEVER;
             }
         }
