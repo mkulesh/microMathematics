@@ -122,7 +122,7 @@ public class ArrayFunctions extends FunctionBase implements FocusChangeIf
 
         public boolean isEnabled(CustomEditText field)
         {
-            return this != READ || field.isFileOperationEnabled();
+            return this != READ || field.isArrayFunctionEnabled();
         }
 
         public PaletteButton.Category getPaletteCategory()
@@ -511,6 +511,12 @@ public class ArrayFunctions extends FunctionBase implements FocusChangeIf
                 },
                 getFormulaList().getDimen());
         }
+    }
+
+    @Override
+    public boolean isConversionDisabled()
+    {
+        return isArray();
     }
 
     /*--------------------------------------------------------*

@@ -26,7 +26,6 @@ import com.mkulesh.micromath.formula.FormulaBase.FocusType;
 import com.mkulesh.micromath.formula.PaletteButton.Category;
 import com.mkulesh.micromath.formula.terms.ArrayFunctions;
 import com.mkulesh.micromath.formula.terms.Comparators;
-import com.mkulesh.micromath.formula.terms.Intervals;
 import com.mkulesh.micromath.formula.terms.TermFactory;
 import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.formula.terms.UserFunctions;
@@ -1193,7 +1192,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
      */
     public boolean isEnabledInPalette(Category pt)
     {
-        if (isTerm() && term instanceof Intervals && pt != Category.NEW_TERM)
+        if (isTerm() && term.isConversionDisabled() && pt != Category.NEW_TERM)
         {
             return false;
         }
@@ -1202,7 +1201,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         case NEW_TERM:
             return parentFormula.isNewTermEnabled() && text.isNewTermEnabled();
         case TOP_LEVEL_TERM:
-            return text.isIntervalEnabled() || text.isFileOperationEnabled();
+            return text.isIntervalEnabled() || text.isArrayFunctionEnabled();
         case CONVERSION:
             return text.isConversionEnabled();
         case INDEX:

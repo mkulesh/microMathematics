@@ -71,7 +71,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
     private boolean complexEnabled = true;
     private boolean comparatorEnabled = false;
     private boolean newTermEnabled = false;
-    private boolean fileOperationEnabled = false;
+    private boolean arrayFunctionEnabled = false;
     private ArrayType arrayType = ArrayType.DISABLED;
 
     // context menu handling
@@ -116,7 +116,7 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
             intervalEnabled = a.getBoolean(R.styleable.CustomViewExtension_intervalEnabled, false);
             complexEnabled = a.getBoolean(R.styleable.CustomViewExtension_complexEnabled, true);
             newTermEnabled = a.getBoolean(R.styleable.CustomViewExtension_newTermEnabled, false);
-            fileOperationEnabled = a.getBoolean(R.styleable.CustomViewExtension_fileOperationEnabled, false);
+            arrayFunctionEnabled = a.getBoolean(R.styleable.CustomViewExtension_arrayFunctionEnabled, false);
             final int arrayTypeInt = a.getInteger(R.styleable.CustomViewExtension_arrayType, -1);
             if (arrayTypeInt >= 0 && arrayTypeInt < ArrayType.values().length)
             {
@@ -217,9 +217,9 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
         return newTermEnabled;
     }
 
-    public boolean isFileOperationEnabled()
+    public boolean isArrayFunctionEnabled()
     {
-        return fileOperationEnabled;
+        return arrayFunctionEnabled;
     }
 
     public ArrayType getArrayType()

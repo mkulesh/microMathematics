@@ -271,6 +271,12 @@ public class Intervals extends FormulaTerm
         return v;
     }
 
+    @Override
+    public boolean isConversionDisabled()
+    {
+        return true;
+    }
+
     /*--------------------------------------------------------*
      * FormulaTermInterval-specific methods
      *--------------------------------------------------------*/
