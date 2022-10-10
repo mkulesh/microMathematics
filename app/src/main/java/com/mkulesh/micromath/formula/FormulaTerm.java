@@ -104,6 +104,15 @@ public abstract class FormulaTerm extends FormulaBase implements CalculatableIf
         return useBrackets;
     }
 
+    /**
+     * Returns whether the conversion to other terms is disabled.
+     * When disabled, no other conversion conditions will be considered
+     */
+    public boolean isConversionDisabled()
+    {
+        return false;
+    }
+
     /*--------------------------------------------------------*
      * Methods to be Implemented in derived a class
      *--------------------------------------------------------*/

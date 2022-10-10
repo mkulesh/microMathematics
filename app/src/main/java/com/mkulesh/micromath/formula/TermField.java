@@ -1147,7 +1147,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
      */
     public boolean isEnabledInPalette(Category pt)
     {
-        if (isTerm() && term instanceof Intervals && pt != Category.NEW_TERM)
+        if (isTerm() && term.isConversionDisabled() && pt != Category.NEW_TERM)
         {
             return false;
         }
@@ -1156,7 +1156,7 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         case NEW_TERM:
             return parentFormula.isNewTermEnabled() && text.isNewTermEnabled();
         case TOP_LEVEL_TERM:
-            return text.isIntervalEnabled() || text.isFileOperationEnabled();
+            return text.isIntervalEnabled() || text.isArrayFunctionEnabled();
         case CONVERSION:
             return text.isConversionEnabled();
         case INDEX:
