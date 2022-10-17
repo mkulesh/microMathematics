@@ -300,40 +300,33 @@
       <term key="text" text="Arrays" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text='Arrays are special functions where&#10;instead of "( )", the argument is&#10;given in lower index by putting "["&#10;after array name.&#10;&#10;The argument can be a constant, or a&#10;previously defined interval:' />
-    </text_fragment>
-    <equation>
-      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
-        <term key="argTerm" text="0" />
-      </term>
-      <term key="rightTerm" text="5" />
-    </equation>
-    <equation inRightOfPrevious="true">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
-        <term key="argTerm" text="3" />
-      </term>
-      <term key="rightTerm" text="6" />
-    </equation>
-    <equation inRightOfPrevious="true">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r:2">
-        <term key="argTerm1" text="2" />
-        <term key="argTerm2" text="0" />
-      </term>
-      <term key="rightTerm" text="-4" />
-    </equation>
-    <text_fragment>
-      <term key="text" text="Like a function, right side of array&#10;can be either a constant or a&#10;mathematical formula based on the&#10;array argument:" />
+      <term key="text" text='Arrays are special functions where&#10;instead of "( )", the argument is&#10;given in lower index by putting "["&#10;after array name.&#10;&#10;The argument (index) can be a&#10;constant, or a previously defined&#10;interval:' />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="idx" />
       <term key="rightTerm" code="equidistant_interval">
         <term key="minValue" text="0" />
         <term key="nextValue" text="1" />
-        <term key="maxValue" text="3" />
+        <term key="maxValue" text="2" />
       </term>
     </equation>
+    <equation>
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r1">
+        <term key="argTerm" text="idx" />
+      </term>
+      <term key="rightTerm" text="5" />
+    </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r:2">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r1">
+        <term key="argTerm" text="2" />
+      </term>
+      <term key="rightTerm" text="6" />
+    </equation>
+    <text_fragment>
+      <term key="text" text="Like a function, right side of array&#10;can be either a constant or a&#10;mathematical formula based on the&#10;array argument:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r2:2">
         <term key="argTerm1" text="idx" />
         <term key="argTerm2" text="1" />
       </term>
@@ -341,6 +334,13 @@
         <term key="leftTerm" text="5" />
         <term key="rightTerm" text="idx" />
       </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r2:2">
+        <term key="argTerm1" text="2" />
+        <term key="argTerm2" text="0" />
+      </term>
+      <term key="rightTerm" text="-4" />
     </equation>
     <equation>
       <term key="leftTerm" text="k" />
@@ -406,6 +406,12 @@
       <term key="text" text="a) Like interval, array elements can be&#10;only accessed by using a lower index:" />
     </text_fragment>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r1">
+        <term key="argTerm" text="idx" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
         <term key="argTerm1" text="5" />
         <term key="argTerm2" text="10" />
@@ -454,7 +460,7 @@
       </term>
     </equation>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r:2">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r2:2">
         <term key="argTerm1" text="i1" />
         <term key="argTerm2" text="i2" />
       </term>

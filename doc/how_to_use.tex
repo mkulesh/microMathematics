@@ -276,12 +276,15 @@ instead of ''( )'', the argument is
 given in lower index by putting ''[''
 after array name.
 
-The argument can be a constant, or a
-previously defined interval:
-\begin{center}\begin{tabular}{ccc}
-  $r_{0}  := 5$ &
-  $r_{3}  := 6$ &
-  $r_{2,\, 0}  := -4$ \cr
+The argument (index) can be a
+constant, or a previously defined
+interval:
+\begin{center}\begin{tabular}{c}
+  $idx := \left[ 0,\, 1 \,..\, 2 \right]$
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{cc}
+  $r1_{idx}  := 5$ &
+  $r1_{2}  := 6$ \cr
 \end{tabular}\end{center}
 
 Like a function, right side of array
@@ -289,8 +292,8 @@ can be either a constant or a
 mathematical formula based on the
 array argument:
 \begin{center}\begin{tabular}{cc}
-  $idx := \left[ 0,\, 1 \,..\, 3 \right]$ &
-  $r_{idx,\, 1}  := 5 + idx$ \cr
+  $r2_{idx,\, 1}  := 5 + idx$ &
+  $r2_{2,\, 0}  := -4$ \cr
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{cc}
   $k := \left[ 0,\, 1 \,..\, 100 \right]$ &
@@ -311,6 +314,9 @@ toolbar:
 
 a) Like interval, array elements can be
 only accessed by using a lower index:
+\begin{center}\begin{tabular}{c}
+  $r1_{idx}  = \begin{bmatrix}5.0\\5.0\\6.0\\\end{bmatrix}$
+\end{tabular}\end{center}
 \begin{center}\begin{tabular}{cc}
   $M_{5,\, 10}  = -1.39106$ &
   $M_{10,\, 5}  = -1.92467$ \cr
@@ -331,7 +337,7 @@ the invalid number will be returned:
   $i2 := \left[ 0,\, 1 \,..\, 2 \right]$ \cr
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{c}
-  $r_{i1,\, i2}  = \begin{bmatrix}0.0&5.0&NaN\\0.0&6.0&NaN\\-4.0&7.0&NaN\\\end{bmatrix}$
+  $r2_{i1,\, i2}  = \begin{bmatrix}0.0&5.0&NaN\\0.0&6.0&NaN\\-4.0&7.0&NaN\\\end{bmatrix}$
 \end{tabular}\end{center}
 \begin{center}\begin{tabular}{cc}
   $M_{10i,\, 100}  = NaN$ &
