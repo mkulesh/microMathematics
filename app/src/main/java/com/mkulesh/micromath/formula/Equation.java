@@ -195,14 +195,11 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
                 {
                     arrayResult = new EquationArrayResult(this, rightTerm);
                 }
-                else
-                {
-                    final CustomLayout termLayout = leftTerm.isTerm() ?
-                            leftTerm.getTerm().getFunctionMainLayout() : null;
-                    leftTerm.setError(errorMsg,
-                            termLayout != null ? ErrorNotification.PARENT_LAYOUT : ErrorNotification.LAYOUT_BORDER,
-                            termLayout);
-                }
+                final CustomLayout termLayout = leftTerm.isTerm() ?
+                        leftTerm.getTerm().getFunctionMainLayout() : null;
+                leftTerm.setError(errorMsg,
+                        termLayout != null ? ErrorNotification.PARENT_LAYOUT : ErrorNotification.LAYOUT_BORDER,
+                        termLayout);
             }
             break;
         }
