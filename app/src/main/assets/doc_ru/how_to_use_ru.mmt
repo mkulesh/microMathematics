@@ -2,18 +2,21 @@
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
   <formulaList documentVersion="2" author="Михаил Кулеш" title="Описание программы" description="" textWidth="35" significantDigits="6" scale="0.50000" redefineAllowed="true">
     <text_fragment>
-      <term key="text" text="Данное приложение является мощным&#10;математическим калькулятором,&#10;который основан на работе с&#10;интерактивными документами.&#10;Приложение содержит один рабочий&#10;лист, его можно изменять,&#10;вычислять, сохранять на SD карту,&#10;а также экспортировать в документ&#10;LaTeX или изображение.&#10;&#10;Рабочий лист - это полноценный&#10;документ с текстом, формулами и&#10;графиками. Математические объекты&#10;в нём можно редактировать и&#10;вычислять в том виде, как они&#10;выглядят на экране.&#10;&#10;Доступны следующие типы объектов:&#10;формула, текстовый результат,&#10;график функции, текстовое поле и&#10;изображение. В данном разделе&#10;даётся краткое описание того, как&#10;работать с этими объектами." />
+      <term key="text" text="Данное приложение является мощным&#10;математическим калькулятором,&#10;который основан на работе с&#10;интерактивными документами.&#10;Приложение содержит один рабочий&#10;лист, его можно изменять,&#10;вычислять, сохранять на SD карту,&#10;а также экспортировать в документ&#10;LaTeX или изображение.&#10;&#10;Рабочий лист - это полноценный&#10;документ с текстом, формулами и&#10;графиками. Математические объекты&#10;в нём можно редактировать и&#10;вычислять в том виде, как они&#10;выглядят на экране." />
+    </text_fragment>
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Введение" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text='Интерфейс содержит область рабочего&#10;листа в центре, панель&#10;инструментов внизу, панель&#10;действий вверху и плавающую кнопку&#10;действия внизу справа.&#10;&#10;Следующие объекты могут быть&#10;вставлены в рабочий лист: формула,&#10;текстовый результат, график&#10;функции, текстовое поле и&#10;изображение. Они вставляются с&#10;помощью кнопки на панели&#10;инструментов или кнопки "Вставить"&#10;на панели действий.&#10;&#10;Примечание: содержимое панели&#10;действий зависит от разрешения&#10;экрана и ориентация устройства.&#10;Кнопки могут быть отображается&#10;непосредственно на панели действий&#10;или помещен в меню Три точки".' />
     </text_fragment>
     <text_fragment textStyle="subsection" numbering="true">
       <term key="text" text="Редактирование" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text='Большинство объектов содержат поля,&#10;которые можно редактировать. Для&#10;редактирования используйте кнопки&#10;на нижней панели инструментов, с&#10;их помощью можно вводить&#10;математические символы в поля&#10;объекта.&#10;&#10;Символы с этой панели также можно&#10;ввести и с клавиатуры. Чтобы&#10;узнать символ, соответствующий&#10;кнопке, посмотрите подсказку,&#10;всплывающую при долгом нажатии на&#10;кнопку.&#10;&#10;При долгом нажатии на часть&#10;формулы активируется контекстное&#10;меню. В нём выбранную часть можно&#10;удалить, скопировать в буфер&#10;обмена, заменить выражением из&#10;буфера, а также вставить после неё&#10;оператор или функцию, используя&#10;панель инструментов или&#10;клавиатуру.&#10;&#10;Для отмены неудачного действия&#10;можно использовать команду&#10;главного меню "Отменить ввод":' />
+      <term key="text" text='Большинство объектов содержат поля,&#10;которые можно редактировать. Для&#10;редактирования используйте кнопки&#10;на нижней панели инструментов, с&#10;их помощью можно вводить&#10;математические символы в поля&#10;объекта.&#10;&#10;Символы с этой панели также можно&#10;ввести и с клавиатуры. Чтобы&#10;узнать символ, соответствующий&#10;кнопке, посмотрите подсказку,&#10;всплывающую при долгом нажатии на&#10;кнопку.&#10;&#10;При долгом нажатии на часть&#10;формулы активируется контекстное&#10;меню. В нём выбранную часть можно&#10;удалить, скопировать в буфер&#10;обмена, заменить выражением из&#10;буфера, а также вставить после неё&#10;оператор или функцию, используя&#10;панель инструментов или&#10;клавиатуру. Кнопка "Выбрать&#10;больше" позволяет увеличить&#10;область выделения.&#10;&#10;Для отмены неудачного действия&#10;можно использовать команду&#10;главного меню "Отменить ввод":' />
     </text_fragment>
     <image_fragment fileName="asset:/images/menu_undo.svg" embedded="false" originalSize="false" width="290" height="110" colorType="auto" />
-    <text_fragment>
-      <term key="text" text='Обратите внимание, что кнопки меню&#10;могут располагаться как&#10;непосредственно на панели&#10;инструментов, так и в меню "Три&#10;точки" в зависимости от разрешения&#10;экрана и ориентации устройства. ' />
-    </text_fragment>
     <text_fragment textStyle="subsection" numbering="true">
       <term key="text" text="Формула" />
     </text_fragment>
@@ -297,46 +300,48 @@
       <term key="text" text="Формула-массив" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text='Массивы - это специальные объекты,&#10;похожие на функции, но имеющие&#10;следующие отличия:&#10;&#10;а) чтобы задать значения элементов&#10;массива, нужно использовать&#10;индекс, а не скобки. Для этого&#10;введите с клавиатуры символ "["&#10;после имени массива:' />
-    </text_fragment>
-    <equation>
-      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
-        <term key="argTerm" text="0" />
-      </term>
-      <term key="rightTerm" text="5" />
-    </equation>
-    <equation inRightOfPrevious="true">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
-        <term key="argTerm" text="3" />
-      </term>
-      <term key="rightTerm" text="6" />
-    </equation>
-    <equation inRightOfPrevious="true">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
-        <term key="argTerm" text="2" />
-      </term>
-      <term key="rightTerm" text="-4" />
-    </equation>
-    <text_fragment>
-      <term key="text" text="Любой не заданный элемент массива&#10;имеет по-умолчанию нулевое&#10;значение:" />
+      <term key="text" text='Массивы - это специальные объекты,&#10;похожие на функции. Однако, чтобы&#10;задать значения элементов массива,&#10;нужно использовать не круглые&#10;скобки "( )", а индекс, для&#10;создания которого введите с&#10;клавиатуры символ "[" после имени&#10;массива.&#10;&#10;Индекс может быть как константой,&#10;так и переменной интервального&#10;типа, если она определена ранее:' />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="idx" />
       <term key="rightTerm" code="equidistant_interval">
         <term key="minValue" text="0" />
         <term key="nextValue" text="1" />
-        <term key="maxValue" text="3" />
+        <term key="maxValue" text="2" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
+    <equation>
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r1">
         <term key="argTerm" text="idx" />
       </term>
-      <term key="rightTerm" text="" />
-    </result>
+      <term key="rightTerm" text="5" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r1">
+        <term key="argTerm" text="2" />
+      </term>
+      <term key="rightTerm" text="6" />
+    </equation>
     <text_fragment>
-      <term key="text" text="б) в качестве аргументов при&#10;задании массива также можно &#10;использовать ранее определённые&#10;интервалы:" />
+      <term key="text" text="Как и для функции, правая часть&#10;массива может быть константой или&#10;математической формулой,&#10;основанной на индексах массива:" />
     </text_fragment>
+    <equation>
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r2:2">
+        <term key="argTerm1" text="idx" />
+        <term key="argTerm2" text="1" />
+      </term>
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" text="5" />
+        <term key="rightTerm" text="idx" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r2:2">
+        <term key="argTerm1" text="2" />
+        <term key="argTerm2" text="0" />
+      </term>
+      <term key="rightTerm" text="-4" />
+    </equation>
     <equation>
       <term key="leftTerm" text="k" />
       <term key="rightTerm" code="equidistant_interval">
@@ -382,8 +387,30 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text="в) элементы массива сохраняются&#10;после вычисления в памяти, что&#10;обеспечивает более быстрый доступ&#10;к ним&#10;&#10;г) обращаться к элементам массива&#10;можно только по индексу:" />
+      <term key="text" text='Кроме того, массив также можно&#10;определить, используя имя без&#10;аргументов слева и поместив в&#10;правую часть матрицу с помощью&#10;кнопки "Создать матрицу" из панели&#10;инструментов:' />
     </text_fragment>
+    <equation>
+      <term key="leftTerm" text="reading" />
+      <term key="rightTerm" code="matrix" rows="2" cols="4">
+        <term key="element[0][0]" text="2" />
+        <term key="element[0][1]" text="4" />
+        <term key="element[0][2]" text="6" />
+        <term key="element[0][3]" text="8" />
+        <term key="element[1][0]" text="11" />
+        <term key="element[1][1]" text="10" />
+        <term key="element[1][2]" text="5" />
+        <term key="element[1][3]" text="2" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="a) Как и для интервала, к элементам&#10;массива можно обращаться только с&#10;использованием нижнего индекса:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r1">
+        <term key="argTerm" text="idx" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
         <term key="argTerm1" text="5" />
@@ -414,8 +441,31 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text="д) если значение индекса&#10;комплексное, меньше нуля или&#10;больше верхней границы&#10;соответствующего интервала, то&#10;результатом будет не-число:" />
+      <term key="text" text="б) Любой не заданный элемент по&#10;умолчанию равен нулю.&#10;&#10;в) Если значение индекса&#10;комплексное, меньше нуля или&#10;больше верхней границы&#10;соответствующего интервала, то&#10;результатом будет не-число:" />
     </text_fragment>
+    <equation>
+      <term key="leftTerm" text="i1" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="2" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="i2" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="2" />
+      </term>
+    </equation>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.r2:2">
+        <term key="argTerm1" text="i1" />
+        <term key="argTerm2" text="i2" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
     <result disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
         <term key="argTerm1" text="10i" />
@@ -430,6 +480,9 @@
       </term>
       <term key="rightTerm" text="" />
     </result>
+    <text_fragment>
+      <term key="text" text="г) Элементы массива вычисляются и&#10;хранится в памяти, что значительно&#10;ускоряет доступ к этим значениям." />
+    </text_fragment>
     <text_fragment textStyle="subsection" numbering="true">
       <term key="text" text="Текстовый результат" />
     </text_fragment>
