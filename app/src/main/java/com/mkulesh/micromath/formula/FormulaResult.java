@@ -603,7 +603,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         final int yValuesNumber = arrayResult.getDimensions()[1];
         final int colsNumber = Math.min(yValuesNumber, properties.arrayLength + 1);
 
-        final Unit targetUnit = TermParser.parseUnits(properties.units);
+        final Unit<?> targetUnit = TermParser.parseUnits(properties.units);
 
         arrayResultMatrix.resize(rowsNumber, colsNumber, R.layout.formula_result_cell,
             (int row, int col, final CustomLayout layout, final CustomEditText text) -> {
@@ -673,7 +673,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         final int yValuesNumber = arrayResult.getDimensions()[1];
         final int colsNumber = Math.min(yValuesNumber, properties.arrayLength + 1);
 
-        final Unit targetUnit = TermParser.parseUnits(properties.units);
+        final Unit<?> targetUnit = TermParser.parseUnits(properties.units);
 
         ArrayList<ArrayList<String>> res = new ArrayList<>(rowsNumber);
         for (int r = 0; r < rowsNumber; r++)

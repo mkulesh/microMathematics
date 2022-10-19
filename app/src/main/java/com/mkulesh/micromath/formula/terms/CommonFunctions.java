@@ -224,9 +224,9 @@ public class CommonFunctions extends FunctionBase
             case POWER:
                 if (terms.get(0).isInputUnit())
                 {
-                    final Unit sourceUnit = terms.get(0).getParser().getUnit();
+                    final Unit<?> sourceUnit = terms.get(0).getParser().getUnit();
                     outValue.setValue(1.0, sourceUnit);
-                    final Unit targetUnit = outValue.powUnit(outValue, argVal[1]);
+                    final Unit<?> targetUnit = outValue.powUnit(outValue, argVal[1]);
                     if (targetUnit != null)
                     {
                         outValue.assign(a0);

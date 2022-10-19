@@ -551,7 +551,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         {
             double value;
             boolean complexDetected;
-            Unit unit;
+            Unit<?> unit;
 
             IntermediateValue()
             {
@@ -769,7 +769,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
          * interval is divided equally into 2^n sections rather than an arbitrary m sections because this configuration
          * can best utilize the already computed values.
          */
-        private boolean qtrapStage(CalculatedValue.PartType partType, final double min, final double max, final int n, final Unit argUnit)
+        private boolean qtrapStage(CalculatedValue.PartType partType, final double min, final double max, final int n, final Unit<?> argUnit)
                 throws CancelException
         {
             if (n == 0)
@@ -784,7 +784,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
 
                 qtrapResult.setValue(0.5 * (max - min) * (minVal.getPart(partType) + maxVal.getPart(partType)));
                 if (minVal.getUnit() != null && maxVal.getUnit() != null &&
-                        minVal.getUnit().equals(minVal.getUnit()))
+                        minVal.getUnit().equals(maxVal.getUnit()))
                 {
                     qtrapResult.setUnit(minVal.getUnit());
                 }
@@ -830,7 +830,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
          * implementation employs the basic trapezoid rule to calculate Simpson's rule.
          */
         private IntermediateValue integrateSimpsons(CalculatedValue.PartType partType, final double min,
-                                                    final double max, final double absoluteAccuracy, final Unit argUnit) throws CancelException
+                                                    final double max, final double absoluteAccuracy, final Unit<?> argUnit) throws CancelException
         {
             final IntermediateValue ans = new IntermediateValue();
             // Simpson's rule requires at least two trapezoid stages.

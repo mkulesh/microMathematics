@@ -136,7 +136,7 @@ public class DialogResultDetails extends DialogBase
     private static final class ArgumentValueAdapter extends ArrayAdapter<ArgumentValueItem>
     {
         private final DocumentProperties docProp;
-        private final Unit targetUnit;
+        private final Unit<?> targetUnit;
 
         ArgumentValueAdapter(Context context, ArrayList<ArgumentValueItem> list,
                              DocumentProperties docProp, ResultProperties resProp)

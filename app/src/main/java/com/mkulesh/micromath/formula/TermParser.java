@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 import javax.measure.DecimalMeasure;
 import javax.measure.Measure;
+import javax.measure.quantity.Quantity;
 import javax.measure.unit.Unit;
 
 import androidx.annotation.NonNull;
@@ -38,7 +39,7 @@ public class TermParser
     private int argumentIndex = ViewUtils.INVALID_INDEX, linkedVariableId = -1;
     private double sign = 1.0;
     private boolean isArray = false;
-    private Unit unit = null;
+    private Unit<?> unit = null;
     private Pair<String, String> unitTags = null;
 
     public int errorId = TermField.NO_ERROR_ID;
@@ -115,7 +116,7 @@ public class TermParser
         return isArray;
     }
 
-    public Unit getUnit()
+    public Unit<?> getUnit()
     {
         return unit;
     }
@@ -331,7 +332,7 @@ public class TermParser
         errorId = R.string.error_unknown_variable;
     }
 
-    public static Unit parseUnits(final String text)
+    public static Unit<?> parseUnits(final String text)
     {
         if (text == null || text.isEmpty())
         {
@@ -342,7 +343,7 @@ public class TermParser
             // There are two different symbols μ: standard and from greek keyboard.
             // Replace keyboard symbol by the standard one:
             final String unitText = text.replace(/*from Greek Small Letter Mu*/ 'μ', /*to Micro sign*/ 'µ');
-            final Measure conv = DecimalMeasure.valueOf("1" + UNIT_SEPARATOR + unitText);
+            final Measure<?, Quantity> conv = DecimalMeasure.valueOf("1" + UNIT_SEPARATOR + unitText);
             if (conv != null && conv.getUnit() != null)
             {
                 return conv.getUnit();

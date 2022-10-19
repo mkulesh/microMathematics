@@ -70,7 +70,7 @@ public class CalculatedValue
     private ValueType valueType = ValueType.INVALID;
     private double real = Double.NaN;
     private double imaginary = 0.0;
-    private Unit unit = null;
+    private Unit<?> unit = null;
 
     /*--------------------------------------------------------*
      * Common methods
@@ -97,17 +97,17 @@ public class CalculatedValue
         return valueType;
     }
 
-    public Unit getUnit()
+    public Unit<?> getUnit()
     {
         return unit;
     }
 
-    public void setUnit(Unit unit)
+    public void setUnit(Unit<?> unit)
     {
         this.unit = unit;
     }
 
-    public void convertUnit(@NonNull Unit sourceUnit, @NonNull Unit targetUnit)
+    public void convertUnit(@NonNull Unit<?> sourceUnit, @NonNull Unit<?> targetUnit)
     {
         if (valueType == ValueType.INVALID)
         {
@@ -137,18 +137,18 @@ public class CalculatedValue
         }
     }
 
-    public void convertUnit(final Unit targetUnit, boolean toBase)
+    public void convertUnit(final Unit<?> targetUnit, boolean toBase)
     {
-        final Unit sourceUnit = getUnit();
+        final Unit<?> sourceUnit = getUnit();
         if (sourceUnit == null)
         {
             return;
         }
-        Unit newUnit = targetUnit;
+        Unit<?> newUnit = targetUnit;
         if (newUnit == null && toBase)
         {
-            ArrayList<Unit> ul = new ArrayList<>();
-            for (Unit u : SI.getInstance().getUnits())
+            ArrayList<Unit<?>> ul = new ArrayList<>();
+            for (Unit<?> u : SI.getInstance().getUnits())
             {
                 if (sourceUnit.isCompatible(u))
                 {
@@ -156,7 +156,7 @@ public class CalculatedValue
                 }
             }
             int minLen = Integer.MAX_VALUE;
-            for (Unit u : ul)
+            for (Unit<?> u : ul)
             {
                 if (sourceUnit.getStandardUnit().toString().equals(u.toString()))
                 {
@@ -203,7 +203,7 @@ public class CalculatedValue
         return valueType;
     }
 
-    public ValueType setValue(double real, Unit u)
+    public ValueType setValue(double real, Unit<?> u)
     {
         this.setValue(real);
         this.unit = u;
@@ -364,7 +364,7 @@ public class CalculatedValue
             val = formatValue(real, doc, false, radix);
             if (unit != null)
             {
-                val += " " + unit.toString();
+                val += " " + unit;
             }
             return val;
         case COMPLEX:
@@ -375,7 +375,7 @@ public class CalculatedValue
             val = formatValue(real, doc, false, DEF_RADIX) + formatValue(imaginary, doc, true, DEF_RADIX) + "i";
             if (unit != null)
             {
-                val += " " + unit.toString();
+                val += " " + unit;
             }
             return val;
         }
@@ -565,7 +565,7 @@ public class CalculatedValue
         }
     }
 
-    public Unit powUnit(CalculatedValue f, CalculatedValue g)
+    public Unit<?> powUnit(CalculatedValue f, CalculatedValue g)
     {
         if (f.unit == null || g.unit != null || g.isComplex())
         {
