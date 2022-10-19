@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="35" significantDigits="6" scale="0.50000" redefineAllowed="false">
+  <formulaList documentVersion="2" author="Михаил Кулеш" title="Пример: график функции" description="" textWidth="35" significantDigits="6" scale="0.50000" redefineAllowed="false">
     <text_fragment>
       <term key="text" text="Данный пример демонстрирует&#10;построение и возможности настройки&#10;графиков функций. Построим графики&#10;трёх следующих функций:" />
     </text_fragment>
@@ -87,12 +87,12 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text='После того, как функции и их&#10;аргументы определены, можно&#10;добавить поле графика, используя&#10;кнопку "Вставить" на верхней&#10;панели инструментов или кнопку&#10;"Вставить график функции" на&#10;нижней панели:' />
+      <term key="text" text='После того, как функции и их&#10;аргументы определены, можно&#10;добавить поле графика, используя&#10;кнопку "Вставить" на верхней&#10;панели действий или кнопку&#10;"Вставить график функции" на&#10;нижней панели:' />
     </text_fragment>
     <image_fragment fileName="asset:/images/toolbar_plot_function.svg" embedded="false" originalSize="false" width="400" height="110" colorType="auto" />
-    <plot_function width="680" height="600" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" functionsNumber="1">
+    <plot_function width="680" height="600" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="1">
       <term key="yMaxValue" text="40" />
-      <term key="yFunction" color="#FF00B821" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.f">
+      <term key="yFunction" color="#FF00B821" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
         <term key="argTerm" text="x" />
       </term>
       <term key="yMinValue" text="10" />
@@ -104,15 +104,15 @@
       <term key="text" text='Функция, для которой строится&#10;график, задаётся в левом среднем&#10;поле. В нём можно использовать&#10;любые встроенные или введённые&#10;ранее функции, а также выражение,&#10;содержащее любые операции.&#10;&#10;В нижнем среднем поле указывается&#10;аргумент функции, для которого&#10;строится график. Аргументом может&#10;быть как переменная интервального&#10;типа, так и любое выражение, явно&#10;содержащее такую переменную.&#10;&#10;Остальные четыре поля служат для&#10;задания областей значений&#10;аргумента и функции. Если эти поля&#10;оставить пустыми, то программа&#10;вычислит их автоматически. Однако,&#10;эти автоматические значения можно&#10;редактировать и изменять вручную.&#10;&#10;Можно строить в одном поле графики&#10;сразу нескольких функций. Для&#10;добавления ещё одной функции&#10;необходимо выделить (долгим&#10;нажатием в левом среднем поле) ту&#10;функцию, после которой нужно&#10;добавить новую, и затем нажать&#10;кнопку "Вставить аргумент" на&#10;нижней панели инструментов:' />
     </text_fragment>
     <image_fragment fileName="asset:/images/toolbar_new_term.svg" embedded="false" originalSize="false" width="400" height="110" colorType="auto" />
-    <plot_function width="680" height="600" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" functionsNumber="3">
+    <plot_function width="680" height="600" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="3">
       <term key="yMaxValue" text="" />
-      <term key="yFunction1" color="#FF00B821" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.f">
+      <term key="yFunction1" color="#FF00B821" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
         <term key="argTerm" text="x" />
       </term>
-      <term key="yFunction2" color="#FF0000FF" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.g">
+      <term key="yFunction2" color="#FF0000FF" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.g">
         <term key="argTerm" text="x" />
       </term>
-      <term key="yFunction3" color="#FFFF0044" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.h">
+      <term key="yFunction3" color="#FFFF0044" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.h">
         <term key="argTerm" text="x" />
       </term>
       <term key="yMinValue" text="1" />
@@ -125,13 +125,13 @@
     <text_fragment>
       <term key="text" text='При долгом нажатии по центру&#10;графика появятся контекстное меню&#10;и плавающая кнопка "Настройки&#10;объекта".' />
     </text_fragment>
-    <image_fragment fileName="asset:/images/plot_parameters.svg" embedded="false" originalSize="false" width="600" height="500" colorType="auto"/>
+    <image_fragment fileName="asset:/images/plot_parameters.svg" embedded="false" originalSize="false" width="600" height="500" colorType="auto" />
     <text_fragment>
       <term key="text" text="При нажатии на эту кнопку откроется&#10;окно настроек графика, где можно&#10;изменить как размер, так и стиль&#10;области графика. К примеру, мы&#10;можем уменьшить высоту и включить&#10;координатные оси вместо рамки:" />
     </text_fragment>
-    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" functionsNumber="1">
+    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="1">
       <term key="yMaxValue" text="40" />
-      <term key="yFunction" color="#FF00B821" width="3" lineStyle="solid" code="content:com.mkulesh.micromath.link.f">
+      <term key="yFunction" color="#FF00B821" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
         <term key="argTerm" text="x" />
       </term>
       <term key="yMinValue" text="10" />
@@ -140,15 +140,15 @@
       <term key="xMaxValue" text="30" />
     </plot_function>
     <text_fragment>
-      <term key="text" text='Толщину, цвет и стиль линий графика&#10;можно изменить в окне "Настройка&#10;линии". Это окно вызывается долгим&#10;нажатием на линию-маркер,&#10;расположенную под выражением&#10;функции слева от поля графика:' />
+      <term key="text" text='Толщину, цвет и стиль линий&#10;графика, а также маркеры значений&#10;функции можно изменить в окне&#10;"Настройка линии". Это окно&#10;вызывается долгим нажатием на&#10;линию-маркер, расположенную под&#10;выражением функции слева от поля&#10;графика:' />
     </text_fragment>
-    <image_fragment fileName="asset:/images/line_parameters.svg" embedded="false" originalSize="false" width="600" height="500" colorType="auto"/>
+    <image_fragment fileName="asset:/images/line_parameters.svg" embedded="false" originalSize="false" width="600" height="500" colorType="auto" />
     <text_fragment>
       <term key="text" text="Например, построим пунктирный&#10;график:" />
     </text_fragment>
-    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" functionsNumber="1">
+    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="1">
       <term key="yMaxValue" text="65" />
-      <term key="yFunction" color="#FFE2000A" width="5" lineStyle="dotted" code="content:com.mkulesh.micromath.link.g">
+      <term key="yFunction" color="#FFE2000A" width="5" lineStyle="dotted" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.g">
         <term key="argTerm" text="x" />
       </term>
       <term key="yMinValue" text="10" />
@@ -157,12 +157,12 @@
       <term key="xMaxValue" text="30" />
     </plot_function>
     <text_fragment>
-      <term key="text" text='Количество линий сетки по&#10;горизонтали и вертикали, а также&#10;цвет линий сетки можно изменить в&#10;окне "Настройка сетки". Это окно&#10;вызывается долгим нажатием в&#10;пустые области снизу от графика,&#10;между минимальным значением и&#10;выражением для аргумента, а также&#10;между аргументом и его&#10;максимальным значением:' />
+      <term key="text" text='Масштаб осей (линейный или&#10;логарифмический), количество&#10;линий сетки по горизонтали и&#10;вертикали, а также цвет линий&#10;сетки можно изменить в окне&#10;"Настройка сетки". Это окно&#10;вызывается долгим нажатием в&#10;пустые области снизу от графика,&#10;между минимальным значением и&#10;выражением для аргумента, а также&#10;между аргументом и его&#10;максимальным значением:' />
     </text_fragment>
-    <image_fragment fileName="asset:/images/grid_parameters.svg" embedded="false" originalSize="false" width="600" height="500" colorType="auto"/>
-    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="10" yLabelsNumber="7" gridLineColor="#89005EFF" functionsNumber="1">
+    <image_fragment fileName="asset:/images/grid_parameters.svg" embedded="false" originalSize="false" width="600" height="500" colorType="auto" />
+    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="10" yLabelsNumber="7" gridLineColor="#89005EFF" xType="linear" yType="linear" functionsNumber="1">
       <term key="yMaxValue" text="40" />
-      <term key="yFunction" color="#FFE2000A" width="5" lineStyle="dotted" code="content:com.mkulesh.micromath.link.h">
+      <term key="yFunction" color="#FFE2000A" width="5" lineStyle="dotted" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.h">
         <term key="argTerm" text="x" />
       </term>
       <term key="yMinValue" text="10" />

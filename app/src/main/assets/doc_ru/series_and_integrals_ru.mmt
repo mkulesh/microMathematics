@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="35" significantDigits="6" scale="0.50000" redefineAllowed="true">
+  <formulaList documentVersion="2" author="" title="Михаил Кулеш" description="Пример: ряды и интегралы" textWidth="35" significantDigits="6" scale="0.50000" redefineAllowed="true">
     <text_fragment>
       <term key="text" text="Данный пример демонстрирует&#10;вычисление степенных рядов и&#10;интегралов." />
     </text_fragment>
@@ -64,7 +64,7 @@
         </term>
       </term>
     </equation>
-    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="6" gridLineColor="#FF838383" functionsNumber="2">
+    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="6" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="2">
       <term key="yMaxValue" text="1.1" />
       <term key="yFunction1" color="#FFFFA900" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.s">
         <term key="argTerm" text="x" />
@@ -100,7 +100,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text="Построим график этой функции в&#10;зависимости от количества членов&#10;ряда. В данном случае, удобнее&#10;использовать логарифмическую ось&#10;ординат. Тогда мы увидим, что&#10;порядок погрешности линейно&#10;уменьшается с увеличением&#10;количества членов ряда:" />
+      <term key="text" text='Построим график этой функции в&#10;зависимости от количества членов&#10;ряда. В данном случае, удобнее&#10;использовать логарифмическую ось&#10;ординат, которая включается в окне&#10;"Настройка сетки" графика. Тогда&#10;мы увидим, что порядок погрешности&#10;линейно уменьшается с увеличением&#10;количества членов ряда:' />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="N" />
@@ -174,7 +174,7 @@
     <text_fragment>
       <term key="text" text="Также как и в предыдущем примере,&#10;можно построить графики обеих&#10;функций. Несмотря на то, что&#10;исходная и аппроксимированная&#10;функции визуально совпадают, здесь&#10;также имеется погрешность,&#10;связанная с конечным числом членов&#10;ряда:" />
     </text_fragment>
-    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#FF838383" functionsNumber="2">
+    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="2">
       <term key="yMaxValue" text="3000" />
       <term key="yFunction1" color="#FFFF9400" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f:2">
         <term key="argTerm1" text="x" />
@@ -221,7 +221,7 @@
         </term>
         <term key="index" text="x" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text="Аналитическое решение для данного&#10;интеграла выглядит следующим&#10;образом:" />
@@ -243,7 +243,7 @@
     </text_fragment>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="I" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text="Так как интеграл найден не&#10;аналитически, а с использованием&#10;численного метода, то имеет место&#10;быть следующая погрешность:" />
@@ -275,10 +275,10 @@
         </term>
         <term key="rightTerm" text="I" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
-      <term key="text" text='Эта погрешность зависит от&#10;параметра "Значимые цифры в&#10;результате". Данный параметр&#10;задаётся в окне "Свойства&#10;документа", которое вызывается из&#10;верхней панели инструментов:' />
+      <term key="text" text='Эта погрешность зависит от&#10;параметра "Значимые цифры в&#10;результате". Данный параметр&#10;задаётся в окне "Свойства&#10;документа", которое вызывается из&#10;верхней панели действий:' />
     </text_fragment>
     <image_fragment fileName="asset:/images/menu_settings.svg" embedded="false" originalSize="false" width="290" height="110" colorType="auto" />
     <text_fragment>

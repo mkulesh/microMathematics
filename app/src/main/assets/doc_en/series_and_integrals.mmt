@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Example: Series and Integrals" description="" textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
     <text_fragment>
       <term key="text" text="This example demonstrates how to&#10;calculate series and integrals." />
     </text_fragment>
@@ -64,7 +64,7 @@
         </term>
       </term>
     </equation>
-    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="6" gridLineColor="#FF838383" functionsNumber="2">
+    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="6" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="2">
       <term key="yMaxValue" text="1.1" />
       <term key="yFunction1" color="#FFFFA900" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.s">
         <term key="argTerm" text="x" />
@@ -174,7 +174,7 @@
     <text_fragment>
       <term key="text" text="We can also plot both functions (the&#10;given power function and its&#10;approximation) together on the same&#10;plot:" />
     </text_fragment>
-    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#FF838383" functionsNumber="2">
+    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="2">
       <term key="yMaxValue" text="3000" />
       <term key="yFunction1" color="#FFFF9400" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f:2">
         <term key="argTerm1" text="x" />
@@ -221,7 +221,7 @@
         </term>
         <term key="index" text="x" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text="The analytical solution is" />
@@ -243,7 +243,7 @@
     </text_fragment>
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
       <term key="leftTerm" text="I" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text="Numerical error can be calculated as:" />
@@ -275,7 +275,7 @@
         </term>
         <term key="rightTerm" text="I" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text='This error depends on the value&#10;"Significant digits in result" that&#10;can be changed in the "Document&#10;Settings" dialog available from the&#10;action bar:' />

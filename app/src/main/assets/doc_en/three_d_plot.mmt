@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Example: 3D Plot" description="" textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
     <text_fragment>
       <term key="text" text="This example demonstrates 3D plots for&#10;three different functions of two&#10;variables.&#10;&#10;First, we define intervals for both x&#10;and y arguments. The interval for the&#10;x-axis depends on the number of points&#10;along the x-axis and the minimum and&#10;maximum values, x1 and x2:" />
     </text_fragment>
@@ -99,7 +99,7 @@
     <text_fragment>
       <term key="text" text="Put the function name F(x,y) into the&#10;center-bottom field:" />
     </text_fragment>
-    <plot_contour plotStyle="contour" width="680" height="680" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#FF838383" zLabelsNumber="19" colorMap="earthsky">
+    <plot_contour plotStyle="contour" width="680" height="680" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#FF838383" xType="linear" yType="linear" zLabelsNumber="19" colorMap="earthsky">
       <term key="yMaxValue" text="3" />
       <term key="yMinValue" text="-3" />
       <term key="xMinValue" text="-2" />
@@ -130,7 +130,7 @@
         </term>
       </term>
     </equation>
-    <plot_contour plotStyle="contour" width="680" height="680" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" zLabelsNumber="11" colorMap="greenblue">
+    <plot_contour plotStyle="contour" width="680" height="680" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" zLabelsNumber="11" colorMap="greenblue">
       <term key="yMaxValue" text="3" />
       <term key="yMinValue" text="-3" />
       <term key="xMinValue" text="-2" />
@@ -314,7 +314,7 @@
         </term>
       </term>
     </equation>
-    <plot_contour plotStyle="surface" width="680" height="680" axes_style="boxed" meshLines="false" meshFill="true" meshOpacity="155" rotation="125" elevation="20" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#FF838383" zLabelsNumber="7" colorMap="coldhot">
+    <plot_contour plotStyle="surface" width="680" height="680" axes_style="boxed" meshLines="false" meshFill="true" meshOpacity="155" rotation="125" elevation="20" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#FF838383" xType="linear" yType="linear" zLabelsNumber="7" colorMap="coldhot">
       <term key="yMaxValue" text="M" />
       <term key="yMinValue" text="0" />
       <term key="xMinValue" text="0" />
@@ -327,7 +327,7 @@
     <text_fragment>
       <term key="text" text='For the surface plot, there are&#10;additional settings presented in the&#10;"Plot Settings" dialog. You can choose&#10;whether the mesh lines shall be shown,&#10;select the opacity for mesh color,&#10;define the rotation and elevation&#10;angles of the plot box. For example,&#10;the previous surface plotted with&#10;other rotation and elevation angles&#10;looks like this: ' />
     </text_fragment>
-    <plot_contour plotStyle="surface" width="680" height="680" axes_style="boxed" meshLines="false" meshFill="true" meshOpacity="155" rotation="55" elevation="45" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#FF838383" zLabelsNumber="7" colorMap="coldhot">
+    <plot_contour plotStyle="surface" width="680" height="680" axes_style="boxed" meshLines="false" meshFill="true" meshOpacity="155" rotation="55" elevation="45" xLabelsNumber="6" yLabelsNumber="6" gridLineColor="#FF838383" xType="linear" yType="linear" zLabelsNumber="7" colorMap="coldhot">
       <term key="yMaxValue" text="M" />
       <term key="yMinValue" text="0" />
       <term key="xMinValue" text="0" />
