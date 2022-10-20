@@ -364,24 +364,27 @@ public class Equation extends CalculationResult implements ArgumentHolderIf, Cal
         }
         else
         {
-            fileOperation(true);
+            arrayOperation(true);
             final MatrixProperties mp = rightTerm.getArrayDimension();
             if (getArguments() == null && mp != null)
             {
                 final ArrayList<String> arguments = new ArrayList<>();
                 arguments.add(String.valueOf(mp.rows));
-                arguments.add(String.valueOf(mp.cols));
+                if (mp.cols > 1)
+                {
+                    arguments.add(String.valueOf(mp.cols));
+                }
                 arrayResult.calculate(thread, arguments, true, null);
             }
             else
             {
                 arrayResult.calculate(thread, getArguments(), false, findPreviousArray());
             }
-            fileOperation(false);
+            arrayOperation(false);
         }
     }
 
-    private void fileOperation(boolean status)
+    private void arrayOperation(boolean status)
     {
         // For premium version only
     }
