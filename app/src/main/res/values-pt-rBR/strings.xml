@@ -247,6 +247,8 @@
 
     <!-- TODO: to be translated -->
     <string name="math_function_read">Import data from ASCII file</string>
+    <string name="math_function_fft">Calculates the FFT of the given array</string>
+    <string name="math_function_ifft">Calculates the inverse FFT of the given array</string>
     <string name="math_function_rows">Returns the number of rows of the matrix/vector</string>
     <string name="math_function_cols">Returns the number of columns of the matrix/vector</string>
     <string name="math_function_mod">Returns the remainder on dividing the first argument by the second</string>

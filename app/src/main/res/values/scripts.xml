@@ -26,7 +26,8 @@
         <item>asset:/ta/ts_array_2d_oper.mmt</item>
         <item>asset:/ta/ts_array_2d.mmt</item>
         <item>asset:/ta/ts_calculations.mmt</item>
-        <item>asset:/ta/ts_fourier_transform.mmt</item>
+        <item>asset:/ta/ts_fourier_transform_cft.mmt</item>
+        <item>asset:/ta/ts_fourier_transform_fft.mmt</item>
         <item>asset:/ta/ts_functions_acos.mmt</item>
         <item>asset:/ta/ts_functions_acot.mmt</item>
         <item>asset:/ta/ts_functions_acsc.mmt</item>

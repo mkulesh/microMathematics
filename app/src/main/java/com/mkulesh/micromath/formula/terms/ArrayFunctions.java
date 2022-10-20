@@ -32,6 +32,8 @@ import com.mkulesh.micromath.formula.Palette;
 import com.mkulesh.micromath.formula.PaletteButton;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.math.CalculatedValue;
+import com.mkulesh.micromath.math.EquationArrayResult;
+import com.mkulesh.micromath.math.Fft;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.MatrixProperties;
 import com.mkulesh.micromath.undo.FormulaState;
@@ -62,6 +64,8 @@ public class ArrayFunctions extends FunctionBase implements FocusChangeIf
     {
         MATRIX(-1, R.drawable.p_function_matrix, R.string.math_function_matrix, R.layout.formula_matrix),
         READ(1, R.drawable.p_function_read, R.string.math_function_read, R.layout.formula_function_read),
+        FFT(1, R.drawable.p_function_fft, R.string.math_function_fft, R.layout.formula_function_array),
+        IFFT(1, R.drawable.p_function_ifft, R.string.math_function_ifft, R.layout.formula_function_array),
         ROWS(1, R.drawable.p_function_rows, R.string.math_function_rows, R.layout.formula_function_array),
         COLS(1, R.drawable.p_function_cols, R.string.math_function_cols, R.layout.formula_function_array);
 
@@ -127,7 +131,7 @@ public class ArrayFunctions extends FunctionBase implements FocusChangeIf
 
         public PaletteButton.Category getPaletteCategory()
         {
-            return this == MATRIX || this == READ ?
+            return this == MATRIX || this == READ || isArrayFunction()?
                     PaletteButton.Category.TOP_LEVEL_TERM : PaletteButton.Category.CONVERSION;
         }
 
@@ -135,6 +139,11 @@ public class ArrayFunctions extends FunctionBase implements FocusChangeIf
                 TermField termField, LinearLayout layout, String text, int textIndex, Object par) throws Exception
         {
             return new ArrayFunctions(this, termField, layout, text, textIndex, par);
+        }
+
+        public boolean isArrayFunction()
+        {
+            return this == FunctionType.FFT || this == FunctionType.IFFT;
         }
     }
 
@@ -146,6 +155,8 @@ public class ArrayFunctions extends FunctionBase implements FocusChangeIf
     private TermField argTerm = null;
     private FileReader fileReader = null;
     private Equation linkedArray = null;
+    private CalculatedValue[] arrayResult = null;
+    private final Fft fft = new Fft();
 
     /*--------------------------------------------------------*
      * Constructors
@@ -160,7 +171,7 @@ public class ArrayFunctions extends FunctionBase implements FocusChangeIf
         {
             if (par instanceof MatrixProperties)
             {
-                initMatrix((MatrixProperties)par);
+                initMatrix((MatrixProperties) par);
             }
             else
             {
@@ -213,14 +224,34 @@ public class ArrayFunctions extends FunctionBase implements FocusChangeIf
         return getFunctionType() == FunctionType.READ && fileReader != null;
     }
 
+    private boolean isArrayResult()
+    {
+        return getFunctionType().isArrayFunction() && arrayResult != null;
+    }
+
     public boolean isArray()
     {
-        return isMatrix() || isFile();
+        return isMatrix() || isFile() || isArrayResult();
     }
 
     public MatrixProperties getArrayDimension()
     {
-        return isMatrix() ? matrix.getDim() : (isFile() ? fileReader.getDim() : null);
+        if (isMatrix())
+        {
+            return matrix.getDim();
+        }
+        if (isFile())
+        {
+            return fileReader.getDim();
+        }
+        if (isArrayResult())
+        {
+            final MatrixProperties dim = new MatrixProperties();
+            dim.cols = 1;
+            dim.rows = arrayResult.length;
+            return dim;
+        }
+        return null;
     }
 
     public MatrixLayout getMatrixLayout()
@@ -338,6 +369,18 @@ public class ArrayFunctions extends FunctionBase implements FocusChangeIf
                 return fileReader.getFileElement(outValue, getFirstIndex(), getSecondIndex());
             }
             break;
+        case FFT:
+        case IFFT:
+            if (isArrayResult())
+            {
+                final int idx1 = getFirstIndex();
+                if (idx1 >= 0 && idx1 < arrayResult.length)
+                {
+                    return outValue.setComplexValue(
+                            arrayResult[idx1].getReal(), arrayResult[idx1].getImaginary());
+                }
+            }
+            break;
         case ROWS:
         case COLS:
             if (linkedArray != null)
@@ -379,6 +422,8 @@ public class ArrayFunctions extends FunctionBase implements FocusChangeIf
     public boolean isContentValid(FormulaBase.ValidationPassType type)
     {
         String errorMsg = null;
+        arrayResult = null;
+
         switch (type)
         {
         case VALIDATE_SINGLE_FORMULA:
@@ -422,6 +467,11 @@ public class ArrayFunctions extends FunctionBase implements FocusChangeIf
                 {
                     // ok
                     linkedArray = arrayLink;
+                    if (getFunctionType().isArrayFunction())
+                    {
+                        // Initial size = 1, will be resized when calculated
+                        arrayResult = new CalculatedValue[]{ CalculatedValue.NaN };
+                    }
                 }
                 else
                 {
@@ -551,15 +601,36 @@ public class ArrayFunctions extends FunctionBase implements FocusChangeIf
         return -1;
     }
 
-    public void prepareFileOperation()
+    public void startArrayOperation()
     {
         if (isFile())
         {
             fileReader.prepare(argTerm.getText());
         }
+        if (isArrayResult())
+        {
+            if (linkedArray != null && linkedArray.getArrayResult() != null &&
+                    linkedArray.getArrayResult().isArray1D())
+            {
+                final EquationArrayResult arr = linkedArray.getArrayResult();
+                arrayResult = new CalculatedValue[arr.getRawValues().length];
+                if (getFunctionType() == FunctionType.FFT)
+                {
+                    fft.fft(arr.getRawValues(), arrayResult);
+                }
+                else if (getFunctionType() == FunctionType.IFFT)
+                {
+                    fft.ifft(arr.getRawValues(), arrayResult);
+                }
+            }
+            else
+            {
+                arrayResult = new CalculatedValue[]{ CalculatedValue.NaN };
+            }
+        }
     }
 
-    public void finishFileOperation()
+    public void finishArrayOperation()
     {
         if (isFile())
         {

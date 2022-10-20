@@ -246,8 +246,10 @@
     <string name="math_function_max">Indica el mayor de dos valores transferidos (hacia positivo)</string>
     <string name="math_function_min">Indica el menor de dos valores transferidos (hacia negativo)</string>
     <string name="math_function_read">Importa datos de un archivo ASCII</string>
+    <string name="math_function_fft">Calcula la FFT de la matriz dada</string>
+    <string name="math_function_ifft">Calcula la FFT inversa de la matriz dada</string>
     <string name="math_function_rows">Señala el número de filas de una matriz</string>
-    <string name="math_function_cols">Señala el número de columnas de una matri</string>
+    <string name="math_function_cols">Señala el número de columnas de una matriz</string>
     <string name="math_function_mod">Calcula el residuo al dividir dos números</string>
     <string name="math_function_perc">Calcula un porcentaje</string>
     <string name="math_function_round">Redondea un valor decimal al número especificado de lugares decimales</string>

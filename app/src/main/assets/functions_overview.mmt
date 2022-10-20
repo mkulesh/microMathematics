@@ -1014,7 +1014,7 @@
     </text_fragment>
     <plot_function width="680" height="500" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="1">
       <term key="yMaxValue" text="" />
-      <term key="yFunction" color="#FFFF2A36" width="4" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
+      <term key="yFunction" color="#FFFF362A" width="4" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
         <term key="argTerm" text="x" />
       </term>
       <term key="yMinValue" text="" />
@@ -1027,7 +1027,7 @@
     </text_fragment>
     <plot_function width="680" height="500" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="1">
       <term key="yMaxValue" text="1" />
-      <term key="yFunction" color="#FFFF2A36" width="4" lineStyle="dashed" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
+      <term key="yFunction" color="#FFFF362A" width="4" lineStyle="dashed" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
         <term key="argTerm" text="x" />
       </term>
       <term key="yMinValue" text="0" />
@@ -1181,22 +1181,7 @@
       <term key="rightTerm" text="" />
     </result>
     <text_fragment>
-      <term key="text" text="Get count of rows and columns" />
-    </text_fragment>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="rows">
-        <term key="argTerm" text="G2" />
-      </term>
-      <term key="rightTerm" text="" />
-    </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
-      <term key="leftTerm" code="cols">
-        <term key="argTerm" text="G2" />
-      </term>
-      <term key="rightTerm" text="" />
-    </result>
-    <text_fragment>
-      <term key="text" text="Define an array as vector or matrix, use object&#10;properties to change the array size:" />
+      <term key="text" text="Define an array as vector or matrix, use&#10;object properties to change the array size:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="E" />
@@ -1217,10 +1202,138 @@
       <term key="rightTerm" text="" />
     </result>
     <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Signal processing" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="Read a matrix fom an ASCII CSV file: " />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="F" />
+      <term key="rightTerm" code="read">
+        <term key="argTerm" text="asset:/examples/three_component_signal.dat" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Get count of rows and columns:" />
+    </text_fragment>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="rows">
+        <term key="argTerm" text="F" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="cols">
+        <term key="argTerm" text="F" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text="Extract and expand the second column to have&#10;a length equal power of 2:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="N" />
+      <term key="rightTerm" text="2048" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="k" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" code="minus">
+          <term key="leftTerm" text="N" />
+          <term key="rightTerm" text="1" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.D">
+        <term key="argTerm" text="k" />
+      </term>
+      <term key="rightTerm" code="if">
+        <term key="argTerm1" code="less">
+          <term key="leftTerm" text="k" />
+          <term key="rightTerm" code="rows">
+            <term key="argTerm" text="F" />
+          </term>
+        </term>
+        <term key="argTerm2" code="content:com.mkulesh.micromath.index.F:2">
+          <term key="argTerm1" text="k" />
+          <term key="argTerm2" text="1" />
+        </term>
+        <term key="argTerm3" text="0" />
+      </term>
+    </equation>
+    <plot_function width="706" height="300" axes_style="crossed" xLabelsNumber="7" yLabelsNumber="7" gridLineColor="#72000000" xType="linear" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FFFF0700" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.index.D">
+        <term key="argTerm" text="k" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="0" />
+      <term key="xFunction" text="k" />
+      <term key="xMaxValue" code="minus">
+        <term key="leftTerm" text="N" />
+        <term key="rightTerm" text="1" />
+      </term>
+    </plot_function>
+    <text_fragment>
+      <term key="text" text="Calculate the fast Fourier transform (when&#10;the given array has the length equal to&#10;power of 2) or a  continuous (slow) Fourier&#10;transform for other array length:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="FT" />
+      <term key="rightTerm" code="fft">
+        <term key="argTerm" text="D" />
+      </term>
+    </equation>
+    <plot_function width="706" height="300" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF787878" xType="linear" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FFFF0100" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="abs_layout">
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.FT">
+          <term key="argTerm" text="k" />
+        </term>
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" text="k" />
+      <term key="xMaxValue" code="divide_slash">
+        <term key="leftTerm" text="N" />
+        <term key="rightTerm" text="2" />
+      </term>
+    </plot_function>
+    <text_fragment>
+      <term key="text" text="Calculate the fast inverse Fourier transform&#10;(when the given array has the length equal&#10;to power of 2) or a  continuous inverse&#10;Fourier transform for other array length:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="F" />
+      <term key="rightTerm" code="ifft">
+        <term key="argTerm" text="FT" />
+      </term>
+    </equation>
+    <plot_function width="706" height="300" axes_style="crossed" xLabelsNumber="7" yLabelsNumber="7" gridLineColor="#72000000" xType="linear" yType="linear" functionsNumber="2">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction1" color="#FFFF0002" width="4" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.index.D">
+        <term key="argTerm" text="k" />
+      </term>
+      <term key="yFunction2" color="#FF0001FF" width="4" lineStyle="dashed" shapeType="none" shapeSize="300" code="re">
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.F">
+          <term key="argTerm" text="k" />
+        </term>
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="60" />
+      <term key="xFunction1" text="k" />
+      <term key="xFunction2" text="k" />
+      <term key="xMaxValue" code="minus">
+        <term key="leftTerm" text="N" />
+        <term key="rightTerm" text="1" />
+      </term>
+    </plot_function>
+    <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Output radix" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text="Using result property dialog, it is possible to change&#10;the radix for integer results, for example use binary,&#10;octal or hexadecimal bases:" />
+      <term key="text" text="Using result property dialog, it is possible&#10;to change the radix for integer results, for&#10;example use binary, octal or hexadecimal&#10;bases:" />
     </text_fragment>
     <equation>
       <term key="leftTerm" text="M" />
@@ -1237,29 +1350,6 @@
     <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" radix="16">
       <term key="leftTerm" text="M" />
       <term key="rightTerm" text="" />
-    </result>
-  </formulaList>
-</micromath>tyle="subsubsection" numbering="true">
-      <term key="text" text="Output radix" />
-    </text_fragment>
-    <text_fragment>
-      <term key="text" text="Using result property dialog, it is possible to change&#10;the radix for integer results, for example use binary,&#10;octal or hexadecimal bases:" />
-    </text_fragment>
-    <equation>
-      <term key="leftTerm" text="M" />
-      <term key="rightTerm" text="254" />
-    </equation>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7" radix="2">
-      <term key="leftTerm" text="M" />
-      <term key="rightTerm" text="11111110" />
-    </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" radix="8">
-      <term key="leftTerm" text="M" />
-      <term key="rightTerm" text="376" />
-    </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" radix="16">
-      <term key="leftTerm" text="M" />
-      <term key="rightTerm" text="fe" />
     </result>
   </formulaList>
 </micromath>

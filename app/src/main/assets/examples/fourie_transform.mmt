@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList documentVersion="2" author="" title="" description="" textWidth="60" significantDigits="6" scale="0.34938" redefineAllowed="false">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Fourier transform examples" description="The example demonstrates how to calculate direct and inverse Fourier transform of a synthetic signal." textWidth="60" significantDigits="6" scale="0.34938" redefineAllowed="false">
     <equation>
       <term key="leftTerm" text="σ" />
       <term key="rightTerm" text="1.8" />
@@ -118,6 +118,9 @@
     <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Equation for the direct transformation" />
     </text_fragment>
+    <text_fragment>
+      <term key="text" text="Using Fourier transform formula:" />
+    </text_fragment>
     <equation>
       <term key="leftTerm" text="ξ" />
       <term key="rightTerm" code="power">
@@ -135,7 +138,7 @@
       </term>
     </equation>
     <equation inRightOfPrevious="true">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.index.C">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.C1">
         <term key="argTerm" text="k" />
       </term>
       <term key="rightTerm" code="summation">
@@ -159,58 +162,110 @@
         </term>
       </term>
     </equation>
+    <text_fragment>
+      <term key="text" text="Using fast Fourier transform algorithm from Numerical Recipes:" />
+    </text_fragment>
     <equation>
-      <term key="leftTerm" code="content:com.mkulesh.micromath.index.M">
-        <term key="argTerm" text="k" />
-      </term>
-      <term key="rightTerm" code="abs_layout">
-        <term key="argTerm" code="content:com.mkulesh.micromath.index.C">
-          <term key="argTerm" text="k" />
-        </term>
+      <term key="leftTerm" text="C2" />
+      <term key="rightTerm" code="fft">
+        <term key="argTerm" text="G" />
       </term>
     </equation>
-    <equation inRightOfPrevious="true">
-      <term key="leftTerm" code="content:com.mkulesh.micromath.index.Θ">
+    <equation>
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.Θ1">
         <term key="argTerm" text="k" />
       </term>
       <term key="rightTerm" code="atan2">
         <term key="argTerm1" code="im">
-          <term key="argTerm" code="content:com.mkulesh.micromath.index.C">
+          <term key="argTerm" code="content:com.mkulesh.micromath.index.C1">
             <term key="argTerm" text="k" />
           </term>
         </term>
         <term key="argTerm2" code="re">
-          <term key="argTerm" code="content:com.mkulesh.micromath.index.C">
+          <term key="argTerm" code="content:com.mkulesh.micromath.index.C1">
             <term key="argTerm" text="k" />
           </term>
         </term>
       </term>
     </equation>
-    <plot_function width="500" height="433" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="1">
-      <term key="yMaxValue" text="" />
-      <term key="yFunction" color="#FFCE00BE" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.index.M">
+    <equation>
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.Θ2">
         <term key="argTerm" text="k" />
+      </term>
+      <term key="rightTerm" code="atan2">
+        <term key="argTerm1" code="im">
+          <term key="argTerm" code="content:com.mkulesh.micromath.index.C2">
+            <term key="argTerm" text="k" />
+          </term>
+        </term>
+        <term key="argTerm2" code="re">
+          <term key="argTerm" code="content:com.mkulesh.micromath.index.C2">
+            <term key="argTerm" text="k" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <plot_function width="500" height="433" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="2">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction1" color="#FF00CE25" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="abs_layout">
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.C1">
+          <term key="argTerm" text="k" />
+        </term>
+      </term>
+      <term key="yFunction2" color="#FFC10067" width="5" lineStyle="dashed" shapeType="none" shapeSize="300" code="abs_layout">
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.C2">
+          <term key="argTerm" text="k" />
+        </term>
       </term>
       <term key="yMinValue" text="" />
       <term key="xMinValue" text="" />
-      <term key="xFunction" text="k" />
-      <term key="xMaxValue" text="80" />
+      <term key="xFunction1" text="k" />
+      <term key="xFunction2" text="k" />
+      <term key="xMaxValue" text="60" />
     </plot_function>
-    <plot_function inRightOfPrevious="true" width="500" height="433" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="1">
-      <term key="yMaxValue" text="π" />
-      <term key="yFunction" color="#FF03C300" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.index.Θ">
+    <plot_function inRightOfPrevious="true" width="500" height="433" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="2">
+      <term key="yMaxValue" text="0.3" />
+      <term key="yFunction1" color="#FF03C300" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.index.Θ1">
+        <term key="argTerm" text="k" />
+      </term>
+      <term key="yFunction2" color="#FFC30063" width="5" lineStyle="dashed" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.index.Θ2">
         <term key="argTerm" text="k" />
       </term>
       <term key="yMinValue" text="-π" />
       <term key="xMinValue" text="" />
-      <term key="xFunction" text="k" />
-      <term key="xMaxValue" text="80" />
+      <term key="xFunction1" text="k" />
+      <term key="xFunction2" text="k" />
+      <term key="xMaxValue" text="60" />
     </plot_function>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="summation">
+        <term key="maxValue" code="minus">
+          <term key="leftTerm" text="N" />
+          <term key="rightTerm" text="1" />
+        </term>
+        <term key="index" text="n" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="abs_layout">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.index.C1">
+              <term key="argTerm" text="n" />
+            </term>
+            <term key="rightTerm" code="content:com.mkulesh.micromath.index.C2">
+              <term key="argTerm" text="n" />
+            </term>
+          </term>
+        </term>
+      </term>
+      <term key="rightTerm" text="1.05736E-10" />
+    </result>
     <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Equarion for the inverse transformation" />
     </text_fragment>
+    <text_fragment>
+      <term key="text" text="Using Fourier transform formula:" />
+    </text_fragment>
     <equation>
-      <term key="leftTerm" code="content:com.mkulesh.micromath.index.F">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.F1">
         <term key="argTerm" text="k" />
       </term>
       <term key="rightTerm" code="mult">
@@ -226,7 +281,7 @@
           <term key="index" text="n" />
           <term key="minValue" text="0" />
           <term key="argTerm" code="mult">
-            <term key="leftTerm" code="content:com.mkulesh.micromath.index.C">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.index.C1">
               <term key="argTerm" text="n" />
             </term>
             <term key="rightTerm" code="power">
@@ -248,7 +303,7 @@
         </term>
       </term>
       <term key="yFunction2" color="#FF00FF21" width="6" lineStyle="dashed" shapeType="none" shapeSize="300" code="re">
-        <term key="argTerm" code="content:com.mkulesh.micromath.index.F">
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.F1">
           <term key="argTerm" text="k" />
         </term>
       </term>
@@ -269,7 +324,7 @@
         </term>
       </term>
       <term key="yFunction2" color="#FF00FF21" width="6" lineStyle="dashed" shapeType="none" shapeSize="300" code="im">
-        <term key="argTerm" code="content:com.mkulesh.micromath.index.F">
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.F1">
           <term key="argTerm" text="k" />
         </term>
       </term>
@@ -282,5 +337,77 @@
         <term key="rightTerm" text="1" />
       </term>
     </plot_function>
+    <text_fragment>
+      <term key="text" text="Using fast Fourier transform algorithm from Numerical Recipes:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="F2" />
+      <term key="rightTerm" code="ifft">
+        <term key="argTerm" text="C2" />
+      </term>
+    </equation>
+    <plot_function width="1000" height="400" axes_style="crossed" xLabelsNumber="7" yLabelsNumber="7" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="2">
+      <term key="yMaxValue" text="1" />
+      <term key="yFunction1" color="#FF0021B8" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="re">
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.G">
+          <term key="argTerm" text="k" />
+        </term>
+      </term>
+      <term key="yFunction2" color="#FF00FF21" width="6" lineStyle="dashed" shapeType="none" shapeSize="300" code="re">
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.F2">
+          <term key="argTerm" text="k" />
+        </term>
+      </term>
+      <term key="yMinValue" text="-1" />
+      <term key="xMinValue" text="0" />
+      <term key="xFunction1" text="k" />
+      <term key="xFunction2" text="k" />
+      <term key="xMaxValue" code="minus">
+        <term key="leftTerm" text="N" />
+        <term key="rightTerm" text="1" />
+      </term>
+    </plot_function>
+    <plot_function width="1000" height="400" axes_style="crossed" xLabelsNumber="7" yLabelsNumber="7" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="2">
+      <term key="yMaxValue" text="1" />
+      <term key="yFunction1" color="#FFB80007" width="6" lineStyle="solid" shapeType="none" shapeSize="300" code="im">
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.G">
+          <term key="argTerm" text="k" />
+        </term>
+      </term>
+      <term key="yFunction2" color="#FF00FF21" width="6" lineStyle="dashed" shapeType="none" shapeSize="300" code="im">
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.F2">
+          <term key="argTerm" text="k" />
+        </term>
+      </term>
+      <term key="yMinValue" text="-1" />
+      <term key="xMinValue" text="0" />
+      <term key="xFunction1" text="k" />
+      <term key="xFunction2" text="k" />
+      <term key="xMaxValue" code="minus">
+        <term key="leftTerm" text="N" />
+        <term key="rightTerm" text="1" />
+      </term>
+    </plot_function>
+    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+      <term key="leftTerm" code="summation">
+        <term key="maxValue" code="minus">
+          <term key="leftTerm" text="N" />
+          <term key="rightTerm" text="1" />
+        </term>
+        <term key="index" text="n" />
+        <term key="minValue" text="0" />
+        <term key="argTerm" code="abs_layout">
+          <term key="argTerm" code="minus">
+            <term key="leftTerm" code="content:com.mkulesh.micromath.index.F1">
+              <term key="argTerm" text="n" />
+            </term>
+            <term key="rightTerm" code="content:com.mkulesh.micromath.index.F2">
+              <term key="argTerm" text="n" />
+            </term>
+          </term>
+        </term>
+      </term>
+      <term key="rightTerm" text="7.93019E-12" />
+    </result>
   </formulaList>
 </micromath>

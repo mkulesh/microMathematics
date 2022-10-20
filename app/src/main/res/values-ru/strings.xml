@@ -246,6 +246,8 @@
     <string name="math_function_max">Наибольшее значение из двух аргументов</string>
     <string name="math_function_min">Наименьшее значение из двух аргументов</string>
     <string name="math_function_read">Импортировать данные из ASCII файла</string>
+    <string name="math_function_fft">Вычисляет быстрое преобразование Фурье заданного массива</string>
+    <string name="math_function_ifft">Вычисляет быстрое обратное преобразование Фурье заданного массива</string>
     <string name="math_function_rows">Количество строк матрицы или вектора</string>
     <string name="math_function_cols">Количество колонок матрицы или вектора</string>
     <string name="math_function_mod">Врзвращает остаток от деления первого аргумента на второй</string>

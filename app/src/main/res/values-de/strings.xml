@@ -246,6 +246,8 @@
     <string name="math_function_max">Liefert den größeren von zwei übergebenen Werten</string>
     <string name="math_function_min">Liefert den kleineren von zwei übergebenen Werten</string>
     <string name="math_function_read">Daten aus ASCII-Dateie importieren</string>
+    <string name="math_function_fft">Berechnet die FFT des angegebenen Arrays</string>
+    <string name="math_function_ifft">Berechnet die inverse FFT des gegebenen Arrays</string>
     <string name="math_function_rows">Liefert die Anzahl der Reihen einer Matrix</string>
     <string name="math_function_cols">Liefert die Anzahl der Spalten einer Matrix</string>
     <string name="math_function_mod">Berechnet den verbleibenden Rest bei der Division zweier Zahlen</string>

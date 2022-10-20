@@ -247,6 +247,8 @@
     <string name="math_function_max">两个参数中的最大值（最接近正无穷）</string>
     <string name="math_function_min">两个参数中的最小值（最接近负无穷）</string>
     <string name="math_function_read">从 ASCII 文件导入数据</string>
+    <string name="math_function_fft">计算给定数组的 FFT</string>
+    <string name="math_function_ifft">计算给定数组的逆 FFT</string>
     <string name="math_function_rows">返回矩阵/向量的行数</string>
     <string name="math_function_cols">返回矩阵/向量的列数</string>
     <string name="math_function_mod">返回第一个参数除以第二个参数的余数</string>
