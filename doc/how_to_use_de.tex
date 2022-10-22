@@ -4,10 +4,11 @@
 
 Diese App ist eine leistungsstarke
 Rechensoftware im Arbeitsblatt Format.
-Es kann frei editiert, auf einer SD
-Karte gespeichert werden, von einer SD
-Karte aus geöffnet oder in ein Bild-
-oder LaTeX-Format exportiert werden.
+Das Arbeitsblatt kann frei editiert,
+auf einer SD Karte gespeichert werden,
+von einer SD Karte aus geöffnet oder
+in ein Bild- oder LaTeX-Format
+exportiert werden.
 
 Das Arbeitsblatt ist ein
 mathematisches Dokument, das Text,
@@ -17,13 +18,28 @@ von eingesetzten mathematischen
 Bezeichnungen sowie deren automatische
 Berechnung.
 
+\subsection*{Grundlagen}
+
+Die App enthält einen
+Arbeitsblattbereich in der Mitte,
+Werkzeugleiste unten, Menüleiste oben
+und Aktionsbutton nach unten rechts.
+
+Der Inhalt der Menüleiste hängt von
+der Bildschirmauflösung und
+Geräteorientierung ab. Einen Button
+kann entweder direkt in der Menüleiste
+oder im ''Drei-Punkte-Menü'' angezeigt
+werden.
+
 Die folgenden Objekte/Elemente stehen
 zur Verfügung: Gleichungen,
 Ergebnisansichten, graphische
 Darstellungen, Textfragmente und
-Bilder. Diese Broschüre gibt Ihnen
-einen Überblick darüber, wie man diese
-Objekte erstellen und bearbeiten kann.
+Bilder. Diese werden über die Buttons
+in der Werkzeugleiste oder den
+''Neu''-Button in der Menüleiste
+eingefügt.
 
 \subsection{Bearbeitung}
 
@@ -42,26 +58,25 @@ gedrückt halten.
 
 Langes Gedrückthalten eines Terms
 erlaubt Ihnen, diesen Term
-auszuwählen. Der ausgewählte Term kann
+auszuwählen. Oben erscheint ein
+Kontextmenü. Der ausgewählte Term kann
 gelöscht, in die Zwischenablage
 kopiert, von dort aus eingefügt
 werden, oder eine Funktion oder ein
-Symbol kann im Nachhinein von der
-Werkzeugleiste oder Tastatur aus
-eingefügt werden.
+Symbol kann von der Werkzeugleiste
+oder Tastatur aus eingefügt werden.
+Der Button ''Einfügen Links von den
+ausgewählten'' aus dem Kontextmenü
+schaltet den Einfügemodus um: vor oder
+nach dem markierten Term. Der Button
+''Auswahl ausdehnen'' ermöglicht das
+Erweitern des ausgewählten Bereichs.
 
 Sie können auch den ''Rückgängig''
 Button in der Menüleiste benutzen, um
 die letzte Eingabe rückgängig zu
 machen (''Undo-Funktion''):
 \begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig1.png} \end{tabular}\end{center}
-
-Hinweis: Der Inhalt der Menüleiste
-hängt von der Bildschirmauflösung und
-Geräteorientierung ab. Der Button kann
-entweder direkt in der Menüleiste oder
-im ''Drei-Punkte-Menü'' angezeigt
-werden.
 
 \subsection{Gleichungen}
 
@@ -192,7 +207,7 @@ Sie einen Namen auf der linken Seite
 einer leeren Gleichung fest. Wählen
 Sie auf der rechten Seite der
 Gleichung entweder das Symbol '':'' oder
- klicken Sie den Button ''Äquidistantes
+klicken Sie den Button ''Äquidistantes
 Intervall'' in der Werkzeugleiste:
 \begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig5.png} \end{tabular}\end{center}
 
@@ -217,7 +232,7 @@ Der Abstand ist hier als Unterschied
 zwischen dem zweiten und dem ersten
 Wert gegeben:
 \begin{center}\begin{tabular}{c}
-  $x_{1}  - x_{0}  = 0.1$
+  $x_{2}  - x_{1}  = 0.1$
 \end{tabular}\end{center}
 
 Beispielsweise können wir ein
@@ -272,38 +287,42 @@ einen Namen ein, klicken Sie auf das
 linke Klammer-Symbol ''('' und wählen
 Sie das Argument. Dies kann auch eine
 Formel sein, die andere Operatoren
-oder Funktionen enthält. Das Dokument
-''functions\_overview.mmt'' im Ordner
-''Hilfsmittel der MicroMathematics
-Plus'' listet alle verfügbaren
-Funktionen auf.
+oder Funktionen enthält.
+
+Das Dokument ''functions\_overview.mmt''
+im Ordner ''Hilfsmittel der
+MicroMathematics Plus'' listet alle
+verfügbaren Funktionen auf.
 
 \subsubsection{Arrays}
 
-Arrays sind besondere Funktionen, die
-folgende Eigenschaften haben:
+Arrays sind besondere Funktionen; man
+kann die Array-Elemente mit Hilfe von
+einem Index anstelle der runden
+Klammern ''( )'' zuweisen. Um einen
+solchen Index zu erzeugen, geben Sie
+''['' nach dem Array-Namen ein.
 
-a) man kann die Array-Elemente mit
-Hilfe von einem Index anstelle der
-runden Klammern ''( )'' zuweisen. Um
-einen solchen Index zu erzeugen, geben
-Sie ''['' nach dem Array-Namen ein:
-\begin{center}\begin{tabular}{ccc}
-  $r_{0}  := 5$ &
-  $r_{3}  := 6$ &
-  $r_{2}  := -4$ \cr
+Das Argument (Index) kann eine
+Konstante oder ein zuvor definiertes
+Intervall sein:
+\begin{center}\begin{tabular}{c}
+  $idx := \left[ 0,\, 1 \,..\, 2 \right]$
 \end{tabular}\end{center}
-
-Nicht definierte Elemente haben einen
-vorgegebenen Wert ''0'':
 \begin{center}\begin{tabular}{cc}
-  $idx := \left[ 0,\, 1 \,..\, 3 \right]$ &
-  $r_{idx}  = \begin{bmatrix}5.0\\0.0\\-4.0\\6.0\\\end{bmatrix}$ \cr
+  $r1_{idx}  := 5$ &
+  $r1_{2}  := 6$ \cr
 \end{tabular}\end{center}
 
-b) ein vorher definiertes Intervall
-kann auch als Argument des Arrays
-benutzt werden:
+Wie bei einer Funktion kann die rechte
+Seite eines Arrays entweder eine
+Konstante oder eine mathematische
+Formel sein, die auf dem
+Array-Argument basiert:
+\begin{center}\begin{tabular}{cc}
+  $r2_{idx,\, 1}  := 5 + idx$ &
+  $r2_{2,\, 0}  := -4$ \cr
+\end{tabular}\end{center}
 \begin{center}\begin{tabular}{cc}
   $k := \left[ 0,\, 1 \,..\, 100 \right]$ &
   $m := \left[ 0,\, 1 \,..\, 200 \right]$ \cr
@@ -312,13 +331,21 @@ benutzt werden:
   $M_{k,\, m}  := {sin \left( k / 10\right) }^{2} - 3 \cdot  \left| cos \left( m / 10\right)  \right| $
 \end{tabular}\end{center}
 
-c) die Array-Elemente werden berechnet
-und gespeichert. Dadurch ist der
-Zugriff auf diese Elemente viel
-schneller.
+Darüber hinaus kann ein Array auch
+definiert werden, indem eine Matrix
+auf der rechten Seite eines indexlosen
+Arrays platziert wird. Dafür verwenden
+Sie den ''Matrix erstellen''-Button in
+der Werkzeugleiste:
+\begin{center}\begin{tabular}{c}
+  $reading := \begin{bmatrix}2&4&6&8\\11&10&5&2\\\end{bmatrix}$
+\end{tabular}\end{center}
 
-d) man kann auf die Array-Elemente nur
+a) Man kann auf die Array-Elemente nur
 mittels eines Index zugreifen:
+\begin{center}\begin{tabular}{c}
+  $r1_{idx}  = \begin{bmatrix}5.0\\5.0\\6.0\\\end{bmatrix}$
+\end{tabular}\end{center}
 \begin{center}\begin{tabular}{cc}
   $M_{5,\, 10}  = -1.39106$ &
   $M_{10,\, 5}  = -1.92467$ \cr
@@ -327,15 +354,30 @@ mittels eines Index zugreifen:
   $P_{k,\, m}  := floor \left( -10 \cdot M_{k,\, m} \right) $
 \end{tabular}\end{center}
 
-e) wenn ein Index komplex, negativ oder
-größer als die Obergrenze des
+b) Nicht definierte Elemente haben
+einen vorgegebenen Wert ''0''.
+
+c) Wenn ein Index komplex, negativ
+oder größer als die Obergrenze des
 dazugehörigen Intervalls ist, dann
 wird ein ungültiger Wert
 zurückgegeben:
 \begin{center}\begin{tabular}{cc}
+  $i1 := \left[ 0,\, 1 \,..\, 2 \right]$ &
+  $i2 := \left[ 0,\, 1 \,..\, 2 \right]$ \cr
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+  $r2_{i1,\, i2}  = \begin{bmatrix}0.0&5.0&NaN\\0.0&6.0&NaN\\-4.0&7.0&NaN\\\end{bmatrix}$
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{cc}
   $M_{10i,\, 100}  = NaN$ &
   $M_{90,\, 210}  = NaN$ \cr
 \end{tabular}\end{center}
+
+d) Die Array-Elemente werden berechnet
+und gespeichert. Dadurch ist der
+Zugriff auf diese Elemente viel
+schneller.
 
 \subsection{Ergebnisansicht}
 
@@ -360,7 +402,7 @@ Der linke Term enthält eine zu
 berechnende Formel und der rechte Term
 ist das Rechnungsergebnis. Das
 Resultat wird angezeigt, wenn Sie den
-Button ''Berechnen'' drücken.
+Aktionsbutton ''Berechnen'' drücken.
 
 Innerhalb des linken Terms können Sie
 sämtliche zuvor bestimmten Konstanten
@@ -369,6 +411,8 @@ integrierten Funktionen verwenden:
 \begin{center}\begin{tabular}{c}
   ${e}^{{\pi}} \cdot f \left( NPi2\right)  = 2.27286E-14$
 \end{tabular}\end{center}
+
+\subsubsection{Konstanten}
 
 Falls der linke Teil keine
 ''intervallähnlichen'' Variablen enthält
@@ -393,6 +437,8 @@ Ergebnisfeld auch eine Einheit haben:
   $2 \cdot {\alpha} / 10\ s = 0.15884\ rad/s$
 \end{tabular}\end{center}
 
+\subsubsection{Arrays}
+
 Falls der linke Teil als Variable ein
 Intervall enthält, ist das Ergebnis
 ein Vektor von Werten, die dem
@@ -416,13 +462,13 @@ linken Abschnitt lange gedrückt und
 selektieren Sie mittels Kontextmenü
 die komplette Formel. Wenn die Formel
 markiert ist, erscheint ein
-Action-Button ''Objekteinstellungen''.
+Aktionsbutton ''Objekteinstellungen''.
 Ein Tap auf diesen Button öffnet das
 Dialogfenster ''Ergebnisansicht'' mit
 diesen Einstellungen:
 \begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig7.png} \end{tabular}\end{center}
 
-Auch wird ein weiterer Action-Button
+Auch wird ein weiterer Aktionsbutton
 ''Details'' angezeigt. Ein Tap auf
 diesen Button öffnet das Dialogfenster
 ''Details'', wo Sie alle Vektorelemente
@@ -497,8 +543,8 @@ Werkzeugleiste:
 Wenn Sie auf den Text lange gedrückt
 halten, und dann den ganzen Text
 mittels Kontexmenü ''Alles auswählen''
-markieren, erscheint ein Action-Button
- ''Objekteinstellungen''.
+markieren, erscheint ein Aktionsbutton
+''Objekteinstellungen''.
 
 Ein Tap auf diesen Button öffnet das
 Dialogfenster ''Text-Einstellungen''.
