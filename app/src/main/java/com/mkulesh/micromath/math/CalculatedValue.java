@@ -13,8 +13,6 @@
  */
 package com.mkulesh.micromath.math;
 
-import androidx.annotation.NonNull;
-
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.TermField;
@@ -22,6 +20,7 @@ import com.mkulesh.micromath.formula.TermParser;
 import com.mkulesh.micromath.properties.DocumentProperties;
 
 import org.apache.commons.math3.complex.Complex;
+import org.apache.commons.math3.fraction.Fraction;
 import org.apache.commons.math3.util.FastMath;
 
 import java.math.BigDecimal;
@@ -36,9 +35,11 @@ import javax.measure.unit.NonSI;
 import javax.measure.unit.SI;
 import javax.measure.unit.Unit;
 
+import androidx.annotation.NonNull;
+
 public class CalculatedValue
 {
-    private static final int DEF_RADIX = 10;
+    public static final int DEF_RADIX = 10;
 
     public enum ErrorType
     {
@@ -345,13 +346,13 @@ public class CalculatedValue
     @NonNull
     public String getResultDescription(@NonNull DocumentProperties doc)
     {
-        return getResultDescription(doc, DEF_RADIX);
+        return getResultDescription(doc, DEF_RADIX, false);
     }
 
     @NonNull
-    public String getResultDescription(@NonNull DocumentProperties doc, int radix)
+    public String getResultDescription(@NonNull DocumentProperties doc, int radix, boolean asFraction)
     {
-        String val;
+        String val = null;
         switch (valueType)
         {
         case INVALID:
@@ -361,7 +362,14 @@ public class CalculatedValue
             {
                 return TermParser.CONST_NAN;
             }
-            val = formatValue(real, doc, false, radix);
+            if (asFraction)
+            {
+                val = getFraction(real, doc.getPrecision());
+            }
+            if (val == null)
+            {
+                val = formatValue(real, doc, false, radix);
+            }
             if (unit != null)
             {
                 val += " " + unit;
@@ -380,6 +388,37 @@ public class CalculatedValue
             return val;
         }
         return "";
+    }
+
+    private String getFraction(double value, double epsilon)
+    {
+        try
+        {
+            final Fraction f = new Fraction(value, epsilon, 100);
+            String str = null;
+            if (f.getDenominator() == 1)
+            {
+                str = Integer.toString(f.getNumerator());
+            }
+            else if (f.getNumerator() == 0)
+            {
+                str = "0";
+            }
+            else if (f.getDenominator() != 0 && f.getNumerator() > f.getDenominator())
+            {
+                final int intPart = f.getNumerator() / f.getDenominator();
+                str = intPart + " " + (f.getNumerator() - intPart * f.getDenominator()) + "/" + f.getDenominator();
+            }
+            else
+            {
+                str = f.getNumerator() + "/" + f.getDenominator();
+            }
+            return str;
+        }
+        catch (Exception ex)
+        {
+            return null;
+        }
     }
 
     private String formatValue(double value, @NonNull DocumentProperties doc, boolean addPlusSign, int radix)

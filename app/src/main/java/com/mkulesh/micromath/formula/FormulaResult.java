@@ -389,7 +389,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     @Override
     public boolean disableCalculation()
     {
-        return properties.disableCalculation;
+        return properties.resultFieldType == ResultProperties.ResultFieldType.SKIP;
     }
 
     /*--------------------------------------------------------*
@@ -435,7 +435,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
             getFormulaList().getUndoState().addEntry(formulaState);
             formulaState = null;
         }
-        if (properties.disableCalculation)
+        if (disableCalculation())
         {
             clearResult();
         }
@@ -525,7 +525,12 @@ public class FormulaResult extends CalculationResult implements ResultProperties
 
     public boolean isResultVisible()
     {
-        return !properties.hideResultField;
+        return properties.resultFieldType != ResultProperties.ResultFieldType.HIDE;
+    }
+
+    private boolean isFractionResult()
+    {
+        return properties.resultFieldType == ResultProperties.ResultFieldType.FRACTION;
     }
 
     public boolean isArrayResult()
@@ -656,8 +661,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                 }
                 final CalculatedValue value = arrayResult.getValue2D(dataRowIdx, dataColIdx);
                 value.convertUnit(targetUnit, /*toBase=*/ false);
-                arrayResultMatrix.setText(r, c,
-                        value.getResultDescription(getFormulaList().getDocumentSettings()));
+                arrayResultMatrix.setText(r, c, value.getResultDescription(
+                        getFormulaList().getDocumentSettings(), CalculatedValue.DEF_RADIX, isFractionResult()));
             }
         }
     }
@@ -716,7 +721,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                 }
                 final CalculatedValue value = arrayResult.getValue2D(dataRowIdx, dataColIdx);
                 value.convertUnit(targetUnit, /*toBase=*/ false);
-                res.get(r).add(value.getResultDescription(getFormulaList().getDocumentSettings()));
+                res.get(r).add(value.getResultDescription(
+                        getFormulaList().getDocumentSettings(), CalculatedValue.DEF_RADIX, isFractionResult()));
             }
         }
         return res;
@@ -732,7 +738,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         if (resultType == ResultType.CONSTANT)
         {
             constantResult.convertUnit(TermParser.parseUnits(properties.units), /*toBase=*/ true);
-            return constantResult.getResultDescription(getFormulaList().getDocumentSettings(), properties.radix);
+            return constantResult.getResultDescription(
+                    getFormulaList().getDocumentSettings(), properties.radix, isFractionResult());
         }
 
         if (isArrayResult())

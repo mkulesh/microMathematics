@@ -48,22 +48,39 @@
                     android:inputType="text"/>
             </LinearLayout>
 
-            <View
-                style="@style/HorizontalDividerStyle"
-                android:layout_marginBottom="@dimen/dialog_content_padding"
-                android:layout_marginTop="@dimen/dialog_content_padding" />
+            <TextView
+                style="@style/DialogTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="@dimen/dialog_content_padding"
+                android:text="@string/dialog_result_field_type" />
 
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/dialog_result_disable_calculation"
-                style="@style/CheckBoxStyle"
-                android:checked="false"
-                android:text="@string/dialog_result_disable_calculation" />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
 
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/dialog_result_hide_result_field"
-                style="@style/CheckBoxStyle"
-                android:checked="false"
-                android:text="@string/dialog_result_hide_result_field" />
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/dialog_result_field_hide"
+                    style="@style/RadioButtonStyle"
+                    android:text="@string/dialog_result_field_hide" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/dialog_result_field_skip"
+                    style="@style/RadioButtonStyle"
+                    android:text="@string/dialog_result_field_skip" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/dialog_result_field_real"
+                    style="@style/RadioButtonStyle"
+                    android:text="@string/dialog_result_field_real" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/dialog_result_field_fraction"
+                    style="@style/RadioButtonStyle"
+                    android:text="@string/dialog_result_field_frac" />
+            </RadioGroup>
 
             <View
                 style="@style/HorizontalDividerStyle"

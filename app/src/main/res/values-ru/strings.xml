@@ -166,8 +166,11 @@
     <string name="dialog_image_settings_original_color">Оригинальный цвет</string>
     <string name="dialog_image_settings_auto_color">Автоматический цвет</string>
     <string name="dialog_result_title">Текстовый результат</string>
-    <string name="dialog_result_disable_calculation">Не вычислять</string>
-    <string name="dialog_result_hide_result_field">Скрыть поле с результатом</string>
+    <string name="dialog_result_field_type">Поле результата</string>
+    <string name="dialog_result_field_hide">Скрыть</string>
+    <string name="dialog_result_field_skip">Не вычислять</string>
+    <string name="dialog_result_field_real">Показать как число</string>
+    <string name="dialog_result_field_frac">Показать как дробь</string>
     <string name="dialog_result_array_length">Количество значений</string>
     <string name="dialog_result_units">Единицы измерений</string>
     <string name="dialog_result_radix">Основание</string>

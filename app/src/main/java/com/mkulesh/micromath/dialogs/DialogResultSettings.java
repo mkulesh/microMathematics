@@ -15,21 +15,20 @@ package com.mkulesh.micromath.dialogs;
 
 import android.app.Activity;
 import android.view.View;
-import android.widget.CheckBox;
-
-import androidx.appcompat.widget.AppCompatEditText;
+import android.widget.RadioButton;
 
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.ResultProperties;
 import com.mkulesh.micromath.properties.ResultPropertiesChangeIf;
 import com.mkulesh.micromath.widgets.HorizontalNumberPicker;
 
+import androidx.appcompat.widget.AppCompatEditText;
+
 public class DialogResultSettings extends DialogBase
 {
     private final ResultPropertiesChangeIf changeIf;
     private final ResultProperties properties;
     private final AppCompatEditText units;
-    private final CheckBox disableCalculation, hideResultField;
     private final HorizontalNumberPicker radixPicker;
     private final HorizontalNumberPicker arrayLengthPicker;
 
@@ -43,17 +42,28 @@ public class DialogResultSettings extends DialogBase
         units = findViewById(R.id.dialog_result_units_field);
         units.setText(properties.units);
 
-        disableCalculation = findViewById(R.id.dialog_result_disable_calculation);
-        disableCalculation.setChecked(properties.disableCalculation);
-
-        hideResultField = findViewById(R.id.dialog_result_hide_result_field);
-        hideResultField.setChecked(properties.hideResultField);
-
         radixPicker = findViewById(R.id.dialog_result_radix);
         radixPicker.setVisibility(properties.showArrayLength ? View.GONE : View.VISIBLE);
         radixPicker.setValue(properties.radix);
         radixPicker.minValue = Character.MIN_RADIX;
         radixPicker.maxValue = Character.MAX_RADIX;
+
+        final int[] radioIds = new int[]{
+                R.id.dialog_result_field_hide,
+                R.id.dialog_result_field_skip,
+                R.id.dialog_result_field_real,
+                R.id.dialog_result_field_fraction
+        };
+        for (int rId : radioIds)
+        {
+            final RadioButton r = findViewById(rId);
+            r.setOnClickListener(this);
+            if (radioIds[properties.resultFieldType.ordinal()] == rId)
+            {
+                r.setChecked(true);
+                onClick(r);
+            }
+        }
 
         arrayLengthPicker = findViewById(R.id.dialog_result_array_length_picker);
         arrayLengthPicker.setVisibility(properties.showArrayLength ? View.VISIBLE : View.GONE);
@@ -65,25 +75,52 @@ public class DialogResultSettings extends DialogBase
     public void onClick(View v)
     {
         boolean isChanged = false;
+        if (v.getId() == R.id.dialog_result_field_hide ||
+                v.getId() == R.id.dialog_result_field_skip ||
+                v.getId() == R.id.dialog_result_field_real)
+        {
+            radixPicker.setEnabled(true);
+            return;
+        }
+        if (v.getId() == R.id.dialog_result_field_fraction)
+        {
+            radixPicker.setValue(10);
+            radixPicker.setEnabled(false);
+            return;
+        }
         if (v.getId() == R.id.dialog_button_ok)
         {
             if (changeIf != null && properties != null)
             {
-                if (!properties.units.equals(units.getText().toString()))
+                if (units.getText() != null && !properties.units.equals(units.getText().toString()))
                 {
                     properties.units = units.getText().toString();
                     isChanged = true;
                 }
-                if (properties.disableCalculation != disableCalculation.isChecked())
+
+                ResultProperties.ResultFieldType resultFieldType;
+                if (((RadioButton) findViewById(R.id.dialog_result_field_fraction)).isChecked())
                 {
-                    properties.disableCalculation = disableCalculation.isChecked();
-                    isChanged = true;
+                    resultFieldType = ResultProperties.ResultFieldType.FRACTION;
                 }
-                if (properties.hideResultField != hideResultField.isChecked())
+                else if (((RadioButton) findViewById(R.id.dialog_result_field_real)).isChecked())
                 {
-                    properties.hideResultField = hideResultField.isChecked();
-                    isChanged = true;
+                    resultFieldType = ResultProperties.ResultFieldType.REAL;
                 }
+                else if (((RadioButton) findViewById(R.id.dialog_result_field_skip)).isChecked())
+                {
+                    resultFieldType = ResultProperties.ResultFieldType.SKIP;
+                }
+                else
+                {
+                    resultFieldType = ResultProperties.ResultFieldType.HIDE;
+                }
+                if (properties.resultFieldType != resultFieldType)
+                {
+                    isChanged = true;
+                    properties.resultFieldType = resultFieldType;
+                }
+
                 if (properties.arrayLength != arrayLengthPicker.getValue())
                 {
                     properties.arrayLength = arrayLengthPicker.getValue();
@@ -96,7 +133,10 @@ public class DialogResultSettings extends DialogBase
                 }
             }
         }
-        changeIf.onResultPropertiesChange(isChanged);
+        if (changeIf != null)
+        {
+            changeIf.onResultPropertiesChange(isChanged);
+        }
         closeDialog();
     }
 

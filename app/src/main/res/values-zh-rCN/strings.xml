@@ -167,8 +167,11 @@
     <string name="dialog_image_settings_original_color">原始颜色</string>
     <string name="dialog_image_settings_auto_color">自动颜色</string>
     <string name="dialog_result_title">结果属性</string>
-    <string name="dialog_result_disable_calculation">不计算</string>
-    <string name="dialog_result_hide_result_field">隐藏结果字段</string>
+    <string name="dialog_result_field_type">结果字段</string>
+    <string name="dialog_result_field_hide">隐藏</string>
+    <string name="dialog_result_field_skip">不计算</string>
+    <string name="dialog_result_field_real">显示为数字</string>
+    <string name="dialog_result_field_frac">显示为分数</string>
     <string name="dialog_result_array_length">值数量</string>
     <string name="dialog_result_units">输出单元</string>
     <string name="dialog_result_radix">基数</string>

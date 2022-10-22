@@ -166,8 +166,11 @@
     <string name="dialog_image_settings_original_color">Color original</string>
     <string name="dialog_image_settings_auto_color">Color automático</string>
     <string name="dialog_result_title">Vista de resultados</string>
-    <string name="dialog_result_disable_calculation">No calcular</string>
-    <string name="dialog_result_hide_result_field">Ocultar campo de resultados</string>
+    <string name="dialog_result_field_type">Campo de resultado</string>
+    <string name="dialog_result_field_hide">Ocultar</string>
+    <string name="dialog_result_field_skip">No calcular</string>
+    <string name="dialog_result_field_real">Mostrar como número</string>
+    <string name="dialog_result_field_frac">Mostrar como fracción</string>
     <string name="dialog_result_array_length">Número de valores</string>
     <string name="dialog_result_units">Unidad de resultados</string>
     <string name="dialog_result_radix">Radix</string>

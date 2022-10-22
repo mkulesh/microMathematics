@@ -180,7 +180,7 @@ public abstract class CalculationResult extends LinkHolder
             {
                 final double val = minMaxValues[FunctionIf.MIN];
                 final double delta = Math.max(0.1 * val,
-                        FastMath.pow(10.0, -1 * getFormulaList().getDocumentSettings().significantDigits));
+                        getFormulaList().getDocumentSettings().getPrecision());
                 minMaxValues[FunctionIf.MIN] = val - delta;
                 minMaxValues[FunctionIf.MAX] = val + delta;
             }
