@@ -223,9 +223,13 @@
     <string name="dialog_image_settings_original_color">Original color</string>
     <string name="dialog_image_settings_auto_color">Auto-color</string>
     <string name="dialog_result_title">Result properties</string>
-    <string name="dialog_result_disable_calculation">Do not calculate</string>
-    <string name="dialog_result_hide_result_field">Hide result field</string>
+    <string name="dialog_result_field_type">Result field</string>
+    <string name="dialog_result_field_hide">Hide</string>
+    <string name="dialog_result_field_skip">Do not calculate</string>
+    <string name="dialog_result_field_real">Show as number</string>
+    <string name="dialog_result_field_frac">Show as fraction</string>
     <string name="dialog_result_array_length">Number of values</string>
+    <string name="dialog_result_radix">Radix</string>
     <string name="dialog_text_settings_title">Text properties</string>
     <string name="dialog_text_style_chapter">Chapter</string>
     <string name="dialog_text_style_section">Section</string>

@@ -164,9 +164,13 @@
     <string name="dialog_image_settings_original_color">Originalfarbe</string>
     <string name="dialog_image_settings_auto_color">Auto-Farbe</string>
     <string name="dialog_result_title">Ergebnisansicht</string>
-    <string name="dialog_result_disable_calculation">Nicht berechnen</string>
-    <string name="dialog_result_hide_result_field">Ergebnisfeld ausblenden</string>
+    <string name="dialog_result_field_type">Ergebnisfeld</string>
+    <string name="dialog_result_field_hide">Ausblenden</string>
+    <string name="dialog_result_field_skip">Nicht berechnen</string>
+    <string name="dialog_result_field_real">Als Nummer anzeigen</string>
+    <string name="dialog_result_field_frac">Als Bruch anzeigen</string>
     <string name="dialog_result_array_length">Anzahl von Werten</string>
+    <string name="dialog_result_radix">Radix</string>
     <string name="dialog_text_settings_title">Text-Einstellungen</string>
     <string name="dialog_text_style_chapter">Kapitel</string>
     <string name="dialog_text_style_section">Abschnitt</string>

@@ -162,9 +162,13 @@
     <string name="dialog_image_settings_width">Largura da imagem</string>
     <string name="dialog_image_settings_height">Altura da imagem</string>
     <string name="dialog_result_title">Propriedades resultantes</string>
-    <string name="dialog_result_disable_calculation">Do not calculate</string>
-    <string name="dialog_result_hide_result_field">Hide result field</string>
+    <string name="dialog_result_field_type">Campo de resultado</string>
+    <string name="dialog_result_field_hide">Esconder</string>
+    <string name="dialog_result_field_skip">Não calcular</string>
+    <string name="dialog_result_field_real">Mostrar como número</string>
+    <string name="dialog_result_field_frac">Mostrar como fração</string>
     <string name="dialog_result_array_length">Número de valores</string>
+    <string name="dialog_result_radix">Radix</string>
     <string name="dialog_text_settings_title">Propriedades do texto</string>
     <string name="dialog_text_style_chapter">Capítulo</string>
     <string name="dialog_text_style_section">Seção</string>

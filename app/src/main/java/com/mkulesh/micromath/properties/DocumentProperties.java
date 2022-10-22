@@ -20,6 +20,7 @@ import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
 
+import org.apache.commons.math3.util.FastMath;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
 
@@ -188,4 +189,8 @@ public class DocumentProperties
         return documentVersion;
     }
 
+    public double getPrecision()
+    {
+        return FastMath.pow(10, -1 * significantDigits);
+    }
 }

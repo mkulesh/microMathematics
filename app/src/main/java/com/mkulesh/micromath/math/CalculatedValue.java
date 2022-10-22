@@ -22,6 +22,7 @@ import com.mkulesh.micromath.formula.TermParser;
 import com.mkulesh.micromath.properties.DocumentProperties;
 
 import org.apache.commons.math3.complex.Complex;
+import org.apache.commons.math3.fraction.Fraction;
 import org.apache.commons.math3.util.FastMath;
 
 import java.math.BigDecimal;
@@ -31,7 +32,7 @@ import java.util.List;
 
 public class CalculatedValue
 {
-    private static final int DEF_RADIX = 10;
+    public static final int DEF_RADIX = 10;
 
     public enum ErrorType
     {
@@ -234,13 +235,13 @@ public class CalculatedValue
     @NonNull
     public String getResultDescription(@NonNull DocumentProperties doc)
     {
-        return getResultDescription(doc, DEF_RADIX);
+        return getResultDescription(doc, DEF_RADIX, false);
     }
 
     @NonNull
-    public String getResultDescription(@NonNull DocumentProperties doc, int radix)
+    public String getResultDescription(@NonNull DocumentProperties doc, int radix, boolean asFraction)
     {
-        String val;
+        String val = null;
         switch (valueType)
         {
         case INVALID:
@@ -250,7 +251,14 @@ public class CalculatedValue
             {
                 return TermParser.CONST_NAN;
             }
-            val = formatValue(real, doc, false, radix);
+            if (asFraction)
+            {
+                val = getFraction(real, doc.getPrecision());
+            }
+            if (val == null)
+            {
+                val = formatValue(real, doc, false, radix);
+            }
             return val;
         case COMPLEX:
             if (Double.isNaN(real) || Double.isNaN(imaginary))
@@ -261,6 +269,39 @@ public class CalculatedValue
             return val;
         }
         return "";
+    }
+
+    private String getFraction(double value, double epsilon)
+    {
+        try
+        {
+            final Fraction f = new Fraction(value, epsilon, 100);
+            String str = null;
+            if (f.getDenominator() == 1)
+            {
+                str = Integer.toString(f.getNumerator());
+            }
+            else if (f.getNumerator() == 0)
+            {
+                str = "0";
+            }
+            else if (FastMath.abs(value) > 1.0)
+            {
+                final int intPart = (int) value;
+                final double fractionPart = FastMath.abs(value - (double) intPart);
+                final Fraction f1 = new Fraction(fractionPart, epsilon, 100);
+                str = intPart + " " + f1.getNumerator() + "/" + f1.getDenominator();
+            }
+            else
+            {
+                str = f.getNumerator() + "/" + f.getDenominator();
+            }
+            return str;
+        }
+        catch (Exception ex)
+        {
+            return null;
+        }
     }
 
     private String formatValue(double value, @NonNull DocumentProperties doc, boolean addPlusSign, int radix)

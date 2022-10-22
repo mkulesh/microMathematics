@@ -16,23 +16,35 @@ package com.mkulesh.micromath.properties;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.Nullable;
+
 import com.mkulesh.micromath.formula.FormulaList;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
 
+import java.util.Locale;
+
 public class ResultProperties implements Parcelable
 {
-    private static final String XML_PROP_DISABLE_CALCULATION = "disableCalculation";
-    private static final String XML_PROP_HIDE_RESULT_FIELD = "hideResultField";
+    public enum ResultFieldType
+    {
+        HIDE,
+        SKIP,
+        REAL,
+        FRACTION
+    }
+
+    private static final String XML_PROP_RESULT_FIELD_TYPE = "resultFieldType";
     private static final String XML_PROP_ARRAY_LENGTH = "arrayLength";
+    private static final String XML_PROP_RADIX = "radix";
 
     /**
      * Class members.
      */
-    public boolean disableCalculation = false;
-    public boolean hideResultField = false;
+    public ResultFieldType resultFieldType = ResultFieldType.REAL;
     public int arrayLength = 7;
+    public int radix = 10;
 
     /**
      * Temporary attributes that are not a part of state
@@ -57,16 +69,16 @@ public class ResultProperties implements Parcelable
     @Override
     public void writeToParcel(Parcel dest, int flags)
     {
-        dest.writeString(String.valueOf(disableCalculation));
-        dest.writeString(String.valueOf(hideResultField));
+        dest.writeInt(resultFieldType.ordinal());
         dest.writeInt(arrayLength);
+        dest.writeInt(radix);
     }
 
     private void readFromParcel(Parcel in)
     {
-        disableCalculation = Boolean.parseBoolean(in.readString());
-        hideResultField = Boolean.parseBoolean(in.readString());
+        resultFieldType = ResultFieldType.values()[in.readInt()];
         arrayLength = in.readInt();
+        radix = in.readInt();
     }
 
     public static final Parcelable.Creator<ResultProperties> CREATOR = new Parcelable.Creator<ResultProperties>()
@@ -92,36 +104,61 @@ public class ResultProperties implements Parcelable
         // empty
     }
 
-    public void assign(ResultProperties a)
+    public void assign(@Nullable ResultProperties a)
     {
-        disableCalculation = a.disableCalculation;
-        hideResultField = a.hideResultField;
-        arrayLength = a.arrayLength;
+        if (a != null)
+        {
+            resultFieldType = a.resultFieldType;
+            arrayLength = a.arrayLength;
+            radix = a.radix;
+        }
     }
 
     public void readFromXml(XmlPullParser parser)
     {
-        String attr = parser.getAttributeValue(null, XML_PROP_DISABLE_CALCULATION);
-        if (attr != null)
+        // Back compatibility to the previous boolean format of this field
+        String attr = parser.getAttributeValue(null, "hideResultField");
+        if (attr != null && Boolean.parseBoolean(attr))
         {
-            disableCalculation = Boolean.parseBoolean(attr);
+            resultFieldType = ResultFieldType.HIDE;
         }
-        attr = parser.getAttributeValue(null, XML_PROP_HIDE_RESULT_FIELD);
+        attr = parser.getAttributeValue(null, "disableCalculation");
+        if (attr != null && Boolean.parseBoolean(attr))
+        {
+            resultFieldType = ResultFieldType.SKIP;
+        }
+        attr = parser.getAttributeValue(null, XML_PROP_RESULT_FIELD_TYPE);
         if (attr != null)
         {
-            hideResultField = Boolean.parseBoolean(attr);
+            try
+            {
+                resultFieldType = ResultFieldType.valueOf(attr.toUpperCase(Locale.ENGLISH));
+            }
+            catch (Exception e)
+            {
+                // Nothing to do
+            }
         }
         attr = parser.getAttributeValue(null, XML_PROP_ARRAY_LENGTH);
         if (attr != null)
         {
             arrayLength = Integer.parseInt(attr);
         }
+        attr = parser.getAttributeValue(null, XML_PROP_RADIX);
+        if (attr != null)
+        {
+            radix = Integer.parseInt(attr);
+        }
     }
 
     public void writeToXml(XmlSerializer serializer) throws Exception
     {
-        serializer.attribute(FormulaList.XML_NS, XML_PROP_DISABLE_CALCULATION, String.valueOf(disableCalculation));
-        serializer.attribute(FormulaList.XML_NS, XML_PROP_HIDE_RESULT_FIELD, String.valueOf(hideResultField));
+        serializer.attribute(FormulaList.XML_NS, XML_PROP_RESULT_FIELD_TYPE,
+                resultFieldType.toString().toLowerCase(Locale.ENGLISH));
         serializer.attribute(FormulaList.XML_NS, XML_PROP_ARRAY_LENGTH, String.valueOf(arrayLength));
+        if (radix != 10)
+        {
+            serializer.attribute(FormulaList.XML_NS, XML_PROP_RADIX, String.valueOf(radix));
+        }
     }
 }

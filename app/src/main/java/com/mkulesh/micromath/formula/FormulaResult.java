@@ -208,7 +208,10 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     @Override
     public void invalidateResult()
     {
-        constantResultField.setText("");
+        if (!disableCalculation())
+        {
+            constantResultField.setText("");
+        }
         arrayResultMatrix.setText("", getFormulaList().getDimen());
     }
 
@@ -222,7 +225,14 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         {
             if (!leftTerm.isTerm() && ta != null)
             {
-                ta.setResult(leftTerm.getText(), fillResultString());
+                if (resultType == ResultType.NONE)
+                {
+                    ta.setResult(leftTerm.getText(), constantResultField.getText());
+                }
+                else
+                {
+                    ta.setResult(leftTerm.getText(), fillResultString());
+                }
             }
             return;
         }
@@ -368,7 +378,10 @@ public class FormulaResult extends CalculationResult implements ResultProperties
             constantResultField.getEditText().setVisibility(visibility);
             arrayResultMatrix.setVisibility(View.GONE);
             rightBracket.setVisibility(View.GONE);
-            constantResultField.setText(fillResultString());
+            if (!disableCalculation())
+            {
+                constantResultField.setText(fillResultString());
+            }
             break;
         }
         case ARRAY_1D:
@@ -387,7 +400,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     @Override
     public boolean disableCalculation()
     {
-        return properties.disableCalculation;
+        return properties.resultFieldType == ResultProperties.ResultFieldType.SKIP;
     }
 
     /*--------------------------------------------------------*
@@ -433,7 +446,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
             getFormulaList().getUndoState().addEntry(formulaState);
             formulaState = null;
         }
-        if (properties.disableCalculation)
+        if (disableCalculation())
         {
             clearResult();
         }
@@ -508,7 +521,7 @@ public class FormulaResult extends CalculationResult implements ResultProperties
             properties.writeToXml(serializer);
         }
         // The calculation results shall be stored within *.mmt file as well.
-        if (FormulaList.XML_TERM_TAG.equalsIgnoreCase(serializer.getName()) &&
+        if (!disableCalculation() && FormulaList.XML_TERM_TAG.equalsIgnoreCase(serializer.getName()) &&
                 key != null && key.equalsIgnoreCase(constantResultField.getTermKey()))
         {
             serializer.attribute(FormulaList.XML_NS, FormulaList.XML_PROP_TEXT, fillResultString());
@@ -523,7 +536,12 @@ public class FormulaResult extends CalculationResult implements ResultProperties
 
     public boolean isResultVisible()
     {
-        return !properties.hideResultField;
+        return properties.resultFieldType != ResultProperties.ResultFieldType.HIDE;
+    }
+
+    private boolean isFractionResult()
+    {
+        return properties.resultFieldType == ResultProperties.ResultFieldType.FRACTION;
     }
 
     public boolean isArrayResult()
@@ -553,7 +571,6 @@ public class FormulaResult extends CalculationResult implements ResultProperties
             CustomEditText v = layout.findViewById(R.id.formula_result_value);
             constantResultField = addTerm(this, layout, v, this, true);
             constantResultField.bracketsType = TermField.BracketsType.NEVER;
-            constantResultField.isWritable = false;
             arrayResultMatrix = layout.findViewById(R.id.formula_result_table);
         }
         // brackets
@@ -571,6 +588,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
 
     private void updateResultView(boolean checkContent)
     {
+        // Allow to manually edit result field that is not calculated
+        constantResultField.isWritable = disableCalculation();
         if (checkContent)
         {
             if (isContentValid(ValidationPassType.VALIDATE_SINGLE_FORMULA))
@@ -651,8 +670,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                     }
                 }
                 final CalculatedValue value = arrayResult.getValue2D(dataRowIdx, dataColIdx);
-                arrayResultMatrix.setText(r, c,
-                        value.getResultDescription(getFormulaList().getDocumentSettings()));
+                arrayResultMatrix.setText(r, c, value.getResultDescription(
+                        getFormulaList().getDocumentSettings(), CalculatedValue.DEF_RADIX, isFractionResult()));
             }
         }
     }
@@ -708,7 +727,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
                     }
                 }
                 final CalculatedValue value = arrayResult.getValue2D(dataRowIdx, dataColIdx);
-                res.get(r).add(value.getResultDescription(getFormulaList().getDocumentSettings()));
+                res.get(r).add(value.getResultDescription(
+                        getFormulaList().getDocumentSettings(), CalculatedValue.DEF_RADIX, isFractionResult()));
             }
         }
         return res;
@@ -723,7 +743,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
 
         if (resultType == ResultType.CONSTANT)
         {
-            return constantResult.getResultDescription(getFormulaList().getDocumentSettings());
+            return constantResult.getResultDescription(
+                    getFormulaList().getDocumentSettings(), properties.radix, isFractionResult());
         }
 
         if (isArrayResult())

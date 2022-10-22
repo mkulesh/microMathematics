@@ -44,4 +44,5 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
 
     implementation 'org.apache.commons:commons-math3:3.6.1'
+    implementation 'org.apache.commons:commons-numbers-parent:1.0'
 }

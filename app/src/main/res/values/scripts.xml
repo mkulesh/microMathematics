@@ -50,6 +50,7 @@
         <item>asset:/ta/ts_operator_summation.mmt</item>
         <item>asset:/ta/ts_random_const.mmt</item>
         <item>asset:/ta/ts_redefinition.mmt</item>
+        <item>asset:/ta/ts_result_fraction.mmt</item>
         <item>asset:/ta/ts_result_view.mmt</item>
     </string-array>
     

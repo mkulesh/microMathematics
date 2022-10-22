@@ -165,9 +165,13 @@
     <string name="dialog_image_settings_original_color">原始顏色</string>
     <string name="dialog_image_settings_auto_color">自動顏色</string>
     <string name="dialog_result_title">結果屬性</string>
-    <string name="dialog_result_disable_calculation">Do not calculate</string>
-    <string name="dialog_result_hide_result_field">Hide result field</string>
+    <string name="dialog_result_field_type">结果字段</string>
+    <string name="dialog_result_field_hide">隐藏</string>
+    <string name="dialog_result_field_skip">不計算</string>
+    <string name="dialog_result_field_real">显示为数字</string>
+    <string name="dialog_result_field_frac">显示为分数</string>
     <string name="dialog_result_array_length">值數量</string>
+    <string name="dialog_result_radix">基数</string>
     <string name="dialog_text_settings_title">文本屬性</string>
     <string name="dialog_text_style_chapter">章</string>
     <string name="dialog_text_style_section">節</string>
