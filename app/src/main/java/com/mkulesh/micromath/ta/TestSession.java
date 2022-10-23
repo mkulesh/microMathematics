@@ -43,6 +43,8 @@ import java.io.OutputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+
 public class TestSession extends AsyncTask<Void, Integer, Void>
 {
     public enum Mode
@@ -54,6 +56,7 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
 
     private final static String REPORT_HTML_FILE = "autotest.html";
     private final static String EXPORT_DOC_DIR = "doc";
+    private final static String EXPORT_SCRIPS_DIR = "scrips";
     private final static String TAKE_SCREENSHOTS_DIR = "screenshots";
 
     private final static int STEP_READ = 0;
@@ -166,15 +169,17 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         case STEP_READ:
         {
             readingStartTime = System.currentTimeMillis();
-            final String scriptName = (String) scripts[script];
+            final String scriptName = getScriptName(scripts[script]);
+            ViewUtils.Debug(this, "TA script name: " + scriptName);
             formulas.newDocument();
-            formulas.readFromResource(Uri.parse(scriptName), XmlLoaderTask.PostAction.NONE);
+            formulas.readFromResource(Uri.parse((String) scripts[script]), XmlLoaderTask.PostAction.NONE);
             break;
         }
         case STEP_CALC:
         {
-            final String scriptName = (String) scripts[script];
-            testScript.setScriptContent(scriptName);
+            final String scriptName = getScriptName(scripts[script]);
+            exportScript(scriptName);
+            testScript.setScriptContent((String) scripts[script]);
             testScript.setReadingDuration(System.currentTimeMillis() - readingStartTime);
             if (mode == Mode.TEST_SCRIPS)
             {
@@ -200,16 +205,14 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         }
         case STEP_EXPORT:
         {
-            final String lastPath = Uri.parse((String) scripts[script]).getLastPathSegment();
-            final String scriptName = lastPath.contains(".xml") ?
-                    lastPath.replace(".xml", "") : lastPath.replace(".mmt", "");
+            final String scriptName = getScriptName(scripts[script]);
             if (mode == Mode.EXPORT_DOC)
             {
-                exportLatex(EXPORT_DOC_DIR, scriptName);
+                exportLatex(scriptName);
             }
             else if (mode == Mode.TAKE_SCREENSHOTS)
             {
-                takeScreenshot(TAKE_SCREENSHOTS_DIR, scriptName);
+                takeScreenshot(scriptName);
             }
             break;
         }
@@ -217,8 +220,28 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         isPublishRuns.set(false);
     }
 
-    private void exportLatex(String directory, String scriptName)
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    private void exportScript(String scriptName)
     {
+        final Activity context = formulas.getActivity();
+        final File docDir = CompatUtils.getStorageDir(context, EXPORT_SCRIPS_DIR);
+        docDir.mkdir();
+        final File docFile = new File(docDir, scriptName + ".mmt");
+        formulas.writeToFile(FileUtils.ensureScheme(Uri.fromFile(docFile)));
+    }
+
+    @NonNull
+    private String getScriptName(final CharSequence uri)
+    {
+        final String lastPath = Uri.parse((String) uri).getLastPathSegment();
+        return lastPath == null? "" : lastPath.contains(".xml") ?
+                lastPath.replace(".xml", "") : lastPath.replace(".mmt", "");
+    }
+
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    private void exportLatex(String scriptName)
+    {
+        final String directory = EXPORT_DOC_DIR;
         final Activity context = formulas.getActivity();
         // Document directory and file
         final File docDir = CompatUtils.getStorageDir(context, directory);
@@ -242,16 +265,13 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         Exporter.write(formulas, docUri, FileType.LATEX, adapter, exportParameters);
     }
 
-    private void takeScreenshot(String directory, String scriptName)
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    private void takeScreenshot(String scriptName)
     {
         final Activity context = formulas.getActivity();
-        final File parent = CompatUtils.getStorageDir(context, directory);
+        final File parent = CompatUtils.getStorageDir(context, TAKE_SCREENSHOTS_DIR);
         parent.mkdir();
         final File file = new File(parent, scriptName + ".png");
-        if (file == null)
-        {
-            return;
-        }
 
         final Uri uri = FileUtils.ensureScheme(Uri.fromFile(file));
         OutputStream stream = FileUtils.getOutputStream(context, uri);
@@ -311,17 +331,14 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         File file = CompatUtils.getStorageFile(context, REPORT_HTML_FILE);
         try
         {
-            if (file != null)
-            {
-                final FileOutputStream stream = new FileOutputStream(file);
-                final StringWriter writer = new StringWriter();
-                publishHtmlReport(writer);
-                stream.write(writer.toString().getBytes());
-                stream.close();
-                final String message = String.format(context.getResources().getString(R.string.message_file_written),
-                        REPORT_HTML_FILE);
-                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-            }
+            final FileOutputStream stream = new FileOutputStream(file);
+            final StringWriter writer = new StringWriter();
+            publishHtmlReport(writer);
+            stream.write(writer.toString().getBytes());
+            stream.close();
+            final String message = String.format(context.getResources().getString(R.string.message_file_written),
+                    REPORT_HTML_FILE);
+            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
         }
         catch (Exception e)
         {
