@@ -23,6 +23,8 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.Locale;
 
+import androidx.annotation.Nullable;
+
 public class ResultProperties implements Parcelable
 {
     public enum ResultFieldType
@@ -106,12 +108,15 @@ public class ResultProperties implements Parcelable
         // empty
     }
 
-    public void assign(ResultProperties a)
+    public void assign(@Nullable ResultProperties a)
     {
-        resultFieldType = a.resultFieldType;
-        arrayLength = a.arrayLength;
-        radix = a.radix;
-        units = a.units;
+        if (a != null)
+        {
+            resultFieldType = a.resultFieldType;
+            arrayLength = a.arrayLength;
+            radix = a.radix;
+            units = a.units;
+        }
     }
 
     public void readFromXml(XmlPullParser parser)

@@ -23,6 +23,8 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.Locale;
 
+import androidx.annotation.Nullable;
+
 public class TextProperties implements Parcelable
 {
     private static final String XML_PROP_TEXT_STYLE = "textStyle";
@@ -95,10 +97,13 @@ public class TextProperties implements Parcelable
         // empty
     }
 
-    public void assign(TextProperties a)
+    public void assign(@Nullable TextProperties a)
     {
-        textStyle = a.textStyle;
-        numbering = a.numbering;
+        if (a != null)
+        {
+            textStyle = a.textStyle;
+            numbering = a.numbering;
+        }
     }
 
     public void readFromXml(XmlPullParser parser)
