@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="false">
+  <formulaList documentVersion="2" author="" title="" description="" textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="false">
     <text_fragment>
       <term key="text" text="Este exemplo demonstra como preparar e&#10;ajustar uma representação gráfica de&#10;uma função. Por exemplo, queremos&#10;desenhar tês funções diferentes:" />
     </text_fragment>
@@ -90,7 +90,7 @@
       <term key="text" text='Após as funções e seus argumentos forem&#10;definidos, você pode adicionar a caixa&#10;para desenhar usando o botão "Novo&#10;elemento" na barra de ações ou o botão&#10;"Adicionar desenho de função" a partir&#10;da barra de ferramentas:' />
     </text_fragment>
     <image_fragment fileName="asset:/images/toolbar_plot_function.svg" embedded="false" originalSize="false" width="400" height="110" colorType="auto" />
-    <plot_function width="680" height="600" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" functionsNumber="1">
+    <plot_function width="680" height="600" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="1">
       <term key="yMaxValue" text="40" />
       <term key="yFunction" color="#FF00B821" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
         <term key="argTerm" text="x" />
@@ -104,7 +104,7 @@
       <term key="text" text='A função a ser desenhada será posta no&#10;campo central-esquerdo. Também pode&#10;ser uma função embutida ou declarada&#10;previamente como uma expressão&#10;matemática que contém qualquer outros&#10;operadores e funções.&#10;&#10;A função entrada, que representa os&#10;valores-x que serão postos no campo&#10;central-esquerdo. Pode ser uma&#10;variável do tipo intervalo ou uma&#10;expressão matemática que contém uma&#10;variável de intervalo.&#10;&#10;Os outros quatro campos descrevem os&#10;limites do desenho. Se estes elementos&#10;premanecerem vazios, o programa&#10;calculará valores correspondentes&#10;automaticamente. Entretanto, você pode&#10;editar estes campos a qualquer momento&#10;e colocar lá os valores que sedejar.&#10;&#10;Você pode desenhar diversas funções na&#10;mesma visualização. Para adicionar uma&#10;outra função, selecione a função&#10;(segurando no campo central-esquerdo)&#10;depois qual outra função deve ser&#10;adicionada e toque no botão "Adicionar&#10;novo argumento" a partir da barra de&#10;tarefas:' />
     </text_fragment>
     <image_fragment fileName="asset:/images/toolbar_new_term.svg" embedded="false" originalSize="false" width="400" height="110" colorType="auto" />
-    <plot_function width="680" height="600" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" functionsNumber="3">
+    <plot_function width="680" height="600" axes_style="boxed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="3">
       <term key="yMaxValue" text="" />
       <term key="yFunction1" color="#FF00B821" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
         <term key="argTerm" text="x" />
@@ -125,11 +125,11 @@
     <text_fragment>
       <term key="text" text='Segurando no centro da área de desenho,&#10;o menu de contexto e o botão flutuante&#10;"Propriedades do objeto" aparecerá.' />
     </text_fragment>
-    <image_fragment fileName="asset:/images/plot_parameters.svg" embedded="false" originalSize="false" width="600" height="500" colorType="auto"/>
+    <image_fragment fileName="asset:/images/plot_parameters.svg" embedded="false" originalSize="false" width="600" height="500" colorType="auto" />
     <text_fragment>
       <term key="text" text='Se você tocar no botão flutuante, a&#10;janela de "Configurações de traço"&#10;será exibida. Aqui, você pode alterar&#10;o tamanho e aparência da área de&#10;desenho. Por exemplo, o gráfico&#10;cruzado parece assim:' />
     </text_fragment>
-    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" functionsNumber="1">
+    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="1">
       <term key="yMaxValue" text="40" />
       <term key="yFunction" color="#FF00B821" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
         <term key="argTerm" text="x" />
@@ -146,7 +146,7 @@
     <text_fragment>
       <term key="text" text="For example, we can use dotted lines:" />
     </text_fragment>
-    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" functionsNumber="1">
+    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="6" yLabelsNumber="5" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="1">
       <term key="yMaxValue" text="65" />
       <term key="yFunction" color="#FFE2000A" width="5" lineStyle="dotted" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.g">
         <term key="argTerm" text="x" />
@@ -160,7 +160,7 @@
       <term key="text" text='O número de eixos e rótulos e cor das&#10;linahs de grade podem ser alteradas na&#10;janela "Configurações de grade". Ela&#10;aparece segurando na área livre entre&#10;o valor mínimo de x (-30) e o símbolo&#10;de argumento (x) ou entre o símbolo x&#10;e o valor máximo de x (30) abaixo da&#10;área de desenho:' />
     </text_fragment>
     <image_fragment fileName="asset:/images/grid_parameters.svg" embedded="false" originalSize="false" width="600" height="500" colorType="auto" />
-    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="10" yLabelsNumber="7" gridLineColor="#89005EFF" functionsNumber="1">
+    <plot_function width="680" height="400" axes_style="crossed" xLabelsNumber="10" yLabelsNumber="7" gridLineColor="#89005EFF" xType="linear" yType="linear" functionsNumber="1">
       <term key="yMaxValue" text="40" />
       <term key="yFunction" color="#FFE2000A" width="5" lineStyle="dotted" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.h">
         <term key="argTerm" text="x" />

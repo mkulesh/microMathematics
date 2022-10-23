@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
-  <formulaList textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
+  <formulaList documentVersion="2" author="" title="" description="" textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
     <text_fragment>
       <term key="text" text="Esse exemplo demonstra como calcular&#10;séries e integrais." />
     </text_fragment>
@@ -64,7 +64,7 @@
         </term>
       </term>
     </equation>
-    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="6" gridLineColor="#FF838383" functionsNumber="2">
+    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="4" yLabelsNumber="6" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="2">
       <term key="yMaxValue" text="1.1" />
       <term key="yFunction1" color="#FFFFA900" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.s">
         <term key="argTerm" text="x" />
@@ -174,7 +174,7 @@
     <text_fragment>
       <term key="text" text="Podemos também desenhar as duas funções&#10;(a função de potência dada e sua&#10;aproximação) juntas no mesmo gráfico:" />
     </text_fragment>
-    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#FF838383" functionsNumber="2">
+    <plot_function width="680" height="550" axes_style="crossed" xLabelsNumber="5" yLabelsNumber="5" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="2">
       <term key="yMaxValue" text="3000" />
       <term key="yFunction1" color="#FFFF9400" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f:2">
         <term key="argTerm1" text="x" />
@@ -197,7 +197,7 @@
     <text_fragment>
       <term key="text" text='Também é possível calcular uma integral&#10;definida numericamente usando o método&#10;de Simpson. Por exemplo, podemos&#10;calcular a integral usando o elemento&#10;"Visualização de resultado":' />
     </text_fragment>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result resultFieldType="real" arrayLength="7">
       <term key="leftTerm" code="integral">
         <term key="maxValue" code="mult">
           <term key="leftTerm" text="3" />
@@ -221,7 +221,7 @@
         </term>
         <term key="index" text="x" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text="A solução analítica é" />
@@ -241,14 +241,14 @@
     <text_fragment inRightOfPrevious="true">
       <term key="text" text=",   " />
     </text_fragment>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" resultFieldType="real" arrayLength="7">
       <term key="leftTerm" text="I" />
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text="O erro numérico pode ser calculado&#10;como:" />
     </text_fragment>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result resultFieldType="real" arrayLength="7">
       <term key="leftTerm" code="minus">
         <term key="leftTerm" code="integral">
           <term key="maxValue" code="mult">
@@ -275,7 +275,7 @@
         </term>
         <term key="rightTerm" text="I" />
       </term>
-      <term key="rightTerm" />
+      <term key="rightTerm" text="" />
     </result>
     <text_fragment>
       <term key="text" text='Este erro depende do valor de "Número&#10;de dígitos significativos no&#10;resultado" que pode ser alterado na&#10;janela "Configurações do Documento"&#10;disponível a partir da barra de ações:' />
