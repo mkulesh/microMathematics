@@ -23,6 +23,8 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.Locale;
 
+import androidx.annotation.Nullable;
+
 public class ColorMapProperties implements Parcelable
 {
     private static final String XML_PROP_ZLABELSNUMBER = "zLabelsNumber";
@@ -91,10 +93,13 @@ public class ColorMapProperties implements Parcelable
         // empty
     }
 
-    public void assign(ColorMapProperties a)
+    public void assign(@Nullable ColorMapProperties a)
     {
-        zLabelsNumber = a.zLabelsNumber;
-        colorMap = a.colorMap;
+        if (a != null)
+        {
+            zLabelsNumber = a.zLabelsNumber;
+            colorMap = a.colorMap;
+        }
     }
 
     public void readFromXml(XmlPullParser parser)

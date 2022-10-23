@@ -21,6 +21,8 @@ import com.mkulesh.micromath.formula.FormulaList;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
 
+import androidx.annotation.Nullable;
+
 public class MatrixProperties implements Parcelable
 {
     private static final String XML_PROP_ROWS = "rows";
@@ -78,10 +80,13 @@ public class MatrixProperties implements Parcelable
         // empty
     }
 
-    public void assign(MatrixProperties a)
+    public void assign(@Nullable MatrixProperties a)
     {
-        rows = a.rows;
-        cols = a.cols;
+        if (a != null)
+        {
+            rows = a.rows;
+            cols = a.cols;
+        }
     }
 
     public void readFromXml(XmlPullParser parser)

@@ -27,6 +27,8 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.Locale;
 
+import androidx.annotation.Nullable;
+
 public class AxisProperties implements Parcelable
 {
     private static final String XML_PROP_XLABELSNUMBER = "xLabelsNumber";
@@ -108,17 +110,20 @@ public class AxisProperties implements Parcelable
         // empty
     }
 
-    public void assign(AxisProperties a)
+    public void assign(@Nullable AxisProperties a)
     {
-        scaleFactor = a.scaleFactor;
-        gridLineColor = a.gridLineColor;
-        xLabelsNumber = a.xLabelsNumber;
-        yLabelsNumber = a.yLabelsNumber;
-        labelLineSize = a.labelLineSize;
-        labelTextSize = a.labelTextSize;
-        gridLineWidth = a.gridLineWidth;
-        xType = a.xType;
-        yType = a.yType;
+        if (a != null)
+        {
+            scaleFactor = a.scaleFactor;
+            gridLineColor = a.gridLineColor;
+            xLabelsNumber = a.xLabelsNumber;
+            yLabelsNumber = a.yLabelsNumber;
+            labelLineSize = a.labelLineSize;
+            labelTextSize = a.labelTextSize;
+            gridLineWidth = a.gridLineWidth;
+            xType = a.xType;
+            yType = a.yType;
+        }
     }
 
     public void initialize(TypedArray a)

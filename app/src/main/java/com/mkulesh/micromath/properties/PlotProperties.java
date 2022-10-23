@@ -27,6 +27,8 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.Locale;
 
+import androidx.annotation.Nullable;
+
 public class PlotProperties implements Parcelable
 {
     private static final String XML_PROP_WIDTH = "width";
@@ -128,16 +130,19 @@ public class PlotProperties implements Parcelable
         // empty
     }
 
-    public void assign(PlotProperties a)
+    public void assign(@Nullable PlotProperties a)
     {
-        width = a.width;
-        height = a.height;
-        axesStyle = a.axesStyle;
-        meshLines = a.meshLines;
-        meshFill = a.meshFill;
-        meshOpacity = a.meshOpacity;
-        rotation = a.rotation;
-        elevation = a.elevation;
+        if (a != null)
+        {
+            width = a.width;
+            height = a.height;
+            axesStyle = a.axesStyle;
+            meshLines = a.meshLines;
+            meshFill = a.meshFill;
+            meshOpacity = a.meshOpacity;
+            rotation = a.rotation;
+            elevation = a.elevation;
+        }
     }
 
     public void initialize(Context context)

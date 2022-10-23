@@ -28,6 +28,8 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.Locale;
 
+import androidx.annotation.Nullable;
+
 public class ImageProperties implements Parcelable
 {
     private static final int DEFAULT_SIZE = 100;
@@ -118,14 +120,17 @@ public class ImageProperties implements Parcelable
         // empty
     }
 
-    public void assign(ImageProperties a)
+    public void assign(@Nullable ImageProperties a)
     {
-        fileName = a.fileName;
-        embedded = a.embedded;
-        originalSize = a.originalSize;
-        width = a.width;
-        height = a.height;
-        colorType = a.colorType;
+        if (a != null)
+        {
+            fileName = a.fileName;
+            embedded = a.embedded;
+            originalSize = a.originalSize;
+            width = a.width;
+            height = a.height;
+            colorType = a.colorType;
+        }
     }
 
     public void initialize(Context context)

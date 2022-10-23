@@ -26,6 +26,8 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.Locale;
 
+import androidx.annotation.Nullable;
+
 public class LineProperties implements Parcelable
 {
     private static final String XML_PROP_COLOR = "color";
@@ -115,14 +117,17 @@ public class LineProperties implements Parcelable
         // empty
     }
 
-    public void assign(LineProperties a)
+    public void assign(@Nullable LineProperties a)
     {
-        scaleFactor = a.scaleFactor;
-        color = a.color;
-        width = a.width;
-        lineStyle = a.lineStyle;
-        shapeType = a.shapeType;
-        shapeSize = a.shapeSize;
+        if (a != null)
+        {
+            scaleFactor = a.scaleFactor;
+            color = a.color;
+            width = a.width;
+            lineStyle = a.lineStyle;
+            shapeType = a.shapeType;
+            shapeSize = a.shapeSize;
+        }
         preparePaint();
     }
 
