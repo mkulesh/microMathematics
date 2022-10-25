@@ -1,0 +1,6 @@
+• Added possibility to format a result as a fraction.
+• Added direct and inverse fast Fourier transform: new functions fft abd ifft.
+• Added a new context menu button that switches the insertion mode: before or after the selected term.
+• Fixed a bug: an operation with an array on the top of equation results NaN or an invalid value.
+• Fixed a bug: 3D plot fails whenever one interval is used twice.
+• Fixed a bug on Android 12: soft keyboard disappears when a formula is expanded.

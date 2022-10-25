@@ -5,6 +5,38 @@
       <term key="text" text="Current release:" />
     </text_fragment>
     <text_fragment numbering="true">
+      <term key="text" text="Added possibility to format a result as&#10;a fraction:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="F" />
+      <term key="rightTerm" text="5.0436" />
+    </equation>
+    <result inRightOfPrevious="true" resultFieldType="fraction" arrayLength="7">
+      <term key="leftTerm" text="F" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="Added direct and inverse fast Fourier&#10;transform: new functions fft abd ifft." />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Added a new context menu button that&#10;switches the insertion mode: before or&#10;after the selected term." />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Fixed a bug: an operation with an array&#10;on the top of equation results NaN or&#10;an invalid value." />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Fixed a bug: 3D plot fails whenever&#10;one interval is used twice." />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Fixed a bug on Android 12: soft keyboard&#10;disappears when a formula is expanded." />
+    </text_fragment>
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Previous releases:" />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Version 2.22.1" />
+    </text_fragment>
+    <text_fragment numbering="true">
       <term key="text" text="Improved English documentation" />
     </text_fragment>
     <text_fragment numbering="true">
@@ -15,9 +47,6 @@
     </text_fragment>
     <text_fragment numbering="true">
       <term key="text" text="The app is adapted for Android 12" />
-    </text_fragment>
-    <text_fragment textStyle="subsection">
-      <term key="text" text="Previous releases:" />
     </text_fragment>
     <text_fragment textStyle="subsubsection" numbering="true">
       <term key="text" text="Version 2.22.0" />
@@ -34,13 +63,13 @@
         <term key="argTerm" text="asset:/examples/three_component_signal.dat" />
       </term>
     </equation>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result resultFieldType="real" arrayLength="7">
       <term key="leftTerm" code="rows">
         <term key="argTerm" text="Sig" />
       </term>
       <term key="rightTerm" text="" />
     </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" resultFieldType="real" arrayLength="7">
       <term key="leftTerm" code="cols">
         <term key="argTerm" text="Sig" />
       </term>
@@ -63,7 +92,7 @@
         <term key="element[2][2]" text="1" />
       </term>
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" resultFieldType="real" arrayLength="7">
       <term key="leftTerm" text="E" />
       <term key="rightTerm" text="" />
     </result>
@@ -134,11 +163,11 @@
       <term key="leftTerm" text="num" />
       <term key="rightTerm" text="254" />
     </equation>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" radix="16">
+    <result inRightOfPrevious="true" resultFieldType="real" arrayLength="7" radix="16">
       <term key="leftTerm" text="num" />
       <term key="rightTerm" text="" />
     </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7" radix="2">
+    <result inRightOfPrevious="true" resultFieldType="real" arrayLength="7" radix="2">
       <term key="leftTerm" text="num" />
       <term key="rightTerm" text="" />
     </result>
@@ -148,7 +177,7 @@
     <text_fragment numbering="true">
       <term key="text" text="Added automatic parentheses around a&#10;fraction:" />
     </text_fragment>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result resultFieldType="real" arrayLength="7">
       <term key="leftTerm" code="divide_slash">
         <term key="leftTerm" text="200" />
         <term key="rightTerm" code="plus">
@@ -187,7 +216,7 @@
         </term>
       </term>
     </equation>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result resultFieldType="real" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.link.s1:4">
         <term key="argTerm1" text="10" unit="cm" />
         <term key="argTerm2" code="divide_slash">
@@ -261,11 +290,11 @@
         <term key="maxValue" text="3" />
       </term>
     </equation>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result resultFieldType="real" arrayLength="7">
       <term key="leftTerm" text="r" />
       <term key="rightTerm" text="" />
     </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" resultFieldType="real" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.r">
         <term key="argTerm" text="idx" />
       </term>
@@ -295,41 +324,41 @@
     <text_fragment numbering="true">
       <term key="text" text="Implemented SI units of information:" />
     </text_fragment>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result resultFieldType="real" arrayLength="7">
       <term key="leftTerm" text="1" unit="bit" />
       <term key="rightTerm" text="" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result resultFieldType="real" arrayLength="7">
       <term key="leftTerm" text="1" unit="bps" />
       <term key="rightTerm" text="" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result resultFieldType="real" arrayLength="7">
       <term key="leftTerm" text="8" unit="bit" />
       <term key="rightTerm" text="" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result resultFieldType="real" arrayLength="7">
       <term key="leftTerm" code="divide_slash">
         <term key="leftTerm" text="1" unit="byte" />
         <term key="rightTerm" text="" unit="s" />
       </term>
       <term key="rightTerm" text="" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result resultFieldType="real" arrayLength="7">
       <term key="leftTerm" text="1" unit="kbit" />
       <term key="rightTerm" text="" />
     </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" resultFieldType="real" arrayLength="7">
       <term key="leftTerm" text="1" unit="kB" />
       <term key="rightTerm" text="" />
     </result>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result resultFieldType="real" arrayLength="7">
       <term key="leftTerm" code="divide_slash">
         <term key="leftTerm" text="1" unit="kbit" />
         <term key="rightTerm" text="" unit="s" />
       </term>
       <term key="rightTerm" text="" />
     </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" resultFieldType="real" arrayLength="7">
       <term key="leftTerm" code="divide_slash">
         <term key="leftTerm" text="1" unit="kB" />
         <term key="rightTerm" text="" unit="s" />
@@ -474,13 +503,13 @@
         <term key="rightTerm" text="m" />
       </term>
     </equation>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result resultFieldType="real" arrayLength="7">
       <term key="leftTerm" code="rows">
         <term key="argTerm" text="M" />
       </term>
       <term key="rightTerm" text="" />
     </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" resultFieldType="real" arrayLength="7">
       <term key="leftTerm" code="cols">
         <term key="argTerm" text="M" />
       </term>
@@ -653,7 +682,7 @@
         </term>
       </term>
     </equation>
-    <result disableCalculation="false" hideResultField="false" arrayLength="5">
+    <result resultFieldType="real" arrayLength="5">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
         <term key="argTerm1" text="k" />
         <term key="argTerm2" text="m" />
@@ -837,14 +866,14 @@
         </term>
       </term>
     </equation>
-    <result disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result resultFieldType="real" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
         <term key="argTerm1" text="5" />
         <term key="argTerm2" text="10" />
       </term>
       <term key="rightTerm" text="" />
     </result>
-    <result inRightOfPrevious="true" disableCalculation="false" hideResultField="false" arrayLength="7">
+    <result inRightOfPrevious="true" resultFieldType="real" arrayLength="7">
       <term key="leftTerm" code="content:com.mkulesh.micromath.index.M:2">
         <term key="argTerm1" text="10" />
         <term key="argTerm2" text="5" />
