@@ -64,7 +64,7 @@ public class ExportToMathJax extends ExportToLatex
         writer.append("  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});\n");
         writer.append("</script>\n");
         writer.append("<script type=\"text/javascript\"\n");
-        writer.append("  src=\"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\">\n");
+        writer.append("  src=\"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\">\n");
         writer.append("</script>\n");
         writer.append("<style>\n");
         writer.append("  td { margin: 0px; padding: 0px 10px 0px 10px; }\n");
