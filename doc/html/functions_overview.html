@@ -546,26 +546,80 @@ boundaries:</p>
   <td>$$G2_{n,\, m}  = \begin{bmatrix}0.042&0.063&0.084&0.105&0.125&0.146&\dots&-0.876\\0.063&0.084&0.105&0.125&0.146&0.167&\dots&-0.886\\0.084&0.105&0.125&0.146&0.167&0.187&\dots&-0.896\\0.105&0.125&0.146&0.167&0.187&0.208&\dots&-0.905\\0.125&0.146&0.167&0.187&0.208&0.228&\dots&-0.914\\0.146&0.167&0.187&0.208&0.228&0.249&\dots&-0.922\\\dots&\dots&\dots&\dots&\dots&\dots&\dots&\dots\\0.855&0.844&0.833&0.821&0.809&0.797&\dots&0.0\\\end{bmatrix}$$</td>
 </tr></table><br>
 
-<p>Get count of rows and columns</p>
-
-<table border = "0" cellspacing="0" cellpadding="0"><tr>
-  <td>$$rows \left( G2\right)  = 101.0$$</td>
-  <td>$$cols \left( G2\right)  = 201.0$$</td>
-</tr></table><br>
-
-<p>Define an array as vector or matrix, use object
-properties to change the array size:</p>
+<p>Define an array as vector or matrix, use
+object properties to change the array size:</p>
 
 <table border = "0" cellspacing="0" cellpadding="0"><tr>
   <td>$$E := \begin{bmatrix}1&0&0\\0&1&0\\0&0&1\\\end{bmatrix}$$</td>
   <td>$$E = \begin{bmatrix}1.0&0.0&0.0\\0.0&1.0&0.0\\0.0&0.0&1.0\\\end{bmatrix}$$</td>
 </tr></table><br>
 
-<h4>13 Output radix</h4>
+<h4>13 Signal processing</h4>
 
-<p>Using result property dialog, it is possible to change
-the radix for integer results, for example use binary,
-octal or hexadecimal bases:</p>
+<p>Read a matrix fom an ASCII CSV file: </p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$F := read \left( asset:/examples/three\_component\_signal.dat\right) $$</td>
+</tr></table><br>
+
+<p>Get count of rows and columns:</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$rows \left( F\right)  = 2000.0$$</td>
+  <td>$$cols \left( F\right)  = 4.0$$</td>
+</tr></table><br>
+
+<p>Extract and expand the second column to have
+a length equal power of 2:</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$N := 2048$$</td>
+  <td>$$k := \left[ 0,\, 1 \,..\, N - 1 \right]$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$D_{k}  := if \left( k < rows \left( F\right) ,\, F_{k,\, 1} ,\, 0\right) $$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td><img src="functions_overview_fig3.png"alt="Image"></td>
+</tr></table><br>
+
+<p>Calculate the fast Fourier transform (when
+the given array has the length equal to
+power of 2) or a  continuous (slow) Fourier
+transform for other array length:</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$FT := fft \left( D\right) $$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td><img src="functions_overview_fig4.png"alt="Image"></td>
+</tr></table><br>
+
+<p>Calculate the fast inverse Fourier transform
+(when the given array has the length equal
+to power of 2) or a  continuous inverse
+Fourier transform for other array length:</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$F := ifft \left( FT\right) $$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td><img src="functions_overview_fig5.png"alt="Image"></td>
+</tr></table><br>
+
+<h4>14 Output format</h4>
+
+<p>Using result property dialog, it is possible
+to change the format of the result field: </p>
+
+<p>14.1 Radix</p>
+
+<p>Use a radix for integer results, for example
+use binary, octal or hexadecimal bases:</p>
 
 <table border = "0" cellspacing="0" cellpadding="0"><tr>
   <td>$$M := 254$$</td>
@@ -575,6 +629,24 @@ octal or hexadecimal bases:</p>
   <td>$$M = 11111110$$</td>
   <td>$$M = 376$$</td>
   <td>$$M = fe$$</td>
+</tr></table><br>
+
+<p>14.1 Fraction</p>
+
+<p>Show a fraction for the floating results:</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$F := 4 + 1 / 45$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>As a "raw" number:</td>
+  <td>$$F = 4.02222$$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>As a fraction:</td>
+  <td>$$F = 4\ 1/45$$</td>
 </tr></table><br>
 
 </body></html>

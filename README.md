@@ -41,9 +41,9 @@ This app is not only for students. Anyone who enjoys mathematics or requires mor
 For more screenshots, see directory images/screenshots.
 
 ## Documentation
-* [Supported Functions Overview](http://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/functions_overview.html)
-* [Supported Units Overview](http://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/units_overview.html)
-* [Supported Units Of Information](http://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/units_of_information.html)
+* [Supported Functions Overview](https://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/functions_overview.html)
+* [Supported Units Overview](https://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/units_overview.html)
+* [Supported Units Of Information](https://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/units_of_information.html)
 * [The latest PDF version of the User Manual](https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.22.1.pdf)
 
 ## Posts on Habr (in Russian)
@@ -54,11 +54,10 @@ For more screenshots, see directory images/screenshots.
 
 ## Reviews and publications:
 
-* [Press Release: Introducing microMathematics: the First Spreadsheet Oriented Mathematical Calculator for Android](http://www.androidappsreview.com/2014/09/29/micro-mathematics-press-release/)
-* [Advanced calculator to solve the most complex mathematical equations smart phone](http://mn1professional.blogspot.de/2015/12/advanced-calculator-to-solve-most.html)
-* [«Микро-математика»: формулы — это просто (in Russian)](http://4pda.ru/2015/09/01/241701/)
+* [Advanced calculator to solve the most complex mathematical equations smart phone](https://mn1professional.blogspot.de/2015/12/advanced-calculator-to-solve-most.html)
+* [«Микро-математика»: формулы — это просто (in Russian)](https://4pda.to/2015/09/01/241701/)
 * [microMathematics — отличный научный калькулятор и графопостроитель на Android (in Russian)](https://lifehacker.ru/2015/10/21/micro-mathematics/)
-* [MathCAD для Android..? (In Russian)](http://svchushki.blogspot.de/2017/04/mathcad-android.html)
+* [MathCAD для Android..? (In Russian)](https://svchushki.blogspot.de/2017/04/mathcad-android.html)
 * [Micro Mathematics : Android Math Book Demo (Video)](https://www.youtube.com/watch?v=eUzF1gXd6rc&feature=player_embedded)
 * [How to Use microMathematics (Video)](https://www.youtube.com/watch?v=-gS3lz6Ijdc&feature=player_embedded)
 
