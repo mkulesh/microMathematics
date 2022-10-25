@@ -18,6 +18,7 @@ import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.TermField;
 import com.mkulesh.micromath.formula.TermParser;
 import com.mkulesh.micromath.properties.DocumentProperties;
+import com.mkulesh.micromath.utils.ViewUtils;
 
 import org.apache.commons.math3.complex.Complex;
 import org.apache.commons.math3.fraction.Fraction;
@@ -404,10 +405,12 @@ public class CalculatedValue
             {
                 str = "0";
             }
-            else if (f.getDenominator() != 0 && f.getNumerator() > f.getDenominator())
+            else if (FastMath.abs(value) > 1.0)
             {
-                final int intPart = f.getNumerator() / f.getDenominator();
-                str = intPart + " " + (f.getNumerator() - intPart * f.getDenominator()) + "/" + f.getDenominator();
+                final int intPart = (int) value;
+                final double fractionPart = FastMath.abs(value - (double) intPart);
+                final Fraction f1 = new Fraction(fractionPart, epsilon, 100);
+                str = intPart + " " + f1.getNumerator() + "/" + f1.getDenominator();
             }
             else
             {
