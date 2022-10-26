@@ -44,7 +44,7 @@ For more screenshots, see directory images/screenshots.
 * [Supported Functions Overview](https://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/functions_overview.html)
 * [Supported Units Overview](https://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/units_overview.html)
 * [Supported Units Of Information](https://htmlpreview.github.io/?https://github.com/mkulesh/microMathematics/blob/master/doc/html/units_of_information.html)
-* [The latest PDF version of the User Manual](https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.22.1.pdf)
+* [The latest PDF version of the User Manual](https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.23.0.pdf)
 
 ## Posts on Habr (in Russian)
 
