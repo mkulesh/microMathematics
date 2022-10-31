@@ -51,7 +51,7 @@
     <dimen name="formula_hor_symbol_padding">4dp</dimen>
     <dimen name="formula_hor_bracket_padding">0dp</dimen>
     <dimen name="formula_vert_term_padding">4dp</dimen>
-    <dimen name="formula_matrix_column_padding">8dp</dimen>
+    <dimen name="formula_matrix_column_padding">4dp</dimen>
 
     <!-- Function plot -->
     <dimen name="plot_grid_line_width">0.5dp</dimen>
