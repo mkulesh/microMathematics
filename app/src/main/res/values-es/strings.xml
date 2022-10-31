@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ microMathematics - Extended Visual Calculator
+  ~ Copyright (C) 2014-2022 by Mikhail Kulesh
+  ~
+  ~ This program is free software: you can redistribute it and/or modify it under the terms of the GNU
+  ~ General Public License as published by the Free Software Foundation, either version 3 of the License,
+  ~ or (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+  ~ even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details. You should have received a copy of the GNU General
+  ~ Public License along with this program.
+  -->
+
+<resources>
+
+    <!-- General settings -->
+    <string name="app_name">microMathematics</string>
+    <string name="app_short_name">μMath</string>
+    <string name="app_description">Calculadora integral: Edición en vivo y cálculos de alta precisión</string>
+    
+    <!-- Drawer -->
+    <string name="drawer_open">Abrir Navegación de Aplicaciones</string>
+    <string-array name="activity_titles">
+        <item>Hoja de trabajo</item>
+        <item>Ayuda de uso</item>
+        <item>Ejemplo</item>
+        <item>Ejemplo</item>
+        <item>Acerca de</item>
+        <item>Documentación</item>
+        <item>Califica esta aplicación</item>
+        <item>Obtenga la versión Premium</item>
+    </string-array>
+    <string-array name="activity_subtitles">
+        <item>Mi documento</item>
+        <item>Descripción de la aplicación</item>
+        <item>Gráfica de una función</item>
+        <item>Gráfica de una función polar</item>
+        <item>microMathematics</item>
+        <item>Descargar PDF</item>
+        <item>Califica esta aplicación</item>
+        <item>Obtenga la versión Premium</item>
+    </string-array>
+    <string-array name="activity_resources">
+        <item></item>
+        <item>asset:/doc_en/how_to_use.mmt</item>
+        <item>asset:/doc_en/function_plot.mmt</item>
+        <item>asset:/doc_en/polar_plot.mmt</item>
+        <item>asset:/doc_en/about_micromath.mmt</item>
+        <item>https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v1.22.pdf</item>
+        <item>https://play.google.com/store/apps/details?id=com.mkulesh.micromath</item>
+        <item>https://play.google.com/store/apps/details?id=com.mkulesh.micromath.plus</item>
+    </string-array>
+    <string name="activity_example">Ejemplos</string>
+    <string name="activity_welcome">asset:/doc_es/welcome_es.mmt</string>
+    
+    <!-- Permissions -->
+    <string name="allow_storage_access_title">Permitir el acceso a los archivos de las hojas de trabajo</string>
+    <string name="allow_storage_access_description">microMathematics requiere tu permiso para acceder a los archivos de las hojas de trabajo de este dispositivo</string>
+    <string name="allow_storage_access_grant">Dar la aprobación</string>
+    
+    <!-- Main menu -->
+    <string name="action_exit">Salir</string>
+    <string name="action_exit_confirm">Para salir, presione la tecla de regreso otra vez</string>
+    <string name="action_play">Calcular</string>
+    <string name="action_stop">Cancelar los cálculos</string>
+    <string name="action_object_properties">Propiedades del objeto</string>
+    <string name="action_undo">Deshacer</string>
+    <string name="action_discard">Descartar</string>
+    <string name="action_document_settings">Ajustes de documentos</string>
+    <string name="action_new_document">Crear documento</string>
+    <string name="action_open">Abrir archivo</string>
+    <string name="action_save">Guardar archivo</string>
+    <string name="action_save_as">Guardar como</string>
+    <string name="action_export">Exportar</string>
+    <string name="action_details">Detalles</string>
+    <string name="action_app_settings">Ajustes de la aplicación</string>
+
+    <!-- Context menu -->
+    <string name="context_expand">Ampliar la selección</string>
+    <string name="context_copy">Copiar</string>
+    <string name="context_cut">Cortar</string>
+    <string name="context_paste">Pegar</string>
+
+    <!-- Application settings: Languages -->
+    <string name="pref_app_language">Idioma</string>
+
+    <!-- Application settings: Themes -->
+    <string name="pref_app_theme">Tema</string>
+    <string-array name="pref_theme_names">
+        <item>Claro (Morada y verde)</item>
+        <item>Claro (Índigo y Naranja)</item>
+        <item>Claro (Petróleo y naranja oscuro)</item>
+        <item>Claro (Gris azul y añil)</item>
+        <item>Claro en alto contraste (Negro sobre fondo blanco)</item>
+        <item>Oscuro (Gris y turquesa)</item>
+        <item>Oscuro contraste (Blanco sobre fondo negro)</item>
+    </string-array>
+
+    <!-- Application settings: zoom mode -->
+    <string name="pref_zoom">Permitir ampliación</string>
+    <string-array name="pref_zoom_names">
+        <item>Permitir a todos</item>
+        <item>Doble toque desactivado</item>
+        <item>Desactivar todo</item>
+    </string-array>
+
+    <!-- Other application settings -->
+    <string name="pref_developer_mode">Modo desarrollador</string>
+    <string name="pref_exit_confirm">Pulse dos veces la tecla de retroceso para salir</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_navigation_accept">Aceptar</string>
+    <string name="dialog_navigation_cancel">Cancelar</string>
+    <string name="dialog_button_decrease">Disminuir</string>
+    <string name="dialog_button_increase">Incrementar</string>
+    <string name="dialog_new_formula_insert_before">Insertar antes de la selección</string>
+    <string name="dialog_new_formula_insert_after">Insertar después de la selección</string>
+    <string name="dialog_new_formula_insert_left">Insertar a la izquierda del seleccionado</string>
+    <string name="dialog_new_formula_insert_right">Insertar a la derecha de los seleccionados</string>
+    <string name="dialog_line_settings_title">Ajustes de línea</string>
+    <string name="dialog_line_settings_widthlabel">Líneas y estilo</string>
+    <string name="dialog_axis_settings_title">Ajustes de cuadrícula</string>
+    <string name="dialog_axis_settings_xlabels">Leyenda del eje X</string>
+    <string name="dialog_axis_settings_ylabels">Leyenda del eje Y</string>
+    <string name="dialog_axis_settings_type_log10">Muestra logarítmica</string>
+    <string name="dialog_plot_settings_title">Ajustes de la gráfica</string>
+    <string name="dialog_plot_settings_width">Ancho de gráfico</string>
+    <string name="dialog_plot_settings_height">Alto de gráfico</string>
+    <string name="dialog_plot_settings_axes_boxed">Leyenda de gráfico</string>
+    <string name="dialog_plot_settings_axes_crossed">Entrelazado</string>
+    <string name="dialog_plot_settings_axes_none">Sin gráficos ni líneas</string>
+    <string name="dialog_plot_point_shapes">Muestra los símbolos</string>
+    <string name="dialog_plot_point_shape_size" formatted="false">Tamaño del símbolo (% del ancho de la línea)</string>
+    <string name="dialog_plot_point_square">Puntos cuadrados</string>
+    <string name="dialog_plot_point_circle">Puntos circulares</string>
+    <string name="dialog_plot_point_diamond">Puntos en forma de rombo</string>
+    <string name="dialog_plot_point_cross">Puntos en forma de X</string>
+    <string name="dialog_surface_settings_contour">Contorno del gráfico</string>
+    <string name="dialog_surface_settings_surface">Color de fondo del gráfico</string>
+    <string name="dialog_surface_settings_mesh_lines">Mostrar las líneas de la malla</string>
+    <string name="dialog_surface_settings_mesh_fill">Color de fondo de la malla</string>
+    <string name="dialog_surface_settings_mesh_opacity">Transparencia</string>
+    <string name="dialog_surface_settings_rotation">Ángulo de rotación</string>
+    <string name="dialog_surface_settings_elevation">Inclinación</string>
+    <string name="dialog_document_settings_author">Autor</string>
+    <string name="dialog_document_settings_document_title">Título</string>
+    <string name="dialog_document_settings_description">Descripción</string>
+    <string name="dialog_document_settings_reformat">Formato de texto</string>
+    <string name="dialog_document_settings_width_size">Longitud de la línea</string>
+    <string name="dialog_document_settings_significant_digits">Dígitos significativos en el resultado</string>
+    <string name="dialog_document_settings_redefine_allowed">Permitir redefinición de ecucaciones</string>
+    <string name="dialog_result_details_argument">Argumento</string>
+    <string name="dialog_result_details_value">Valor</string>
+    <string name="dialog_image_settings_title">Ajustes de imagen</string>
+    <string name="dialog_image_settings_file">Archivo de imagen (png, bmp, gif, jpeg, svg)</string>
+    <string name="dialog_image_settings_select_file">Seleccione el archivo</string>
+    <string name="dialog_image_settings_embedded">Imagen incrustada</string>
+    <string name="dialog_image_settings_original_size">Tamaño original</string>
+    <string name="dialog_image_settings_custom_size">Tamaño original por el usuario</string>
+    <string name="dialog_image_settings_width">Ancho de imagen</string>
+    <string name="dialog_image_settings_height">Altura de imagen</string>
+    <string name="dialog_image_settings_original_color">Color original</string>
+    <string name="dialog_image_settings_auto_color">Color automático</string>
+    <string name="dialog_result_title">Vista de resultados</string>
+    <string name="dialog_result_disable_calculation">Do not calculate</string>
+    <string name="dialog_result_hide_result_field">Hide result field</string>
+    <string name="dialog_result_array_length">Número de valores</string>
+    <string name="dialog_text_settings_title">Ajustes de texto</string>
+    <string name="dialog_text_style_chapter">Capítulo</string>
+    <string name="dialog_text_style_section">Sección</string>
+    <string name="dialog_text_style_subsection">Subsección</string>
+    <string name="dialog_text_style_subsubsection">Subsección secundaria</string>
+    <string name="dialog_text_style_text_body">Texto</string>
+    <string name="dialog_text_style_numbering">Numeración</string>
+    <string name="dialog_list_items">elemento (e)</string>
+    <string name="dialog_function_selection">Función</string>
+    <string name="dialog_palette_settings_title">Configuración de la barra de herramientas</string>
+    <string name="dialog_matrix_title">Configuración de la matriz</string>
+    <string name="dialog_matrix_rows">Número de filas</string>
+    <string name="dialog_matrix_cols">Número de columnas</string>
+
+    <!-- Mathematical elements -->
+    <string name="math_new_element">Nuevo elemento</string>
+    <string name="math_new_equation">Añadir ecucación</string>
+    <string name="math_new_result">Añadir vista de resultados</string>
+    <string name="math_new_function_plot">Añadir gráfica de la función</string>
+    <string name="math_new_text_fragment">Añadir fragmento de texto</string>
+    <string name="math_new_image_fragment">Añadir imagen desde archivo</string>
+    <string name="image_fragment_text">Añadir fragmento textual</string>
+    <string name="math_new_term">Intervalo de tiempo</string>
+    <string name="math_equidistant_interval">Intervalo equidistante</string>
+    <string name="math_operator_plus">Adición</string>
+    <string name="math_operator_minus">Sustracción</string>
+    <string name="math_operator_mult">Multiplicación</string>
+    <string name="math_operator_divide">División</string>
+    <string name="math_operator_divide_slash">División</string>
+    <string name="math_function_identity">Paréntesis</string>
+    <string name="math_function_power">Potenciación</string>
+    <string name="math_function_abs">Valor del argumento</string>
+    <string name="math_function_conjugate">La conjugación de un argumento de números complejos</string>
+    <string name="math_function_re">Parte real del número complejo</string>
+    <string name="math_function_im">Parte imaginaria del número complejo</string>
+    <string name="math_function_sqrt">Raíz cuadrada del argumento</string>
+    <string name="math_function_nthrt">Raíz enésima del argumento</string>
+    <string name="math_function_sin">Seno del argumento</string>
+    <string name="math_function_asin">Arcoseno del argumento en intervalo [-pi/2..pi/2]</string>
+    <string name="math_function_sinh">Seno hiperbólico del argumento</string>
+    <string name="math_function_cos">Coseno del argumento</string>
+    <string name="math_function_acos">Arcocoseno del argumento en intervalo [0..pi]</string>
+    <string name="math_function_cosh">Coseno hiperbólico del argumento</string>
+    <string name="math_function_tan">Tangente del argumento</string>
+    <string name="math_function_atan">Arcotangente del argumento en intervalo [-pi/2..pi/2]</string>
+    <string name="math_function_atan2">Arcotangente de y/x en intervalo [-pi..pi]</string>
+    <string name="math_function_tanh">Tangente hiperbólico del argumento</string>
+    <string name="math_function_exp">Suministra el valor exponencial de x a la base \'e\'</string>
+    <string name="math_function_ln">Calcula el logaritmo natural de la base \'e\'</string>
+    <string name="math_function_log">Logaritmo de un número a la base dada</string>
+    <string name="math_function_log10">Logaritmo de un número a la base 10</string>
+    <string name="math_function_ceil">Rendondea al próximo entero (hacia positivo)</string>
+    <string name="math_function_floor">Rendondea al anterior entero (hacia negativo)</string>
+    <string name="math_function_random">Números aleatorios entre cero y el argumento indicado</string>
+    <string name="math_function_factorial">Producto de todos los números naturales menores e iguales al argumento</string>
+    <string name="math_function_max">Indica el mayor de dos valores transferidos (hacia positivo)</string>
+    <string name="math_function_min">Indica el menor de dos valores transferidos (hacia negativo)</string>
+    <string name="math_function_mod">Calcula el residuo al dividir dos números</string>
+    <string name="math_function_perc">Calcula un porcentaje</string>
+    <string name="math_function_round">Redondea un valor decimal al número especificado de lugares decimales</string>
+    <string name="math_function_trunc">Calcula la parte entera de un número fraccionario dado</string>
+    <string name="math_function_sign">Devuelve un entero que indica el signo de un número</string>
+    <string name="math_function_csc">Función cosecante del argumento (recíproca del seno)</string>
+    <string name="math_function_sec">Función secante del argumento (recíproca del coseno)</string>
+    <string name="math_function_cot">Función cotangente del argumento (recíproca del tangente)</string>
+    <string name="math_function_acsc">Función arcocosecante del argumento</string>
+    <string name="math_function_asec">Función arcosecante del argumento</string>
+    <string name="math_function_acot">Función arcocotangente del argumento</string>
+    <string name="math_function_csch">Cosecante hiperbólico del argumento</string>
+    <string name="math_function_sech">Secante hiperbólico del argumento</string>
+    <string name="math_function_coth">Cotangente hiperbólico del argumento</string>
+
+    <!-- Errors -->
+    <string name="error_max_layout_depth">El líｭmite de profundidad de diseño para esta versión de Android ha sido alcanzado</string>
+    <string name="error_brackets_not_completed">Los corchetes no se cerraron</string>
+    <string name="error_invalid_variable_name">Nombre de variable inválida</string>
+    <string name="error_unknown_variable">El símbolo no es ni una variable conocida ni un argumento</string>
+    <string name="error_unknown_function">La función %s no está definida ni es una función preparada</string>
+    <string name="error_unknown_array">La matriz %s no está definida</string>
+    <string name="error_not_an_array">El acceso a los índices no está permitido porque %s no es una matriz</string>
+    <string name="error_not_a_function">El uso del argumento no está permitido porque %s no es una función</string>
+    <string name="error_invalid_array_dimension">Dimensiones de las matrices %s aúnn no están admitidas</string>
+    <string name="error_invalid_array_interval">Intervalo %s es referido pero no declarado como índice</string>
+    <string name="error_invalid_array_index">El índice %s no es un intervalo conocido</string>
+    <string name="error_recursive_call">El nombre es llamado recursivamente desde su definición</string>
+    <string name="error_not_differentiable">La función no puede ser diferenciada por %s</string>
+    <string name="error_invalid_brackets_order">El orden de los paréntesis es inválido</string>
+    <string name="error_empty_argument_list">La lista de argumentos de la función está vacía</string>
+    <string name="error_invalid_comma_position">Punto decimal inválido</string>
+    <string name="error_empty_argument">Argumento vacío</string>
+    <string name="error_invalid_argument">El argumento de la función solo puede llevar letras y números</string>
+    <string name="error_ensure_single_interval">No se permite el uso de dos o más intervalos</string>
+    <string name="error_ensure_double_interval">La funciñon debe tener dos argumentos de intervalo</string>
+    <string name="error_indirect_intervals">Los intervalos %s se muestran indiscretamente</string>
+    <string name="error_duplicated_identifier">El idenificador está en uso</string>
+    <string name="error_forbidden_arguments">El identificador no debe permitir argumentos</string>
+    <string name="error_forbidden_complex">El campo no debe permitir números complejos</string>
+    <string name="error_forbidden_imaginary_unit">Símbolo \'i\' es exclusivo para operar con números complejos</string>
+    <string name="error_forbidden_array">La matriz no esta permitida en este campo</string>
+    <string name="error_nan_value">El campo contiene un valor no numérico</string>
+    <string name="error_unknown_file_format">El formato del archivo %s es desconocido</string>
+    <string name="error_file_read">No es posible leer el archivo %s</string>
+    <string name="error_file_write">No es posible escribir el archivo %s</string>
+    <string name="error_calculation_aborted">Se canceló la operación de cálculo</string>
+    <string name="error_paste_root_into_term">No se puede pegar una ecuación raíz en un término</string>
+    <string name="error_paste_term_into_text">No se puede pegar un término ya que tal contenido no está permitido para este campo</string>
+    <string name="error_out_of_memory">No hay suficiente memoria para la visualización de la parcela</string>
+
+    <!-- File manager -->
+    <string name="fman_local">Almacenamiento interno</string>
+    <string name="fman_local_descr">Accede archivos de la primera unidad de almacenamiento</string>
+    <string name="fman_external">Almacenamiento externo</string>
+    <string name="fman_external_descr">Accede archivos de una tarjeta SD</string>
+    <string name="fman_saf">Documento</string>
+    <string name="fman_saf_descr">Accede los archivos dentro de la carpeta Documentos</string>
+    <string name="fman_assets">Recursos de \"microMathematics\"</string>
+    <string name="fman_assets_descr">Documentación y ejemplos realizados con \"microMathematics\"</string>
+    <string name="fman_home">Inicio</string>
+    <string name="fman_sort_by_name">Ordenar por nombre</string>
+    <string name="fman_sort_by_ext">Ordenar por extensión</string>
+    <string name="fman_sort_by_size">Ordenar por tamaño</string>
+    <string name="fman_sort_by_date">Ordenar por fecha</string>
+    <string name="fman_refresh_title">Actualizar</string>
+    <string name="fman_open_saf">Abrir almacenamiento</string>
+    <string name="fman_operation">Operaciones</string>
+    <string name="fman_create_folder_title">Crear carpeta</string>
+    <string name="fman_create_folder_dialog_prompt">Nombre de la nueva carpeta:</string>
+    <string name="fman_create_folder_error">No se puede crear la carpeta \"%s\"</string>
+    <string name="fman_rename_title">Renombrar</string>
+    <string name="fman_rename_dialog_prompt">Renombrar \"%s\" a:</string>
+    <string name="fman_rename_error">No es posible renombrar a \"%s\"</string>
+    <string name="fman_delete_title">Borrar</string>
+    <string name="fman_delete_dialog_prompt">¿Desea borrar \"%s\"?</string>
+    <string name="fman_delete_confirm">El archivo seleccionado fue borrado</string>
+    <string name="fman_delete_error">No es posible borrar a \"%s\"</string>
+    <string name="fman_warning_dialog_title">Advertencia</string>
+    <string name="fman_error_no_items">No se seleccionaron elementos</string>
+    <string name="fman_error_sec_err">Error de seguridad: %s</string>
+    <string name="fman_error_no_such_folder">La carpeta \"%s\" no es válida</string>
+    <string name="fman_new_file">Nombre de nuevo archivo</string>
+    <string name="fman_overwrite_file">El archivo \"%s\" ya existe. ¿Está seguro que desea sobreescribirlo?</string>
+    <string name="fman_file_type">Tipo de archivo</string>
+    <string name="fman_file_type_selection">Seleccionar tipo de archivo</string>
+    <string name="fman_file_type_png_image">Imagen PNG</string>
+    <string name="fman_file_type_jpeg_image">Imagen JPEG</string>
+    <string name="fman_file_type_latex">Documento LaTeX</string>
+    <string name="fman_file_type_mathjax">Documento HTML</string>
+
+    <!-- Messages -->
+    <string name="message_file_written">Archivo %s ya está escrito</string>
+    
+    <!-- Developer options -->
+    <string name="action_dev_autotest">Prueba automática</string>
+    <string name="action_dev_export_doc">Exportar documentación</string>
+    <string name="action_dev_take_screenshot">Exportar captura de pantalla</string>
+
+</resources>

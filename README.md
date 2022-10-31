@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/badge/license-GNU_GPLv3-orange.svg)](https://github.com/mkulesh/microMathematics/blob/master/LICENSE)
 
-# <img src="https://github.com/mkulesh/microMathematics/blob/light/images/icon.png" align="center" height="48" width="48"> "microMathematics Light - Basic visual calculator"
+# <img src="https://github.com/mkulesh/microMathematics/blob/light/images/icon.png" align="center" height="48" width="48"> "microMathematics - Basic visual calculator"
 
 this is a fork of microMathematics Plus that supports basic level of mathematical calculations. It does not support 3D plots, summation and product operations, derivative and definite integrals, logical operators, arrays, units.
 

@@ -18,7 +18,7 @@
     <!-- General settings -->
     <string name="app_name">microMathematics</string>
     <string name="app_short_name">μMath</string>
-    <string name="app_description">Visual calculator: live editing and computations of mathematical formulas</string>
+    <string name="app_description">Visual calculator: live editing and computations of formulas</string>
     
     <!-- Drawer -->
     <string name="drawer_open">Open navigation drawer</string>
@@ -90,6 +90,10 @@
         <item>English</item>
         <item>Русский</item>
         <item>Deutsch</item>
+        <item>Português (Brasil)</item>
+        <item>Español</item>
+        <item>繁體中文</item>
+        <item>简体中文</item>
     </string-array>
     <!-- Non-Translatable parameters of languages -->
     <string name="pref_default_language_code" translatable="false">system</string>
@@ -98,6 +102,10 @@
         <item>en</item>
         <item>ru</item>
         <item>de</item>
+        <item>pt-rBR</item>
+        <item>es</item>
+        <item>zh-rTW</item>
+        <item>zh-rCN</item>
     </string-array>
 
     <!-- Application settings: Themes -->

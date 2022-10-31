@@ -18,7 +18,7 @@
     <!-- General settings -->
     <string name="app_name">microMathematics</string>
     <string name="app_short_name">μMath</string>
-    <string name="app_description">Визуальный калькулятор: редактирование и вычисление математических формул</string>
+    <string name="app_description">Визуальный калькулятор: редактирование и вычисление формул</string>
     
     <!-- Drawer -->
     <string name="drawer_open">Открыть навигатор</string>

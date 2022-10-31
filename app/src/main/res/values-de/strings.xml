@@ -74,7 +74,7 @@
     <string name="action_save">Datei speichern</string>
     <string name="action_save_as">Speichern unter</string>
     <string name="action_export">Exportieren</string>
-    <string name="action_details">Details</string>
+    <string name="action_details">Einzelheiten</string>
     <string name="action_app_settings">App Einstellungen</string>
 
     <!-- Context menu -->

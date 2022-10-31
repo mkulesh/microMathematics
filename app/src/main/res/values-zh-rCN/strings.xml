@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ microMathematics - Extended Visual Calculator
+  ~ Copyright (C) 2014-2022 by Mikhail Kulesh
+  ~
+  ~ This program is free software: you can redistribute it and/or modify it under the terms of the GNU
+  ~ General Public License as published by the Free Software Foundation, either version 3 of the License,
+  ~ or (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+  ~ even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details. You should have received a copy of the GNU General
+  ~ Public License along with this program.
+  -->
+
+<resources>
+
+    <!-- General settings -->
+    <string name="app_name">microMathematics</string>
+    <string name="app_short_name">μMath</string>
+    <string name="app_description">扩展可视化计算器：实时编辑并计算公式</string>
+    
+    <!-- Drawer -->
+    <string name="drawer_open">打开导航菜单</string>
+    <string-array name="activity_titles">
+        <item>工作表</item>
+        <item>如何使用</item>
+        <item>示例</item>
+        <item>示例</item>
+        <item>关于</item>
+        <item>文档</item>
+        <item>为这个应用软件评分</item>
+        <item>获取高级版</item>
+    </string-array>
+    <string-array name="activity_subtitles">
+        <item>我的文档</item>
+        <item>应用简介</item>
+        <item>函数图像</item>
+        <item>极坐标函数图像</item>
+        <item>microMathematics</item>
+        <item>下载 PDF</item>
+        <item>为这个应用软件评分</item>
+        <item>获取高级版</item>
+    </string-array>
+    <string-array name="activity_resources">
+        <item></item>
+        <item>asset:/doc_en/how_to_use.mmt</item>
+        <item>asset:/doc_en/function_plot.mmt</item>
+        <item>asset:/doc_en/polar_plot.mmt</item>
+        <item>asset:/doc_en/about_micromath.mmt</item>
+        <item>https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v1.22.pdf</item>
+        <item>https://play.google.com/store/apps/details?id=com.mkulesh.micromath</item>
+        <item>https://play.google.com/store/apps/details?id=com.mkulesh.micromath.plus</item>
+    </string-array>
+    <string name="activity_example">示例</string>
+    <string name="activity_welcome">asset:/doc_en/welcome.mmt</string>
+
+    <!-- Permissions -->
+    <string name="allow_storage_access_title">允许访问工作表文件</string>
+    <string name="allow_storage_access_description">此应用需要您授权以访问此设备上的工作表文件</string>
+    <string name="allow_storage_access_grant">授权</string>
+    
+    <!-- Main menu -->
+    <string name="action_exit">退出</string>
+    <string name="action_exit_confirm">再按一次返回键退出</string>
+    <string name="action_play">计算工作表</string>
+    <string name="action_stop">停止计算</string>
+    <string name="action_object_properties">对象属性</string>
+    <string name="action_undo">撤销</string>
+    <string name="action_discard">删除选中内容</string>
+    <string name="action_document_settings">文档设置</string>
+    <string name="action_new_document">新建文档</string>
+    <string name="action_open">打开文件</string>
+    <string name="action_save">保存文件</string>
+    <string name="action_save_as">另存为</string>
+    <string name="action_export">导出</string>
+    <string name="action_details">详细信息</string>
+    <string name="action_app_settings">应用设置</string>
+
+    <!-- Context menu -->
+    <string name="context_expand">扩选</string>
+    <string name="context_copy">复制</string>
+    <string name="context_cut">剪切</string>
+    <string name="context_paste">粘贴</string>
+
+    <!-- Application settings: Languages -->
+    <string name="pref_app_language">应用语言</string>
+
+    <!-- Application settings: Themes -->
+    <!-- Translatable list of themes -->
+    <string name="pref_app_theme">应用主题</string>
+    <string-array name="pref_theme_names">
+        <item>亮（紫色和綠色）</item>
+        <item>亮（群青和桔黄）</item>
+        <item>亮（青蓝和朱红）</item>
+        <item>亮（蓝灰和群青）</item>
+        <item>高对比度亮（白底黑字）</item>
+        <item>暗（暗灰和松石绿）</item>
+        <item>高对比度暗（黑底白字）</item>
+    </string-array>
+
+    <!-- Application settings: zoom mode -->
+    <string name="pref_zoom">變焦模式</string>
+    <string-array name="pref_zoom_names">
+        <item>全部啟用</item>
+        <item>雙擊已禁用</item>
+        <item>禁用所有</item>
+    </string-array>
+
+    <!-- Other application settings -->
+    <string name="pref_developer_mode">开发者选项</string>
+    <string name="pref_exit_confirm">按返回键两次退出</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_navigation_accept">确定</string>
+    <string name="dialog_navigation_cancel">取消</string>
+    <string name="dialog_button_decrease">减小</string>
+    <string name="dialog_button_increase">增大</string>
+    <string name="dialog_new_formula_insert_before">插入到已选内容之前</string>
+    <string name="dialog_new_formula_insert_after">插入到已选内容之后</string>
+    <string name="dialog_new_formula_insert_left">插入到已选内容左侧</string>
+    <string name="dialog_new_formula_insert_right">插入到已选内容右侧</string>
+    <string name="dialog_line_settings_title">线设置</string>
+    <string name="dialog_line_settings_widthlabel">线宽和线型</string>
+    <string name="dialog_axis_settings_title">网格设置</string>
+    <string name="dialog_axis_settings_xlabels">X 标签数</string>
+    <string name="dialog_axis_settings_type_log10">对数刻度</string>
+    <string name="dialog_axis_settings_ylabels">Y 标签数</string>
+    <string name="dialog_plot_settings_title">图像设置</string>
+    <string name="dialog_plot_settings_width">图像宽度</string>
+    <string name="dialog_plot_settings_height">图像高度</string>
+    <string name="dialog_plot_settings_axes_boxed">边界框</string>
+    <string name="dialog_plot_settings_axes_crossed">交叉</string>
+    <string name="dialog_plot_settings_axes_none">不显示边界框和轴</string>
+    <string name="dialog_plot_point_shapes">显示记号</string>
+    <string name="dialog_plot_point_shape_size" formatted="false">记号大小（% 线宽）</string>
+    <string name="dialog_plot_point_square">方形点</string>
+    <string name="dialog_plot_point_circle">圆形点</string>
+    <string name="dialog_plot_point_diamond">菱形点</string>
+    <string name="dialog_plot_point_cross">X 形点</string>
+    <string name="dialog_surface_settings_contour">等高线图</string>
+    <string name="dialog_surface_settings_surface">曲面图</string>
+    <string name="dialog_surface_settings_mesh_lines">显示网格线</string>
+    <string name="dialog_surface_settings_mesh_fill">用颜色填充网格</string>
+    <string name="dialog_surface_settings_mesh_opacity">不透明度</string>
+    <string name="dialog_surface_settings_rotation">旋转角</string>
+    <string name="dialog_surface_settings_elevation">俯仰角</string>
+    <string name="dialog_document_settings_author">作者</string>
+    <string name="dialog_document_settings_document_title">标题</string>
+    <string name="dialog_document_settings_description">描述</string>
+    <string name="dialog_document_settings_reformat">格式化文本片段</string>
+    <string name="dialog_document_settings_width_size">行长度</string>
+    <string name="dialog_document_settings_significant_digits">结果显示位数</string>
+    <string name="dialog_document_settings_redefine_allowed">允许重定义</string>
+    <string name="dialog_result_details_argument">参数</string>
+    <string name="dialog_result_details_value">值</string>
+    <string name="dialog_image_settings_title">图像设置</string>
+    <string name="dialog_image_settings_file">文件 (png, bmp, gif, jpeg, svg)</string>
+    <string name="dialog_image_settings_select_file">选择文件</string>
+    <string name="dialog_image_settings_embedded">嵌入式图像</string>
+    <string name="dialog_image_settings_original_size">原始大小</string>
+    <string name="dialog_image_settings_custom_size">自定义大小</string>
+    <string name="dialog_image_settings_width">图像宽度</string>
+    <string name="dialog_image_settings_height">图像高度</string>
+    <string name="dialog_image_settings_original_color">原始颜色</string>
+    <string name="dialog_image_settings_auto_color">自动颜色</string>
+    <string name="dialog_result_title">结果属性</string>
+    <string name="dialog_result_disable_calculation">Do not calculate</string>
+    <string name="dialog_result_hide_result_field">Hide result field</string>
+    <string name="dialog_result_array_length">值数量</string>
+    <string name="dialog_text_settings_title">文本属性</string>
+    <string name="dialog_text_style_chapter">章</string>
+    <string name="dialog_text_style_section">节</string>
+    <string name="dialog_text_style_subsection">段</string>
+    <string name="dialog_text_style_subsubsection">分段</string>
+    <string name="dialog_text_style_text_body">正文</string>
+    <string name="dialog_text_style_numbering">编号</string>
+    <string name="dialog_list_items">项</string>
+    <string name="dialog_function_selection">函数</string>
+    <string name="dialog_palette_settings_title">工具栏设置</string>
+    <string name="dialog_matrix_title">矩陣設定</string>
+    <string name="dialog_matrix_rows">行數</string>
+    <string name="dialog_matrix_cols">列數</string>
+
+    <!-- Mathematical elements -->
+    <string name="math_new_element">新元素</string>
+    <string name="math_new_equation">添加定义式</string>
+    <string name="math_new_result">添加求解式</string>
+    <string name="math_new_function_plot">添加函数图像</string>
+    <string name="math_new_text_fragment">添加文本段</string>
+    <string name="math_new_image_fragment">从文件添加图片</string>
+    <string name="image_fragment_text">长按导入图片</string>
+    <string name="math_new_term">添加新参数</string>
+    <string name="math_equidistant_interval">等间距数组</string>
+    <string name="math_operator_plus">加</string>
+    <string name="math_operator_minus">减</string>
+    <string name="math_operator_mult">乘</string>
+    <string name="math_operator_divide">除</string>
+    <string name="math_operator_divide_slash">除</string>
+    <string name="math_function_identity">括号</string>
+    <string name="math_function_power">指数</string>
+    <string name="math_function_abs">实参数或复参数的绝对值</string>
+    <string name="math_function_conjugate">复参数的共轭</string>
+    <string name="math_function_re">复参数的实部</string>
+    <string name="math_function_im">复参数的虚部</string>
+    <string name="math_function_sqrt">参数的平方根</string>
+    <string name="math_function_nthrt">参数的 n 次方根</string>
+    <string name="math_function_sin">参数的正弦</string>
+    <string name="math_function_asin">参数的反正弦，值域为 [-pi/2..pi/2]</string>
+    <string name="math_function_sinh">参数的双曲正弦</string>
+    <string name="math_function_cos">参数的余弦</string>
+    <string name="math_function_acos">参数的反余弦，值域为 [0..pi]</string>
+    <string name="math_function_cosh">参数的双曲余弦</string>
+    <string name="math_function_tan">参数的正切</string>
+    <string name="math_function_atan">参数的反正切，值域为 [-pi/2..pi/2]</string>
+    <string name="math_function_atan2">y/x 的反正切，值域为 [-pi..pi]</string>
+    <string name="math_function_tanh">参数的双曲正切</string>
+    <string name="math_function_exp">参数作为 \'e\' 的指数</string>
+    <string name="math_function_ln">参数的自然对数</string>
+    <string name="math_function_log">指定底的对数</string>
+    <string name="math_function_log10">参数的以 10 为底的对数</string>
+    <string name="math_function_ceil">大于等于参数的最小整数（最接近负无穷）</string>
+    <string name="math_function_floor">小于等于参数的最大整数（最接近正无穷）</string>
+    <string name="math_function_random">0 和参数之间的伪随机值</string>
+    <string name="math_function_factorial">小于或等于参数的正整数之积</string>
+    <string name="math_function_max">两个参数中的最大值（最接近正无穷）</string>
+    <string name="math_function_min">两个参数中的最小值（最接近负无穷）</string>
+    <string name="math_function_mod">返回第一个参数除以第二个参数的余数</string>
+    <string name="math_function_perc">计算百分比</string>
+    <string name="math_function_round">真实值 x 的近似值，精确到第 n 位小数</string>
+    <string name="math_function_trunc">通过移除小数部分返回实数的整数部分</string>
+    <string name="math_function_sign">如果 x=0 ，返回 0 ，如果 x>0 ，返回 1 ，否则返回 -1</string>
+    <string name="math_function_csc">参数的余割（正弦的倒数）</string>
+    <string name="math_function_sec">参数的正割（余弦的倒数）</string>
+    <string name="math_function_cot">参数的余切（正切的倒数）</string>
+    <string name="math_function_acsc">参数的反余割</string>
+    <string name="math_function_asec">参数的反正割</string>
+    <string name="math_function_acot">参数的反余切</string>
+    <string name="math_function_csch">参数的双曲余割</string>
+    <string name="math_function_sech">参数的双曲正割</string>
+    <string name="math_function_coth">参数的双曲余切</string>
+
+    <!-- Errors -->
+    <string name="error_max_layout_depth">已达到此 Android 版本的布局深度限制</string>
+    <string name="error_brackets_not_completed">括号未闭合</string>
+    <string name="error_invalid_variable_name">无效的变量名</string>
+    <string name="error_unknown_variable">符号不是已知的变量或参数</string>
+    <string name="error_unknown_function">函数 %s 未定义，也不是内置函数</string>
+    <string name="error_unknown_array">数组 %s 未定义</string>
+    <string name="error_not_an_array">%s 无法通过索引访问，因为它不是一个数组</string>
+    <string name="error_not_a_function">%s 无法通过变量访问，因为它不是一个函数</string>
+    <string name="error_invalid_array_dimension">尚不支持 %s 维数组</string>
+    <string name="error_invalid_array_interval">引用了步长 %s，但未将其声明为索引</string>
+    <string name="error_invalid_array_index">索引 %s 不是已知步长</string>
+    <string name="error_recursive_call">方程在它的定义中被递归调用</string>
+    <string name="error_not_differentiable">函数在 %s 不可微</string>
+    <string name="error_invalid_brackets_order">无效的括号顺序</string>
+    <string name="error_empty_argument_list">函数应该有一个参数</string>
+    <string name="error_invalid_comma_position">无效的逗号位置</string>
+    <string name="error_empty_argument">一个参数不能为空</string>
+    <string name="error_invalid_argument">函数参数应只包含字母或数字</string>
+    <string name="error_ensure_single_interval">函数只能依赖于一个区间</string>
+    <string name="error_ensure_double_interval">函数应当依赖于两个区间</string>
+    <string name="error_indirect_intervals">有间接引用的区间：%s</string>
+    <string name="error_duplicated_identifier">此标识符已被使用</string>
+    <string name="error_forbidden_arguments">此标识符不允许有参数</string>
+    <string name="error_forbidden_complex">此字段不允许复数</string>
+    <string name="error_forbidden_imaginary_unit">符号 \'i\' 是为在这种情况下不允许的虚单位保留的</string>
+    <string name="error_forbidden_array">此字段不允许数组</string>
+    <string name="error_nan_value">字段包含非数字值</string>
+    <string name="error_unknown_file_format">文件 %s 格式未知</string>
+    <string name="error_file_read">无法打开文件 %s</string>
+    <string name="error_file_write">无法保存文件 %s</string>
+    <string name="error_calculation_aborted">计算中止</string>
+    <string name="error_paste_root_into_term">无法将等式粘贴进一项</string>
+    <string name="error_paste_term_into_text">无法粘贴项，因为此字段不允许此内容</string>
+    <string name="error_out_of_memory">图像可视化内存不足</string>
+
+    <!-- File manager -->
+    <string name="fman_local">内部存储</string>
+    <string name="fman_local_descr">从主文件系统访问文件</string>
+    <string name="fman_external">外部存储卡</string>
+    <string name="fman_external_descr">访问 SD 卡上文件。在某些设备上它可能是只读的</string>
+    <string name="fman_saf">文档</string>
+    <string name="fman_saf_descr">访问文档存储中的文件</string>
+    <string name="fman_assets">\"microMathematics\" 资源</string>
+    <string name="fman_assets_descr">此应用提供的文档和示例</string>
+    <string name="fman_home">主目录</string>
+    <string name="fman_sort_by_name">按文件名排序</string>
+    <string name="fman_sort_by_ext">按扩展名排序</string>
+    <string name="fman_sort_by_size">按文件大小排序</string>
+    <string name="fman_sort_by_date">按日期排序</string>
+    <string name="fman_refresh_title">刷新</string>
+    <string name="fman_open_saf">打开存储</string>
+    <string name="fman_operation">操作</string>
+    <string name="fman_create_folder_title">新建文件夹</string>
+    <string name="fman_create_folder_dialog_prompt">新文件夹名称：</string>
+    <string name="fman_create_folder_error">无法新建文件夹“%s”</string>
+    <string name="fman_rename_title">重命名</string>
+    <string name="fman_rename_dialog_prompt">将“%s”重命名为：</string>
+    <string name="fman_rename_error">无法重命名“%s”</string>
+    <string name="fman_delete_title">删除</string>
+    <string name="fman_delete_dialog_prompt">删除“%s”？</string>
+    <string name="fman_delete_confirm">选中的文件已删除</string>
+    <string name="fman_delete_error">无法删除“%s”</string>
+    <string name="fman_warning_dialog_title">警告</string>
+    <string name="fman_error_no_items">未选择完成此操作的项目</string>
+    <string name="fman_error_sec_err">安全问题：%s</string>
+    <string name="fman_error_no_such_folder">“%s”不是有效的文件夹</string>
+    <string name="fman_new_file">新文件名</string>
+    <string name="fman_overwrite_file">文件“%s”已存在，您确定想要覆盖它吗？</string>
+    <string name="fman_file_type">文件类型</string>
+    <string name="fman_file_type_selection">选择文件类型</string>
+    <string name="fman_file_type_png_image">PNG 图片</string>
+    <string name="fman_file_type_jpeg_image">JPEG 图片</string>
+    <string name="fman_file_type_latex">LaTeX 文档</string>
+    <string name="fman_file_type_mathjax">HTML 文档</string>
+    
+    <!-- Messages -->
+    <string name="message_file_written">文件 %s 已写入</string>
+    
+    <!-- Developer options -->
+    <string name="action_dev_autotest">自动测试</string>
+    <string name="action_dev_export_doc">导出文档</string>
+    <string name="action_dev_take_screenshot">导出屏幕截图</string>
+
+</resources>
