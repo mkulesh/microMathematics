@@ -53,17 +53,20 @@
         <item>asset:/ta/ts_result_fraction.mmt</item>
         <item>asset:/ta/ts_result_view.mmt</item>
     </string-array>
-    
+
     <string-array name="doc_export_scripts" translatable="false">
         <item>asset:/doc_en/how_to_use.mmt</item>
         <item>asset:/doc_en/function_plot.mmt</item>
         <item>asset:/doc_en/polar_plot.mmt</item>
+        <item>asset:/doc_en/about_micromath.mmt</item>
         <item>asset:/doc_de/how_to_use_de.mmt</item>
         <item>asset:/doc_de/function_plot_de.mmt</item>
         <item>asset:/doc_de/polar_plot_de.mmt</item>
+        <item>asset:/doc_de/about_micromath_de.mmt</item>
         <item>asset:/doc_ru/how_to_use_ru.mmt</item>
         <item>asset:/doc_ru/function_plot_ru.mmt</item>
         <item>asset:/doc_ru/polar_plot_ru.mmt</item>
+        <item>asset:/doc_ru/about_micromath_ru.mmt</item>
     </string-array>
 
     <string-array name="asset_filter" translatable="false">
@@ -72,6 +75,7 @@
         <item>doc_de</item>
         <item>examples</item>
         <item>images</item>
+        <item>error_messages.mmt</item>
         <item>functions_overview.mmt</item>
     </string-array>
 

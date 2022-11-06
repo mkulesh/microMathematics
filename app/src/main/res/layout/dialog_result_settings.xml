@@ -34,7 +34,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_marginTop="@dimen/dialog_content_padding"
                 android:text="@string/dialog_result_field_type" />
 
             <RadioGroup

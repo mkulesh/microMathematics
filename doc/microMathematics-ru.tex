@@ -1,6 +1,7 @@
 \documentclass[DIV=calc, paper=a4, fontsize=11pt, twocolumn]{scrartcl}
 \usepackage{microMathematics-ru}
 \usepackage[russian]{babel}
+\usepackage{hyphsubst}
 
 % Begin document
 \begin{document}
@@ -8,18 +9,32 @@
 \thispagestyle{fancy} % Enabling the custom headers/footers for the first page
 
 \begin{bf}
-microMathematics - это первый в мире математический
-калькулятор для Андроид, основанный на подготовке интерактивных документов с
-вычислениями и визуальным сопровождением.
+% This is the first part of the file about_micromath_ru.tex
+microMathematics - это первый в
+мире математический калькулятор
+для Андроид, основанный на
+подготовке интерактивных
+документов с вычислениями и
+визуальным сопровождением.
 
-Он базируется на мощном пальце-ориентированном редакторе формул, который
-позволяет пользователям создавать, редактировать и вычислять формулы в
-стандартном математическом виде.
+Он базируется на мощном
+пальце-ориентированном редакторе
+формул, который позволяет
+пользователям создавать,
+редактировать и вычислять формулы
+в стандартном математическом виде.
 
-microMathematics поддерживает вычисления на уровне средней школы и имеет
-следующие ограничения: приложение не поддерживает специальные функции,
-векторы, матрицы, интегрирование, дифференциации, единицы измерений и
-многие другие аспекты высшей математики.
+microMathematics поддерживает
+базовый уровень математических
+вычислений. Если есть
+необходимость в дополнительных
+вычислительных возможностях
+(трёхмерные графики, сумма и
+произведение ряда, производные и
+определённые интегралы, логические
+оператор, единицы измерений), то
+обратите внимание на премиальную
+версию.
 \end{bf}
 
 \section{Описание программы}
@@ -30,5 +45,38 @@ microMathematics поддерживает вычисления на уровне
 
 \section{Пример: полярный график}
 \input{polar_plot_ru}
+
+\section{О программе}
+
+% This is the second part of the file about_micromath_ru.tex
+\subsection*{Иконка}
+
+Иконка приложения получена в нём же
+с использованием функции,
+определённой в полярной системе
+координат:
+\begin{center}\begin{tabular}{c}
+                $f := \left[ 0.01,\, 0.03 \,..\, 150 \right]$
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $s(f) := 4 + sin \left( 5 \cdot f\right)  + \frac{sin \left( 10 \cdot f\right) }{2} + \frac{sin \left( 60 \cdot f\right) }{6}$
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $r(f) := 0.9 \cdot \left( 1 + f / 50 \right) \cdot s \left( f\right) $
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $x(f) := r \left( f\right)  \cdot cos \left( f\right) $
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $y(f) := r \left( f\right)  \cdot sin \left( f\right) $
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/about_micromath_fig1.png} \end{tabular}\end{center}
+
+\subsection*{Лицензия}
+
+Copyright © 2014-2022 by Mikhail
+Kulesh under the GNU General
+Public License, Version 3:
+www.gnu.org/licenses/gpl-3.0
 
 \end{document}

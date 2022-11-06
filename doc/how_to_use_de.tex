@@ -3,23 +3,43 @@
 
 
 Diese App ist eine leistungsstarke
-Rechensoftware im Arbeitsblatt Format.
+Rechensoftware im Arbeitsblatt-Format.
 Das Arbeitsblatt kann frei editiert,
-auf einer SD Karte gespeichert werden,
-von einer SD Karte aus geöffnet oder
-in ein Bild- oder LaTeX-Format
-exportiert werden. Es ermöglicht die
-sofortige Bearbeitung von eingesetzten
-mathematischen Bezeichnungen sowie
-deren automatische Berechnung.
+auf einer SD Karte gespeichert, von
+einer SD Karte aus geöffnet oder in
+ein Bild- oder LaTeX-Format exportiert
+werden.
 
-Die folgenden Objekte stehen zur
-Verfügung: Gleichungen,
+Das Arbeitsblatt ist ein
+mathematisches Dokument, das Text,
+Formeln und Plots enthält. Es
+ermöglicht die sofortige Bearbeitung
+von eingesetzten mathematischen
+Bezeichnungen sowie deren automatische
+Berechnung.
+
+\subsection*{Grundlagen}
+
+Die App enthält einen
+Arbeitsblattbereich in der Mitte,
+Werkzeugleiste unten, Menüleiste oben
+und Aktionsbutton unten rechts.
+
+Der Inhalt der Menüleiste hängt von
+der Bildschirmauflösung und
+Geräteorientierung ab. Die Buttons der
+Menüleiste können dann entweder direkt
+in der Menüleiste oder im
+''Drei-Punkte-Menü'' angezeigt werden.
+
+Die folgenden Objekte/Elemente stehen
+zur Verfügung: Gleichungen,
 Ergebnisansichten, graphische
 Darstellungen, Textfragmente und
-Bilder. Diese Broschüre gibt Ihnen
-einen Überblick darüber, wie man diese
-Objekte erstellen und bearbeiten kann.
+Bilder. Diese werden über die Icons in
+der Werkzeugleiste oder über den
+''Neu''-Button in der Menüleiste
+eingefügt.
 
 \subsection{Bearbeitung}
 
@@ -32,24 +52,30 @@ Alle Symbole können auch über die
 Tastatur eingefügt werden. Um
 herauszufinden, welche Taste mit
 welchem mathematischen Symbol
-korrespondiert, lesen Sie den Hinweis
+korrespondiert, lesen Sie den Hinweis,
 indem Sie den jeweiligen Button lange
 gedrückt halten.
 
 Langes Gedrückthalten eines Terms
 erlaubt Ihnen, diesen Term
-auszuwählen. Der ausgewählte Term kann
+auszuwählen. Oben erscheint ein
+Kontextmenü. Der ausgewählte Term kann
 gelöscht, in die Zwischenablage
-kopiert, von dort aus eingefügt
-werden, oder eine Funktion oder ein
-Symbol kann im Nachhinein von der
-Werkzeugleiste oder Tastatur aus
-eingefügt werden.
+kopiert oder von dort aus eingefügt
+werden. Eine Funktion oder ein Symbol
+kann auch von der Werkzeugleiste oder
+Tastatur aus eingefügt werden. Der
+Button ''Einfügen Links von den
+ausgewählten'' aus dem Kontextmenü
+schaltet den Einfügemodus um: vor oder
+nach dem markierten Term. Der Button
+''Auswahl ausdehnen'' ermöglicht das
+Erweitern des ausgewählten Bereichs.
 
 Sie können auch den ''Rückgängig''
 Button in der Menüleiste benutzen, um
 die letzte Eingabe rückgängig zu
-machen:
+machen (''Undo-Funktion''):
 \begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig1.png} \end{tabular}\end{center}
 
 \subsection{Gleichungen}
@@ -57,29 +83,29 @@ machen:
 Eine Gleichung definiert eine
 numerische Konstante, ein Intervall
 oder eine Funktion. Um eine Gleichung
-zu erstellen, nutzen Sie den ''Neu''
-Button in der Menüleiste
+zu erstellen, nutzen Sie den
+''Neu''-Button in der Menüleiste
 \begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig2.png} \end{tabular}\end{center}
 
-oder den ''Gleichung hinzufügen'' Button
+oder den ''Gleichung hinzufügen''-Button
 der Werkzeugleiste:
 \begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig3.png} \end{tabular}\end{center}
 
-Eine Gleichung mit zwei lehren Feldern
+Eine Gleichung mit zwei leeren Feldern
 wird erstellt:
 \begin{center}\begin{tabular}{c}
   ${\Box} := {\Box}$
 \end{tabular}\end{center}
 
 Der Name der Gleichung muss in dem
-linken Feld eingegeben sein. Der Name
-darf nur Buchstaben und Zahlen
+linken Feld eingegeben werden. Der
+Name darf nur Buchstaben und Zahlen
 enthalten und wird in anderen
 Gleichungen genutzt, um auf diese
 Gleichung zu verweisen.
 
-Sie können Menüleiste benutzen, um
-''Dokumenteinstellungen'' Dialog zu
+Sie können die Menüleiste benutzen, um
+den ''Dokumenteinstellungen''-Dialog zu
 öffnen:
 \begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig4.png} \end{tabular}\end{center}
 
@@ -131,7 +157,7 @@ Konstante verwendet werden:
 \end{tabular}\end{center}
 
 Eine komplexe Zahl als eine Konstante
-wird durch zwei reelle Zahlen und
+wird durch zwei reelle Zahlen und die
 imaginäre Einheit ''i'' definiert:
 \begin{center}\begin{tabular}{c}
   $z := 5 + 3i$
@@ -141,11 +167,11 @@ imaginäre Einheit ''i'' definiert:
 
 Eine Intervall-Gleichung definiert eine
 Variable, die sich von einem
-vorgegebenen Minimalwert in einem
-vorgegebenem Schritte zu einem
-vorgegebenen Maximalwert verändert.
-Diese Variable kann als Parameter
-genutzt werden, um eine
+vorgegebenen Minimalwert mit einer
+vorgegebenen Schrittweite/Abstand zu
+einem vorgegebenen Maximalwert
+verändert. Diese Variable kann als
+Parameter genutzt werden, um eine
 Funktionswert-Tabelle oder einen
 Funktionsgraphen zu erstellen.
 
@@ -155,7 +181,7 @@ einer leeren Gleichung fest. Wählen
 Sie auf der rechten Seite der
 Gleichung entweder das Symbol '':'' oder
 klicken Sie den Button ''Äquidistantes
-Intervall'' in der Werkzeugleiste:
+Intervall'' in der Werkzeugleiste an:
 \begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig5.png} \end{tabular}\end{center}
 
 Das erste Element ist hier der
@@ -167,8 +193,8 @@ Intervalls.
   $x := \left[ 0,\, 0.1 \,..\, 10 \right]$
 \end{tabular}\end{center}
 
-Man kann auf die Intervallemente über
-Index zugreifen:
+Man kann auf die Intervallelemente über
+einen Index zugreifen:
 \begin{center}\begin{tabular}{ccc}
   $x \left( 0\right)  = 0.0$ &
   $x \left( 1\right)  = 0.1$ &
@@ -221,52 +247,65 @@ definieren:
 \end{tabular}\end{center}
 
 Rechts von der Funktion findet sich
-eine mathematische Formel um die
+eine mathematische Formel, um die
 Funktion zu berechnen. Falls diese
 Formel das Funktionsargument nicht
 enthält, wird diese Funktion als
 Konstante interpretiert.
 
-Sie können also in dieser Formel eine
-integrierte oder zuvor definierte
-Funktion einzufügen. Geben Sie dafür
+Sie können in dieser Formel also auch
+eine integrierte oder zuvor definierte
+Funktion einfügen. Geben Sie dafür
 einen Namen ein, klicken Sie auf das
 linke Klammer-Symbol ''('' und wählen
 Sie das Argument. Dies kann auch eine
 Formel sein, die andere Operatoren
 oder Funktionen enthält.
 
+Das Dokument ''functions\_overview.mmt''
+im Ordner ''Hilfsmittel der
+MicroMathematics'' listet alle
+verfügbaren Funktionen auf.
+
 \subsection{Ergebnisansicht}
 
 Dieses Element soll das Ergebnis einer
 Berechnung als Zahl oder Tabelle
 darstellen. Um eine Ergebnisansicht zu
-erstellen, verwenden Sie den ''Neu''
-Button in der Menüleiste oder
-''Ergebnisansicht hinzufügen'' Button in
-der Werkzeugleiste:
+erstellen, verwenden Sie den
+''Neu''-Button in der Menüleiste oder
+den ''Ergebnisansicht
+hinzufügen''-Button in der
+Werkzeugleiste:
 \begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig6.png} \end{tabular}\end{center}
 
-Eine Gleichung mit zwei lehren Feldern
-wird erstellt:
+Eine Gleichung mit zwei leeren Feldern
+wird erstellt, wobei das linke Feld
+gefüllt werden muss:
 \begin{center}\begin{tabular}{c}
   ${\Box} = {\Box}$
 \end{tabular}\end{center}
 
 Der linke Term enthält eine zu
 berechnende Formel und der rechte Term
-ist das Rechnungsergebnis. Hier können
-Sie sämtliche zuvor bestimmten
-Konstanten und Funktionen verwenden,
-sowie alle integrierte Funktionen:
+ist das Rechnungsergebnis. Das
+Resultat wird angezeigt, wenn Sie den
+Aktionsbutton ''Berechnen'' drücken.
+
+Innerhalb des linken Terms können Sie
+sämtliche zuvor bestimmte Konstanten
+und Funktionen, sowie alle
+integrierten Funktionen verwenden:
 \begin{center}\begin{tabular}{c}
   ${e}^{{\pi}} \cdot f \left( NPi2\right)  = 2.27286E-14$
 \end{tabular}\end{center}
 
+\subsubsection{Konstanten}
+
 Falls der linke Teil keine
-''intervallähnlichen'' Variablen enthält
-ist das Rechenergebnis nur eine reelle
-oder komplexe Zahl.
+''intervallähnlichen'' Variablen
+enthält, ist das Rechenergebnis nur
+eine reelle oder komplexe Zahl.
 \begin{center}\begin{tabular}{c}
   $y \left( N - 1\right)  - y \left( 0\right)  = 9.95$
 \end{tabular}\end{center}
@@ -279,17 +318,19 @@ oder komplexe Zahl.
   $\sqrt{sin \left( \frac{3}{2} \cdot {\pi}\right) }  = 0.0+1.0i$
 \end{tabular}\end{center}
 
+\subsubsection{Intervalle}
+
 Falls der linke Teil als Variable ein
 Intervall enthält, ist das Ergebnis
 ein Vektor von Werten, die dem
 Intervall entsprechen. Aufgrund der
-Platzbeschränkungen auf dem Display
+Platzbeschränkungen auf dem Display,
 werden nur die ersten sechs sowie das
 letzte Element des Vektors angezeigt:
 \begin{center}\begin{tabular}{ccc}
   $x = \begin{bmatrix}0.0\\0.1\\0.2\\0.3\\0.4\\0.5\\\dots\\10.0\\\end{bmatrix}$ &
   $y = \begin{bmatrix}0.0\\0.05\\0.1\\0.15\\0.2\\0.25\\\dots\\10.0\\\end{bmatrix}$ &
-  $2 \cdot y = \begin{bmatrix}0.0\\0.1\\0.2\\0.3\\0.4\\0.5\\\dots\\20.0\\\end{bmatrix}$ \cr
+  $2 \cdot y = \begin{bmatrix}0\\1/10\\1/5\\3/10\\2/5\\1/2\\\dots\\20\\\end{bmatrix}$ \cr
 \end{tabular}\end{center}
 
 Sie können die Anzahl der angezeigten
@@ -298,14 +339,14 @@ Ergebnisse ändern. Halten Sie auf dem
 linken Abschnitt lange gedrückt und
 selektieren Sie mittels Kontextmenü
 die komplette Formel. Wenn die Formel
-markiert ist, erscheint ein Action
-Button ''Objekteinstellungen''. Ein Tap
-auf diesen Button öffnet das
+markiert ist, erscheint ein
+Aktionsbutton ''Objekteinstellungen''.
+Ein Tap auf diesen Button öffnet das
 Dialogfenster ''Ergebnisansicht'' mit
 diesen Einstellungen:
 \begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig7.png} \end{tabular}\end{center}
 
-Auch wird ein weiters Action Button
+Auch wird ein weiterer Aktionsbutton
 ''Details'' angezeigt. Ein Tap auf
 diesen Button öffnet das Dialogfenster
 ''Details'', wo Sie alle Vektorelemente
@@ -315,7 +356,7 @@ Bitte beachten Sie, dass die
 Verwendung von zwei oder mehr
 intervallähnlichen Variablen im linken
 Teil einer Ergebnisansicht in dieser
-Version des Apps nicht gestattet ist.
+Version der App nicht möglich ist.
 
 \subsection{Funktionsgraph}
 
@@ -323,12 +364,13 @@ Das Funktionsgraph-Element bildet den
 Graphen einer Funktion ab, die von
 einem einzigen Argument abhängt. Um
 einen Graphen zu erstellen, nutzen Sie
-den ''Neu'' Button in der Menüleiste
-oder ''Funktionsgraph hinzufügen''
-Button in der Werkzeugleiste:
+den ''Neu''-Button in der Menüleiste
+oder den ''Funktionsgraph
+hinzufügen''-Button in der
+Werkzeugleiste:
 \begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig8.png} \end{tabular}\end{center}
 
-Eine Panel mit sechs lehre Feldern wird
+Ein Panel mit sechs leeren Feldern wird
 erstellt. Die darzustellenden
 Funktionen sollen im linken mittleren
 Feld sein und das Funktionsargument im
@@ -343,27 +385,28 @@ Funktion'' Beispiel des Hauptmenüs.
 Das Textfragment Element stellt
 einfache Texte wie diesen hier da. Um
 ein Textfragment hinzuzufügen, nutzen
-Sie den ''Neu'' Button der Menüleiste
-oder ''Textfragment hinzufügen'' Button
-in der Werkzeugleiste:
+Sie den ''Neu''-Button der Menüleiste
+oder den ''Textfragment
+hinzufügen''-Button in der
+Werkzeugleiste:
 \begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig10.png} \end{tabular}\end{center}
 
 Wenn Sie auf den Text lange gedrückt
 halten, und dann den ganzen Text
-mittels Kontexmenü  ''Alles auswählen''
-markieren,  erscheint ein Action
-Button ''Objekteinstellungen''.
+mittels Kontexmenü ''Alles auswählen''
+markieren, erscheint ein Aktionsbutton
+''Objekteinstellungen''.
 
 Ein Tap auf diesen Button öffnet das
 Dialogfenster ''Text-Einstellungen''.
-Dort können Sie sowohl Textstil
-ändern, als auch  die Numerierung
-aktivieren.  Zum Beispiel, die
-Überschriften im Dokument haben
-Textstil ''Unterabschnitt'' und 
+Dort können Sie sowohl den Textstil
+ändern, als auch die Numerierung
+aktivieren. Zum Beispiel haben die
+Überschriften in diesem Dokument den
+Textstil ''Unterabschnitt'' und
 automatische Numerierung.
 
-\subsection{Bild}
+\subsection{Bilder}
 
 Sie können auch ein Bild aus einer
 Datei hinzufügen. Nutzen Sie dafür den
@@ -379,7 +422,8 @@ abgespeichert ist und die gewünschte
 Bildgröße festlegen.
 
 Derzeit werden folgende Bildformate
-unterstützt: png, bmp, gif, jpeg, svg.
+unterstützt: png, bmp, gif, jpeg, jpg,
+svg.
 
 Wenn das Kontrollkästchen ''In Dokument
 einbetten'' im Dialog
@@ -405,6 +449,6 @@ Die Bildgröße kann mittels des
 Dialogfensters ''Bildeinstellungen''
 geändert werden. Wenn Sie auf dem Bild
 lange gedrückt halten, erscheint ein
-Action Button ''Objekteinstellungen''.
-Ein Tap auf diesen Button öffnet
-dieses Dialogfenster.
+Button ''Objekteinstellungen''. Ein Tap
+auf diesen Button öffnet dieses
+Dialogfenster.

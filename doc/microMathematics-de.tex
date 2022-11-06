@@ -8,19 +8,32 @@
 \thispagestyle{fancy} % Enabling the custom headers/footers for the first page
 
 \begin{bf}
-Der microMathematics ist der erste mathematische
-Taschenrechner für Android weltweit, der auf einer Kalkulationstabelle basiert,
-welche es erlaubt, mathematische Elemente live einzugeben und zudem hochgenaue
+% This is the first part of the file about_micromath_de.tex
+Der microMathematics ist der erste
+mathematische Taschenrechner für
+Android weltweit, der auf einer
+Kalkulationstabelle basiert, welche es
+erlaubt, mathematische Elemente live
+einzugeben und zudem hochgenaue
 Berechnungen liefert.
 
-Diese App basiert auf einem leistungsstarken Touchscreen Editor, der alle
-grundlegenden mathematischen Bezeichnungen beinhaltet und Nutzern erlaubt, ganz
-selbstverständlich lesbare Arbeitsblätter zu erstellen und zu bearbeiten.
+Diese App basiert auf einem
+leistungsstarken Touchscreen Editor,
+der alle grundlegenden mathematischen
+Bezeichnungen beinhaltet und Nutzern
+erlaubt, ganz selbstverständlich
+lesbare Arbeitsblätter zu erstellen
+und zu bearbeiten.
 
-Der microMathematics unterstützt nur mathematische Berechnungen auf
-Sekundarstufenniveau. Diese Version hat folgende Einschränkungen: sie
-unterstützt weder Sonderfunktionen, Vektoren, Matrizen, Integrale, Ableitungen,
-Einheiten noch viele andere Dinge auf mathematisch höherem Niveau.
+microMathematics unterstützt die
+einfachen mathematischen Berechnungen.
+Wenn diese App Sie überzeugt hat und
+Sie mehr mathematische Funktionalität
+nutzen möchten (3D-Grafiken, Addition
+und Multiplikation, Ableitungen,
+Integrale, logische Operatoren,
+Einheiten), dann probieren Sie die
+kostenpflichtige Premium-Version aus.
 \end{bf}
 
 \section{Benutzung}
@@ -31,5 +44,37 @@ Einheiten noch viele andere Dinge auf mathematisch höherem Niveau.
 
 \section{Beispiel: Plot einer Polarfunktion}
 \input{polar_plot_de}
+
+\section{Info zu microMathematics}
+
+% This is the second part of the file about_micromath_de.tex
+\subsection*{Das App Icon}
+
+Das App Icon ist generiert mit Hilfe
+folgender Funktion, die im
+Polarkoordinatensystem gegeben ist:
+\begin{center}\begin{tabular}{c}
+                $f := \left[ 0.01,\, 0.03 \,..\, 150 \right]$
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $s(f) := 4 + sin \left( 5 \cdot f\right)  + \frac{sin \left( 10 \cdot f\right) }{2} + \frac{sin \left( 60 \cdot f\right) }{6}$
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $r(f) := 0.9 \cdot \left( 1 + f / 50 \right) \cdot s \left( f\right) $
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $x(f) := r \left( f\right)  \cdot cos \left( f\right) $
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $y(f) := r \left( f\right)  \cdot sin \left( f\right) $
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/about_micromath_fig1.png} \end{tabular}\end{center}
+
+\subsection*{Lizenz}
+
+Copyright © 2014-2022 by Mikhail Kulesh
+under the GNU General Public License,
+Version 3:
+www.gnu.org/licenses/gpl-3.0
 
 \end{document}

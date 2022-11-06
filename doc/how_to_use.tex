@@ -15,11 +15,25 @@ plots. It supports live editing of
 typeset mathematical notations and its
 automatic computation.
 
+\subsection*{Basics}
+
+The interface contains worksheet area
+in the center, tool bar at the bottom,
+action bar at the top, and floating
+action button(s) towards bottom right.
+
+The content of the action bar depends
+on the screen resolution and device
+orientation. The buttons can be shown
+in action bar directly, or placed
+within ''three-dots'' menu.
+
 Following objects can be inserted into
 worksheet: equations, result views,
-plots, text fragments and images. This
-document gives an overview on how to
-edit these objects.
+plots, text fragments and images.
+These are inserted by using the
+buttons in the tool bar, or the ''New
+element'' button in the action bar.
 
 \subsection{Editing}
 
@@ -29,19 +43,24 @@ field use the symbols and functions on
 the tool bar.
 
 All symbols can also be entered from
-the keyboard. To find out which
-keyboard symbol corresponds to the
-mathematical symbol you want to enter,
-read the hint by long click on the
-button of interest.
+the keyboard. Long click on a symbol's
+button for hint about which keyboard
+symbol (or combination) corresponds to
+it.
 
 Using long click on a term you can
-select this term. The selected term
+select the term.  A context menu
+appears at the top. The selected term
 can be deleted, copied to clipboard,
 pasted from clipboard or an other
 operator or function can be inserted
-after that term using buttons from the
-tool bar or keyboard.
+using buttons from the tool bar or
+keyboard. The button ''Insert in the
+left of selected'' from the context
+menu switches the insertion mode:
+before or after the selected term.
+''Expand selection'' button allows to
+expand the selected area. 
 
 The ''Undo'' command is available in the
 action bar. It erases the last change
@@ -52,7 +71,7 @@ an older state:
 \subsection{Equation}
 
 An equation defines a numerical
-constant, an interval or a function.
+constant, an interval, or a function.
 To create an equation, use the ''New
 element'' button in the action bar
 \begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/how_to_use_fig2.png} \end{tabular}\end{center}
@@ -225,8 +244,8 @@ operations and functions.
 
 The document ''functions\_overview.mmt'',
 stored within the ''Resources of
-microMathematic'', provides the
-list of all available functions.
+microMathematic'', provides the list of
+all available functions.
 
 \subsection{Result View}
 
@@ -258,6 +277,8 @@ functions:
   ${e}^{{\pi}} \cdot f \left( NPi2\right)  = 2.27286E-14$
 \end{tabular}\end{center}
 
+\subsubsection{Constant result}
+
 If the left part does not contain any
 ''interval-like'' variables, the
 calculation result is just a real or
@@ -274,6 +295,8 @@ complex number:
   $\sqrt{sin \left( \frac{3}{2} \cdot {\pi}\right) }  = 0.0+1.0i$
 \end{tabular}\end{center}
 
+\subsubsection{Intervals}
+
 If the left part contains an interval
 variable, the calculation result is a
 vector of values corresponding to this
@@ -284,7 +307,7 @@ be displayed:
 \begin{center}\begin{tabular}{ccc}
   $x = \begin{bmatrix}0.0\\0.1\\0.2\\0.3\\0.4\\0.5\\\dots\\10.0\\\end{bmatrix}$ &
   $y = \begin{bmatrix}0.0\\0.05\\0.1\\0.15\\0.2\\0.25\\\dots\\10.0\\\end{bmatrix}$ &
-  $2 \cdot y = \begin{bmatrix}0.0\\0.1\\0.2\\0.3\\0.4\\0.5\\\dots\\20.0\\\end{bmatrix}$ \cr
+  $2 \cdot y = \begin{bmatrix}0\\1/10\\1/5\\3/10\\2/5\\1/2\\\dots\\20\\\end{bmatrix}$ \cr
 \end{tabular}\end{center}
 
 Number of displayed elements and the

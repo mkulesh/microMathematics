@@ -1,0 +1,290 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Errors overview" description="" textWidth="41" significantDigits="8" scale="0.50000" redefineAllowed="false">
+    <text_fragment>
+      <term key="text" text="This document collects some examples of&#10;invalid expressions that are not allowed&#10;in the microMathematics. Corresponding error&#10;messages are shown as pop-up toasts when a&#10;field with expression is clicked." />
+    </text_fragment>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Expression parsing" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Brackets are not completed" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f(x" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="f)" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="Mx]" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <text_fragment numbering="true">
+      <term key="text" text="Invalid variable name" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="(x)" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="[x]" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <text_fragment numbering="true">
+      <term key="text" text="Invalid brackets order" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f)x(" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <text_fragment numbering="true">
+      <term key="text" text="Function shall have an argument" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f()" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <text_fragment numbering="true">
+      <term key="text" text="Function argument shall contain letters&#10;or digits only" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f((x)" />
+      <term key="rightTerm" text="0" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="F(x1!)" />
+      <term key="rightTerm" text="5" />
+    </equation>
+    <text_fragment numbering="true">
+      <term key="text" text="An argument can not be empty" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f(x,,)" />
+      <term key="rightTerm" text="" />
+    </equation>
+    <text_fragment numbering="true">
+      <term key="text" text="Symbol 'i' is reserved for the imaginary&#10;unit that is not allowed in this context" />
+    </text_fragment>
+    <result resultFieldType="real" arrayLength="7">
+      <term key="leftTerm" code="plus">
+        <term key="leftTerm" text="1" />
+        <term key="rightTerm" text="3i" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="i" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="100" />
+      </term>
+    </equation>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Constants and functions" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Symbol is not a known variable or&#10;argument" />
+    </text_fragment>
+    <result resultFieldType="real" arrayLength="7">
+      <term key="leftTerm" text="α" />
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="Function &lt;name&gt; is not defined and is not&#10;a built-in function" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="C1" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="1" />
+        <term key="nextValue" text="2" />
+        <term key="maxValue" text="10" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="C2" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="1" />
+        <term key="nextValue" text="2" />
+        <term key="maxValue" text="20" />
+      </term>
+    </equation>
+    <result resultFieldType="real" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.link.f1">
+        <term key="argTerm" text="C1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" resultFieldType="real" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.link.f1:2">
+        <term key="argTerm1" text="C1" />
+        <term key="argTerm2" text="C2" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <equation>
+      <term key="leftTerm" text="f2(f)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="divide">
+          <term key="leftTerm" text="f" />
+          <term key="rightTerm" code="mult">
+            <term key="leftTerm" text="6" />
+            <term key="rightTerm" text="C2" />
+          </term>
+        </term>
+        <term key="rightTerm" code="plus">
+          <term key="leftTerm" code="content:com.mkulesh.micromath.link.f1">
+            <term key="argTerm" text="f" />
+          </term>
+          <term key="rightTerm" code="sqrt_layout">
+            <term key="argTerm" code="content:com.mkulesh.micromath.link.f1:2">
+              <term key="argTerm1" text="f" />
+              <term key="argTerm2" text="0" />
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment numbering="true">
+      <term key="text" text="Equation is called recursively from its&#10;definition" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f4(C1)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="divide">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" code="power">
+            <term key="leftTerm" text="C1" />
+            <term key="rightTerm" text="2" />
+          </term>
+        </term>
+        <term key="rightTerm" code="plus">
+          <term key="leftTerm" code="sqrt_layout">
+            <term key="argTerm" code="content:com.mkulesh.micromath.link.f4">
+              <term key="argTerm" text="C1" />
+            </term>
+          </term>
+          <term key="rightTerm" text="20" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="f3(x)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="sin">
+          <term key="argTerm" text="x" />
+        </term>
+        <term key="rightTerm" code="cos">
+          <term key="argTerm" text="x" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="x(f)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="content:com.mkulesh.micromath.link.f3">
+          <term key="argTerm" text="f" />
+        </term>
+        <term key="rightTerm" code="content:com.mkulesh.micromath.link.y">
+          <term key="argTerm" text="f" />
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="y(f)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="content:com.mkulesh.micromath.link.f3">
+          <term key="argTerm" text="f" />
+        </term>
+        <term key="rightTerm" code="content:com.mkulesh.micromath.link.x">
+          <term key="argTerm" text="f" />
+        </term>
+      </term>
+    </equation>
+    <text_fragment numbering="true">
+      <term key="text" text="There are indirectly referenced&#10;intervals: &lt;name&gt;" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f5(C1)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="2" />
+        <term key="rightTerm" code="minus">
+          <term key="leftTerm" code="mult">
+            <term key="leftTerm" text="2" />
+            <term key="rightTerm" code="divide">
+              <term key="leftTerm" code="power">
+                <term key="leftTerm" text="C2" />
+                <term key="rightTerm" text="2" />
+              </term>
+              <term key="rightTerm" code="power">
+                <term key="leftTerm" text="C1" />
+                <term key="rightTerm" text="2" />
+              </term>
+            </term>
+          </term>
+          <term key="rightTerm" text="3" />
+        </term>
+      </term>
+    </equation>
+    <result inRightOfPrevious="true" resultFieldType="real" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.link.f5">
+        <term key="argTerm" text="C1" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment numbering="true">
+      <term key="text" text="This identifier is already used" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="k1" />
+      <term key="rightTerm" text="100" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="f6(x)" />
+      <term key="rightTerm" code="sin">
+        <term key="argTerm" text="x" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="k1" />
+      <term key="rightTerm" text="200" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="f6(x)" />
+      <term key="rightTerm" code="cos">
+        <term key="argTerm" text="x" />
+      </term>
+    </equation>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Plots" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="Function shall depend on one interval&#10;only" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="g(x,y)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" code="sin">
+          <term key="argTerm" text="x" />
+        </term>
+        <term key="rightTerm" code="cos">
+          <term key="argTerm" text="x" />
+        </term>
+      </term>
+    </equation>
+    <plot_function width="600" height="300" axes_style="boxed" xLabelsNumber="4" yLabelsNumber="4" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FF0000FF" width="3" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.g:2">
+        <term key="argTerm1" text="C1" />
+        <term key="argTerm2" text="C2" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" text="C1" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+  </formulaList>
+</micromath>

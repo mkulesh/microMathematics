@@ -2,20 +2,26 @@
 <micromath xmlns:mmt="http://micromath.mkulesh.com">
   <formulaList documentVersion="2" author="Mikhail Kulesh" title="How To Use" description="" textWidth="39" significantDigits="6" scale="0.50000" redefineAllowed="true">
     <text_fragment>
-      <term key="text" text="This app is a powerful calculation&#10;software in a worksheet format. The&#10;worksheet can be freely edited, stored&#10;on SD card, opened from SD card and&#10;exported into an image or LaTeX&#10;format.&#10;&#10;Worksheet is a mathematical document&#10;that contains text, formulas and&#10;plots. It supports live editing of&#10;typeset mathematical notations and its&#10;automatic computation.&#10;&#10;Following objects can be inserted into&#10;worksheet: equations, result views,&#10;plots, text fragments and images. This&#10;document gives an overview on how to&#10;edit these objects." />
+      <term key="text" text="This app is a powerful calculation&#10;software in a worksheet format. The&#10;worksheet can be freely edited, stored&#10;on SD card, opened from SD card and&#10;exported into an image or LaTeX&#10;format.&#10;&#10;Worksheet is a mathematical document&#10;that contains text, formulas and&#10;plots. It supports live editing of&#10;typeset mathematical notations and its&#10;automatic computation." />
+    </text_fragment>
+    <text_fragment textStyle="subsection">
+      <term key="text" text="Basics" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text='The interface contains worksheet area&#10;in the center, tool bar at the bottom,&#10;action bar at the top, and floating&#10;action button(s) towards bottom right.&#10;&#10;The content of the action bar depends&#10;on the screen resolution and device&#10;orientation. The buttons can be shown&#10;in action bar directly, or placed&#10;within "three-dots" menu.&#10;&#10;Following objects can be inserted into&#10;worksheet: equations, result views,&#10;plots, text fragments and images.&#10;These are inserted by using the&#10;buttons in the tool bar, or the "New&#10;element" button in the action bar.' />
     </text_fragment>
     <text_fragment textStyle="subsection" numbering="true">
       <term key="text" text="Editing" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text='Almost all available objects contain&#10;several editable fields. To edit the&#10;field use the symbols and functions on&#10;the tool bar.&#10;&#10;All symbols can also be entered from&#10;the keyboard. To find out which&#10;keyboard symbol corresponds to the&#10;mathematical symbol you want to enter,&#10;read the hint by long click on the&#10;button of interest.&#10;&#10;Using long click on a term you can&#10;select this term. The selected term&#10;can be deleted, copied to clipboard,&#10;pasted from clipboard or an other&#10;operator or function can be inserted&#10;after that term using buttons from the&#10;tool bar or keyboard.&#10;&#10;The "Undo" command is available in the&#10;action bar. It erases the last change&#10;done to the document and reverts it to&#10;an older state:' />
+      <term key="text" text='Almost all available objects contain&#10;several editable fields. To edit the&#10;field use the symbols and functions on&#10;the tool bar.&#10;&#10;All symbols can also be entered from&#10;the keyboard. Long click on a symbol&apos;s&#10;button for hint about which keyboard&#10;symbol (or combination) corresponds to&#10;it.&#10;&#10;Using long click on a term you can&#10;select the term.  A context menu&#10;appears at the top. The selected term&#10;can be deleted, copied to clipboard,&#10;pasted from clipboard or an other&#10;operator or function can be inserted&#10;using buttons from the tool bar or&#10;keyboard. The button "Insert in the&#10;left of selected" from the context&#10;menu switches the insertion mode:&#10;before or after the selected term.&#10;"Expand selection" button allows to&#10;expand the selected area. &#10;&#10;The "Undo" command is available in the&#10;action bar. It erases the last change&#10;done to the document and reverts it to&#10;an older state:' />
     </text_fragment>
     <image_fragment fileName="asset:/images/menu_undo.svg" embedded="false" originalSize="false" width="290" height="110" colorType="auto" />
     <text_fragment textStyle="subsection" numbering="true">
       <term key="text" text="Equation" />
     </text_fragment>
     <text_fragment>
-      <term key="text" text='An equation defines a numerical&#10;constant, an interval or a function.&#10;To create an equation, use the "New&#10;element" button in the action bar' />
+      <term key="text" text='An equation defines a numerical&#10;constant, an interval, or a function.&#10;To create an equation, use the "New&#10;element" button in the action bar' />
     </text_fragment>
     <image_fragment fileName="asset:/images/menu_new.svg" embedded="false" originalSize="false" width="290" height="110" colorType="auto" />
     <text_fragment>
@@ -235,7 +241,7 @@
       </term>
     </equation>
     <text_fragment>
-      <term key="text" text='The right side of the function contains&#10;a mathematical formula how to&#10;calculate the function. If this&#10;formula does not contain the declared&#10;function argument, such a function&#10;will be interpreted as a constant.&#10;&#10;You can also use on the right side&#10;other built-in or previously defined&#10;functions. To insert a function enter&#10;its name, click the left bracket&#10;symbol "(" and than enter its&#10;argument. This argument can also be a&#10;formula, which contains any other&#10;operations and functions.&#10;&#10;The document "functions_overview.mmt",&#10;stored within the "Resources of&#10;microMathematic", provides the&#10;list of all available functions.' />
+      <term key="text" text='The right side of the function contains&#10;a mathematical formula how to&#10;calculate the function. If this&#10;formula does not contain the declared&#10;function argument, such a function&#10;will be interpreted as a constant.&#10;&#10;You can also use on the right side&#10;other built-in or previously defined&#10;functions. To insert a function enter&#10;its name, click the left bracket&#10;symbol "(" and than enter its&#10;argument. This argument can also be a&#10;formula, which contains any other&#10;operations and functions.&#10;&#10;The document "functions_overview.mmt",&#10;stored within the "Resources of&#10;microMathematic", provides the list of&#10;all available functions.' />
     </text_fragment>
     <text_fragment textStyle="subsection" numbering="true">
       <term key="text" text="Result View" />
@@ -266,6 +272,9 @@
       </term>
       <term key="rightTerm" text="" />
     </result>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Constant result" />
+    </text_fragment>
     <text_fragment>
       <term key="text" text='If the left part does not contain any&#10;"interval-like" variables, the&#10;calculation result is just a real or&#10;complex number:' />
     </text_fragment>
@@ -315,6 +324,9 @@
       </term>
       <term key="rightTerm" text="" />
     </result>
+    <text_fragment textStyle="subsubsection" numbering="true">
+      <term key="text" text="Intervals" />
+    </text_fragment>
     <text_fragment>
       <term key="text" text="If the left part contains an interval&#10;variable, the calculation result is a&#10;vector of values corresponding to this&#10;interval. Due to free space limit on&#10;the display, only the first six and&#10;the last elements of the vector will&#10;be displayed:" />
     </text_fragment>
@@ -326,7 +338,7 @@
       <term key="leftTerm" text="y" />
       <term key="rightTerm" text="" />
     </result>
-    <result inRightOfPrevious="true" resultFieldType="real" arrayLength="7">
+    <result inRightOfPrevious="true" resultFieldType="fraction" arrayLength="7">
       <term key="leftTerm" code="mult">
         <term key="leftTerm" text="2" />
         <term key="rightTerm" text="y" />

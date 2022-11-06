@@ -8,18 +8,29 @@
 \thispagestyle{fancy} % Enabling the custom headers/footers for the first page
 
 \begin{bf}
-The microMathematics is the world's first mathematical
-calculator on Android oriented around a spreadsheet that allows live editing of
-mathematical identities combined with highly accurate computations.
+% This is the first part of the file about_micromath.tex
+The microMathematics is the world's
+first mathematical calculator on
+Android oriented around a spreadsheet
+that allows live editing of
+mathematical identities combined with
+highly accurate computations.
 
-It is based on a powerful touch-screen editor that allows users to create and
-manipulate naturally readable worksheets containing all basic mathematical
-notations.
+It is based on a powerful touch-screen
+editor that allows users to create and
+manipulate naturally readable
+worksheets containing all basic
+mathematical notations.
 
-The microMathematics supports school-level of mathematical calculations.
-This version has following mathematical limitations: it does not support special
-functions, vectors, matrices, integration, differentiation, units and many
-other things from high-level mathematics.
+microMathematics supports basic level
+of mathematical calculations. If you
+find microMathematics useful or need
+more mathematics (3D plots, summation
+and product operations, derivative and
+definite integrals, logical operators,
+units), please consider purchasing
+premium version to support
+further development.
 \end{bf}
 
 \section{How To Use}
@@ -30,5 +41,37 @@ other things from high-level mathematics.
 
 \section{Example: Polar Function Plot}
 \input{polar_plot}
+
+\section{About}
+
+% This is the second part of the file about_micromath.tex
+\subsection*{The app icon}
+
+The app icon is generated from the
+following function defined in the
+polar coordinate system:
+\begin{center}\begin{tabular}{c}
+                $f := \left[ 0.01,\, 0.03 \,..\, 150 \right]$
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $s(f) := 4 + sin \left( 5 \cdot f\right)  + \frac{sin \left( 10 \cdot f\right) }{2} + \frac{sin \left( 60 \cdot f\right) }{6}$
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $r(f) := 0.9 \cdot \left( 1 + f / 50 \right) \cdot s \left( f\right) $
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $x(f) := r \left( f\right)  \cdot cos \left( f\right) $
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c}
+                $y(f) := r \left( f\right)  \cdot sin \left( f\right) $
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{c} \includegraphics[width=0.45\textwidth]{graphics/about_micromath_fig1.png} \end{tabular}\end{center}
+
+\subsection*{License}
+
+Copyright © 2014-2022 by Mikhail Kulesh
+under the GNU General Public License,
+Version 3:
+www.gnu.org/licenses/gpl-3.0
 
 \end{document}
