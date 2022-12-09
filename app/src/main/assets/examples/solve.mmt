@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Roots of a non-linear equation" description="" textWidth="56" significantDigits="10" scale="0.48357" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="This example demonstrate how to find a root or roots of&#10;an one-dimensional equation f(x)=0. Let us consider&#10;following function f(x):" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="f(x)" />
+      <term key="rightTerm" code="derivative">
+        <term key="index" text="x" />
+        <term key="argTerm" code="identity">
+          <term key="argTerm" code="plus">
+            <term key="leftTerm" code="power">
+              <term key="leftTerm" code="sin">
+                <term key="argTerm" text="x" />
+              </term>
+              <term key="rightTerm" text="2" />
+            </term>
+            <term key="rightTerm" code="power">
+              <term key="leftTerm" text="e" />
+              <term key="rightTerm" code="sin">
+                <term key="argTerm" text="x" />
+              </term>
+            </term>
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="From the plot of this function we see that it has 7&#10;roots on the interval [-5, 5]:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="x1" />
+      <term key="rightTerm" text="-5" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="x2" />
+      <term key="rightTerm" text="5" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="ω" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="x1" />
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" text="x1" />
+          <term key="rightTerm" code="divide">
+            <term key="leftTerm" code="minus">
+              <term key="leftTerm" text="x2" />
+              <term key="rightTerm" text="x1" />
+            </term>
+            <term key="rightTerm" text="500" />
+          </term>
+        </term>
+        <term key="maxValue" text="x2" />
+      </term>
+    </equation>
+    <plot_function width="720" height="483" axes_style="crossed" xLabelsNumber="10" yLabelsNumber="7" gridLineColor="#FF787878" xType="linear" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" text="" />
+      <term key="yFunction" color="#FFFF0030" width="5" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="ω" />
+      </term>
+      <term key="yMinValue" text="" />
+      <term key="xMinValue" text="" />
+      <term key="xFunction" text="ω" />
+      <term key="xMaxValue" text="" />
+    </plot_function>
+    <text_fragment>
+      <term key="text" text="In order to find one root, we call the function solve&#10;with 4 mandotory parameters:" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="function f on the left-hand side of the equation" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="the variable  which the equation shall be solved" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="lower interval boundary" />
+    </text_fragment>
+    <text_fragment numbering="true">
+      <term key="text" text="upper interval boundary" />
+    </text_fragment>
+    <text_fragment>
+      <term key="text" text="At least one root shall be bracketed in the interval&#10;(x1,x2). It means that f(x1) and f(x2) shall have&#10;opposite signs:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="r" />
+      <term key="rightTerm" code="solve">
+        <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+          <term key="argTerm" text="y" />
+        </term>
+        <term key="index" text="y" />
+        <term key="minValue" text="x1" />
+        <term key="maxValue" text="x2" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="One root and the function value in this point are:" />
+    </text_fragment>
+    <result resultFieldType="real" arrayLength="7">
+      <term key="leftTerm" text="r" />
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" resultFieldType="real" arrayLength="7">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" text="r" />
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+    <text_fragment>
+      <term key="text" text='The solution precision is controlled by the parameter&#10;"Significant digits in result" from the document&#10;properties. &#10;&#10;Now split the interval into 10 sub-interval and call&#10;"solve" function for each sub-interval separately:' />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="K" />
+      <term key="rightTerm" text="10" />
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="n" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" code="minus">
+          <term key="leftTerm" text="K" />
+          <term key="rightTerm" text="1" />
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="k" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="x1" />
+        <term key="nextValue" code="plus">
+          <term key="leftTerm" text="x1" />
+          <term key="rightTerm" code="divide">
+            <term key="leftTerm" code="minus">
+              <term key="leftTerm" text="x2" />
+              <term key="rightTerm" text="x1" />
+            </term>
+            <term key="rightTerm" text="K" />
+          </term>
+        </term>
+        <term key="maxValue" text="x2" />
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" code="content:com.mkulesh.micromath.index.S">
+        <term key="argTerm" text="n" />
+      </term>
+      <term key="rightTerm" code="solve">
+        <term key="argTerm" code="content:com.mkulesh.micromath.link.f">
+          <term key="argTerm" text="y" />
+        </term>
+        <term key="index" text="y" />
+        <term key="minValue" code="content:com.mkulesh.micromath.index.k">
+          <term key="argTerm" text="n" />
+        </term>
+        <term key="maxValue" code="content:com.mkulesh.micromath.index.k">
+          <term key="argTerm" code="plus">
+            <term key="leftTerm" text="n" />
+            <term key="rightTerm" text="1" />
+          </term>
+        </term>
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="We obtain now the values for 7 different roots. Three&#10;sub-intervals do not contain any root and the results&#10;for such an interval is NaN:" />
+    </text_fragment>
+    <result resultFieldType="real" arrayLength="10">
+      <term key="leftTerm" text="S" />
+      <term key="rightTerm" text="" />
+    </result>
+    <result inRightOfPrevious="true" resultFieldType="real" arrayLength="10">
+      <term key="leftTerm" code="content:com.mkulesh.micromath.link.f">
+        <term key="argTerm" code="content:com.mkulesh.micromath.index.S">
+          <term key="argTerm" text="n" />
+        </term>
+      </term>
+      <term key="rightTerm" text="" />
+    </result>
+  </formulaList>
+</micromath>

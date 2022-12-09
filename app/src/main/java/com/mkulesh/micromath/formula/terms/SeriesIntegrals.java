@@ -15,7 +15,9 @@ package com.mkulesh.micromath.formula.terms;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.mkulesh.micromath.formula.ArgumentHolderIf;
 import com.mkulesh.micromath.formula.CalculaterTask;
@@ -56,7 +58,8 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         SUMMATION(R.string.formula_loop_summation, R.drawable.p_loop_summation, R.string.math_loop_summation),
         PRODUCT(R.string.formula_loop_product, R.drawable.p_loop_product, R.string.math_loop_product),
         INTEGRAL(R.string.formula_loop_integral, R.drawable.p_loop_integral, R.string.math_loop_integral),
-        DERIVATIVE(R.string.formula_loop_derivative, R.drawable.p_loop_derivative, R.string.math_loop_derivative);
+        DERIVATIVE(R.string.formula_loop_derivative, R.drawable.p_loop_derivative, R.string.math_loop_derivative),
+        SOLVE(R.string.formula_loop_solve, R.drawable.p_loop_solve, R.string.math_loop_solve);
 
         private final int shortCutId;
         private final int imageId;
@@ -118,6 +121,26 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         }
     }
 
+    public enum CalculationStatus
+    {
+        NONE(ViewUtils.INVALID_INDEX),
+        IS_COMPLEX(R.string.error_complex_result),
+        MAX_ITERATIONS(R.string.error_maximum_iterations),
+        ROOT_NOT_BRACKETED(R.string.error_root_not_bracketed);
+
+        private final int descriptionId;
+
+        CalculationStatus(int descriptionId)
+        {
+            this.descriptionId = descriptionId;
+        }
+
+        public int getDescriptionId()
+        {
+            return descriptionId;
+        }
+    }
+
     private static final String SYMBOL_LAYOUT_TAG = "SYMBOL_LAYOUT_TAG";
     private static final String MIN_VALUE_LAYOUT_TAG = "MIN_VALUE_LAYOUT_TAG";
     private static final String MAX_VALUE_LAYOUT_TAG = "MAX_VALUE_LAYOUT_TAG";
@@ -127,6 +150,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
      */
     private TermField indexTerm = null, minValueTerm = null, maxValueTerm = null, argTerm = null;
     private LinearLayout symbolLayout = null, minValueLayout = null, maxValueLayout = null;
+    private CustomTextView functionTerm = null;
 
     private final LoopCalculator loopCalculator = new LoopCalculator();
     private DifferentiableType differentiableType = null;
@@ -134,6 +158,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
     // Attention: this is not thread-safety declaration!
     private final CalculatedValue minValue = new CalculatedValue(), maxValue = new CalculatedValue(),
             calcVal = new CalculatedValue(), argValue = new CalculatedValue();
+    private CalculationStatus calcStatus = CalculationStatus.NONE;
 
     /*--------------------------------------------------------*
      * Constructors
@@ -206,9 +231,11 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             case PRODUCT:
                 return loopCalculator.product(minValue.getInteger(), maxValue.getInteger(), outValue);
             case INTEGRAL:
-                return loopCalculator.integrate(getFormulaList().getDocumentSettings().significantDigits, outValue);
+                return loopCalculator.integrate(getFormulaList().getDocumentSettings().getPrecision(), outValue);
             case DERIVATIVE:
                 return loopCalculator.derivative(differentiableType, getIndexName(), outValue);
+            case SOLVE:
+                return loopCalculator.solve(getFormulaList().getDocumentSettings().getPrecision(), outValue);
             }
         }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
@@ -300,6 +327,12 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
                 case DERIVATIVE:
                     v.prepare(CustomTextView.SymbolType.HOR_LINE, getFormulaRoot().getFormulaList().getActivity(), this);
                     break;
+                case SOLVE:
+                    v.prepare(CustomTextView.SymbolType.TEXT,
+                            getFormulaRoot().getFormulaList().getActivity(), this);
+                    v.setText(R.string.formula_loop_solve);
+                    functionTerm = v;
+                    break;
                 }
             }
             else if (t.equals(getContext().getResources().getString(R.string.formula_left_bracket_key)))
@@ -317,6 +350,11 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             {
                 v.prepare(CustomTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
             }
+            else if (t.equals(getContext().getResources().getString(R.string.formula_loop_parameter_definition)) &&
+                    termType == LoopType.SOLVE)
+            {
+                v.setText("=0");
+            }
         }
         return v;
     }
@@ -324,7 +362,10 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
     @Override
     protected CustomEditText initializeTerm(CustomEditText v, LinearLayout l)
     {
-        final int addDepth = (termType == LoopType.INTEGRAL || termType == LoopType.DERIVATIVE) ? 0 : 3;
+        final int addDepth = (
+                termType == LoopType.INTEGRAL ||
+                        termType == LoopType.DERIVATIVE ||
+                        termType == LoopType.SOLVE) ? 0 : 3;
         if (v.getText() != null)
         {
             if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_max_value_key)))
@@ -365,6 +406,17 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
     /*--------------------------------------------------------*
      * Implementation for methods for FormulaChangeIf interface
      *--------------------------------------------------------*/
+    @Override
+    public void onTermSelection(View owner, boolean isSelected, ArrayList<View> list)
+    {
+        super.onTermSelection(owner, isSelected, list);
+        if (isSelected && calcStatus != CalculationStatus.NONE &&
+                calcStatus.descriptionId != ViewUtils.INVALID_INDEX)
+        {
+            Toast.makeText(getContext(), getContext().getResources().getString(calcStatus.descriptionId),
+                    Toast.LENGTH_LONG).show();
+        }
+    }
 
     @Override
     public void onDelete(CustomEditText owner)
@@ -438,6 +490,10 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             inflateElements(useBrackets ? R.layout.formula_loop_derivative_brackets : R.layout.formula_loop_derivative,
                     true);
             break;
+        case SOLVE:
+            useBrackets = false;
+            inflateElements(R.layout.formula_loop_solve, true);
+            break;
         }
         initializeElements(idx);
         symbolLayout = getLayoutWithTag(SYMBOL_LAYOUT_TAG);
@@ -504,6 +560,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         return false;
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private boolean calculateBoundaries(CalculaterTask thread) throws CancelException
     {
         minValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
@@ -525,6 +582,11 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         return true;
     }
 
+    public CustomTextView getFunctionTerm()
+    {
+        return functionTerm;
+    }
+
     /**
      * Helper class that implements loop calculator
      */
@@ -533,11 +595,12 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         private static final int SIMPSON_MAX_ITERATIONS_COUNT = 15;
         private static final int RIDDER_MAX_ITERATIONS_COUNT = 10;
         private static final double RIDDER_INITIAL_STEP = 0.05;
+        private static final int ROOT_MAX_ITERATIONS_COUNT = 60;
 
         /**
          * Intermediate result.
          */
-        private final CalculatedValue qtrapResult = new CalculatedValue(ValueType.REAL, 0,0);
+        private final CalculatedValue qtrapResult = new CalculatedValue(ValueType.REAL, 0, 0);
 
         /**
          * Owner calculation thread.
@@ -550,14 +613,31 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         private class IntermediateValue
         {
             double value;
-            boolean complexDetected;
+            CalculationStatus status;
             Unit<?> unit;
 
             IntermediateValue()
             {
                 value = Double.NaN;
-                complexDetected = false;
+                status = CalculationStatus.NONE;
                 unit = null;
+            }
+
+            IntermediateValue setStatus(CalculationStatus _status)
+            {
+                status = _status;
+                return this;
+            }
+
+            IntermediateValue setReal(double v)
+            {
+                value = v;
+                return this;
+            }
+
+            boolean isComplex()
+            {
+                return status == CalculationStatus.IS_COMPLEX;
             }
         }
 
@@ -710,7 +790,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
                     final Complex z = calcVal.getComplex();
                     final IntermediateValue re = loopCalculator.riddersDerivative(CalculatedValue.PartType.RE, z,
                             LoopCalculator.RIDDER_INITIAL_STEP);
-                    if (re.complexDetected)
+                    if (re.isComplex())
                     {
                         final IntermediateValue im = loopCalculator.riddersDerivative(CalculatedValue.PartType.IM, z,
                                 LoopCalculator.RIDDER_INITIAL_STEP);
@@ -728,7 +808,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
         /**
          * Calculate defined integral
          */
-        ValueType integrate(int significantDigits, CalculatedValue outValue) throws CancelException
+        ValueType integrate(double absoluteAccuracy, CalculatedValue outValue) throws CancelException
         {
             if (minValue.getUnit() != null && maxValue.getUnit() != null &&
                     !minValue.getUnit().equals(maxValue.getUnit()))
@@ -740,7 +820,6 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             argUnit.assign(CalculatedValue.ONE);
             argUnit.setUnit(minValue.getUnit());
 
-            final double absoluteAccuracy = FastMath.pow(10, -1.0 * significantDigits);
             final IntermediateValue re = integrateSimpsons(CalculatedValue.PartType.RE, minValue.getReal(),
                     maxValue.getReal(), absoluteAccuracy, argUnit.getUnit());
             if (Double.isNaN(re.value))
@@ -749,7 +828,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             }
 
             final CalculatedValue res = new CalculatedValue();
-            if (re.complexDetected)
+            if (re.isComplex())
             {
                 final IntermediateValue im = integrateSimpsons(CalculatedValue.PartType.IM, minValue.getReal(),
                         maxValue.getReal(), absoluteAccuracy, argUnit.getUnit());
@@ -837,7 +916,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             double oldRes = 0;
             if (qtrapStage(partType, min, max, 0, argUnit))
             {
-                ans.complexDetected = true;
+                ans.setStatus(CalculationStatus.IS_COMPLEX);
             }
             double oldt = qtrapResult.getReal();
             ans.unit = qtrapResult.getUnit();
@@ -845,13 +924,13 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             {
                 if (qtrapStage(partType, min, max, iter, argUnit))
                 {
-                    ans.complexDetected = true;
+                    ans.setStatus(CalculationStatus.IS_COMPLEX);
                 }
                 final double t = qtrapResult.getReal();
                 if (CalculatedValue.isInvalidReal(t))
                 {
                     ans.value = Double.NaN;
-                    ans.complexDetected = false;
+                    ans.setStatus(CalculationStatus.NONE);
                     return ans;
                 }
                 final double res = (4 * t - oldt) / 3.0;
@@ -876,6 +955,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
          * value h is input as an estimated initial stepsize; it need not be small, but rather should be an increment in
          * x over which func changes substantially. An estimate of the error in the derivative is returned as err.
          */
+        @SuppressWarnings("SameParameterValue")
         IntermediateValue riddersDerivative(CalculatedValue.PartType partType, Complex z, double h)
                 throws CancelException
         {
@@ -898,7 +978,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             a[1][1] = (leftVal.getPart(partType) - rightVal.getPart(partType)) / (2.0 * hh);
             if (leftVal.isComplex() || rightVal.isComplex())
             {
-                ans.complexDetected = true;
+                ans.setStatus(CalculationStatus.IS_COMPLEX);
             }
 
             for (int i = 2; i <= NTAB; i++)
@@ -912,7 +992,7 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
                 a[1][i] = (leftVal.getPart(partType) - rightVal.getPart(partType)) / (2.0 * hh);
                 if (leftVal.isComplex() || rightVal.isComplex())
                 {
-                    ans.complexDetected = true;
+                    ans.setStatus(CalculationStatus.IS_COMPLEX);
                 }
 
                 double fac = CON2;
@@ -934,6 +1014,125 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
                 }
             }
             return ans;
+        }
+
+        public ValueType solve(double absoluteAccuracy, CalculatedValue outValue) throws CancelException
+        {
+            if (minValue.isComplex() || maxValue.isComplex())
+            {
+                calcStatus = CalculationStatus.IS_COMPLEX;
+                return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
+            }
+            final IntermediateValue val = riddersRoot(minValue.getReal(), maxValue.getReal(), absoluteAccuracy);
+            calcStatus = val.status;
+            switch (val.status)
+            {
+            case IS_COMPLEX:
+            case MAX_ITERATIONS:
+            case ROOT_NOT_BRACKETED:
+                ViewUtils.Debug(this, "Can not solve, error = " + val.status);
+                return outValue.invalidate(CalculatedValue.ErrorType.NOT_A_REAL);
+            default:
+                return outValue.setValue(val.value);
+            }
+        }
+
+        /**
+         * Ridders’ Method from Numerical Recipes
+         * Using Ridders’ method, return the root of a function func known to lie between x1 and x2.
+         * The root, returned in this method, will be refined to an approximate accuracy xacc.
+         */
+        private IntermediateValue riddersRoot(double x1, double x2, double xacc) throws CancelException
+        {
+            final IntermediateValue retValue = new IntermediateValue();
+            final CalculatedValue fVal = new CalculatedValue();
+            final double UNUSED = -1.11e30;
+            double ans, fh, fl, fm, fnew, s, xh, xl, xm, xnew;
+
+            //fl=(*func)(x1);
+            argValue.setValue(x1);
+            argTerm.getValue(calculaterTask, fVal);
+            if (fVal.isComplex())
+            {
+                return retValue.setStatus(CalculationStatus.IS_COMPLEX);
+            }
+            fl = fVal.getReal();
+
+            //fh=(*func)(x2);
+            argValue.setValue(x2);
+            argTerm.getValue(calculaterTask, fVal);
+            if (fVal.isComplex())
+            {
+                return retValue.setStatus(CalculationStatus.IS_COMPLEX);
+            }
+            fh = fVal.getReal();
+
+            if ((fl > 0.0 && fh < 0.0) || (fl < 0.0 && fh > 0.0))
+            {
+                xl = x1;
+                xh = x2;
+                ans = UNUSED;
+                for (int j = 1; j <= ROOT_MAX_ITERATIONS_COUNT; j++)
+                {
+                    xm = 0.5 * (xl + xh);
+
+                    //fm=(*func)(xm);
+                    argValue.setValue(xm);
+                    argTerm.getValue(calculaterTask, fVal);
+                    if (fVal.isComplex())
+                    {
+                        return retValue.setStatus(CalculationStatus.IS_COMPLEX);
+                    }
+                    fm = fVal.getReal();
+
+                    s = FastMath.sqrt(fm * fm - fl * fh);
+                    if (s == 0.0) return retValue.setReal(ans);
+                    xnew = xm + (xm - xl) * ((fl >= fh ? 1.0 : -1.0) * fm / s);
+                    if (FastMath.abs(xnew - ans) <= xacc) return retValue.setReal(ans);
+                    ans = xnew;
+
+                    //fnew=(*func)(ans);
+                    argValue.setValue(ans);
+                    argTerm.getValue(calculaterTask, fVal);
+                    if (fVal.isComplex())
+                    {
+                        return retValue.setStatus(CalculationStatus.IS_COMPLEX);
+                    }
+                    fnew = fVal.getReal();
+
+                    if (fnew == 0.0) return retValue.setReal(ans);
+                    if (SIGN(fm, fnew) != fm)
+                    {
+                        xl = xm;
+                        fl = fm;
+                        xh = ans;
+                        fh = fnew;
+                    }
+                    else if (SIGN(fl, fnew) != fl)
+                    {
+                        xh = ans;
+                        fh = fnew;
+                    }
+                    else if (SIGN(fh, fnew) != fh)
+                    {
+                        xl = ans;
+                        fl = fnew;
+                    }
+                    if (FastMath.abs(xh - xl) <= xacc) return retValue.setReal(ans);
+                }
+                return retValue.setStatus(CalculationStatus.MAX_ITERATIONS);
+            }
+            else
+            {
+                if (fl == 0.0) return retValue.setReal(x1);
+                if (fh == 0.0) return retValue.setReal(x2);
+                return retValue.setStatus(CalculationStatus.ROOT_NOT_BRACKETED);
+            }
+        }
+
+        private double SIGN(double a, double b)
+        {
+            return ((b) >= 0.0 ? FastMath.abs(a) : -FastMath.abs(a));
         }
     }
 }

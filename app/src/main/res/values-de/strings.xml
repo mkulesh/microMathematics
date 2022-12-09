@@ -218,6 +218,7 @@
     <string name="math_loop_product">Produkt einer Folge</string>
     <string name="math_loop_integral">Bestimmtes Integral</string>
     <string name="math_loop_derivative">Erste Ableitung</string>
+    <string name="math_loop_solve">Die Wurzel einer eindimensionalen Funktion</string>
     <string name="math_function_identity">Runde Klammern</string>
     <string name="math_function_index">Elemente in einem Array über den Index zugreifen</string>
     <string name="math_function_power">Potenzzeichen</string>
@@ -304,6 +305,9 @@
     <string name="error_paste_root_into_term">Eine Gleichung kann nicht als einen Term eingefügt werden</string>
     <string name="error_paste_term_into_text">Der Term kann nicht eingefügt werden, weil er hier nicht erlaubt ist</string>
     <string name="error_out_of_memory">Nicht genug Speicherplatz, um das Bild zu visualisieren</string>
+    <string name="error_complex_result">Während der Berechnung erscheint eine komplexe Zahl</string>
+    <string name="error_maximum_iterations">Maximale Iterationsanzahl überschritten</string>
+    <string name="error_root_not_bracketed">Wurzel muss im angegebenen Intervall eingeklammert werden</string>
 
     <!-- File manager -->
     <string name="fman_local">Interner Speicher</string>

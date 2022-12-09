@@ -280,6 +280,7 @@
     <string name="math_loop_product">The product of the sequence</string>
     <string name="math_loop_integral">The definite integral</string>
     <string name="math_loop_derivative">The first derivative</string>
+    <string name="math_loop_solve">A root of an one-dimensional function</string>
     <string name="math_function_identity">Parenthesis</string>
     <string name="math_function_index">Get array element by index</string>
     <string name="math_function_power">Raise to power</string>
@@ -366,6 +367,9 @@
     <string name="error_paste_root_into_term">Can not paste a root equation into a term</string>
     <string name="error_paste_term_into_text">Can not paste a term since such a content is not allowed for this field</string>
     <string name="error_out_of_memory">Not enough memory for plot visualization</string>
+    <string name="error_complex_result">A complex number appears during the calculation</string>
+    <string name="error_maximum_iterations">Exceed maximum iterations number</string>
+    <string name="error_root_not_bracketed">Root must be bracketed in the given interval</string>
 
     <!-- File manager -->
     <string name="fman_local">Internal storage</string>

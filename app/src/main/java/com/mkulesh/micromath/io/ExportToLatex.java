@@ -47,6 +47,7 @@ import com.mkulesh.micromath.plots.PlotFunction;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.TextProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
+import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.MatrixLayout;
 
 import java.io.OutputStream;
@@ -461,8 +462,12 @@ class ExportToLatex
                 writeTermFunction((CommonFunctions) term);
                 break;
             case USER_FUNCTIONS:
-                writeTermFunction((UserFunctions) term);
+            {
+                UserFunctions f = (UserFunctions) term;
+                writeTermFunction(f, f.getFunctionType() == FunctionType.FUNCTION_INDEX,
+                        f.getFunctionTerm());
                 break;
+            }
             case INTERVALS:
                 writeTermInterval((Intervals) term);
                 break;
@@ -655,15 +660,14 @@ class ExportToLatex
         }
     }
 
-    private void writeTermFunction(UserFunctions f)
+    private void writeTermFunction(FormulaBase f, boolean isIndex, final CustomTextView functionTerm)
     {
-        UserFunctions.FunctionType functionType = f.getFunctionType();
         final ArrayList<TermField> terms = f.getTerms();
-        if (f.getFunctionTerm() != null)
+        if (functionTerm != null)
         {
-            writeText(f.getFunctionTerm().getText(), true);
+            writeText(functionTerm.getText(), true);
         }
-        if (functionType == FunctionType.FUNCTION_INDEX)
+        if (isIndex)
         {
             writer.append("_{");
         }
@@ -679,7 +683,7 @@ class ExportToLatex
             }
             writeTermField(terms.get(i));
         }
-        if (functionType == FunctionType.FUNCTION_INDEX)
+        if (isIndex)
         {
             writer.append("} ");
         }
@@ -746,6 +750,9 @@ class ExportToLatex
             writeTermField(maxValueTerm);
             writer.append("} ");
             writeTermField(f.getArgumentTerm());
+            break;
+        case SOLVE:
+            writeTermFunction(f, false, f.getFunctionTerm());
             break;
         }
         if (f.isUseBrackets())

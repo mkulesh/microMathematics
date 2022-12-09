@@ -218,6 +218,7 @@
     <string name="math_loop_product">O produto da sequência</string>
     <string name="math_loop_integral">A definição de integral</string>
     <string name="math_loop_derivative">A primeira derivada de</string>
+    <string name="math_loop_solve">Uma raiz de uma função unidimensional</string>
     <string name="math_function_identity">Parênteses</string>
     <string name="math_function_index">Obter um elemento de matriz por índice</string>
     <string name="math_function_power">Elevar à potência</string>
@@ -297,6 +298,7 @@
     <string name="error_forbidden_arguments">Argumentos não são permitidos para este identificador</string>
     <string name="error_forbidden_complex">Número complexo não é permitido neste campo</string>
     <string name="error_forbidden_imaginary_unit">Símbolo \'i\' é reservado para a unidade imaginária que não é permitida neste contexto</string>
+    <string name="error_forbidden_array">Array is not allowed for this field</string>
     <string name="error_nan_value">O campo contém um valor que não é um número</string>
     <string name="error_unknown_file_format">O formato do arquivo %s é desconhecido</string>
     <string name="error_file_read">Não foi possível abrir o arquivo %s</string>
@@ -305,7 +307,9 @@
     <string name="error_paste_root_into_term">Não pode colar uma equação raiz em um termo</string>
     <string name="error_paste_term_into_text">Não pode colar um termo pois o conteúdo não é permitido para este campo</string>
     <string name="error_out_of_memory">Sem memória suficiente para exibir traçado</string>
-    <string name="error_forbidden_array">Array is not allowed for this field</string>
+    <string name="error_complex_result">Um número complexo aparece durante o cálculo</string>
+    <string name="error_maximum_iterations">Excede o número máximo de iterações</string>
+    <string name="error_root_not_bracketed">A raiz deve estar entre colchetes no intervalo especificado</string>
 
     <!-- File manager -->
     <string name="fman_local">Armazenamento interno</string>

@@ -218,6 +218,7 @@
     <string name="math_loop_product">Вычисление произведения ряда</string>
     <string name="math_loop_integral">Вычисление определенного интеграла</string>
     <string name="math_loop_derivative">Вычисление производной</string>
+    <string name="math_loop_solve">Корень уравнения с одной неизвестной</string>
     <string name="math_function_identity">Круглые скобки</string>
     <string name="math_function_index">Элемент массива по индексу</string>
     <string name="math_function_power">Возведение в степень</string>
@@ -304,6 +305,9 @@
     <string name="error_paste_root_into_term">Невозможно вставить корневой объект во внутреннее поле</string>
     <string name="error_paste_term_into_text">Невозможно вставить формулу: в данном контексте она не разрешена</string>
     <string name="error_out_of_memory">Недостаточно памяти для отображения графика</string>
+    <string name="error_complex_result">При вычислении появляется комплексное число</string>
+    <string name="error_maximum_iterations">Превышение максимального количества итераций</string>
+    <string name="error_root_not_bracketed">Как минимум один корень должен существовать в заданном интервале</string>
 
     <!-- File manager -->
     <string name="fman_local">Локальные файлы</string>

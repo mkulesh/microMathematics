@@ -218,6 +218,7 @@
     <string name="math_loop_product">Producto de secuencias</string>
     <string name="math_loop_integral">Encontrar integral</string>
     <string name="math_loop_derivative">Primera derivada</string>
+    <string name="math_loop_solve">Una raíz de una función unidimensional</string>
     <string name="math_function_identity">Paréntesis</string>
     <string name="math_function_index">Encuentra elementos de una matriz a través del índice</string>
     <string name="math_function_power">Potenciación</string>
@@ -304,6 +305,9 @@
     <string name="error_paste_root_into_term">No se puede pegar una ecuación raíz en un término</string>
     <string name="error_paste_term_into_text">No se puede pegar un término ya que tal contenido no está permitido para este campo</string>
     <string name="error_out_of_memory">No hay suficiente memoria para la visualización de la parcela</string>
+    <string name="error_complex_result">Aparece un número complejo durante el cálculo</string>
+    <string name="error_maximum_iterations">Superar el número máximo de iteraciones</string>
+    <string name="error_root_not_bracketed">La raíz debe estar entre paréntesis en el intervalo dado</string>
 
     <!-- File manager -->
     <string name="fman_local">Almacenamiento interno</string>

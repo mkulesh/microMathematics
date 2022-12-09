@@ -67,6 +67,7 @@
     <string name="formula_loop_derivative" translatable="false">DERIV</string>
     <string name="formula_loop_diff" translatable="false">d</string>
     <string name="formula_loop_parameter_definition" translatable="false">=</string>
+    <string name="formula_loop_solve" translatable="false">solve</string>
     <string name="formula_function_power" translatable="false">^</string>
     <string name="formula_function_start_bracket" translatable="false">(</string>
     <string name="formula_function_end_bracket" translatable="false">)</string>

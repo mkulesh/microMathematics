@@ -219,6 +219,7 @@
     <string name="math_loop_product">序列的积</string>
     <string name="math_loop_integral">定积分</string>
     <string name="math_loop_derivative">一阶导数</string>
+    <string name="math_loop_solve">一維函數的根</string>
     <string name="math_function_identity">括号</string>
     <string name="math_function_index">通过索引获取数组元素</string>
     <string name="math_function_power">指数</string>
@@ -305,6 +306,9 @@
     <string name="error_paste_root_into_term">无法将等式粘贴进一项</string>
     <string name="error_paste_term_into_text">无法粘贴项，因为此字段不允许此内容</string>
     <string name="error_out_of_memory">图像可视化内存不足</string>
+    <string name="error_complex_result">計算時出現複數</string>
+    <string name="error_maximum_iterations">超過最大迭代次數</string>
+    <string name="error_root_not_bracketed">根必須在給定區間內括起來</string>
 
     <!-- File manager -->
     <string name="fman_local">内部存储</string>
