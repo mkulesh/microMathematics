@@ -512,7 +512,8 @@ public class SeriesIntegrals extends FormulaTerm implements ArgumentHolderIf
             minValueTerm.bracketsType = BracketsType.NEVER;
             maxValueTerm.bracketsType = BracketsType.NEVER;
         }
-        argTerm.bracketsType = BracketsType.IFNECESSARY;
+        argTerm.bracketsType = getLoopType() == LoopType.SOLVE ?
+                BracketsType.NEVER : BracketsType.IFNECESSARY;
 
         // restore the previous text
         final String opCode = getContext().getResources().getString(termType.getShortCutId());
