@@ -318,8 +318,8 @@ by the second</p>
 argument</p>
 
 <table border = "0" cellspacing="0" cellpadding="0"><tr>
-  <td>$$random \left( 1\right)  = 0.935868$$</td>
-  <td>$$random \left( 10\right)  = 7.23644$$</td>
+  <td>$$random \left( 1\right)  = 0.686012$$</td>
+  <td>$$random \left( 10\right)  = 0.123869$$</td>
 </tr></table><br>
 
 <p>The most negative (closest to negative
@@ -411,7 +411,25 @@ and 0 otherwise:</p>
   <td>$$\displaystyle\int_{-{\pi} / 2}^{0}\displaystyle\int_{2}^{3}{\rho} \cdot G \left( {\varphi},\, {\rho}\right) \, d{\rho}\, d{\varphi} = 5.0$$</td>
 </tr></table><br>
 
-<h4>10 IF-function and logical operators</h4>
+<h4>10 Root finding</h4>
+
+<p>A root of an one-dimensional equation f(x)=0
+using Ridders Method:</p>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$f(x) := \frac{d}{dx}  \left( {sin \left( x\right) }^{2} + {e}^{sin \left( x\right) }\right) $$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$r := solve \left( f \left( y\right) ,\, y,\, -5,\, 5\right) $$</td>
+</tr></table><br>
+
+<table border = "0" cellspacing="0" cellpadding="0"><tr>
+  <td>$$r = 4.71239$$</td>
+  <td>$$f \left( r\right)  = -2.54529E-9$$</td>
+</tr></table><br>
+
+<h4>11 IF-function and logical operators</h4>
 
 <p>Select a term to be used depending on
 comparison result for two expressions</p>
@@ -453,7 +471,7 @@ comparison result for two expressions</p>
   <td>$$if \left( \left( 1 = 2 \right) and \left( 1 \neq 2 \right),\, true,\, false\right)  = 0.0$$</td>
 </tr></table><br>
 
-<h4>11 Function plots</h4>
+<h4>12 Function plots</h4>
 
 <table border = "0" cellspacing="0" cellpadding="0"><tr>
   <td>The first x-value:</td>
@@ -495,7 +513,7 @@ boundaries:</p>
   <td><img src="functions_overview_fig2.png"alt="Image"></td>
 </tr></table><br>
 
-<h4>12 Arrays</h4>
+<h4>13 Arrays</h4>
 
 <p>Define index range</p>
 
@@ -554,7 +572,7 @@ object properties to change the array size:</p>
   <td>$$E = \begin{bmatrix}1.0&0.0&0.0\\0.0&1.0&0.0\\0.0&0.0&1.0\\\end{bmatrix}$$</td>
 </tr></table><br>
 
-<h4>13 Signal processing</h4>
+<h4>14 Signal processing</h4>
 
 <p>Read a matrix fom an ASCII CSV file: </p>
 
@@ -611,12 +629,12 @@ Fourier transform for other array length:</p>
   <td><img src="functions_overview_fig5.png"alt="Image"></td>
 </tr></table><br>
 
-<h4>14 Output format</h4>
+<h4>15 Output format</h4>
 
 <p>Using result property dialog, it is possible
 to change the format of the result field: </p>
 
-<p>14.1 Radix</p>
+<p>15.1 Radix</p>
 
 <p>Use a radix for integer results, for example
 use binary, octal or hexadecimal bases:</p>
@@ -631,7 +649,7 @@ use binary, octal or hexadecimal bases:</p>
   <td>$$M = fe$$</td>
 </tr></table><br>
 
-<p>14.1 Fraction</p>
+<p>15.1 Fraction</p>
 
 <p>Show a fraction for the floating results:</p>
 

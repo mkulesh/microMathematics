@@ -1,0 +1,2 @@
+• Added "solve" function to find a root of an one-dimensional equation.
+• Fixed a bug: F-Droid can't build - AAPT2 error.
