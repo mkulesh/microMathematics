@@ -126,7 +126,7 @@ abstract public class BaseFragment extends Fragment implements OnClickListener
         }
     }
 
-    Uri getOpenedFile()
+    public Uri getOpenedFile()
     {
         Uri uri = null;
         // clear settings of previous version
