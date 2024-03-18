@@ -262,8 +262,16 @@ public class MainActivity extends AppCompatActivity
         case R.id.action_new_document:
             baseFragment.performAction(menuItem.getItemId());
             return true;
-        case R.id.action_open:
         case R.id.action_save:
+        {
+            final int actionId = baseFragment.getOpenedFile() == null ? R.id.action_save_as : menuItem.getItemId();
+            if (checkStoragePermission(actionId))
+            {
+                baseFragment.performAction(actionId);
+            }
+            return true;
+        }
+        case R.id.action_open:
         case R.id.action_save_as:
         case R.id.action_export:
         case R.id.action_dev_autotest:
