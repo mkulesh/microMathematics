@@ -50,7 +50,7 @@
         android:icon="@drawable/ic_action_content_open"
         android:orderInCategory="600"
         android:title="@string/action_open"
-        android:visible="false"
+        android:visible="true"
         micromath:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_save"

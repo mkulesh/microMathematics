@@ -69,7 +69,6 @@ public class MainFragmentWorksheet extends BaseFragment
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater)
     {
         super.onCreateOptionsMenu(menu, inflater);
-        menu.findItem(R.id.action_open).setVisible(true);
         menu.findItem(R.id.action_save).setVisible(true);
         menu.findItem(R.id.action_dev_mode).setVisible(isDeveloperMode());
     }
