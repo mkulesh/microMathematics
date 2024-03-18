@@ -113,6 +113,9 @@ public class MainFragmentAsset extends BaseFragment
         case R.id.action_new_document:
             ((MainActivity) activity).selectWorksheet(R.id.action_new_document);
             break;
+        case R.id.action_open:
+            ((MainActivity) activity).selectWorksheet(R.id.action_open);
+            break;
         case R.id.action_save_as:
             saveFileAs(/* storeOpenedFileInfo= */true);
             break;
