@@ -10,6 +10,7 @@ setenv APK_FILE ${2}
 setenv APK_DATA ${3}
 
 setenv APK_FLAG ${4}
+setenv EMU_FLAG ${5}
 
 setenv TOOLS_PATH ${ANDROID_HOME}/tools
 setenv EMU_PORT 5558
@@ -17,27 +18,26 @@ setenv DEVICE_NAME emulator-${EMU_PORT}
 setenv ADB_CMD "adb -s ${DEVICE_NAME}"
 
 echo ================================================================================
-echo Starting ${EMU_NAME} on port ${EMU_PORT}...
+echo Starting ${EMU_NAME} on port ${EMU_PORT} with flag ${EMU_FLAG}...
 echo ================================================================================
 adb kill-server
 adb start-server
-${ANDROID_HOME}/emulator/emulator -avd ${EMU_NAME} -no-boot-anim -port ${EMU_PORT} &
+${ANDROID_HOME}/emulator/emulator ${EMU_FLAG} -no-snapshot -avd ${EMU_NAME} -no-boot-anim -port ${EMU_PORT} &
 
-# waiting until boot_completed
+echo Waiting until boot is completed...
 while ("`${ADB_CMD} wait-for-device shell getprop sys.boot_completed | tr -d '\r' `" != "1")
   sleep 1
 end
-sleep 1
+sleep 10
 
 # actual device
-adb devices
-adb root
+${ADB_CMD} root
 
 echo Uninstalling ${APK_PACK}...
 ${ADB_CMD} uninstall ${APK_PACK}
 ${ADB_CMD} shell pm list packages | grep ${APK_PACK}
 
-echo Installing ${APK_FILE}...
+echo Installing ${APK_FILE} with flag ${APK_FLAG}...
 ${ADB_CMD} install -r ${APK_FLAG} ${APK_FILE}
 ${ADB_CMD} shell pm list packages | grep ${APK_PACK}
 

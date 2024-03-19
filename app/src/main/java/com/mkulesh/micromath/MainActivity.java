@@ -24,7 +24,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -677,13 +676,9 @@ public class MainActivity extends AppCompatActivity
         }
 
         storagePermissionAction = action;
-        if (CompatUtils.isROrLater() && CompatUtils.manageExternalStorage())
+        if (CompatUtils.isROrLater())
         {
-            if (storagePermissionDialog == null && !Environment.isExternalStorageManager())
-            {
-                showPermissionDialog(action);
-                return false;
-            }
+            return true;
         }
         else if (CompatUtils.isMarshMallowOrLater())
         {

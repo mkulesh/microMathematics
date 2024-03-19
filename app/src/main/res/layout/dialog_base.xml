@@ -75,11 +75,11 @@
                 android:orientation="horizontal" >
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/dialog_button_ok"
+                    android:id="@+id/dialog_button_cancel"
                     style="@style/DialogTextButtonStyle"
                     android:layout_marginBottom="@dimen/dialog_buttons_margin"
-                    android:drawableLeft="@drawable/ic_action_navigation_accept"
-                    android:text="@string/dialog_navigation_accept" />
+                    android:drawableLeft="@drawable/ic_action_navigation_cancel"
+                    android:text="@string/dialog_navigation_cancel" />
 
                 <View
                     android:id="@+id/dialog_button_devider"
@@ -87,11 +87,12 @@
                     android:layout_marginBottom="@dimen/dialog_buttons_margin" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/dialog_button_cancel"
+                    android:id="@+id/dialog_button_ok"
                     style="@style/DialogTextButtonStyle"
                     android:layout_marginBottom="@dimen/dialog_buttons_margin"
-                    android:drawableLeft="@drawable/ic_action_navigation_cancel"
-                    android:text="@string/dialog_navigation_cancel" />
+                    android:drawableLeft="@drawable/ic_action_navigation_accept"
+                    android:text="@string/dialog_navigation_accept" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

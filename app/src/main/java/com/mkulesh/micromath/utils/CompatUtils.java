@@ -19,11 +19,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
-import android.provider.Settings;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
@@ -48,13 +46,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 @SuppressLint("NewApi")
 public class CompatUtils
 {
-    public static boolean manageExternalStorage()
-    {
-        // Processing of permission:
-        // <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
-        return !isROrLater();
-    }
-
     public static boolean isMarshMallowOrLater()
     {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
@@ -266,19 +257,9 @@ public class CompatUtils
 
     public static void requestStoragePermission(AppCompatActivity a, int reqId)
     {
-        if (isROrLater() && manageExternalStorage())
+        if (isROrLater())
         {
-            ViewUtils.Debug(a, "requesting storage permissions for Android R");
-            Intent in = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
-            in.setData(Uri.parse("package:" + a.getApplicationContext().getPackageName()));
-            try
-            {
-                a.startActivity(in);
-            }
-            catch (Exception e)
-            {
-                ViewUtils.Debug(a, "requesting storage permissions failed: " + e.getLocalizedMessage());
-            }
+            // nothing to do
         }
         else if (isMarshMallowOrLater())
         {
