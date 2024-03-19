@@ -101,7 +101,7 @@ public class AdapterHome extends AdapterBaseImpl
             items = null;
             ArrayList<Item> ia = new ArrayList<>();
 
-            if (CompatUtils.manageExternalStorage())
+            if (!CompatUtils.isROrLater())
             {
                 ia.add(makeItem(LOCAL, AdapterFileSystem.ORG_SCHEME));
 
