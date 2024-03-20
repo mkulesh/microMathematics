@@ -24,6 +24,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -378,6 +379,24 @@ public class MainActivity extends AppCompatActivity
             outState.putCharSequence(STATE_WORKSHEET_NAME, getWorksheetName());
         }
         super.onSaveInstanceState(outState);
+        // https://github.com/mkulesh/microMathematics/issues/68 - original
+        // https://developer.android.com/guide/components/activities/parcelables-and-bundles
+        // In Android 7.0 (API level 24) and higher, the system throws a TransactionTooLargeException
+        // as a runtime exception. In lower versions of Android, the system only shows a warning in logcat.
+        // Recommended state size: 50k or less.
+        final int MAX_BUNDLE_SIZE = 1024 * 50;
+        {
+            final Parcel parcel = Parcel.obtain();
+            parcel.writeBundle(outState);
+            final int size = parcel.dataSize();
+            parcel.recycle();
+            if (size > MAX_BUNDLE_SIZE)
+            {
+                ViewUtils.Debug(this, "Instant state is too big: " + size +
+                        ". Clear to avoid TransactionTooLargeException.");
+                outState.clear();
+            }
+        }
     }
 
     @Override
