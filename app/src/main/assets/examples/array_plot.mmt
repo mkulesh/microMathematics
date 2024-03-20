@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="Mikhail Kulesh" title="Array plot example" description="This example demonstrates how to plot a line from two arrays of x and y coordinates" textWidth="45" significantDigits="6" scale="0.53157" redefineAllowed="true">
+    <text_fragment>
+      <term key="text" text="This example demonstrates how to plot a line&#10;from two arrays of x and y coordinates:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="x" />
+      <term key="rightTerm" code="matrix" rows="9" cols="1">
+        <term key="element[0][0]" text="0" />
+        <term key="element[1][0]" text="1.5" />
+        <term key="element[2][0]" text="2" />
+        <term key="element[3][0]" text="2.5" />
+        <term key="element[4][0]" text="4" />
+        <term key="element[5][0]" text="3" />
+        <term key="element[6][0]" text="2" />
+        <term key="element[7][0]" text="1" />
+        <term key="element[8][0]" text="0" />
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="y" />
+      <term key="rightTerm" code="matrix" rows="9" cols="1">
+        <term key="element[0][0]" text="0" />
+        <term key="element[1][0]" text="1" />
+        <term key="element[2][0]" text="5" />
+        <term key="element[3][0]" text="1" />
+        <term key="element[4][0]" text="0" />
+        <term key="element[5][0]" text="-1" />
+        <term key="element[6][0]" text="-5" />
+        <term key="element[7][0]" text="-1" />
+        <term key="element[8][0]" text="0" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="Define an index for these arrays used by the&#10;plot below:" />
+    </text_fragment>
+    <equation>
+      <term key="leftTerm" text="k" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" text="1" />
+        <term key="maxValue" text="8" />
+      </term>
+    </equation>
+    <text_fragment>
+      <term key="text" text="The plot access both array by index:" />
+    </text_fragment>
+    <plot_function width="680" height="520" axes_style="boxed" xLabelsNumber="5" yLabelsNumber="11" gridLineColor="#FF787878" xType="linear" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" text="6.0" />
+      <term key="yFunction" color="#FFFF001E" width="5" lineStyle="solid" shapeType="circle" shapeSize="500" code="content:com.mkulesh.micromath.index.y">
+        <term key="argTerm" text="k" />
+      </term>
+      <term key="yMinValue" text="-6.0" />
+      <term key="xMinValue" text="-1" />
+      <term key="xFunction" code="content:com.mkulesh.micromath.index.x">
+        <term key="argTerm" text="k" />
+      </term>
+      <term key="xMaxValue" text="5.0" />
+    </plot_function>
+  </formulaList>
+</micromath>
