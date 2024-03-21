@@ -45,23 +45,68 @@
             </intent-filter>
 
            
-            <!-- This filter captures protocols with type info -->
+            <!-- This filter captures protocols without file extension -->
             <intent-filter
                 android:icon="@mipmap/ic_launcher"
                 android:label="@string/app_name" >
-                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.OPENABLE"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file"/>
+                <data android:scheme="ftp"/>
+                <data android:scheme="ftps"/>
+                <data android:scheme="sftp"/>
+                <data android:scheme="content"/>
+                <data android:scheme="http"/>
+                <data android:scheme="https"/>
+                <data android:scheme="smb"/>
 
-                <data android:scheme="file" />
-                <data android:scheme="content" />
-                
-                <data android:mimeType="text/plain" />
                 <data android:mimeType="text/xml" />
-                
-                <data android:pathPattern=".*\\.xml" />
-                <data android:pathPattern=".*\\.mmt" />
+                <data android:mimeType="application/mmt" />
+                <data android:mimeType="application/octet-stream" />
+            </intent-filter>
+
+            <!-- This filter captures protocols with file extension -->
+            <intent-filter
+                android:icon="@mipmap/ic_launcher"
+                android:label="@string/app_name" >
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.OPENABLE"/>
+
+                <data android:scheme="file"/>
+                <data android:scheme="ftp"/>
+                <data android:scheme="ftps"/>
+                <data android:scheme="sftp"/>
+                <data android:scheme="content"/>
+                <data android:scheme="http"/>
+                <data android:scheme="https"/>
+                <data android:scheme="smb"/>
+
+                <data android:host="*"/>
+                <data android:pathPattern=".*.MMT" />
+                <data android:pathPattern=".*.mmt" />
+                <data android:pathPattern=".*\\..*\\.MMT" />
+                <data android:pathPattern=".*\\..*\\.mmt" />
+                <data android:pathPattern=".*\\..*\\..*\\.MMT" />
+                <data android:pathPattern=".*\\..*\\..*\\.mmt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.MMT" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.mmt" />
+            </intent-filter>
+
+            <!-- This filter captures "Share" option -->
+            <intent-filter
+                android:icon="@mipmap/ic_launcher"
+                android:label="Open with uMath+">
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:mimeType="text/xml" />
+                <data android:mimeType="application/mmt" />
+                <data android:mimeType="application/octet-stream" />
             </intent-filter>
 
             <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts"/>

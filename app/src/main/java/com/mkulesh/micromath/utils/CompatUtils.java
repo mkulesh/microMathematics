@@ -19,6 +19,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
@@ -280,5 +281,25 @@ public class CompatUtils
         {
             return toast != null && toast.getView() != null && toast.getView().isShown();
         }
+    }
+
+    public static Uri getClipDataUri(Intent intent)
+    {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
+        {
+            return null;
+        }
+        if (intent.getClipData() == null)
+        {
+            return null;
+        }
+        for (int i = 0; i < intent.getClipData().getItemCount(); i++)
+        {
+            if (intent.getClipData().getItemAt(i).getUri() != null)
+            {
+                return intent.getClipData().getItemAt(i).getUri();
+            }
+        }
+        return null;
     }
 }
