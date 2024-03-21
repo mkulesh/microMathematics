@@ -25,4 +25,16 @@
             android:targetClass="com.mkulesh.micromath.MainActivity"
             />
     </shortcut>
+
+    <shortcut
+        android:shortcutId="open_file"
+        android:icon="@drawable/shortcut_open_file"
+        android:shortcutShortLabel="@string/action_open"
+        android:shortcutLongLabel="@string/action_open">
+        <intent
+            android:action="com.mkulesh.micromath.plus.OPEN_FILE"
+            android:targetPackage="com.mkulesh.micromath.plus"
+            android:targetClass="com.mkulesh.micromath.plus.MainActivityPlus"
+            />
+    </shortcut>
 </shortcuts>

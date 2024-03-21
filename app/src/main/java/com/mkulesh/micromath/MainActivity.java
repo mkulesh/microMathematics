@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity
     private static final int SETTINGS_ACTIVITY_REQID = 256;
     private static final String EXIT_CONFIRM = "exit_confirm";
     private static final String SHORTCUT_NEW_DOCUMENT = "com.mkulesh.micromath.NEW_DOCUMENT";
+    private static final String SHORTCUT_OPEN_FILE = "com.mkulesh.micromath.OPEN_FILE";
     private static final String SHORTCUT_AUTOTEST = "com.mkulesh.micromath.AUTOTEST";
 
     private AlertDialog storagePermissionDialog = null;
@@ -130,6 +131,12 @@ public class MainActivity extends AppCompatActivity
             {
                 ViewUtils.Debug(this, "Called with shortcut intent: " + intent);
                 selectWorksheet(R.id.action_new_document);
+                intentProcessed = true;
+            }
+            else if (SHORTCUT_OPEN_FILE.equals(intent.getAction()))
+            {
+                ViewUtils.Debug(this, "Called with shortcut intent: " + intent);
+                selectWorksheet(R.id.action_open);
                 intentProcessed = true;
             }
             else if (intent.getData() != null)
