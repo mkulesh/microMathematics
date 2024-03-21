@@ -128,20 +128,27 @@ public class MainActivity extends AppCompatActivity
             }
             else if (SHORTCUT_NEW_DOCUMENT.equals(intent.getAction()))
             {
-                ViewUtils.Debug(this, "Called with shortcut intent: " + intent.toString());
+                ViewUtils.Debug(this, "Called with shortcut intent: " + intent);
                 selectWorksheet(R.id.action_new_document);
                 intentProcessed = true;
             }
             else if (intent.getData() != null)
             {
-                ViewUtils.Debug(this, "Called with external UIR: " + intent.toString());
+                ViewUtils.Debug(this, "Called with external URI: " + intent);
                 externalUri = intent.getData();
+                selectWorksheet(BaseFragment.INVALID_ACTION_ID);
+                intentProcessed = true;
+            }
+            else if (CompatUtils.getClipDataUri(intent) != null)
+            {
+                ViewUtils.Debug(this, "Called with ClipData URI: " + intent);
+                externalUri = CompatUtils.getClipDataUri(intent);
                 selectWorksheet(BaseFragment.INVALID_ACTION_ID);
                 intentProcessed = true;
             }
             else
             {
-                ViewUtils.Debug(this, "Called with unknown indent: " + intent.toString());
+                ViewUtils.Debug(this, "Called with unknown indent: " + intent);
             }
         }
         if (!intentProcessed && savedInstanceState == null)
