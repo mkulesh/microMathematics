@@ -31,8 +31,7 @@
         <item name="colorMicroMathFloatingIcon">@android:color/white</item>
         <item name="drawableAppHeader">@drawable/app_header_strong_light</item>
         <!-- Dialog style -->
-        <item name="drawableDialogWindow">@drawable/dialog_window_light</item>
-        <item name="drawableDialogPanel">@drawable/dialog_panel_light</item>
+        <item name="colorDialogWindow">@android:color/white</item>
         <item name="colorDialogTitle">?attr/colorAccent</item>
         <item name="colorDialogDivider">@color/material_grey_600</item>
         <item name="colorDialogContent">@android:color/black</item>
