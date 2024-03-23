@@ -65,10 +65,6 @@ public class SimpleDialog extends DialogBase
         if (button != null && other != null)
         {
             button.setVisibility(View.GONE);
-            LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-            lp.setMargins(0, 0, 0, getContext().getResources().getDimensionPixelSize(R.dimen.dialog_buttons_margin));
-            other.setLayoutParams(lp);
-            findViewById(R.id.dialog_button_devider).setVisibility(View.GONE);
         }
     }
 
