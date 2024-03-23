@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
         android:ellipsize="end"
-        android:paddingRight="@dimen/dialog_table_cell_padding"
+        android:paddingRight="@dimen/dialog_minimal_padding"
         android:maxLines="1" />
 
     <View style="@style/VerticalDividerStyle" />
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
         android:ellipsize="end"
-        android:paddingLeft="@dimen/dialog_table_cell_padding"
+        android:paddingLeft="@dimen/dialog_minimal_padding"
         android:maxLines="1" />
 
 </LinearLayout>

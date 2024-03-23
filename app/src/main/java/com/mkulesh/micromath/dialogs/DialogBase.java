@@ -21,6 +21,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -55,34 +56,34 @@ public class DialogBase extends Dialog implements OnClickListener
         final LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(layoutId, findViewById(R.id.dialog_content_panel));
 
-        TypedValue outValue = new TypedValue();
-        context.getTheme().resolveAttribute(R.attr.drawableDialogWindow, outValue, true);
-        getWindow().getDecorView().setBackgroundResource(outValue.resourceId);
-        getWindow().getDecorView().setPadding(0, 0, 0, 0);
+        final int width = (int)(context.getResources().getDisplayMetrics().widthPixels * 0.98);
+        final int height = (int)(context.getResources().getDisplayMetrics().heightPixels * 0.98);
+        if (getWindow() != null)
+        {
+            getWindow().setLayout(Math.min(width, height), ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
 
         title = findViewById(R.id.dialog_title_text);
         title.setText(titleId);
-        prepareTextStyle(title);
+        prepareTextStyle(title, false);
 
         final Button okButton = findViewById(R.id.dialog_button_ok);
         okButton.setOnClickListener(this);
-        prepareTextStyle(okButton);
+        prepareTextStyle(okButton, true);
         prepareButtonImage(okButton);
 
         final Button cancelButton = findViewById(R.id.dialog_button_cancel);
         cancelButton.setOnClickListener(this);
-        prepareTextStyle(cancelButton);
+        prepareTextStyle(cancelButton, true);
         prepareButtonImage(cancelButton);
-
-        final View divider = findViewById(R.id.dialog_divider_view);
-        CompatUtils.setDrawableColorAttr(context, divider.getBackground(), R.attr.colorDialogTitle);
 
         pref = PreferenceManager.getDefaultSharedPreferences(getContext());
     }
 
-    private void prepareTextStyle(TextView v)
+    private void prepareTextStyle(TextView v, boolean capital)
     {
-        final String text = v.getText().toString().toUpperCase(Locale.getDefault());
+        final String text = capital ?
+                v.getText().toString().toUpperCase(Locale.getDefault()) : v.getText().toString();
         v.setText(text);
     }
 

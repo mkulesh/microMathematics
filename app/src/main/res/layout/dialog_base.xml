@@ -17,41 +17,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="0dp" >
+    android:background="?attr/colorDialogWindow"
+    android:orientation="vertical" >
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/dialog_title_text"
+        style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/dialog_title_text"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dialog_title_height"
-            android:gravity="center_vertical|left"
-            android:paddingLeft="@dimen/dialog_content_padding"
-            android:paddingRight="@dimen/dialog_content_padding"
-            android:textColor="?attr/colorDialogTitle"
-            android:textSize="@dimen/dialog_title_text_size"/>
-
-        <View
-            android:id="@+id/dialog_divider_view"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@drawable/dialog_divider" />
-    </LinearLayout>
+        android:layout_height="40dp"
+        android:gravity="bottom|left"
+        android:paddingLeft="@dimen/dialog_window_padding"
+        android:paddingRight="@dimen/dialog_window_padding"
+        android:textColor="?attr/colorDialogContent"
+        android:textSize="@dimen/dialog_title_text_size"/>
 
     <LinearLayout
         android:id="@+id/dialog_root_layout"
-        style="@style/DialogPanelStyle" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/dialog_content_padding"
+        android:orientation="vertical" >
 
         <LinearLayout
             android:id="@+id/dialog_content_panel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dialog_window_padding"
+            android:layout_marginRight="@dimen/dialog_window_padding"
             android:layout_weight="1"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -61,39 +54,22 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/dialog_button_panel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="52dp"
+            android:padding="@dimen/dialog_minimal_padding"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal" >
 
-            <View style="@style/HorizontalDividerStyle" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dialog_button_cancel"
+                style="@style/DialogTextButtonStyle"
+                android:text="@string/dialog_navigation_cancel" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dialog_buttons_bar_height"
-                android:gravity="center"
-                android:orientation="horizontal" >
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dialog_button_ok"
+                style="@style/DialogTextButtonStyle"
+                android:text="@string/dialog_navigation_accept" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/dialog_button_cancel"
-                    style="@style/DialogTextButtonStyle"
-                    android:layout_marginBottom="@dimen/dialog_buttons_margin"
-                    android:drawableLeft="@drawable/ic_action_navigation_cancel"
-                    android:text="@string/dialog_navigation_cancel" />
-
-                <View
-                    android:id="@+id/dialog_button_devider"
-                    style="@style/VerticalDividerStyle"
-                    android:layout_marginBottom="@dimen/dialog_buttons_margin" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/dialog_button_ok"
-                    style="@style/DialogTextButtonStyle"
-                    android:layout_marginBottom="@dimen/dialog_buttons_margin"
-                    android:drawableLeft="@drawable/ic_action_navigation_accept"
-                    android:text="@string/dialog_navigation_accept" />
-
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

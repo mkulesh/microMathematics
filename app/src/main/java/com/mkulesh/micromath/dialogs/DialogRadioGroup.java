@@ -37,7 +37,7 @@ public class DialogRadioGroup extends DialogBase
     public DialogRadioGroup(Activity context, int titleId, int numButtons, EventHandler eventHandler)
     {
         super(context, R.layout.dialog_radio_group, titleId);
-        (findViewById(R.id.dialog_button_panel)).setVisibility(View.GONE);
+        (findViewById(R.id.dialog_button_ok)).setVisibility(View.GONE);
 
         this.eventHandler = eventHandler;
 

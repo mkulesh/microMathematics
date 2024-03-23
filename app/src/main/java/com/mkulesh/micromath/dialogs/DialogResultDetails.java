@@ -121,7 +121,7 @@ public class DialogResultDetails extends DialogBase
     {
         // Maximize the dialog.
         maximize();
-        findViewById(R.id.dialog_button_panel).setVisibility(View.GONE);
+        findViewById(R.id.dialog_button_ok).setVisibility(View.GONE);
 
         ArgumentValueAdapter argumentValueAdapter = new ArgumentValueAdapter(getContext(), calculatedItems, docProp, resProp);
         ListView listView = findViewById(R.id.result_details_listview);
