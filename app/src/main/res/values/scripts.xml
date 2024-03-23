@@ -80,9 +80,9 @@
     </string-array>
 
     <string-array name="take_screenshots_scripts" translatable="false" tools:ignore="InconsistentArrays">
-        <item>asset:/examples/polar_plot_2.mmt</item>
+        <item>asset:/examples/polar_plot.mmt</item>
         <item>asset:/examples/simple_calculation.mmt</item>
-        <item>asset:/examples/wavelet_plot_1.mmt</item>
+        <item>asset:/examples/wavelet_plot.mmt</item>
     </string-array>
 
 </resources>
