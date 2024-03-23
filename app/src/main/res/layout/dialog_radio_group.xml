@@ -24,9 +24,7 @@
             android:id="@+id/dialog_radio_group_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:paddingBottom="@dimen/dialog_content_padding"
-            android:paddingTop="@dimen/dialog_content_padding" >
+            android:gravity="center_vertical" >
         </RadioGroup>
     </ScrollView>
 
