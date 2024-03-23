@@ -113,12 +113,10 @@
         <item>asset:/examples/area_between_curves.mmt</item>
         <item>asset:/examples/cosine_transform.mmt</item>
         <item>asset:/examples/double_integral.mmt</item>
-        <item>asset:/examples/fourie_transform.mmt</item>
-        <item>asset:/examples/function_plot.mmt</item>
-        <item>asset:/examples/polar_plot_2.mmt</item>
-        <item>asset:/examples/simple_calculation.mmt</item>
-        <item>asset:/examples/three_surfaces.mmt</item>
         <item>asset:/examples/file_read.mmt</item>
+        <item>asset:/examples/three_surfaces.mmt</item>
+        <item>asset:/examples/polar_plot.mmt</item>
+        <item>asset:/examples/valentine.mmt</item>
     </string-array>
 
     <string-array name="asset_filter" translatable="false">

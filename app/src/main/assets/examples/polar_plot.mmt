@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<micromath xmlns:mmt="http://micromath.mkulesh.com">
+  <formulaList documentVersion="2" author="" title="" description="" textWidth="39" significantDigits="6" scale="0.53161" redefineAllowed="true">
+    <image_fragment fileName="asset:/images/polar_coordinates.svg" embedded="false" originalSize="false" width="720" height="400" colorType="auto" />
+    <equation>
+      <term key="leftTerm" text="x(r,f)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="r" />
+        <term key="rightTerm" code="cos">
+          <term key="argTerm" text="f" />
+        </term>
+      </term>
+    </equation>
+    <equation inRightOfPrevious="true">
+      <term key="leftTerm" text="y(r,f)" />
+      <term key="rightTerm" code="mult">
+        <term key="leftTerm" text="r" />
+        <term key="rightTerm" code="sin">
+          <term key="argTerm" text="f" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="r(t)" />
+      <term key="rightTerm" code="plus">
+        <term key="leftTerm" code="plus">
+          <term key="leftTerm" code="plus">
+            <term key="leftTerm" code="sin">
+              <term key="argTerm" code="mult">
+                <term key="leftTerm" text="2" />
+                <term key="rightTerm" text="t" />
+              </term>
+            </term>
+            <term key="rightTerm" code="power">
+              <term key="leftTerm" code="sin">
+                <term key="argTerm" code="mult">
+                  <term key="leftTerm" text="4" />
+                  <term key="rightTerm" text="t" />
+                </term>
+              </term>
+              <term key="rightTerm" text="2" />
+            </term>
+          </term>
+          <term key="rightTerm" code="sin">
+            <term key="argTerm" code="mult">
+              <term key="leftTerm" text="6" />
+              <term key="rightTerm" text="t" />
+            </term>
+          </term>
+        </term>
+        <term key="rightTerm" code="power">
+          <term key="leftTerm" code="sin">
+            <term key="argTerm" code="mult">
+              <term key="leftTerm" text="8" />
+              <term key="rightTerm" text="t" />
+            </term>
+          </term>
+          <term key="rightTerm" text="2" />
+        </term>
+      </term>
+    </equation>
+    <equation>
+      <term key="leftTerm" text="d" />
+      <term key="rightTerm" code="equidistant_interval">
+        <term key="minValue" text="0" />
+        <term key="nextValue" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" code="divide_slash">
+            <term key="leftTerm" text="pi" />
+            <term key="rightTerm" text="1000" />
+          </term>
+        </term>
+        <term key="maxValue" code="mult">
+          <term key="leftTerm" text="2" />
+          <term key="rightTerm" text="pi" />
+        </term>
+      </term>
+    </equation>
+    <plot_function width="720" height="750" axes_style="crossed" xLabelsNumber="8" yLabelsNumber="8" gridLineColor="#FF838383" xType="linear" yType="linear" functionsNumber="1">
+      <term key="yMaxValue" text="4" />
+      <term key="yFunction" color="#EC00AED5" width="7" lineStyle="solid" shapeType="none" shapeSize="300" code="content:com.mkulesh.micromath.link.y:2">
+        <term key="argTerm1" code="content:com.mkulesh.micromath.link.r">
+          <term key="argTerm" text="d" />
+        </term>
+        <term key="argTerm2" text="d" />
+      </term>
+      <term key="yMinValue" text="-4" />
+      <term key="xMinValue" text="-4" />
+      <term key="xFunction" code="content:com.mkulesh.micromath.link.x:2">
+        <term key="argTerm1" code="content:com.mkulesh.micromath.link.r">
+          <term key="argTerm" text="d" />
+        </term>
+        <term key="argTerm2" text="d" />
+      </term>
+      <term key="xMaxValue" text="4" />
+    </plot_function>
+  </formulaList>
+</micromath>
