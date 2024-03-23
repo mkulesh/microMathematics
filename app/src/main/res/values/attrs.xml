@@ -21,8 +21,7 @@
     <attr name="colorMicroMathIcon" format="color" />
     <attr name="colorMicroMathFloatingIcon" format="color" />
     <attr name="drawableAppHeader" format="reference" />
-    <attr name="drawableDialogWindow" format="reference" />
-    <attr name="drawableDialogPanel" format="reference" />
+    <attr name="colorDialogWindow" format="reference" />
     <attr name="colorToolBarSeparator" format="color" />
     <attr name="colorDialogTitle" format="color" />
     <attr name="colorDialogDivider" format="color" />

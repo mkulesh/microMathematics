@@ -112,15 +112,13 @@ public class Commander extends DialogBase implements CommanderIf
         switch (selectionMode)
         {
         case OPEN:
-            (findViewById(R.id.dialog_button_panel)).setVisibility(View.GONE);
+            (findViewById(R.id.dialog_button_ok)).setVisibility(View.GONE);
             (findViewById(R.id.fman_file_type_layout)).setVisibility(View.GONE);
             (findViewById(R.id.dialog_file_new_name_layout)).setVisibility(View.GONE);
-            (findViewById(R.id.dialog_content_panel)).setPadding(0, 0, 0, getContext().getResources()
-                    .getDimensionPixelSize(R.dimen.dialog_panel_vertical_padding));
             break;
         case SAVE_AS:
         case EXPORT:
-            (findViewById(R.id.dialog_button_panel)).setVisibility(View.VISIBLE);
+            (findViewById(R.id.dialog_button_ok)).setVisibility(View.VISIBLE);
             (findViewById(R.id.fman_file_type_layout))
                     .setVisibility(selectionMode == SelectionMode.EXPORT ? View.VISIBLE : View.GONE);
             (findViewById(R.id.dialog_file_new_name_layout)).setVisibility(View.VISIBLE);

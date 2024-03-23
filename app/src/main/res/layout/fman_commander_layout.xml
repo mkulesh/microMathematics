@@ -23,6 +23,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:visibility="gone" >
 
         <TextView
@@ -57,21 +58,15 @@
         android:clickable="true"
         android:drawSelectorOnTop="false"
         android:fastScrollEnabled="true"
-        android:divider="?attr/colorDialogDivider"
-        android:dividerHeight="1dp"
         android:longClickable="true" />
-    
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
+
+    <View style="@style/HorizontalDividerStyle" />
             
     <LinearLayout
         android:id="@+id/dialog_file_new_name_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-
-        <View style="@style/HorizontalDividerStyle" />
 
         <LinearLayout
             android:layout_width="match_parent"

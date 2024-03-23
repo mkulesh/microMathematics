@@ -26,16 +26,11 @@
     <dimen name="activity_palette_horizontal_padding">16dp</dimen>
 
     <!-- Dialogs -->
-    <dimen name="dialog_title_text_size">@dimen/abc_text_size_subhead_material</dimen>
+    <dimen name="dialog_title_text_size">@dimen/abc_text_size_title_material</dimen>
     <dimen name="dialog_content_text_size">@dimen/abc_text_size_medium_material</dimen>
-    <dimen name="dialog_panel_vertical_padding">6dp</dimen>
-    <dimen name="dialog_panel_horizontal_padding">3dp</dimen>
-    <dimen name="dialog_title_height">56dp</dimen>
-    <dimen name="dialog_buttons_bar_height">56dp</dimen>
-    <dimen name="dialog_buttons_margin">5dp</dimen>
-    <dimen name="dialog_corner_radius">8dp</dimen>
+    <dimen name="dialog_window_padding">24dp</dimen>
     <dimen name="dialog_content_padding">15dp</dimen>
-    <dimen name="dialog_table_cell_padding">8dp</dimen>
+    <dimen name="dialog_minimal_padding">8dp</dimen>
     
     <!-- Formula -->
     <dimen name="formula_hor_root_padding">10dp</dimen>
@@ -65,7 +60,7 @@
 	<!-- Fman dimensions -->
     <dimen name="fman_path_size">@dimen/abc_text_size_small_material</dimen>
     <dimen name="fman_item_attrs_size">10sp</dimen>
-    <dimen name="fman_item_icon_size">36px</dimen>
+    <dimen name="fman_item_icon_size">14dp</dimen>
     <dimen name="fman_item_hor_padding">3dp</dimen>
     
     <!-- HoloColorPicker library -->

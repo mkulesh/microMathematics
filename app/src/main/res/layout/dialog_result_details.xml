@@ -26,7 +26,7 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:paddingRight="@dimen/dialog_table_cell_padding"
+            android:paddingRight="@dimen/dialog_minimal_padding"
             android:maxLines="1"
             android:text="@string/dialog_result_details_argument" />
 
@@ -37,7 +37,7 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:paddingLeft="@dimen/dialog_table_cell_padding"
+            android:paddingLeft="@dimen/dialog_minimal_padding"
             android:maxLines="1"
             android:text="@string/dialog_result_details_value" />
     </LinearLayout>
@@ -48,7 +48,6 @@
         android:id="@+id/result_details_listview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/dialog_panel_vertical_padding"
         android:layout_weight="1"
         android:clickable="false"
         android:divider="?attr/colorDialogDivider"
@@ -64,7 +63,6 @@
         style="@style/DialogTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/dialog_content_padding"
         android:maxLines="1" />
 
 </merge>
