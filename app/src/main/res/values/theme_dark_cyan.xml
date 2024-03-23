@@ -27,14 +27,13 @@
         <item name="colorMicroMathFloatingIcon">?attr/colorMicroMathIcon</item>
         <item name="drawableAppHeader">@drawable/app_header_dark_cyan</item>
         <!-- Dialog style -->
-        <item name="drawableDialogWindow">@drawable/dialog_window_dark</item>
-        <item name="drawableDialogPanel">@drawable/dialog_panel_dark</item>
+        <item name="colorDialogWindow">@color/material_grey_800</item>
         <item name="colorDialogTitle">?attr/colorAccent</item>
-        <item name="colorDialogDivider">@color/material_grey_800</item>
+        <item name="colorDialogDivider">@color/material_grey_600</item>
         <item name="colorDialogContent">@android:color/white</item>
         <item name="colorDialogDisabledElement">@color/material_grey_600</item>
         <item name="colorDialogEditText">@color/material_grey_800</item>
-        <item name="colorDialogHighlighted">@color/material_grey_800</item>
+        <item name="colorDialogHighlighted">@color/material_grey_600</item>
         <!-- Formula style -->
         <item name="colorFormulaBackground">@android:color/transparent</item>
         <item name="colorFormulaHighlighted">@color/material_grey_800</item>

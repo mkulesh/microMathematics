@@ -27,8 +27,7 @@
         <item name="colorMicroMathFloatingIcon">?attr/colorMicroMathIcon</item>
         <item name="drawableAppHeader">@drawable/app_header_purple_green</item>
         <!-- Dialog style -->
-        <item name="drawableDialogWindow">@drawable/dialog_window_purple</item>
-        <item name="drawableDialogPanel">@drawable/dialog_panel_light</item>
+        <item name="colorDialogWindow">@android:color/white</item>
         <item name="colorDialogTitle">#47296f</item>
         <item name="colorDialogDivider">#ccbada</item>
         <item name="colorDialogContent">@android:color/black</item>
