@@ -26,3 +26,6 @@ After LaTeX is installed, call
 # chmod +x build-doc.sh 
 # ./build-doc.sh <version_code>
 ```
+
+Android Emulator used to export documentation:
+Nexus 4, 768 x 1280, 320 dpi
