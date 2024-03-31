@@ -50,7 +50,7 @@
         <item>asset:/doc_es/three_d_plot_es.mmt</item>
         <item>asset:/doc_es/series_and_integrals_es.mmt</item>
         <item>asset:/doc_es/about_micromath_es.mmt</item>
-        <item>https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.23.0-es.pdf</item>
+        <item>https://docs.google.com/viewer?url=https://github.com/mkulesh/microMathematics/raw/supplement/doc/microMathematics-v2.23.2-es.pdf</item>
     </string-array>
     <string name="activity_example">Ejemplos</string>
     <string name="activity_welcome">asset:/doc_es/welcome_es.mmt</string>
