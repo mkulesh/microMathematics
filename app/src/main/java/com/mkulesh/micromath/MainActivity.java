@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity
     private boolean autotestOnStart = false;
     private Toast exitToast = null;
     private int orientation;
+    private boolean instanceStateEmpty = true;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -115,53 +116,72 @@ public class MainActivity extends AppCompatActivity
 
         // context menu
         activeActionModes = new ArrayList<>();
+        // State handling
+        instanceStateEmpty = savedInstanceState == null;
+    }
 
-        Intent intent = getIntent();
-        boolean intentProcessed = false;
+    protected void onResume()
+    {
+        super.onResume();
+        final boolean intentProcessed = handleIntent(getIntent());
+        if (!intentProcessed && instanceStateEmpty)
+        {
+            selectWorksheet(BaseFragment.INVALID_ACTION_ID);
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent)
+    {
+        super.onNewIntent(intent);
+        handleIntent(intent);
+    }
+
+    private boolean handleIntent(Intent intent)
+    {
+        boolean retValue = false;
         if (intent != null)
         {
             if (SHORTCUT_AUTOTEST.equals(intent.getAction()))
             {
-                ViewUtils.Debug(this, "Called in autotest mode: " + intent.toString());
+                ViewUtils.Debug(this, "Called in autotest mode: " + intent);
                 autotestOnStart = true;
                 selectWorksheet(BaseFragment.INVALID_ACTION_ID);
-                intentProcessed = true;
+                retValue = true;
             }
             else if (SHORTCUT_NEW_DOCUMENT.equals(intent.getAction()))
             {
                 ViewUtils.Debug(this, "Called with shortcut intent: " + intent);
                 selectWorksheet(R.id.action_new_document);
-                intentProcessed = true;
+                retValue = true;
             }
             else if (SHORTCUT_OPEN_FILE.equals(intent.getAction()))
             {
                 ViewUtils.Debug(this, "Called with shortcut intent: " + intent);
                 selectWorksheet(R.id.action_open);
-                intentProcessed = true;
+                retValue = true;
             }
             else if (intent.getData() != null)
             {
                 ViewUtils.Debug(this, "Called with external URI: " + intent);
                 externalUri = intent.getData();
                 selectWorksheet(BaseFragment.INVALID_ACTION_ID);
-                intentProcessed = true;
+                retValue = true;
             }
             else if (CompatUtils.getClipDataUri(intent) != null)
             {
                 ViewUtils.Debug(this, "Called with ClipData URI: " + intent);
                 externalUri = CompatUtils.getClipDataUri(intent);
                 selectWorksheet(BaseFragment.INVALID_ACTION_ID);
-                intentProcessed = true;
+                retValue = true;
             }
             else
             {
                 ViewUtils.Debug(this, "Called with unknown indent: " + intent);
             }
+            setIntent(null);
         }
-        if (!intentProcessed && savedInstanceState == null)
-        {
-            selectWorksheet(BaseFragment.INVALID_ACTION_ID);
-        }
+        return retValue;
     }
 
     public boolean isAutotestOnStart()
@@ -348,10 +368,17 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void restartActivity()
+    @SuppressLint("UnsafeIntentLaunch")
+    public void restartActivity()
     {
-        Intent intent = getIntent();
+        PackageManager pm = getPackageManager();
+        Intent intent = pm.getLaunchIntentForPackage(getPackageName());
+        if (intent == null)
+        {
+            intent = getIntent();
+        }
         finish();
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
