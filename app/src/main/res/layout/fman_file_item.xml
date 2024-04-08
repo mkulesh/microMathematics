@@ -23,6 +23,7 @@
         android:id="@+id/fman_fld_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:adjustViewBounds="true"
         android:padding="1dp"
         android:scaleType="fitStart" />
@@ -45,7 +46,7 @@
         android:ellipsize="none"
         android:gravity="right"
         android:paddingLeft="@dimen/fman_item_hor_padding"
-        android:maxLines="1"
+        android:singleLine="true"
         android:textColor="?attr/colorDialogContent"
         android:textSize="@dimen/fman_item_attrs_size" />
 
@@ -60,7 +61,7 @@
         android:gravity="right"
         android:paddingLeft="@dimen/fman_item_hor_padding"
         android:paddingRight="@dimen/fman_item_hor_padding"
-        android:maxLines="1"
+        android:singleLine="true"
         android:textColor="?attr/colorDialogContent"
         android:textSize="@dimen/fman_item_attrs_size" />
 

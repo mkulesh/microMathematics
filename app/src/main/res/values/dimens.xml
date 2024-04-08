@@ -60,7 +60,7 @@
 	<!-- Fman dimensions -->
     <dimen name="fman_path_size">@dimen/abc_text_size_small_material</dimen>
     <dimen name="fman_item_attrs_size">10sp</dimen>
-    <dimen name="fman_item_icon_size">14dp</dimen>
+    <dimen name="fman_item_icon_size">36px</dimen>
     <dimen name="fman_item_hor_padding">3dp</dimen>
     
     <!-- HoloColorPicker library -->
