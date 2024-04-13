@@ -8,6 +8,7 @@ In order to build the documentation, the LaTeX (texlive) and following latex pac
 - as the root user:
 ```
 # yum install texlive
+# yum install texlive-gensymb
 # yum install texlive-lipsum texlive-sectsty texlive-t2 texlive-lastpage texlive-lettrine texlive-titling texlive-fonts-tlwg babel texlive-minifp
 # yum install texlive-cyrillic texlive-babel-russian texlive-hyphen-russian texlive-lh 
 # yum install texlive-babel-german texlive-hyphen-german
@@ -21,11 +22,12 @@ In order to build the documentation, the LaTeX (texlive) and following latex pac
 # fmtutil -user --missing
 ```
 
-After LaTeX is installed, call 
+After LaTeX is installed, call
 ```
 # chmod +x build-doc.sh 
 # ./build-doc.sh <version_code>
 ```
 
-Android Emulator used to export documentation:
-Nexus 4, 768 x 1280, 320 dpi
+Android Emulator used to export documentation: Nexus 4, 768 x 1280, 320 dpi
+
+On the device, generated documentation is placed here: /data/data/com.mkulesh.micromath/files/doc
