@@ -8,6 +8,8 @@ No sólo los estudiantes, sino también todo aquel que le gusten las matemática
 
 Beneficios y características:
 
+- Privacidad máxima: sin anuncios, sin rastreadores, sin telemetría, sin permisos especiales
+- El diseño moderno admite diferentes temas de color y funciona en teléfonos inteligentes y/o tabletas en modo de retrato y paisaje
 - Verificación, validación, documentación y reutilización de los cálculos matemáticos
 - Funciona en un smartphone o tableta en modo retrato y paisaje
 - Soporta todas las operaciones matemáticas de uso común

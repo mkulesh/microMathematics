@@ -1,28 +1,31 @@
-Avec microMathematics Plus, vous pouvez non seulement effectuer des calculs mathématiques dans une forme naturellement lisible, mais aussi créer et gérer votre propre collection de formules interactives !
+l'Application microMathematics Plus permet d'effectuer des calculs mathématiques rédigés de manière naturelle et intuitive. Mais elle permet aussi de créer et de générer ses propres collections de formules mathématiques interactives.
 
-MicroMathematics Plus est un nouveau type de calculatrice mobile révolutionnaire. Il s'agit de la première calculatrice graphique scientifique pouvant tracer des fonctions sur Android orientée autour d'une feuille de calcul. Elle permet l'édition en direct d'identités mathématiques combinées à des calculs très précis.
+microMathematics Plus est un type innovant de calculatrice mobile. Il s'agit de la première calculatrice mathématique au monde pour Android, basée sur un tableur (feuille de calcul) qui permet de saisir directement des éléments mathématiques et qui fournit en outre des résultats d'une grande précision.
 
-L'application est 100% open source. N'hésitez pas à télécharger le code, l'explorer, le forker ou y contribuer à l'adresse https://github.com/mkulesh/microMathematics
+L'application est 100% open source. Vous pouvez librement la télécharger, l'explorer, La forker ou contribuer sur le site https://github.com/mkulesh/microMathematics
 
-Non seulement les étudiants, mais aussi tous ceux qui aiment les mathématiques ou qui ont besoin de plus qu'une simple calculatrice bénéficieront de cette étonnant outil de calcul mathématique et de tracé de courbe.
+Elle n'est pas déstinée uniquement aux lycéens, étudiants, scientifiques et ingénieurs. Toutes les personnes intéressées par les mathématiques, qui souhaitent avoir plus qu'une calculatrice classique, peuvent profiter de ce calculateur puissant et orienté graphique.
 
-Avantages et caractéristiques:
+Caractéristiques et avantages :
 
-- Vérification, validation, documentation et réutilisation des calculs mathématiques
-- Fonctionne sur smartphone ou tablette en mode portrait et paysage
-- Supporte toutes les opérations mathématiques couramment utilisées
-- Les expressions mathématiques sont écrites sous une forme intuitive et naturellement lisible
-- Supporte unités de mesure
-- Un puissant éditeur mathématique adapté aux écrans tactiles avec une fonction d'annulation qui facilite l'édition
-- Vous pouvez faire plusieurs calculs et modifier/corriger de manière conséquente toutes les formules utilisées
-- Il est possible de stocker des résultats intermédiaires dans un tableau 1D, 2D ou 3D, ce qui peut améliorer la performance de calcul
-- Les expressions mathématiques sont collectées dans un document, qui comprend non seulement des formules et des tracés, mais également du texte et des images supplémentaires (le format SVG est également pris en charge)
-- Vous pouvez stocker votre document sur la carte SD et l'exporter au format LaTeX ou sous forme d'image (l'autorisation d'écriture sur la carte SD est nécessaire)
-- Les cartes SD sur Android 6+ sont également supportées
-- L'application contient une page détaillée pour apprendre à utiliser l'application ainsi que plusieurs exemples
-- Prend en charge différents thèmes de couleur
-- Supporte l'importation de données depuis des fichiers ASCII
+- intimité maximale: pas d'annonces, pas de trackers, pas de télémétrie, pas d'autorisations spéciales
+- le design moderne prend en charge différents thèmes de couleurs et fonctionne sur les smartphones et / ou les tablettes en mode portrait et paysage
+- permet la préparation, la validation, la documentation et la réutilisation des calculs mathématiques précédants,
+- adapté de manière optimale aux smartphones, aux phablettes et aux tablettes en format portrait et paysage,
+- supporte les opérations mathématiques les plus courantes,
+- permet d'entrer des formules mathématiques de manière naturelle et intuitive,
+- on peut aussi utiliser des constantes et des variables avec des unités,
+- facilite l'édition grâce à un puissant éditeur à écran tactile avec fonction Undo,
+- calcul simultané et correction ultérieure simple de plusieurs formules,
+- il est possible de sauvegarder les résultats intermédiaires dans un tableau 1-D, 2-D ou 3-D pour améliorer la performance du calcul,
+- le document peut contenir non seulement des formules mathématiques et des représentations graphiques, mais aussi des fragments de texte et des images (y compris au format SVG),
+- il est possible de sauvegarder le document sur une carte SD (droits de lecture et d'écriture requis sur la carte SD),
+- les cartes SD sous Android 6.0 sont désormais également prises en charge,
+- exportation au format LaTeX ou image,
+- introduction facilitée par une documentation détaillée et de nombreux exemples,
+- différents thèmes de couleurs,
+- prend en charge l'importation de données à partir de fichiers ASCII.
 
-MicroMathematics Plus a exactement la même interface utilisateur que la version gratuite microMathematics, mais elle implémente plus de fonctionnalités mathématiques: unités de mesure, tableaux, nombres complexes, fonctions à arguments multiples, tracés de plusieurs fonctions, contours et 3D, sommation et opérations de produits, intégrales dérivées et définies, if-function et opérateurs logiques... Cette version a les limitations mathématiques suivantes : elle ne supporte pas les fonctions spéciales, les vecteurs, les matrices et plusieurs autres choses éléments de mathématiques de haut niveau.
+The microMathematics Plus possède présente la même interface utilisateur que la version libre microMathematics, mais possède plus de fonctionnalités mathématiques : unités de mesure, tableaux, nombres complexes, fonctions à plusieurs arguments, tracés pour plusieurs fonctions, tracés de contour et en 3D, opérations de sommation et de produit, dérivées et intégrales définies, fonctions if et opérateurs logiques. Cette version présente les limitations mathématiques suivantes : elle ne prend pas en charge les fonctions spéciales, les vecteurs, les matrices et bien d'autres éléments des mathématiques de haut niveau.
 
-Langues : anglais, russe, allemand, portugais brésilien, chinoise.
+Langues : Allemand, Anglais, Chinois, Espagnol, Français, Portugais - Brésilien, Russe.

@@ -9,6 +9,8 @@ Nicht nur Gymnasialschüler, Studenten, Wissenschaftler und Ingenieure, aber auc
 
 Features und Vorteile:
 
+- maximale Privatsphäre: Keine Werbung, keine Tracker, keine Telemetrie, keine besonderen Berechtigungen
+- Das moderne Design unterstützt verschiedene Farbthemen und funktioniert auf Smartphones und/oder Tablets im Porträt- und Landschaftsmodus
 - ermöglicht Vorbereitung, Validierung, Dokumentierung und Wiederverwendung der mathematischen Berechnungen
 - optimal angepasst sowie für Smartphones als auch für Phablets und Tablets im Hoch- und Querformat
 - unterstützt die gängigen mathematischen Operationen

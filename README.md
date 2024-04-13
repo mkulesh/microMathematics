@@ -16,6 +16,8 @@ This app is not only for students. Anyone who enjoys mathematics or requires mor
 
 ## Benefits and features:
 
+* Maximum privacy: No ads, no trackers, no telemetry, no special permissions
+* The modern Material design supports different color themes and works on smartphones and/or tablets in portrait and landscape mode
 * Verification, validation, documentation and re-use of mathematical calculations
 * Works on smartphone or tablet in portrait and landscape mode
 * Supports all commonly used mathematical operations

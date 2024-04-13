@@ -1,0 +1,7 @@
+• The app is adapted for Android 14.
+• Added "Open file" menu when an example from navigation drawer is opened.
+• Added "Open file" menu into the home screen icon context menu.
+• Added possibility to share a file from a file manager with uMath.
+• Changed design of all dialogs with respect to Material design guidelines.
+• Fixed a bug: No possibility to input a file name after the save menu is selected when the app is started at the first time.
+• Fixed a bug: App crashes when a document with huge embedded image is open and app settings are selected.
