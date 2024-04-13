@@ -1009,6 +1009,12 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
                 extraPar = dim;
             }
             term = convertToTerm(termCode, p, /*ensureManualTrigger=*/ false, extraPar);
+            if (isTerm() && term instanceof ArgumentHolderIf)
+            {
+                // Since ArgumentHolderIf introduces internal arguments,
+                // we shall re-check all terms in order ro consider these arguments
+                checkContentType();
+            }
         }
         else if (showError)
         {

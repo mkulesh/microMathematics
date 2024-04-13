@@ -42,6 +42,7 @@ import com.mkulesh.micromath.plots.PlotFunction;
 import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.properties.TextProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
+import com.mkulesh.micromath.widgets.CustomTextView;
 
 import java.io.OutputStream;
 import java.io.StringWriter;
@@ -449,8 +450,11 @@ class ExportToLatex
                 writeTermFunction((CommonFunctions) term);
                 break;
             case USER_FUNCTIONS:
-                writeTermFunction((UserFunctions) term);
+            {
+                UserFunctions f = (UserFunctions) term;
+                writeTermFunction(f, false, f.getFunctionTerm());
                 break;
+            }
             case INTERVALS:
                 writeTermInterval((Intervals) term);
                 break;
@@ -576,15 +580,21 @@ class ExportToLatex
         }
     }
 
-    private void writeTermFunction(UserFunctions f)
+    private void writeTermFunction(FormulaBase f, boolean isIndex, final CustomTextView functionTerm)
     {
-        UserFunctions.FunctionType functionType = f.getFunctionType();
         final ArrayList<TermField> terms = f.getTerms();
-        if (f.getFunctionTerm() != null)
+        if (functionTerm != null)
         {
-            writeText(f.getFunctionTerm().getText(), true);
+            writeText(functionTerm.getText(), true);
         }
-        writer.append(" \\left( ");
+        if (isIndex)
+        {
+            writer.append("_{");
+        }
+        else
+        {
+            writer.append(" \\left( ");
+        }
         for (int i = 0; i < terms.size(); i++)
         {
             if (i > 0)
@@ -593,7 +603,14 @@ class ExportToLatex
             }
             writeTermField(terms.get(i));
         }
-        writer.append("\\right) ");
+        if (isIndex)
+        {
+            writer.append("} ");
+        }
+        else
+        {
+            writer.append("\\right) ");
+        }
     }
 
     private void writeTermInterval(Intervals f)

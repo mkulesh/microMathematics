@@ -16,14 +16,14 @@ package com.mkulesh.micromath.properties;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.Nullable;
-
 import com.mkulesh.micromath.formula.FormulaList;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
 
 import java.util.Locale;
+
+import androidx.annotation.Nullable;
 
 public class ResultProperties implements Parcelable
 {
