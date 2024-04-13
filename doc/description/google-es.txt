@@ -22,7 +22,6 @@ Beneficios y características:
 - Puedes guardar tu documento en una tarjeta SD y exportarlo al formato LaTeX o a una imagen (se necesita un permiso de escritura SD)
 - La tarjeta SD en Android 6+ también es compatible
 - La aplicación contiene una página detallada de "Cómo usar" y varios ejemplos
-- Soporta diferentes temas de color
 - Soporta la importación de datos desde archivos ASCII
 
 El microMathematics Plus tiene exactamente la misma interfaz de usuario que la versión gratuita de microMathematics, pero implementa más funcionalidad matemática: unidades de medida, matrices, números complejos, funciones de muchos argumentos, gráficos de varias funciones, gráficos de contorno y tridimensionales, operaciones de suma y producto, integrales derivadas y definitivas, función si y operadores lógicos. Esta versión tiene las siguientes limitaciones matemáticas: no soporta funciones especiales, vectores, matrices y muchas otras cosas de las matemáticas de alto nivel.

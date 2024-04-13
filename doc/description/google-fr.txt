@@ -23,7 +23,6 @@ Caractéristiques et avantages :
 - les cartes SD sous Android 6.0 sont désormais également prises en charge,
 - exportation au format LaTeX ou image,
 - introduction facilitée par une documentation détaillée et de nombreux exemples,
-- différents thèmes de couleurs,
 - prend en charge l'importation de données à partir de fichiers ASCII.
 
 The microMathematics Plus possède présente la même interface utilisateur que la version libre microMathematics, mais possède plus de fonctionnalités mathématiques : unités de mesure, tableaux, nombres complexes, fonctions à plusieurs arguments, tracés pour plusieurs fonctions, tracés de contour et en 3D, opérations de sommation et de produit, dérivées et intégrales définies, fonctions if et opérateurs logiques. Cette version présente les limitations mathématiques suivantes : elle ne prend pas en charge les fonctions spéciales, les vecteurs, les matrices et bien d'autres éléments des mathématiques de haut niveau.

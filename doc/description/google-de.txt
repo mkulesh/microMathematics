@@ -24,7 +24,6 @@ Features und Vorteile:
 - SD Cards unter Android 6.0 werden nun auch unterstützt
 - Export in LaTeX- oder Bild-Format
 - erleichterte Einführung durch ausführliche Dokumentation und viele Beispiele
-- verschiedene Farbthemen
 - unterstützt Import von Daten aus ASCII-Dateien
 
 Die microMathematics Plus sieht genau so aus wie die kostenfreie Version, hat aber mehr Funktionalität: sie unterstützt Einheiten, Arrays, komplexe Zahlen, Funktionen mehrerer Variablen, Funktionsgraphen mehrerer Funktionen, 3-D Graphen, Summe und Produkt einer Folge, bestimmtes Integral und Ableitung sowie logische Operatoren. Diese Version hat folgende Einschränkungen: sie unterstützt weder Sonderfunktionen, Vektoren, Matrizen noch viele andere Dinge auf mathematisch höherem Niveau.

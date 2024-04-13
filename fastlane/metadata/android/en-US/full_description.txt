@@ -22,7 +22,6 @@ Benefits and features:
 * You can store your document on SD card and export it into LaTeX format or an image (SD writing permission is needed)
 * SD card on Android 6+ is also supported
 * The app contains detailed "How to use" page and several examples
-* Supports different color themes
 * Supports data import from ASCII files
 * Supports units of measurements, arrays, complex numbers, functions of many arguments, plots for several functions, contour and 3D plots, summation and product operations, derivative and definite integrals, if-function and logical operators, Fourier transform, root finding.
 

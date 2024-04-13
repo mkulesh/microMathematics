@@ -30,7 +30,6 @@ This app is not only for students. Anyone who enjoys mathematics or requires mor
 * You can store your document on an SD card and export it into [LaTeX format](https://www.latex-project.org/) or an image (SD writing permission is needed)
 * SD card on Android 6+ is also supported
 * The app contains a detailed "How to use" page and several examples
-* Supports different color themes
 * Supports data import from ASCII files
 * Integration with [SMath Studio](https://en.smath.info): SMath Studio is able to open workshets stored in microMathematics, see [this document](https://github.com/mkulesh/microMathematics/wiki/Integration-with-SMath-Studio) for details. Documents from SMath Studio can also be opened in microMathematics.
 
