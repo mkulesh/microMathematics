@@ -32,9 +32,9 @@
         android:shortcutShortLabel="@string/action_open"
         android:shortcutLongLabel="@string/action_open">
         <intent
-            android:action="com.mkulesh.micromath.plus.OPEN_FILE"
-            android:targetPackage="com.mkulesh.micromath.plus"
-            android:targetClass="com.mkulesh.micromath.plus.MainActivityPlus"
+            android:action="com.mkulesh.micromath.OPEN_FILE"
+            android:targetPackage="com.mkulesh.micromath"
+            android:targetClass="com.mkulesh.micromath.MainActivity"
             />
     </shortcut>
 </shortcuts>

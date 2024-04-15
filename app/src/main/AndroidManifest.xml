@@ -100,7 +100,7 @@
             <!-- This filter captures "Share" option -->
             <intent-filter
                 android:icon="@mipmap/ic_launcher"
-                android:label="Open with uMath+">
+                android:label="Open with uMath">
                 <action android:name="android.intent.action.SEND"/>
                 <category android:name="android.intent.category.DEFAULT"/>
 
