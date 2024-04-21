@@ -1,7 +1,7 @@
 [![License](https://img.shields.io/badge/license-GNU_GPLv3-orange.svg)](https://github.com/mkulesh/microMathematics/blob/master/LICENSE)
 ![Release Status](https://img.shields.io/github/v/release/mkulesh/microMathematics)
 
-# <img src="https://github.com/mkulesh/microMathematics/blob/master/images/icon.png" align="center" height="48" width="48"> "microMathematics Plus - Extended Visual Calculator"
+# <img src="https://github.com/mkulesh/microMathematics/blob/master/images/icon.png" align="center" height="48" width="48"> "Scientific graphing calculator and function plotter oriented around a worksheet"
 
 With microMathematics Plus, not only can you perform mathematical calculations in naturally readable form but you can also create and manage your own collection of interactive formulas!
 
