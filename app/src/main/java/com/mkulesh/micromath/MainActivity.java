@@ -47,7 +47,6 @@ import androidx.preference.PreferenceManager;
 import com.google.android.material.navigation.NavigationView;
 import com.mkulesh.micromath.fman.AdapterDocuments;
 import com.mkulesh.micromath.formula.StoredFormula;
-import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.AppLocale;
 import com.mkulesh.micromath.utils.AppTheme;
 import com.mkulesh.micromath.utils.CompatUtils;
@@ -117,7 +116,7 @@ public class MainActivity extends AppCompatActivity
         // context menu
         activeActionModes = new ArrayList<>();
         // State handling
-        instanceStateEmpty = savedInstanceState == null;
+        instanceStateEmpty = savedInstanceState == null || savedInstanceState.isEmpty();
     }
 
     protected void onResume()
