@@ -1,31 +1,33 @@
-microMathematics Plus ermöglicht Durchführung mathematischer Berechnungen, die in natürlicher Weise dargestellt und intuitiv bedienbar sind. Mit ihrer Hilfe ist es möglich, eigene Sammlungen von interaktiven mathematischen Formeln zu erstellen und zu bearbeiten.
+microMathematics Plus ist ein innovativer mobiler Kalkulator. 
+Er ermöglicht mathematische Berechnungen in natürlicher Notation. Auf seinen interaktiven Notebooks lassen sich Diagramme erzeugen, Sammlungen eigener mathematischer Formeln erstellen und mit formatierbarem Freitext oder Bildern erläutern.
 
-Die App microMathematics Plus ist eine innovative Art der mobilen Kalkulatoren. Sie ist der erste mathematische Taschenrechner für Android weltweit, der auf einer Kalkulationstabelle basiert, die es erlaubt, mathematische Elemente direkt einzugeben und zudem hochgenaue Ergebnisse liefert.
+microMathematics Plus ist der erste mathematische Taschenrechner für Android weltweit, der eine Kalkulationstabelle zur Direkteingabe mathematischer Elemente verwendet und hochgenaue Ergebnisse liefert.
 
-Der Code ist komplett quell-offen. Du kannst ihn herunterladen, kennen lernen, weiterentwickeln unter https://github.com/mkulesh/microMathematics
-Dort kannst Du auch Bugs melden oder mit entwickeln.
+Der Code ist komplett quell-offen. Du kannst ihn unter https://github.com/mkulesh/microMathematics
+herunterladen und kennenlernen. Falls du einen Fehler melden oder die App weiter verbessern möchtest, erstelle dort gern einen Bugreport oder entwickle mit.
 
-Nicht nur Gymnasialschüler, Studenten, Wissenschaftler und Ingenieure, aber auch alle mathematisch Interessierte, die mehr als einen üblichen Taschenrechner haben wollen, können von diesem leistungsstarken und grafisch orientierten Kalkulator profitieren.
+Nicht nur Gymnasialschüler, Studenten, Wissenschaftler und Ingenieure, sondern auch alle mathematisch Interessierte, die mehr als einen üblichen Taschenrechner suchen, können von diesem leistungsstarken, grafisch orientierten Kalkulator profitieren.
 
 Features und Vorteile:
 
-- maximale Privatsphäre: Keine Werbung, keine Tracker, keine Telemetrie, keine besonderen Berechtigungen
-- Das moderne Design unterstützt verschiedene Farbthemen und funktioniert auf Smartphones und/oder Tablets im Porträt- und Landschaftsmodus
-- ermöglicht Vorbereitung, Validierung, Dokumentierung und Wiederverwendung der mathematischen Berechnungen
-- optimal angepasst sowie für Smartphones als auch für Phablets und Tablets im Hoch- und Querformat
-- unterstützt die gängigen mathematischen Operationen
-- ermöglicht Eingabe mathematischer Formeln in einer natürlichen und intuitiven Weise
-- man kann auch Konstanten und Variablen mit Einheiten verwenden
-- erleichtert Editierung durch leistungsstarken Touchscreen-Editor mit Undo-Funktion
-- gleichzeitige Berechnung und einfache nachträgliche Korrektur mehrerer Formeln
-- es ist möglich, die Zwischenresultate in ein 1-D, 2-D, oder 3-D Array zu speichern, um Kalkulationsleistung zu verbessern
-- das Dokument kann nicht nur mathematische Formeln und grafische Darstellungen enthalten, sondern auch Textfragmente und Bilder (inklusive SVG-Format)
-- es ist möglich, das Dokument auf einer SD-Karte abzuspeichern (Lese- und Schreibrechte auf SD-Karte erforderlich)
-- SD Cards unter Android 6.0 werden nun auch unterstützt
-- Export in LaTeX- oder Bild-Format
-- erleichterte Einführung durch ausführliche Dokumentation und viele Beispiele
-- unterstützt Import von Daten aus ASCII-Dateien
+- Maximale Privatsphäre: Keine Werbung, keine Tracker, keine Telemetrie, keine besonderen Berechtigungen.
+- Das moderne Design bietet verschiedene Farbthemen zur Auswahl und funktioniert auf Smartphones und Tablets sowohl im Porträt- als auch im Querformat.
+- Intuitive Eingabe mathematischer Formeln in natürlicher Notation.
+- Ideal zur Vorbereitung, Durchführung, Validierung, Dokumentation und Wiederverwendung mathematischer Berechnungen.
+- Umfangreiche Grundausstattung: Eine Vielzahl gängiger mathematischer Operationen ist bereits vordefiniert und sofort verwendbar.
+- Flexibel Erweiterbar: Zusätzliche mathematische Funktionen lassen sich frei definieren. 
+- Rechnen mit Einheiten: Bei Berechnungen physikalischer Grössen bleibt deren Dimensionalität gewahrt. Wenn also Konstanten und Variablen mit Einheiten versehen werden, dann erhält auch das Berechnungsergebnis eine konsistente Einheit.
+- Komfortables Editieren und nachträgliches Korrigieren durch leistungsstarken Touchscreen-Editor mit Undo-Funktion.
+- Bei jedem Berechnungsdurchlauf des aktuellen Notebooks werden alle darin enthaltenen Formeln gemeinsam berechnet.
+- Zwischenresultate lassen sich zur effizienten Weiterverwendung in ein 1-D, 2-D, oder 3-D Array zu speichern.
+- Zur Verwendung in Berechnungen lassen sich Daten aus ASCII-Dateien importieren.
+- Das Dokument kann nicht nur mathematische Formeln und grafische Darstellungen enthalten, sondern auch Textfragmente und Bilder (inklusive SVG-Format).
+- Es ist möglich, das Dokument auf einer SD-Karte abzuspeichern (ab Android 6.0, Lese- und Schreibrechte auf SD-Karte erforderlich).
+- Das Dokument kann auch im LaTeX-Format oder als Bild exportiert werden.
+- Die ausführliche Dokumentation mit vielen Beispielen hilft bei den ersten Schritten wie auch bei fortgeschrittenen Themen in microMathematics Plus.
 
-Die microMathematics Plus sieht genau so aus wie die kostenfreie Version, hat aber mehr Funktionalität: sie unterstützt Einheiten, Arrays, komplexe Zahlen, Funktionen mehrerer Variablen, Funktionsgraphen mehrerer Funktionen, 3-D Graphen, Summe und Produkt einer Folge, bestimmtes Integral und Ableitung sowie logische Operatoren. Diese Version hat folgende Einschränkungen: sie unterstützt weder Sonderfunktionen, Vektoren, Matrizen noch viele andere Dinge auf mathematisch höherem Niveau.
+Die App microMathematics Plus sieht genau so aus wie die kostenfreie Version, hat aber mehr Funktionalität: sie unterstützt Einheiten, Arrays, komplexe Zahlen, Funktionen mehrerer Variablen, Funktionsgraphen mehrerer Funktionen, 3-D Graphen, Summe und Produkt einer Folge, bestimmtes Integral und Ableitung sowie logische Operatoren. 
+
+Die kostenlose Version hat folgende Einschränkungen: Sie unterstützt weder Sonderfunktionen, Vektoren, Matrizen noch viele andere Dinge auf mathematisch höherem Niveau.
 
 Sprachen: Englisch, Russisch, Deutsch, Brasilianisches Portugiesisch, Chinesisch, Spanisch
