@@ -40,4 +40,5 @@ createAVD android_12.0.0 'system-images;android-31;google_apis;x86_64'
 createAVD android_12.1.0 'system-images;android-32;google_apis;x86_64'
 createAVD android_13.0.0 'system-images;android-33;google_apis;x86_64'
 createAVD android_14.0.0 'system-images;android-34;google_apis;x86_64'
+createAVD android_15.0.0 'system-images;android-35;google_apis;x86_64'
 
