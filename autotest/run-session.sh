@@ -26,6 +26,7 @@ echo APK to be tested: ${1}
 ./run-emulator.sh android_13.0.0 ${1} /data/user/0 -g -delay-adb
 ./run-emulator.sh android_14.0.0 ${1} /data/user/0 -g -delay-adb
 ./run-emulator.sh android_15.0.0 ${1} /data/user/0 -g -delay-adb
+./run-emulator.sh android_16.0.0 ${1} /data/user/0 -g -delay-adb
 
 grep FAILED *.html
 
