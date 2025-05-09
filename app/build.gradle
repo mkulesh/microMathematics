@@ -11,7 +11,7 @@ android {
         targetSdkVersion 34
         versionCode 324
         versionName "2.23.2"
-        setProperty("archivesBaseName", "microMathematics-v" + versionName)
+        base.archivesName = "microMathematics-v" + versionName
     }
     buildTypes {
         release {
