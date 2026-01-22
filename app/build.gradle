@@ -3,12 +3,12 @@ apply plugin: 'com.android.application'
 android {
     namespace 'com.mkulesh.micromath'
 
-    compileSdkVersion 34
-    buildToolsVersion "34.0.0"
+    compileSdkVersion 35
+    buildToolsVersion "35.0.0"
     defaultConfig {
         applicationId "com.mkulesh.micromath"
         minSdkVersion 14
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode 43
         versionName "1.25"
         setProperty("archivesBaseName", "microMathematics-v" + versionName)
@@ -16,7 +16,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
     compileOptions {
