@@ -16,6 +16,7 @@ package com.mkulesh.micromath.undo;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 /*
@@ -40,7 +41,7 @@ public final class FormulaState implements Parcelable
         super();
         formulaId = in.readInt();
         termId = in.readInt();
-        data = in.readParcelable(getClass().getClassLoader());
+        data = CompatUtils.readParcelable(in, getClass().getClassLoader(), Parcelable.class);
     }
 
     @Override

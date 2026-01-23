@@ -22,7 +22,10 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
@@ -36,6 +39,7 @@ import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,16 +51,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 @SuppressLint("NewApi")
 public class CompatUtils
 {
-    public static boolean isMarshMallowOrLater()
-    {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
-    }
-
-    public static boolean isROrLater()
-    {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.R;
-    }
-
     /**
      * Procedure returns theme color
      */
@@ -88,73 +82,6 @@ public class CompatUtils
         final int c = getThemeColorAttr(context, resId);
         b.clearColorFilter();
         b.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
-    }
-
-    @SuppressWarnings("deprecation")
-    public static void setDrawerListener(DrawerLayout mDrawerLayout, ActionBarDrawerToggle mDrawerToggle)
-    {
-
-        if (isMarshMallowOrLater())
-        {
-            mDrawerLayout.removeDrawerListener(mDrawerToggle);
-            mDrawerLayout.addDrawerListener(mDrawerToggle);
-        }
-        else
-        {
-            mDrawerLayout.setDrawerListener(mDrawerToggle);
-        }
-    }
-
-    /**
-     * Procedure sets the background for given view as a drawable with given resource id
-     */
-    public static void updateBackground(Context c, View v, @DrawableRes int drawableId)
-    {
-        Drawable bg;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-        {
-            bg = c.getResources().getDrawable(drawableId, c.getTheme());
-        }
-        else
-        {
-            bg = c.getResources().getDrawable(drawableId);
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-        {
-            v.setBackground(bg);
-        }
-        else
-        {
-            v.setBackgroundDrawable(bg);
-        }
-    }
-
-    /**
-     * Procedure sets the background for given view as a drawable with given resource id
-     */
-    public static void updateBackgroundAttr(Context c, View v, @DrawableRes int drawableId, @AttrRes int colorAttrId)
-    {
-        Drawable bg;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-        {
-            bg = c.getResources().getDrawable(drawableId, c.getTheme());
-        }
-        else
-        {
-            bg = c.getResources().getDrawable(drawableId);
-        }
-
-        setDrawableColorAttr(c, bg, colorAttrId);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-        {
-            v.setBackground(bg);
-        }
-        else
-        {
-            v.setBackgroundDrawable(bg);
-        }
     }
 
     public static void setDrawableColorAttr(Context c, Drawable drawable, @AttrRes int resId)
@@ -190,9 +117,82 @@ public class CompatUtils
         return df;
     }
 
-    /**
-     * Procedure retrieves the storage directory
-     */
+    //**********************************************************************************************
+    // Jelly Bean: Build.VERSION_CODES.JELLY_BEAN = 16
+    //**********************************************************************************************
+
+    @SuppressWarnings("deprecation")
+    public static void updateBackground(Context c, View v, @DrawableRes int drawableId)
+    {
+        Drawable bg;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            bg = c.getResources().getDrawable(drawableId, c.getTheme());
+        }
+        else
+        {
+            bg = c.getResources().getDrawable(drawableId);
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+        {
+            v.setBackground(bg);
+        }
+        else
+        {
+            v.setBackgroundDrawable(bg);
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    public static void updateBackgroundAttr(Context c, View v, @DrawableRes int drawableId, @AttrRes int colorAttrId)
+    {
+        Drawable bg;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            bg = c.getResources().getDrawable(drawableId, c.getTheme());
+        }
+        else
+        {
+            bg = c.getResources().getDrawable(drawableId);
+        }
+
+        setDrawableColorAttr(c, bg, colorAttrId);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+        {
+            v.setBackground(bg);
+        }
+        else
+        {
+            v.setBackgroundDrawable(bg);
+        }
+    }
+
+    public static Uri getClipDataUri(Intent intent)
+    {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
+        {
+            return null;
+        }
+        if (intent.getClipData() == null)
+        {
+            return null;
+        }
+        for (int i = 0; i < intent.getClipData().getItemCount(); i++)
+        {
+            if (intent.getClipData().getItemAt(i).getUri() != null)
+            {
+                return intent.getClipData().getItemAt(i).getUri();
+            }
+        }
+        return null;
+    }
+
+    //**********************************************************************************************
+    // Kitkat: Build.VERSION_CODES.KITKAT = 19
+    //**********************************************************************************************
+
     public static String[] getStorageDirs(Context ctx)
     {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
@@ -223,6 +223,29 @@ public class CompatUtils
         }
     }
 
+    //**********************************************************************************************
+    // MarshMallow: Build.VERSION_CODES.M = 23
+    //**********************************************************************************************
+
+    public static boolean isMarshMallowOrLater()
+    {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
+    }
+
+    @SuppressWarnings("deprecation")
+    public static void setDrawerListener(DrawerLayout mDrawerLayout, ActionBarDrawerToggle mDrawerToggle)
+    {
+        if (isMarshMallowOrLater())
+        {
+            mDrawerLayout.removeDrawerListener(mDrawerToggle);
+            mDrawerLayout.addDrawerListener(mDrawerToggle);
+        }
+        else
+        {
+            mDrawerLayout.setDrawerListener(mDrawerToggle);
+        }
+    }
+
     public static Intent getDocTreeIntent()
     {
         if (isMarshMallowOrLater())
@@ -231,6 +254,24 @@ public class CompatUtils
         }
         return null;
     }
+
+    public static void requestStoragePermission(AppCompatActivity a, int reqId)
+    {
+        if (isROrLater())
+        {
+            // nothing to do
+        }
+        else if (isMarshMallowOrLater())
+        {
+            ViewUtils.Debug(a, "requesting storage permissions for Android M");
+            a.requestPermissions(new String[]{ Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE }, reqId);
+        }
+    }
+
+    //**********************************************************************************************
+    // Q: Build.VERSION_CODES.Q = 29
+    //**********************************************************************************************
 
     public static File getStorageDir(final @NonNull Context context, final @NonNull String directory)
     {
@@ -256,24 +297,19 @@ public class CompatUtils
         }
     }
 
-    public static void requestStoragePermission(AppCompatActivity a, int reqId)
+    //**********************************************************************************************
+    // R: Build.VERSION_CODES.R = 30
+    //**********************************************************************************************
+
+    public static boolean isROrLater()
     {
-        if (isROrLater())
-        {
-            // nothing to do
-        }
-        else if (isMarshMallowOrLater())
-        {
-            ViewUtils.Debug(a, "requesting storage permissions for Android M");
-            a.requestPermissions(new String[]{ Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE }, reqId);
-        }
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.R;
     }
 
     @SuppressWarnings("deprecation")
     public static boolean isToastVisible(Toast toast)
     {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+        if (isROrLater())
         {
             return toast != null;
         }
@@ -283,23 +319,48 @@ public class CompatUtils
         }
     }
 
-    public static Uri getClipDataUri(Intent intent)
+    //**********************************************************************************************
+    // Tiramisu: Build.VERSION_CODES.TIRAMISU = 33
+    //**********************************************************************************************
+
+    public static boolean isTiramisuOrLater()
     {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU;
+    }
+
+    @SuppressWarnings("deprecation")
+    public static <T extends Parcelable> T getParcelable(@NonNull Bundle state, @NonNull String parName, @NonNull Class<T> clazz)
+    {
+        if (isTiramisuOrLater())
         {
-            return null;
-        }
-        if (intent.getClipData() == null)
-        {
-            return null;
-        }
-        for (int i = 0; i < intent.getClipData().getItemCount(); i++)
-        {
-            if (intent.getClipData().getItemAt(i).getUri() != null)
+            final T p = state.getParcelable(parName, clazz);
+            if (p == null)
             {
-                return intent.getClipData().getItemAt(i).getUri();
+                ViewUtils.Debug(state, "empty parcelable state in getParcelable for " + clazz.getCanonicalName());
             }
+            return p;
         }
-        return null;
+        else
+        {
+            return state.getParcelable(parName);
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    public static <T extends Parcelable> T readParcelable(@NonNull Parcel parcel, @Nullable ClassLoader loader, @NonNull Class<T> clazz)
+    {
+        if (isTiramisuOrLater())
+        {
+            final T p = parcel.readParcelable(loader, clazz);
+            if (p == null)
+            {
+                ViewUtils.Debug(parcel, "empty parcelable state in readParcelable for " + clazz.getCanonicalName());
+            }
+            return p;
+        }
+        else
+        {
+            return parcel.readParcelable(loader);
+        }
     }
 }

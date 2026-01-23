@@ -18,6 +18,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.mkulesh.micromath.formula.FormulaBase.BaseType;
+import com.mkulesh.micromath.utils.CompatUtils;
 
 import java.util.ArrayList;
 
@@ -70,7 +71,7 @@ public class StoredFormula
         {
             baseType = FormulaBase.BaseType.valueOf(in.readString());
             termCode = in.readString();
-            data = in.readParcelable(getClass().getClassLoader());
+            data = CompatUtils.readParcelable(in, getClass().getClassLoader(), Parcelable.class);
         }
 
         public static final Parcelable.Creator<StoredTerm> CREATOR = new Parcelable.Creator<StoredTerm>()
@@ -146,6 +147,7 @@ public class StoredFormula
     /**
      * Parcelable interface: procedure reads the formula state
      */
+    @SuppressWarnings("deprecation")
     public void onRestoreInstanceState(Parcelable state)
     {
         if (state == null)
@@ -156,7 +158,14 @@ public class StoredFormula
         {
             Bundle bundle = (Bundle) state;
             contentType = ContentType.valueOf(bundle.getString(STATE_CONTENT_TYPE));
-            data = (StoredTerm[]) bundle.getParcelableArray(STATE_DATA);
+            if (CompatUtils.isTiramisuOrLater())
+            {
+                data = bundle.getParcelableArray(STATE_DATA, StoredTerm.class);
+            }
+            else
+            {
+                data = (StoredTerm[]) bundle.getParcelableArray(STATE_DATA);
+            }
         }
     }
 
