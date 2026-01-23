@@ -653,7 +653,8 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         for (int i = 0; i < n; i++)
         {
             final FormulaBase.BaseType t = FormulaBase.BaseType.valueOf(inState.getString(STATE_FORMULA_TYPE + i));
-            FormulaBase f = addBaseFormula(t, inState.getParcelable(STATE_FORMULA_STATE + i));
+            FormulaBase f = addBaseFormula(t, CompatUtils.getParcelable(
+                    inState,STATE_FORMULA_STATE + i, Bundle.class));
             formulaListView.add(f, null, Position.AFTER); // add to the end
             if (selectedLine == i)
             {
@@ -664,7 +665,8 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         {
             setSelectedFormula(selectedFormula.getId(), false);
         }
-        undoState.onRestoreInstanceState(inState.getParcelable(STATE_UNDO_STATE));
+        undoState.onRestoreInstanceState(
+                CompatUtils.getParcelable(inState, STATE_UNDO_STATE, Bundle.class));
         IdGenerator.enableIdRestore = false;
         isContentValid();
         updatePalette();

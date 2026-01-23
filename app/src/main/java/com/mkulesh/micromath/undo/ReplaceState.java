@@ -17,6 +17,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.mkulesh.micromath.formula.FormulaBase;
+import com.mkulesh.micromath.utils.CompatUtils;
 
 import java.util.ArrayList;
 
@@ -47,7 +48,7 @@ public final class ReplaceState implements Parcelable
             super();
             formulaId = in.readInt();
             type = FormulaBase.BaseType.values()[in.readInt()];
-            data = in.readParcelable(getClass().getClassLoader());
+            data = CompatUtils.readParcelable(in, getClass().getClassLoader(), Parcelable.class);
         }
 
         @Override

@@ -27,6 +27,7 @@ import com.mkulesh.micromath.properties.TextProperties.TextStyle;
 import com.mkulesh.micromath.properties.TextPropertiesChangeIf;
 import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.ClipboardManager;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
@@ -184,7 +185,8 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
         if (state instanceof Bundle)
         {
             Bundle bundle = (Bundle) state;
-            parameters.assign(bundle.getParcelable(STATE_TEXT_PARAMETERS));
+            parameters.assign(CompatUtils.getParcelable(
+                    bundle, STATE_TEXT_PARAMETERS, TextProperties.class));
             super.onRestoreInstanceState(bundle);
             updateTextView();
         }

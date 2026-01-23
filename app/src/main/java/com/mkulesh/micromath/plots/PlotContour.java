@@ -42,6 +42,7 @@ import com.mkulesh.micromath.properties.PlotProperties;
 import com.mkulesh.micromath.properties.PlotProperties.TwoDPlotStyle;
 import com.mkulesh.micromath.properties.PlotPropertiesChangeIf;
 import com.mkulesh.micromath.undo.FormulaState;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomLayout;
 import com.mkulesh.micromath.widgets.CustomTextView;
@@ -398,7 +399,8 @@ public class PlotContour extends CalculationResult implements SizeChangingLayout
             {
                 setTwoDPlotStyle(twoDPlotStyle);
             }
-            functionView.onRestoreInstanceState(bundle.getParcelable(STATE_FUNCTIONVIEW_PARAMETERS));
+            functionView.onRestoreInstanceState(CompatUtils.getParcelable(
+                    bundle, STATE_FUNCTIONVIEW_PARAMETERS, Bundle.class));
             super.onRestoreInstanceState(bundle);
             updatePlotView();
         }

@@ -32,6 +32,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.utils.CompatUtils;
 
 /**
  * Displays a holo-themed color picker.
@@ -879,7 +880,8 @@ public class ColorPicker extends View {
 	protected void onRestoreInstanceState(Parcelable state) {
 		Bundle savedState = (Bundle) state;
 
-		Parcelable superState = savedState.getParcelable(STATE_PARENT);
+		Parcelable superState = CompatUtils.getParcelable(
+                savedState, STATE_PARENT, Parcelable.class);
 		super.onRestoreInstanceState(superState);
 
 		mAngle = savedState.getFloat(STATE_ANGLE);

@@ -47,6 +47,7 @@ import com.mkulesh.micromath.properties.LineProperties;
 import com.mkulesh.micromath.properties.LinePropertiesChangeIf;
 import com.mkulesh.micromath.properties.PlotPropertiesChangeIf;
 import com.mkulesh.micromath.undo.FormulaState;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomLayout;
@@ -537,11 +538,13 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         if (state instanceof Bundle)
         {
             Bundle bundle = (Bundle) state;
-            functionView.onRestoreInstanceState(bundle.getParcelable(STATE_FUNCTIONVIEW_PARAMETERS));
+            functionView.onRestoreInstanceState(CompatUtils.getParcelable(
+                    bundle, STATE_FUNCTIONVIEW_PARAMETERS, Bundle.class));
             ensureFunctionsNumber(bundle.getInt(STATE_FUNCTIONS_NUMBER, 0));
             for (int i = 0; i < functions.size(); i++)
             {
-                LineProperties lp = bundle.getParcelable(STATE_LINE_PARAMETERS + i);
+                LineProperties lp = CompatUtils.getParcelable(
+                        bundle, STATE_LINE_PARAMETERS + i, LineProperties.class);
                 if (lp != null)
                 {
                     functions.get(i).getLineParameters().assign(lp);

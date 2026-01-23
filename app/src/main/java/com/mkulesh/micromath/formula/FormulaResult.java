@@ -30,6 +30,7 @@ import com.mkulesh.micromath.properties.ResultProperties;
 import com.mkulesh.micromath.properties.ResultPropertiesChangeIf;
 import com.mkulesh.micromath.ta.TestSession;
 import com.mkulesh.micromath.undo.FormulaState;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomLayout;
@@ -496,7 +497,8 @@ public class FormulaResult extends CalculationResult implements ResultProperties
         if (state instanceof Bundle)
         {
             Bundle bundle = (Bundle) state;
-            properties.assign(bundle.getParcelable(STATE_RESULT_PROPERTIES));
+            properties.assign(CompatUtils.getParcelable(
+                    bundle, STATE_RESULT_PROPERTIES, ResultProperties.class));
             super.onRestoreInstanceState(bundle);
             updateResultView(false);
         }

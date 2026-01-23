@@ -26,6 +26,7 @@ import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.ImageProperties;
 import com.mkulesh.micromath.properties.ImagePropertiesChangeIf;
 import com.mkulesh.micromath.undo.FormulaState;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomImageView;
 import com.mkulesh.micromath.widgets.CustomLayout;
@@ -211,8 +212,10 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
         if (state instanceof Bundle)
         {
             Bundle bundle = (Bundle) state;
-            imageView.onRestoreInstanceState(bundle.getParcelable(STATE_IMAGE_VIEW));
-            parameters.assign(bundle.getParcelable(STATE_IMAGE_PARAMETERS));
+            imageView.onRestoreInstanceState(CompatUtils.getParcelable(
+                    bundle, STATE_IMAGE_VIEW, Bundle.class));
+            parameters.assign(CompatUtils.getParcelable(
+                    bundle, STATE_IMAGE_PARAMETERS, ImageProperties.class));
             super.onRestoreInstanceState(bundle);
             updateImageView();
         }

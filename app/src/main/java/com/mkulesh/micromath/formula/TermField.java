@@ -516,11 +516,13 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
         final String termCode = bundle.getString(pref + STATE_CODE);
         if (termCode != null && termCode.length() > 0)
         {
-            final Parcelable p = bundle.getParcelable(pref + STATE_INSTANCE);
+            final Parcelable p = CompatUtils.getParcelable(
+                    bundle, pref + STATE_INSTANCE, Parcelable.class);
             Object extraPar = null;
             if (isArrayTerm(termCode))
             {
-                final MatrixProperties dim = bundle.getParcelable(pref + STATE_DIMENSION);
+                final MatrixProperties dim = CompatUtils.getParcelable(
+                        bundle, pref + STATE_DIMENSION, MatrixProperties.class);
                 extraPar = dim;
             }
             term = convertToTerm(termCode, p, /*ensureManualTrigger=*/ false, extraPar);
@@ -1050,7 +1052,8 @@ public class TermField implements TextChangeIf, FocusChangeIf, CalculatableIf
             Object extraPar = null;
             if (isArrayTerm(termCode) && p instanceof Bundle)
             {
-                final MatrixProperties dim = ((Bundle) p).getParcelable(STATE_DIMENSION);
+                final MatrixProperties dim = CompatUtils.getParcelable(
+                        (Bundle) p, STATE_DIMENSION, MatrixProperties.class);
                 extraPar = dim;
             }
             term = convertToTerm(termCode, p, /*ensureManualTrigger=*/ false, extraPar);

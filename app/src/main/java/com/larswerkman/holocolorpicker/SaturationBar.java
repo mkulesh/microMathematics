@@ -32,6 +32,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.utils.CompatUtils;
 
 public class SaturationBar extends View {
 
@@ -520,7 +521,7 @@ public class SaturationBar extends View {
 	protected void onRestoreInstanceState(Parcelable state) {
 		Bundle savedState = (Bundle) state;
 
-		Parcelable superState = savedState.getParcelable(STATE_PARENT);
+		Parcelable superState = CompatUtils.getParcelable(savedState, STATE_PARENT, Parcelable.class);
 		super.onRestoreInstanceState(superState);
 
 		setColor(Color.HSVToColor(savedState.getFloatArray(STATE_COLOR)));

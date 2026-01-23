@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MenuItem;
 
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public class UndoState
             final int n = bundle.getInt(ENTRY_NUMBER, 0);
             for (int i = 0; i < n; i++)
             {
-                entrys.add(bundle.getParcelable(ENTRY_STATE + i));
+                entrys.add(CompatUtils.getParcelable(bundle, ENTRY_STATE + i, Parcelable.class));
             }
         }
     }

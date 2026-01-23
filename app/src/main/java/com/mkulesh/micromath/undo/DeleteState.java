@@ -17,6 +17,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.mkulesh.micromath.formula.FormulaBase;
+import com.mkulesh.micromath.utils.CompatUtils;
 
 import java.util.ArrayList;
 
@@ -46,8 +47,10 @@ public final class DeleteState implements Parcelable
         {
             super();
             type = FormulaBase.BaseType.values()[in.readInt()];
-            coordinate = in.readParcelable(Coordinate.class.getClassLoader());
-            data = in.readParcelable(getClass().getClassLoader());
+            coordinate = CompatUtils.readParcelable(
+                    in, Coordinate.class.getClassLoader(), Coordinate.class);
+            data = CompatUtils.readParcelable(
+                    in, getClass().getClassLoader(), Parcelable.class);
         }
 
         @Override

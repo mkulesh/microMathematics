@@ -445,7 +445,8 @@ public class MainActivity extends AppCompatActivity
     {
         try
         {
-            final Parcelable s = inState.getParcelable(STATE_STORED_FORMULA);
+            final Parcelable s = CompatUtils.getParcelable(
+                    inState, STATE_STORED_FORMULA, Parcelable.class);
             if (s != null)
             {
                 storedFormula = new StoredFormula();

@@ -564,7 +564,7 @@ public class Commander extends DialogBase implements CommanderIf
                 return;
             case OPERATION_COMPLETED_REFRESH_REQUIRED:
                 String posto = b != null ? b.getString(NOTIFY_POSTO) : null;
-                Uri uri = b != null ? (Uri) b.getParcelable(NOTIFY_URI) : null;
+                Uri uri = b != null ? CompatUtils.getParcelable(b, NOTIFY_URI, Uri.class) : null;
                 if (uri != null)
                 {
                     Navigate(uri, posto);
