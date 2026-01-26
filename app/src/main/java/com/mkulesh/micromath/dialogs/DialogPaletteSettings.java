@@ -27,12 +27,13 @@ import com.mkulesh.micromath.formula.terms.TermFactory;
 import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.PaletteSettingsChangeIf;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DialogPaletteSettings extends DialogBase implements View.OnLongClickListener
+public class DialogPaletteSettings extends DialogBase
 {
     private final PaletteSettingsChangeIf changeIf;
     private final List<TermTypeIf.GroupType> groups;
@@ -88,7 +89,7 @@ public class DialogPaletteSettings extends DialogBase implements View.OnLongClic
             if (buttonLayout.getChildAt(i) instanceof AppCompatImageButton)
             {
                 final AppCompatImageButton b = (AppCompatImageButton) buttonLayout.getChildAt(i);
-                b.setOnLongClickListener(this);
+                CompatUtils.setTooltip(b, getContext());
                 ViewUtils.setImageButtonColorAttr(context, b, R.attr.colorDialogContent);
             }
         }
@@ -112,11 +113,5 @@ public class DialogPaletteSettings extends DialogBase implements View.OnLongClic
             changeIf.onPaletteVisibleChange(visibleGroups);
         }
         closeDialog();
-    }
-
-    @Override
-    public boolean onLongClick(View b)
-    {
-        return ViewUtils.showButtonDescription(getContext(), b);
     }
 }

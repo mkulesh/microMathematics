@@ -21,7 +21,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -31,7 +30,7 @@ import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
-public class HorizontalNumberPicker extends LinearLayout implements OnClickListener, OnLongClickListener
+public class HorizontalNumberPicker extends LinearLayout implements OnClickListener
 {
     private EditText editText = null;
     private ImageButton bDecrease = null, bIncrease = null;
@@ -77,12 +76,12 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
 
         bDecrease = findViewById(R.id.button_decrease);
         bDecrease.setOnClickListener(this);
-        bDecrease.setOnLongClickListener(this);
+        CompatUtils.setTooltip(bDecrease, getContext());
         updateViewColor(bDecrease);
 
         bIncrease = findViewById(R.id.button_increase);
         bIncrease.setOnClickListener(this);
-        bIncrease.setOnLongClickListener(this);
+        CompatUtils.setTooltip(bIncrease, getContext());
         updateViewColor(bIncrease);
 
         description = findViewById(R.id.label_text);
@@ -150,11 +149,5 @@ public class HorizontalNumberPicker extends LinearLayout implements OnClickListe
             final TextView b = (TextView) v;
             b.setTextColor(CompatUtils.getThemeColorAttr(getContext(), attrId));
         }
-    }
-
-    @Override
-    public boolean onLongClick(View b)
-    {
-        return ViewUtils.showButtonDescription(getContext(), b);
     }
 }

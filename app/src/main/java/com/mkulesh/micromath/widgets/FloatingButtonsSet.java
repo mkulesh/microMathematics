@@ -18,15 +18,13 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.utils.CompatUtils;
-import com.mkulesh.micromath.utils.ViewUtils;
 
-public class FloatingButtonsSet extends LinearLayout implements OnLongClickListener
+public class FloatingButtonsSet extends LinearLayout
 {
 
     public FloatingButtonsSet(Context context)
@@ -48,16 +46,6 @@ public class FloatingButtonsSet extends LinearLayout implements OnLongClickListe
         setGravity(Gravity.RIGHT);
     }
 
-    @Override
-    public boolean onLongClick(View b)
-    {
-        if (b instanceof FloatingActionButton)
-        {
-            return ViewUtils.showButtonDescription(getContext(), b);
-        }
-        return false;
-    }
-
     public void activate(int id, OnClickListener handler)
     {
         for (int i = 0; i < getChildCount(); i++)
@@ -66,7 +54,10 @@ public class FloatingButtonsSet extends LinearLayout implements OnLongClickListe
             if (getContext() != null && id == v.getId())
             {
                 v.setVisibility(View.VISIBLE);
-                v.setOnLongClickListener(this);
+                if (v instanceof FloatingActionButton)
+                {
+                    CompatUtils.setTooltip(v, getContext());
+                }
                 v.setOnClickListener(handler);
                 if (v instanceof FloatingActionButton)
                 {

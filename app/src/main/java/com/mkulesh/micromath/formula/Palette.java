@@ -18,7 +18,6 @@ import android.content.SharedPreferences;
 import android.text.InputType;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.widget.AppCompatImageButton;
@@ -32,6 +31,7 @@ import com.mkulesh.micromath.formula.terms.UserFunctions;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.PaletteSettingsChangeIf;
 import com.mkulesh.micromath.utils.ClipboardManager;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.FocusChangeIf;
@@ -44,7 +44,7 @@ import java.util.List;
 /*--------------------------------------------------------*
  * This class implements symbol palette
  *--------------------------------------------------------*/
-public class Palette implements OnClickListener, OnLongClickListener, TextChangeIf, FocusChangeIf, PaletteSettingsChangeIf
+public class Palette implements OnClickListener, TextChangeIf, FocusChangeIf, PaletteSettingsChangeIf
 {
     public static final int NO_BUTTON = -1;
     private static final String VISIBLE_PALETTE_GROUPS = "visible_palette_groups";
@@ -65,7 +65,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
         this.paletteLayout = paletteLayout;
 
         AppCompatImageButton paletteSettingsButton = paletteLayout.findViewById(R.id.palette_settings_button);
-        paletteSettingsButton.setOnLongClickListener(this);
+        CompatUtils.setTooltip(paletteSettingsButton, context);
         paletteSettingsButton.setOnClickListener(this);
         ViewUtils.setImageButtonColorAttr(context, paletteSettingsButton, R.attr.colorMicroMathIcon);
 
@@ -127,7 +127,7 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
             }
             if (pb.hasImage() && visibleGroups.contains(pb.getGroup()))
             {
-                pb.setOnLongClickListener(this);
+                CompatUtils.setTooltip(pb, context);
                 pb.setOnClickListener(this);
                 paletteLayout.addView(pb);
             }
@@ -199,16 +199,6 @@ public class Palette implements OnClickListener, OnLongClickListener, TextChange
                 listChangeIf.onPalettePressed(pb.getCode());
             }
         }
-    }
-
-    @Override
-    public boolean onLongClick(View b)
-    {
-        if (b instanceof AppCompatImageButton)
-        {
-            return ViewUtils.showButtonDescription(context, b);
-        }
-        return false;
     }
 
     public void enableHiddenInput(boolean hiddenInputEnabled)

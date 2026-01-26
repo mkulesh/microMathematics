@@ -15,7 +15,6 @@ package com.mkulesh.micromath.dialogs;
 
 import android.net.Uri;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -28,10 +27,11 @@ import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.ImageProperties;
 import com.mkulesh.micromath.properties.ImagePropertiesChangeIf;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.HorizontalNumberPicker;
 
-public class DialogImageSettings extends DialogBase implements OnLongClickListener
+public class DialogImageSettings extends DialogBase
 {
     private final AppCompatActivity activity;
     private final ImageProperties parameters;
@@ -56,7 +56,7 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
 
         ImageButton buttonSelectFile = findViewById(R.id.dialog_button_select_file);
         buttonSelectFile.setOnClickListener(this);
-        buttonSelectFile.setOnLongClickListener(this);
+        CompatUtils.setTooltip(buttonSelectFile, getContext());
         ViewUtils.setImageButtonColorAttr(activity, buttonSelectFile, R.attr.colorDialogContent);
 
         cbEmbedded = findViewById(R.id.dialog_checkbox_embedded);
@@ -174,11 +174,5 @@ public class DialogImageSettings extends DialogBase implements OnLongClickListen
             }
         }
         commander.show();
-    }
-
-    @Override
-    public boolean onLongClick(View b)
-    {
-        return ViewUtils.showButtonDescription(getContext(), b);
     }
 }

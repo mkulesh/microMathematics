@@ -16,17 +16,17 @@ package com.mkulesh.micromath.dialogs;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.widget.ImageButton;
 
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.ListChangeIf;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class DialogNewFormula extends DialogBase implements OnLongClickListener
+public class DialogNewFormula extends DialogBase
 {
     private static final String LAST_INSERTED_POSITION = "last_inserted_position";
     private static final String LAST_INSERTED_OBJECT = "last_inserted_object";
@@ -49,7 +49,7 @@ public class DialogNewFormula extends DialogBase implements OnLongClickListener
         {
             setButtonSelected(b, false);
             b.setOnClickListener(this);
-            b.setOnLongClickListener(this);
+            CompatUtils.setTooltip(b, getContext());
         }
         String str = pref.getString(LAST_INSERTED_POSITION, LAST_INSERTED_EMPTY);
         try
@@ -78,7 +78,7 @@ public class DialogNewFormula extends DialogBase implements OnLongClickListener
         {
             setButtonSelected(b, false);
             b.setOnClickListener(this);
-            b.setOnLongClickListener(this);
+            CompatUtils.setTooltip(b, getContext());
         }
         str = pref.getString(LAST_INSERTED_OBJECT, LAST_INSERTED_EMPTY);
         try
@@ -145,11 +145,4 @@ public class DialogNewFormula extends DialogBase implements OnLongClickListener
         }
         closeDialog(/*hideKeyboard=*/ false);
     }
-
-    @Override
-    public boolean onLongClick(View b)
-    {
-        return ViewUtils.showButtonDescription(getContext(), b);
-    }
-
 }
