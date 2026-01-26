@@ -97,7 +97,7 @@ public class Commander extends DialogBase implements CommanderIf
         ImageButton homeButton = findViewById(R.id.fman_action_home);
         homeButton.setOnClickListener(this);
         ViewUtils.setImageButtonColorAttr(context, homeButton, R.attr.colorDialogContent);
-        homeButton.setOnLongClickListener(v -> ViewUtils.showButtonDescription(getContext(), v));
+        CompatUtils.setTooltip(homeButton, getContext());
 
         this.selectionMode = selectionMode;
         this.assetFilter = assetFilter;
@@ -124,7 +124,7 @@ public class Commander extends DialogBase implements CommanderIf
             (findViewById(R.id.dialog_file_new_name_layout)).setVisibility(View.VISIBLE);
             fileTypeButton = findViewById(R.id.fman_file_type_button);
             fileTypeButton.setOnClickListener(this);
-            fileTypeButton.setOnLongClickListener(v -> ViewUtils.showButtonDescription(getContext(), v));
+            CompatUtils.setTooltip(fileTypeButton, getContext());
             prepareButtonImage(fileTypeButton);
             fileName.requestFocus();
             break;

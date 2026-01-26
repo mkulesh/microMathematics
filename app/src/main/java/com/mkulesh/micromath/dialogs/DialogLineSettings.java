@@ -15,7 +15,6 @@ package com.mkulesh.micromath.dialogs;
 
 import android.app.Activity;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
@@ -32,7 +31,7 @@ import com.mkulesh.micromath.widgets.HorizontalNumberPicker;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DialogLineSettings extends DialogBase implements OnLongClickListener
+public class DialogLineSettings extends DialogBase
 {
     private final LinePropertiesChangeIf changeIf;
     private final LineProperties parameters;
@@ -102,7 +101,7 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
         {
             ImageButton b = e.getValue();
             b.setOnClickListener(this);
-            b.setOnLongClickListener(this);
+            CompatUtils.setTooltip(b, getContext());
             setButtonEnabled(b, pointShapesBox.isChecked());
             if (b.isEnabled())
             {
@@ -210,11 +209,5 @@ public class DialogLineSettings extends DialogBase implements OnLongClickListene
         }
         changeIf.onLinePropertiesChange(isChanged);
         closeDialog();
-    }
-
-    @Override
-    public boolean onLongClick(View b)
-    {
-        return ViewUtils.showButtonDescription(getContext(), b);
     }
 }

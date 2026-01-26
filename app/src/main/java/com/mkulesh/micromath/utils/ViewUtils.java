@@ -13,7 +13,6 @@
  */
 package com.mkulesh.micromath.utils;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -24,16 +23,11 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.PictureDrawable;
 import android.os.Build;
 import android.util.DisplayMetrics;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.AttrRes;
 
@@ -195,42 +189,6 @@ public final class ViewUtils
                 collectElemets((LinearLayout) v, out);
             }
         }
-    }
-
-    /**
-     * Procedure hows toast that contains description of the given button
-     */
-    @SuppressLint("RtlHardcoded")
-    public static boolean showButtonDescription(Context context, View button)
-    {
-        final CharSequence contentDesc = button.getContentDescription();
-        final ViewGroup dummyView = null;
-        //noinspection ConstantConditions
-        final LinearLayout toastView = (LinearLayout) LayoutInflater.from(context).
-                inflate(R.layout.widget_toast, dummyView, false);
-        final TextView textView = toastView != null ? toastView.findViewById(R.id.toast_message) : null;
-
-        if (contentDesc != null && contentDesc.length() > 0 && textView != null)
-        {
-            textView.setText(contentDesc);
-
-            int[] pos = new int[2];
-            button.getLocationOnScreen(pos);
-
-            final Toast t = new Toast(context);
-            t.setView(toastView);
-            t.setDuration(Toast.LENGTH_SHORT);
-            t.setGravity(Gravity.TOP | Gravity.LEFT, 0, 0);
-            toastView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
-                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-            final int x = pos[0] + button.getMeasuredWidth() / 2 - (toastView.getMeasuredWidth() / 2);
-            final int y = pos[1] - 2 * toastView.getMeasuredHeight()
-                    - context.getResources().getDimensionPixelSize(R.dimen.activity_vertical_margin);
-            t.setGravity(Gravity.TOP | Gravity.LEFT, x, y);
-            t.show();
-            return true;
-        }
-        return false;
     }
 
     /**
