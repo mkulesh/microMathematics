@@ -22,17 +22,30 @@ public class SynchronizedBoolean
         super();
     }
 
-    public boolean isSet()
-    {
-        return setting;
-    }
-
     public void set(boolean flag)
     {
         synchronized (this)
         {
             setting = flag;
             this.notifyAll();
+        }
+    }
+
+    public void waitUntil(boolean flag)
+    {
+        synchronized (this)
+        {
+            while (setting != flag)
+            {
+                try
+                {
+                    wait();
+                }
+                catch (InterruptedException e)
+                {
+                    // nothing to do
+                }
+            }
         }
     }
 }

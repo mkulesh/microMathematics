@@ -277,19 +277,19 @@ public class MainFragmentWorksheet extends BaseFragment
         case R.id.action_dev_autotest:
         {
             TestSession at = new TestSession(formulas, TestSession.Mode.TEST_SCRIPS, ((MainActivity) activity).isAutotestOnStart());
-            CompatUtils.executeAsyncTask(at);
+            at.start();
             break;
         }
         case R.id.action_dev_export_doc:
         {
             TestSession at = new TestSession(formulas, TestSession.Mode.EXPORT_DOC, false);
-            CompatUtils.executeAsyncTask(at);
+            at.start();
             break;
         }
         case R.id.action_dev_take_screenshot:
         {
             TestSession at = new TestSession(formulas, TestSession.Mode.TAKE_SCREENSHOTS, false);
-            CompatUtils.executeAsyncTask(at);
+            at.start();
             break;
         }
         }

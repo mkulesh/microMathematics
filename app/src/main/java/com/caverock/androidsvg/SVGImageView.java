@@ -22,7 +22,6 @@ import android.graphics.Paint;
 import android.graphics.Picture;
 import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
-import android.os.AsyncTask;
 import androidx.appcompat.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -112,15 +111,6 @@ public class SVGImageView extends AppCompatImageView
          String  url = a.getString(R.styleable.SVGImageView_svg);
          if (url != null)
          {
-            Uri  uri = Uri.parse(url);
-            if (internalSetImageURI(uri))
-               return;
-
-            // Not a URL, so try loading it as an asset filename
-            if (internalSetImageAsset(url))
-               return;
-
-            // Last chance, maybe there is an actual SVG in the string
             // If the SVG is in the string, then we will assume it is not very large, and thus doesn't need to be parsed in the background.
             setFromString(url);
          }
@@ -175,78 +165,7 @@ public class SVGImageView extends AppCompatImageView
    }
 
 
-
-   /**
-    * Load an SVG image from the given resource id.
-    * @param resourceId the id of an Android resource in your application
-    */
-   @Override
-   public void setImageResource(int resourceId)
-   {
-      new LoadResourceTask(getContext(), resourceId).execute();
-   }
-
-
-   /**
-    * Load an SVG image from the given resource URI.
-    * @param uri the URI of an Android resource in your application
-    */
-   @Override
-   public void  setImageURI(Uri uri)
-   {
-      if (!internalSetImageURI(uri))
-         Log.e("SVGImageView", "File not found: " + uri);
-   }
-
-
-   /**
-    * Load an SVG image from the given asset filename.
-    * @param filename the file name of an SVG in the assets folder in your application
-    */
-   public void  setImageAsset(String filename)
-   {
-      if (!internalSetImageAsset(filename))
-         Log.e("SVGImageView", "File not found: " + filename);
-   }
-
-
-
    //===============================================================================================
-
-
-   /*
-    * Attempt to set a picture from a Uri. Return true if it worked.
-    */
-   private boolean  internalSetImageURI(Uri uri)
-   {
-      try
-      {
-         InputStream  is = getContext().getContentResolver().openInputStream(uri);
-         new LoadURITask().execute(is);
-         return true;
-      }
-      catch (FileNotFoundException e)
-      {
-         return false;
-      }
-
-   }
-
-
-   private boolean  internalSetImageAsset(String filename)
-   {
-      try
-      {
-         InputStream  is = getContext().getAssets().open(filename);
-         new LoadURITask().execute(is);
-         return true;
-      }
-      catch (IOException e)
-      {
-         return false;
-      }
-
-   }
 
 
    private void setFromString(String url)
@@ -257,72 +176,6 @@ public class SVGImageView extends AppCompatImageView
       } catch (SVGParseException e) {
          // Failed to interpret url as a resource, a filename, or an actual SVG...
          Log.e("SVGImageView", "Could not find SVG at: " + url);
-      }
-   }
-
-
-   //===============================================================================================
-
-
-   private class LoadResourceTask extends AsyncTask<Integer, Integer, SVG>
-   {
-      private Context  context;
-      private int      resourceId;
-
-      LoadResourceTask(Context context, int resourceId)
-      {
-         this.context = context;
-         this.resourceId = resourceId;
-      }
-
-      protected SVG  doInBackground(Integer... params)
-      {
-         try
-         {
-            return SVG.getFromResource(context, resourceId);
-         }
-         catch (SVGParseException e)
-         {
-            Log.e("SVGImageView", String.format("Error loading resource 0x%x: %s", resourceId, e.getMessage()));
-         }
-         return null;
-      }
-
-      protected void  onPostExecute(SVG svg)
-      {
-         SVGImageView.this.svg = svg;
-         doRender();
-      }
-   }
-
-
-   private class LoadURITask extends AsyncTask<InputStream, Integer, SVG>
-   {
-      protected SVG  doInBackground(InputStream... is)
-      {
-         try
-         {
-            return SVG.getFromInputStream(is[0]);
-         }
-         catch (SVGParseException e)
-         {
-            Log.e("SVGImageView", "Parse error loading URI: " + e.getMessage());
-         }
-         finally
-         {
-            try
-            {
-               is[0].close();
-            }
-            catch (IOException e) { /* do nothing */ }
-         }
-         return null;
-      }
-
-      protected void  onPostExecute(SVG svg)
-      {
-         SVGImageView.this.svg = svg;
-         doRender();
       }
    }
 

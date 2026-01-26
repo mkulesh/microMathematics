@@ -17,7 +17,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Xml;
@@ -672,9 +671,8 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     private void readFromUri(Uri uri, XmlLoaderTask.PostAction postAction)
     {
         xmlLoaderTask = new XmlLoaderTask(this, uri, postAction);
-        ViewUtils.Debug(this, "started XML loader task: " + xmlLoaderTask.toString());
         getUndoState().clear();
-        CompatUtils.executeAsyncTask(xmlLoaderTask);
+        xmlLoaderTask.start();
     }
 
     /**
@@ -861,8 +859,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     /**
      * Set that an operation blocking the user interface is currently performed
      */
-    @SuppressWarnings("rawtypes")
-    public void setInOperation(AsyncTask owner, boolean inOperation, OnClickListener stopHandler)
+    public void setInOperation(Runnable owner, boolean inOperation, OnClickListener stopHandler)
     {
         fragment.setInOperation(inOperation, stopHandler);
         formulaListView.setEnabled(!inOperation);
@@ -890,7 +887,6 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
             }
             if (xmlLoaderTask != null)
             {
-                ViewUtils.Debug(this, "terminated XML loader task: " + xmlLoaderTask.toString());
                 xmlLoaderTask = null;
             }
             formulaScrollView.setScaleDetectorActive(true);
@@ -1225,7 +1221,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         if (isContentValid())
         {
             CalculaterTask calculaterTask = new CalculaterTask(this, fList);
-            CompatUtils.executeAsyncTask(calculaterTask);
+            calculaterTask.start();
         }
     }
 
@@ -1267,7 +1263,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
     {
         if (xmlLoaderTask != null)
         {
-            xmlLoaderTask.abort();
+            xmlLoaderTask.cancel();
         }
     }
 
