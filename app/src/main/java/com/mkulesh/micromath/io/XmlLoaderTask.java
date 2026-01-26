@@ -14,7 +14,7 @@
 package com.mkulesh.micromath.io;
 
 import android.net.Uri;
-import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.util.Xml;
 
 import com.mkulesh.micromath.fman.FileUtils;
@@ -24,6 +24,7 @@ import com.mkulesh.micromath.formula.TextFragment;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.properties.TextProperties;
+import com.mkulesh.micromath.utils.AppTask;
 import com.mkulesh.micromath.utils.SynchronizedBoolean;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.ListChangeIf.Position;
@@ -34,7 +35,9 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Locale;
 
-public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
+import androidx.annotation.Nullable;
+
+public class XmlLoaderTask extends AppTask implements Runnable
 {
     public enum PostAction
     {
@@ -56,8 +59,6 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
     private final String name;
     private XmlPullParser parser = null;
     private int firstFormulaId = ViewUtils.INVALID_INDEX;
-    private final SynchronizedBoolean isPublishRuns = new SynchronizedBoolean();
-    private final SynchronizedBoolean isAborted = new SynchronizedBoolean();
     private final int[] headerNumber;
 
     // result of operation
@@ -67,6 +68,11 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
 
     public XmlLoaderTask(FormulaList list, Uri uri, PostAction postAction)
     {
+        super();
+        setBackgroundTask(this, this.getClass().getSimpleName());
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         this.list = list;
         this.uri = uri;
         this.name = FileUtils.getFileName(list.getActivity(), uri);
@@ -74,11 +80,13 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
         this.headerNumber = TextProperties.getInitialNumber();
     }
 
-    @Override
     protected void onPreExecute()
     {
-        list.newDocument();
-        list.setInOperation(/* owner= */this, /* inOperation= */true, /* stopHandler= */null);
+        list.getActivity().runOnUiThread(() ->
+        {
+            list.newDocument();
+            list.setInOperation(/* owner= */this, /* inOperation= */true, /* stopHandler= */null);
+        });
     }
 
     private FileFormat getFileFormat()
@@ -114,10 +122,9 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
     }
 
     @Override
-    protected Void doInBackground(Void... arg0)
+    public void run()
     {
-        isPublishRuns.set(false);
-        isAborted.set(false);
+        onPreExecute();
         try
         {
             fileFormat = getFileFormat();
@@ -138,7 +145,8 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
                 error = String.format(list.getActivity().getResources().getString(R.string.error_unknown_file_format),
                         name);
                 ViewUtils.Debug(this, error);
-                return null;
+                onPostExecute();
+                return;
             }
 
             parser = Xml.newPullParser();
@@ -156,7 +164,7 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
                 if (n1.equals(FormulaList.XML_LIST_TAG))
                 {
                     parser.require(XmlPullParser.START_TAG, FormulaList.XML_NS, FormulaList.XML_LIST_TAG);
-                    list.getDocumentSettings().readFromXml(parser);
+                    publishProgress(true, null);
                     ViewUtils.Debug(this, "Document version: " + DocumentProperties.getDocumentVersion());
                     while (parser.next() != XmlPullParser.END_TAG)
                     {
@@ -176,26 +184,19 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
                         }
                         if (t != null)
                         {
-                            isPublishRuns.set(true);
                             parser.require(XmlPullParser.START_TAG, FormulaList.XML_NS, n2);
-                            publishProgress(t);
-                            synchronized (isPublishRuns)
-                            {
-                                while (isPublishRuns.isSet())
-                                {
-                                    isPublishRuns.wait();
-                                }
-                            }
+                            publishProgress(false, t);
                         }
                         else
                         {
                             XmlUtils.skipEntry(parser);
                         }
-                        if (isAborted.isSet())
+                        if (isCancelled())
                         {
                             error = null;
                             postAction = PostAction.INTERRUPT;
-                            return null;
+                            onPostExecute();
+                            return;
                         }
                     }
                 }
@@ -210,64 +211,72 @@ public class XmlLoaderTask extends AsyncTask<Void, FormulaBase.BaseType, Void>
             error = String.format(list.getActivity().getResources().getString(R.string.error_file_read), name);
             ViewUtils.Debug(this, error + ", " + e.getLocalizedMessage());
         }
-        return null;
+        onPostExecute();
     }
 
-    @Override
-    protected void onProgressUpdate(FormulaBase.BaseType... t)
+    protected void publishProgress(final boolean isHeader, @Nullable FormulaBase.BaseType t)
     {
-        if (isAborted.isSet())
+        final SynchronizedBoolean isPublishRuns = new SynchronizedBoolean();
+        isPublishRuns.set(true);
+        list.getActivity().runOnUiThread(() ->
         {
+            if (isHeader)
+            {
+                list.getDocumentSettings().readFromXml(parser);
+                isPublishRuns.set(false);
+                return;
+            }
+            if (t == null)
+            {
+                isPublishRuns.set(false);
+                return;
+            }
+            FormulaBase f = list.addBaseFormula(t);
+            try
+            {
+                f.readFromXml(parser);
+            }
+            catch (Exception e)
+            {
+                if (error == null)
+                {
+                    error = String.format(list.getActivity().getResources().getString(R.string.error_file_read), name);
+                }
+                ViewUtils.Debug(this, error + ", " + e.getLocalizedMessage());
+            }
+            if (f != null)
+            {
+                if (f instanceof TextFragment)
+                {
+                    ((TextFragment) f).numbering(headerNumber);
+                }
+                list.getFormulaListView().add(f, null, Position.AFTER); // add to the end
+                if (firstFormulaId < 0)
+                {
+                    firstFormulaId = f.getId();
+                }
+            }
             isPublishRuns.set(false);
-            return;
-        }
-        FormulaBase f = list.addBaseFormula(t[0]);
-        try
-        {
-            f.readFromXml(parser);
-        }
-        catch (Exception e)
-        {
-            if (error == null)
-            {
-                error = String.format(list.getActivity().getResources().getString(R.string.error_file_read), name);
-            }
-            ViewUtils.Debug(this, error + ", " + e.getLocalizedMessage());
-        }
-        if (f != null)
-        {
-            if (f instanceof TextFragment)
-            {
-                ((TextFragment) f).numbering(headerNumber);
-            }
-            list.getFormulaListView().add(f, null, Position.AFTER); // add to the end
-            if (firstFormulaId < 0)
-            {
-                firstFormulaId = f.getId();
-            }
-        }
-        isPublishRuns.set(false);
+        });
+        isPublishRuns.waitUntil(false);
     }
 
-    @Override
-    protected void onPostExecute(Void par)
+    protected void onPostExecute()
     {
-        if (stream != null)
+        ViewUtils.Debug(this, "thread finished");
+        list.getActivity().runOnUiThread(() ->
         {
-            FileUtils.closeStream(stream);
-        }
-        DocumentProperties.setDocumentVersion(DocumentProperties.LATEST_DOCUMENT_VERSION);
-        if (list.getSelectedFormulaId() == ViewUtils.INVALID_INDEX)
-        {
-            list.setSelectedFormula(firstFormulaId, false);
-        }
-        list.setInOperation(/* owner= */this, /* inOperation= */false, /* stopHandler= */null);
-    }
-
-    public void abort()
-    {
-        ViewUtils.Debug(this, "trying to cancel XML loader task " + this.toString());
-        isAborted.set(true);
+            if (stream != null)
+            {
+                FileUtils.closeStream(stream);
+            }
+            DocumentProperties.setDocumentVersion(DocumentProperties.LATEST_DOCUMENT_VERSION);
+            if (list.getSelectedFormulaId() == ViewUtils.INVALID_INDEX)
+            {
+                list.setSelectedFormula(firstFormulaId, false);
+            }
+            list.setInOperation(/* owner= */this, /* inOperation= */false, /* stopHandler= */null);
+        });
     }
 
     public boolean isMmtOpened()

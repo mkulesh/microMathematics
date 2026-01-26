@@ -19,7 +19,7 @@ import android.content.pm.PackageInfo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.net.Uri;
-import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Toast;
 
@@ -33,6 +33,7 @@ import com.mkulesh.micromath.io.Exporter;
 import com.mkulesh.micromath.io.XmlLoaderTask;
 import com.mkulesh.micromath.plus.R;
 import com.mkulesh.micromath.ta.TestScript.NumberType;
+import com.mkulesh.micromath.utils.AppTask;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.SynchronizedBoolean;
 import com.mkulesh.micromath.utils.ViewUtils;
@@ -45,7 +46,7 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 
-public class TestSession extends AsyncTask<Void, Integer, Void>
+public class TestSession extends AppTask implements Runnable
 {
     public enum Mode
     {
@@ -66,7 +67,6 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
     private final FormulaList formulas;
     private final CharSequence[] scripts;
     private final boolean isAutotestOnStart;
-    private final SynchronizedBoolean isPublishRuns = new SynchronizedBoolean();
     private final ArrayList<TestScript> testScripts = new ArrayList<>();
     private final Mode mode;
     private TestScript testScript = null;
@@ -74,6 +74,11 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
 
     public TestSession(FormulaList formulas, Mode mode, boolean isAutotestOnStart)
     {
+        super();
+        setBackgroundTask(this, this.getClass().getSimpleName());
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         this.formulas = formulas;
         final Activity context = formulas.getActivity();
         this.mode = mode;
@@ -97,10 +102,9 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
     }
 
     @Override
-    protected Void doInBackground(Void... t)
+    public void run()
     {
         ViewUtils.Debug(this, "Autotest session is started, session contains " + scripts.length + " scripts");
-        isPublishRuns.set(false);
         try
         {
             for (int script = 0; script < scripts.length; script++)
@@ -115,13 +119,13 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
                 {
                     testScript.setState(TestScript.State.values()[step]);
                     TestScript.State currState = testScript.getState();
-                    callPublish(step, script);
+                    publishProgress(step, script);
                     currState = testScript.waitStateChange(currState);
                     if (currState == TestScript.State.CALCULATE_FINISHED)
                     {
                         if (mode == Mode.EXPORT_DOC || mode == Mode.TAKE_SCREENSHOTS)
                         {
-                            callPublish(STEP_EXPORT, script);
+                            publishProgress(STEP_EXPORT, script);
                         }
                         break;
                     }
@@ -138,86 +142,70 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         }
         formulas.setTaSession(null);
         ViewUtils.Debug(this, getDescription());
-        return null;
+        onPostExecute();
     }
 
-    private void callPublish(int step, int script) throws InterruptedException
+    private void publishProgress(final int step, final int script)
     {
+        final SynchronizedBoolean isPublishRuns = new SynchronizedBoolean();
         isPublishRuns.set(true);
-        publishProgress(step, script);
-        synchronized (isPublishRuns)
-        {
-            while (isPublishRuns.isSet())
+        formulas.getActivity().runOnUiThread(() -> {
+            if (script < scripts.length) switch (step)
             {
-                isPublishRuns.wait();
+            case STEP_READ:
+            {
+                readingStartTime = System.currentTimeMillis();
+                final String scriptName = getScriptName(scripts[script]);
+                ViewUtils.Debug(this, "TA script name: " + scriptName);
+                formulas.newDocument();
+                formulas.readFromResource(Uri.parse((String) scripts[script]), XmlLoaderTask.PostAction.NONE);
+                break;
             }
-        }
-    }
-
-    @Override
-    protected void onProgressUpdate(Integer... t)
-    {
-        if (t == null || t.length == 0)
-        {
-            isPublishRuns.set(false);
-            return;
-        }
-        final int step = t[0];
-        final int script = t[1];
-        if (script < scripts.length) switch (step)
-        {
-        case STEP_READ:
-        {
-            readingStartTime = System.currentTimeMillis();
-            final String scriptName = getScriptName(scripts[script]);
-            ViewUtils.Debug(this, "TA script name: " + scriptName);
-            formulas.newDocument();
-            formulas.readFromResource(Uri.parse((String) scripts[script]), XmlLoaderTask.PostAction.NONE);
-            break;
-        }
-        case STEP_CALC:
-        {
-            final String scriptName = getScriptName(scripts[script]);
-            exportScript(scriptName);
-            testScript.setScriptContent((String) scripts[script]);
-            testScript.setReadingDuration(System.currentTimeMillis() - readingStartTime);
-            if (mode == Mode.TEST_SCRIPS)
+            case STEP_CALC:
             {
-                final CharSequence docTitle = formulas.getDocumentSettings().title;
-                if (docTitle != null && docTitle.length() > 0)
+                final String scriptName = getScriptName(scripts[script]);
+                exportScript(scriptName);
+                testScript.setScriptContent((String) scripts[script]);
+                testScript.setReadingDuration(System.currentTimeMillis() - readingStartTime);
+                if (mode == Mode.TEST_SCRIPS)
                 {
-                    // first, try to use document title
-                    testScript.setScriptContent(docTitle.toString());
-                }
-                else if (formulas.getFormulaListView().getList().getChildCount() > 0)
-                {
-                    // fallback to the first text area
-                    final View v = formulas.getFormulaListView().getList().getChildAt(0);
-                    if (v instanceof TextFragment)
+                    final CharSequence docTitle = formulas.getDocumentSettings().title;
+                    if (docTitle != null && docTitle.length() > 0)
                     {
-                        testScript.setScriptContent(((TextFragment) v).getTerms().get(0).getText());
+                        // first, try to use document title
+                        testScript.setScriptContent(docTitle.toString());
+                    }
+                    else if (formulas.getFormulaListView().getList().getChildCount() > 0)
+                    {
+                        // fallback to the first text area
+                        final View v = formulas.getFormulaListView().getList().getChildAt(0);
+                        if (v instanceof TextFragment)
+                        {
+                            testScript.setScriptContent(((TextFragment) v).getTerms().get(0).getText());
+                        }
                     }
                 }
+                ViewUtils.Debug(this, "Calculating test script: " + scriptName);
+                formulas.calculate();
+                break;
             }
-            ViewUtils.Debug(this, "Calculating test script: " + scriptName);
-            formulas.calculate();
-            break;
-        }
-        case STEP_EXPORT:
-        {
-            final String scriptName = getScriptName(scripts[script]);
-            if (mode == Mode.EXPORT_DOC)
+            case STEP_EXPORT:
             {
-                exportLatex(scriptName);
+                final String scriptName = getScriptName(scripts[script]);
+                if (mode == Mode.EXPORT_DOC)
+                {
+                    exportLatex(scriptName);
+                }
+                else if (mode == Mode.TAKE_SCREENSHOTS)
+                {
+                    takeScreenshot(scriptName);
+                }
+                break;
             }
-            else if (mode == Mode.TAKE_SCREENSHOTS)
-            {
-                takeScreenshot(scriptName);
             }
-            break;
-        }
-        }
-        isPublishRuns.set(false);
+            isPublishRuns.set(false);
+        });
+        isPublishRuns.waitUntil(false);
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
@@ -319,57 +307,58 @@ public class TestSession extends AsyncTask<Void, Integer, Void>
         }
     }
 
-    @Override
-    protected void onPostExecute(Void result)
+    protected void onPostExecute()
     {
-        super.onPostExecute(result);
+        ViewUtils.Debug(this, "thread finished");
         final Activity context = formulas.getActivity();
-        if (mode == Mode.EXPORT_DOC || mode == Mode.TAKE_SCREENSHOTS)
+        context.runOnUiThread(() ->
         {
-            return;
-        }
-        File file = CompatUtils.getStorageFile(context, REPORT_HTML_FILE);
-        try
-        {
-            final FileOutputStream stream = new FileOutputStream(file);
-            final StringWriter writer = new StringWriter();
-            publishHtmlReport(writer);
-            stream.write(writer.toString().getBytes());
-            stream.close();
-            final String message = String.format(context.getResources().getString(R.string.message_file_written),
-                    REPORT_HTML_FILE);
-            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-        }
-        catch (Exception e)
-        {
-            final String error = String.format(context.getResources().getString(R.string.error_file_write),
-                    REPORT_HTML_FILE);
-            Toast.makeText(context, error, Toast.LENGTH_LONG).show();
-            file = null;
-        }
-        if (isAutotestOnStart)
-        {
-            formulas.getActivity().finish();
-        }
-        else if (file != null)
-        {
+            if (mode == Mode.EXPORT_DOC || mode == Mode.TAKE_SCREENSHOTS)
+            {
+                return;
+            }
+            File file = CompatUtils.getStorageFile(context, REPORT_HTML_FILE);
             try
             {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setDataAndType(FileUtils.uriFromFile(context, file), "text/html");
-                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                formulas.getActivity().startActivity(intent);
+                final FileOutputStream stream = new FileOutputStream(file);
+                final StringWriter writer = new StringWriter();
+                publishHtmlReport(writer);
+                stream.write(writer.toString().getBytes());
+                stream.close();
+                final String message = String.format(context.getResources().getString(R.string.message_file_written),
+                        REPORT_HTML_FILE);
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
             }
             catch (Exception e)
             {
-                ViewUtils.Debug(this, e.getLocalizedMessage());
-                Toast.makeText(context, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                final String error = String.format(context.getResources().getString(R.string.error_file_write),
+                        REPORT_HTML_FILE);
+                Toast.makeText(context, error, Toast.LENGTH_LONG).show();
+                file = null;
             }
-        }
+            if (isAutotestOnStart)
+            {
+                formulas.getActivity().finish();
+            }
+            else if (file != null)
+            {
+                try
+                {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setDataAndType(FileUtils.uriFromFile(context, file), "text/html");
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    formulas.getActivity().startActivity(intent);
+                }
+                catch (Exception e)
+                {
+                    ViewUtils.Debug(this, e.getLocalizedMessage());
+                    Toast.makeText(context, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
-    @SuppressWarnings("rawtypes")
-    public void setInOperation(AsyncTask owner, boolean inOperation)
+    public void setInOperation(Runnable owner, boolean inOperation)
     {
         if (testScript != null && !inOperation)
         {

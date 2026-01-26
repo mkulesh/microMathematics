@@ -20,7 +20,6 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -91,12 +90,6 @@ public class CompatUtils
             drawable.clearColorFilter();
             drawable.setColorFilter(getThemeColorAttr(c, resId), PorterDuff.Mode.SRC_ATOP);
         }
-    }
-
-    @SafeVarargs
-    public static <T> void executeAsyncTask(AsyncTask<T, ?, ?> asyncTask, T... params)
-    {
-        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
     }
 
     public static boolean isExternalStorageEmulated()

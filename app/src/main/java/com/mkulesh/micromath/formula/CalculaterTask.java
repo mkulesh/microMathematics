@@ -13,16 +13,18 @@
  */
 package com.mkulesh.micromath.formula;
 
-import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.utils.AppTask;
+import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.util.ArrayList;
 
-public class CalculaterTask extends AsyncTask<Void, CalculationResult, Void> implements OnClickListener
+public class CalculaterTask extends AppTask implements Runnable, OnClickListener
 {
     public static final class CancelException extends Exception
     {
@@ -39,21 +41,31 @@ public class CalculaterTask extends AsyncTask<Void, CalculationResult, Void> imp
 
     CalculaterTask(FormulaList list, ArrayList<CalculationResult> formulas)
     {
+        super();
+        setBackgroundTask(this, this.getClass().getSimpleName());
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         this.list = list;
         this.formulas = formulas;
     }
 
-    @Override
     protected void onPreExecute()
     {
-        list.setInOperation(/*owner=*/this, /*inOperation=*/true, /*stopHandler=*/this);
+        list.getActivity().runOnUiThread(() ->
+                list.setInOperation(/*owner=*/this, /*inOperation=*/true, /*stopHandler=*/this));
     }
 
     @Override
-    protected Void doInBackground(Void... params)
+    public void run()
     {
+        onPreExecute();
         for (CalculationResult f : formulas)
         {
+            if (isCancelled())
+            {
+                break;
+            }
             if (!f.isEmpty())
             {
                 try
@@ -73,38 +85,38 @@ public class CalculaterTask extends AsyncTask<Void, CalculationResult, Void> imp
                 publishProgress(f);
             }
         }
-        return null;
+        onPostExecute();
     }
 
-    @Override
-    protected void onProgressUpdate(CalculationResult... formula)
+    protected void publishProgress(CalculationResult f)
     {
-        CalculationResult f = formula[0];
-        if (f != null)
+        list.getActivity().runOnUiThread(() ->
         {
-            f.showResult();
-        }
+            if (f != null)
+            {
+                f.showResult();
+            }
+        });
     }
 
-    @Override
-    protected void onCancelled()
+    protected void onPostExecute()
     {
-        list.setInOperation(/*owner=*/this, /*inOperation=*/false, /*stopHandler=*/this);
-        String error = list.getActivity().getResources().getString(R.string.error_calculation_aborted);
-        Toast.makeText(list.getActivity(), error, Toast.LENGTH_LONG).show();
-        super.onCancelled();
-    }
-
-    @Override
-    protected void onPostExecute(Void result)
-    {
-        list.setInOperation(/*owner=*/this, /*inOperation=*/false, /*stopHandler=*/this);
+        ViewUtils.Debug(this, "thread finished");
+        list.getActivity().runOnUiThread(() ->
+        {
+            list.setInOperation(/*owner=*/this, /*inOperation=*/false, /*stopHandler=*/this);
+            if (isCancelled())
+            {
+                String error = list.getActivity().getResources().getString(R.string.error_calculation_aborted);
+                Toast.makeText(list.getActivity(), error, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
     public void onClick(View v)
     {
-        cancel(false);
+        cancel();
     }
 
     public void checkCancelation() throws CancelException
