@@ -109,6 +109,7 @@ public class CalculatedValue
         this.unit = unit;
     }
 
+    @SuppressWarnings("unchecked")
     public void convertUnit(@NonNull Unit<?> sourceUnit, @NonNull Unit<?> targetUnit)
     {
         if (valueType == ValueType.INVALID)

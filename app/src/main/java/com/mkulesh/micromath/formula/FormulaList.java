@@ -1327,7 +1327,12 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
             }
             else
             {
-                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+                View focusedView = formulaListView.getList().findFocus();
+                if (focusedView == null) {
+                    focusedView = formulaListView.getList();
+                }
+                focusedView.requestFocus();
+                imm.showSoftInput(focusedView, InputMethodManager.SHOW_IMPLICIT);
             }
         }
         else

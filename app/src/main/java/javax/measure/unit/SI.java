@@ -704,14 +704,4 @@ public final class SI extends SystemOfUnits {
     static final MultiplyConverter Em21 = new MultiplyConverter(1E-21);
 
     static final MultiplyConverter Em24 = new MultiplyConverter(1E-24);
-
-    /**
-     * @deprecated replaced by  {@link #METRES_PER_SECOND}.
-     */
-    public static final Unit<Velocity> METRE_PER_SECOND = METRES_PER_SECOND;
-
-    /**
-     * @deprecated replaced by  {@link #METRES_PER_SQUARE_SECOND}.
-     */
-    public static final Unit<Acceleration> METRE_PER_SQUARE_SECOND = METRES_PER_SQUARE_SECOND;
 }

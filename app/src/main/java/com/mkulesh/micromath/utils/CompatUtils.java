@@ -17,6 +17,10 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BlendMode;
+import android.graphics.BlendModeColorFilter;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -90,15 +94,6 @@ public class CompatUtils
         b.setColorFilter(c, PorterDuff.Mode.SRC_ATOP);
     }
 
-    public static void setDrawableColorAttr(Context c, Drawable drawable, @AttrRes int resId)
-    {
-        if (drawable != null)
-        {
-            drawable.clearColorFilter();
-            drawable.setColorFilter(getThemeColorAttr(c, resId), PorterDuff.Mode.SRC_ATOP);
-        }
-    }
-
     public static boolean isExternalStorageEmulated()
     {
         return Environment.isExternalStorageEmulated();
@@ -121,7 +116,6 @@ public class CompatUtils
     // Jelly Bean: Build.VERSION_CODES.JELLY_BEAN = 16
     //**********************************************************************************************
 
-    /** @noinspection RedundantSuppression*/
     @SuppressWarnings("deprecation")
     public static void updateBackground(Context c, View v, @DrawableRes int drawableId)
     {
@@ -145,7 +139,6 @@ public class CompatUtils
         }
     }
 
-    /** @noinspection RedundantSuppression*/
     @SuppressWarnings("deprecation")
     public static void updateBackgroundAttr(Context c, View v, @DrawableRes int drawableId, @AttrRes int colorAttrId)
     {
@@ -290,7 +283,6 @@ public class CompatUtils
         }
     }
 
-    /** @noinspection RedundantSuppression*/
     @SuppressWarnings("deprecation")
     private static boolean showTooltipAsToast(Context context, View button)
     {
@@ -324,6 +316,32 @@ public class CompatUtils
         return false;
     }
 
+    @SuppressWarnings("deprecation")
+    public static void saveLayerAlpha(Canvas canvas, int opacity)
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            canvas.saveLayerAlpha(null, opacity);
+        }
+        else
+        {
+            canvas.saveLayerAlpha(null, opacity, Canvas.ALL_SAVE_FLAG);
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    public static void saveLayer(Canvas canvas, Paint maskPaintCombined)
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            canvas.saveLayer(null, maskPaintCombined);
+        }
+        else
+        {
+            canvas.saveLayer(null, maskPaintCombined, Canvas.ALL_SAVE_FLAG);
+        }
+    }
+
     //**********************************************************************************************
     // Q: Build.VERSION_CODES.Q = 29
     //**********************************************************************************************
@@ -352,6 +370,24 @@ public class CompatUtils
         }
     }
 
+    @SuppressWarnings("deprecation")
+    public static void setDrawableColorAttr(Context c, Drawable drawable, @AttrRes int resId)
+    {
+        if (drawable == null)
+        {
+            return;
+        }
+        drawable.clearColorFilter();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+        {
+            drawable.setColorFilter(new BlendModeColorFilter(getThemeColorAttr(c, resId), BlendMode.SRC_ATOP));
+        }
+        else
+        {
+            drawable.setColorFilter(getThemeColorAttr(c, resId), PorterDuff.Mode.SRC_ATOP);
+        }
+    }
+
     //**********************************************************************************************
     // R: Build.VERSION_CODES.R = 30
     //**********************************************************************************************
@@ -361,7 +397,6 @@ public class CompatUtils
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.R;
     }
 
-    /** @noinspection RedundantSuppression*/
     @SuppressWarnings("deprecation")
     public static boolean isToastVisible(Toast toast)
     {
@@ -384,7 +419,6 @@ public class CompatUtils
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU;
     }
 
-    /** @noinspection RedundantSuppression*/
     @SuppressWarnings("deprecation")
     public static <T extends Parcelable> T getParcelable(@NonNull Bundle state, @NonNull String parName, @NonNull Class<T> clazz)
     {
@@ -403,7 +437,6 @@ public class CompatUtils
         }
     }
 
-    /** @noinspection RedundantSuppression*/
     @SuppressWarnings("deprecation")
     public static <T extends Parcelable> T readParcelable(@NonNull Parcel parcel, @Nullable ClassLoader loader, @NonNull Class<T> clazz)
     {

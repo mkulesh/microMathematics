@@ -18,6 +18,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.text.format.DateFormat;
 import android.view.ContextMenu;
@@ -32,6 +33,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mkulesh.micromath.plus.R;
+import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.io.File;
 import java.util.Date;
@@ -67,6 +69,7 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
 
         SimpleHandler(CommanderIf c)
         {
+            super(Looper.getMainLooper());
             cmd = c;
         }
 
@@ -79,7 +82,7 @@ public abstract class AdapterBaseImpl extends BaseAdapter implements AdapterIf
             }
             catch (Exception e)
             {
-                e.printStackTrace();
+                ViewUtils.Debug(this, "Cannot handle message: " + e.getLocalizedMessage());
             }
         }
     }

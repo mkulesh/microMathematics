@@ -421,27 +421,16 @@ public abstract class Measure<V, Q extends Quantity> implements Measurable<Q>,
 
     }
 
-    /**
-     * @deprecated {@link DecimalMeasure} should be used directly. 
-     */
     public static <Q extends Quantity> Measure<BigDecimal, Q> valueOf(
             BigDecimal decimal, Unit<Q> unit) {
         return DecimalMeasure.valueOf(decimal, unit);
     }
 
-    /**
-     * @deprecated {@link DecimalMeasure} should be used directly and 
-     *             <code>MathContext</code> specified explicitly when 
-     *              {@link DecimalMeasure#to(Unit, MathContext) converting}.
-     */
     public static <Q extends Quantity> Measure<BigDecimal, Q> valueOf(
             BigDecimal decimal, Unit<Q> unit, MathContext mathContext) {
         return DecimalMeasure.valueOf(decimal, unit);
     }
 
-    /**
-     * @deprecated {@link VectorMeasure} should be used directly. 
-     */
     public static <Q extends Quantity> Measure<double[], Q> valueOf(
             double[] components, Unit<Q> unit) {
         return VectorMeasure.valueOf(components, unit);
