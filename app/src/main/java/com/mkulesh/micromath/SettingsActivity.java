@@ -98,22 +98,13 @@ public class SettingsActivity extends AppCompatActivity
             // Show the Up button in the action bar.
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
-        // activate toolbar separator, if necessary
-        {
-            final int sepColor = CompatUtils.getThemeColorAttr(this, R.attr.colorToolBarSeparator);
-            if (sepColor != Color.TRANSPARENT && findViewById(R.id.toolbar_separator) != null)
-            {
-                findViewById(R.id.toolbar_separator).setVisibility(View.VISIBLE);
-            }
-        }
     }
 
     @Override
     protected void attachBaseContext(Context newBase)
     {
         final Locale prefLocale = AppLocale.ContextWrapper.getPreferredLocale(newBase);
-        ViewUtils.Debug(this, "Settings locale: " + prefLocale.toString());
+        ViewUtils.Debug(this, "Settings locale: " + prefLocale);
         super.attachBaseContext(AppLocale.ContextWrapper.wrap(newBase, prefLocale));
     }
 
