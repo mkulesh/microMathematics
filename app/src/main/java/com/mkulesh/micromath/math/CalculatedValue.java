@@ -13,8 +13,6 @@
  */
 package com.mkulesh.micromath.math;
 
-import androidx.annotation.NonNull;
-
 import com.mkulesh.micromath.formula.CalculaterTask;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.TermField;
@@ -29,6 +27,8 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 public class CalculatedValue
 {

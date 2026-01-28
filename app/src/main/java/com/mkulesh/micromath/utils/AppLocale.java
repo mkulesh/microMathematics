@@ -60,6 +60,7 @@ public final class AppLocale
             }
         }
 
+        @SuppressWarnings("deprecation")
         @SuppressLint("AppBundleLocaleChanges")
         public static ContextWrapper wrap(Context context, Locale newLocale)
         {
@@ -82,8 +83,8 @@ public final class AppLocale
             else
             {
                 configuration.locale = newLocale;
+                res.updateConfiguration(configuration, res.getDisplayMetrics());
             }
-            res.updateConfiguration(configuration, res.getDisplayMetrics());
             return new ContextWrapper(context);
         }
     }

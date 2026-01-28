@@ -61,6 +61,7 @@ public class LineDrawable extends Drawable
     {
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public int getOpacity()
     {

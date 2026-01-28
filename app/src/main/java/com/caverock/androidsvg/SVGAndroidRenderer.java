@@ -73,6 +73,7 @@ import com.caverock.androidsvg.SVG.SvgRadialGradient;
 import com.caverock.androidsvg.SVG.TextContainer;
 import com.caverock.androidsvg.SVG.TextSequence;
 import com.caverock.androidsvg.SVG.Unit;
+import com.mkulesh.micromath.utils.CompatUtils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -724,7 +725,7 @@ class SVGAndroidRenderer
          return false;
 
       // Custom version of statePush() that also saves the layer
-      canvas.saveLayerAlpha(null, clamp255(state.style.opacity), Canvas.ALL_SAVE_FLAG);
+      CompatUtils.saveLayerAlpha(canvas, clamp255(state.style.opacity));
 
       // Save style state
       stateStack.push(state);
@@ -770,7 +771,7 @@ class SVGAndroidRenderer
          // Final mask gets composited using Porter Duff mode DST_IN
          Paint  maskPaintCombined = new Paint();
          maskPaintCombined.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-         canvas.saveLayer(null, maskPaintCombined, Canvas.ALL_SAVE_FLAG);
+         CompatUtils.saveLayer(canvas, maskPaintCombined);
 
            // Step 1
            Paint  maskPaint1 = new Paint();
@@ -780,7 +781,7 @@ class SVGAndroidRenderer
                                                                         0,       0,       0,       0, 0,
                                                                         SVGAndroidRenderer.LUMINANCE_TO_ALPHA_RED, SVGAndroidRenderer.LUMINANCE_TO_ALPHA_GREEN, SVGAndroidRenderer.LUMINANCE_TO_ALPHA_BLUE, 0, 0});
            maskPaint1.setColorFilter(new ColorMatrixColorFilter(luminanceToAlpha));
-           canvas.saveLayer(null, maskPaint1, Canvas.ALL_SAVE_FLAG);   // TODO use real mask bounds
+           CompatUtils.saveLayer(canvas, maskPaint1);   // TODO use real mask bounds
 
              // Render the mask content into the step 1 layer
              SVG.SvgObject  ref = document.resolveIRI(state.style.mask);
@@ -792,7 +793,7 @@ class SVGAndroidRenderer
            // Step 2
            Paint  maskPaint2 = new Paint();
            maskPaint2.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-           canvas.saveLayer(null, maskPaint2, Canvas.ALL_SAVE_FLAG);
+           CompatUtils.saveLayer(canvas, maskPaint2);
 
              // Render the mask content (again) into the step 2 part
              renderMask((SVG.Mask) ref, obj, originalObjBBox);
