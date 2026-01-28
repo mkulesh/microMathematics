@@ -210,15 +210,6 @@ public class MainActivity extends AppCompatActivity
         if (actionBar != null)
         {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setElevation(5.0f);
-        }
-        // activate toolbar separator, if necessary
-        {
-            final int sepColor = CompatUtils.getThemeColorAttr(this, R.attr.colorToolBarSeparator);
-            if (sepColor != Color.TRANSPARENT && findViewById(R.id.toolbar_separator) != null)
-            {
-                findViewById(R.id.toolbar_separator).setVisibility(View.VISIBLE);
-            }
         }
 
         // Action bar drawer
