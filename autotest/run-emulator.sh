@@ -12,10 +12,16 @@ setenv APK_DATA ${3}
 setenv APK_FLAG ${4}
 setenv EMU_FLAG ${5}
 
-setenv TOOLS_PATH ${ANDROID_HOME}/tools
 setenv EMU_PORT 5558
 setenv DEVICE_NAME emulator-${EMU_PORT}
 setenv ADB_CMD "adb -s ${DEVICE_NAME}"
+
+setenv EMU_LIST `${ANDROID_HOME}/emulator/emulator -list-avds`
+setenv EMU_FOUND `echo "${EMU_LIST}" | grep -c "${EMU_NAME}"`
+if ( ${EMU_FOUND} == 0 ) then
+    echo "Emulator '${EMU_NAME}' is not available."
+    exit 0
+endif
 
 echo ================================================================================
 echo Starting ${EMU_NAME} on port ${EMU_PORT} with flag ${EMU_FLAG}...
@@ -54,9 +60,8 @@ echo Collect results
 ${ADB_CMD} pull ${APK_DATA}/${APK_PACK}/files/autotest.html ${1}.html
 
 echo Stopping emulator...
-${ADB_CMD} -e emu kill
+${ADB_CMD} emu kill
 sleep 5
-killall qemu-system-i386
 adb kill-server
 
-exit 1
+exit 0
