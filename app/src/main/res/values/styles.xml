@@ -23,7 +23,6 @@
         <item name="themeMicroMathToolBar">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="themeMicroMathPopup">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="colorMicroMathNavigator">@color/background_material_light</item>
-        <item name="colorToolBarSeparator">@android:color/transparent</item>
         <item name="toastFrame">@drawable/toast_frame_light</item>
         <item name="colorTooltipText">@android:color/white</item>
     </style>
@@ -34,7 +33,6 @@
         <item name="themeMicroMathToolBar">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="themeMicroMathPopup">@style/ThemeOverlay.AppCompat.Dark</item>
         <item name="colorMicroMathNavigator">@color/background_material_dark</item>
-        <item name="colorToolBarSeparator">@android:color/transparent</item>
         <item name="toastFrame">@drawable/toast_frame_dark</item>
         <item name="colorTooltipText">@android:color/black</item>
     </style>

@@ -45,9 +45,10 @@ public class SettingsActivity extends AppCompatActivity
     {
         setTheme(AppTheme.getTheme(this, AppTheme.ThemeType.SETTINGS_THEME));
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
         setupActionBar();
         getSupportFragmentManager().beginTransaction().replace(
-                android.R.id.content, new MyPreferenceFragment()).commit();
+                R.id.settings_container, new MyPreferenceFragment()).commit();
         setTitle(R.string.action_app_settings);
     }
 
@@ -82,16 +83,8 @@ public class SettingsActivity extends AppCompatActivity
 
     private void setupActionBar()
     {
-        ViewGroup rootView = findViewById(R.id.action_bar_root); //id from appcompat
-        if (rootView != null)
-        {
-            View view = getLayoutInflater().inflate(R.layout.activity_toolbar, rootView, false);
-            rootView.addView(view, 0);
-
-            Toolbar toolbar = findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-        }
-
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)
         {
