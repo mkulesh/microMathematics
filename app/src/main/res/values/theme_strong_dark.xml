@@ -20,7 +20,6 @@
         <!-- Parent styles -->
         <item name="android:windowBackground">@android:color/black</item>
         <item name="colorMicroMathNavigator">@color/material_grey_800</item>
-        <item name="colorToolBarSeparator">@color/material_grey_800</item>
         <!-- Activity colors -->
         <item name="colorPrimary">@android:color/black</item>
         <item name="colorPrimaryDark">@color/material_grey_800</item>

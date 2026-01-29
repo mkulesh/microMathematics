@@ -53,9 +53,7 @@
     </style>
 
     <style name="MainThemeStrongLight" parent="BaseThemeStrongLight">
-        <!-- Toolbar separator is only necessary for Android 4.0-4.4 -->
-        <!-- This separator is de-activated for API 21 -->
-        <item name="colorToolBarSeparator">?attr/colorDialogDivider</item>
+        <!-- Empty -->
     </style>
 
     <style name="SettingsThemeStrongLight" parent="BaseThemeStrongLight">
