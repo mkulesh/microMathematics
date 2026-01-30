@@ -44,6 +44,7 @@ import com.mkulesh.micromath.plus.R;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
@@ -105,7 +106,10 @@ public class CompatUtils
     public static DecimalFormat getDecimalFormat(String format)
     {
         DecimalFormat df = new DecimalFormat(format);
-        DecimalFormatSymbols dfs = new DecimalFormatSymbols();
+        // #146: By creating symbols from Locale.US, we are explicitly requesting
+        // a set of symbols that are standard and internationally recognized for
+        // machine parsing and consistent display
+        DecimalFormatSymbols dfs = new DecimalFormatSymbols(Locale.US);
         dfs.setDecimalSeparator('.');
         dfs.setExponentSeparator("e");
         df.setDecimalFormatSymbols(dfs);

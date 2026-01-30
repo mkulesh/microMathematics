@@ -29,6 +29,7 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.measure.DecimalMeasure;
 import javax.measure.Measure;
@@ -449,7 +450,10 @@ public class CalculatedValue
             }
             else
             {
-                return addPlus ? ("+" + roundV) : Double.toString(roundV);
+                // #146: By formatting using Locale.US, we are explicitly requesting
+                // a set of symbols that are standard and internationally recognized for
+                // machine parsing and consistent display
+                return addPlus ? ("+" + roundV) : String.format(Locale.US, "%s", roundV);
             }
         }
     }
