@@ -25,8 +25,22 @@ echo APK to be tested: ${1}
 ./run-emulator.sh android_15.0.0 ${1} /data/user/0 -g -delay-adb
 ./run-emulator.sh android_16.0.0 ${1} /data/user/0 -g -delay-adb
 
-grep FAILED *.html
+# Check for failures and report status
+set failures = `grep FAILED *.html`
+if ("$failures" == "") then
+    echo ">>>>> Test PASSED."
+else
+    echo ">>>>> Test FAILED:"
+    echo "$failures"
+endif
 
-firefox *.html
+# Open report files in Firefox
+if (`uname` == "Darwin") then
+    # macOS
+    open -a Firefox *.html
+else
+    # Assuming Linux
+    firefox *.html
+endif
 
 exit 1
