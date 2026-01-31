@@ -46,17 +46,17 @@ public final class AppLocale
 
             if (languageCode.equals("system"))
             {
-                return new Locale(Locale.getDefault().getLanguage());
+                return CompatUtils.getLocale(Locale.getDefault().getLanguage(), "");
             }
 
             String[] array = languageCode.split("-r", -1);
             if (array.length == 1)
             {
-                return new Locale(array[0]);
+                return CompatUtils.getLocale(array[0], "");
             }
             else
             {
-                return new Locale(array[0], array[1]);
+                return CompatUtils.getLocale(array[0], array[1]);
             }
         }
 
