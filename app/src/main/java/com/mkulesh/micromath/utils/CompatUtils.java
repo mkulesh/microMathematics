@@ -223,6 +223,23 @@ public class CompatUtils
     }
 
     //**********************************************************************************************
+    // LilliPop: Build.VERSION_CODES.LOLLIPOP = 21
+    //**********************************************************************************************
+
+    @SuppressWarnings("deprecation")
+    public static Locale getLocale(final String language, String country)
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            return new Locale.Builder().setLanguage(language).setRegion(country).build();
+        }
+        else
+        {
+            return new Locale(language, country);
+        }
+    }
+
+    //**********************************************************************************************
     // MarshMallow: Build.VERSION_CODES.M = 23
     //**********************************************************************************************
 

@@ -40,6 +40,7 @@ import com.caverock.androidsvg.SVG.TextChild;
 import com.caverock.androidsvg.SVG.TextPositionedContainer;
 import com.caverock.androidsvg.SVG.TextRoot;
 import com.caverock.androidsvg.SVG.Unit;
+import com.mkulesh.micromath.utils.CompatUtils;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
@@ -4401,7 +4402,7 @@ Log.d(TAG,"PROC INSTR: "+parser.getText());
             language = language.substring(0, hyphenPos);
          }
          // Get canonical version of language code in case it has changed (see the JavaDoc for Locale.getLanguage())
-         language = new Locale(language, "", "").getLanguage();
+         language = CompatUtils.getLocale(language, "").getLanguage();
          result.add(language);
          scan.skipWhitespace();
       }
