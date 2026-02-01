@@ -22,7 +22,9 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="?attr/colorPrimaryDark">
 
         <include layout="@layout/activity_toolbar"/>
 
@@ -30,6 +32,7 @@
             android:id="@+id/main_content_frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="?attr/android:windowBackground"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
