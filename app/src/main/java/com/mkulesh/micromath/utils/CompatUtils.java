@@ -475,4 +475,13 @@ public class CompatUtils
             return parcel.readParcelable(loader);
         }
     }
+
+    //**********************************************************************************************
+    // Vanilla: Build.VANILLA_ICE_CREAM = 35
+    //**********************************************************************************************
+
+    public static boolean isVanillaIceCreamOrLater()
+    {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM;
+    }
 }
