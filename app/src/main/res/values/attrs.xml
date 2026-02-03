@@ -17,6 +17,7 @@
 
     <attr name="themeMicroMathToolBar" format="reference" />
     <attr name="themeMicroMathPopup" format="reference" />
+    <attr name="colorStatusBar" format="color" />
     <attr name="colorMicroMathNavigator" format="color" />
     <attr name="colorMicroMathIcon" format="color" />
     <attr name="colorMicroMathFloatingIcon" format="color" />

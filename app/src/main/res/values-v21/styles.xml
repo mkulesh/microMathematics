@@ -17,14 +17,14 @@
 
     <style name="AppBaseThemeLight" parent="BaseThemeLight">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
-        <item name="android:navigationBarColor">?attr/colorPrimaryDark</item>
+        <item name="android:statusBarColor">?attr/colorStatusBar</item>
+        <item name="android:navigationBarColor">?attr/colorStatusBar</item>
     </style>
 
     <style name="AppBaseThemeDark" parent="BaseThemeDark">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
-        <item name="android:navigationBarColor">?attr/colorPrimaryDark</item>
+        <item name="android:statusBarColor">?attr/colorStatusBar</item>
+        <item name="android:navigationBarColor">?attr/colorStatusBar</item>
     </style>
 
     <style name="CustomProgressBarTheme" parent="Theme.AppCompat.Light">

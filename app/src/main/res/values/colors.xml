@@ -13,6 +13,10 @@
   ~ Public License along with this program.
   -->
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="ic_launcher_background">@android:color/white</color>
+
+    <!-- Fix for status bar turning black in ActionMode on Android 15+ -->
+    <color name="abc_decor_view_status_guard" tools:override="true">@android:color/transparent</color>
+    <color name="abc_decor_view_status_guard_light" tools:override="true">@android:color/transparent</color>
 </resources>

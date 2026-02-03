@@ -25,6 +25,8 @@
         <item name="colorMicroMathNavigator">@color/background_material_light</item>
         <item name="toastFrame">@drawable/toast_frame_light</item>
         <item name="colorTooltipText">@android:color/white</item>
+        <item name="actionModeBackground">?attr/colorPrimary</item>
+        <item name="actionModeStyle">@style/ActionModeStyle</item>
     </style>
 
     <style name="BaseThemeDark" parent="Theme.Material3.Dark.NoActionBar">
@@ -35,6 +37,8 @@
         <item name="colorMicroMathNavigator">@color/background_material_dark</item>
         <item name="toastFrame">@drawable/toast_frame_dark</item>
         <item name="colorTooltipText">@android:color/black</item>
+        <item name="actionModeBackground">?attr/colorPrimary</item>
+        <item name="actionModeStyle">@style/ActionModeStyle</item>
     </style>
 
     <!-- Theme definition that is re-defined for API v.21 -->
@@ -199,4 +203,9 @@
         <item name="android:saveEnabled">false</item>
     </style>
 
+    <!-- ActionMode -->
+
+    <style name="ActionModeStyle" parent="Widget.AppCompat.ActionMode">
+        <item name="background">?attr/colorPrimary</item>
+    </style>
 </resources>

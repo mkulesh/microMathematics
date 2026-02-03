@@ -22,6 +22,7 @@
         <item name="android:windowBackground">@android:color/white</item>
         <item name="colorMicroMathNavigator">@android:color/white</item>
         <!-- Activity colors -->
+        <item name="colorStatusBar">@color/material_grey_300</item>
         <item name="colorPrimary">@android:color/white</item>
         <item name="colorPrimaryDark">@color/material_grey_300</item>
         <item name="colorAccent">@android:color/black</item>
@@ -48,8 +49,6 @@
         <item name="colorFormulaCalculatedValue">@color/material_grey_600</item>
         <item name="colorFormulaTextFragment">@android:color/black</item>
         <item name="colorPlotGridLine">#FF787878</item>
-        <!-- Other elements -->
-        <item name="actionModeBackground">?attr/colorPrimary</item>
     </style>
 
     <style name="MainThemeStrongLight" parent="BaseThemeStrongLight">

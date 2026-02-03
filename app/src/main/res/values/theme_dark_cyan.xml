@@ -17,6 +17,7 @@
 
     <!-- Dark theme with cyan accent -->
     <style name="BaseThemeDarkCyan" parent="AppBaseThemeDark">
+        <item name="colorStatusBar">@color/material_grey_800</item>
         <item name="colorPrimary">@color/material_grey_800</item>
         <item name="colorPrimaryDark">@color/background_material_dark</item>
         <item name="colorAccent">#00BCD4</item>
@@ -44,8 +45,6 @@
         <item name="colorFormulaCalculatedValue">@android:color/darker_gray</item>
         <item name="colorFormulaTextFragment">@android:color/white</item>
         <item name="colorPlotGridLine">#FF787878</item>
-        <!-- Other elements -->
-        <item name="actionModeBackground">?attr/colorPrimary</item>
     </style>
 
     <style name="MainThemeDarkCyan" parent="BaseThemeDarkCyan">

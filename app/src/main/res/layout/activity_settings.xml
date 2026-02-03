@@ -18,7 +18,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="?attr/colorPrimaryDark">
+    android:background="?attr/colorStatusBar">
 
     <include layout="@layout/activity_toolbar"/>
 
