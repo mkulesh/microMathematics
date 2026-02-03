@@ -39,5 +39,15 @@
         <item name="android:indeterminate">true</item>
         <item name="android:scaleY">3</item>
     </style>
-    
+
+    <style name="AppAlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="buttonBarPositiveButtonStyle">@style/DialogTextButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogTextButtonStyle</item>
+        <item name="android:checkedTextViewStyle">@style/MyCheckedTextView</item>
+    </style>
+
+    <style name="MyCheckedTextView" parent="Widget.Material3.CheckedTextView">
+        <item name="android:textColor">?attr/colorDialogContent</item>
+    </style>
+
 </resources>

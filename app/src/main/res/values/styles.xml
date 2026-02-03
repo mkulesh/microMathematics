@@ -27,6 +27,8 @@
         <item name="colorTooltipText">@android:color/white</item>
         <item name="actionModeBackground">?attr/colorPrimary</item>
         <item name="actionModeStyle">@style/ActionModeStyle</item>
+        <item name="preferenceTheme">@style/AppPreferenceStyle</item>
+        <item name="alertDialogTheme">@style/AppAlertDialogTheme</item>
     </style>
 
     <style name="BaseThemeDark" parent="Theme.Material3.Dark.NoActionBar">
@@ -39,6 +41,8 @@
         <item name="colorTooltipText">@android:color/black</item>
         <item name="actionModeBackground">?attr/colorPrimary</item>
         <item name="actionModeStyle">@style/ActionModeStyle</item>
+        <item name="preferenceTheme">@style/AppPreferenceStyle</item>
+        <item name="alertDialogTheme">@style/AppAlertDialogTheme</item>
     </style>
 
     <!-- Theme definition that is re-defined for API v.21 -->
@@ -124,7 +128,7 @@
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
-    <style name="DialogTextButtonStyle" parent="@style/Widget.AppCompat.Button.Borderless.Colored">
+    <style name="DialogTextButtonStyle" parent="Widget.Material3.Button.TextButton.Dialog">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingRight">16dp</item>
@@ -132,6 +136,7 @@
         <item name="android:minWidth">0dp</item>
         <item name="android:textColor">?attr/colorDialogContent</item>
         <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="HorizontalDividerStyle">
@@ -208,4 +213,20 @@
     <style name="ActionModeStyle" parent="Widget.AppCompat.ActionMode">
         <item name="background">?attr/colorPrimary</item>
     </style>
+
+    <!-- Preferences -->
+
+    <style name="AppPreferenceStyle" parent="PreferenceThemeOverlay">
+        <item name="switchPreferenceCompatStyle">@style/PreferenceMaterialSwitch</item>
+    </style>
+
+    <style name="PreferenceMaterialSwitch" parent="@style/Preference.SwitchPreferenceCompat.Material">
+        <item name="widgetLayout">@layout/preference_switch</item>
+    </style>
+
+    <style name="AppAlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="buttonBarPositiveButtonStyle">@style/DialogTextButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogTextButtonStyle</item>
+    </style>
+
 </resources>
