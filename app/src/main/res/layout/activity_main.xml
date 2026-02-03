@@ -43,9 +43,10 @@
         android:layout_width="wrap_content"
         android:layout_gravity="start"
         android:background="?attr/colorMicroMathNavigator"
-        app:itemTextColor="@color/drawer_text_color"
+        app:itemTextColor="?attr/android:textColor"
         app:itemIconTint="?attr/android:textColorSecondary"
         app:headerLayout="@layout/activity_drawer_header"
+        app:itemShapeFillColor="@color/navigation_item_background"
         app:menu="@menu/activity_drawer_items"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

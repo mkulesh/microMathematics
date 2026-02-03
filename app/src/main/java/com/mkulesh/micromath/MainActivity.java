@@ -518,7 +518,7 @@ public class MainActivity extends AppCompatActivity
         activityTitles = getResources().getStringArray(R.array.activity_titles);
         activitySubtitles = getResources().getStringArray(R.array.activity_subtitles);
         activityResources = getResources().getStringArray(R.array.activity_resources);
-
+        activityMenuItems.clear();
         for (int i = 0; i < navigationView.getMenu().size(); i++)
         {
             final MenuItem m = navigationView.getMenu().getItem(i);

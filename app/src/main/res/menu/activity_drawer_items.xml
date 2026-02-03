@@ -30,14 +30,16 @@
           android:title="@string/activity_example"
           android:orderInCategory="2">
         <menu>
-            <item
-                android:orderInCategory="2"
-                android:icon="@drawable/drawer_function_plot"
-                android:title="@string/app_short_name" />
-            <item
-                android:orderInCategory="3"
-                android:icon="@drawable/drawer_polar_plot"
-                android:title="@string/app_short_name" />
+            <group android:checkableBehavior="single">
+                <item
+                    android:orderInCategory="2"
+                    android:icon="@drawable/drawer_function_plot"
+                    android:title="@string/app_short_name" />
+                <item
+                    android:orderInCategory="3"
+                    android:icon="@drawable/drawer_polar_plot"
+                    android:title="@string/app_short_name" />
+            </group>
         </menu>
     </item>
 
@@ -45,22 +47,24 @@
           android:title="@string/app_short_name"
           android:orderInCategory="3">
         <menu>
-            <item
-                android:orderInCategory="4"
-                android:icon="@drawable/drawer_about"
-                android:title="@string/app_short_name" />
-            <item
-                android:orderInCategory="5"
-                android:icon="@drawable/drawer_documentation"
-                android:title="@string/app_short_name" />
-            <item
-                android:orderInCategory="6"
-                android:icon="@drawable/drawer_rating"
-                android:title="@string/app_short_name" />
-            <item
-                android:orderInCategory="7"
-                android:icon="@drawable/drawer_buy_now"
-                android:title="@string/app_short_name" />
+            <group android:checkableBehavior="single">
+                <item
+                    android:orderInCategory="4"
+                    android:icon="@drawable/drawer_about"
+                    android:title="@string/app_short_name" />
+                <item
+                    android:orderInCategory="5"
+                    android:icon="@drawable/drawer_documentation"
+                    android:title="@string/app_short_name" />
+                <item
+                    android:orderInCategory="6"
+                    android:icon="@drawable/drawer_rating"
+                    android:title="@string/app_short_name" />
+                <item
+                    android:orderInCategory="7"
+                    android:icon="@drawable/drawer_buy_now"
+                    android:title="@string/app_short_name" />
+            </group>
         </menu>
     </item>
 
