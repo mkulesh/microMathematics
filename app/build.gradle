@@ -12,6 +12,7 @@ android {
         versionCode 43
         versionName "1.25"
         setProperty("archivesBaseName", "microMathematics-v" + versionName)
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -37,9 +38,11 @@ dependencies {
     // https://stackoverflow.com/questions/55265834/change-locale-not-work-after-migrate-to-androidx
     // Custom locale can not be set for older Android version.
     // Keep androidx.appcompat:appcompat:1.1.0 in order to avoid this problem
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.preference:preference:1.1.1'
-    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation 'androidx.preference:preference:1.2.1'
+    implementation 'com.google.android.material:material:1.9.0'
 
     implementation 'org.apache.commons:commons-math3:3.6.1'
     implementation 'org.apache.commons:commons-numbers-parent:1.0'

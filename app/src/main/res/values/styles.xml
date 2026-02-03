@@ -17,7 +17,7 @@
 
     <!-- Theme definition used for all API levels -->
 
-    <style name="BaseThemeLight" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="BaseThemeLight" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowBackground">@color/background_material_light</item>
         <item name="themeMicroMathToolBar">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
@@ -27,7 +27,7 @@
         <item name="colorTooltipText">@android:color/white</item>
     </style>
 
-    <style name="BaseThemeDark" parent="@style/Theme.AppCompat.NoActionBar">
+    <style name="BaseThemeDark" parent="Theme.Material3.Dark.NoActionBar">
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowBackground">@color/background_material_dark</item>
         <item name="themeMicroMathToolBar">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
