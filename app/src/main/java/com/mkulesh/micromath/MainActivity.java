@@ -156,6 +156,12 @@ public class MainActivity extends AppCompatActivity
     protected void onResume()
     {
         super.onResume();
+        if (storagePermissionAction != ViewUtils.INVALID_INDEX)
+        {
+            // #152 Problem opening file from documents after installation
+            // No fragment operations allowed during SAF permission processing
+            return;
+        }
         final boolean intentProcessed = handleIntent(getIntent());
         if (!intentProcessed && instanceStateEmpty)
         {
