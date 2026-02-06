@@ -44,7 +44,7 @@ public interface CommanderIf
     /**
      * Try to issue an indent
      */
-    void issue(Intent in, int ret);
+    void issue(Intent in);
 
     /**
      * Shows given error

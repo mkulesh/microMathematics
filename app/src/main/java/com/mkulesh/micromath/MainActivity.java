@@ -15,6 +15,7 @@ package com.mkulesh.micromath;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -29,6 +30,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -41,6 +44,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
+import com.mkulesh.micromath.fman.ActivityCallback;
 import com.mkulesh.micromath.fman.AdapterDocuments;
 import com.mkulesh.micromath.formula.StoredFormula;
 import com.mkulesh.micromath.utils.AppLocale;
@@ -62,7 +66,6 @@ public class MainActivity extends AppCompatActivity
     private static final String STATE_STORED_FORMULA = "stored_formula";
 
     private static final int STORAGE_PERMISSION_REQID = 255;
-    private static final int SETTINGS_ACTIVITY_REQID = 256;
     private static final String SHORTCUT_NEW_DOCUMENT = "com.mkulesh.micromath.plus.NEW_DOCUMENT";
     private static final String SHORTCUT_OPEN_FILE = "com.mkulesh.micromath.plus.OPEN_FILE";
     private static final String SHORTCUT_AUTOTEST = "com.mkulesh.micromath.plus.AUTOTEST";
@@ -86,6 +89,39 @@ public class MainActivity extends AppCompatActivity
     private int orientation;
     private boolean instanceStateEmpty = true;
 
+    private final ActivityResultLauncher<Intent> settingsLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> restartActivity()
+    );
+
+    private final ActivityResultLauncher<Intent> fileManagerLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result ->
+            {
+                ViewUtils.Debug(this, "File Manager Callback: " + result);
+                if (result != null && result.getResultCode() == Activity.RESULT_OK)
+                {
+                    final Intent data = result.getData();
+                    if (data != null)
+                    {
+                        final Uri fileUri = data.getData();
+                        AdapterDocuments.saveTreeRootURI(this, fileUri);
+                        if (storagePermissionAction != ViewUtils.INVALID_INDEX)
+                        {
+                            ViewUtils.Debug(this,
+                                    "SAF permission was granted, performing action for " + fileUri
+                                            + " with action " + storagePermissionAction);
+                            final BaseFragment f = getVisibleFragment();
+                            if (f != null)
+                            {
+                                f.performAction(storagePermissionAction);
+                            }
+                        }
+                    }
+                }
+            }
+    );
+
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -107,6 +143,7 @@ public class MainActivity extends AppCompatActivity
         {
             ViewUtils.Debug(this, "Starting application");
         }
+        ActivityCallback.getInstance().setResultLauncher(fileManagerLauncher);
 
         initGUI();
 
@@ -310,7 +347,7 @@ public class MainActivity extends AppCompatActivity
         case R.id.action_app_settings:
         {
             Intent settings = new Intent(this, SettingsActivity.class);
-            startActivityForResult(settings, SETTINGS_ACTIVITY_REQID);
+            settingsLauncher.launch(settings);
             return true;
         }
         case R.id.action_exit:
@@ -772,29 +809,6 @@ public class MainActivity extends AppCompatActivity
                 String error = getResources().getString(R.string.allow_storage_access_description);
                 Toast.makeText(this, error, Toast.LENGTH_LONG).show();
             }
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == AdapterDocuments.REQUEST_OPEN_DOCUMENT_TREE && data != null)
-        {
-            AdapterDocuments.saveTreeRootURI(this, data.getData());
-            if (storagePermissionAction != ViewUtils.INVALID_INDEX)
-            {
-                ViewUtils.Debug(this, "SAF permission was granted, performing file operation action");
-                final BaseFragment f = getVisibleFragment();
-                if (f != null)
-                {
-                    f.performAction(storagePermissionAction);
-                }
-            }
-        }
-        else if (requestCode == SETTINGS_ACTIVITY_REQID)
-        {
-            restartActivity();
         }
     }
 }

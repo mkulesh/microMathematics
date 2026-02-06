@@ -168,7 +168,7 @@ public class AdapterHome extends AdapterBaseImpl
             if (uri_s == null)
             {
                 commander.closeDialog();
-                commander.issue(CompatUtils.getDocTreeIntent(), AdapterDocuments.REQUEST_OPEN_DOCUMENT_TREE);
+                commander.issue(CompatUtils.getDocTreeIntent());
                 return;
             }
         }
@@ -252,7 +252,7 @@ public class AdapterHome extends AdapterBaseImpl
             if (AdapterDocuments.ORG_SCHEME.startsWith(schema) && R.id.fman_action_open_saf == command_id)
             {
                 commander.closeDialog();
-                commander.issue(CompatUtils.getDocTreeIntent(), AdapterDocuments.REQUEST_OPEN_DOCUMENT_TREE);
+                commander.issue(CompatUtils.getDocTreeIntent());
             }
         }
         catch (Exception e)

@@ -42,7 +42,6 @@ public class AdapterDocuments extends AdapterBaseImpl
 {
     public final static String ORG_SCHEME = ContentResolver.SCHEME_CONTENT;
     public final static String PREF_TREE_ROOT_URI = "fman_tree_root_uri";
-    public final static int REQUEST_OPEN_DOCUMENT_TREE = 935;
 
     private final static String[] projection = { Document.COLUMN_DOCUMENT_ID, Document.COLUMN_DISPLAY_NAME,
             Document.COLUMN_LAST_MODIFIED, Document.COLUMN_MIME_TYPE, Document.COLUMN_SIZE };

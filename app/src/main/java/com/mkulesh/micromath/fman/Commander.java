@@ -454,16 +454,15 @@ public class Commander extends DialogBase implements CommanderIf
      * Commander interface implementation
      */
     @Override
-    public void issue(Intent in, int ret)
+    public void issue(Intent in)
     {
-        if (in == null)
+        if (in == null || ActivityCallback.getInstance().getResultLauncher() == null)
+        {
             return;
+        }
         try
         {
-            if (ret == 0)
-                context.startActivity(in);
-            else
-                context.startActivityForResult(in, ret);
+            ActivityCallback.getInstance().getResultLauncher().launch(in);
         }
         catch (Exception e)
         {
