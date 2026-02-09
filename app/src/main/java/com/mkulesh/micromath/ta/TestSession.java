@@ -45,6 +45,7 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class TestSession extends AppTask implements Runnable
 {
@@ -373,11 +374,16 @@ public class TestSession extends AppTask implements Runnable
         }
     }
 
-    public void setResult(String name, String value)
+    public void setResult(@NonNull final String name, @Nullable final String value)
+    {
+        setResult(name, value, null);
+    }
+
+    public void setResult(@NonNull final String name, @Nullable final String value, @Nullable final String plotId)
     {
         if (testScript != null)
         {
-            testScript.setResult(name, value);
+            testScript.setResult(name, value, plotId);
         }
     }
 

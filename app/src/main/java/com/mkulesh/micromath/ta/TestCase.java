@@ -16,24 +16,44 @@ package com.mkulesh.micromath.ta;
 import com.mkulesh.micromath.utils.ViewUtils;
 
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
-class TestCase
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+public class TestCase
 {
     public final static String BEGIN_FIELD = "begin";
     public final static String RESULT_FIELD = "result";
     public final static String DESIRED_FIELD = "desired";
+    public final static String REGISTER_PLOT = "registerPlotForTestCase";
+    public final static String RESULT_PLOT_BOUNDS = "resultPlotBounds";
+    public final static String DESIRED_PLOT_BOUNDS = "desiredPlotBounds";
     public final static String END_FIELD = "end";
 
     public final static String[] PARAMETERS = { "TC", "Duration (ms)", "Result", "Desired", "Status" };
 
-    private String beginField = null, resultField = null, desiredField = null, endField = null;
-    private long startTime = 0, endTime = 0;
+    private final String beginField;
+    private String endField;
+    private final ArrayList<String> resultField = new ArrayList<>();
+    private final ArrayList<String> desiredField = new ArrayList<>();
+    private final List<TestPlotData> plotData = new ArrayList<>();
+    private final long startTime;
+    private long endTime = 0;
 
     public TestCase(String beginNumber)
     {
         this.beginField = beginNumber;
         startTime = Calendar.getInstance().getTimeInMillis();
+    }
+
+    @NonNull
+    @Override
+    public String toString()
+    {
+        return "TC: " + beginField;
     }
 
     public void finish(String endNumber)
@@ -43,14 +63,69 @@ class TestCase
         ViewUtils.Debug(this, getDescription());
     }
 
-    public void setResultField(String resultField)
+    public void setDataField(@NonNull final String name, @Nullable final String value, @Nullable final String plotId)
     {
-        this.resultField = resultField;
+        if (RESULT_FIELD.equals(name))
+        {
+            resultField.add(value);
+            ViewUtils.Debug(this, this + ", Set " + RESULT_FIELD + ": " + value);
+        }
+        else if (TestCase.DESIRED_FIELD.equals(name))
+        {
+            desiredField.add(value);
+            ViewUtils.Debug(this, this + ", Set " + DESIRED_FIELD + ": " + value);
+        }
+        else if (REGISTER_PLOT.equals(name) && plotId != null)
+        {
+            synchronized (plotData)
+            {
+                plotData.add(new TestPlotData(plotId));
+                ViewUtils.Debug(this, this + ", Set plot ID: " + plotId);
+            }
+        }
+        else if (DESIRED_PLOT_BOUNDS.equals(name))
+        {
+            synchronized (plotData)
+            {
+                if (!plotData.isEmpty())
+                {
+                    final TestPlotData p = plotData.get(plotData.size() - 1);
+                    p.desired = value;
+                    ViewUtils.Debug(this, this + ", Set desired value for plot " + p.id + ": " + value);
+                }
+            }
+        }
+        else if (RESULT_PLOT_BOUNDS.equals(name) && plotId != null)
+        {
+            synchronized (plotData)
+            {
+                for (TestPlotData p : plotData)
+                {
+                    if (p.id.equals(plotId))
+                    {
+                        p.result = value;
+                        ViewUtils.Debug(this, this + ", Set result value for plot " + p.id + ": " + value);
+                        ViewUtils.Debug(this, getDescription());
+                    }
+                }
+            }
+        }
     }
 
-    public void setDesiredField(String desiredField)
+    public boolean arePlotsComplete()
     {
-        this.desiredField = desiredField;
+        synchronized (plotData)
+        {
+            return TestPlotData.plotsComplete(plotData);
+        }
+    }
+
+    private boolean arePlotsPassed()
+    {
+        synchronized (plotData)
+        {
+            return TestPlotData.plotsPassed(plotData);
+        }
     }
 
     public boolean isPassed()
@@ -59,7 +134,7 @@ class TestCase
         {
             return false;
         }
-        return compareValues(resultField, desiredField);
+        return compareValues(resultField.get(0), desiredField.get(0)) && arePlotsPassed();
     }
 
     private boolean compareValues(String s1, String s2)
@@ -75,23 +150,35 @@ class TestCase
     {
         if (beginField == null)
         {
-            return "TC ERROR: \"" + BEGIN_FIELD + "\" field is not found";
+            return "FAILED: \"" + BEGIN_FIELD + "\" field is not found";
         }
-        if (resultField == null)
+        if (resultField.isEmpty())
         {
-            return "TC ERROR: \"" + RESULT_FIELD + "\" field is not found";
+            return "FAILED: \"" + RESULT_FIELD + "\" field is not set";
         }
-        if (desiredField == null)
+        if (resultField.size() > 1)
         {
-            return "TC ERROR: \"" + DESIRED_FIELD + "\" field is not found";
+            return "FAILED: \"" + RESULT_FIELD + "\" is set multiple time";
+        }
+        if (desiredField.isEmpty())
+        {
+            return "FAILED: \"" + DESIRED_FIELD + "\" field is not found";
+        }
+        if (desiredField.size() > 1)
+        {
+            return "FAILED: \"" + DESIRED_FIELD + "\" is set multiple time";
         }
         if (endField == null)
         {
-            return "TC ERROR: \"" + END_FIELD + "\" field is not found";
+            return "FAILED: \"" + END_FIELD + "\" field is not found";
         }
         if (!compareValues(beginField, endField))
         {
-            return "TC ERROR: begin and end fields have different values";
+            return "FAILED: begin and end fields have different values";
+        }
+        if (!arePlotsComplete())
+        {
+            return "FAILED: plot data not complete";
         }
         return null;
     }
@@ -105,7 +192,7 @@ class TestCase
         }
         return PARAMETERS[0] + ": " + beginField + ", " + PARAMETERS[1] + ": " + (endTime - startTime) + ", "
                 + PARAMETERS[2] + ": " + resultField + ", " + PARAMETERS[3] + ": " + desiredField + ", "
-                + PARAMETERS[4] + ": " + (isPassed() ? "PASSED" : "FAILED");
+                + PARAMETERS[4] + ": " + (arePlotsComplete() ? (isPassed() ? "PASSED" : "FAILED") : "PLOT_INCOMPLETE");
     }
 
     public void publishHtmlReport(StringWriter writer)
@@ -113,7 +200,9 @@ class TestCase
         final String error = getError();
         if (error != null)
         {
-            String line = "    <tr><td colspan=\"" + PARAMETERS.length + "\"><font color=\"red\">" + error
+            String line = "    <tr><td>" + beginField + "</td><td colspan=\""
+                    + (PARAMETERS.length - 1)
+                    + "\"><font color=\"red\">" + error
                     + "</font></td></tr>";
             writer.append(line);
             return;
@@ -135,5 +224,12 @@ class TestCase
         line += "<td>" + status + "</td>";
         line += "</tr>\n";
         writer.append(line);
+        for (int i = 0; i < plotData.size(); i++)
+        {
+            if (plotData.get(i).isTested())
+            {
+                writer.append(plotData.get(i).publishHtmlReport(beginField, i + 1));
+            }
+        }
     }
 }

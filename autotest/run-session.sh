@@ -37,7 +37,7 @@ endif
 # Open report files in Firefox
 if (`uname` == "Darwin") then
     # macOS
-    open -a Firefox *.html
+    open -a Safari *.html
 else
     # Assuming Linux
     firefox *.html

@@ -304,7 +304,7 @@ public class ColorMapView extends CustomTextView
     /*--------------------------------------------------------*
      * Helper class that holds labels
      *--------------------------------------------------------*/
-    private static final class Label
+    public static final class Label
     {
         double y = 0;
         String name = null;
@@ -314,6 +314,16 @@ public class ColorMapView extends CustomTextView
             this.y = y;
             this.name = name;
         }
+
+        public String getName()
+        {
+            return name;
+        }
+    }
+
+    public Label[] getLabels()
+    {
+        return labels;
     }
 
     private Label[] makeLabels(int labelNumber, double[] minMaxValues)

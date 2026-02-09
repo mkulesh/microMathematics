@@ -46,6 +46,8 @@ import com.mkulesh.micromath.properties.AxisPropertiesChangeIf;
 import com.mkulesh.micromath.properties.LineProperties;
 import com.mkulesh.micromath.properties.LinePropertiesChangeIf;
 import com.mkulesh.micromath.properties.PlotPropertiesChangeIf;
+import com.mkulesh.micromath.ta.TestCase;
+import com.mkulesh.micromath.ta.TestSession;
 import com.mkulesh.micromath.undo.FormulaState;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
@@ -198,6 +200,11 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
         {
             f.calculate(thread);
         }
+        final TestSession ta = getFormulaList().getTaSession();
+        if (ta != null)
+        {
+            ta.setResult(TestCase.REGISTER_PLOT, null, this.toString());
+        }
     }
 
     @Override
@@ -217,6 +224,16 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
             functionView.setFunctions(null);
         }
         functionView.invalidate();
+        final TestSession ta = getFormulaList().getTaSession();
+        if (ta != null)
+        {
+            final ArrayList<String> res = new ArrayList<>();
+            res.add(yMax != null ? yMax.getText() : "null");
+            res.add(yMin != null ? yMin.getText() : "null");
+            res.add(xMin != null ? xMin.getText() : "null");
+            res.add(xMax != null ? xMax.getText() : "null");
+            ta.setResult(TestCase.RESULT_PLOT_BOUNDS, "[" + res + "]", this.toString());
+        }
     }
 
     /*--------------------------------------------------------*

@@ -18,6 +18,9 @@ import com.mkulesh.micromath.utils.ViewUtils;
 import java.io.StringWriter;
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 public class TestScript
 {
     public enum NumberType
@@ -91,27 +94,11 @@ public class TestScript
         this.readingDuration = readingDuration;
     }
 
-    public void setResult(String name, String value)
+    public void setResult(@NonNull final String name, @Nullable final String value, @Nullable final String plotId)
     {
         if (TestCase.BEGIN_FIELD.equals(name))
         {
             testCase = new TestCase(value);
-        }
-        else if (TestCase.RESULT_FIELD.equals(name))
-        {
-            if (testCase == null)
-            {
-                testCase = new TestCase(null);
-            }
-            testCase.setResultField(value);
-        }
-        else if (TestCase.DESIRED_FIELD.equals(name))
-        {
-            if (testCase == null)
-            {
-                testCase = new TestCase(null);
-            }
-            testCase.setDesiredField(value);
         }
         else if (TestCase.END_FIELD.equals(name))
         {
@@ -122,6 +109,17 @@ public class TestScript
             testCase.finish(value);
             testCases.add(testCase);
             testCase = null;
+        }
+        else if (TestCase.RESULT_PLOT_BOUNDS.equals(name))
+        {
+            for (TestCase tc : testCases)
+            {
+                tc.setDataField(name, value, plotId);
+            }
+        }
+        else if (testCase != null)
+        {
+            testCase.setDataField(name, value, plotId);
         }
     }
 
@@ -140,12 +138,33 @@ public class TestScript
                 {
                     state.wait();
                 }
+                waitPlotComplete();
                 return state.get();
             }
         }
         catch (Exception e)
         {
             return State.CALCULATE_FINISHED;
+        }
+    }
+
+    private void waitPlotComplete()
+    {
+        while (true)
+        {
+            int numberComplete = 0;
+            for (TestCase tc : testCases)
+            {
+                if (tc.arePlotsComplete())
+                {
+                    numberComplete++;
+                }
+            }
+            if (numberComplete == testCases.size())
+            {
+                ViewUtils.Debug(this, "all plots are complete");
+                break;
+            }
         }
     }
 
