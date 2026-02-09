@@ -587,9 +587,14 @@ public class CustomEditText extends AppCompatEditText implements OnLongClickList
                 isTextFragment() && getText().length() > 0 &&
                 hasSelection() && selEnd - selStart == getText().length())
         {
-            // null for input view means that we will start ActionMode without owner:
-            // the root formula will be selected instead of owner term
-            this.onLongClick(null);
+            // 1. null for input view means that we will start ActionMode without owner:
+            //    the root formula will be selected instead of owner term.
+            //    In other case, objectProperties button will be not shown
+            // 2. #150 When a text fragment is selected manually and copied,
+            //    a magnifier overlay still be visible. In order to hide it, we need some
+            //    delay in order to give the platform a chance to hide the magnifier overlay.
+            new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(
+                    () -> CustomEditText.this.onLongClick(null), 100);
         }
     }
 
