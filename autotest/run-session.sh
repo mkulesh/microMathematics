@@ -26,12 +26,18 @@ echo APK to be tested: ${1}
 ./run-emulator.sh android_16.0.0 ${1} /data/user/0 -g -delay-adb
 
 # Check for failures and report status
-set failures = `grep FAILED *.html`
-if ("$failures" == "") then
+set found_failed = 0
+foreach file (*.html)
+    grep -q "FAILED" $file
+    if ($status == 0) then
+        echo "Error: Found 'FAILED' in file: $file"
+        set found_failed = 1
+    endif
+end
+if ($found_failed == 0) then
     echo ">>>>> Test PASSED."
 else
     echo ">>>>> Test FAILED:"
-    echo "$failures"
 endif
 
 # Open report files in Firefox
