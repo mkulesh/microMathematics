@@ -436,7 +436,6 @@ public class FormulaResult extends CalculationResult implements ResultProperties
     @Override
     public void onResultPropertiesChange(boolean isChanged)
     {
-        getFormulaList().finishActiveActionMode();
         if (!isChanged)
         {
             formulaState = null;

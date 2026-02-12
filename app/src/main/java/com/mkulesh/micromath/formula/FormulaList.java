@@ -1296,10 +1296,14 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
         if (manipulator == Manipulator.PROPERTY && f != null)
         {
             f.onObjectProperties(f);
+            // Object property button only available from active actionMode - finish it
+            finishActiveActionMode();
         }
         if (manipulator == Manipulator.DETAILS && f != null)
         {
             f.onDetails();
+            // Result button only available from active actionMode - finish it
+            finishActiveActionMode();
         }
     }
 

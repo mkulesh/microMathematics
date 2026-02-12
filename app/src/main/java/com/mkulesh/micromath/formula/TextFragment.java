@@ -128,7 +128,6 @@ public class TextFragment extends FormulaBase implements TextPropertiesChangeIf
     @Override
     public void onTextPropertiesChange(boolean isChanged)
     {
-        getFormulaList().finishActiveActionMode();
         if (isChanged)
         {
             if (formulaState != null)

@@ -153,7 +153,6 @@ public class ImageFragment extends FormulaBase implements ImagePropertiesChangeI
     @Override
     public void onImagePropertiesChange(boolean isFileChanged, boolean isImageChanged)
     {
-        getFormulaList().finishActiveActionMode();
         if (isFileChanged || isImageChanged)
         {
             if (formulaState != null)

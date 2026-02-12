@@ -490,7 +490,6 @@ public class PlotFunction extends CalculationResult implements SizeChangingLayou
     @Override
     public void onPlotPropertiesChange(boolean isChanged)
     {
-        getFormulaList().finishActiveActionMode();
         if (!isChanged)
         {
             formulaState = null;
