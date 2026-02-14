@@ -28,6 +28,7 @@ import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.widgets.CustomEditText;
 import com.mkulesh.micromath.widgets.CustomTextView;
+import com.mkulesh.micromath.widgets.ScaledDimensions;
 
 import java.util.Locale;
 
@@ -135,6 +136,9 @@ public class Operators extends FormulaTerm
      * Private attributes
      */
     private TermField leftTerm = null, rightTerm = null;
+
+    // Operator term used for additional padding
+    CustomTextView operatorTerm = null;
 
 
     // Attention: this is not thread-safety declaration!
@@ -260,10 +264,12 @@ public class Operators extends FormulaTerm
                 case PLUS:
                     v.prepare(CustomTextView.SymbolType.PLUS, getFormulaRoot().getFormulaList().getActivity(), this);
                     v.setText("..");
+                    operatorTerm = v;
                     break;
                 case MINUS:
                     v.prepare(CustomTextView.SymbolType.MINUS, getFormulaRoot().getFormulaList().getActivity(), this);
                     v.setText("..");
+                    operatorTerm = v;
                     break;
                 case MULT:
                     v.prepare(CustomTextView.SymbolType.MULT, getFormulaRoot().getFormulaList().getActivity(), this);
@@ -311,6 +317,16 @@ public class Operators extends FormulaTerm
             }
         }
         return v;
+    }
+    @Override
+    public void updateTextSize()
+    {
+        super.updateTextSize();
+        if (operatorTerm != null)
+        {
+            final int hsp = getFormulaList().getDimen().get(ScaledDimensions.Type.HOR_SYMBOL_PADDING);
+            operatorTerm.setPadding(2 * hsp, 0, 2 * hsp, 0);
+        }
     }
 
     /*--------------------------------------------------------*
