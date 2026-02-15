@@ -57,8 +57,16 @@
 
     <!-- Custom styles -->
 
+    <style name="ToolbarTitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">@dimen/activity_toolbar_title_size</item>
+    </style>
+
+    <style name="ToolbarSubtitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">@dimen/activity_toolbar_subtitle_size</item>
+    </style>
+
     <style name="NavigationViewHeaderText" parent="@android:style/TextAppearance">
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">@dimen/abc_text_size_caption_material</item>
         <item name="android:textColor">?attr/colorMicroMathIcon</item>
         <item name="android:textStyle">bold</item>
         <item name="android:typeface">normal</item>

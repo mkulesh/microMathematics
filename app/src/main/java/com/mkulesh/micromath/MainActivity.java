@@ -234,6 +234,7 @@ public class MainActivity extends AppCompatActivity
         orientation = newConfig.orientation;
         ViewUtils.Debug(this, "device orientation change: " + orientation);
         super.onConfigurationChanged(newConfig);
+        recreate();
 
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
