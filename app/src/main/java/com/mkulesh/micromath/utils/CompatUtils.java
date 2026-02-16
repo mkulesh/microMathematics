@@ -435,6 +435,8 @@ public class CompatUtils
     // Tiramisu: Build.VERSION_CODES.TIRAMISU = 33
     //**********************************************************************************************
 
+    final static boolean LOG_EMPTY_PARCELABLE = false;
+
     public static boolean isTiramisuOrLater()
     {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU;
@@ -446,7 +448,7 @@ public class CompatUtils
         if (isTiramisuOrLater())
         {
             final T p = state.getParcelable(parName, clazz);
-            if (p == null)
+            if (p == null && LOG_EMPTY_PARCELABLE)
             {
                 ViewUtils.Debug(state, "empty parcelable state in getParcelable for " + clazz.getCanonicalName());
             }
@@ -464,7 +466,7 @@ public class CompatUtils
         if (isTiramisuOrLater())
         {
             final T p = parcel.readParcelable(loader, clazz);
-            if (p == null)
+            if (p == null && LOG_EMPTY_PARCELABLE)
             {
                 ViewUtils.Debug(parcel, "empty parcelable state in readParcelable for " + clazz.getCanonicalName());
             }

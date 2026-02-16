@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity
     private boolean autotestOnStart = false;
     private ExitConfirm exitConfirm = null;
     private int orientation;
-    private boolean instanceStateEmpty = true;
 
     private final ActivityResultLauncher<Intent> settingsLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -149,22 +148,21 @@ public class MainActivity extends AppCompatActivity
 
         // context menu
         activeActionModes = new ArrayList<>();
-        // State handling
-        instanceStateEmpty = savedInstanceState == null;
-    }
-
-    protected void onResume()
-    {
-        super.onResume();
-        if (storagePermissionAction != ViewUtils.INVALID_INDEX)
+        // State and instance handling
+        if (savedInstanceState == null)
         {
-            // #152 Problem opening file from documents after installation
-            // No fragment operations allowed during SAF permission processing
-            return;
+            // Activity is created for the first time: savedInstanceState == null
+            ViewUtils.Debug(this, "Activity is created for the first time: intent=" + getIntent());
+            final boolean intentProcessed = handleIntent(getIntent());
+            if (!intentProcessed)
+            {
+                selectWorksheet(BaseFragment.INVALID_ACTION_ID);
+            }
         }
-        final boolean intentProcessed = handleIntent(getIntent());
-        if (!intentProcessed && instanceStateEmpty)
+        else if (savedInstanceState.size() == 0)
         {
+            // called after device rotation where savedInstanceState is empty
+            ViewUtils.Debug(this, "Activity is called after device rotation with empty state");
             selectWorksheet(BaseFragment.INVALID_ACTION_ID);
         }
     }
@@ -172,6 +170,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onNewIntent(Intent intent)
     {
+        ViewUtils.Debug(this, "onNewIntent: intent=" + intent);
         super.onNewIntent(intent);
         handleIntent(intent);
     }
@@ -197,6 +196,7 @@ public class MainActivity extends AppCompatActivity
             else if (SHORTCUT_OPEN_FILE.equals(intent.getAction()))
             {
                 ViewUtils.Debug(this, "Called with shortcut intent: " + intent);
+                checkStoragePermission(R.id.action_open);
                 selectWorksheet(R.id.action_open);
                 retValue = true;
             }
@@ -453,6 +453,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle inState)
     {
+        ViewUtils.Debug(this, "onRestoreInstanceState: inState.size=" + inState.size());
         try
         {
             final Parcelable s = CompatUtils.getParcelable(
