@@ -27,6 +27,8 @@ import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -234,7 +236,7 @@ public class MainActivity extends AppCompatActivity
         orientation = newConfig.orientation;
         ViewUtils.Debug(this, "device orientation change: " + orientation);
         super.onConfigurationChanged(newConfig);
-        recreate();
+        updateToolbarsLayout();
 
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
@@ -280,6 +282,7 @@ public class MainActivity extends AppCompatActivity
         {
             getOnBackPressedDispatcher().addCallback(this, exitConfirm);
         }
+        updateToolbarsLayout();
     }
 
     @Override
@@ -817,6 +820,28 @@ public class MainActivity extends AppCompatActivity
                 String error = getResources().getString(R.string.allow_storage_access_description);
                 Toast.makeText(this, error, Toast.LENGTH_LONG).show();
             }
+        }
+    }
+
+    void updateToolbarsLayout()
+    {
+        // Activity toolbar
+        final Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null && toolbar.getLayoutParams() != null)
+        {
+            final ViewGroup.LayoutParams layoutParams = toolbar.getLayoutParams();
+            layoutParams.height = getResources().getDimensionPixelSize(R.dimen.activity_toolbar_height);
+            toolbar.setLayoutParams(layoutParams);
+            toolbar.setTitleTextAppearance(this, R.style.ToolbarTitleTextAppearance);
+            toolbar.setSubtitleTextAppearance(this, R.style.ToolbarSubtitleTextAppearance);
+        }
+        // Palette toolbar
+        final LinearLayout palette = findViewById(R.id.main_palette_view);
+        if (palette != null)
+        {
+            final ViewGroup.LayoutParams layoutParams = palette.getLayoutParams();
+            layoutParams.height = getResources().getDimensionPixelSize(R.dimen.activity_toolbar_height);
+            palette.setLayoutParams(layoutParams);
         }
     }
 }

@@ -25,6 +25,7 @@
         <item name="colorMicroMathNavigator">@color/background_material_light</item>
         <item name="toastFrame">@drawable/toast_frame_light</item>
         <item name="colorTooltipText">@android:color/white</item>
+        <item name="colorToolBarText">@android:color/white</item>
         <item name="actionModeBackground">?attr/colorPrimary</item>
         <item name="actionModeStyle">@style/ActionModeStyle</item>
         <item name="preferenceTheme">@style/AppPreferenceStyle</item>
@@ -39,6 +40,7 @@
         <item name="colorMicroMathNavigator">@color/background_material_dark</item>
         <item name="toastFrame">@drawable/toast_frame_dark</item>
         <item name="colorTooltipText">@android:color/black</item>
+        <item name="colorToolBarText">@android:color/white</item>
         <item name="actionModeBackground">?attr/colorPrimary</item>
         <item name="actionModeStyle">@style/ActionModeStyle</item>
         <item name="preferenceTheme">@style/AppPreferenceStyle</item>
@@ -59,10 +61,14 @@
 
     <style name="ToolbarTitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">@dimen/activity_toolbar_title_size</item>
+        <item name="android:textColor">?attr/colorToolBarText</item>
+        <item name="android:typeface">normal</item>
     </style>
 
     <style name="ToolbarSubtitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">@dimen/activity_toolbar_subtitle_size</item>
+        <item name="android:textColor">?attr/colorToolBarText</item>
+        <item name="android:typeface">normal</item>
     </style>
 
     <style name="NavigationViewHeaderText" parent="@android:style/TextAppearance">
