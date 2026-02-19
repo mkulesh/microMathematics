@@ -23,7 +23,7 @@
         <!-- Activity colors -->
         <item name="colorStatusBar">@android:color/black</item>
         <item name="colorPrimary">@android:color/black</item>
-        <item name="colorPrimaryDark">@color/material_grey_800</item>
+        <item name="colorPrimaryDark">@android:color/black</item>
         <item name="colorAccent">#cddc39</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textColorSecondary">?attr/colorAccent</item>

@@ -17,7 +17,7 @@
 
     <!-- Theme definition used for all API levels -->
 
-    <style name="BaseThemeLight" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="BaseThemeLight" parent="Theme.Material3.Light.NoActionBar">
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowBackground">@color/background_material_light</item>
         <item name="themeMicroMathToolBar">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
