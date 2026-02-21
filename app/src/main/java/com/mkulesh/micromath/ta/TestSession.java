@@ -339,7 +339,8 @@ public class TestSession extends AppTask implements Runnable
             }
             if (isAutotestOnStart)
             {
-                formulas.getActivity().finish();
+                // Uses onBackPressed() instead finish for testing purposes
+                formulas.getActivity().getOnBackPressedDispatcher().onBackPressed();
             }
             else if (file != null)
             {

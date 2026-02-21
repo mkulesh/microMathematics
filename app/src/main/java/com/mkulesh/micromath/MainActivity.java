@@ -131,6 +131,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         exitConfirm = new ExitConfirm(true, this);
+        getOnBackPressedDispatcher().addCallback(this, exitConfirm);
 
         orientation = getResources().getConfiguration().orientation;
         String versionName;
@@ -278,10 +279,6 @@ public class MainActivity extends AppCompatActivity
             }
         };
         CompatUtils.setDrawerListener(mDrawerLayout, mDrawerToggle);
-        if (CompatUtils.isVanillaIceCreamOrLater() && exitConfirm != null)
-        {
-            getOnBackPressedDispatcher().addCallback(this, exitConfirm);
-        }
         updateToolbarsLayout();
     }
 
@@ -368,16 +365,6 @@ public class MainActivity extends AppCompatActivity
             return false;
         default:
             return super.onOptionsItemSelected(menuItem);
-        }
-    }
-
-    @SuppressLint("GestureBackNavigation")
-    @Override
-    public void onBackPressed()
-    {
-        if (!CompatUtils.isVanillaIceCreamOrLater() && exitConfirm != null)
-        {
-            exitConfirm.handleOnBackPressed();
         }
     }
 
