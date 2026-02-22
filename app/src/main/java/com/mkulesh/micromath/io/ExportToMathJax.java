@@ -167,7 +167,7 @@ public class ExportToMathJax extends ExportToLatex
             OutputStream fos = FileUtils.getOutputStream(context, figUri);
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
             fos.flush();
-            FileUtils.closeStream(fos);
+            FileUtils.closeOutStream(fos);
             figNumber++;
         }
         catch (Exception e)

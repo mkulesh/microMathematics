@@ -78,7 +78,7 @@ public class Exporter
                     break;
                 }
                 }
-                FileUtils.closeStream(stream);
+                FileUtils.closeOutStream(stream);
 
                 final String message = String.format(activity.getResources().getString(R.string.message_file_written),
                         fName);

@@ -28,8 +28,8 @@ import com.mkulesh.micromath.R;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 
-import java.io.Closeable;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
@@ -378,10 +378,30 @@ public final class FileUtils
         return null;
     }
 
-    public static void closeStream(Closeable stream)
+    public static void closeStream(InputStream stream)
     {
         try
         {
+            stream.close();
+        }
+        catch (Exception e)
+        {
+            // nothing to do
+        }
+    }
+
+    public static void closeOutStream(OutputStream stream)
+    {
+        try
+        {
+            // Explicitly flush the stream to force buffered output to be written
+            stream.flush();
+            // For ContentResolver streams, also sync the file descriptor to
+            // ensure the data is physically written to storage.
+            if (stream instanceof FileOutputStream)
+            {
+                ((FileOutputStream) stream).getFD().sync();
+            }
             stream.close();
         }
         catch (Exception e)

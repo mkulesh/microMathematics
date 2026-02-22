@@ -743,7 +743,7 @@ public class FormulaList implements OnClickListener, ListChangeIf, DocumentPrope
                 return false;
             }
             final boolean retValue = writeToStream(os, fName);
-            FileUtils.closeStream(os);
+            FileUtils.closeOutStream(os);
             return retValue;
         }
         catch (Exception e)
