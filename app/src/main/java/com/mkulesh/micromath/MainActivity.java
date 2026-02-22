@@ -68,9 +68,9 @@ public class MainActivity extends AppCompatActivity
     private static final String STATE_STORED_FORMULA = "stored_formula";
 
     private static final int STORAGE_PERMISSION_REQID = 255;
-    private static final String SHORTCUT_NEW_DOCUMENT = "com.mkulesh.micromath.plus.NEW_DOCUMENT";
-    private static final String SHORTCUT_OPEN_FILE = "com.mkulesh.micromath.plus.OPEN_FILE";
-    private static final String SHORTCUT_AUTOTEST = "com.mkulesh.micromath.plus.AUTOTEST";
+    private static final String SHORTCUT_NEW_DOCUMENT = "com.mkulesh.micromath.NEW_DOCUMENT";
+    private static final String SHORTCUT_OPEN_FILE = "com.mkulesh.micromath.OPEN_FILE";
+    private static final String SHORTCUT_AUTOTEST = "com.mkulesh.micromath.AUTOTEST";
 
     private AlertDialog storagePermissionDialog = null;
     private int storagePermissionAction = ViewUtils.INVALID_INDEX;

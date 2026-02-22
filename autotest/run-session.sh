@@ -1,5 +1,5 @@
 #!/bin/csh
-# C-shell script used to run microMathematics Plus in all configured emulators
+# C-shell script used to run microMathematics in all configured emulators
 
 echo APK to be tested: ${1}
 

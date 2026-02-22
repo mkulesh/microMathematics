@@ -24,7 +24,6 @@ import android.widget.Toast;
 import com.mkulesh.micromath.formula.CalculaterTask.CancelException;
 import com.mkulesh.micromath.formula.FormulaBase.FocusType;
 import com.mkulesh.micromath.formula.PaletteButton.Category;
-import com.mkulesh.micromath.formula.terms.Intervals;
 import com.mkulesh.micromath.formula.terms.TermFactory;
 import com.mkulesh.micromath.formula.terms.TermTypeIf;
 import com.mkulesh.micromath.formula.terms.UserFunctions;
